@@ -6,6 +6,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "neu_processgroup",
+    "MaxGetRowsCount": 500,
     "Name": "Process Groups",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
