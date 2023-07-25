@@ -1,10 +1,10 @@
 Screen1 As screen:
 
-    "Gallery3 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =709
-        Items: ='Process Groups'
+        Items: =Filter('Process Groups', Capability.'Capability Name' = 'Capability Gallery'.Selected.'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -59,11 +59,11 @@ Screen1 As screen:
             Width: =4
             ZIndex: =4
 
-    "Gallery6 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =709
-        Items: =Processes
+        Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -118,11 +118,11 @@ Screen1 As screen:
             Width: =4
             ZIndex: =4
 
-    "Gallery1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =711
-        Items: =Filter(Capabilities, 'Capabilities (Views)'.'Active Capabilities')
+        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -177,7 +177,7 @@ Screen1 As screen:
             Width: =4
             ZIndex: =4
 
-    "Gallery2 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =241
