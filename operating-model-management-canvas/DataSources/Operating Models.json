@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_operatingmodels",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_operatingmodel",
+    "Name": "Operating Models",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_neu_capability_OperatingModelID_neu_opera": "Capabilities",
+      "neu_neu_clientsolution_OperatingModelID_neu_o": "Client Solutions",
+      "neu_operatingmodel_AsyncOperations": "System Jobs",
+      "neu_operatingmodel_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_operatingmodel_DuplicateBaseRecord": "Duplicate Records (neu_operatingmodel_DuplicateBaseRecord)",
+      "neu_operatingmodel_DuplicateMatchingRecord": "Duplicate Records (neu_operatingmodel_DuplicateMatchingRecord)",
+      "neu_operatingmodel_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_operatingmodel_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_operatingmodel_ProcessSession": "Process Sessions",
+      "neu_operatingmodel_SyncErrors": "Sync Errors",
+      "neu_operatingmodelid": "Operating Model",
+      "neu_operatingmodelname": "Operating Model Name",
+      "neu_SolutionAreaID": "Solution Area",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Operating Models",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Operating Models (Views)",
+    "Name": "_neu_operatingmodel_views",
+    "RelatedEntityName": "Operating Models",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "085d3b14-dc62-4df7-99b7-c6712320b33b": "Operating Model Lookup View",
+      "3c360fbd-5d5b-48a5-8f57-e227a697d24a": "Operating Model Advanced Find View",
+      "add81b00-8067-4fba-a137-9cdbe9a1e52d": "Inactive Operating Models",
+      "d0dd79c4-13d2-4428-a358-ad25df3f51c8": "Active Operating Models",
+      "d35106ba-e614-49e7-b14b-79cef509a80a": "Operating Model Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Operating Models)",
+    "Name": "neu_operatingmodel_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Operating Models"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Operating Models",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Operating Models)",
+    "Name": "neu_operatingmodel_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Operating Models"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Operating Models",
+    "Type": "OptionSetInfo"
+  }
+]

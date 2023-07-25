@@ -1,0 +1,102 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_processgroups",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_processgroup",
+    "Name": "Process Groups",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_CapabilityID": "Capability",
+      "neu_neu_process_ProcessGroupID_neu_processgro": "Processes",
+      "neu_processgroup_AsyncOperations": "System Jobs",
+      "neu_processgroup_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_processgroup_DuplicateBaseRecord": "Duplicate Records (neu_processgroup_DuplicateBaseRecord)",
+      "neu_processgroup_DuplicateMatchingRecord": "Duplicate Records (neu_processgroup_DuplicateMatchingRecord)",
+      "neu_processgroup_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_processgroup_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_processgroup_ProcessSession": "Process Sessions",
+      "neu_processgroup_SyncErrors": "Sync Errors",
+      "neu_processgroupid": "Process Group",
+      "neu_processgroupname": "Process Group Name",
+      "neu_scopereview": "Scope Review",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Process Groups",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Process Groups (Views)",
+    "Name": "_neu_processgroup_views",
+    "RelatedEntityName": "Process Groups",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1ac77bff-2930-4c61-9dcf-a55295a94254": "Process Group Lookup View",
+      "1b98f747-7e13-4983-bfce-1a09a11c2b42": "Process Group Associated View",
+      "363890cc-fbb1-40fd-a5c2-aad0bc288b6d": "Process Group Advanced Find View",
+      "df0cddc5-d100-ee11-8f6e-0022482bd981": "Process Groups Sub Grid",
+      "e7ea73e6-9c7a-4831-ab06-bcc7cf09638b": "Inactive Process Groups",
+      "fd7f5c0b-079e-490f-b1da-ec7bf53e56b5": "Active Process Groups"
+    }
+  },
+  {
+    "DisplayName": "Status (Process Groups)",
+    "Name": "neu_processgroup_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Process Groups"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Process Groups",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Process Groups)",
+    "Name": "neu_processgroup_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Process Groups"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Process Groups",
+    "Type": "OptionSetInfo"
+  }
+]

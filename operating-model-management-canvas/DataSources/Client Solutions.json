@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_clientsolutions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_clientsolution",
+    "Name": "Client Solutions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_clientprospectname": "Client/Prospect Name",
+      "neu_clientsolution_AsyncOperations": "System Jobs",
+      "neu_clientsolution_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_clientsolution_DuplicateBaseRecord": "Duplicate Records (neu_clientsolution_DuplicateBaseRecord)",
+      "neu_clientsolution_DuplicateMatchingRecord": "Duplicate Records (neu_clientsolution_DuplicateMatchingRecord)",
+      "neu_clientsolution_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_clientsolution_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_clientsolution_ProcessSession": "Process Sessions",
+      "neu_clientsolution_SyncErrors": "Sync Errors",
+      "neu_clientsolutionid": "Client Solution",
+      "neu_ImplementationModelID": "Implementation Model",
+      "neu_OperatingModelID": "Operating Model",
+      "neu_projectenddate": "Project End Date",
+      "neu_projectstartdate": "Project Start Date",
+      "neu_solutionname": "Solution Name",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Client Solutions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Client Solutions (Views)",
+    "Name": "_neu_clientsolution_views",
+    "RelatedEntityName": "Client Solutions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0be728ef-e46e-4529-a80b-ee0f7e731797": "Client Solution Associated View",
+      "921b521b-e31c-4fdc-bfde-d736390a65a8": "Active Client Solutions",
+      "a78faeec-1562-4493-ba93-99af2ae021bb": "Client Solution Lookup View",
+      "ae3fc4c0-655e-4839-b797-8c8d585d5b88": "Inactive Client Solutions",
+      "f72e498d-3021-4936-b484-5cb399d2ad76": "Client Solution Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Client Solutions)",
+    "Name": "neu_clientsolution_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Client Solutions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Client Solutions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Client Solutions)",
+    "Name": "neu_clientsolution_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Proposal",
+      "2": "Inactive",
+      "871820001": "Won",
+      "871820002": "Lost",
+      "871820003": "Postponed"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Client Solutions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Client Solutions",
+    "Type": "OptionSetInfo"
+  }
+]
