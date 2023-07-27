@@ -1,6 +1,6 @@
 "'Process Screen' As screen":
 
-    "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Process Gallery' As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =550
@@ -8,13 +8,13 @@
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =56
-        Width: =663
-        X: =348
-        Y: =192
+        TemplateSize: =90
+        Width: =643
+        X: =84
+        Y: =174
         ZIndex: =1
 
-        Title10_2 As label:
+        Title4 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
@@ -26,38 +26,53 @@
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 86
             X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle3.Size * 1.8)) / 2
             ZIndex: =1
 
-        NextArrow10_2 As icon.ChevronRight:
+        Subtitle3 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Description
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title4.Width
+            X: =Title4.X
+            Y: =Title4.Y + Title4.Height
+            ZIndex: =2
+
+        NextArrow3 As icon.ChevronRight:
             AccessibleLabel: =Self.Tooltip
             Color: =RGBA(166, 166, 166, 1)
             Height: =50
             Icon: =Icon.ChevronRight
             OnSelect: =Navigate(Screen2,ScreenTransition.Cover)
-            PaddingBottom: =12
-            PaddingLeft: =12
-            PaddingRight: =12
-            PaddingTop: =12
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
             Tooltip: ="View item details"
             Width: =50
             X: =Parent.TemplateWidth - Self.Width - 12
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =2
+            ZIndex: =3
 
-        Separator10_2 As rectangle:
+        Separator3 As rectangle:
             Height: =8
             OnSelect: =Select(Parent)
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - Self.Height
-            ZIndex: =3
+            ZIndex: =4
 
-        Rectangle10_2 As rectangle:
-            Height: =Parent.TemplateHeight - Separator10_2.Height
+        Rectangle3 As rectangle:
+            Height: =Parent.TemplateHeight - Separator3.Height
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4
-            ZIndex: =4
+            ZIndex: =5
 
     "'Back Button to Sub Capability / Process Group Screen' As icon.ChevronLeft":
         Height: =51
@@ -77,7 +92,7 @@
             ="Process
             "
         Width: =581
-        X: =389
-        Y: =108
+        X: =454
+        Y: =90
         ZIndex: =3
 
