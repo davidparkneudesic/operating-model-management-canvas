@@ -11,14 +11,15 @@
 
     "'Head Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         DelayItemLoading: =true
+        Height: =522
         Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =80
+        TemplateSize: =66
         Width: =623
-        X: =72
-        Y: =120
+        X: =368
+        Y: =172
         ZIndex: =1
 
         Title3 As label:
@@ -65,4 +66,14 @@
             Visible: =ThisItem.IsSelected
             Width: =4
             ZIndex: =4
+
+    "'Capabilites Label' As label":
+        FontWeight: =FontWeight.Bold
+        Height: =84
+        Size: =18
+        Text: ="Capabilities"
+        Width: =588
+        X: =381
+        Y: =87
+        ZIndex: =2
 

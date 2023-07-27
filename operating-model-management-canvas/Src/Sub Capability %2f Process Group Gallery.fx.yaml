@@ -2,7 +2,7 @@
 
     "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         DelayItemLoading: =true
-        Height: =569
+        Height: =523
         Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -10,7 +10,7 @@
         TemplateSize: =80
         Width: =593
         X: =72
-        Y: =152
+        Y: =196
         ZIndex: =1
 
         Title3_1 As label:
@@ -60,15 +60,15 @@
 
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         DelayItemLoading: =true
-        Height: =569
+        Height: =525
         Items: =Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =80
+        TemplateSize: =66
         Width: =599
         X: =697
-        Y: =152
+        Y: =196
         ZIndex: =2
 
         Title3_2 As label:
@@ -124,4 +124,28 @@
         X: =32
         Y: =36
         ZIndex: =3
+
+    "'Sub Capabilities Label' As label":
+        FontWeight: =FontWeight.Bold
+        Height: =84
+        Size: =18
+        Text: |-
+            ="Sub Capabilities
+            "
+        Width: =581
+        X: =84
+        Y: =112
+        ZIndex: =4
+
+    "'Process Groups Label' As label":
+        FontWeight: =FontWeight.Bold
+        Height: =84
+        Size: =18
+        Text: |-
+            ="Process Groups
+            "
+        Width: =581
+        X: =708
+        Y: =112
+        ZIndex: =5
 

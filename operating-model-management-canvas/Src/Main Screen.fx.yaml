@@ -2,7 +2,7 @@
 
     "'Operating Model Gallery' As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
         DelayItemLoading: =true
-        Height: =585
+        Height: =466
         Items: ='Operating Models'
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =Navigate('Head Capability Screen',ScreenTransition.Cover)
@@ -10,7 +10,7 @@
         TemplateSize: =419
         Width: =1263
         X: =52
-        Y: =152
+        Y: =192
         ZIndex: =1
 
         Image1 As image:
@@ -55,4 +55,17 @@
             X: =Title1.X
             Y: =Title1.Y + Title1.Height + 8
             ZIndex: =3
+
+    "'Operating Model Label' As label":
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =84
+        Size: =25
+        Text: |-
+            ="Operating Model
+            "
+        Width: =581
+        X: =393
+        Y: =108
+        ZIndex: =2
 
