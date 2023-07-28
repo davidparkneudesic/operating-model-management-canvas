@@ -2,13 +2,13 @@ Screen7 As screen:
 
     Gallery6 As gallery.variableTemplateHeightGallery:
         DelayItemLoading: =true
-        Items: =Capabilities
+        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery_old'.Selected.'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        TemplateSize: =304
+        TemplateSize: =269
         Width: =582
-        X: =40
-        Y: =40
+        X: =76
+        Y: =92
         ZIndex: =1
 
         Label4 As label:
@@ -20,6 +20,64 @@ Screen7 As screen:
             Y: =4
             ZIndex: =1
 
+        "Gallery7 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            DelayItemLoading: =true
+            Height: =225
+            Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = Label4.Text)
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplatePadding: =0
+            TemplateSize: =43
+            Width: =544
+            X: =27
+            Y: =39
+            ZIndex: =1
+
+            Title11 As label:
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =ThisItem.'Capability Name'
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 86
+                X: =16
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            NextArrow8 As icon.ChevronRight:
+                AccessibleLabel: =Self.Tooltip
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =50
+                Icon: =Icon.ChevronRight
+                OnSelect: =Select(Parent)
+                PaddingBottom: =12
+                PaddingLeft: =12
+                PaddingRight: =12
+                PaddingTop: =12
+                Tooltip: ="View item details"
+                Width: =50
+                X: =Parent.TemplateWidth - Self.Width - 12
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =2
+
+            Separator11 As rectangle:
+                Height: =8
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - Self.Height
+                ZIndex: =3
+
+            Rectangle11 As rectangle:
+                Height: =Parent.TemplateHeight - Separator11.Height
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
         Icon1 As icon.ChevronDown:
             Height: =29
             Icon: =Icon.ChevronDown
@@ -29,32 +87,76 @@ Screen7 As screen:
             Y: =7
             ZIndex: =2
 
-        Gallery3 As gallery.galleryVertical:
-            DelayItemLoading: =true
-            Height: =272
-            Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = Label4.Text)
-            Layout: =Layout.Vertical
-            LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =267
-            Width: =543
-            X: =28
-            Y: =32
+    "Gallery8 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Items: =Filter('Process Groups', Capability.'Capability Name' = Label4.Text || Capability.'Capability Name' = Title11.Text)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =80
+        X: =680
+        Y: =92
+        ZIndex: =1
+
+        Title13 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Process Group Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        NextArrow11 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =12
+            PaddingLeft: =12
+            PaddingRight: =12
+            PaddingTop: =12
+            Tooltip: ="View item details"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =2
+
+        Separator13 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
             ZIndex: =3
 
-            Label1 As label:
-                Height: =33
-                OnSelect: =Select(Parent)
-                Text: =ThisItem.'Capability Name'
-                Width: =401
-                X: =4
-                ZIndex: =1
+        Rectangle13 As rectangle:
+            Height: =Parent.TemplateHeight - Separator13.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =4
 
-            Icon2 As icon.ChevronDown:
-                Height: =21
-                Icon: =Icon.ChevronDown
-                OnSelect: =Select(Parent)
-                Width: =27
-                X: =502
-                Y: =6
-                ZIndex: =2
+    Button1 As button:
+        Height: =31
+        Text: ="Button"
+        Width: =427
+        X: =179
+        Y: =37
+        ZIndex: =2
+
+    "'Back Button_1' As icon.ChevronLeft":
+        Height: =51
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Navigate(Screen1,ScreenTransition.UnCoverRight)
+        Width: =52
+        X: =32
+        Y: =36
+        ZIndex: =4
 
