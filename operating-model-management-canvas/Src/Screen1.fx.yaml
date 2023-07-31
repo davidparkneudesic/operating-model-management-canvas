@@ -106,7 +106,7 @@ Screen1 As screen:
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =578
-        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery_old'.Selected.'Operating Model Name')
+        Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -256,6 +256,9 @@ Screen1 As screen:
 
     "'Dropdown Capabilities' As dropdown":
         Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Dropdown Operating Model'.Selected.'Operating Model Name')
+        OnSelect: |-
+            =ClearCollect(ColHeadCapability,Filter(Capabilities, 'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name'));
+            Collect(ColHeadCapability, Filter(Capabilities, 'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name'))
         Width: =293
         X: =361
         Y: =64
