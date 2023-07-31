@@ -49,7 +49,7 @@ Screen2 As screen:
             ZIndex: =2
 
         Rectangle10_1 As rectangle:
-            Height: =Parent.TemplateHeight - Separator10_1.Height
+            Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4
@@ -94,15 +94,8 @@ Screen2 As screen:
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
             ZIndex: =1
 
-        Separator10_2 As rectangle:
-            Height: =8
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - Self.Height
-            ZIndex: =3
-
         Rectangle10_2 As rectangle:
-            Height: =Parent.TemplateHeight - Separator10_2.Height
+            Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4

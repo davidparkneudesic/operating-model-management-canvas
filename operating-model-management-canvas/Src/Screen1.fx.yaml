@@ -4,11 +4,16 @@ Screen1 As screen:
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =578
-        Items: =Filter('Process Groups', Capability.'Capability Name' = 'Capability Gallery_old'.Selected.'Capability Name')
+        Items: |-
+            =If(!IsBlank('Capability Gallery_old'.Selected.'Capability Name'), 
+            //If (ThisItem. = 'Dropdown Capabilities'.SelectedText.'Capability Name',
+            
+            Filter('Process Groups', Capability.'Capability Name' = 'Capability Gallery_old'.Selected.'Capability Name'),
+            Filter('Process Groups', Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name'))
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =52
+        TemplateSize: =33
         Width: =300
         X: =696
         Y: =164
@@ -22,6 +27,7 @@ Screen1 As screen:
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
+            Size: =12
             Text: =ThisItem.'Process Group Name'
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 86
@@ -52,7 +58,7 @@ Screen1 As screen:
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =Navigate(Screen2,ScreenTransition.Cover)
         TemplatePadding: =0
-        TemplateSize: =56
+        TemplateSize: =40
         Width: =300
         X: =1033
         Y: =164
@@ -90,15 +96,15 @@ Screen1 As screen:
     "'Capability Gallery_old' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =522
+        Height: =532
         Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =53
+        TemplateSize: =49
         Width: =300
         X: =358
-        Y: =215
+        Y: =205
         ZIndex: =1
 
         Title7 As label:
@@ -153,7 +159,7 @@ Screen1 As screen:
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =53
+        TemplateSize: =41
         Width: =300
         X: =23
         Y: =164
@@ -233,9 +239,11 @@ Screen1 As screen:
         ZIndex: =5
 
     "'Dropdown Capabilities' As dropdown":
-        Height: =51
-        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery_old'.Selected.'Operating Model Name')
-        OnSelect: =ClearCollect(ColHeadCapability,Filter(Capabilities, 'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name'));
+        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery_old'.Selected.'Operating Model Name' && IsBlank('Parent Capability'.'Capability Name'))
+        OnSelect: |-
+            =ClearCollect(ColHeadCapability,
+                Filter(Capabilities, 
+                    'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name'));
         Width: =300
         X: =358
         Y: =164

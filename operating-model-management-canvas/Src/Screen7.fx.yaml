@@ -2,7 +2,7 @@ Screen7 As screen:
 
     Gallery6 As gallery.variableTemplateHeightGallery:
         DelayItemLoading: =true
-        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery_old'.Selected.'Operating Model Name')
+        Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateSize: =269
