@@ -186,10 +186,12 @@ Screen1 As screen:
                 IsBlank('Parent Capability'.'Capability Name')
             )
         OnSelect: |-
-            =ClearCollect(ColHeadCapability,
+            =// Create Collection of Sub Capability based on matching Capability Name
+            ClearCollect(ColHeadCapability,
                 Filter(Capabilities, 
                     'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name')
             );
+            // Create Collection of Process Groups based on matching Capability Name
             ClearCollect(ColProcessGroups,
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
