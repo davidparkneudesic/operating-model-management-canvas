@@ -180,7 +180,11 @@ Screen1 As screen:
         ZIndex: =5
 
     "'Dropdown Capabilities' As dropdown":
-        Items: =Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && IsBlank('Parent Capability'.'Capability Name'))
+        Items: |-
+            =Filter(Capabilities, 
+                'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
+                IsBlank('Parent Capability'.'Capability Name')
+            )
         OnSelect: |-
             =ClearCollect(ColHeadCapability,
                 Filter(Capabilities, 
