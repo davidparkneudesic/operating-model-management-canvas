@@ -4,7 +4,7 @@ Screen2 As screen:
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =604
-        Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery_old'.Selected.'Process Group Name')
+        Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
