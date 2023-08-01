@@ -67,31 +67,31 @@ Screen2 As screen:
     "'Process Gallery_URL' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =604
+        Height: =53
         Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =Launch(ThisItem.'Data Flow URL')
         TemplatePadding: =0
-        TemplateSize: =56
-        Width: =915
-        X: =408
-        Y: =136
+        TemplateSize: =50
+        Width: =878
+        X: =439
+        Y: =618
         ZIndex: =4
 
         Title10_2 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
+            Size: =12
             Text: =ThisItem.'Data Flow URL'
             VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - 86
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            Width: =857
+            X: =4
             ZIndex: =1
 
         Rectangle10_2 As rectangle:
@@ -100,4 +100,90 @@ Screen2 As screen:
             Visible: =ThisItem.IsSelected
             Width: =4
             ZIndex: =4
+
+    "'Data Flow URL Label' As label":
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: ="Data Flow URL"
+        X: =439
+        Y: =578
+        ZIndex: =5
+
+    "'Process Name Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Height: =40
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =417
+        X: =431
+        Y: =134
+        ZIndex: =6
+
+        Title10_4 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =36
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Process Name'
+            Width: =398
+            X: =9
+            Y: =3
+            ZIndex: =1
+
+    "'Process Name Label' As label":
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: |-
+            ="Process Name:"
+        Width: =170
+        X: =431
+        Y: =94
+        ZIndex: =7
+
+    "'Process Name Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Height: =130
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =130
+        Width: =884
+        X: =431
+        Y: =234
+        ZIndex: =8
+
+        Title10_5 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =37
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.Description
+            Width: =875
+            X: =9
+            Y: =3
+            ZIndex: =1
+
+    "'Process Name Label_1' As label":
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: |-
+            ="Description:"
+        Width: =170
+        X: =431
+        Y: =194
+        ZIndex: =9
 
