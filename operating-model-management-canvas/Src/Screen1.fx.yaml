@@ -26,7 +26,6 @@ Screen1 As screen:
 
         Title8 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =19
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -34,9 +33,8 @@ Screen1 As screen:
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Group Name'
-            Width: =262
-            X: =16
-            Y: =10
+            Width: =282
+            X: =11
             ZIndex: =1
 
         Rectangle8 As rectangle:
@@ -63,7 +61,7 @@ Screen1 As screen:
 
         Title10 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
+            Height: =37
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -71,9 +69,8 @@ Screen1 As screen:
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Name'
-            Width: =Parent.TemplateWidth - 86
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            Width: =280
+            X: =15
             ZIndex: =1
 
         Rectangle10 As rectangle:
@@ -98,7 +95,7 @@ Screen1 As screen:
 
         Title6 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
+            Height: =41
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -106,9 +103,8 @@ Screen1 As screen:
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Operating Model Name'
-            Width: =Parent.TemplateWidth - 86
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            Width: =284
+            X: =11
             ZIndex: =1
 
         Separator6 As rectangle:
@@ -140,8 +136,8 @@ Screen1 As screen:
         Height: =60
         Size: =24
         Text: ="Capability"
-        Width: =300
-        X: =351
+        Width: =312
+        X: =346
         Y: =104
         ZIndex: =3
 
@@ -188,14 +184,14 @@ Screen1 As screen:
             )
         Size: =12
         Width: =324
-        X: =339
+        X: =342
         Y: =164
         ZIndex: =7
 
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =535
+        Height: =486
         Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -207,22 +203,21 @@ Screen1 As screen:
         TemplateSize: =236
         Width: =324
         X: =339
-        Y: =204
+        Y: =252
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
-            Height: =32
+            Height: =30
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.'Capability Name'
-            Width: =266
-            X: =4
-            Y: =4
+            Width: =268
+            X: =1
             ZIndex: =1
 
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             DelayItemLoading: =true
-            Height: =197
+            Height: =203
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -235,7 +230,7 @@ Screen1 As screen:
             TemplateSize: =33
             Width: =299
             X: =14
-            Y: =36
+            Y: =33
             ZIndex: =1
 
             Title11_1 As label:
@@ -268,7 +263,7 @@ Screen1 As screen:
                 Tooltip: ="View item details"
                 Width: =42
                 X: =251
-                Y: =3
+                Y: =2
                 ZIndex: =2
 
             Rectangle11_1 As rectangle:
@@ -284,6 +279,15 @@ Screen1 As screen:
             OnSelect: =Select(Parent)
             Width: =34
             X: =280
-            Y: =6
+            Y: =1
             ZIndex: =2
+
+    "'Sub Capapbilities Label' As label":
+        FontWeight: =FontWeight.Bold
+        Size: =18
+        Text: ="Sub Capabilities"
+        Width: =321
+        X: =342
+        Y: =212
+        ZIndex: =9
 
