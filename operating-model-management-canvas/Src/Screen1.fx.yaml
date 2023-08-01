@@ -5,21 +5,23 @@ Screen1 As screen:
         DelayItemLoading: =true
         Height: =578
         Items: |-
-            =If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
-                Filter('Process Groups', Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name'),
-                If(!IsBlank('Head Capability Gallery'.Selected.'Capability Name'), 
+            =ColProcessGroups
+            //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
+            //    Filter('Process Groups', Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name'),
+            //    Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
+            //    If(!IsBlank('Head Capability Gallery'.Selected.'Capability Name'), 
                 //If (ThisItem. = 'Dropdown Capabilities'.SelectedText.'Capability Name',
-                    Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name'),
-                    Filter('Process Groups', Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
-                )
-            )
+            //        Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name'),
+            //        Filter('Process Groups', Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
+            //    )
+            //)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =33
         Width: =326
-        X: =684
-        Y: =164
+        X: =680
+        Y: =161
         ZIndex: =1
 
         Title8 As label:
@@ -149,7 +151,7 @@ Screen1 As screen:
         Size: =24
         Text: ="Capability"
         Width: =300
-        X: =353
+        X: =359
         Y: =104
         ZIndex: =3
 
@@ -182,9 +184,14 @@ Screen1 As screen:
         OnSelect: |-
             =ClearCollect(ColHeadCapability,
                 Filter(Capabilities, 
-                    'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name'));
+                    'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name')
+            );
+            ClearCollect(ColProcessGroups,
+                Filter('Process Groups', 
+                    Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
+            )
         Width: =324
-        X: =344
+        X: =339
         Y: =164
         ZIndex: =7
 
@@ -195,9 +202,14 @@ Screen1 As screen:
         Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =ClearCollect(ColProcessGroups,
+                Filter('Process Groups', 
+                    Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
+            )
         TemplateSize: =236
         Width: =324
-        X: =344
+        X: =339
         Y: =204
         ZIndex: =8
 
@@ -217,6 +229,11 @@ Screen1 As screen:
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =ClearCollect(ColProcessGroups,
+                    Filter('Process Groups', 
+                        Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name')
+                )
             TemplatePadding: =0
             TemplateSize: =38
             Width: =299
