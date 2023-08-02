@@ -97,6 +97,7 @@
             PaddingTop: =0
             Size: =12
             Text: =If(IsBlank('Process Gallery'.Selected.'Data Flow URL'),"The diagram does not yet exist","Click here to open the diagram")
+            Underline: =true
             Width: =388
             X: =9
             Y: =6
