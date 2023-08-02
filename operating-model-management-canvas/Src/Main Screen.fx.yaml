@@ -26,6 +26,7 @@
 
         Title8 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =47
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -33,7 +34,7 @@
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Group Name'
-            Width: =282
+            Width: =292
             X: =11
             ZIndex: =1
 
@@ -64,6 +65,7 @@
 
         Title10 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =48
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -99,7 +101,7 @@
 
         Title6 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =41
+            Height: =49
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -109,7 +111,6 @@
             Text: =ThisItem.'Operating Model Name'
             Width: =284
             X: =16
-            Y: =4
             ZIndex: =1
 
         Rectangle6 As rectangle:
@@ -218,7 +219,11 @@
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderColor: =RGBA(9, 33, 98, 1)
             DelayItemLoading: =true
-            Height: =205
+            Height: |-
+                =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,
+                    CountRows('Sub Capability Gallery'.AllItems) * 38,
+                    0
+                )
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -237,7 +242,7 @@
 
             Title11_1 As label:
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                Height: =29
+                Height: =38
                 OnSelect: =Select(Parent)
                 PaddingBottom: =0
                 PaddingLeft: =0
@@ -245,9 +250,8 @@
                 PaddingTop: =0
                 Size: =12
                 Text: =ThisItem.'Capability Name'
-                Width: =232
+                Width: =243
                 X: =11
-                Y: =4
                 ZIndex: =1
 
             NextArrow8_1 As icon.ChevronRight:
@@ -283,8 +287,8 @@
                 UpdateContext({varExpandGallery:true})
             Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', !varExpandGallery, true)
             Width: =34
-            X: =280
-            Y: =1
+            X: =268
+            Y: =6
             ZIndex: =2
 
         "'Icon Subcapability Shrink' As icon.ChevronDown":
