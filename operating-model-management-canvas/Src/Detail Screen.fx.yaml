@@ -3,10 +3,13 @@
     "'Process Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =604
+        Height: =564
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =Select(Parent);
+            UpdateContext({varParentProcessSelected:false})
         TemplateFill: |-
             =//RGBA(0, 0, 0, 0)
             If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
@@ -14,7 +17,7 @@
         TemplateSize: =56
         Width: =376
         X: =32
-        Y: =136
+        Y: =176
         ZIndex: =1
 
         Title10_1 As label:
@@ -256,4 +259,14 @@
         X: =837
         Y: =402
         ZIndex: =13
+
+    Label1 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =61
+        Size: =24
+        Text: ="Process"
+        Width: =352
+        X: =44
+        Y: =115
+        ZIndex: =14
 
