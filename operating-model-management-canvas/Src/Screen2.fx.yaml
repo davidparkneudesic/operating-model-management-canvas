@@ -64,49 +64,44 @@ Screen2 As screen:
         Y: =36
         ZIndex: =3
 
-    "'Process Gallery_URL' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Data Flow URL Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =53
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Items: |-
+            =//If(IsBlank('Process Gallery'.Selected.'Data Flow URL'), Title10_2.Text = "The diagram does not yet exist", Title10_2.Text = "Click here to open the diagram")
+            Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =Launch(ThisItem.'Data Flow URL')
         TemplatePadding: =0
-        TemplateSize: =50
-        Width: =878
-        X: =439
-        Y: =618
+        TemplateSize: =53
+        Width: =359
+        X: =438
+        Y: =547
         ZIndex: =4
 
         Title10_2 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =50
+            Height: =42
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
-            Text: =ThisItem.'Data Flow URL'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =857
-            X: =4
+            Text: =If(IsBlank('Process Gallery'.Selected.'Data Flow URL'),"The diagram does not yet exist","Click here to open the diagram")
+            Width: =388
+            X: =9
+            Y: =6
             ZIndex: =1
-
-        Rectangle10_2 As rectangle:
-            Height: =Parent.TemplateHeight
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
 
     "'Data Flow URL Label' As label":
         FontWeight: =FontWeight.Semibold
         Size: =15
         Text: ="Data Flow URL"
-        X: =439
-        Y: =578
+        X: =438
+        Y: =507
         ZIndex: =5
 
     "'Process Name Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -119,12 +114,11 @@ Screen2 As screen:
         TemplatePadding: =0
         TemplateSize: =40
         Width: =417
-        X: =431
-        Y: =134
+        X: =438
+        Y: =176
         ZIndex: =6
 
         Title10_4 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
             Height: =36
             OnSelect: =Select(Parent)
             PaddingBottom: =0
@@ -144,27 +138,26 @@ Screen2 As screen:
         Text: |-
             ="Process Name:"
         Width: =170
-        X: =431
-        Y: =94
+        X: =438
+        Y: =136
         ZIndex: =7
 
-    "'Process Name Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Description Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =130
+        Height: =113
         Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =130
+        TemplateSize: =110
         Width: =884
-        X: =431
-        Y: =234
+        X: =438
+        Y: =270
         ZIndex: =8
 
         Title10_5 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =37
+            Height: =99
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -172,18 +165,95 @@ Screen2 As screen:
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.Description
+            VerticalAlign: =VerticalAlign.Top
             Width: =875
             X: =9
             Y: =3
             ZIndex: =1
 
-    "'Process Name Label_1' As label":
+    "'Description Label' As label":
         FontWeight: =FontWeight.Semibold
         Size: =15
         Text: |-
             ="Description:"
         Width: =170
-        X: =431
-        Y: =194
+        X: =438
+        Y: =230
         ZIndex: =9
+
+    "'Scope Review Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Height: =40
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =166
+        X: =438
+        Y: =442
+        ZIndex: =10
+
+        Title10_6 As label:
+            Height: =36
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Scope Review'
+            Width: =151
+            X: =9
+            Y: =3
+            ZIndex: =1
+
+    "'Scope Review Label' As label":
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: |-
+            ="Scope Review:"
+        Width: =170
+        X: =438
+        Y: =402
+        ZIndex: =11
+
+    "'Scope Review Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Height: =40
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =167
+        X: =837
+        Y: =442
+        ZIndex: =12
+
+        Title10_7 As label:
+            Height: =36
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Status Reason'
+            Width: =141
+            X: =9
+            Y: =3
+            ZIndex: =1
+
+    "'Scope Review Label_1' As label":
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: |-
+            ="Status Reason:"
+        Width: =170
+        X: =837
+        Y: =402
+        ZIndex: =13
 
