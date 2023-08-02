@@ -1716,7 +1716,14 @@
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Icon",
-        "Color",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "RGBA(166, 166, 166, 1)",
+          "InvariantPropertyName": "Color",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledColor",
         "PressedColor",
         {

@@ -230,7 +230,7 @@
             TemplateFill: =If(ThisItem.IsSelected,RGBA( 173, 216, 230, 1 ), RGBA(255, 255, 255, 1))
             TemplatePadding: =0
             TemplateSize: =38
-            Width: =299
+            Width: =287
             X: =15
             Y: =38
             ZIndex: =1
@@ -252,7 +252,7 @@
 
             NextArrow8_1 As icon.ChevronRight:
                 AccessibleLabel: =Self.Tooltip
-                Color: =RGBA(166, 166, 166, 1)
+                Color: =RGBA(0, 0, 0, 1)
                 DisabledBorderColor: =RGBA(51, 51, 51, 1)
                 Height: =31
                 HoverColor: =ColorFade(Self.Color, 90%)
@@ -263,8 +263,9 @@
                 PaddingRight: =12
                 PaddingTop: =12
                 Tooltip: ="View item details"
-                Width: =42
-                X: =251
+                Width: =30
+                X: =254
+                Y: =3
                 ZIndex: =2
 
             Rectangle11_1 As rectangle:
@@ -294,7 +295,7 @@
                 UpdateContext({varExpandGallery:false})
             Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', varExpandGallery)
             Width: =34
-            X: =280
+            X: =268
             Y: =6
             ZIndex: =3
 
