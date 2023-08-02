@@ -1,4 +1,4 @@
-Screen2 As screen:
+"'Detail Screen' As screen":
 
     "'Process Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -58,7 +58,7 @@ Screen2 As screen:
     "'Back Button' As icon.ChevronLeft":
         Height: =51
         Icon: =Icon.ChevronLeft
-        OnSelect: =Navigate(Screen1,ScreenTransition.UnCoverRight)
+        OnSelect: =Navigate('Main Screen',ScreenTransition.UnCoverRight)
         Width: =52
         X: =32
         Y: =36

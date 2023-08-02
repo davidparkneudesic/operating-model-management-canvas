@@ -1,4 +1,4 @@
-Screen1 As screen:
+"'Main Screen' As screen":
 
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -51,7 +51,7 @@ Screen1 As screen:
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: =Navigate(Screen2,ScreenTransition.Cover)
+        OnSelect: =Navigate('Detail Screen',ScreenTransition.Cover)
         TemplatePadding: =0
         TemplateSize: =40
         Width: =310
@@ -86,6 +86,7 @@ Screen1 As screen:
         Items: ='Operating Models'
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =varExpandGallery = false
         TemplatePadding: =0
         TemplateSize: =41
         Width: =300
@@ -191,7 +192,7 @@ Screen1 As screen:
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =486
+        Height: =487
         Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -200,7 +201,7 @@ Screen1 As screen:
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
             )
-        TemplateSize: =236
+        TemplateSize: =240
         Width: =324
         X: =339
         Y: =252
@@ -217,7 +218,7 @@ Screen1 As screen:
 
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             DelayItemLoading: =true
-            Height: =203
+            Height: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,206,0)
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -276,11 +277,26 @@ Screen1 As screen:
         "'Icon Dropdown' As icon.ChevronDown":
             Height: =27
             Icon: =Icon.ChevronDown
-            OnSelect: =Select(Parent)
+            OnSelect: |-
+                =Select(Parent);
+                UpdateContext({varExpandGallery:true})
+            Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', !varExpandGallery, true)
             Width: =34
             X: =280
             Y: =1
             ZIndex: =2
+
+        "'Icon Dropdown_1' As icon.ChevronDown":
+            Height: =27
+            Icon: =Icon.ChevronUp
+            OnSelect: |-
+                =Select(Parent);
+                UpdateContext({varExpandGallery:false})
+            Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', varExpandGallery)
+            Width: =34
+            X: =280
+            Y: =1
+            ZIndex: =3
 
     "'Sub Capapbilities Label' As label":
         FontWeight: =FontWeight.Bold
