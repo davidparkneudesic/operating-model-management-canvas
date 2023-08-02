@@ -17,6 +17,7 @@
             //)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
+        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =40
         Width: =326
@@ -54,6 +55,7 @@
         OnSelect: |-
             =Navigate('Detail Screen',ScreenTransition.Cover);
             UpdateContext({varParentProcessSelected:true})
+        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =40
         Width: =310
@@ -89,6 +91,7 @@
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =varExpandGallery = false
+        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =41
         Width: =300
@@ -110,15 +113,8 @@
             X: =11
             ZIndex: =1
 
-        Separator6 As rectangle:
-            Height: =8
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - Self.Height
-            ZIndex: =3
-
         Rectangle6 As rectangle:
-            Height: =Parent.TemplateHeight - Separator6.Height
+            Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4
@@ -203,6 +199,7 @@
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
             )
+        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
         TemplateSize: =240
         Width: =324
         X: =339
@@ -220,7 +217,14 @@
 
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             DelayItemLoading: =true
-            Height: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,206,0)
+            Height: |-
+                =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && 
+                    varExpandGallery &&
+                    CountRows(Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)) > 0,
+                
+                206,
+                0
+                )
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -229,6 +233,7 @@
                     Filter('Process Groups', 
                         Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name')
                 )
+            TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
             TemplatePadding: =0
             TemplateSize: =33
             Width: =299
