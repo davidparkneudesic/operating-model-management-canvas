@@ -208,12 +208,12 @@
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
-            Height: =37
+            Height: =38
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.'Capability Name'
             Width: =268
-            Y: =1
+            Y: =6
             ZIndex: =1
 
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
