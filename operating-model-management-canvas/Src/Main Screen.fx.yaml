@@ -3,7 +3,6 @@
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =578
         Items: |-
             =ColProcessGroups
             //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
@@ -22,7 +21,7 @@
         TemplateSize: =47
         Width: =326
         X: =680
-        Y: =161
+        Y: =164
         ZIndex: =1
 
         Title8 As label:
@@ -48,7 +47,7 @@
     "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =579
+        Height: =576
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -60,7 +59,7 @@
         TemplateSize: =48
         Width: =310
         X: =1027
-        Y: =161
+        Y: =164
         ZIndex: =1
 
         Title10 As label:
@@ -148,7 +147,7 @@
             ="Process Group
             "
         Width: =313
-        X: =686
+        X: =687
         Y: =104
         ZIndex: =4
 
@@ -160,7 +159,7 @@
             ="Process
             "
         Width: =299
-        X: =1027
+        X: =1032
         Y: =104
         ZIndex: =5
 
