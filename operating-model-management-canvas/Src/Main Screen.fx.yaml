@@ -227,7 +227,7 @@
                     Filter('Process Groups', 
                         Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name')
                 )
-            TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(255, 255, 255, 1))
+            TemplateFill: =If(ThisItem.IsSelected,RGBA( 173, 216, 230, 1 ), RGBA(255, 255, 255, 1))
             TemplatePadding: =0
             TemplateSize: =38
             Width: =299
@@ -265,7 +265,6 @@
                 Tooltip: ="View item details"
                 Width: =42
                 X: =251
-                Y: =2
                 ZIndex: =2
 
             Rectangle11_1 As rectangle:
