@@ -10,7 +10,7 @@
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =varExpandGallery = false
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(38, 155, 44, 0.8), RGBA(0,0,0,0))
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(75, 240, 83, 0.8), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =49
         Width: =300
@@ -57,7 +57,7 @@
             //)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(38, 155, 44, 0.8), RGBA(0,0,0,0))
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(75, 240, 83, 0.8), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =47
         Width: =326
@@ -97,7 +97,7 @@
         OnSelect: |-
             =Navigate('Detail Screen',ScreenTransition.Cover);
             UpdateContext({varParentProcessSelected:true})
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(38, 155, 44, 0.8), RGBA(0,0,0,0))
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(75, 240, 83, 0.8), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =48
         Width: =310
@@ -207,7 +207,7 @@
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
             )
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(38, 155, 44, 0.8), RGBA(0,0,0,0))
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(75, 240, 83, 0.8), RGBA(0,0,0,0))
         TemplateSize: =246
         Width: =324
         X: =339
