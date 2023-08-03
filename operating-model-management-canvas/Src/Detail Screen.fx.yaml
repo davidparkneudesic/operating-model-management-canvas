@@ -1,8 +1,10 @@
 "'Detail Screen' As screen":
+    Fill: =RGBA(204, 208, 225, 1)
 
     "'Process Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
         Height: =564
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
@@ -22,7 +24,7 @@
 
         Title10_1 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =38
+            Height: =50
             OnSelect: |
                 =false
             PaddingBottom: =0
@@ -73,6 +75,7 @@
     "'Data Flow URL Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
         Height: =53
         Items: |-
             =//If(IsBlank('Process Gallery'.Selected.'Data Flow URL'), Title10_2.Text = "The diagram does not yet exist", Title10_2.Text = "Click here to open the diagram")
@@ -120,23 +123,21 @@
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =40
-        Width: =417
-        X: =438
+        Width: =601
+        X: =443
         Y: =176
         ZIndex: =6
 
         Title10_4 As label:
-            Height: =36
+            Fill: =RGBA(255, 255, 255, 1)
             OnSelect: =Select(Parent)
             PaddingBottom: =0
-            PaddingLeft: =0
+            PaddingLeft: =10
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Name'
-            Width: =398
-            X: =9
-            Y: =3
+            Width: =600
             ZIndex: =1
 
     "'Process Name Label' As label":
@@ -164,17 +165,17 @@
         ZIndex: =8
 
         Title10_5 As label:
-            Height: =99
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =107
             OnSelect: =Select(Parent)
             PaddingBottom: =0
-            PaddingLeft: =0
+            PaddingLeft: =10
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.Description
             VerticalAlign: =VerticalAlign.Top
-            Width: =875
-            X: =9
+            Width: =884
             Y: =3
             ZIndex: =1
 
@@ -203,16 +204,15 @@
         ZIndex: =10
 
         Title10_6 As label:
+            Fill: =RGBA(255, 255, 255, 1)
             Height: =36
             OnSelect: =Select(Parent)
             PaddingBottom: =0
-            PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Scope Review'
-            Width: =151
-            X: =9
+            Width: =164
             Y: =3
             ZIndex: =1
 
@@ -241,16 +241,15 @@
         ZIndex: =12
 
         Title10_7 As label:
+            Fill: =RGBA(255, 255, 255, 1)
             Height: =36
             OnSelect: =Select(Parent)
             PaddingBottom: =0
-            PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Status Reason'
-            Width: =141
-            X: =9
+            Width: =167
             Y: =3
             ZIndex: =1
 
