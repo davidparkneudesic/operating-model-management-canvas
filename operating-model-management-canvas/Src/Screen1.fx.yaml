@@ -1,0 +1,60 @@
+Screen1 As screen:
+
+    Gallery1 As gallery.galleryVertical:
+        DelayItemLoading: =true
+        Items: =AzureDevOps.ListQueriesInFolder("Modern Applications Delivery Template","ModernAppsDelivery","Operating Model")
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+    Container1 As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =648
+        Width: =556
+        X: =644
+        Y: =56
+        ZIndex: =2
+
+        Button5 As button:
+            Text: ="Create"
+            X: =200
+            Y: =580
+            ZIndex: =1
+
+        Label3 As label:
+            Height: =36
+            Text: |-
+                ="New Operating Model Name:"
+            Width: =296
+            X: =24
+            Y: =24
+            ZIndex: =2
+
+        TextInput1 As text:
+            Default: =""
+            Height: =46
+            Width: =496
+            X: =24
+            Y: =60
+            ZIndex: =3
+
+        Label4 As label:
+            Height: =30
+            Text: |-
+                ="Solution Area Name:"
+            Width: =281
+            X: =24
+            Y: =130
+            ZIndex: =4
+
+        TextInput1_1 As text:
+            Default: =""
+            Height: =46
+            Width: =496
+            X: =24
+            Y: =160
+            ZIndex: =5
+

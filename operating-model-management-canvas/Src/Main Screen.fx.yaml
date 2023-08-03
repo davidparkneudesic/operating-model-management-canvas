@@ -3,6 +3,7 @@
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
+        Height: =505
         Items: |-
             =ColProcessGroups
             //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
@@ -48,7 +49,7 @@
     "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =576
+        Height: =505
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -87,6 +88,7 @@
     "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
+        Height: =505
         Items: ='Operating Models'
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -191,7 +193,7 @@
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =487
+        Height: =417
         Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -311,4 +313,42 @@
         X: =342
         Y: =212
         ZIndex: =9
+
+    "'Button Create Operating Model' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =58
+        Text: ="Create New Operating Model"
+        Width: =300
+        X: =23
+        Y: =681
+        ZIndex: =10
+
+    "'Button Capability' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =59
+        Text: |-
+            ="Create New Capability
+            "
+        Width: =321
+        X: =342
+        Y: =681
+        ZIndex: =11
+
+    "'Button Process Group' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =58
+        Text: ="Create New Process Group"
+        Width: =326
+        X: =680
+        Y: =681
+        ZIndex: =12
+
+    "'Button Process' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =58
+        Text: ="Create New Process"
+        Width: =310
+        X: =1027
+        Y: =681
+        ZIndex: =13
 
