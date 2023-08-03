@@ -63,7 +63,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button Capability",
-      "ParentIndex": 9,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -308,7 +308,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button Create Operating Model",
-      "ParentIndex": 8,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -553,7 +553,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button Process",
-      "ParentIndex": 11,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -798,7 +798,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button Process Group",
-      "ParentIndex": 10,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1054,7 +1054,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Capability Label",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1798,7 +1798,14 @@
         "HoverBorderColor",
         "BorderStyle",
         "FocusedBorderColor",
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -1842,7 +1849,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Head Capability Gallery",
-      "ParentIndex": 6,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2224,7 +2231,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Icon Subcapability Shrink",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2772,7 +2779,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryNextIcon.ID%",
       "Name": "NextArrow8_1",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2960,7 +2967,14 @@
         "HoverBorderColor",
         "BorderStyle",
         "FocusedBorderColor",
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -2996,7 +3010,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Operating Model Gallery",
-      "ParentIndex": 13,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3207,7 +3221,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Operating Model Label",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3435,7 +3449,14 @@
         "HoverBorderColor",
         "BorderStyle",
         "FocusedBorderColor",
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -3471,7 +3492,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Process Gallery",
-      "ParentIndex": 12,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3634,7 +3655,14 @@
         "HoverBorderColor",
         "BorderStyle",
         "FocusedBorderColor",
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -3670,7 +3698,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Process Group Gallery",
-      "ParentIndex": 0,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3881,7 +3909,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Process Group Label",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4157,7 +4185,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Process Label",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4940,7 +4968,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Sub Capability Gallery",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5146,7 +5174,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Sub Capapbilities Label",
-      "ParentIndex": 7,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5656,7 +5684,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryTitle.ID%",
       "Name": "Title11_1",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
