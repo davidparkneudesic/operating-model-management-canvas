@@ -7,7 +7,7 @@
   },
   "Properties": {
     "AppCreationSource": "AppFromScratch",
-    "AppDescription": "",
+    "AppDescription": "This application allows you to browse and contribute to various solution Operating Models.   An Operating Model is a blueprint on how the solution solves for business outcomes, down the the process level.",
     "AppPreviewFlagsMap": {
       "aibuilderserviceenrollment": false,
       "allowmultiplescreensincanvaspages": false,
@@ -95,7 +95,7 @@
       "zeroalltabindexes": false
     },
     "Author": "",
-    "BindingErrorCount": 1,
+    "BindingErrorCount": 5,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "DesktopOrTablet",
@@ -113,7 +113,7 @@
     "ManualOfflineProfileId": "",
     "Name": "Operating Model Management",
     "OriginatingVersion": "1.333",
-    "ParserErrorCount": 0,
+    "ParserErrorCount": 2,
     "ShowStatusBar": false
   },
   "PublishInfo": {
@@ -129,6 +129,7 @@
   },
   "ScreenOrder": [
     "Main Screen",
-    "Detail Screen"
+    "Detail Screen",
+    "Screen1"
   ]
 }

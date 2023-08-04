@@ -1,8 +1,63 @@
 "'Main Screen' As screen":
+    Fill: =RGBA(204, 208, 225, 1)
+
+    "'Level 1 Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =211
+        Items: |
+            =Filter(Capabilities, 
+                'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
+                IsBlank('Parent Capability'.'Capability Name')
+            )
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |
+            =// Create Collection of Sub Capability based on matching Capability Name
+            ClearCollect(ColHeadCapability,
+                Filter(Capabilities, 
+                    'Parent Capability'.'Capability Name'= 'Level 1 Capability Gallery'.Selected.'Capability Name')
+            );
+            // Create Collection of Process Groups based on matching Capability Name
+            ClearCollect(ColProcessGroups,
+                Filter('Process Groups', 
+                    Capability.'Capability Name' = 'Level 1 Capability Gallery'.Selected.'Capability Name')
+            )
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
+        TemplatePadding: =0
+        TemplateSize: =50
+        Width: =315
+        X: =354
+        Y: =164
+        ZIndex: =1
+
+        "'Level 1 Capability Title' As label":
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =49
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Capability Name'
+            Width: =310
+            X: =15
+            ZIndex: =1
+
+        Rectangle2 As rectangle:
+            Height: =Parent.TemplateHeight - Separator2.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =4
 
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =515
         Items: |-
             =ColProcessGroups
             //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
@@ -16,17 +71,17 @@
             //)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
-        TemplateSize: =47
-        Width: =326
-        X: =680
+        TemplateSize: =50
+        Width: =315
+        X: =694
         Y: =164
         ZIndex: =1
 
         Title8 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =47
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -34,8 +89,8 @@
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Group Name'
-            Width: =292
-            X: =11
+            Width: =310
+            X: =15
             ZIndex: =1
 
         Rectangle8 As rectangle:
@@ -48,24 +103,25 @@
     "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =576
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =515
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
             =Navigate('Detail Screen',ScreenTransition.Cover);
             UpdateContext({varParentProcessSelected:true})
-        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
-        TemplateSize: =48
-        Width: =310
-        X: =1027
+        TemplateSize: =50
+        Width: =315
+        X: =1032
         Y: =164
         ZIndex: =1
 
         Title10 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =48
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -73,8 +129,8 @@
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Name'
-            Width: =280
-            X: =15
+            Width: =295
+            X: =14
             ZIndex: =1
 
         Rectangle10 As rectangle:
@@ -87,21 +143,26 @@
     "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =515
         Items: ='Operating Models'
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: =varExpandGallery = false
-        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
+        OnSelect: |-
+            =UpdateContext({varExpandGallery:false});
+            Clear(ColHeadCapability);
+            Clear(ColProcessGroups)
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
-        TemplateSize: =49
-        Width: =300
-        X: =23
+        TemplateSize: =50
+        Width: =315
+        X: =15
         Y: =164
         ZIndex: =1
 
         Title6 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =49
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -122,102 +183,86 @@
 
     "'Operating Model Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
-        Size: =24
+        Height: =43
+        Size: =20
         Text: ="Operating Model"
-        Width: =300
-        X: =23
-        Y: =104
+        Width: =283
+        X: =31
+        Y: =121
         ZIndex: =2
 
     "'Capability Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
-        Size: =24
+        Height: =43
+        Size: =20
         Text: ="Capability"
-        Width: =312
-        X: =346
-        Y: =104
+        Width: =285
+        X: =358
+        Y: =121
         ZIndex: =3
 
     "'Process Group Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
-        Size: =24
+        Height: =43
+        Size: =20
         Text: |-
             ="Process Group
             "
-        Width: =313
-        X: =687
-        Y: =104
+        Width: =295
+        X: =697
+        Y: =121
         ZIndex: =4
 
     "'Process Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
-        Size: =24
+        Height: =43
+        Size: =20
         Text: |-
             ="Process
             "
         Width: =299
-        X: =1032
-        Y: =104
+        X: =1040
+        Y: =121
         ZIndex: =5
-
-    "'Dropdown Capabilities' As dropdown":
-        Height: =48
-        Items: |-
-            =Filter(Capabilities, 
-                'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
-                IsBlank('Parent Capability'.'Capability Name')
-            )
-        OnSelect: |-
-            =// Create Collection of Sub Capability based on matching Capability Name
-            ClearCollect(ColHeadCapability,
-                Filter(Capabilities, 
-                    'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name')
-            );
-            // Create Collection of Process Groups based on matching Capability Name
-            ClearCollect(ColProcessGroups,
-                Filter('Process Groups', 
-                    Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
-            )
-        Size: =12
-        Width: =324
-        X: =342
-        Y: =164
-        ZIndex: =7
 
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =487
-        Items: =ColHeadCapability
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =261
+        Items: |-
+            =
+            
+            ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
             =ClearCollect(ColProcessGroups,
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
-            )
-        TemplateFill: =If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(255, 255, 255, 1))
-        TemplateSize: =246
-        Width: =324
-        X: =339
-        Y: =252
+            );
+            UpdateContext({varExpandGallery:true})
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
+        TemplateSize: =249
+        Width: =315
+        X: =354
+        Y: =417
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
-            Height: =38
+            Height: |
+                =49
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.'Capability Name'
             Width: =268
-            Y: =6
             ZIndex: =1
 
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderColor: =RGBA(9, 33, 98, 1)
+            BorderThickness: |-
+                =//If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,1,0)
+                0
             DelayItemLoading: =true
             Height: |-
                 =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,
@@ -232,12 +277,12 @@
                     Filter('Process Groups', 
                         Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name')
                 )
-            TemplateFill: =If(ThisItem.IsSelected,RGBA( 173, 216, 230, 1 ), RGBA(255, 255, 255, 1))
+            TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
             TemplatePadding: =0
-            TemplateSize: =38
+            TemplateSize: =39
             Width: =287
             X: =15
-            Y: =38
+            Y: =49
             ZIndex: =1
 
             Title11_1 As label:
@@ -288,7 +333,7 @@
             Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', !varExpandGallery, true)
             Width: =34
             X: =268
-            Y: =6
+            Y: =11
             ZIndex: =2
 
         "'Icon Subcapability Shrink' As icon.ChevronDown":
@@ -300,15 +345,68 @@
             Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', varExpandGallery)
             Width: =34
             X: =268
-            Y: =6
+            Y: =11
             ZIndex: =3
 
     "'Sub Capapbilities Label' As label":
         FontWeight: =FontWeight.Bold
-        Size: =18
+        Height: =28
+        Size: =15
         Text: ="Sub Capabilities"
-        Width: =321
-        X: =342
-        Y: =212
+        Width: =295
+        X: =358
+        Y: =389
         ZIndex: =9
+
+    "'Button Create Operating Model' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =46
+        Size: =14
+        Text: ="Create New Operating Model"
+        Width: =315
+        X: =15
+        Y: =692
+        ZIndex: =10
+
+    "'Button Capability' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =48
+        Size: =14
+        Text: |-
+            ="Create New Capability
+            "
+        Width: =320
+        X: =351
+        Y: =690
+        ZIndex: =11
+
+    "'Button Process Group' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =47
+        Size: =14
+        Text: ="Create New Process Group"
+        Width: =315
+        X: =697
+        Y: =692
+        ZIndex: =12
+
+    "'Button Process' As button":
+        Fill: =RGBA(102, 113, 166, 1)
+        Height: =47
+        Size: =14
+        Text: ="Create New Process"
+        Width: =315
+        X: =1034
+        Y: =692
+        ZIndex: =13
+
+    Label2 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =64
+        Size: =36
+        Text: ="Solution Operating Models"
+        Width: =721
+        X: =23
+        Y: =17
+        ZIndex: =14
 
