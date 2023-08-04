@@ -58,7 +58,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =505
+        Height: =515
         Items: |-
             =ColProcessGroups
             //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
@@ -105,7 +105,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =505
+        Height: =515
         Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -145,7 +145,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =505
+        Height: =515
         Items: ='Operating Models'
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -228,7 +228,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =264
+        Height: =275
         Items: =ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -356,44 +356,44 @@
 
     "'Button Create Operating Model' As button":
         Fill: =RGBA(102, 113, 166, 1)
-        Height: =58
+        Height: =46
         Size: =14
         Text: ="Create New Operating Model"
         Width: =300
         X: =23
-        Y: =681
+        Y: =692
         ZIndex: =10
 
     "'Button Capability' As button":
         Fill: =RGBA(102, 113, 166, 1)
-        Height: =59
+        Height: =48
         Size: =14
         Text: |-
             ="Create New Capability
             "
         Width: =321
         X: =342
-        Y: =681
+        Y: =692
         ZIndex: =11
 
     "'Button Process Group' As button":
         Fill: =RGBA(102, 113, 166, 1)
-        Height: =58
+        Height: =47
         Size: =14
         Text: ="Create New Process Group"
         Width: =326
         X: =680
-        Y: =681
+        Y: =692
         ZIndex: =12
 
     "'Button Process' As button":
         Fill: =RGBA(102, 113, 166, 1)
-        Height: =58
+        Height: =47
         Size: =14
         Text: ="Create New Process"
         Width: =310
         X: =1027
-        Y: =681
+        Y: =692
         ZIndex: =13
 
     Label2 As label:
