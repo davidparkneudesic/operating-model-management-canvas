@@ -5,7 +5,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =196
+        Height: =211
         Items: |
             =Filter(Capabilities, 
                 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
@@ -17,12 +17,12 @@
             =// Create Collection of Sub Capability based on matching Capability Name
             ClearCollect(ColHeadCapability,
                 Filter(Capabilities, 
-                    'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name')
+                    'Parent Capability'.'Capability Name'= 'Level 1 Capability Gallery'.Selected.'Capability Name')
             );
             // Create Collection of Process Groups based on matching Capability Name
             ClearCollect(ColProcessGroups,
                 Filter('Process Groups', 
-                    Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
+                    Capability.'Capability Name' = 'Level 1 Capability Gallery'.Selected.'Capability Name')
             )
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
         TemplatePadding: =0
@@ -32,7 +32,7 @@
         Y: =164
         ZIndex: =1
 
-        Title2 As label:
+        "'Level 1 Capability Title' As label":
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
             Height: =49
             OnSelect: =Select(Parent)
@@ -150,7 +150,8 @@
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
-            =UpdateContext({varExpandGallery:false})
+            =UpdateContext({varExpandGallery:false});
+            Clear(ColHeadCapability)
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =49
@@ -228,8 +229,11 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =275
-        Items: =ColHeadCapability
+        Height: =276
+        Items: |-
+            =
+            
+            ColHeadCapability
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
@@ -239,14 +243,15 @@
             );
             UpdateContext({varExpandGallery:true})
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
-        TemplateSize: =246
-        Width: =324
-        X: =339
-        Y: =404
+        TemplateSize: =249
+        Width: =321
+        X: =340
+        Y: =403
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
-            Height: =38
+            Height: |
+                =49
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.'Capability Name'
@@ -262,7 +267,7 @@
             DelayItemLoading: =true
             Height: |-
                 =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,
-                    CountRows('Sub Capability Gallery'.AllItems) * 38,
+                    CountRows('Sub Capability Gallery'.AllItems) * 49,
                     0
                 )
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
@@ -275,15 +280,15 @@
                 )
             TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
             TemplatePadding: =0
-            TemplateSize: =38
+            TemplateSize: =50
             Width: =287
             X: =15
-            Y: =38
+            Y: =49
             ZIndex: =1
 
             Title11_1 As label:
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                Height: =38
+                Height: =49
                 OnSelect: =Select(Parent)
                 PaddingBottom: =0
                 PaddingLeft: =0
@@ -329,7 +334,7 @@
             Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', !varExpandGallery, true)
             Width: =34
             X: =268
-            Y: =6
+            Y: =11
             ZIndex: =2
 
         "'Icon Subcapability Shrink' As icon.ChevronDown":
@@ -341,7 +346,7 @@
             Visible: =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name', varExpandGallery)
             Width: =34
             X: =268
-            Y: =6
+            Y: =11
             ZIndex: =3
 
     "'Sub Capapbilities Label' As label":
