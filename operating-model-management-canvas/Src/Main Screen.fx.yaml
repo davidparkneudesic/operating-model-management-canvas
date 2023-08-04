@@ -206,7 +206,8 @@
             =ClearCollect(ColProcessGroups,
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
-            )
+            );
+            varExpandGallery = true
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
         TemplateSize: =246
         Width: =324

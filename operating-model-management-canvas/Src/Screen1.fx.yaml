@@ -48,3 +48,10 @@ Screen1 As screen:
             Y: =160
             ZIndex: =5
 
+    Button1 As button:
+        OnSelect: =varOpenWindow = true
+        Text: ="Create"
+        X: =84
+        Y: =132
+        ZIndex: =3
+
