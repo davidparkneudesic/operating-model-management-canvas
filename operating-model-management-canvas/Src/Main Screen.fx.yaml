@@ -26,9 +26,9 @@
             )
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
         TemplatePadding: =0
-        TemplateSize: =51
-        Width: =324
-        X: =340
+        TemplateSize: =50
+        Width: =315
+        X: =354
         Y: =164
         ZIndex: =1
 
@@ -42,9 +42,8 @@
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Capability Name'
-            Width: =300
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            Width: =310
+            X: =15
             ZIndex: =1
 
         Rectangle2 As rectangle:
@@ -74,15 +73,15 @@
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
-        TemplateSize: =51
-        Width: =326
-        X: =680
+        TemplateSize: =50
+        Width: =315
+        X: =694
         Y: =164
         ZIndex: =1
 
         Title8 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =49
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -90,8 +89,8 @@
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Group Name'
-            Width: =292
-            X: =11
+            Width: =310
+            X: =15
             ZIndex: =1
 
         Rectangle8 As rectangle:
@@ -114,15 +113,15 @@
             UpdateContext({varParentProcessSelected:true})
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
-        TemplateSize: =52
-        Width: =310
-        X: =1027
+        TemplateSize: =50
+        Width: =315
+        X: =1032
         Y: =164
         ZIndex: =1
 
         Title10 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =49
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -130,8 +129,8 @@
             PaddingTop: =0
             Size: =12
             Text: =ThisItem.'Process Name'
-            Width: =280
-            X: =15
+            Width: =295
+            X: =14
             ZIndex: =1
 
         Rectangle10 As rectangle:
@@ -151,18 +150,19 @@
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
             =UpdateContext({varExpandGallery:false});
-            Clear(ColHeadCapability)
+            Clear(ColHeadCapability);
+            Clear(ColProcessGroups)
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
-        TemplateSize: =49
-        Width: =300
-        X: =23
+        TemplateSize: =50
+        Width: =315
+        X: =15
         Y: =164
         ZIndex: =1
 
         Title6 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =49
+            Height: =50
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -183,53 +183,53 @@
 
     "'Operating Model Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
+        Height: =43
         Size: =20
         Text: ="Operating Model"
-        Width: =300
-        X: =23
-        Y: =104
+        Width: =283
+        X: =31
+        Y: =121
         ZIndex: =2
 
     "'Capability Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
+        Height: =43
         Size: =20
         Text: ="Capability"
-        Width: =312
-        X: =346
-        Y: =104
+        Width: =285
+        X: =358
+        Y: =121
         ZIndex: =3
 
     "'Process Group Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
+        Height: =43
         Size: =20
         Text: |-
             ="Process Group
             "
-        Width: =313
-        X: =687
-        Y: =104
+        Width: =295
+        X: =697
+        Y: =121
         ZIndex: =4
 
     "'Process Label' As label":
         FontWeight: =FontWeight.Bold
-        Height: =60
+        Height: =43
         Size: =20
         Text: |-
             ="Process
             "
         Width: =299
-        X: =1032
-        Y: =104
+        X: =1040
+        Y: =121
         ZIndex: =5
 
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =276
+        Height: =261
         Items: |-
             =
             
@@ -244,9 +244,9 @@
             UpdateContext({varExpandGallery:true})
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
         TemplateSize: =249
-        Width: =321
-        X: =340
-        Y: =403
+        Width: =315
+        X: =354
+        Y: =417
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
@@ -256,7 +256,6 @@
             Size: =12
             Text: =ThisItem.'Capability Name'
             Width: =268
-            X: =7
             ZIndex: =1
 
         "'Sub Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -267,7 +266,7 @@
             DelayItemLoading: =true
             Height: |-
                 =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,
-                    CountRows('Sub Capability Gallery'.AllItems) * 49,
+                    CountRows('Sub Capability Gallery'.AllItems) * 38,
                     0
                 )
             Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
@@ -280,7 +279,7 @@
                 )
             TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
             TemplatePadding: =0
-            TemplateSize: =50
+            TemplateSize: =39
             Width: =287
             X: =15
             Y: =49
@@ -288,7 +287,7 @@
 
             Title11_1 As label:
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                Height: =49
+                Height: =38
                 OnSelect: =Select(Parent)
                 PaddingBottom: =0
                 PaddingLeft: =0
@@ -354,9 +353,9 @@
         Height: =28
         Size: =15
         Text: ="Sub Capabilities"
-        Width: =321
-        X: =340
-        Y: =375
+        Width: =295
+        X: =358
+        Y: =389
         ZIndex: =9
 
     "'Button Create Operating Model' As button":
@@ -364,8 +363,8 @@
         Height: =46
         Size: =14
         Text: ="Create New Operating Model"
-        Width: =300
-        X: =23
+        Width: =315
+        X: =15
         Y: =692
         ZIndex: =10
 
@@ -376,9 +375,9 @@
         Text: |-
             ="Create New Capability
             "
-        Width: =321
-        X: =342
-        Y: =692
+        Width: =320
+        X: =351
+        Y: =690
         ZIndex: =11
 
     "'Button Process Group' As button":
@@ -386,8 +385,8 @@
         Height: =47
         Size: =14
         Text: ="Create New Process Group"
-        Width: =326
-        X: =680
+        Width: =315
+        X: =697
         Y: =692
         ZIndex: =12
 
@@ -396,8 +395,8 @@
         Height: =47
         Size: =14
         Text: ="Create New Process"
-        Width: =310
-        X: =1027
+        Width: =315
+        X: =1034
         Y: =692
         ZIndex: =13
 
