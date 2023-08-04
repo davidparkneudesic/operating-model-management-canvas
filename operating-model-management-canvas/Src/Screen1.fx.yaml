@@ -3,12 +3,15 @@ Screen1 As screen:
     Container1 As groupContainer.manualLayoutContainer:
         Fill: =RGBA(255, 255, 255, 1)
         Height: =648
+        Visible: =If(varOpenWindow, true, false)
         Width: =556
         X: =644
         Y: =56
         ZIndex: =2
 
         Button5 As button:
+            OnSelect: |-
+                =UpdateContext({varOpenWindow:false})
             Text: ="Create"
             X: =200
             Y: =580
@@ -49,7 +52,8 @@ Screen1 As screen:
             ZIndex: =5
 
     Button1 As button:
-        OnSelect: =varOpenWindow = true
+        OnSelect: |-
+            =UpdateContext({varOpenWindow:true})
         Text: ="Create"
         X: =84
         Y: =132

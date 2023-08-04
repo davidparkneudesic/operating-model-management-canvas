@@ -96,7 +96,8 @@
         Items: ='Operating Models'
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: =varExpandGallery = false
+        OnSelect: |-
+            =UpdateContext({varExpandGallery:false})
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =49
@@ -207,7 +208,7 @@
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
             );
-            varExpandGallery = true
+            UpdateContext({varExpandGallery:true})
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
         TemplateSize: =246
         Width: =324
