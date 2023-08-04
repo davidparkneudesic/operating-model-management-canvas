@@ -53,7 +53,7 @@ Screen1 As screen:
             Height: =45
             Icon: =Icon.Cancel
             OnSelect: |-
-                =falseUpdateContext({varOpenWindow:false})
+                =UpdateContext({varOpenWindow:false})
             Width: =42
             X: =486
             Y: =34
