@@ -172,6 +172,7 @@
         ZIndex: =5
 
     "'Dropdown Capabilities' As dropdown":
+        Default: ="Please select Capability"
         Height: =48
         Items: |-
             =Filter(Capabilities, 

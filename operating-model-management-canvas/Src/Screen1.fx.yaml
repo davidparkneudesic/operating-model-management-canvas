@@ -9,7 +9,15 @@ Screen1 As screen:
         Y: =56
         ZIndex: =2
 
-        Button5 As button:
+        "'Create Operating Model Button' As button":
+            OnSelect: |-
+                =Patch(
+                    'Operating Models',
+                    {
+                        'Operating Model Name':'Operating Model Input'.Text,
+                        Status:If('Status Dropdown'.SelectedText = "Active",1,0)
+                    }
+                )
             Text: ="Create"
             X: =200
             Y: =580
@@ -24,7 +32,7 @@ Screen1 As screen:
             Y: =79
             ZIndex: =2
 
-        TextInput1 As text:
+        "'Operating Model Input' As text":
             Default: =""
             Height: =46
             Width: =496
@@ -35,21 +43,13 @@ Screen1 As screen:
         Label4 As label:
             Height: =30
             Text: |-
-                ="Solution Area Name:"
+                ="Status Code:"
             Width: =281
             X: =32
             Y: =185
             ZIndex: =4
 
-        TextInput1_1 As text:
-            Default: =""
-            Height: =46
-            Width: =496
-            X: =32
-            Y: =215
-            ZIndex: =5
-
-        Icon1 As icon.Cancel:
+        "'Exit Icon' As icon.Cancel":
             Height: =45
             Icon: =Icon.Cancel
             OnSelect: |-
@@ -58,6 +58,13 @@ Screen1 As screen:
             X: =486
             Y: =34
             ZIndex: =6
+
+        "'Status Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =["Active","Inactive"]
+            X: =32
+            Y: =215
+            ZIndex: =7
 
     Button1 As button:
         OnSelect: |-
