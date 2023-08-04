@@ -15,7 +15,7 @@ Screen1 As screen:
                     'Operating Models',
                     {
                         'Operating Model Name':'Operating Model Input'.Text,
-                        Status:If('Status Dropdown'.SelectedText = "Active",1,0)
+                        Status:
                     }
                 )
             Text: ="Create"
@@ -73,4 +73,29 @@ Screen1 As screen:
         X: =96
         Y: =132
         ZIndex: =3
+
+    "'Dropdown Capabilities' As dropdown":
+        Default: ="Please select Capability"
+        Height: =48
+        Items: |-
+            =Filter(Capabilities, 
+                'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
+                IsBlank('Parent Capability'.'Capability Name')
+            )
+        OnSelect: |-
+            =// Create Collection of Sub Capability based on matching Capability Name
+            ClearCollect(ColHeadCapability,
+                Filter(Capabilities, 
+                    'Parent Capability'.'Capability Name'= 'Dropdown Capabilities'.SelectedText.'Capability Name')
+            );
+            // Create Collection of Process Groups based on matching Capability Name
+            ClearCollect(ColProcessGroups,
+                Filter('Process Groups', 
+                    Capability.'Capability Name' = 'Dropdown Capabilities'.SelectedText.'Capability Name')
+            )
+        Size: =12
+        Width: =324
+        X: =60
+        Y: =316
+        ZIndex: =4
 
