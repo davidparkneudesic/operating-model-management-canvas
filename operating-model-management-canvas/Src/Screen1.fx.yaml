@@ -10,8 +10,6 @@ Screen1 As screen:
         ZIndex: =2
 
         Button5 As button:
-            OnSelect: |-
-                =UpdateContext({varOpenWindow:false})
             Text: ="Create"
             X: =200
             Y: =580
@@ -22,16 +20,16 @@ Screen1 As screen:
             Text: |-
                 ="New Operating Model Name:"
             Width: =296
-            X: =24
-            Y: =24
+            X: =32
+            Y: =79
             ZIndex: =2
 
         TextInput1 As text:
             Default: =""
             Height: =46
             Width: =496
-            X: =24
-            Y: =60
+            X: =32
+            Y: =115
             ZIndex: =3
 
         Label4 As label:
@@ -39,23 +37,33 @@ Screen1 As screen:
             Text: |-
                 ="Solution Area Name:"
             Width: =281
-            X: =24
-            Y: =130
+            X: =32
+            Y: =185
             ZIndex: =4
 
         TextInput1_1 As text:
             Default: =""
             Height: =46
             Width: =496
-            X: =24
-            Y: =160
+            X: =32
+            Y: =215
             ZIndex: =5
+
+        Icon1 As icon.Cancel:
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =falseUpdateContext({varOpenWindow:false})
+            Width: =42
+            X: =486
+            Y: =34
+            ZIndex: =6
 
     Button1 As button:
         OnSelect: |-
             =UpdateContext({varOpenWindow:true})
         Text: ="Create"
-        X: =84
+        X: =96
         Y: =132
         ZIndex: =3
 
