@@ -5,7 +5,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =211
+        Height: =231
         Items: |
             =Sort(Filter(Capabilities, 
                 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
@@ -29,7 +29,7 @@
         TemplateSize: =50
         Width: =315
         X: =354
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         "'Level 1 Capability Title' As label":
@@ -57,7 +57,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =515
+        Height: =535
         Items: |-
             =Sort(ColProcessGroups, 'Process Group Name')
             
@@ -78,7 +78,7 @@
         TemplateSize: =50
         Width: =315
         X: =694
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         Title8 As label:
@@ -106,7 +106,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =515
+        Height: =535
         Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -118,7 +118,7 @@
         TemplateSize: =50
         Width: =315
         X: =1032
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         Title10 As label:
@@ -146,7 +146,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =515
+        Height: =535
         Items: =Sort('Operating Models', 'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -159,7 +159,7 @@
         TemplateSize: =50
         Width: =315
         X: =15
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         Title6 As label:
@@ -190,7 +190,7 @@
         Text: ="Operating Model"
         Width: =283
         X: =31
-        Y: =121
+        Y: =101
         ZIndex: =2
 
     "'Capability Label' As label":
@@ -200,7 +200,7 @@
         Text: ="Head Capability"
         Width: =285
         X: =363
-        Y: =121
+        Y: =101
         ZIndex: =3
 
     "'Process Group Label' As label":
@@ -212,7 +212,7 @@
             "
         Width: =295
         X: =697
-        Y: =121
+        Y: =101
         ZIndex: =4
 
     "'Process Label' As label":
@@ -224,14 +224,14 @@
             "
         Width: =299
         X: =1040
-        Y: =121
+        Y: =101
         ZIndex: =5
 
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =261
+        Height: =263
         Items: =Sort(ColHeadCapability, 'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -245,7 +245,7 @@
         TemplateSize: =249
         Width: =315
         X: =354
-        Y: =417
+        Y: =414
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
@@ -354,7 +354,7 @@
         Text: ="Sub Capabilities"
         Width: =295
         X: =364
-        Y: =389
+        Y: =386
         ZIndex: =9
 
     "'Button Create Operating Model' As button":
