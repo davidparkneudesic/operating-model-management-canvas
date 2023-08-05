@@ -7,10 +7,10 @@
         Fill: =RGBA(255, 255, 255, 1)
         Height: =211
         Items: |
-            =Filter(Capabilities, 
+            =Sort(Filter(Capabilities, 
                 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
                 IsBlank('Parent Capability'.'Capability Name')
-            )
+            ), 'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |
@@ -59,7 +59,9 @@
         Fill: =RGBA(255, 255, 255, 1)
         Height: =515
         Items: |-
-            =ColProcessGroups
+            =Sort(ColProcessGroups, 'Process Group Name')
+            
+            
             //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
             //    Filter('Process Groups', Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name'),
             //    Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
@@ -105,7 +107,7 @@
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
         Height: =515
-        Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
+        Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
@@ -145,7 +147,7 @@
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
         Height: =515
-        Items: ='Operating Models'
+        Items: =Sort('Operating Models', 'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
@@ -195,9 +197,9 @@
         FontWeight: =FontWeight.Bold
         Height: =43
         Size: =20
-        Text: ="Capability"
+        Text: ="Head Capability"
         Width: =285
-        X: =358
+        X: =363
         Y: =121
         ZIndex: =3
 
@@ -230,10 +232,7 @@
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
         Height: =261
-        Items: |-
-            =
-            
-            ColHeadCapability
+        Items: =Sort(ColHeadCapability, 'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
@@ -269,7 +268,7 @@
                     CountRows('Sub Capability Gallery'.AllItems) * 38,
                     0
                 )
-            Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
+            Items: =Sort(Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -354,7 +353,7 @@
         Size: =15
         Text: ="Sub Capabilities"
         Width: =295
-        X: =358
+        X: =364
         Y: =389
         ZIndex: =9
 
