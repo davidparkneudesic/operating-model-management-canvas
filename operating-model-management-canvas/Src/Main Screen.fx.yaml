@@ -1,5 +1,6 @@
 "'Main Screen' As screen":
     Fill: =RGBA(204, 208, 225, 1)
+    OnVisible: =
 
     "'Level 1 Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -102,7 +103,7 @@
             Width: =4
             ZIndex: =4
 
-    "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Process Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
@@ -110,9 +111,9 @@
         Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: |-
+        OnSelect: |
             =Navigate('Detail Screen',ScreenTransition.Cover);
-            UpdateContext({varParentProcessSelected:true})
+            Set(varSelectedItem,ThisItem.'Process Name')
         TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
         TemplatePadding: =0
         TemplateSize: =50

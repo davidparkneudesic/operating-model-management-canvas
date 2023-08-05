@@ -1,17 +1,21 @@
 "'Detail Screen' As screen":
     Fill: =RGBA(204, 208, 225, 1)
+    OnVisible: =Parent
 
-    "'Process Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Process Gallery Child' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
         Height: =564
-        Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
+        Items: |-
+            =//Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name');
+            'Process Gallery Parent'.AllItems;
+            //SelectedItem = 'Process Gallery'.Selected
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
             =Select(Parent);
-            UpdateContext({varParentProcessSelected:false})
+            Set(varSelectedState, ThisItem.)
         TemplateFill: |-
             =//RGBA(0, 0, 0, 0)
             If(ThisItem.IsSelected,RGBA( 176, 196, 222, 1 ), RGBA(0,0,0,0))
@@ -66,7 +70,9 @@
     "'Back Button' As icon.ChevronLeft":
         Height: =51
         Icon: =Icon.ChevronLeft
-        OnSelect: =Navigate('Main Screen',ScreenTransition.UnCoverRight)
+        OnSelect: |-
+            =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
+            Back(ScreenTransition.UnCoverRight)
         Width: =52
         X: =32
         Y: =36
@@ -79,7 +85,7 @@
         Height: =53
         Items: |-
             =//If(IsBlank('Process Gallery'.Selected.'Data Flow URL'), Title10_2.Text = "The diagram does not yet exist", Title10_2.Text = "Click here to open the diagram")
-            Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+            Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: =Launch(ThisItem.'Data Flow URL')
@@ -99,7 +105,7 @@
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
-            Text: =If(IsBlank('Process Gallery'.Selected.'Data Flow URL'),"The diagram does not yet exist","Click here to open the diagram")
+            Text: =If(IsBlank('Process Gallery Parent'.Selected.'Data Flow URL'),"The diagram does not yet exist","Click here to open the diagram")
             Underline: =true
             Width: =350
             X: =9
@@ -118,7 +124,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =40
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -154,7 +160,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =110
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -192,7 +198,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =40
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -228,7 +234,7 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =40
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery_1'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
