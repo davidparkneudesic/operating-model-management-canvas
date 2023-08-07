@@ -290,15 +290,14 @@
                     RGBA(0,0,0,0)
                 )
             )
-        TemplateSize: =249
+        TemplateSize: =47
         Width: =315
         X: =354
         Y: =414
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
-            Height: |
-                =49
+            Height: =49
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.'Capability Name'
