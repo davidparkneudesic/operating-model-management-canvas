@@ -9,7 +9,7 @@
         Height: =564
         Items: |-
             =//Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name');
-            'Process Gallery Parent'.AllItems;
+            'Process Gallery Parent'.AllItems
             //SelectedItem = 'Process Gallery'.Selected
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
