@@ -11,11 +11,12 @@ Screen1 As screen:
 
         "'Create Operating Model Button' As button":
             OnSelect: |-
-                =Patch(
-                    'Operating Models',
-                    {
-                        'Operating Model Name':'Operating Model Input'.Text,
-                        Status:
+                =Patch('Operating Models',
+                Defaults('Operating Models'),
+                {
+                    'Operating Model Name':'Operating Model Input'.Text,
+                    'Solution Area':'Solution Area Dropdown'.Selected,
+                    'Status Reason':'Status Reason (Operating Models)'.Draft
                     }
                 )
             Text: ="Create"
@@ -43,7 +44,7 @@ Screen1 As screen:
         "'Solution Areas Label' As label":
             Height: =30
             Text: |-
-                ="Solution Areas:"
+                ="Solution Area:"
             Width: =281
             X: =32
             Y: =185
