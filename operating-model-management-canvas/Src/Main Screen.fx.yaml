@@ -361,7 +361,7 @@
     "'Button Create Operating Model' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =46
-        OnSelect: |-
+        OnSelect: |
             =UpdateContext({varOpenOperatingModelCreate:true})
         Size: =14
         Text: ="Create New Operating Model"
@@ -387,6 +387,8 @@
     "'Button Process Group' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =47
+        OnSelect: |-
+            =UpdateContext({varOpenProcessGroupCreate:true})
         Size: =14
         Text: ="Create New Process Group"
         Width: =315
@@ -432,7 +434,8 @@
                     'Solution Area':'Solution Area Dropdown_1'.Selected,
                     'Status Reason':'Status Reason (Operating Models)'.Draft
                     }
-                )
+                );
+                UpdateContext({varOMCreated:true})
             Text: ="Create"
             X: =260
             Y: =328
@@ -450,6 +453,8 @@
         "'Operating Model Input_1' As text":
             Default: =""
             Height: =46
+            OnSelect: |-
+                =UpdateContext({varOMCreated:false})
             Width: =496
             X: =56
             Y: =88
@@ -468,7 +473,8 @@
             Height: =45
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenOperatingModelCreate:false})
+                =UpdateContext({varOpenOperatingModelCreate:false});
+                UpdateContext({varOMCreated:false})
             Width: =42
             X: =636
             Y: =20
@@ -481,7 +487,18 @@
             Y: =188
             ZIndex: =7
 
-    Container1_2 As groupContainer.manualLayoutContainer:
+        "'Created Message Operating Model' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =43
+            Text: ="Operating Model was successfully created!"
+            Visible: =If(varOMCreated,true,false)
+            Width: =376
+            X: =152
+            Y: =268
+            ZIndex: =8
+
+    "'Container Create Capability' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
         Height: =462
         Visible: =If(varOpenCapabilityCreate,true, false)

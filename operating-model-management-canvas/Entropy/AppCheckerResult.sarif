@@ -1170,6 +1170,18 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
             }
           ]
         }
@@ -2904,19 +2916,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.Dropdown1.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.Dropdown1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.Dropdown1.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.Dropdown1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.Container1_2.Dropdown1"
+                "type": "'Main Screen'.'Container Create Capability'.Dropdown1"
               }
             }
           ],
@@ -2934,19 +2946,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'Exit Capability Create'.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'Exit Capability Create'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'Exit Capability Create'.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'Exit Capability Create'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.Container1_2.'Exit Capability Create'"
+                "type": "'Main Screen'.'Container Create Capability'.'Exit Capability Create'"
               }
             }
           ],
@@ -2964,19 +2976,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'Exit Capability Create'.TabIndex"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'Exit Capability Create'.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'Exit Capability Create'.TabIndex",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'Exit Capability Create'.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Main Screen",
-                "type": "'Main Screen'.Container1_2.'Exit Capability Create'"
+                "type": "'Main Screen'.'Container Create Capability'.'Exit Capability Create'"
               }
             }
           ],
@@ -2994,19 +3006,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'New Capability Input'.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'New Capability Input'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'New Capability Input'.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'New Capability Input'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.Container1_2.'New Capability Input'"
+                "type": "'Main Screen'.'Container Create Capability'.'New Capability Input'"
               }
             }
           ],
@@ -3144,19 +3156,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'ComboBox Parent Capability'.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'ComboBox Parent Capability'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'ComboBox Parent Capability'.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'ComboBox Parent Capability'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.Container1_2.'ComboBox Parent Capability'"
+                "type": "'Main Screen'.'Container Create Capability'.'ComboBox Parent Capability'"
               }
             }
           ],
@@ -3174,19 +3186,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'ComboBox Operating Model'.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'ComboBox Operating Model'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.Container1_2.'ComboBox Operating Model'.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.'ComboBox Operating Model'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.Container1_2.'ComboBox Operating Model'"
+                "type": "'Main Screen'.'Container Create Capability'.'ComboBox Operating Model'"
               }
             }
           ],
@@ -3217,6 +3229,36 @@
                 "member": "varSelectedItem",
                 "module": "App",
                 "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Main Screen'.varOpenProcessGroupCreate"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Main Screen'.varOpenProcessGroupCreate",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varOpenProcessGroupCreate",
+                "module": "Main Screen",
+                "type": "'Main Screen'"
               }
             }
           ],
