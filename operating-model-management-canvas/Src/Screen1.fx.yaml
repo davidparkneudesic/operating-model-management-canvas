@@ -1,4 +1,5 @@
 Screen1 As screen:
+    Fill: =White
 
     Container1 As groupContainer.manualLayoutContainer:
         Fill: =RGBA(255, 255, 255, 1)
@@ -11,12 +12,14 @@ Screen1 As screen:
 
         "'Create Operating Model Button' As button":
             OnSelect: |-
-                =Patch('Operating Models',
-                Defaults('Operating Models'),
+                =Patch(Capabilities,
+                Defaults(Capabilities),
                 {
-                    'Operating Model Name':'Operating Model Input'.Text,
-                    'Solution Area':'Solution Area Dropdown'.Selected,
-                    'Status Reason':'Status Reason (Operating Models)'.Draft
+                    'Capability Name':'Capability Input'.Text,
+                    'Parent Capability':'Test Parent Capability Dropdown'.Selected,
+                    'Operating Model':'Test Operating Model Dropdown'.Selected,
+                    'Scope Review':'Scope Review'.'In Review',
+                    'Status Reason':'Status Reason (Capabilities)'.Draft
                     }
                 )
             Text: ="Create"
@@ -24,16 +27,16 @@ Screen1 As screen:
             Y: =580
             ZIndex: =1
 
-        "'Operating Model Name Label' As label":
+        "'Test New Capability Label' As label":
             Height: =36
             Text: |-
-                ="New Operating Model Name:"
+                ="New Capability Name:"
             Width: =296
             X: =32
             Y: =79
             ZIndex: =2
 
-        "'Operating Model Input' As text":
+        "'Capability Input' As text":
             Default: =""
             Height: =46
             Width: =496
@@ -43,11 +46,10 @@ Screen1 As screen:
 
         "'Solution Areas Label' As label":
             Height: =30
-            Text: |-
-                ="Solution Area:"
+            Text: ="Operating Name"
             Width: =281
             X: =32
-            Y: =185
+            Y: =273
             ZIndex: =4
 
         "'Exit Icon' As icon.Cancel":
@@ -60,12 +62,37 @@ Screen1 As screen:
             Y: =34
             ZIndex: =6
 
-        "'Solution Area Dropdown' As dropdown":
+        "'Test Operating Model Dropdown' As dropdown":
             Default: ="Choose the status"
-            Items: =Sort('Solution Areas','Solution Area Name')
+            Items: =Sort('Operating Models','Operating Model Name')
             X: =32
-            Y: =215
+            Y: =303
             ZIndex: =7
+
+        "'Solution Areas Label_3' As label":
+            Height: =30
+            Text: |-
+                ="Parent Capability:"
+            Width: =281
+            X: =32
+            Y: =182
+            ZIndex: =8
+
+        "'Test Parent Capability Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort(Capabilities,'Capability Name')
+            X: =32
+            Y: =212
+            ZIndex: =9
+
+        ComboBox1 As combobox:
+            DisplayFields: =["neu_capabilityname"]
+            Items: =Capabilities
+            SearchFields: =["neu_capabilityname"]
+            SearchItems: =Search(Capabilities,ComboBox1.SearchText,"neu_capabilityname")
+            X: =32
+            Y: =396
+            ZIndex: =10
 
     Button1 As button:
         OnSelect: |-

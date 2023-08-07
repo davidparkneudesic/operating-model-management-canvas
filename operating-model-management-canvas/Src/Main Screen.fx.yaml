@@ -1,5 +1,5 @@
 "'Main Screen' As screen":
-    Fill: =RGBA(204, 208, 225, 1)
+    Fill: =If(varOpenOperatingModelCreate || varOpenCapabilityCreate, RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
     OnVisible: =
 
     "'Level 1 Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -361,6 +361,8 @@
     "'Button Create Operating Model' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =46
+        OnSelect: |-
+            =UpdateContext({varOpenOperatingModelCreate:true})
         Size: =14
         Text: ="Create New Operating Model"
         Width: =315
@@ -371,6 +373,8 @@
     "'Button Capability' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =48
+        OnSelect: |-
+            =UpdateContext({varOpenCapabilityCreate:true})
         Size: =14
         Text: |-
             ="Create New Capability
@@ -409,4 +413,170 @@
         X: =23
         Y: =17
         ZIndex: =14
+
+    "'Container Create Operating Model' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =405
+        Visible: =If(varOpenOperatingModelCreate, true, false)
+        Width: =710
+        X: =330
+        Y: =183
+        ZIndex: =15
+
+        "'Create Operating Model Button_1' As button":
+            OnSelect: |-
+                =Patch('Operating Models',
+                Defaults('Operating Models'),
+                {
+                    'Operating Model Name':'Operating Model Input_1'.Text,
+                    'Solution Area':'Solution Area Dropdown_1'.Selected,
+                    'Status Reason':'Status Reason (Operating Models)'.Draft
+                    }
+                )
+            Text: ="Create"
+            X: =260
+            Y: =328
+            ZIndex: =1
+
+        "'Operating Model Name Label_1' As label":
+            Height: =36
+            Text: |-
+                ="New Operating Model Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'Operating Model Input_1' As text":
+            Default: =""
+            Height: =46
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Solution Areas Label_1' As label":
+            Height: =30
+            Text: |-
+                ="Solution Area:"
+            Width: =281
+            X: =56
+            Y: =158
+            ZIndex: =4
+
+        "'Exit Operating Model Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenOperatingModelCreate:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Solution Area Dropdown_1' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort('Solution Areas','Solution Area Name')
+            X: =56
+            Y: =188
+            ZIndex: =7
+
+    Container1_2 As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =462
+        Visible: =If(varOpenCapabilityCreate,true, false)
+        Width: =726
+        X: =321
+        Y: =144
+        ZIndex: =16
+
+        "'New Capability Label' As label":
+            Height: =36
+            Text: |-
+                ="New Capability Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'New Capability Input' As text":
+            Default: =""
+            Height: =46
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Parent Operating Model Label' As label":
+            Height: =30
+            Text: |-
+                ="Operating Model:
+                "
+            Width: =281
+            X: =56
+            Y: =276
+            ZIndex: =4
+
+        "'Exit Capability Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenCapabilityCreate:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Create Capability Button' As button":
+            OnSelect: |-
+                =Patch(Capabilities,
+                Defaults(Capabilities),
+                {
+                    'Capability Name':'Capability Input'.Text,
+                    'Parent Capability':'ComboBox Parent Capability'.Selected,
+                    'Operating Model':'ComboBox Operating Model'.Selected,
+                    'Scope Review':'Scope Review'.'In Review',
+                    'Status Reason':'Status Reason (Capabilities)'.Draft
+                    }
+                )
+            Text: ="Create"
+            X: =268
+            Y: =388
+            ZIndex: =8
+
+        "'Parent Operating Model Label_1' As label":
+            Height: =30
+            Text: |-
+                ="Parent Capability
+                "
+            Width: =281
+            X: =56
+            Y: =177
+            ZIndex: =10
+
+        Dropdown1 As dropdown:
+            Items: =Capabilities
+            X: =352
+            Y: =162
+            ZIndex: =11
+
+        "'ComboBox Parent Capability' As combobox":
+            DisplayFields: =["neu_capabilityname"]
+            IsSearchable: =false
+            Items: =Sort(Capabilities,'Capability Name')
+            SearchFields: =["neu_capabilityname"]
+            SearchItems: =[]
+            X: =56
+            Y: =218
+            ZIndex: =12
+
+        "'ComboBox Operating Model' As combobox":
+            DisplayFields: =["neu_operatingmodelname"]
+            IsSearchable: =false
+            Items: =Sort('Operating Models','Operating Model Name')
+            SearchFields: =["neu_operatingmodelname"]
+            SearchItems: =[]
+            X: =56
+            Y: =306
+            ZIndex: =13
 
