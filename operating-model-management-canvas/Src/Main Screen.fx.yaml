@@ -2,6 +2,47 @@
     Fill: =If(varOpenOperatingModelCreate || varOpenCapabilityCreate, RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
     OnVisible: =
 
+    "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =535
+        Items: =Sort('Operating Models', ThisRecord.'Solution Area'.'Solution Area Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =UpdateContext({varExpandGallery:false});
+            Clear(ColHeadCapability);
+            Clear(ColProcessGroups)
+        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
+        TemplatePadding: =0
+        TemplateSize: =50
+        Width: =315
+        X: =15
+        Y: =144
+        ZIndex: =1
+
+        Title6 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =50
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Operating Model Name'
+            Width: =284
+            X: =16
+            ZIndex: =1
+
+        Rectangle6 As rectangle:
+            Height: =Parent.TemplateHeight
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =4
+
     "'Level 1 Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
@@ -137,47 +178,6 @@
             ZIndex: =1
 
         Rectangle10 As rectangle:
-            Height: =Parent.TemplateHeight
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
-    "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =535
-        Items: =Sort('Operating Models', ThisRecord.'Solution Area'.'Solution Area Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: |-
-            =UpdateContext({varExpandGallery:false});
-            Clear(ColHeadCapability);
-            Clear(ColProcessGroups)
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
-        TemplatePadding: =0
-        TemplateSize: =50
-        Width: =315
-        X: =15
-        Y: =144
-        ZIndex: =1
-
-        Title6 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =50
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Operating Model Name'
-            Width: =284
-            X: =16
-            ZIndex: =1
-
-        Rectangle6 As rectangle:
             Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
@@ -500,11 +500,11 @@
 
     "'Container Create Capability' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =462
+        Height: =470
         Visible: =If(varOpenCapabilityCreate,true, false)
         Width: =726
-        X: =321
-        Y: =144
+        X: =314
+        Y: =129
         ZIndex: =16
 
         "'New Capability Label' As label":
@@ -519,6 +519,8 @@
         "'New Capability Input' As text":
             Default: =""
             Height: =46
+            OnSelect: |-
+                =UpdateContext({varCapCreated:false})
             Width: =496
             X: =56
             Y: =88
@@ -531,14 +533,15 @@
                 "
             Width: =281
             X: =56
-            Y: =276
+            Y: =239
             ZIndex: =4
 
         "'Exit Capability Create' As icon.Cancel":
             Height: =45
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenCapabilityCreate:false})
+                =UpdateContext({varOpenCapabilityCreate:false});
+                UpdateContext({varCapCreated:false})
             Width: =42
             X: =636
             Y: =20
@@ -547,18 +550,19 @@
         "'Create Capability Button' As button":
             OnSelect: |-
                 =Patch(Capabilities,
-                Defaults(Capabilities),
-                {
-                    'Capability Name':'Capability Input'.Text,
-                    'Parent Capability':'ComboBox Parent Capability'.Selected,
-                    'Operating Model':'ComboBox Operating Model'.Selected,
-                    'Scope Review':'Scope Review'.'In Review',
-                    'Status Reason':'Status Reason (Capabilities)'.Draft
+                    Defaults(Capabilities),
+                    {
+                        'Capability Name':'Capability Input'.Text,
+                        'Parent Capability':'ComboBox Parent Capability'.Selected,
+                        'Operating Model':'ComboBox Operating Model'.Selected,
+                        'Scope Review':'Scope Review'.'In Review',
+                        'Status Reason':'Status Reason (Capabilities)'.Draft
                     }
-                )
+                );
+                UpdateContext({varCapCreated:true})
             Text: ="Create"
             X: =268
-            Y: =388
+            Y: =400
             ZIndex: =8
 
         "'Parent Operating Model Label_1' As label":
@@ -568,12 +572,12 @@
                 "
             Width: =281
             X: =56
-            Y: =177
+            Y: =152
             ZIndex: =10
 
         Dropdown1 As dropdown:
             Items: =Capabilities
-            X: =352
+            X: =396
             Y: =162
             ZIndex: =11
 
@@ -584,7 +588,7 @@
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             X: =56
-            Y: =218
+            Y: =181
             ZIndex: =12
 
         "'ComboBox Operating Model' As combobox":
@@ -594,6 +598,17 @@
             SearchFields: =["neu_operatingmodelname"]
             SearchItems: =[]
             X: =56
-            Y: =306
+            Y: =269
             ZIndex: =13
+
+        Label4 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =51
+            Text: ="New Capability was successfully created!"
+            Visible: =If(varCapCreated,true,false)
+            Width: =358
+            X: =169
+            Y: =336
+            ZIndex: =14
 
