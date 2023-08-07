@@ -1194,6 +1194,90 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 11
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
             }
           ]
         }
@@ -1909,19 +1993,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Solution Area Dropdown_1'.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Solution Area Dropdown'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Solution Area Dropdown_1'.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Solution Area Dropdown'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.'Container Create Operating Model'.'Solution Area Dropdown_1'"
+                "type": "'Main Screen'.'Container Create Operating Model'.'Solution Area Dropdown'"
               }
             }
           ],
@@ -2778,19 +2862,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "Screen1.Container1.'Exit Icon'.AccessibleLabel"
+                  "fullyQualifiedName": "Screen1.Container1.'TestExit Icon'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "Screen1.Container1.'Exit Icon'.AccessibleLabel",
+                  "fullyQualifiedName": "Screen1.Container1.'TestExit Icon'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Screen1",
-                "type": "Screen1.Container1.'Exit Icon'"
+                "type": "Screen1.Container1.'TestExit Icon'"
               }
             }
           ],
@@ -2808,19 +2892,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "Screen1.Container1.'Exit Icon'.TabIndex"
+                  "fullyQualifiedName": "Screen1.Container1.'TestExit Icon'.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "Screen1.Container1.'Exit Icon'.TabIndex",
+                  "fullyQualifiedName": "Screen1.Container1.'TestExit Icon'.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Screen1",
-                "type": "Screen1.Container1.'Exit Icon'"
+                "type": "Screen1.Container1.'TestExit Icon'"
               }
             }
           ],
@@ -2838,19 +2922,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "Screen1.Container1.'Capability Input'.AccessibleLabel"
+                  "fullyQualifiedName": "Screen1.Container1.'TestCapability Input'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "Screen1.Container1.'Capability Input'.AccessibleLabel",
+                  "fullyQualifiedName": "Screen1.Container1.'TestCapability Input'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Screen1",
-                "type": "Screen1.Container1.'Capability Input'"
+                "type": "Screen1.Container1.'TestCapability Input'"
               }
             }
           ],
@@ -2898,19 +2982,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Operating Model Input_1'.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Operating Model Input'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Operating Model Input_1'.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Operating Model'.'Operating Model Input'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.'Container Create Operating Model'.'Operating Model Input_1'"
+                "type": "'Main Screen'.'Container Create Operating Model'.'Operating Model Input'"
               }
             }
           ],
@@ -2928,19 +3012,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.Dropdown1.AccessibleLabel"
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Parent Capability Dropdown'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Main Screen'.'Container Create Capability'.Dropdown1.AccessibleLabel",
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Parent Capability Dropdown'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Main Screen",
-                "type": "'Main Screen'.'Container Create Capability'.Dropdown1"
+                "type": "'Main Screen'.'Container Create Process Group'.'Parent Capability Dropdown'"
               }
             }
           ],
@@ -3228,6 +3312,96 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Process Group Input'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Process Group Input'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Main Screen",
+                "type": "'Main Screen'.'Container Create Process Group'.'Process Group Input'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Exit Process Group Create'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Exit Process Group Create'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Main Screen",
+                "type": "'Main Screen'.'Container Create Process Group'.'Exit Process Group Create'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Exit Process Group Create'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Main Screen'.'Container Create Process Group'.'Exit Process Group Create'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Main Screen",
+                "type": "'Main Screen'.'Container Create Process Group'.'Exit Process Group Create'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.varSelectedItem"
                 }
               ],
@@ -3241,36 +3415,6 @@
                 "member": "varSelectedItem",
                 "module": "App",
                 "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Main Screen'.varOpenProcessGroupCreate"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Main Screen'.varOpenProcessGroupCreate",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varOpenProcessGroupCreate",
-                "module": "Main Screen",
-                "type": "'Main Screen'"
               }
             }
           ],

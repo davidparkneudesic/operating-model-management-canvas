@@ -425,13 +425,13 @@
         Y: =183
         ZIndex: =15
 
-        "'Create Operating Model Button_1' As button":
+        "'Create Operating Model Button' As button":
             OnSelect: |-
                 =Patch('Operating Models',
                 Defaults('Operating Models'),
                 {
-                    'Operating Model Name':'Operating Model Input_1'.Text,
-                    'Solution Area':'Solution Area Dropdown_1'.Selected,
+                    'Operating Model Name':'Operating Model Input'.Text,
+                    'Solution Area':'Solution Area Dropdown'.Selected,
                     'Status Reason':'Status Reason (Operating Models)'.Draft
                     }
                 );
@@ -441,7 +441,7 @@
             Y: =328
             ZIndex: =1
 
-        "'Operating Model Name Label_1' As label":
+        "'Operating Model Name Label' As label":
             Height: =36
             Text: |-
                 ="New Operating Model Name:"
@@ -450,7 +450,7 @@
             Y: =52
             ZIndex: =2
 
-        "'Operating Model Input_1' As text":
+        "'Operating Model Input' As text":
             Default: =""
             Height: =46
             OnSelect: |-
@@ -460,7 +460,7 @@
             Y: =88
             ZIndex: =3
 
-        "'Solution Areas Label_1' As label":
+        "'Solution Areas Label' As label":
             Height: =30
             Text: |-
                 ="Solution Area:"
@@ -480,7 +480,7 @@
             Y: =20
             ZIndex: =6
 
-        "'Solution Area Dropdown_1' As dropdown":
+        "'Solution Area Dropdown' As dropdown":
             Default: ="Choose the status"
             Items: =Sort('Solution Areas','Solution Area Name')
             X: =56
@@ -552,7 +552,7 @@
                 =Patch(Capabilities,
                     Defaults(Capabilities),
                     {
-                        'Capability Name':'Capability Input'.Text,
+                        'Capability Name':'New Capability Input'.Text,
                         'Parent Capability':'ComboBox Parent Capability'.Selected,
                         'Operating Model':'ComboBox Operating Model'.Selected,
                         'Scope Review':'Scope Review'.'In Review',
@@ -561,11 +561,11 @@
                 );
                 UpdateContext({varCapCreated:true})
             Text: ="Create"
-            X: =268
-            Y: =400
+            X: =288
+            Y: =404
             ZIndex: =8
 
-        "'Parent Operating Model Label_1' As label":
+        "'Parent Capability Label' As label":
             Height: =30
             Text: |-
                 ="Parent Capability
@@ -574,12 +574,6 @@
             X: =56
             Y: =152
             ZIndex: =10
-
-        Dropdown1 As dropdown:
-            Items: =Capabilities
-            X: =396
-            Y: =162
-            ZIndex: =11
 
         "'ComboBox Parent Capability' As combobox":
             DisplayFields: =["neu_capabilityname"]
@@ -601,14 +595,96 @@
             Y: =269
             ZIndex: =13
 
-        Label4 As label:
+        "'Created Message Capability' As label":
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
             Height: =51
             Text: ="New Capability was successfully created!"
             Visible: =If(varCapCreated,true,false)
             Width: =358
-            X: =169
-            Y: =336
+            X: =189
+            Y: =342
             ZIndex: =14
+
+    "'Container Create Process Group' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =405
+        Visible: =If(varOpenProcessGroupCreate, true, false)
+        Width: =710
+        X: =350
+        Y: =203
+        ZIndex: =17
+
+        "'Create Process Group Button' As button":
+            OnSelect: |-
+                =Patch('Process Groups',
+                    Defaults('Process Groups'),
+                    {
+                        'Process Group Name':'Process Group Input'.Text,
+                        Capability:'Parent Capability Dropdown'.Selected,
+                        'Status Reason':'Status Reason (Process Groups)'.Draft,
+                        'Scope Review':'Scope Review'.'In Review'
+                    }
+                );
+                UpdateContext({varPGCreated:true})
+            Text: ="Create"
+            X: =260
+            Y: =328
+            ZIndex: =1
+
+        "'New Process group Label' As label":
+            Height: =36
+            Text: |-
+                ="New Process Group Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'Process Group Input' As text":
+            Default: =""
+            Height: =46
+            OnSelect: |-
+                =UpdateContext({varPGCreated:false})
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Parent Capability Process Group Label' As label":
+            Height: =30
+            Text: ="Capability"
+            Width: =281
+            X: =56
+            Y: =158
+            ZIndex: =4
+
+        "'Exit Process Group Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenProcessGroupCreate:false});
+                UpdateContext({varPGCreated:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Parent Capability Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort(Capabilities,'Capability Name')
+            X: =56
+            Y: =188
+            ZIndex: =7
+
+        "'Created Message Process Group' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =43
+            Text: ="Process Group was successfully created!"
+            Visible: =If(varPGCreated,true,false)
+            Width: =376
+            X: =152
+            Y: =268
+            ZIndex: =8
 

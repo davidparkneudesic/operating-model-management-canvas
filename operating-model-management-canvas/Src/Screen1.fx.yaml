@@ -10,12 +10,12 @@ Screen1 As screen:
         Y: =56
         ZIndex: =2
 
-        "'Create Operating Model Button' As button":
+        "'TestCreate Operating Model Button' As button":
             OnSelect: |-
                 =Patch(Capabilities,
                 Defaults(Capabilities),
                 {
-                    'Capability Name':'Capability Input'.Text,
+                    'Capability Name':'TestCapability Input'.Text,
                     'Parent Capability':'Test Parent Capability Dropdown'.Selected,
                     'Operating Model':'Test Operating Model Dropdown'.Selected,
                     'Scope Review':'Scope Review'.'In Review',
@@ -36,7 +36,7 @@ Screen1 As screen:
             Y: =79
             ZIndex: =2
 
-        "'Capability Input' As text":
+        "'TestCapability Input' As text":
             Default: =""
             Height: =46
             Width: =496
@@ -44,7 +44,7 @@ Screen1 As screen:
             Y: =115
             ZIndex: =3
 
-        "'Solution Areas Label' As label":
+        "'TestSolution Areas Label' As label":
             Height: =30
             Text: ="Operating Name"
             Width: =281
@@ -52,7 +52,7 @@ Screen1 As screen:
             Y: =273
             ZIndex: =4
 
-        "'Exit Icon' As icon.Cancel":
+        "'TestExit Icon' As icon.Cancel":
             Height: =45
             Icon: =Icon.Cancel
             OnSelect: |-
