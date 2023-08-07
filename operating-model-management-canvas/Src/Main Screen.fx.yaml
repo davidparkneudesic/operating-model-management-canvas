@@ -1,11 +1,15 @@
 "'Main Screen' As screen":
-    Fill: =If(varOpenOperatingModelCreate || varOpenCapabilityCreate, RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    Fill: |-
+        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
     OnVisible: =
 
     "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
         Height: =535
         Items: =Sort('Operating Models', ThisRecord.'Solution Area'.'Solution Area Name')
         Layout: =Layout.Vertical
@@ -46,7 +50,9 @@
     "'Level 1 Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
         Height: =231
         Items: |
             =Sort(Filter(Capabilities, 
@@ -98,7 +104,9 @@
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
         Height: =535
         Items: |-
             =Sort(ColProcessGroups, 'Process Group Name')
@@ -147,7 +155,9 @@
     "'Process Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
         Height: =535
         Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
         Layout: =Layout.Vertical
@@ -231,7 +241,9 @@
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
         Height: =263
         Items: =Sort(ColHeadCapability, 'Capability Name')
         Layout: =Layout.Vertical
@@ -264,6 +276,9 @@
                 =//If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,1,0)
                 0
             DelayItemLoading: =true
+            Fill: |-
+                =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+                RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
             Height: |-
                 =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,
                     CountRows('Sub Capability Gallery'.AllItems) * 38,
@@ -613,8 +628,8 @@
         Height: =405
         Visible: =If(varOpenProcessGroupCreate, true, false)
         Width: =710
-        X: =350
-        Y: =203
+        X: =324
+        Y: =161
         ZIndex: =17
 
         "'Create Process Group Button' As button":
