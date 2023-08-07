@@ -23,7 +23,7 @@ Screen1 As screen:
             Y: =580
             ZIndex: =1
 
-        Label3 As label:
+        "'Operating Model Name Label' As label":
             Height: =36
             Text: |-
                 ="New Operating Model Name:"
@@ -40,10 +40,10 @@ Screen1 As screen:
             Y: =115
             ZIndex: =3
 
-        Label4 As label:
+        "'Solution Areas Label' As label":
             Height: =30
             Text: |-
-                ="Status Code:"
+                ="Solution Areas:"
             Width: =281
             X: =32
             Y: =185
@@ -59,7 +59,7 @@ Screen1 As screen:
             Y: =34
             ZIndex: =6
 
-        "'Status Dropdown' As dropdown":
+        "'Solution Area Dropdown' As dropdown":
             Default: ="Choose the status"
             Items: =Sort('Solution Areas','Solution Area Name')
             X: =32
