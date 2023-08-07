@@ -1097,6 +1097,46 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Main Screen'.'Operating Model Gallery'.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Main Screen'.'Operating Model Gallery'.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 21,
+                  "charOffset": 51,
+                  "snippet": {
+                    "text": ".'Solution Area Name'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Main Screen",
+                "type": "'Main Screen'.'Operating Model Gallery'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Sort"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Detail Screen'.'Process Gallery Child'.galleryTemplate6_1.OnSelect"
                 }
               ],

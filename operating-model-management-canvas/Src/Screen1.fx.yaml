@@ -61,7 +61,7 @@ Screen1 As screen:
 
         "'Status Dropdown' As dropdown":
             Default: ="Choose the status"
-            Items: =["Active","Inactive"]
+            Items: =Sort('Solution Areas','Solution Area Name')
             X: =32
             Y: =215
             ZIndex: =7
