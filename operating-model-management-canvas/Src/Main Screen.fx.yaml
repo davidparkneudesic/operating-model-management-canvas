@@ -1,16 +1,71 @@
 "'Main Screen' As screen":
-    Fill: =RGBA(204, 208, 225, 1)
+    Fill: |-
+        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    OnVisible: =
+
+    "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
+        Height: =535
+        Items: =Sort('Operating Models', ThisRecord.'Solution Area'.'Solution Area Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =UpdateContext({varExpandGallery:false});
+            Clear(ColHeadCapability);
+            Clear(ColProcessGroups)
+        TemplateFill: |-
+            =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                RGBA(204, 208, 225, 1), 
+                If(ThisItem.IsSelected && (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                    RGBA(153, 160, 196, 1),
+                    RGBA(0,0,0,0)
+                )
+            )
+        TemplatePadding: =0
+        TemplateSize: =50
+        Width: =315
+        X: =15
+        Y: =144
+        ZIndex: =1
+
+        Title6 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =50
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Operating Model Name'
+            Width: =284
+            X: =16
+            ZIndex: =1
+
+        Rectangle6 As rectangle:
+            Height: =Parent.TemplateHeight
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =4
 
     "'Level 1 Capability Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =211
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
+        Height: =231
         Items: |
-            =Filter(Capabilities, 
+            =Sort(Filter(Capabilities, 
                 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
                 IsBlank('Parent Capability'.'Capability Name')
-            )
+            ), 'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |
@@ -24,12 +79,19 @@
                 Filter('Process Groups', 
                     Capability.'Capability Name' = 'Level 1 Capability Gallery'.Selected.'Capability Name')
             )
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
+        TemplateFill: |-
+            =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                RGBA(204, 208, 225, 1), 
+                If(ThisItem.IsSelected && varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate,
+                    RGBA(153, 160, 196, 1),
+                    RGBA(0,0,0,0)
+                )
+            )
         TemplatePadding: =0
         TemplateSize: =50
         Width: =315
         X: =354
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         "'Level 1 Capability Title' As label":
@@ -56,10 +118,14 @@
     "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =515
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
+        Height: =535
         Items: |-
-            =ColProcessGroups
+            =Sort(ColProcessGroups, 'Process Group Name')
+            
+            
             //If(!IsBlank('Sub Capability Gallery'.Selected.'Capability Name'),
             //    Filter('Process Groups', Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name'),
             //    Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
@@ -71,12 +137,19 @@
             //)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
+        TemplateFill: |-
+            =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                RGBA(204, 208, 225, 1), 
+                If(ThisItem.IsSelected && varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate,
+                    RGBA(153, 160, 196, 1),
+                    RGBA(0,0,0,0)
+                )
+            )
         TemplatePadding: =0
         TemplateSize: =50
         Width: =315
         X: =694
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         Title8 As label:
@@ -100,23 +173,32 @@
             Width: =4
             ZIndex: =4
 
-    "'Process Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Process Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =515
-        Items: =Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name')
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
+        Height: =535
+        Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: |-
+        OnSelect: |
             =Navigate('Detail Screen',ScreenTransition.Cover);
-            UpdateContext({varParentProcessSelected:true})
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
+            Set(varSelectedItem,ThisItem.'Process Name')
+        TemplateFill: |-
+            =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                RGBA(204, 208, 225, 1), 
+                If(ThisItem.IsSelected && varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate,
+                    RGBA(153, 160, 196, 1),
+                    RGBA(0,0,0,0)
+                )
+            )
         TemplatePadding: =0
         TemplateSize: =50
         Width: =315
         X: =1032
-        Y: =164
+        Y: =144
         ZIndex: =1
 
         Title10 As label:
@@ -140,47 +222,6 @@
             Width: =4
             ZIndex: =4
 
-    "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =515
-        Items: ='Operating Models'
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: |-
-            =UpdateContext({varExpandGallery:false});
-            Clear(ColHeadCapability);
-            Clear(ColProcessGroups)
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
-        TemplatePadding: =0
-        TemplateSize: =50
-        Width: =315
-        X: =15
-        Y: =164
-        ZIndex: =1
-
-        Title6 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =50
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Operating Model Name'
-            Width: =284
-            X: =16
-            ZIndex: =1
-
-        Rectangle6 As rectangle:
-            Height: =Parent.TemplateHeight
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
     "'Operating Model Label' As label":
         FontWeight: =FontWeight.Bold
         Height: =43
@@ -188,17 +229,17 @@
         Text: ="Operating Model"
         Width: =283
         X: =31
-        Y: =121
+        Y: =101
         ZIndex: =2
 
     "'Capability Label' As label":
         FontWeight: =FontWeight.Bold
         Height: =43
         Size: =20
-        Text: ="Capability"
+        Text: ="Head Capability"
         Width: =285
-        X: =358
-        Y: =121
+        X: =363
+        Y: =101
         ZIndex: =3
 
     "'Process Group Label' As label":
@@ -210,7 +251,7 @@
             "
         Width: =295
         X: =697
-        Y: =121
+        Y: =101
         ZIndex: =4
 
     "'Process Label' As label":
@@ -222,18 +263,17 @@
             "
         Width: =299
         X: =1040
-        Y: =121
+        Y: =101
         ZIndex: =5
 
     "'Head Capability Gallery' As gallery.variableTemplateHeightGallery":
         BorderThickness: =1
         DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =261
-        Items: |-
-            =
-            
-            ColHeadCapability
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+            RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
+        Height: =263
+        Items: =Sort(ColHeadCapability, 'Capability Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
@@ -242,11 +282,18 @@
                     Capability.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name')
             );
             UpdateContext({varExpandGallery:true})
-        TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
+        TemplateFill: |-
+            =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                RGBA(204, 208, 225, 1), 
+                If(ThisItem.IsSelected && varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate,
+                    RGBA(153, 160, 196, 1),
+                    RGBA(0,0,0,0)
+                )
+            )
         TemplateSize: =249
         Width: =315
         X: =354
-        Y: =417
+        Y: =414
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
@@ -264,12 +311,15 @@
                 =//If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,1,0)
                 0
             DelayItemLoading: =true
+            Fill: |-
+                =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
+                RGBA(202, 202, 202, 1) , RGBA(255, 255, 255, 1))
             Height: |-
                 =If(ThisItem.'Capability Name' = 'Head Capability Gallery'.Selected.'Capability Name' && varExpandGallery,
                     CountRows('Sub Capability Gallery'.AllItems) * 38,
                     0
                 )
-            Items: =Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text)
+            Items: =Sort(Filter(Capabilities, 'Parent Capability'.'Capability Name' = 'Label Capability Level 1'.Text), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -277,7 +327,14 @@
                     Filter('Process Groups', 
                         Capability.'Capability Name' = 'Sub Capability Gallery'.Selected.'Capability Name')
                 )
-            TemplateFill: =If(ThisItem.IsSelected,RGBA(204, 208, 225, 1), RGBA(255, 255, 255, 1))
+            TemplateFill: |-
+                =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                    RGBA(204, 208, 225, 1), 
+                    If(ThisItem.IsSelected && (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                        RGBA(153, 160, 196, 1),
+                        RGBA(0, 0, 0, 0)
+                    )
+                )
             TemplatePadding: =0
             TemplateSize: =39
             Width: =287
@@ -295,7 +352,7 @@
                 PaddingTop: =0
                 Size: =12
                 Text: =ThisItem.'Capability Name'
-                Width: =243
+                Width: =228
                 X: =11
                 ZIndex: =1
 
@@ -313,7 +370,7 @@
                 PaddingTop: =12
                 Tooltip: ="View item details"
                 Width: =30
-                X: =254
+                X: =239
                 Y: =3
                 ZIndex: =2
 
@@ -354,13 +411,18 @@
         Size: =15
         Text: ="Sub Capabilities"
         Width: =295
-        X: =358
-        Y: =389
+        X: =364
+        Y: =386
         ZIndex: =9
 
     "'Button Create Operating Model' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =46
+        OnSelect: |-
+            =UpdateContext({varOpenOperatingModelCreate:true});
+            UpdateContext({varOpenCapabilityCreate:false});
+            UpdateContext({varOpenProcessGroupCreate:false});
+            UpdateContext({varOpenProcessCreate:false});
         Size: =14
         Text: ="Create New Operating Model"
         Width: =315
@@ -371,6 +433,11 @@
     "'Button Capability' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =48
+        OnSelect: |-
+            =UpdateContext({varOpenCapabilityCreate:true});
+            UpdateContext({varOpenOperatingModelCreate:false});
+            UpdateContext({varOpenProcessGroupCreate:false});
+            UpdateContext({varOpenProcessCreate:false});
         Size: =14
         Text: |-
             ="Create New Capability
@@ -383,6 +450,11 @@
     "'Button Process Group' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =47
+        OnSelect: |
+            =UpdateContext({varOpenProcessGroupCreate:true});
+            UpdateContext({varOpenOperatingModelCreate:false});
+            UpdateContext({varOpenCapabilityCreate:false});
+            UpdateContext({varOpenProcessCreate:false});
         Size: =14
         Text: ="Create New Process Group"
         Width: =315
@@ -393,6 +465,11 @@
     "'Button Process' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =47
+        OnSelect: |-
+            =UpdateContext({varOpenProcessCreate:true});
+            UpdateContext({varOpenOperatingModelCreate:false});
+            UpdateContext({varOpenCapabilityCreate:false});
+            UpdateContext({varOpenProcessGroupCreate:false});
         Size: =14
         Text: ="Create New Process"
         Width: =315
@@ -409,4 +486,359 @@
         X: =23
         Y: =17
         ZIndex: =14
+
+    "'Container Create Operating Model' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =405
+        Visible: =If(varOpenOperatingModelCreate, true, false)
+        Width: =710
+        X: =329
+        Y: =144
+        ZIndex: =15
+
+        "'Create Operating Model Button' As button":
+            OnSelect: |-
+                =Patch('Operating Models',
+                Defaults('Operating Models'),
+                {
+                    'Operating Model Name':'Operating Model Input'.Text,
+                    'Solution Area':'Solution Area Dropdown'.Selected,
+                    'Status Reason':'Status Reason (Operating Models)'.Draft
+                    }
+                );
+                UpdateContext({varOMCreated:true})
+            Text: ="Create"
+            X: =260
+            Y: =328
+            ZIndex: =1
+
+        "'Operating Model Name Label' As label":
+            Height: =36
+            Text: |-
+                ="New Operating Model Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'Operating Model Input' As text":
+            Default: =""
+            Height: =46
+            OnSelect: |-
+                =UpdateContext({varOMCreated:false})
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Solution Areas Label' As label":
+            Height: =30
+            Text: |-
+                ="Solution Area:"
+            Width: =281
+            X: =56
+            Y: =158
+            ZIndex: =4
+
+        "'Exit Operating Model Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenOperatingModelCreate:false});
+                UpdateContext({varOMCreated:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Solution Area Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort('Solution Areas','Solution Area Name')
+            X: =56
+            Y: =188
+            ZIndex: =7
+
+        "'Created Message Operating Model' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =43
+            Text: ="Operating Model was successfully created!"
+            Visible: =If(varOMCreated,true,false)
+            Width: =376
+            X: =152
+            Y: =268
+            ZIndex: =8
+
+    "'Container Create Capability' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =470
+        Visible: =If(varOpenCapabilityCreate,true, false)
+        Width: =726
+        X: =314
+        Y: =128
+        ZIndex: =16
+
+        "'New Capability Label' As label":
+            Height: =36
+            Text: |-
+                ="New Capability Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'New Capability Input' As text":
+            Default: =""
+            Height: =46
+            OnSelect: |-
+                =UpdateContext({varCapCreated:false})
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Parent Operating Model Label' As label":
+            Height: =30
+            Text: |-
+                ="Operating Model:
+                "
+            Width: =281
+            X: =56
+            Y: =239
+            ZIndex: =4
+
+        "'Exit Capability Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenCapabilityCreate:false});
+                UpdateContext({varCapCreated:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Create Capability Button' As button":
+            OnSelect: |-
+                =Patch(Capabilities,
+                    Defaults(Capabilities),
+                    {
+                        'Capability Name':'New Capability Input'.Text,
+                        'Parent Capability':'ComboBox Parent Capability'.Selected,
+                        'Operating Model':'ComboBox Operating Model'.Selected,
+                        'Scope Review':'Scope Review'.'In Review',
+                        'Status Reason':'Status Reason (Capabilities)'.Draft
+                    }
+                );
+                UpdateContext({varCapCreated:true})
+            Text: ="Create"
+            X: =288
+            Y: =404
+            ZIndex: =8
+
+        "'Parent Capability Label' As label":
+            Height: =30
+            Text: |-
+                ="Parent Capability
+                "
+            Width: =281
+            X: =56
+            Y: =152
+            ZIndex: =10
+
+        "'ComboBox Parent Capability' As combobox":
+            DisplayFields: =["neu_capabilityname"]
+            IsSearchable: =false
+            Items: =Sort(Capabilities,'Capability Name')
+            SearchFields: =["neu_capabilityname"]
+            SearchItems: =[]
+            X: =56
+            Y: =181
+            ZIndex: =12
+
+        "'ComboBox Operating Model' As combobox":
+            DisplayFields: =["neu_operatingmodelname"]
+            IsSearchable: =false
+            Items: =Sort('Operating Models','Operating Model Name')
+            SearchFields: =["neu_operatingmodelname"]
+            SearchItems: =[]
+            X: =56
+            Y: =269
+            ZIndex: =13
+
+        "'Created Message Capability' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =51
+            Text: ="New Capability was successfully created!"
+            Visible: =If(varCapCreated,true,false)
+            Width: =358
+            X: =189
+            Y: =342
+            ZIndex: =14
+
+    "'Container Create Process Group' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =405
+        Visible: =If(varOpenProcessGroupCreate, true, false)
+        Width: =710
+        X: =324
+        Y: =144
+        ZIndex: =17
+
+        "'Create Process Group Button' As button":
+            OnSelect: |-
+                =Patch('Process Groups',
+                    Defaults('Process Groups'),
+                    {
+                        'Process Group Name':'Process Group Input'.Text,
+                        Capability:'Parent Capability Dropdown'.Selected,
+                        'Status Reason':'Status Reason (Process Groups)'.Draft,
+                        'Scope Review':'Scope Review'.'In Review'
+                    }
+                );
+                UpdateContext({varPGCreated:true})
+            Text: ="Create"
+            X: =260
+            Y: =328
+            ZIndex: =1
+
+        "'New Process group Label' As label":
+            Height: =36
+            Text: |-
+                ="New Process Group Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'Process Group Input' As text":
+            Default: =""
+            Height: =46
+            OnSelect: |-
+                =UpdateContext({varPGCreated:false})
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Parent Capability Process Group Label' As label":
+            Height: =30
+            Text: ="Capability"
+            Width: =281
+            X: =56
+            Y: =158
+            ZIndex: =4
+
+        "'Exit Process Group Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenProcessGroupCreate:false});
+                UpdateContext({varPGCreated:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Parent Capability Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort(Capabilities,'Capability Name')
+            X: =56
+            Y: =188
+            ZIndex: =7
+
+        "'Created Message Process Group' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =43
+            Text: ="Process Group was successfully created!"
+            Visible: =If(varPGCreated,true,false)
+            Width: =376
+            X: =152
+            Y: =268
+            ZIndex: =8
+
+    "'Container Create Process' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =405
+        Visible: =If(varOpenProcessCreate, true, false)
+        Width: =710
+        X: =324
+        Y: =147
+        ZIndex: =18
+
+        "'Create Process Group Button_1' As button":
+            OnSelect: |-
+                =Patch('Processes',
+                    Defaults('Processes'),
+                    {
+                        'Process Name':'Process Input'.Text,
+                        'Process Group':'Parent Process Group Dropdown'.Selected,
+                        'Status Reason':'Status Reason (Processes)'.Draft,
+                        'Scope Review':'Scope Review'.'In Review'
+                    }
+                );
+                UpdateContext({varProcCreated:true})
+            Text: ="Create"
+            X: =260
+            Y: =328
+            ZIndex: =1
+
+        "'New Process Label' As label":
+            Height: =36
+            Text: |-
+                ="New Process Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'Process Input' As text":
+            Default: =""
+            Height: =46
+            OnSelect: |-
+                =UpdateContext({varProcCreated:false})
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Parent Process Group Label' As label":
+            Height: =30
+            Text: |-
+                ="Process Group:"
+            Width: =281
+            X: =56
+            Y: =158
+            ZIndex: =4
+
+        "'Exit Process Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenProcessCreate:false});
+                UpdateContext({varProcCreated:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Parent Process Group Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort('Process Groups','Process Group Name')
+            X: =56
+            Y: =188
+            ZIndex: =7
+
+        "'Created Message Process' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =43
+            Text: ="Process was successfully created!"
+            Visible: =If(varProcCreated,true,false)
+            Width: =376
+            X: =152
+            Y: =268
+            ZIndex: =8
 
