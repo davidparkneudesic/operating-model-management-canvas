@@ -399,6 +399,8 @@
     "'Button Process' As button":
         Fill: =RGBA(102, 113, 166, 1)
         Height: =47
+        OnSelect: |-
+            =UpdateContext({varOpenProcessCreate:true})
         Size: =14
         Text: ="Create New Process"
         Width: =315
@@ -683,6 +685,89 @@
             Height: =43
             Text: ="Process Group was successfully created!"
             Visible: =If(varPGCreated,true,false)
+            Width: =376
+            X: =152
+            Y: =268
+            ZIndex: =8
+
+    "'Container Create Process' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =405
+        Visible: =If(varOpenProcessCreate, true, false)
+        Width: =710
+        X: =324
+        Y: =161
+        ZIndex: =18
+
+        "'Create Process Group Button_1' As button":
+            OnSelect: |-
+                =Patch('Processes',
+                    Defaults('Processes'),
+                    {
+                        'Process Name':'Process Input'.Text,
+                        'Process Group':'Parent Process Group Dropdown'.Selected,
+                        'Status Reason':'Status Reason (Processes)'.Draft,
+                        'Scope Review':'Scope Review'.'In Review'
+                    }
+                );
+                UpdateContext({varProcCreated:true})
+            Text: ="Create"
+            X: =260
+            Y: =328
+            ZIndex: =1
+
+        "'New Process Label' As label":
+            Height: =36
+            Text: |-
+                ="New Process Name:"
+            Width: =296
+            X: =56
+            Y: =52
+            ZIndex: =2
+
+        "'Process Input' As text":
+            Default: =""
+            Height: =46
+            OnSelect: |-
+                =UpdateContext({varProcCreated:false})
+            Width: =496
+            X: =56
+            Y: =88
+            ZIndex: =3
+
+        "'Parent Process Group Label' As label":
+            Height: =30
+            Text: |-
+                ="Process Group:"
+            Width: =281
+            X: =56
+            Y: =158
+            ZIndex: =4
+
+        "'Exit Process Create' As icon.Cancel":
+            Height: =45
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenProcessCreate:false});
+                UpdateContext({varProcCreated:false})
+            Width: =42
+            X: =636
+            Y: =20
+            ZIndex: =6
+
+        "'Parent Process Group Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort('Process Groups','Process Group Name')
+            X: =56
+            Y: =188
+            ZIndex: =7
+
+        "'Created Message Process' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =43
+            Text: ="Process was successfully created!"
+            Visible: =If(varProcCreated,true,false)
             Width: =376
             X: =152
             Y: =268
