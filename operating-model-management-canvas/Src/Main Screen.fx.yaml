@@ -297,7 +297,7 @@
         ZIndex: =8
 
         "'Label Capability Level 1' As label":
-            Height: =49
+            Height: =47
             OnSelect: =Select(Parent)
             Size: =12
             Text: =ThisItem.'Capability Name'
@@ -769,8 +769,8 @@
 
         "'Create Process Group Button_1' As button":
             OnSelect: |-
-                =Patch('Processes',
-                    Defaults('Processes'),
+                =Patch(Processes,
+                    Defaults(Processes),
                     {
                         'Process Name':'Process Input'.Text,
                         'Process Group':'Parent Process Group Dropdown'.Selected,
