@@ -91,11 +91,11 @@
         OnSelect: |-
             =If(!IsBlank(ThisItem.'Data Flow URL'), 
                 Launch(ThisItem.'Data Flow URL'), 
-                Launch("https://lucid.app/lucidchart/1d2a64a9-313f-4353-9f35-e091993b0ace/editNew?viewport_loc=-11%2C-11%2C2219%2C1089%2C0_0&invitationId=inv_0100a0ab-046d-47a3-9f81-452d2e03befb")
+                Launch("https://lucid.app/documents#/documents?folder_id=335606626")
             )
         TemplatePadding: =0
         TemplateSize: =53
-        Width: =359
+        Width: =620
         X: =443
         Y: =547
         ZIndex: =4
@@ -109,9 +109,13 @@
             PaddingRight: =0
             PaddingTop: =0
             Size: =12
-            Text: =If(IsBlank('Process Gallery Parent'.Selected.'Data Flow URL'),"The diagram does not yet exist","Click here to open the diagram")
+            Text: |-
+                =If(IsBlank('Process Gallery Parent'.Selected.'Data Flow URL'),
+                    "The diagram does not yet exist. Please click this input to go to the Teams folder",
+                    "Click here to open the diagram"
+                )
             Underline: =true
-            Width: =350
+            Width: =601
             X: =9
             ZIndex: =1
 
