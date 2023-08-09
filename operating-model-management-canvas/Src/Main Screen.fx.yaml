@@ -480,7 +480,7 @@
         Y: =692
         ZIndex: =13
 
-    Label2 As label:
+    "'Main Title Label' As label":
         FontWeight: =FontWeight.Bold
         Height: =64
         Size: =36
@@ -889,37 +889,37 @@
 
     "'Container Create Process' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =485
+        Height: =703
         Visible: =If(varOpenProcessCreate, true, false)
-        Width: =710
-        X: =324
-        Y: =147
+        Width: =827
+        X: =262
+        Y: =36
         ZIndex: =18
 
-        "'Create Process Group Button_1' As button":
+        "'Create Process Button' As button":
             OnSelect: |-
                 =Patch(Processes,
                     Defaults(Processes),
                     {
                         'Process Name':'Process Input'.Text,
                         'Process Group':'Parent Process Group Dropdown'.Selected,
-                        'Status Reason':'Status Reason (Processes)'.Draft,
-                        'Scope Review':'Scope Review'.'In Review'
+                        'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
+                        'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                        Description:'Process Description Input'.Text
                     }
                 );
                 UpdateContext({varProcCreated:true})
             Text: ="Create"
-            X: =277
-            Y: =407
+            X: =335
+            Y: =634
             ZIndex: =1
 
         "'New Process Label' As label":
             Height: =36
-            Text: |-
-                ="New Process Name:"
+            Text: ="New Process Name"
             Width: =296
-            X: =73
-            Y: =131
+            X: =78
+            Y: =101
             ZIndex: =2
 
         "'Process Input' As text":
@@ -927,18 +927,17 @@
             Height: =46
             OnSelect: |-
                 =UpdateContext({varProcCreated:false})
-            Width: =496
-            X: =73
-            Y: =167
+            Width: =568
+            X: =78
+            Y: =137
             ZIndex: =3
 
         "'Parent Process Group Label' As label":
             Height: =30
-            Text: |-
-                ="Process Group:"
+            Text: ="Process Group"
             Width: =281
-            X: =73
-            Y: =237
+            X: =78
+            Y: =192
             ZIndex: =4
 
         "'Exit Process Create' As icon.Cancel":
@@ -948,15 +947,15 @@
                 =UpdateContext({varOpenProcessCreate:false});
                 UpdateContext({varProcCreated:false})
             Width: =42
-            X: =636
+            X: =753
             Y: =20
             ZIndex: =6
 
         "'Parent Process Group Dropdown' As dropdown":
             Default: ="Choose the status"
             Items: =Sort('Process Groups','Process Group Name')
-            X: =73
-            Y: =267
+            X: =78
+            Y: =222
             ZIndex: =7
 
         "'Created Message Process' As label":
@@ -966,18 +965,71 @@
             Text: ="Process was successfully created!"
             Visible: =If(varProcCreated,true,false)
             Width: =376
-            X: =169
-            Y: =348
+            X: =227
+            Y: =591
             ZIndex: =8
 
         "'Create Process Label' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
-            Height: =68
+            Height: =60
             Size: =25
             Text: ="Create Process"
             Width: =412
-            X: =151
-            Y: =35
+            X: =209
+            Y: =20
             ZIndex: =9
+
+        "'Status Reason Proc Label' As label":
+            Height: =30
+            Text: ="Status Reason"
+            Width: =240
+            X: =78
+            Y: =272
+            ZIndex: =10
+
+        "'Status Reason Proc Dropdown' As dropdown":
+            Default: ="Draft"
+            Height: =41
+            Items: =Choices('Status Reason (Processes)')
+            Width: =257
+            X: =78
+            Y: =302
+            ZIndex: =11
+
+        "'Scope Review Proc Label' As label":
+            Height: =30
+            Text: ="Scope Review"
+            Width: =240
+            X: =406
+            Y: =272
+            ZIndex: =12
+
+        "'Scope Review Proc Dropdown' As dropdown":
+            Default: ="Draft"
+            Height: =41
+            Items: =Choices('Scope Review')
+            Width: =257
+            X: =406
+            Y: =302
+            ZIndex: =13
+
+        "'Process Description Label' As label":
+            Height: =36
+            Text: ="Description"
+            Width: =296
+            X: =78
+            Y: =351
+            ZIndex: =14
+
+        "'Process Description Input' As text":
+            Default: =""
+            Height: =204
+            Mode: =TextMode.MultiLine
+            OnSelect: |-
+                =UpdateContext({varProcCreated:false})
+            Width: =675
+            X: =78
+            Y: =387
+            ZIndex: =15
 
