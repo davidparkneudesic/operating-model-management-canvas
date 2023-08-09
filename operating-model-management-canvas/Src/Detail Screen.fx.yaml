@@ -97,7 +97,7 @@
         TemplateSize: =53
         Width: =620
         X: =443
-        Y: =547
+        Y: =610
         ZIndex: =4
 
         Title10_2 As label:
@@ -124,7 +124,7 @@
         Size: =15
         Text: ="Data Flow URL"
         X: =443
-        Y: =507
+        Y: =570
         ZIndex: =5
 
     "'Process Name Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -166,12 +166,12 @@
     "'Description Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
-        Height: =110
+        Height: =172
         Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =110
+        TemplateSize: =172
         Width: =879
         X: =443
         Y: =270
@@ -179,7 +179,7 @@
 
         Title10_5 As label:
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =110
+            Height: =172
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =10
@@ -188,7 +188,7 @@
             Size: =12
             Text: =ThisItem.Description
             VerticalAlign: =VerticalAlign.Top
-            Width: =884
+            Width: =879
             ZIndex: =1
 
     "'Description Label' As label":
@@ -212,7 +212,7 @@
         TemplateSize: =40
         Width: =166
         X: =443
-        Y: =442
+        Y: =506
         ZIndex: =10
 
         Title10_6 As label:
@@ -234,7 +234,7 @@
             ="Scope Review:"
         Width: =170
         X: =443
-        Y: =402
+        Y: =466
         ZIndex: =11
 
     "'Scope Review Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -248,7 +248,7 @@
         TemplateSize: =40
         Width: =167
         X: =837
-        Y: =442
+        Y: =506
         ZIndex: =12
 
         Title10_7 As label:
@@ -271,7 +271,7 @@
             ="Status Reason:"
         Width: =170
         X: =837
-        Y: =402
+        Y: =466
         ZIndex: =13
 
     "'Child Process Label' As label":
