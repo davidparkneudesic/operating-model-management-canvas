@@ -780,7 +780,7 @@
             Y: =366
             ZIndex: =8
 
-        Label4 As label:
+        "'Create Process Group Label' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
             Height: =83
@@ -874,7 +874,7 @@
             Y: =348
             ZIndex: =8
 
-        Label5 As label:
+        "'Create Process Label' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
             Height: =68
