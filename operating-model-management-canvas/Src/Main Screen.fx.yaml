@@ -488,7 +488,7 @@
 
     "'Container Create Operating Model' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =405
+        Height: =468
         Visible: =If(varOpenOperatingModelCreate, true, false)
         Width: =710
         X: =329
@@ -507,8 +507,8 @@
                 );
                 UpdateContext({varOMCreated:true})
             Text: ="Create"
-            X: =260
-            Y: =328
+            X: =264
+            Y: =392
             ZIndex: =1
 
         "'Operating Model Name Label' As label":
@@ -516,8 +516,8 @@
             Text: |-
                 ="New Operating Model Name:"
             Width: =296
-            X: =56
-            Y: =52
+            X: =60
+            Y: =116
             ZIndex: =2
 
         "'Operating Model Input' As text":
@@ -526,8 +526,8 @@
             OnSelect: |-
                 =UpdateContext({varOMCreated:false})
             Width: =496
-            X: =56
-            Y: =88
+            X: =60
+            Y: =152
             ZIndex: =3
 
         "'Solution Areas Label' As label":
@@ -535,8 +535,8 @@
             Text: |-
                 ="Solution Area:"
             Width: =281
-            X: =56
-            Y: =158
+            X: =60
+            Y: =222
             ZIndex: =4
 
         "'Exit Operating Model Create' As icon.Cancel":
@@ -553,8 +553,8 @@
         "'Solution Area Dropdown' As dropdown":
             Default: ="Choose the status"
             Items: =Sort('Solution Areas','Solution Area Name')
-            X: =56
-            Y: =188
+            X: =60
+            Y: =252
             ZIndex: =7
 
         "'Created Message Operating Model' As label":
@@ -564,17 +564,28 @@
             Text: ="Operating Model was successfully created!"
             Visible: =If(varOMCreated,true,false)
             Width: =376
-            X: =152
-            Y: =268
+            X: =156
+            Y: =335
             ZIndex: =8
+
+        "'Create Operating Model Label' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =61
+            Size: =25
+            Text: ="Create Operating Model"
+            Width: =577
+            X: =60
+            Y: =36
+            ZIndex: =9
 
     "'Container Create Capability' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =470
+        Height: =578
         Visible: =If(varOpenCapabilityCreate,true, false)
         Width: =726
         X: =314
-        Y: =128
+        Y: =101
         ZIndex: =16
 
         "'New Capability Label' As label":
@@ -582,8 +593,8 @@
             Text: |-
                 ="New Capability Name:"
             Width: =296
-            X: =56
-            Y: =52
+            X: =64
+            Y: =144
             ZIndex: =2
 
         "'New Capability Input' As text":
@@ -592,8 +603,8 @@
             OnSelect: |-
                 =UpdateContext({varCapCreated:false})
             Width: =496
-            X: =56
-            Y: =88
+            X: =64
+            Y: =180
             ZIndex: =3
 
         "'Parent Operating Model Label' As label":
@@ -602,8 +613,8 @@
                 ="Operating Model:
                 "
             Width: =281
-            X: =56
-            Y: =239
+            X: =64
+            Y: =331
             ZIndex: =4
 
         "'Exit Capability Create' As icon.Cancel":
@@ -631,8 +642,8 @@
                 );
                 UpdateContext({varCapCreated:true})
             Text: ="Create"
-            X: =288
-            Y: =404
+            X: =296
+            Y: =496
             ZIndex: =8
 
         "'Parent Capability Label' As label":
@@ -641,8 +652,8 @@
                 ="Parent Capability
                 "
             Width: =281
-            X: =56
-            Y: =152
+            X: =64
+            Y: =244
             ZIndex: =10
 
         "'ComboBox Parent Capability' As combobox":
@@ -651,8 +662,8 @@
             Items: =Sort(Capabilities,'Capability Name')
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
-            X: =56
-            Y: =181
+            X: =64
+            Y: =273
             ZIndex: =12
 
         "'ComboBox Operating Model' As combobox":
@@ -661,8 +672,8 @@
             Items: =Sort('Operating Models','Operating Model Name')
             SearchFields: =["neu_operatingmodelname"]
             SearchItems: =[]
-            X: =56
-            Y: =269
+            X: =64
+            Y: =361
             ZIndex: =13
 
         "'Created Message Capability' As label":
@@ -672,17 +683,28 @@
             Text: ="New Capability was successfully created!"
             Visible: =If(varCapCreated,true,false)
             Width: =358
-            X: =189
-            Y: =342
+            X: =197
+            Y: =434
             ZIndex: =14
+
+        "'Create Capability Label' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =77
+            Size: =25
+            Text: ="Create Capability"
+            Width: =510
+            X: =121
+            Y: =38
+            ZIndex: =15
 
     "'Container Create Process Group' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =405
+        Height: =492
         Visible: =If(varOpenProcessGroupCreate, true, false)
         Width: =710
         X: =324
-        Y: =144
+        Y: =140
         ZIndex: =17
 
         "'Create Process Group Button' As button":
@@ -698,8 +720,8 @@
                 );
                 UpdateContext({varPGCreated:true})
             Text: ="Create"
-            X: =260
-            Y: =328
+            X: =273
+            Y: =420
             ZIndex: =1
 
         "'New Process group Label' As label":
@@ -708,7 +730,7 @@
                 ="New Process Group Name:"
             Width: =296
             X: =56
-            Y: =52
+            Y: =127
             ZIndex: =2
 
         "'Process Group Input' As text":
@@ -718,7 +740,7 @@
                 =UpdateContext({varPGCreated:false})
             Width: =496
             X: =56
-            Y: =88
+            Y: =163
             ZIndex: =3
 
         "'Parent Capability Process Group Label' As label":
@@ -726,7 +748,7 @@
             Text: ="Capability"
             Width: =281
             X: =56
-            Y: =158
+            Y: =233
             ZIndex: =4
 
         "'Exit Process Group Create' As icon.Cancel":
@@ -744,7 +766,7 @@
             Default: ="Choose the status"
             Items: =Sort(Capabilities,'Capability Name')
             X: =56
-            Y: =188
+            Y: =263
             ZIndex: =7
 
         "'Created Message Process Group' As label":
@@ -754,13 +776,24 @@
             Text: ="Process Group was successfully created!"
             Visible: =If(varPGCreated,true,false)
             Width: =376
-            X: =152
-            Y: =268
+            X: =176
+            Y: =366
             ZIndex: =8
+
+        Label4 As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =83
+            Size: =25
+            Text: ="Create Process Group"
+            Width: =531
+            X: =88
+            Y: =36
+            ZIndex: =9
 
     "'Container Create Process' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =405
+        Height: =485
         Visible: =If(varOpenProcessCreate, true, false)
         Width: =710
         X: =324
@@ -780,8 +813,8 @@
                 );
                 UpdateContext({varProcCreated:true})
             Text: ="Create"
-            X: =260
-            Y: =328
+            X: =277
+            Y: =407
             ZIndex: =1
 
         "'New Process Label' As label":
@@ -789,8 +822,8 @@
             Text: |-
                 ="New Process Name:"
             Width: =296
-            X: =56
-            Y: =52
+            X: =73
+            Y: =131
             ZIndex: =2
 
         "'Process Input' As text":
@@ -799,8 +832,8 @@
             OnSelect: |-
                 =UpdateContext({varProcCreated:false})
             Width: =496
-            X: =56
-            Y: =88
+            X: =73
+            Y: =167
             ZIndex: =3
 
         "'Parent Process Group Label' As label":
@@ -808,8 +841,8 @@
             Text: |-
                 ="Process Group:"
             Width: =281
-            X: =56
-            Y: =158
+            X: =73
+            Y: =237
             ZIndex: =4
 
         "'Exit Process Create' As icon.Cancel":
@@ -826,8 +859,8 @@
         "'Parent Process Group Dropdown' As dropdown":
             Default: ="Choose the status"
             Items: =Sort('Process Groups','Process Group Name')
-            X: =56
-            Y: =188
+            X: =73
+            Y: =267
             ZIndex: =7
 
         "'Created Message Process' As label":
@@ -837,7 +870,18 @@
             Text: ="Process was successfully created!"
             Visible: =If(varProcCreated,true,false)
             Width: =376
-            X: =152
-            Y: =268
+            X: =169
+            Y: =348
             ZIndex: =8
+
+        Label5 As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =68
+            Size: =25
+            Text: ="Create Process"
+            Width: =412
+            X: =151
+            Y: =35
+            ZIndex: =9
 
