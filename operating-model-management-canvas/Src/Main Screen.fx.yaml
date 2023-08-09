@@ -630,13 +630,13 @@
             ZIndex: =3
 
         "'Parent Operating Model Label' As label":
-            Height: =30
+            Height: =35
             Text: |-
-                ="Operating Model
+                ="Operating Model (Recommended for Level 1 Capability)
                 "
-            Width: =281
+            Width: =472
             X: =79
-            Y: =289
+            Y: =284
             ZIndex: =4
 
         "'Exit Capability Create' As icon.Cancel":
@@ -736,17 +736,39 @@
                 =//Distinct('Operating Models', 'Status Reason')
                 //["Draft","Active","Obsolete"]
                 Choices('Status Reason (Capabilities)')
+            Width: =256
             X: =79
             Y: =404
             ZIndex: =19
+
+        "'Scope Review Cap Label' As label":
+            Height: =30
+            Text: |-
+                ="Scope Review
+                "
+            Width: =281
+            X: =375
+            Y: =372
+            ZIndex: =20
+
+        "'Scope Review Cap Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: |-
+                =//Distinct('Operating Models', 'Status Reason')
+                //["Draft","Active","Obsolete"]
+                Choices('Scope Review')
+            Width: =256
+            X: =375
+            Y: =402
+            ZIndex: =21
 
     "'Container Create Process Group' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
         Height: =492
         Visible: =If(varOpenProcessGroupCreate, true, false)
         Width: =710
-        X: =324
-        Y: =140
+        X: =321
+        Y: =165
         ZIndex: =17
 
         "'Create Process Group Button' As button":
@@ -756,13 +778,13 @@
                     {
                         'Process Group Name':'Process Group Input'.Text,
                         Capability:'Parent Capability Dropdown'.Selected,
-                        'Status Reason':'Status Reason (Process Groups)'.Draft,
-                        'Scope Review':'Scope Review'.'In Review'
+                        'Status Reason':'Status Reason PG Dropdown'.Selected.Value,
+                        'Scope Review':'Scope Review PG Dropdown'.Selected.Value
                     }
                 );
                 UpdateContext({varPGCreated:true})
             Text: ="Create"
-            X: =273
+            X: =272
             Y: =420
             ZIndex: =1
 
@@ -772,7 +794,7 @@
                 ="New Process Group Name:"
             Width: =296
             X: =56
-            Y: =127
+            Y: =91
             ZIndex: =2
 
         "'Process Group Input' As text":
@@ -782,7 +804,7 @@
                 =UpdateContext({varPGCreated:false})
             Width: =496
             X: =56
-            Y: =163
+            Y: =127
             ZIndex: =3
 
         "'Parent Capability Process Group Label' As label":
@@ -790,7 +812,7 @@
             Text: ="Capability"
             Width: =281
             X: =56
-            Y: =233
+            Y: =193
             ZIndex: =4
 
         "'Exit Process Group Create' As icon.Cancel":
@@ -808,7 +830,7 @@
             Default: ="Choose the status"
             Items: =Sort(Capabilities,'Capability Name')
             X: =56
-            Y: =263
+            Y: =223
             ZIndex: =7
 
         "'Created Message Process Group' As label":
@@ -825,13 +847,45 @@
         "'Create Process Group Label' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
-            Height: =83
+            Height: =69
             Size: =25
             Text: ="Create Process Group"
             Width: =531
-            X: =88
-            Y: =36
+            X: =86
+            Y: =22
             ZIndex: =9
+
+        "'Status Reason PG Label' As label":
+            Height: =30
+            Text: ="Status Reason"
+            Width: =281
+            X: =56
+            Y: =279
+            ZIndex: =10
+
+        "'Status Reason PG Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: =Choices('Status Reason (Process Groups)')
+            Width: =262
+            X: =56
+            Y: =309
+            ZIndex: =11
+
+        "'Scope Review PG Label' As label":
+            Height: =30
+            Text: ="Scope Review"
+            Width: =281
+            X: =352
+            Y: =279
+            ZIndex: =12
+
+        "'Scope Review PG Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Choices('Scope Review')
+            Width: =262
+            X: =352
+            Y: =309
+            ZIndex: =13
 
     "'Container Create Process' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
