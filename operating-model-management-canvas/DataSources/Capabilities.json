@@ -27,6 +27,7 @@
       "neu_capability_SyncErrors": "Sync Errors",
       "neu_capabilityid": "Capability",
       "neu_capabilityname": "Capability Name",
+      "neu_model": "Model",
       "neu_neu_capability_ParentCapability_neu_capab": "Capabilities",
       "neu_neu_capabilityhierarchy_Capability_neu_ca": "Capability Hierarchies",
       "neu_neu_processgroup_CapabilityID_neu_capabil": "Process Groups",
@@ -103,6 +104,34 @@
     },
     "OptionSetTypeKey": "StatusType",
     "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Capabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Model",
+    "Name": "neu_model",
+    "OptionSetInfoNameMapping": {
+      "871820000": "Implementation Model",
+      "871820001": "Operating Model"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Capabilities"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Process Groups"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Processes"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_model",
     "RelatedEntityName": "Capabilities",
     "Type": "OptionSetInfo"
   },
