@@ -766,8 +766,8 @@
         Fill: =RGBA(255, 255, 255, 1)
         Height: =492
         Visible: =If(varOpenProcessGroupCreate, true, false)
-        Width: =710
-        X: =321
+        Width: =759
+        X: =304
         Y: =165
         ZIndex: =17
 
@@ -784,7 +784,7 @@
                 );
                 UpdateContext({varPGCreated:true})
             Text: ="Create"
-            X: =272
+            X: =300
             Y: =420
             ZIndex: =1
 
@@ -822,8 +822,8 @@
                 =UpdateContext({varOpenProcessGroupCreate:false});
                 UpdateContext({varPGCreated:false})
             Width: =42
-            X: =636
-            Y: =20
+            X: =687
+            Y: =22
             ZIndex: =6
 
         "'Parent Capability Dropdown' As dropdown":
@@ -840,8 +840,8 @@
             Text: ="Process Group was successfully created!"
             Visible: =If(varPGCreated,true,false)
             Width: =376
-            X: =176
-            Y: =366
+            X: =192
+            Y: =363
             ZIndex: =8
 
         "'Create Process Group Label' As label":
@@ -851,7 +851,7 @@
             Size: =25
             Text: ="Create Process Group"
             Width: =531
-            X: =86
+            X: =114
             Y: =22
             ZIndex: =9
 
