@@ -481,13 +481,14 @@
         ZIndex: =13
 
     "'Main Title Label' As label":
+        Align: =Align.Center
         FontWeight: =FontWeight.Bold
         Height: =64
         Size: =36
         Text: ="Solution Operating Models"
         Width: =721
-        X: =23
-        Y: =17
+        X: =315
+        Y: =19
         ZIndex: =14
 
     "'Container Create Operating Model' As groupContainer.manualLayoutContainer":
@@ -521,7 +522,7 @@
                 ="New Operating Model Name:"
             Width: =296
             X: =60
-            Y: =104
+            Y: =118
             ZIndex: =2
 
         "'Operating Model Input' As text":
@@ -531,7 +532,7 @@
                 =UpdateContext({varOMCreated:false})
             Width: =496
             X: =60
-            Y: =140
+            Y: =154
             ZIndex: =3
 
         "'Solution Areas Label' As label":
@@ -540,7 +541,7 @@
                 ="Solution Area:"
             Width: =281
             X: =60
-            Y: =204
+            Y: =218
             ZIndex: =4
 
         "'Exit Operating Model Create' As icon.Cancel":
@@ -558,7 +559,7 @@
             Default: ="Choose the status"
             Items: =Sort('Solution Areas','Solution Area Name')
             X: =60
-            Y: =234
+            Y: =248
             ZIndex: =7
 
         "'Created Message Operating Model' As label":
@@ -588,7 +589,7 @@
             Text: ="Status Reason"
             Width: =281
             X: =60
-            Y: =294
+            Y: =308
             ZIndex: =10
 
         "'Status Reason OM Dropdown' As dropdown":
@@ -598,7 +599,7 @@
                 //["Draft","Active","Obsolete"]
                 Choices('Status Reason (Operating Models)')
             X: =60
-            Y: =324
+            Y: =338
             ZIndex: =11
 
     "'Container Create Capability' As groupContainer.manualLayoutContainer":
@@ -616,7 +617,7 @@
                 ="New Capability Name:"
             Width: =296
             X: =79
-            Y: =102
+            Y: =109
             ZIndex: =2
 
         "'New Capability Input' As text":
@@ -626,17 +627,15 @@
                 =UpdateContext({varCapCreated:false})
             Width: =496
             X: =79
-            Y: =138
+            Y: =145
             ZIndex: =3
 
         "'Parent Operating Model Label' As label":
             Height: =35
-            Text: |-
-                ="Operating Model (Recommended for Level 1 Capability)
-                "
+            Text: ="Operating Model"
             Width: =472
             X: =79
-            Y: =284
+            Y: =208
             ZIndex: =4
 
         "'Exit Capability Create' As icon.Cancel":
@@ -657,9 +656,10 @@
                     {
                         'Capability Name':'New Capability Input'.Text,
                         'Parent Capability':'ComboBox Parent Capability'.Selected,
-                        'Operating Model':'ComboBox Operating Model'.Selected,
-                        'Scope Review':'Scope Review'.'In Review',
-                        'Status Reason':'Status Reason Cap Dropdown'.Selected.Value
+                        'Operating Model':'Operating Model Cap Dropdown'.Selected,
+                        'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
+                        'Status Reason':'Status Reason Cap Dropdown'.Selected.Value,
+                        Model:Model.'Operating Model'
                     }
                 );
                 UpdateContext({varCapCreated:true})
@@ -675,18 +675,8 @@
                 "
             Width: =281
             X: =79
-            Y: =202
+            Y: =293
             ZIndex: =10
-
-        "'ComboBox Operating Model' As combobox":
-            DisplayFields: =["neu_operatingmodelname"]
-            IsSearchable: =false
-            Items: =Sort('Operating Models','Operating Model Name')
-            SearchFields: =["neu_operatingmodelname"]
-            SearchItems: =[]
-            X: =79
-            Y: =319
-            ZIndex: =13
 
         "'Created Message Capability' As label":
             Align: =Align.Center
@@ -707,7 +697,7 @@
             Text: ="Create Capability"
             Width: =510
             X: =107
-            Y: =38
+            Y: =24
             ZIndex: =15
 
         "'Status Reason Cap Label' As label":
@@ -723,11 +713,11 @@
         "'ComboBox Parent Capability' As combobox":
             DisplayFields: =["neu_capabilityname"]
             IsSearchable: =false
-            Items: =Sort(Capabilities,'Capability Name')
+            Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name'), 'Capability Name')
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             X: =79
-            Y: =231
+            Y: =323
             ZIndex: =18
 
         "'Status Reason Cap Dropdown' As dropdown":
@@ -748,7 +738,7 @@
                 "
             Width: =281
             X: =375
-            Y: =372
+            Y: =371
             ZIndex: =20
 
         "'Scope Review Cap Dropdown' As dropdown":
@@ -759,16 +749,22 @@
                 Choices('Scope Review')
             Width: =256
             X: =375
-            Y: =402
+            Y: =401
             ZIndex: =21
+
+        "'Operating Model Cap Dropdown' As dropdown":
+            Items: =Sort('Operating Models','Operating Model Name')
+            X: =79
+            Y: =247
+            ZIndex: =22
 
     "'Container Create Process Group' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =492
+        Height: =587
         Visible: =If(varOpenProcessGroupCreate, true, false)
         Width: =759
-        X: =304
-        Y: =165
+        X: =297
+        Y: =106
         ZIndex: =17
 
         "'Create Process Group Button' As button":
@@ -779,13 +775,14 @@
                         'Process Group Name':'Process Group Input'.Text,
                         Capability:'Parent Capability Dropdown'.Selected,
                         'Status Reason':'Status Reason PG Dropdown'.Selected.Value,
-                        'Scope Review':'Scope Review PG Dropdown'.Selected.Value
+                        'Scope Review':'Scope Review PG Dropdown'.Selected.Value,
+                        Model:Model.'Operating Model'
                     }
                 );
                 UpdateContext({varPGCreated:true})
             Text: ="Create"
-            X: =300
-            Y: =420
+            X: =299
+            Y: =518
             ZIndex: =1
 
         "'New Process group Label' As label":
@@ -794,7 +791,7 @@
                 ="New Process Group Name:"
             Width: =296
             X: =56
-            Y: =91
+            Y: =103
             ZIndex: =2
 
         "'Process Group Input' As text":
@@ -804,7 +801,7 @@
                 =UpdateContext({varPGCreated:false})
             Width: =496
             X: =56
-            Y: =127
+            Y: =139
             ZIndex: =3
 
         "'Parent Capability Process Group Label' As label":
@@ -812,7 +809,7 @@
             Text: ="Capability"
             Width: =281
             X: =56
-            Y: =193
+            Y: =282
             ZIndex: =4
 
         "'Exit Process Group Create' As icon.Cancel":
@@ -828,9 +825,9 @@
 
         "'Parent Capability Dropdown' As dropdown":
             Default: ="Choose the status"
-            Items: =Sort(Capabilities,'Capability Name')
+            Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model PG Dropdown'.Selected.'Operating Model Name'),'Capability Name')
             X: =56
-            Y: =223
+            Y: =312
             ZIndex: =7
 
         "'Created Message Process Group' As label":
@@ -840,8 +837,8 @@
             Text: ="Process Group was successfully created!"
             Visible: =If(varPGCreated,true,false)
             Width: =376
-            X: =192
-            Y: =363
+            X: =191
+            Y: =461
             ZIndex: =8
 
         "'Create Process Group Label' As label":
@@ -852,7 +849,7 @@
             Text: ="Create Process Group"
             Width: =531
             X: =114
-            Y: =22
+            Y: =15
             ZIndex: =9
 
         "'Status Reason PG Label' As label":
@@ -860,7 +857,7 @@
             Text: ="Status Reason"
             Width: =281
             X: =56
-            Y: =279
+            Y: =367
             ZIndex: =10
 
         "'Status Reason PG Dropdown' As dropdown":
@@ -868,7 +865,7 @@
             Items: =Choices('Status Reason (Process Groups)')
             Width: =262
             X: =56
-            Y: =309
+            Y: =397
             ZIndex: =11
 
         "'Scope Review PG Label' As label":
@@ -876,7 +873,7 @@
             Text: ="Scope Review"
             Width: =281
             X: =352
-            Y: =279
+            Y: =367
             ZIndex: =12
 
         "'Scope Review PG Dropdown' As dropdown":
@@ -884,15 +881,30 @@
             Items: =Choices('Scope Review')
             Width: =262
             X: =352
-            Y: =309
+            Y: =397
             ZIndex: =13
+
+        "'Operating Model PG Label' As label":
+            Height: =30
+            Text: ="Operating Model Filter"
+            Width: =281
+            X: =56
+            Y: =197
+            ZIndex: =14
+
+        "'Operating Model PG Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Items: =Sort('Operating Models','Operating Model Name')
+            X: =56
+            Y: =227
+            ZIndex: =15
 
     "'Container Create Process' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
         Height: =703
         Visible: =If(varOpenProcessCreate, true, false)
-        Width: =827
-        X: =262
+        Width: =1060
+        X: =145
         Y: =36
         ZIndex: =18
 
@@ -905,21 +917,22 @@
                         'Process Group':'Parent Process Group Dropdown'.Selected,
                         'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
                         'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
-                        Description:'Process Description Input'.Text
+                        Description:'Process Description Input'.Text,
+                        Model:Model.'Operating Model'
                     }
                 );
                 UpdateContext({varProcCreated:true})
             Text: ="Create"
-            X: =335
-            Y: =634
+            X: =450
+            Y: =633
             ZIndex: =1
 
         "'New Process Label' As label":
             Height: =36
             Text: ="New Process Name"
             Width: =296
-            X: =78
-            Y: =101
+            X: =46
+            Y: =115
             ZIndex: =2
 
         "'Process Input' As text":
@@ -927,17 +940,17 @@
             Height: =46
             OnSelect: |-
                 =UpdateContext({varProcCreated:false})
-            Width: =568
-            X: =78
-            Y: =137
+            Width: =426
+            X: =46
+            Y: =151
             ZIndex: =3
 
         "'Parent Process Group Label' As label":
             Height: =30
-            Text: ="Process Group"
+            Text: ="Parent Process Group"
             Width: =281
-            X: =78
-            Y: =192
+            X: =46
+            Y: =405
             ZIndex: =4
 
         "'Exit Process Create' As icon.Cancel":
@@ -947,15 +960,17 @@
                 =UpdateContext({varOpenProcessCreate:false});
                 UpdateContext({varProcCreated:false})
             Width: =42
-            X: =753
+            X: =989
             Y: =20
             ZIndex: =6
 
         "'Parent Process Group Dropdown' As dropdown":
             Default: ="Choose the status"
-            Items: =Sort('Process Groups','Process Group Name')
-            X: =78
-            Y: =222
+            Height: =41
+            Items: =Sort(Filter('Process Groups', Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'),'Process Group Name')
+            Width: =263
+            X: =46
+            Y: =434
             ZIndex: =7
 
         "'Created Message Process' As label":
@@ -965,18 +980,18 @@
             Text: ="Process was successfully created!"
             Visible: =If(varProcCreated,true,false)
             Width: =376
-            X: =227
-            Y: =591
+            X: =342
+            Y: =583
             ZIndex: =8
 
         "'Create Process Label' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
-            Height: =60
+            Height: =45
             Size: =25
             Text: ="Create Process"
             Width: =412
-            X: =209
+            X: =324
             Y: =20
             ZIndex: =9
 
@@ -984,52 +999,86 @@
             Height: =30
             Text: ="Status Reason"
             Width: =240
-            X: =78
-            Y: =272
+            X: =46
+            Y: =490
             ZIndex: =10
 
         "'Status Reason Proc Dropdown' As dropdown":
             Default: ="Draft"
             Height: =41
             Items: =Choices('Status Reason (Processes)')
-            Width: =257
-            X: =78
-            Y: =302
+            Width: =211
+            X: =46
+            Y: =520
             ZIndex: =11
 
         "'Scope Review Proc Label' As label":
             Height: =30
             Text: ="Scope Review"
             Width: =240
-            X: =406
-            Y: =272
+            X: =286
+            Y: =490
             ZIndex: =12
 
         "'Scope Review Proc Dropdown' As dropdown":
             Default: ="Draft"
             Height: =41
             Items: =Choices('Scope Review')
-            Width: =257
-            X: =406
-            Y: =302
+            Width: =211
+            X: =286
+            Y: =520
             ZIndex: =13
 
         "'Process Description Label' As label":
             Height: =36
             Text: ="Description"
-            Width: =296
-            X: =78
-            Y: =351
+            Width: =216
+            X: =526
+            Y: =115
             ZIndex: =14
 
         "'Process Description Input' As text":
             Default: =""
-            Height: =204
+            Height: =410
             Mode: =TextMode.MultiLine
             OnSelect: |-
                 =UpdateContext({varProcCreated:false})
-            Width: =675
-            X: =78
-            Y: =387
+            Width: =491
+            X: =526
+            Y: =151
             ZIndex: =15
+
+        "'Capability Proc Label' As label":
+            Height: =30
+            Text: ="Capability Filter"
+            Width: =281
+            X: =46
+            Y: =313
+            ZIndex: =16
+
+        "'Capability Proc Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Height: =41
+            Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
+            Width: =263
+            X: =46
+            Y: =342
+            ZIndex: =17
+
+        "'Operating Model Proc Label' As label":
+            Height: =30
+            Text: ="Operating Model Filter"
+            Width: =281
+            X: =46
+            Y: =225
+            ZIndex: =18
+
+        "'Operating Model Proc Dropdown' As dropdown":
+            Default: ="Choose the status"
+            Height: =41
+            Items: =Sort('Operating Models', 'Operating Model Name')
+            Width: =263
+            X: =46
+            Y: =254
+            ZIndex: =19
 
