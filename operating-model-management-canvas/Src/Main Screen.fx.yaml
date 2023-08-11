@@ -175,6 +175,9 @@
 
     "'Process Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
+        Default: |-
+            =varSelectedItem
+            //'Process Gallery Child'.Selected
         DelayItemLoading: =true
         Fill: |-
             =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate, 
@@ -184,12 +187,12 @@
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |
-            =Navigate('Detail Screen',ScreenTransition.Cover);
+            =UpdateContext({varSelectedItem:'Process Gallery Parent'.Selected});
+            Navigate('Detail Screen',ScreenTransition.Cover);
             UpdateContext({varOpenOperatingModelCreate:false});
             UpdateContext({varOpenCapabilityCreate:false});
             UpdateContext({varOpenProcessGroupCreate:false});
-            UpdateContext({varOpenProcessCreate:false});
-            Set(varSelectedItem,ThisItem.'Process Name')
+            UpdateContext({varOpenProcessCreate:false})
         TemplateFill: |-
             =If(ThisItem.IsSelected && !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
                 RGBA(204, 208, 225, 1), 

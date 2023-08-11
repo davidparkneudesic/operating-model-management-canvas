@@ -17,10 +17,10 @@
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =70
+        Height: =50
         Items: |-
             =//If(IsBlank('Process Gallery'.Selected.'Data Flow URL'), Title10_2.Text = "The diagram does not yet exist", Title10_2.Text = "Click here to open the diagram")
-            Filter(Processes, 'Process Name' = 'Process Gallery Parent'.Selected.'Process Name')
+            Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         OnSelect: |-
@@ -29,16 +29,15 @@
                 Launch("https://lucid.app/documents#/documents?folder_id=335606626")
             )
         TemplatePadding: =0
-        TemplateSize: =70
-        Width: =485
-        X: =763
-        Y: =260
+        TemplateSize: =50
+        Width: =661
+        X: =523
+        Y: =638
         ZIndex: =4
 
         Title10_2 As label:
-            Height: =60
+            Height: =50
             OnSelect: =Select(Parent)
-            Overflow: =Overflow.Scroll
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
@@ -50,31 +49,30 @@
                     "Click here to open the diagram"
                 )
             Underline: =true
-            Width: =475
+            Width: =651
             X: =10
-            Y: =10
             ZIndex: =1
 
     "'Data Flow URL Label' As label":
         FontWeight: =FontWeight.Semibold
         Size: =15
         Text: ="Data Flow URL"
-        X: =763
-        Y: =220
+        X: =523
+        Y: =598
         ZIndex: =5
 
     "'Process Name Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =40
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Parent'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =40
         Width: =566
-        X: =145
-        Y: =165
+        X: =520
+        Y: =177
         ZIndex: =6
 
         Title10_4 As label:
@@ -95,8 +93,8 @@
         Text: |-
             ="Process Name:"
         Width: =170
-        X: =145
-        Y: =125
+        X: =520
+        Y: =137
         ZIndex: =7
 
     "'Description Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -105,21 +103,21 @@
         Fill: |-
             =RGBA(255, 255, 255, 1
             )
-        Height: =347
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Parent'.Selected.'Process Name')
+        Height: =221
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
-        TemplateSize: =347
-        Width: =571
-        X: =146
-        Y: =260
+        TemplateSize: =221
+        Width: =661
+        X: =523
+        Y: =269
         ZIndex: =8
 
         Title10_5 As label:
             DisplayMode: =DisplayMode.View
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =339
+            Height: =213
             OnSelect: =Select(Parent)
             Overflow: =Overflow.Scroll
             PaddingBottom: =0
@@ -129,7 +127,7 @@
             Size: =12
             Text: =ThisItem.Description
             VerticalAlign: =VerticalAlign.Top
-            Width: =571
+            Width: =661
             Y: =8
             ZIndex: =1
 
@@ -139,22 +137,22 @@
         Text: |-
             ="Description:"
         Width: =170
-        X: =146
-        Y: =220
+        X: =523
+        Y: =229
         ZIndex: =9
 
     "'Scope Review Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =40
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Parent'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =40
         Width: =203
-        X: =763
-        Y: =165
+        X: =523
+        Y: =543
         ZIndex: =10
 
         Title10_6 As label:
@@ -174,22 +172,22 @@
         Text: |-
             ="Scope Review:"
         Width: =207
-        X: =761
-        Y: =125
+        X: =521
+        Y: =503
         ZIndex: =11
 
     "'Status Reason Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Height: =40
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Parent'.Selected.'Process Name')
+        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =40
         Width: =204
-        X: =1041
-        Y: =165
+        X: =882
+        Y: =543
         ZIndex: =12
 
         Title10_7 As label:
@@ -209,18 +207,73 @@
         Text: |-
             ="Status Reason:"
         Width: =207
-        X: =1041
-        Y: =125
+        X: =882
+        Y: =503
         ZIndex: =13
 
     "'Child Process Label' As label":
+        FontWeight: =FontWeight.Bold
+        Height: =36
+        Size: =24
+        Text: ="Process "
+        Width: =326
+        X: =122
+        Y: =137
+        ZIndex: =14
+
+    "'Process Gallery Child' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
+        Default: |-
+            =//varSelectedItem
+            'Process Gallery Parent'.Selected
+        DelayItemLoading: =true
+        Fill: = RGBA(255, 255, 255, 1)
+        Height: =531
+        Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' =  'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =//UpdateContext({varSelectedItem:'Process Gallery Child'.Selected})
+            Set(varSelectedItem,'Process Gallery Child'.Selected)
+        TemplateFill: =If(ThisItem.IsSelected, RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
+        TemplatePadding: =0
+        TemplateSize: =50
+        Width: =345
+        X: =113
+        Y: =173
+        ZIndex: =15
+
+        Title10_1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =50
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.'Process Name'
+            Width: =295
+            X: =14
+            ZIndex: =1
+
+        Rectangle10_1 As rectangle:
+            Height: =Parent.TemplateHeight
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =4
+
+    "'Detail Page Label' As label":
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
-        Height: =61
-        Size: =24
-        Text: ="Process Details"
-        Width: =352
-        X: =577
+        Height: =85
+        Size: =25
+        Text: |-
+            ="Process Detail
+            "
+        Width: =654
+        X: =405
         Y: =36
-        ZIndex: =14
+        ZIndex: =16
 
