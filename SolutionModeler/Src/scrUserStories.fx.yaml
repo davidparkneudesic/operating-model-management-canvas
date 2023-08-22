@@ -1457,7 +1457,7 @@
             OnSelect: |-
                 =UpdateContext({varOpenUserStoryCreate:false});
                 UpdateContext({varUSCreated:false});
-                UpdateContext({resetControl: !resetControl});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Width: =55
             X: =831
             Y: =26
@@ -1499,7 +1499,7 @@
                 );
                 
                 UpdateContext({varUSCreated:true});
-                UpdateContext({resetControl: !resetControl})
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
             X: =376
             Y: =622
