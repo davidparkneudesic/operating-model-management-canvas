@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_solutionareas",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_solutionarea",
+    "MaxGetRowsCount": 500,
+    "Name": "Solution Areas",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_ClientSolution_neu_SolutionArea_neu_S": "Client Solutions",
+      "neu_neu_operatingmodel_SolutionAreaID_neu_sol": "Operating Models",
+      "neu_solutionarea_AsyncOperations": "System Jobs",
+      "neu_solutionarea_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_solutionarea_DuplicateBaseRecord": "Duplicate Records (neu_solutionarea_DuplicateBaseRecord)",
+      "neu_solutionarea_DuplicateMatchingRecord": "Duplicate Records (neu_solutionarea_DuplicateMatchingRecord)",
+      "neu_solutionarea_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_solutionarea_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_solutionarea_ProcessSession": "Process Sessions",
+      "neu_solutionarea_SyncErrors": "Sync Errors",
+      "neu_solutionareaid": "Solution Area",
+      "neu_solutionareaname": "Solution Area Name",
+      "organizationid": "Organization Id",
+      "overriddencreatedon": "Record Created On",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Solution Areas",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Solution Areas (Views)",
+    "Name": "_neu_solutionarea_views",
+    "RelatedEntityName": "Solution Areas",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "26676909-7d76-4e1e-a2a0-fb5494eb59ab": "Solution Area Advanced Find View",
+      "35cd9701-62ea-4a9c-882c-e407f42150bd": "Solution Area Associated View",
+      "622e0929-bebf-4cd6-97e3-b11c0a2dd58a": "Inactive Solution Areas",
+      "b295d46e-10f2-4a04-9ec0-8d2d08d33838": "Solution Area Lookup View",
+      "c9c6ca8f-ede8-4b72-b0ab-e9f8ccc72285": "Active Solution Areas"
+    }
+  },
+  {
+    "DisplayName": "Status (Solution Areas)",
+    "Name": "neu_solutionarea_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Solution Areas"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Solution Areas",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Solution Areas)",
+    "Name": "neu_solutionarea_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Solution Areas"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Solution Areas",
+    "Type": "OptionSetInfo"
+  }
+]

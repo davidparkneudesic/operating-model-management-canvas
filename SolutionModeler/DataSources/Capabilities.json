@@ -1,0 +1,187 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_capabilities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_capability",
+    "MaxGetRowsCount": 500,
+    "Name": "Capabilities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_capability_AsyncOperations": "System Jobs",
+      "neu_capability_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_capability_DuplicateBaseRecord": "Duplicate Records (neu_capability_DuplicateBaseRecord)",
+      "neu_capability_DuplicateMatchingRecord": "Duplicate Records (neu_capability_DuplicateMatchingRecord)",
+      "neu_capability_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_capability_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_capability_ProcessSession": "Process Sessions",
+      "neu_capability_SyncErrors": "Sync Errors",
+      "neu_capabilityid": "Capability",
+      "neu_capabilityname": "Capability Name",
+      "neu_model": "Model",
+      "neu_neu_capability_ParentCapability_neu_capab": "Capabilities",
+      "neu_neu_capabilityhierarchy_Capability_neu_ca": "Capability Hierarchies",
+      "neu_neu_processgroup_CapabilityID_neu_capabil": "Process Groups",
+      "neu_neu_userstory_CapabilityID_neu_capability": "User Stories",
+      "neu_OperatingModelID": "Operating Model",
+      "neu_ParentCapability": "Parent Capability",
+      "neu_scopereview": "Scope Review",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Capabilities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Capabilities (Views)",
+    "Name": "_neu_capability_views",
+    "RelatedEntityName": "Capabilities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1c4e9844-5b09-45ad-b3cd-3d1a5cdd5812": "Capability Advanced Find View",
+      "3b95c175-9592-4825-b7ff-ecfe55734cad": "Capability Associated View",
+      "6caf33dd-4a31-ee11-bdf3-000d3a4e9005": "Draft Capabilities",
+      "6d43dd76-1199-4f73-858a-43c246ff42bc": "Active Capabilities",
+      "88fb18b3-ec24-4305-872b-a3f3045c6791": "Inactive Capabilities",
+      "b6977e49-cb2c-ee11-bdf4-000d3a8b3ea5": "Child Capabilities Sub Grid",
+      "c3780eae-d100-ee11-8f6e-0022482bd981": "Level 1 Capabilities Sub Grid",
+      "d313417c-c504-4492-92df-b80a93dc64b4": "Capability Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Capabilities)",
+    "Name": "neu_capability_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Capabilities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Capabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Capabilities)",
+    "Name": "neu_capability_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Capabilities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Capabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Model",
+    "Name": "neu_model",
+    "OptionSetInfoNameMapping": {
+      "871820000": "Implementation Model",
+      "871820001": "Operating Model"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Capabilities"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Operating Models"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Process Groups"
+      },
+      "OptionSetReferenceItem3": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Processes"
+      },
+      "OptionSetReferenceItem4": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Implementation Phases"
+      },
+      "OptionSetReferenceItem5": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Implementation Stages"
+      },
+      "OptionSetReferenceItem6": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Product Backlog Items"
+      },
+      "OptionSetReferenceItem7": {
+        "OptionSetReferenceColumnName": "neu_model",
+        "OptionSetReferenceEntityName": "Tasks"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_model",
+    "RelatedEntityName": "Capabilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Scope Review",
+    "Name": "neu_scopereview",
+    "OptionSetInfoNameMapping": {
+      "871820000": "In Review",
+      "871820001": "In Scope",
+      "871820002": "Out of Scope"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_scopereview",
+        "OptionSetReferenceEntityName": "Capabilities"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "neu_scopereview",
+        "OptionSetReferenceEntityName": "Process Groups"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "neu_scopereview",
+        "OptionSetReferenceEntityName": "Processes"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_scopereview",
+    "RelatedEntityName": "Capabilities",
+    "Type": "OptionSetInfo"
+  }
+]

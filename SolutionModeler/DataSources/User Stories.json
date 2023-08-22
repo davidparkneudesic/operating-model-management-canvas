@@ -1,0 +1,128 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_userstories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_userstory",
+    "MaxGetRowsCount": 500,
+    "Name": "User Stories",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_CapabilityID": "Capability",
+      "neu_ClientSolutionID": "Client Solution",
+      "neu_description": "Description",
+      "neu_effortpercentage": "Effort Percentage",
+      "neu_epiclevelitem": "Epic Level Item",
+      "neu_estimatedhours": "Estimated Hours",
+      "neu_name": "Name",
+      "neu_OperatingModelID": "Operating Model",
+      "neu_ProcessGroupID": "Process Group",
+      "neu_ProcessID": "Process",
+      "neu_userstory_Annotations": "Notes",
+      "neu_userstory_AsyncOperations": "System Jobs",
+      "neu_userstory_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_userstory_DuplicateBaseRecord": "Duplicate Records (neu_userstory_DuplicateBaseRecord)",
+      "neu_userstory_DuplicateMatchingRecord": "Duplicate Records (neu_userstory_DuplicateMatchingRecord)",
+      "neu_userstory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_userstory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_userstory_ProcessSession": "Process Sessions",
+      "neu_userstory_SyncErrors": "Sync Errors",
+      "neu_userstoryid": "User Story",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "User Stories",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "User Stories (Views)",
+    "Name": "_neu_userstory_views",
+    "RelatedEntityName": "User Stories",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0ce06cd7-012e-428e-9037-3a7a66652fe6": "User Story Lookup View",
+      "531ad293-b611-4814-8e96-4ba76df4f585": "User Story Advanced Find View",
+      "5542c357-9605-4213-b8de-9d439d7e7720": "User Story Associated View",
+      "88d2d3a6-f389-4675-8b3d-98bccdccaf56": "Inactive User Stories",
+      "d167746e-bbb4-4eb1-859f-9095e04a4aa8": "Active User Stories"
+    }
+  },
+  {
+    "DisplayName": "Epic Level Item (User Stories)",
+    "Name": "neu_userstory_neu_epiclevelitem",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_epiclevelitem",
+        "OptionSetReferenceEntityName": "User Stories"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "neu_epiclevelitem",
+    "RelatedEntityName": "User Stories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (User Stories)",
+    "Name": "neu_userstory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "User Stories"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "User Stories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (User Stories)",
+    "Name": "neu_userstory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "User Stories"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "User Stories",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,148 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_productbacklogitems",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_productbacklogitem",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Backlog Items",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_appliestouserstorytyped": "Applies to User Story Type",
+      "neu_ImplementationStageID": "Implementation Stage",
+      "neu_linkedtogapuserstory": "Linked to Gap User Stories",
+      "neu_model": "Model",
+      "neu_neu_task_ProductBacklog_neu_productbacklo": "Tasks",
+      "neu_productbacklogitem_AsyncOperations": "System Jobs",
+      "neu_productbacklogitem_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_productbacklogitem_DuplicateBaseRecord": "Duplicate Records (neu_productbacklogitem_DuplicateBaseRecord)",
+      "neu_productbacklogitem_DuplicateMatchingRecord": "Duplicate Records (neu_productbacklogitem_DuplicateMatchingRecord)",
+      "neu_productbacklogitem_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_productbacklogitem_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_productbacklogitem_ProcessSession": "Process Sessions",
+      "neu_productbacklogitem_SyncErrors": "Sync Errors",
+      "neu_productbacklogitemid": "Product Backlog Item",
+      "neu_productbacklogitemname": "Product Backlog Item Name",
+      "neu_sequence": "Sequence",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Product Backlog Items",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Backlog Items (Views)",
+    "Name": "_neu_productbacklogitem_views",
+    "RelatedEntityName": "Product Backlog Items",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "04b69df0-df8a-4065-843a-412d0a511932": "Active Product Backlog Items",
+      "406fd1aa-ce00-ee11-8f6e-0022482bd981": "Product Backlog Items Sub Grid",
+      "736e27ed-ebc0-4049-aaed-30ce6e78301f": "Product Backlog Item Associated View",
+      "a53506ab-c551-4035-b8f5-1c109250cd4c": "Product Backlog Item Advanced Find View",
+      "dccb9746-bc96-4cf2-a0e6-9928bb867752": "Product Backlog Item Lookup View",
+      "fd787422-d1b4-43ba-887b-c19c28aa0bf3": "Inactive Product Backlog Items"
+    }
+  },
+  {
+    "DisplayName": "Applies to User Story Type (Product Backlog Items)",
+    "Name": "neu_productbacklogitem_neu_appliestouserstorytyped",
+    "OptionSetInfoNameMapping": {
+      "871820000": "Business Process",
+      "871820001": "Data Migration",
+      "871820002": "Integration",
+      "871820003": "Reporting"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_appliestouserstorytyped",
+        "OptionSetReferenceEntityName": "Product Backlog Items"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_appliestouserstorytyped",
+    "RelatedEntityName": "Product Backlog Items",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Linked to Gap User Stories (Product Backlog Items)",
+    "Name": "neu_productbacklogitem_neu_linkedtogapuserstory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_linkedtogapuserstory",
+        "OptionSetReferenceEntityName": "Product Backlog Items"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "neu_linkedtogapuserstory",
+    "RelatedEntityName": "Product Backlog Items",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Product Backlog Items)",
+    "Name": "neu_productbacklogitem_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Backlog Items"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Backlog Items",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Backlog Items)",
+    "Name": "neu_productbacklogitem_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Backlog Items"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Backlog Items",
+    "Type": "OptionSetInfo"
+  }
+]
