@@ -1,0 +1,108 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_processes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_process",
+    "MaxGetRowsCount": 500,
+    "Name": "Processes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_dataflowurl": "Data Flow URL",
+      "neu_description": "Description",
+      "neu_model": "Model",
+      "neu_neu_userstory_ProcessID_neu_process": "User Stories",
+      "neu_process_AsyncOperations": "System Jobs",
+      "neu_process_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_process_DuplicateBaseRecord": "Duplicate Records (neu_process_DuplicateBaseRecord)",
+      "neu_process_DuplicateMatchingRecord": "Duplicate Records (neu_process_DuplicateMatchingRecord)",
+      "neu_process_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_process_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_process_ProcessSession": "Process Sessions",
+      "neu_process_SyncErrors": "Sync Errors",
+      "neu_ProcessGroupID": "Process Group",
+      "neu_processid": "Process",
+      "neu_processname": "Process Name",
+      "neu_scopereview": "Scope Review",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Processes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Processes (Views)",
+    "Name": "_neu_process_views",
+    "RelatedEntityName": "Processes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "37ded8da-92a4-4e08-b4a1-542d01f7ba17": "Process Associated View",
+      "4eb0324d-9c66-4ec0-be9a-5bceb9612da1": "Process Lookup View",
+      "97f67c4c-8226-ee11-9966-000d3a4e9005": "Processes Missing Data Flows",
+      "a6e1b7d7-d100-ee11-8f6e-000d3a4e9005": "Processes Sub Grid",
+      "b0b465ec-fd6c-4ec5-89e9-b172b11708ba": "Inactive Processes",
+      "cbb52140-4b31-ee11-bdf3-000d3a8b3ea5": "Draft Processes",
+      "d23a3121-22e3-46a8-b424-16ff63d3806a": "Active Processes",
+      "fe2fbdb6-b175-4cf9-a7dd-e56097f1e911": "Process Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Processes)",
+    "Name": "neu_process_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Processes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Processes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Processes)",
+    "Name": "neu_process_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Processes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Processes",
+    "Type": "OptionSetInfo"
+  }
+]

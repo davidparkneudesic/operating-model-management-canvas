@@ -1,0 +1,102 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_implementationmodels",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_implementationmodel",
+    "MaxGetRowsCount": 500,
+    "Name": "Implementation Models",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_implementationmodel_AsyncOperations": "System Jobs",
+      "neu_implementationmodel_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_implementationmodel_DuplicateBaseRecord": "Duplicate Records (neu_implementationmodel_DuplicateBaseRecord)",
+      "neu_implementationmodel_DuplicateMatchingRecord": "Duplicate Records (neu_implementationmodel_DuplicateMatchingRecord)",
+      "neu_implementationmodel_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_implementationmodel_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_implementationmodel_ProcessSession": "Process Sessions",
+      "neu_implementationmodel_SyncErrors": "Sync Errors",
+      "neu_implementationmodelid": "Implementation Model",
+      "neu_implementationmodelname": "Implementation Model Name",
+      "neu_neu_clientsolution_ImplementationModelID_": "Client Solutions",
+      "neu_neu_implementationphase_ImplementationMod": "Implementation Phases",
+      "neu_PlatformID": "Platform",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Implementation Models",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Implementation Models (Views)",
+    "Name": "_neu_implementationmodel_views",
+    "RelatedEntityName": "Implementation Models",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "42dfe4ec-3b79-4123-a8ab-674622f2b474": "Implementation Model Advanced Find View",
+      "4adf6c43-b93a-4d05-afc4-5b71695eb3cd": "Active Implementation Models",
+      "4fa60f10-d7e0-4bbe-998c-e48d6a1edf7f": "Implementation Model Lookup View",
+      "b0b4eb64-9869-4734-98cd-a27223a647ef": "Implementation Model Associated View",
+      "fb7a4755-2210-477b-ad18-c5ecabd22149": "Inactive Implementation Models"
+    }
+  },
+  {
+    "DisplayName": "Status (Implementation Models)",
+    "Name": "neu_implementationmodel_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Implementation Models"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Implementation Models",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Implementation Models)",
+    "Name": "neu_implementationmodel_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Implementation Models"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Implementation Models",
+    "Type": "OptionSetInfo"
+  }
+]

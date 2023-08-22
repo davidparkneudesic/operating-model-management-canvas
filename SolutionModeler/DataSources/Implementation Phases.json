@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_implementationphases",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_implementationphase",
+    "MaxGetRowsCount": 500,
+    "Name": "Implementation Phases",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_ImplementationModelID": "Implementation Model",
+      "neu_implementationphase_AsyncOperations": "System Jobs",
+      "neu_implementationphase_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_implementationphase_DuplicateBaseRecord": "Duplicate Records (neu_implementationphase_DuplicateBaseRecord)",
+      "neu_implementationphase_DuplicateMatchingRecord": "Duplicate Records (neu_implementationphase_DuplicateMatchingRecord)",
+      "neu_implementationphase_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_implementationphase_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_implementationphase_ProcessSession": "Process Sessions",
+      "neu_implementationphase_SyncErrors": "Sync Errors",
+      "neu_implementationphaseid": "Implementation Phase",
+      "neu_implementationphasename": "Implementation Phase Name",
+      "neu_model": "Model",
+      "neu_neu_implementationstage_ImplementationPha": "Implementation Stages",
+      "neu_sequence": "Sequence",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Implementation Phases",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Implementation Phases (Views)",
+    "Name": "_neu_implementationphase_views",
+    "RelatedEntityName": "Implementation Phases",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0bef4143-2007-4c49-a225-a95a59a4ae86": "Inactive Implementation Phases",
+      "16d2db37-ce00-ee11-8f6e-0022482bd981": "Implementation Phases Subgrid",
+      "44c07114-d997-434e-aec9-524b26e55c2b": "Active Implementation Phases",
+      "a2d6ddff-dc0c-4e63-8790-4a1b2a1b584c": "Implementation Phase Advanced Find View",
+      "c6602641-4671-476c-a668-c6638b84f454": "Implementation Phase Associated View",
+      "f3e144af-8523-4248-b5ab-96e6b5b0fed0": "Implementation Phase Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Implementation Phases)",
+    "Name": "neu_implementationphase_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Implementation Phases"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Implementation Phases",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Implementation Phases)",
+    "Name": "neu_implementationphase_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Implementation Phases"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Implementation Phases",
+    "Type": "OptionSetInfo"
+  }
+]

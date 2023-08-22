@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_implementationstages",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_implementationstage",
+    "MaxGetRowsCount": 500,
+    "Name": "Implementation Stages",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_ImplementationPhaseID": "Implementation Phase",
+      "neu_implementationstage_AsyncOperations": "System Jobs",
+      "neu_implementationstage_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_implementationstage_DuplicateBaseRecord": "Duplicate Records (neu_implementationstage_DuplicateBaseRecord)",
+      "neu_implementationstage_DuplicateMatchingRecord": "Duplicate Records (neu_implementationstage_DuplicateMatchingRecord)",
+      "neu_implementationstage_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_implementationstage_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_implementationstage_ProcessSession": "Process Sessions",
+      "neu_implementationstage_SyncErrors": "Sync Errors",
+      "neu_implementationstageid": "Implementation Stage",
+      "neu_implementationstagename": "Implementation Stage Name",
+      "neu_model": "Model",
+      "neu_neu_productbacklogitem_ImplementationStag": "Product Backlog Items",
+      "neu_sequence": "Sequence",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Implementation Stages",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Implementation Stages (Views)",
+    "Name": "_neu_implementationstage_views",
+    "RelatedEntityName": "Implementation Stages",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "367c7ed5-39b9-4068-91a4-e64dc61a8bff": "Implementation Stage Advanced Find View",
+      "3ba874f4-0b3d-4f81-af07-625e96f4462d": "Implementation Stage Associated View",
+      "5acd8671-e994-4bf0-97db-ff7e7ad425ca": "Inactive Implementation Stages",
+      "6d4851e0-3e8d-4781-a5c2-171e38f3aa92": "Implementation Stage Lookup View",
+      "84e6cb93-ce00-ee11-8f6e-000d3a8b3ea5": "Implementation Stages Sub Grid",
+      "de9d0fb5-5cbd-45a4-b1f9-baa5b8aa2f30": "Active Implementation Stages"
+    }
+  },
+  {
+    "DisplayName": "Status (Implementation Stages)",
+    "Name": "neu_implementationstage_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Implementation Stages"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Implementation Stages",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Implementation Stages)",
+    "Name": "neu_implementationstage_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Implementation Stages"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Implementation Stages",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,66 @@
+HomePage As screen:
+    Fill: =RGBA(175, 191, 224, 1)
+
+    btnOperatingModels As button:
+        Height: =68
+        OnSelect: =Navigate('Operating Models Screen', ScreenTransition.Cover)
+        Text: ="Operating Models"
+        Width: =268
+        X: =95
+        Y: =350
+        ZIndex: =1
+
+    btnImplementationModels As button:
+        Height: =68
+        OnSelect: =Navigate('Implementation Model Screen', ScreenTransition.Cover)
+        Text: ="Implementation Models"
+        Width: =270
+        X: =95
+        Y: =464
+        ZIndex: =2
+
+    btnClientSolutions As button:
+        Height: =68
+        OnSelect: =Navigate(ClientSolutions, ScreenTransition.Cover)
+        Text: ="Client Solutions"
+        Width: =270
+        X: =95
+        Y: =241
+        ZIndex: =3
+
+    Label1 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =100
+        Size: =36
+        Text: ="Solution Modeler"
+        Underline: =true
+        Width: =758
+        X: =304
+        Y: =20
+        ZIndex: =4
+
+    lblClientSolutions As label:
+        Height: =55
+        Text: =" The Client Solution area allows you to start the scoping and estimation process leveraging the models."
+        Width: =948
+        X: =392
+        Y: =254
+        ZIndex: =5
+
+    lblOperatingModels As label:
+        Height: =55
+        Text: =" Browse, create and modify the various Operating Models, which serve as scoping templates."
+        Width: =948
+        X: =392
+        Y: =363
+        ZIndex: =6
+
+    lblOperatingModels_1 As label:
+        Height: =55
+        Text: =" Browse, create and modify the various Implementation Models, which serve as patterns for solution delivery"
+        Width: =948
+        X: =392
+        Y: =477
+        ZIndex: =7
+

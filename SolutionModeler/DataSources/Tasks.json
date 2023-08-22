@@ -1,0 +1,124 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_tasks",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_task",
+    "MaxGetRowsCount": 500,
+    "Name": "Tasks",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_description": "Description",
+      "neu_determination": "Determination",
+      "neu_model": "Model",
+      "neu_ProductBacklog": "Product Backlog",
+      "neu_sequence": "Sequence",
+      "neu_task_AsyncOperations": "System Jobs",
+      "neu_task_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_task_DuplicateBaseRecord": "Duplicate Records (neu_task_DuplicateBaseRecord)",
+      "neu_task_DuplicateMatchingRecord": "Duplicate Records (neu_task_DuplicateMatchingRecord)",
+      "neu_task_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_task_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_task_ProcessSession": "Process Sessions",
+      "neu_task_SyncErrors": "Sync Errors",
+      "neu_taskid": "Task",
+      "neu_taskname": "Task Name",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Tasks",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Tasks (Views)",
+    "Name": "_neu_task_views",
+    "RelatedEntityName": "Tasks",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "60762e74-f030-4e26-86d6-41438160d8ba": "Task Associated View",
+      "78ec3759-5053-4239-839a-44cd9bf5867c": "Inactive Tasks",
+      "b54f9462-92f6-46ea-afd4-6f91e748de15": "Active Tasks",
+      "ddb6932c-2709-4abe-9647-3a897e6f415f": "Task Lookup View",
+      "de2cbfc6-ce00-ee11-8f6e-000d3a8b3ea5": "Tasks Sub Grid",
+      "f1149b56-0b08-485a-90b4-b1d4090bb54c": "Task Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Determination",
+    "Name": "neu_determination",
+    "OptionSetInfoNameMapping": {
+      "871820000": "Must",
+      "871820001": "Should",
+      "871820002": "Could"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_determination",
+        "OptionSetReferenceEntityName": "Tasks"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_determination",
+    "RelatedEntityName": "Tasks",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Tasks)",
+    "Name": "neu_task_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Tasks"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Tasks",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Tasks)",
+    "Name": "neu_task_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Tasks"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Tasks",
+    "Type": "OptionSetInfo"
+  }
+]
