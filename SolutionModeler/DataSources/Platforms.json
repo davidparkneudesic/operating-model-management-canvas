@@ -1,0 +1,97 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_platforms",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_platform",
+    "MaxGetRowsCount": 500,
+    "Name": "Platforms",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_neu_implementationmodel_PlatformID_neu_pl": "Implementation Models",
+      "neu_platform_AsyncOperations": "System Jobs",
+      "neu_platform_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_platform_DuplicateBaseRecord": "Duplicate Records (neu_platform_DuplicateBaseRecord)",
+      "neu_platform_DuplicateMatchingRecord": "Duplicate Records (neu_platform_DuplicateMatchingRecord)",
+      "neu_platform_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_platform_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_platform_ProcessSession": "Process Sessions",
+      "neu_platform_SyncErrors": "Sync Errors",
+      "neu_platformid": "Platform",
+      "neu_platformname": "Platform Name",
+      "organizationid": "Organization Id",
+      "overriddencreatedon": "Record Created On",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Platforms",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Platforms (Views)",
+    "Name": "_neu_platform_views",
+    "RelatedEntityName": "Platforms",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1143d73c-403c-48bb-817e-eb680c2eaedd": "Platform Associated View",
+      "27a57507-1b17-4767-b38f-db564cab7a65": "Platform Advanced Find View",
+      "35833401-b879-42c6-aa17-cbff396689bc": "Platform Lookup View",
+      "b88cba22-91b6-479e-8f00-c28848861636": "Active Platforms",
+      "bcf2fbb6-d409-4b41-818a-f450b7fcff5b": "Inactive Platforms"
+    }
+  },
+  {
+    "DisplayName": "Status (Platforms)",
+    "Name": "neu_platform_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Platforms"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Platforms",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Platforms)",
+    "Name": "neu_platform_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive",
+      "871820001": "Draft",
+      "871820002": "Obsolete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Platforms"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Platforms",
+    "Type": "OptionSetInfo"
+  }
+]
