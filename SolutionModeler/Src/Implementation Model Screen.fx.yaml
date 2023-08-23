@@ -141,6 +141,83 @@
             Y: =37
             ZIndex: =6
 
+    "'Implementation Stage Gallery' As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: |-
+            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Height: =504
+        Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name'), Sequence)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateFill: |-
+            =If(ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
+                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
+                 RGBA(204, 208, 225, 1),
+                If (ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
+                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
+                        RGBA(153, 160, 196, 1),
+                        RGBA(0,0,0,0)
+                )
+            )
+        TemplatePadding: =0
+        TemplateSize: =55
+        Width: =256
+        X: =554
+        Y: =168
+        ZIndex: =1
+
+        Title7 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =37
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.'Implementation Stage Name'
+            Width: =232
+            X: =13
+            ZIndex: =1
+
+        Subtitle4 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =18
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =9
+            Text: =Value(ThisItem.Sequence) / 1000
+            VerticalAlign: =VerticalAlign.Top
+            Width: =162
+            X: =83
+            Y: =36
+            ZIndex: =2
+
+        Rectangle8 As rectangle:
+            Height: =Parent.TemplateHeight 
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =5
+
+        Label2 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =18
+            OnSelect: =Select(Parent)
+            Size: =9
+            Text: |-
+                ="Sequence:"
+            VerticalAlign: =VerticalAlign.Bottom
+            Width: =70
+            X: =13
+            Y: =36
+            ZIndex: =6
+
     "'Implementation Models Title' As label":
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
@@ -171,55 +248,6 @@
         X: =284
         Y: =128
         ZIndex: =4
-
-    "'Implementation Stage Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =504
-        Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name'), Sequence)
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: |-
-            =If(ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
-                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
-                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =55
-        Width: =256
-        X: =554
-        Y: =168
-        ZIndex: =5
-
-        Title7_1 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =54.9375
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =10
-            Text: =ThisItem.'Implementation Stage Name'
-            Width: =226
-            X: =20
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Rectangle9_1 As rectangle:
-            Height: =Parent.TemplateHeight 
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
 
     "'Implementation Stage Label' As label":
         FontWeight: =FontWeight.Bold
@@ -881,4 +909,147 @@
             X: =64
             Y: =329
             ZIndex: =12
+
+    "'Create Implmentation Stage Container' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =620
+        Visible: =If(varCreateOpenImplementationStage,true,false)
+        Width: =892
+        X: =237
+        Y: =74
+        ZIndex: =19
+
+        "'Exit Implementation Model Create Icon_2' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationStage:false});
+                UpdateContext({varISCreated:false});
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Width: =54
+            X: =823
+            Y: =16
+            ZIndex: =1
+
+        "'Create New IP Title_1' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =20
+            Text: ="Create New Implementation Stage"
+            Width: =507
+            X: =193
+            Y: =16
+            ZIndex: =2
+
+        "'New Implementation Stage Name Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="New Implementation Stage Name"
+            Width: =306
+            X: =64
+            Y: =103
+            ZIndex: =3
+
+        "'New Implementation Stage Name Input' As text":
+            Default: =""
+            OnSelect: |-
+                =UpdateContext({varIPCreated:false})
+            Width: =413
+            X: =64
+            Y: =143
+            ZIndex: =4
+
+        "'Create IP Button_1' As button":
+            Height: =48
+            OnSelect: |-
+                =Patch(
+                    'Implementation Stages',
+                    Defaults('Implementation Stages'),
+                    {
+                        'Implementation Stage Name':'New Implementation Stage Name Input'.Text,
+                        'Implementation Phase':'Implementation Phase IS Dropdown'.Selected,
+                        Sequence:Value('Sequence IS Input'.Text) * 1000,
+                        'Status Reason':'Status Reason IS Dropdown'.Selected.Value
+                        Model:Model.'Implementation Model'
+                    }
+                );
+                
+                UpdateContext({varISCreated:true});
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Text: ="Create"
+            Width: =180
+            X: =356
+            Y: =544
+            ZIndex: =5
+
+        "'Implementation Model IS Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Model"
+            Width: =258
+            X: =64
+            Y: =198
+            ZIndex: =6
+
+        "'Implementation Model IS Dropdown' As dropdown":
+            Items: =Filter('Implementation Models', 'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name')
+            Width: =413
+            X: =64
+            Y: =238
+            ZIndex: =7
+
+        "'Status Reason IS Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Status Reason"
+            X: =490
+            Y: =381
+            ZIndex: =8
+
+        "'Status Reason IS Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: =Choices('Status Reason (Implementation Phases)')
+            Width: =333
+            X: =490
+            Y: =421
+            ZIndex: =9
+
+        "'Implmentation Stage created message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="Implementation Stage was successfully created!"
+            Visible: =If(varISCreated,true,false)
+            Width: =451
+            X: =221
+            Y: =491
+            ZIndex: =10
+
+        "'Sequence IS Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Sequence"
+            Width: =306
+            X: =64
+            Y: =381
+            ZIndex: =11
+
+        "'Sequence IS Input' As text":
+            Default: =""
+            Format: =TextFormat.Number
+            Width: =369
+            X: =64
+            Y: =421
+            ZIndex: =12
+
+        "'Implementation Phase IS Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Stage"
+            Width: =258
+            X: =64
+            Y: =289
+            ZIndex: =13
+
+        "'Implementation Phase IS Dropdown' As dropdown":
+            Items: =Filter('Implementation Phases', 'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name')
+            Width: =413
+            X: =64
+            Y: =329
+            ZIndex: =14
 
