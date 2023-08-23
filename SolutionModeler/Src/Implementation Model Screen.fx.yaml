@@ -449,6 +449,10 @@
             UpdateContext({varCreateOpenTask:false});
             UpdateContext({varOpenTaskDetailWindow:false});
             Reset('New Implementation Model Name Input');
+            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
         Size: =13
         Text: ="Create Impementation Model"
         Width: =256
@@ -465,6 +469,11 @@
             UpdateContext({varCreateOpenProductBacklogItem:false});
             UpdateContext({varCreateOpenTask:false});
             UpdateContext({varOpenTaskDetailWindow:false});
+            Reset('New Implementation Model Name Input');
+            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
         Size: =13
         Text: |-
             ="Create Implementation Phase
@@ -483,6 +492,11 @@
             UpdateContext({varCreateOpenProductBacklogItem:false});
             UpdateContext({varCreateOpenTask:false});
             UpdateContext({varOpenTaskDetailWindow:false});
+            Reset('New Implementation Model Name Input');
+            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
         Size: =13
         Text: |-
             ="Create Implementation Stage
@@ -501,6 +515,11 @@
             UpdateContext({varCreateOpenProductBacklogItem:true});
             UpdateContext({varCreateOpenTask:false});
             UpdateContext({varOpenTaskDetailWindow:false});
+            Reset('New Implementation Model Name Input');
+            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
         Size: =13
         Text: |-
             ="Create Product
@@ -520,6 +539,11 @@
             UpdateContext({varCreateOpenProductBacklogItem:false});
             UpdateContext({varCreateOpenTask:true});
             UpdateContext({varOpenTaskDetailWindow:false});
+            Reset('New Implementation Model Name Input');
+            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
         Size: =13
         Text: |-
             ="Create Task
