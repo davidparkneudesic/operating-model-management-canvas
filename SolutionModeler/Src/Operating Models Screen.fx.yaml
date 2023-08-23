@@ -1058,7 +1058,9 @@
             ZIndex: =12
 
         "'Capability Proc Dropdown' As dropdown":
-            Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
+            Items: |-
+                =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
+                colCreateWindowCapacityFilter
             X: =56
             Y: =302
             ZIndex: =13
