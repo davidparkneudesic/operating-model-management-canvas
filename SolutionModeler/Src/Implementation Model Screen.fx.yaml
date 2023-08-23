@@ -64,7 +64,7 @@
             Width: =4
             ZIndex: =4
 
-    "'Implementation Phase Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+    "'Implementation Phase Gallery' As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
         Fill: |-
@@ -91,9 +91,9 @@
         Y: =168
         ZIndex: =1
 
-        Title7 As label:
+        Title1 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =54.875
+            Height: =37
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -101,17 +101,45 @@
             PaddingTop: =0
             Size: =10
             Text: =ThisItem.'Implementation Phase Name'
-            Width: =231
+            Width: =232
             X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
             ZIndex: =1
 
-        Rectangle9 As rectangle:
+        Subtitle1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =18
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =9
+            Text: =Value(ThisItem.Sequence / 1000)
+            VerticalAlign: =VerticalAlign.Top
+            Width: =160
+            X: =86
+            Y: =37
+            ZIndex: =2
+
+        Rectangle5 As rectangle:
             Height: =Parent.TemplateHeight 
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4
-            ZIndex: =4
+            ZIndex: =5
+
+        Label9 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =18
+            OnSelect: =Select(Parent)
+            Size: =9
+            Text: |-
+                ="Sequence:"
+            VerticalAlign: =VerticalAlign.Bottom
+            Width: =70
+            X: =16
+            Y: =37
+            ZIndex: =6
 
     "'Implementation Models Title' As label":
         Align: =Align.Center
@@ -335,6 +363,7 @@
             UpdateContext({varCreateOpenProductBacklogItem:false});
             UpdateContext({varCreateOpenTask:false});
             UpdateContext({varOpenTaskDetailWindow:false});
+            Reset('New Implementation Model Name Input');
         Size: =13
         Text: ="Create Impementation Model"
         Width: =256
@@ -353,7 +382,7 @@
             UpdateContext({varOpenTaskDetailWindow:false});
         Size: =13
         Text: |-
-            ="Create Impementation Phase
+            ="Create Implementation Phase
             "
         Width: =256
         X: =284
@@ -371,7 +400,7 @@
             UpdateContext({varOpenTaskDetailWindow:false});
         Size: =13
         Text: |-
-            ="Create Impementation Stage
+            ="Create Implementation Stage
             "
         Width: =256
         X: =555
@@ -616,5 +645,240 @@
             Text: ="Status Reason"
             X: =93
             Y: =537
+            ZIndex: =12
+
+    "'Create Implmentation Model Container' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =449
+        Visible: =If(varCreateOpenImplementationModel,true,false)
+        Width: =892
+        X: =237
+        Y: =160
+        ZIndex: =17
+
+        "'Exit Implementation Model Create Icon' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationModel:false});
+                UpdateContext({varIMCreated:false});
+                Reset('New Implementation Model Name Input')
+            Width: =54
+            X: =823
+            Y: =16
+            ZIndex: =1
+
+        "'Create New IM Title' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =20
+            Text: ="Create New Implementation Model"
+            Width: =516
+            X: =188
+            Y: =16
+            ZIndex: =2
+
+        "'New Implementation Model Name Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="New Implementation Model Name"
+            Width: =306
+            X: =64
+            Y: =96
+            ZIndex: =3
+
+        "'New Implementation Model Name Input' As text":
+            Default: =""
+            OnSelect: |-
+                =UpdateContext({varIMCreated:false})
+            Width: =386
+            X: =64
+            Y: =136
+            ZIndex: =4
+
+        "'Create Button' As button":
+            Height: =48
+            OnSelect: |-
+                =Patch(
+                    'Implementation Models',
+                    Defaults('Implementation Models'),
+                    {
+                        'Implementation Model Name':'New Implementation Model Name Input'.Text,
+                        Platform:'Platform IM Dropdown'.Selected,
+                        'Status Reason':'Status Reason IM Dropdown'.Selected.Value
+                    }
+                );
+                
+                UpdateContext({varIMCreated:true});
+                Reset('New Implementation Model Name Input')
+            Text: ="Create"
+            Width: =180
+            X: =356
+            Y: =365
+            ZIndex: =5
+
+        "'Platform IM Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Platform"
+            X: =64
+            Y: =191
+            ZIndex: =6
+
+        "'Platform IM Dropdown' As dropdown":
+            Items: =Sort(Platforms, 'Platform Name')
+            X: =64
+            Y: =231
+            ZIndex: =7
+
+        "'Status Reason IM Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Status Reason"
+            X: =477
+            Y: =191
+            ZIndex: =8
+
+        "'Status Reason IM Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: =Choices('Status Reason (Implementation Models)')
+            X: =477
+            Y: =231
+            ZIndex: =9
+
+        "'Implmentation Model created message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="Implementation Model was successfully created!"
+            Visible: =If(varIMCreated,true,false)
+            Width: =451
+            X: =221
+            Y: =312
+            ZIndex: =10
+
+    "'Create Implmentation Phase Container' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =527
+        Visible: =If(varCreateOpenImplementationPhase,true,false)
+        Width: =892
+        X: =237
+        Y: =121
+        ZIndex: =18
+
+        "'Exit Implementation Model Create Icon_1' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationPhase:false});
+                UpdateContext({varIPCreated:false});
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Width: =54
+            X: =823
+            Y: =16
+            ZIndex: =1
+
+        "'Create New IP Title' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =20
+            Text: ="Create New Implementation Phase"
+            Width: =507
+            X: =193
+            Y: =16
+            ZIndex: =2
+
+        "'New Implementation Phase Name Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="New Implementation Phase Name"
+            Width: =306
+            X: =64
+            Y: =96
+            ZIndex: =3
+
+        "'New Implementation Phase Name Input' As text":
+            Default: =""
+            OnSelect: |-
+                =UpdateContext({varIPCreated:false})
+            Width: =413
+            X: =64
+            Y: =136
+            ZIndex: =4
+
+        "'Create IP Button' As button":
+            Height: =48
+            OnSelect: |-
+                =Patch(
+                    'Implementation Phases',
+                    Defaults('Implementation Phases'),
+                    {
+                        'Implementation Phase Name':'New Implementation Phase Name Input'.Text,
+                        'Implementation Model':'Implementation Model IP Dropdown'.Selected,
+                        Sequence:Value('Sequence IP Input'.Text) * 1000,
+                        'Status Reason':'Status Reason IP Dropdown'.Selected.Value,
+                        Model:Model.'Implementation Model'
+                    }
+                );
+                
+                UpdateContext({varIPCreated:true});
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+            Text: ="Create"
+            Width: =180
+            X: =355
+            Y: =453
+            ZIndex: =5
+
+        "'Implementation Model IP Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Model"
+            Width: =258
+            X: =64
+            Y: =191
+            ZIndex: =6
+
+        "'Implementation Model IP Dropdown' As dropdown":
+            Items: =Filter('Implementation Models', 'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name')
+            Width: =413
+            X: =64
+            Y: =231
+            ZIndex: =7
+
+        "'Status Reason IP Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Status Reason"
+            X: =490
+            Y: =289
+            ZIndex: =8
+
+        "'Status Reason IP Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: =Choices('Status Reason (Implementation Phases)')
+            Width: =333
+            X: =490
+            Y: =329
+            ZIndex: =9
+
+        "'Implmentation Phase created message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="Implementation Phase was successfully created!"
+            Visible: =If(varIPCreated,true,false)
+            Width: =451
+            X: =220
+            Y: =400
+            ZIndex: =10
+
+        "'Sequence IP Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Sequence"
+            Width: =306
+            X: =64
+            Y: =289
+            ZIndex: =11
+
+        "'Sequence IP Input' As text":
+            Default: =""
+            Format: =TextFormat.Number
+            Width: =369
+            X: =64
+            Y: =329
             ZIndex: =12
 
