@@ -848,7 +848,7 @@
         Y: =121
         ZIndex: =18
 
-        "'Exit Implementation Model Create Icon_1' As icon.Cancel":
+        "'Exit Implementation Phase Create Icon' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
@@ -976,7 +976,7 @@
         Y: =74
         ZIndex: =19
 
-        "'Exit Implementation Model Create Icon_2' As icon.Cancel":
+        "'Exit Implementation Stage Create Icon' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
@@ -988,7 +988,7 @@
             Y: =16
             ZIndex: =1
 
-        "'Create New IP Title_1' As label":
+        "'Create New IS Title' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
             Height: =58
@@ -1016,7 +1016,7 @@
             Y: =143
             ZIndex: =4
 
-        "'Create IP Button_1' As button":
+        "'Create IS Button' As button":
             Height: =48
             OnSelect: |-
                 =Patch(
@@ -1119,7 +1119,7 @@
         Y: =45
         ZIndex: =20
 
-        "'Exit Implementation Model Create Icon_3' As icon.Cancel":
+        "'Exit Product Backlog Item Create Icon' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
@@ -1131,7 +1131,7 @@
             Y: =16
             ZIndex: =1
 
-        "'Create New IP Title_2' As label":
+        "'Create New PBI Title' As label":
             Align: =Align.Center
             FontWeight: =FontWeight.Bold
             Height: =58
@@ -1163,13 +1163,13 @@
             Height: =48
             OnSelect: |-
                 =Patch(
-                    'Implementation Stages',
-                    Defaults('Implementation Stages'),
+                    'Product Backlog Items',
+                    Defaults('Product Backlog Items'),
                     {
-                        'Implementation Stage Name':'New Product Backlog Item Name Input'.Text,
-                        'Implementation Phase':'Implementation Phase PBI Dropdown'.Selected,
+                        'Product Backlog Item Name':'New Product Backlog Item Name Input'.Text,
+                        'Implementation Stage':'Implementation Stage PBI Dropdown'.Selected,
                         Sequence:Value('Sequence PBI Input'.Text) * 1000,
-                        'Status Reason':'Status Reason IS Dropdown_1'.Selected.Value,
+                        'Status Reason':'Status Reason PBI Dropdown'.Selected.Value,
                         Model:Model.'Implementation Model'
                     }
                 );
@@ -1182,7 +1182,7 @@
             Y: =607
             ZIndex: =5
 
-        "'Implementation Model IS Label_1' As label":
+        "'Implementation Model PBI Label' As label":
             FontWeight: =FontWeight.Semibold
             Text: ="Implementation Model"
             Width: =258
@@ -1190,23 +1190,23 @@
             Y: =191
             ZIndex: =6
 
-        "'Implementation Model IS Dropdown_1' As dropdown":
+        "'Implementation Model PBI Dropdown' As dropdown":
             Items: =Filter('Implementation Models', 'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name')
             Width: =413
             X: =64
             Y: =231
             ZIndex: =7
 
-        "'Status Reason IS Label_1' As label":
+        "'Status Reason PBI Label' As label":
             FontWeight: =FontWeight.Semibold
             Text: ="Status Reason"
             X: =490
             Y: =461
             ZIndex: =8
 
-        "'Status Reason IS Dropdown_1' As dropdown":
+        "'Status Reason PBI Dropdown' As dropdown":
             Default: ="Draft"
-            Items: =Choices('Status Reason (Implementation Stages)')
+            Items: =Choices('Status Reason (Product Backlog Items)')
             Width: =333
             X: =490
             Y: =501
@@ -1253,7 +1253,7 @@
             Y: =322
             ZIndex: =14
 
-        "'Implementation Phase IS Label_2' As label":
+        "'Implementation Stage PBI Label' As label":
             FontWeight: =FontWeight.Semibold
             Text: ="Implementation Stage"
             Width: =258
@@ -1261,10 +1261,219 @@
             Y: =369
             ZIndex: =15
 
-        "'Implementation Phase IS Dropdown_2' As dropdown":
+        "'Implementation Stage PBI Dropdown' As dropdown":
             Items: =Filter('Implementation Stages', 'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name')
             Width: =413
             X: =64
             Y: =409
             ZIndex: =16
+
+    "'Create Task Container' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =731
+        Visible: =If(varCreateOpenTask,true,false)
+        Width: =1091
+        X: =138
+        Y: =19
+        ZIndex: =21
+
+        "'Exit Task Create Icon' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varCreateOpenTask:false});
+                UpdateContext({varTaskCreated:false});
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input');
+            Width: =54
+            X: =1019
+            Y: =18
+            ZIndex: =1
+
+        "'Create New Task Title' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Size: =20
+            Text: ="Create New Task"
+            Width: =507
+            X: =292
+            Y: =18
+            ZIndex: =2
+
+        "'New Task Name Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="New Task Name"
+            Width: =306
+            X: =64
+            Y: =103
+            ZIndex: =3
+
+        "'New Task Name Input' As text":
+            Default: =""
+            OnSelect: |-
+                =UpdateContext({varIPCreated:false})
+            Width: =413
+            X: =64
+            Y: =143
+            ZIndex: =4
+
+        "'Create Task Button_1' As button":
+            Height: =48
+            OnSelect: |-
+                =Patch(
+                    'Tasks',
+                    Defaults('Tasks'),
+                    {
+                        'Task Name':'New Task Name Input'.Text,
+                        'Product Backlog':'Product Backlog Task Dropdown'.Selected,
+                        Sequence:Value('Sequence Task Input'.Text) * 1000,
+                        'Status Reason':'Status Reason Task Dropdown'.Selected.Value,
+                        Determination:'Determination Task Dropdown'.Selected.Value,
+                        Model:Model.'Implementation Model'
+                    }
+                );
+                
+                UpdateContext({varTaskCreated:true});
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input');
+            Text: ="Create"
+            Width: =180
+            X: =456
+            Y: =661
+            ZIndex: =5
+
+        "'Task created message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="Task was successfully created!"
+            Visible: =If(varTaskCreated,true,false)
+            Width: =451
+            X: =320
+            Y: =608
+            ZIndex: =6
+
+        "'Implementation Model Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Model"
+            Width: =258
+            X: =64
+            Y: =191
+            ZIndex: =7
+
+        "'Implementation Model Task Dropdown' As dropdown":
+            Items: =Filter('Implementation Models', 'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name')
+            Width: =413
+            X: =64
+            Y: =231
+            ZIndex: =8
+
+        "'Status Reason Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Status Reason"
+            X: =558
+            Y: =461
+            ZIndex: =9
+
+        "'Status Reason Task Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: =Choices('Status Reason (Tasks)')
+            Width: =197
+            X: =558
+            Y: =501
+            ZIndex: =10
+
+        "'Sequence Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Sequence"
+            Width: =131
+            X: =64
+            Y: =547
+            ZIndex: =11
+
+        "'Sequence Task Input' As text":
+            Default: =""
+            Format: =TextFormat.Number
+            Width: =194
+            X: =64
+            Y: =587
+            ZIndex: =12
+
+        "'Implementation Phase Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Phase"
+            Width: =258
+            X: =64
+            Y: =282
+            ZIndex: =13
+
+        "'Implementation Phase Task Dropdown' As dropdown":
+            Items: =Filter('Implementation Phases', 'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name')
+            Width: =413
+            X: =64
+            Y: =322
+            ZIndex: =14
+
+        "'Implementation Stage Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Stage"
+            Width: =258
+            X: =64
+            Y: =369
+            ZIndex: =15
+
+        "'Implementation Stage Task Dropdown' As dropdown":
+            Items: =Filter('Implementation Stages', 'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name')
+            Width: =413
+            X: =64
+            Y: =409
+            ZIndex: =16
+
+        "'New Task Description Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Description"
+            Width: =306
+            X: =558
+            Y: =103
+            ZIndex: =17
+
+        "'New Task Description Input' As text":
+            Clear: =true
+            Default: =""
+            Height: =306
+            Mode: =TextMode.MultiLine
+            OnSelect: |-
+                =UpdateContext({varIPCreated:false})
+            Width: =413
+            X: =558
+            Y: =143
+            ZIndex: =18
+
+        "'Determination Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Determination"
+            X: =774
+            Y: =461
+            ZIndex: =19
+
+        "'Determination Task Dropdown' As dropdown":
+            Default: ="Draft"
+            Items: =Choices(Determination)
+            Width: =197
+            X: =774
+            Y: =501
+            ZIndex: =20
+
+        "'Product Backlog Task Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Text: ="Product Backlog"
+            Width: =258
+            X: =64
+            Y: =461
+            ZIndex: =21
+
+        "'Product Backlog Task Dropdown' As dropdown":
+            Items: =Filter('Product Backlog Items', 'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name')
+            Width: =413
+            X: =64
+            Y: =501
+            ZIndex: =22
 
