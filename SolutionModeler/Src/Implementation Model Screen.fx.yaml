@@ -1345,8 +1345,8 @@
             Height: =48
             OnSelect: |-
                 =Patch(
-                    'Tasks',
-                    Defaults('Tasks'),
+                    Tasks,
+                    Defaults(Tasks),
                     {
                         'Task Name':'New Task Name Input'.Text,
                         'Product Backlog':'Product Backlog Task Dropdown'.Selected,
