@@ -977,7 +977,7 @@
 
         "'Sequence IP Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Sequence"
+            Text: ="Sequence" & " (whole number only)"
             Width: =306
             X: =64
             Y: =289
@@ -1105,7 +1105,7 @@
 
         "'Sequence IS Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Sequence"
+            Text: ="Sequence" & " (Range within " & Value('Implementation Phase Gallery'.Selected.Sequence / 1000) & " to " & (Value('Implementation Phase Gallery'.Selected.Sequence / 1000) + 1) & ")"
             Width: =306
             X: =64
             Y: =381
@@ -1248,7 +1248,7 @@
 
         "'Sequence PBI Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Sequence"
+            Text: ="Sequence" & " (Range within " & Value('Implementation Stage Gallery'.Selected.Sequence / 1000) & " to " & (Value('Implementation Stage Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
             Width: =306
             X: =64
             Y: =461
@@ -1406,9 +1406,8 @@
             ZIndex: =10
 
         "'Sequence Task Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Sequence"
-            Width: =131
+            Text: ="Sequence" & " (Range within " & Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) & " to " & (Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
+            Width: =306
             X: =64
             Y: =547
             ZIndex: =11
