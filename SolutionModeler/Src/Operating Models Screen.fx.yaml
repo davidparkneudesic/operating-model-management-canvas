@@ -560,9 +560,9 @@
         "'New Operating Model Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="New Operating Model Name"
+            Text: ="* New Operating Model Name"
             Width: =307
-            X: =99
+            X: =85
             Y: =105
             ZIndex: =5
 
@@ -679,18 +679,16 @@
         "'New Capability Name Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="New Capability Name"
+            Text: ="* New Capability Name"
             Width: =307
-            X: =89
+            X: =75
             Y: =80
             ZIndex: =5
 
         "'Operating Model Cap Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: |-
-                ="Operating Model
-                "
+            Text: ="Operating Model"
             Width: =307
             X: =89
             Y: =175
@@ -834,9 +832,9 @@
         "'New Process Group Name Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="New Process Group Name"
+            Text: ="* New Process Group Name"
             Width: =307
-            X: =89
+            X: =75
             Y: =80
             ZIndex: =5
 
@@ -959,17 +957,32 @@
 
         "'Create Capability Button_2' As button":
             OnSelect: |-
-                =Patch(
-                    Processes,
-                    Defaults(Processes),
-                    {
-                        'Process Name':'New Process Name Input'.Text,
-                        'Process Group':'Process Group Proc Dropdown'.Selected,
-                        Description:'Description Proc Input'.Text,
-                        'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
-                        'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
-                        Model:Model.'Operating Model'
-                    }
+                =If(IsBlank('Data Flow Diagram URL Input'.Text),
+                    Patch(
+                        Processes,
+                        Defaults(Processes),
+                        {
+                            'Process Name':'New Process Name Input'.Text,
+                            'Process Group':'Process Group Proc Dropdown'.Selected,
+                            Description:'Description Proc Input'.Text,
+                            'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
+                            'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                            Model:Model.'Operating Model'
+                        }
+                    ),
+                    Patch(
+                        Processes,
+                        Defaults(Processes),
+                        {
+                            'Process Name':'New Process Name Input'.Text,
+                            'Process Group':'Process Group Proc Dropdown'.Selected,
+                            Description:'Description Proc Input'.Text,
+                            'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
+                            'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
+                            'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                            Model:Model.'Operating Model'
+                        }
+                    )
                 );
                 UpdateContext({varProcCreated:true});
                 Reset('New Process Name Input'); Reset( 'Description Proc Input');
@@ -993,9 +1006,9 @@
         "'New Process Name Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="New Process Name"
+            Text: ="* New Process Name"
             Width: =307
-            X: =56
+            X: =42
             Y: =79
             ZIndex: =5
 
@@ -1085,7 +1098,7 @@
         "'Description Proc Input' As text":
             Clear: =true
             Default: =""
-            Height: =435
+            Height: =311
             Mode: =TextMode.MultiLine
             OnSelect: |-
                 =UpdateContext({varPGCreated:false})
@@ -1097,9 +1110,9 @@
         "'Description Proc Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="Description"
+            Text: ="* Description"
             Width: =307
-            X: =549
+            X: =535
             Y: =79
             ZIndex: =17
 
@@ -1112,6 +1125,25 @@
             X: =395
             Y: =567
             ZIndex: =18
+
+        "'Data Flow Diagram URL Input' As text":
+            Default: =""
+            Height: =48
+            OnSelect: |-
+                =UpdateContext({varProcCreated:false})
+            Width: =555
+            X: =549
+            Y: =475
+            ZIndex: =19
+
+        "'Data Flow Diagram URL Label' As label":
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: ="Data Flow Diagram URL"
+            Width: =307
+            X: =549
+            Y: =435
+            ZIndex: =20
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
