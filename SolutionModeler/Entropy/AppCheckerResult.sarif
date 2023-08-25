@@ -6042,78 +6042,6 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 7
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 7
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 7
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 7
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 7
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 7
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
             }
           ]
         }
@@ -8711,19 +8639,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Operating Model_DataCard1'.Dropdown2.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Operating Model_DataCard1'.OperatingModel_Dropdown.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Operating Model_DataCard1'.Dropdown2.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Operating Model_DataCard1'.OperatingModel_Dropdown.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryForm.'Operating Model_DataCard1'.Dropdown2"
+                "type": "scrUserStories.UserStoryForm.'Operating Model_DataCard1'.OperatingModel_Dropdown"
               }
             }
           ],
@@ -8741,19 +8669,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Capability_DataCard1.DataCardValue12.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Process_DataCard1.Process_Dropdown.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Capability_DataCard1.DataCardValue12.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Process_DataCard1.Process_Dropdown.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryForm.Capability_DataCard1.DataCardValue12"
+                "type": "scrUserStories.UserStoryForm.Process_DataCard1.Process_Dropdown"
               }
             }
           ],
@@ -8771,19 +8699,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Process Group_DataCard1'.DataCardValue15.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Process Group_DataCard1'.ProcessGroup_Dropdown.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Process Group_DataCard1'.DataCardValue15.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.'Process Group_DataCard1'.ProcessGroup_Dropdown.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryForm.'Process Group_DataCard1'.DataCardValue15"
+                "type": "scrUserStories.UserStoryForm.'Process Group_DataCard1'.ProcessGroup_Dropdown"
               }
             }
           ],
@@ -8801,19 +8729,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Process_DataCard1.DataCardValue14.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Capability_DataCard1.Capability_Dropdown.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Process_DataCard1.DataCardValue14.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryForm.Capability_DataCard1.Capability_Dropdown.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryForm.Process_DataCard1.DataCardValue14"
+                "type": "scrUserStories.UserStoryForm.Capability_DataCard1.Capability_Dropdown"
               }
             }
           ],
