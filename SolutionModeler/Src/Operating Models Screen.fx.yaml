@@ -1117,7 +1117,10 @@
             ZIndex: =11
 
         "'Operating Model Proc Dropdown' As dropdown":
-            Items: =Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
+            Items: |-
+                =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
+                colOperatingModelFilter
+            Width: =293
             X: =56
             Y: =214
             ZIndex: =12
@@ -1126,6 +1129,7 @@
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 colCreateWindowCapacityFilter
+            Width: =293
             X: =56
             Y: =302
             ZIndex: =13
@@ -1144,6 +1148,7 @@
                 =//Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'),'Process Group Name')
                 //Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
                 colCreateWindowPGFilter
+            Width: =293
             X: =56
             Y: =390
             ZIndex: =15
@@ -1197,6 +1202,36 @@
             X: =549
             Y: =435
             ZIndex: =20
+
+        "'Reset Operating Model Cap Button_3' As button":
+            OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
+            Text: |-
+                ="Reset
+                "
+            Width: =130
+            X: =360
+            Y: =214
+            ZIndex: =21
+
+        "'Reset Operating Model Cap Button_4' As button":
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'))
+            Text: |-
+                ="Reset
+                "
+            Width: =130
+            X: =360
+            Y: =302
+            ZIndex: =22
+
+        "'Reset Operating Model Cap Button_5' As button":
+            OnSelect: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'))
+            Text: |-
+                ="Reset
+                "
+            Width: =130
+            X: =360
+            Y: =388
+            ZIndex: =23
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
