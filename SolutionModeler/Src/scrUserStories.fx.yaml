@@ -487,6 +487,7 @@
             Height: =0
             Required: =false
             Update: =Value(DataCardValue11.Text)
+            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =215
             X: =0
             Y: =7
@@ -506,7 +507,7 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.View
                 Fill: =RGBA(0, 0, 0, 0)
                 Format: =TextFormat.Number
                 PaddingLeft: =5
@@ -529,6 +530,15 @@
                 Wrap: =false
                 Y: =DataCardKey12.Y
                 ZIndex: =4
+
+            Rectangle11_4 As rectangle:
+                BorderThickness: =2
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Width: =155
+                X: =30
+                Y: =49
+                ZIndex: =5
 
         Name_DataCard1 As typedDataCard.textualEditCard:
             BorderStyle: =BorderStyle.Solid
@@ -699,7 +709,7 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.View
                 Fill: =RGBA(0, 0, 0, 0)
                 Format: =TextFormat.Number
                 PaddingLeft: =5
@@ -737,6 +747,15 @@
                 Wrap: =false
                 Y: =DataCardKey11.Y
                 ZIndex: =4
+
+            Rectangle11_3 As rectangle:
+                BorderThickness: =2
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Width: =155
+                X: =30
+                Y: =49
+                ZIndex: =5
 
     Button5 As button:
         OnSelect: |-
