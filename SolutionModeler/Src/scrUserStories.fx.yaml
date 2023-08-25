@@ -76,18 +76,18 @@
         Body1 As label:
             Align: =Align.Right
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =25
+            Height: =18
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Size: =18
+            Size: =14
             Text: =ThisItem.'Estimated Hours'
             VerticalAlign: =VerticalAlign.Top
             Width: =167
             X: =402
-            Y: =4
+            Y: =11
             ZIndex: =3
 
         NextArrow3 As icon.ChevronRight:
@@ -272,8 +272,8 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-            Update: =DataCardValue13.Selected
-            Visible: =If (DataCardValueEpicLevelItem.Text = "No" , false, true)
+            Update: =Dropdown2.Selected
+            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =292
             WidthFit: =true
             X: =345
@@ -290,25 +290,6 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue13 As combobox:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DefaultSelectedItems: =Parent.Default
-                DisplayFields: =["neu_operatingmodelname"]
-                DisplayMode: =Parent.DisplayMode
-                Fill: |-
-                    =If(varOpenUserStoryCreate, 
-                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-                Items: =Choices([@'User Stories'].neu_OperatingModelID)
-                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                SearchFields: =["neu_operatingmodelname"]
-                SearchItems: =Search(Choices([@'User Stories'].neu_OperatingModelID),DataCardValue13.SearchText,"neu_operatingmodelname")
-                SelectMultiple: =false
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =DataCardKey16.Y + DataCardKey16.Height + 5
-                ZIndex: =2
-
             ErrorMessage15 As label:
                 AutoHeight: =true
                 Height: =10
@@ -321,7 +302,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue13.Y + DataCardValue13.Height
+                Y: =Dropdown2.Y + Dropdown2.Height
                 ZIndex: =3
 
             StarVisible15 As label:
@@ -334,6 +315,14 @@
                 Y: =DataCardKey16.Y
                 ZIndex: =4
 
+            Dropdown2 As dropdown:
+                Height: =36
+                Items: =Choices([@'User Stories'].neu_OperatingModelID)
+                Width: =585
+                X: =30
+                Y: =44
+                ZIndex: =5
+
         Capability_DataCard1 As typedDataCard.comboBoxEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="neu_CapabilityID"
@@ -344,7 +333,7 @@
             Height: =50
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
             Update: =DataCardValue12.Selected
-            Visible: =If (DataCardValueEpicLevelItem.Text = "No" , false, true)
+            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =292
             WidthFit: =true
             X: =345
@@ -366,7 +355,9 @@
                 DefaultSelectedItems: =Parent.Default
                 DisplayFields: =["neu_capabilityname"]
                 DisplayMode: =Parent.DisplayMode
-                Fill: =RGBA(0, 0, 0, 0)
+                Fill: |-
+                    =If(varOpenUserStoryCreate, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =Choices([@'User Stories'].neu_CapabilityID)
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 SearchFields: =["neu_capabilityname"]
@@ -413,7 +404,7 @@
             Height: =50
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
             Update: =DataCardValue15.Selected
-            Visible: =If (DataCardValueEpicLevelItem.Text = "No" , false, true)
+            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =430
             WidthFit: =true
             X: =0
@@ -435,7 +426,9 @@
                 DefaultSelectedItems: =Parent.Default
                 DisplayFields: =["neu_processgroupname"]
                 DisplayMode: =Parent.DisplayMode
-                Fill: =RGBA(0, 0, 0, 0)
+                Fill: |-
+                    =If(varOpenUserStoryCreate, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =Choices([@'User Stories'].neu_ProcessGroupID)
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 SearchFields: =["neu_processgroupname"]
@@ -482,7 +475,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue14.Selected
-            Visible: =If (DataCardValueEpicLevelItem.Text = "No" , false, true)
+            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =215
             WidthFit: =true
             X: =2
@@ -504,7 +497,9 @@
                 DefaultSelectedItems: =Parent.Default
                 DisplayFields: =["neu_processname"]
                 DisplayMode: =Parent.DisplayMode
-                Fill: =RGBA(0, 0, 0, 0)
+                Fill: |-
+                    =If(varOpenUserStoryCreate, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =Choices([@'User Stories'].neu_ProcessID)
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 SearchFields: =["neu_processname"]
