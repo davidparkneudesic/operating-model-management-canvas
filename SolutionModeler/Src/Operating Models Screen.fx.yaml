@@ -18,6 +18,7 @@
             =Clear(colSubCapabilities);
             Clear(colCapabiilitiesL2);
             Clear(colProcessGroups);
+            ClearCollect(colOperatingModelFilter, Filter('Operating Models','Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name'));
             UpdateContext({varExpandCapGal:false})
         TemplateFill: |-
             =If(ThisItem.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
@@ -65,7 +66,13 @@
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
-            Navigate(HomePage,ScreenTransition.UnCoverRight)
+            Navigate(HomePage,ScreenTransition.UnCoverRight);
+            UpdateContext({varOpenProcessCreate:false});
+            UpdateContext({varOpenOperatingModelCreate:false});
+            UpdateContext({varOpenProcessGroupCreate:false});
+            UpdateContext({varOpenCapabilityCreate:false});
+            UpdateContext({varOpenProcessDetail:false});
+            Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
         Width: =52
         X: =15
         Y: =25
@@ -274,6 +281,7 @@
         Items: =colProcessGroups
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name'))
         TemplateFill: |-
             =If(ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
                     !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -479,7 +487,7 @@
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
         Text: ="Create Process"
         Width: =308
-        X: =1014
+        X: =1024
         Y: =681
         ZIndex: =33
 
@@ -759,10 +767,32 @@
             ZIndex: =16
 
         "'Operating Model Cap Dropdown' As dropdown":
-            Items: =Filter('Operating Models','Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
+            Items: |-
+                =//Filter('Operating Models','Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
+                colOperatingModelFilter
             X: =89
             Y: =215
             ZIndex: =17
+
+        "'Reset Operating Model Cap Button' As button":
+            OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
+            Text: |-
+                ="Reset
+                "
+            Width: =146
+            X: =442
+            Y: =215
+            ZIndex: =18
+
+        "'Reset Parent Capability Button' As button":
+            OnSelect: =Reset('Parent Capability Combobox')
+            Text: |-
+                ="Reset
+                "
+            Width: =146
+            X: =442
+            Y: =303
+            ZIndex: =19
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -901,7 +931,9 @@
             ZIndex: =14
 
         "'Operating Model PG Dropdown' As dropdown":
-            Items: =Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
+            Items: |-
+                =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
+                colOperatingModelFilter
             X: =89
             Y: =215
             ZIndex: =17
@@ -922,6 +954,26 @@
             X: =89
             Y: =303
             ZIndex: =18
+
+        "'Reset Operating Model Cap Button_1' As button":
+            OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
+            Text: |-
+                ="Reset
+                "
+            Width: =152
+            X: =436
+            Y: =215
+            ZIndex: =19
+
+        "'Reset Operating Model Cap Button_2' As button":
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model PG Dropdown'.Selected.'Operating Model Name'))
+            Text: |-
+                ="Reset
+                "
+            Width: =152
+            X: =436
+            Y: =303
+            ZIndex: =20
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -1090,7 +1142,8 @@
         "'Process Group Proc Dropdown' As dropdown":
             Items: |-
                 =//Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'),'Process Group Name')
-                Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
+                //Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
+                colCreateWindowPGFilter
             X: =56
             Y: =390
             ZIndex: =15

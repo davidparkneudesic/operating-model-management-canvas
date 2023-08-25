@@ -104,7 +104,8 @@
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
-            Navigate(HomePage, ScreenTransition.UnCoverRight)
+            Navigate(HomePage, ScreenTransition.UnCoverRight);
+            UpdateContext({varOpenCreateClientSolution:false})
         Width: =52
         X: =29
         Y: =37
@@ -795,7 +796,9 @@
         ZIndex: =11
 
     btnViewUserStories As button:
-        OnSelect: =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text)
+        OnSelect: |-
+            =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+            UpdateContext({varOpenCreateClientSolution:false})
         Text: ="View User Stories"
         Width: =225
         X: =1094

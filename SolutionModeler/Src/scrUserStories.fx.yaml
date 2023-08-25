@@ -238,7 +238,7 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.View
                 Fill: |-
                     =If(varOpenUserStoryCreate, 
                     RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
@@ -252,6 +252,15 @@
                 X: =30
                 Y: =DataCardKey6.Y + DataCardKey6.Height + 5
                 ZIndex: =5
+
+            Rectangle11_2 As rectangle:
+                BorderThickness: =2
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Width: =155
+                X: =30
+                Y: =49
+                ZIndex: =6
 
         "'Operating Model_DataCard1' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
@@ -552,7 +561,7 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.View
                 Fill: |-
                     =If(varOpenUserStoryCreate, 
                     RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
@@ -582,6 +591,15 @@
                 X: =30
                 Y: =DataCardValue4.Y + DataCardValue4.Height
                 ZIndex: =3
+
+            Rectangle11 As rectangle:
+                BorderThickness: =2
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Width: =585
+                X: =30
+                Y: =49
+                ZIndex: =4
 
         Description_DataCard1 As typedDataCard.textualMultiLineEditCard:
             BorderStyle: =BorderStyle.Solid
@@ -613,7 +631,7 @@
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.View
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =150
                 Mode: =TextMode.MultiLine
@@ -642,6 +660,15 @@
                 X: =30
                 Y: =DataCardValue8.Y + DataCardValue8.Height
                 ZIndex: =3
+
+            Rectangle11_1 As rectangle:
+                BorderThickness: =2
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =155
+                Width: =585
+                X: =30
+                Y: =44
+                ZIndex: =4
 
         "'Estimated Hours_DataCard1' As typedDataCard.numberEditCard":
             BorderStyle: =BorderStyle.Solid
