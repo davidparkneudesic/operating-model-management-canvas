@@ -296,6 +296,7 @@
                 ZIndex: =3
 
             OperatingModel_Dropdown As dropdown:
+                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Height: =36
                 Items: |-
                     =//Choices([@'User Stories'].neu_OperatingModelID)
@@ -349,6 +350,7 @@
                 ZIndex: =3
 
             Capability_Dropdown As dropdown:
+                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Height: =36
                 Items: =LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.Capability)
                 Width: =585
@@ -399,6 +401,7 @@
                 ZIndex: =3
 
             ProcessGroup_Dropdown As dropdown:
+                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.'Process Group')
                 Width: =585
                 X: =30
@@ -458,6 +461,7 @@
                 ZIndex: =4
 
             Process_Dropdown As dropdown:
+                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.Process)
                 Width: =585
                 X: =30

@@ -846,7 +846,8 @@
                 
                 //If(!IsBlank('Related Operating Models Combobox'.SelectedItems), Relate(First(Filter('Client Solutions', 'Solution Name' = 'New Solution Name Input'.Text)), 'Related Operating Models Combobox'.SelectedItems));
                 
-                UpdateContext({varClientSolutionCreated:true})
+                UpdateContext({varClientSolutionCreated:true});
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             Text: ="Submit"
             Visible: |-
                 =//If(ClientsSolutionsForm.Mode = FormMode.New, true, false)
@@ -994,9 +995,10 @@
         "'Exit Create CS Icon' As icon.Cancel":
             Height: =56
             Icon: =Icon.Cancel
-            OnSelect: |
+            OnSelect: |-
                 =UpdateContext({varOpenCreateClientSolution:false});
                 UpdateContext({varClientSolutionCreated:false});
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             X: =1081
             Y: =33
             ZIndex: =21
