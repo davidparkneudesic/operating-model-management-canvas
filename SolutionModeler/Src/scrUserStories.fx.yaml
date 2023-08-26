@@ -949,7 +949,7 @@
                     Y: =44
                     ZIndex: =5
 
-            "'Operating Model_DataCard1_2' As typedDataCard.comboBoxEditCard":
+            OperatingModel_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_OperatingModelID"
                 Default: =
@@ -958,7 +958,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Operating Model US Dropdown'.Selected
+                Update: ='Operating Model US ComboBox'.Selected
                 Visible: =If ('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
                 Width: =350
                 WidthFit: =true
@@ -988,25 +988,18 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: ='Operating Model US Dropdown'.Y + 'Operating Model US Dropdown'.Height
+                    Y: ='Operating Model US ComboBox'.Height + 'Operating Model US ComboBox'.Y
                     ZIndex: =3
 
-                StarVisible15_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey16_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey16_2.Y
-                    ZIndex: =4
-
-                "'Operating Model US Dropdown' As dropdown":
-                    Items: =Sort('Operating Models','Operating Model Name')
+                "'Operating Model US ComboBox' As combobox":
+                    DisplayFields: =["neu_operatingmodelname"]
+                    Items: =Sort('Operating Models', 'Operating Model Name')
+                    SearchFields: =["neu_operatingmodelname"]
+                    SearchItems: =Search(Sort('Operating Models', 'Operating Model Name'),'Operating Model US ComboBox'.SearchText,"neu_operatingmodelname")
                     Width: =799
                     X: =30
-                    Y: =49
-                    ZIndex: =5
+                    Y: =44
+                    ZIndex: =4
 
             Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -1017,7 +1010,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Capability US Dropdown'.Selected
+                Update: ='Capability US ComboBox'.Selected
                 Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
                 Width: =286
                 WidthFit: =true
@@ -1047,25 +1040,18 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: ='Capability US Dropdown'.Y + 'Capability US Dropdown'.Height
+                    Y: ='Capability US ComboBox'.Y + 'Capability US ComboBox'.Height
                     ZIndex: =3
 
-                StarVisible14_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey15_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey15_2.Y
-                    ZIndex: =4
-
-                "'Capability US Dropdown' As dropdown":
-                    Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model US Dropdown'.Selected.'Operating Model Name'),'Capability Name')
+                "'Capability US ComboBox' As combobox":
+                    DisplayFields: =["neu_capabilityname"]
+                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name')
+                    SearchFields: =["neu_capabilityname"]
+                    SearchItems: =Search(Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name'),'Capability US ComboBox'.SearchText,"neu_capabilityname")
                     Width: =799
                     X: =30
-                    Y: =40
-                    ZIndex: =5
+                    Y: =44
+                    ZIndex: =4
 
             "'Process Group_DataCard1_2' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -1076,7 +1062,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Process Group US Dropdown'.Selected
+                Update: ='Process Group US ComboBox'.Selected
                 Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
                 Width: =858
                 WidthFit: =true
@@ -1109,22 +1095,16 @@
                     Y: =88
                     ZIndex: =3
 
-                StarVisible17_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey18_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey18_2.Y
-                    ZIndex: =4
-
-                "'Process Group US Dropdown' As dropdown":
-                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US Dropdown'.Selected.'Capability Name'), 'Process Group Name')
+                "'Process Group US ComboBox' As combobox":
+                    DisplayFields: =["neu_processgroupname"]
+                    IsSearchable: =false
+                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name')
+                    SearchFields: =["neu_processgroupname"]
+                    SearchItems: =[]
                     Width: =799
                     X: =30
                     Y: =44
-                    ZIndex: =5
+                    ZIndex: =4
 
             Process_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -1135,7 +1115,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: ='Process US Dropdown'.Selected
+                Update: ='Process US ComboBox'.Selected
                 Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
                 Width: =858
                 WidthFit: =true
@@ -1178,11 +1158,15 @@
                     Y: =DataCardKey17_2.Y
                     ZIndex: =4
 
-                "'Process US Dropdown' As dropdown":
-                    Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' = 'Process Group US Dropdown'.Selected.'Process Group Name'), 'Process Name')
+                "'Process US ComboBox' As combobox":
+                    DisplayFields: =["neu_processname"]
+                    IsSearchable: =false
+                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name')
+                    SearchFields: =["neu_processname"]
+                    SearchItems: =[]
                     Width: =799
                     X: =30
-                    Y: =40
+                    Y: =44
                     ZIndex: =5
 
             "'Effort Percentage_DataCard1_2' As typedDataCard.numberEditCard":
@@ -1195,6 +1179,7 @@
                 Height: =89
                 Required: =false
                 Update: =Value('Effort Percentage Input'.Text)
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
                 Width: =286
                 X: =0
                 Y: =7
@@ -1290,6 +1275,8 @@
 
                 "'User Story Name Input' As text":
                     Default: =""
+                    OnSelect: |-
+                        =UpdateContext({varUSCreated:false})
                     Reset: =resetControl
                     Width: =799
                     X: =30
@@ -1441,10 +1428,10 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Operating Model':'Operating Model US Dropdown'.Selected,
-                            Capability:'Capability US Dropdown'.Selected,
-                            'Process Group':'Process Group US Dropdown'.Selected,
-                            Process:'Process US Dropdown'.Selected,
+                            'Operating Model':If(IsBlank('Operating Model US ComboBox'.Selected), Blank(), 'Operating Model US ComboBox'.Selected),
+                            Capability:If(IsBlank('Capability US ComboBox'.Selected), Blank(), 'Capability US ComboBox'.Selected),
+                            'Process Group':If(IsBlank('Process Group US ComboBox'.Selected), Blank(), 'Process Group US ComboBox'.Selected),
+                            Process:If(IsBlank('Process US ComboBox'.Selected), Blank(), 'Process US ComboBox'.Selected),
                             'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
@@ -1457,7 +1444,6 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
                     )
@@ -1498,25 +1484,57 @@
             
             UpdateContext({varUpdateUserStory:true})
         Text: ="Update Story"
+        Visible: =If(varUpdateUserStory,false,true)
         Width: =168
         X: =1170
         Y: =81
         ZIndex: =11
 
-    Button5_2 As button:
+    "'Update Button' As button":
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             
-            UpdateContext({varUpdateUserStory:true})
+            If(EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.No &&
+                !(IsBlank(OperatingModel_ComboBox.Selected) || IsBlank(Capability_ComboBox.Selected) || IsBlank(ProcessGroup_ComboBox.Selected) || IsBlank(Process_ComboBox.Selected)),
+                Patch(
+                    'User Stories',
+                    galUserStories.Selected,
+                    {
+                        Name:DataCardValue4_1.Text,
+                        Description:DataCardValue8_1.Text,
+                        'Client Solution':'Client Solution US Dropdown_1'.Selected,
+                        'Epic Level Item':EpicLevelItem_Dropdown_Update.Selected.Value,
+                        'Operating Model':OperatingModel_ComboBox.Selected,
+                        Capability:Capability_ComboBox.Selected,
+                        'Process Group':ProcessGroup_ComboBox.Selected,
+                        Process:Process_ComboBox.Selected,
+                        'Effort Percentage':Value(DataCardValue11_1.Text) / 100,
+                        'Estimated Hours':Value(DataCardValue9_1.Text)
+                    }
+                ),
+                Patch(
+                    'User Stories',
+                    galUserStories.Selected,
+                    {
+                        Name:DataCardValue4_1.Text,
+                        Description:DataCardValue8_1.Text,
+                        'Client Solution':'Client Solution US Dropdown_1'.Selected,
+                        'Epic Level Item':EpicLevelItem_Dropdown_Update.Selected.Value,
+                        'Estimated Hours':Value(DataCardValue9_1.Text)
+                    }
+                )
+            );
+            
+            UpdateContext({varUserStoryUpdated:true})
         Text: ="Update"
         Visible: =If(varUpdateUserStory,true,false)
-        Width: =133
+        Width: =150
         X: =692
         Y: =81
         ZIndex: =12
 
-    Button5_3 As button:
+    "'Cancel User Story Update Button' As button":
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1524,12 +1542,12 @@
             UpdateContext({varUpdateUserStory:false})
         Text: ="Cancel"
         Visible: =If(varUpdateUserStory,true, false)
-        Width: =132
-        X: =842
+        Width: =150
+        X: =1188
         Y: =81
         ZIndex: =13
 
-    Button5_4 As button:
+    "'Delete User Story Button' As button":
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1538,7 +1556,7 @@
         Text: ="Delete Story"
         Visible: =If(varUpdateUserStory,true, false)
         Width: =158
-        X: =993
+        X: =927
         Y: =81
         ZIndex: =14
 
@@ -1604,6 +1622,14 @@
                 Y: =44
                 ZIndex: =5
 
+            Star_Important_Label As label:
+                Height: =20
+                Text: ="*"
+                Width: =19
+                X: =11
+                Y: =17
+                ZIndex: =6
+
         "'Epic Level Item_DataCard2_1' As typedDataCard.comboBoxOptionSetSingleEditCard":
             BorderStyle: =BorderStyle.Solid
             BorderThickness: =0
@@ -1642,7 +1668,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValueEpicLevelItem_1.Y + DataCardValueEpicLevelItem_1.Height
+                Y: =EpicLevelItem_Dropdown_Update.Y + EpicLevelItem_Dropdown_Update.Height
                 ZIndex: =3
 
             StarVisible18_1 As label:
@@ -1655,22 +1681,12 @@
                 Y: =DataCardKey19_1.Y
                 ZIndex: =4
 
-            DataCardValueEpicLevelItem_1 As text:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =Parent.Default
-                DelayOutput: =true
-                Fill: |-
-                    =If(varOpenUserStoryCreate, 
-                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-                PaddingLeft: =5
-                RadiusBottomLeft: =0
-                RadiusBottomRight: =0
-                RadiusTopLeft: =0
-                RadiusTopRight: =0
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
+            EpicLevelItem_Dropdown_Update As dropdown:
+                Default: =galUserStories.Selected.'Epic Level Item'
+                Items: =Choices('Epic Level Item (User Stories)')
+                Width: =155
                 X: =30
-                Y: =DataCardKey6_1.Y + DataCardKey6_1.Height + 5
+                Y: =44
                 ZIndex: =5
 
         "'Operating Model_DataCard1_1' As typedDataCard.comboBoxEditCard":
@@ -1682,8 +1698,8 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-            Update: =OperatingModel_Dropdown_1.Selected
-            Visible: =If (DataCardValueEpicLevelItem_1.Text = "Yes" , false, true)
+            Update: =OperatingModel_ComboBox.Selected
+            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
             Width: =215
             WidthFit: =true
             X: =0
@@ -1712,21 +1728,22 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =OperatingModel_Dropdown_1.Y + OperatingModel_Dropdown_1.Height
+                Y: =OperatingModel_ComboBox.Y + OperatingModel_ComboBox.Height
                 ZIndex: =3
 
-            OperatingModel_Dropdown_1 As dropdown:
-                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            OperatingModel_ComboBox As combobox:
+                DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, 'Operating Model')
+                DisplayFields: =["neu_operatingmodelname"]
                 Height: =36
-                Items: |-
-                    =//Choices([@'User Stories'].neu_OperatingModelID)
-                    
-                    //LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.'Operating Model')
-                    Operating
+                IsSearchable: =false
+                Items: |
+                    =Sort('Operating Models', 'Operating Model Name')
+                SearchFields: =["neu_operatingmodelname"]
+                SearchItems: =[]
                 Width: =585
                 X: =30
                 Y: =44
-                ZIndex: =5
+                ZIndex: =4
 
         Capability_DataCard1_1 As typedDataCard.comboBoxEditCard:
             BorderStyle: =BorderStyle.Solid
@@ -1737,8 +1754,8 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-            Update: =Capability_Dropdown_1.Selected
-            Visible: =If (DataCardValueEpicLevelItem_1.Text = "Yes" , false, true)
+            Update: =Capability_ComboBox.Selected
+            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes, false, true)
             Width: =215
             WidthFit: =true
             X: =0
@@ -1767,17 +1784,20 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =Capability_Dropdown_1.Y + Capability_Dropdown_1.Height
+                Y: =Capability_ComboBox.Y + Capability_ComboBox.Height
                 ZIndex: =3
 
-            Capability_Dropdown_1 As dropdown:
-                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-                Height: =36
-                Items: =LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.Capability)
+            Capability_ComboBox As combobox:
+                DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, Capability)
+                DisplayFields: =["neu_capabilityname"]
+                IsSearchable: =false
+                Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = OperatingModel_ComboBox.Selected.'Operating Model Name'), 'Capability Name')
+                SearchFields: =["neu_capabilityname"]
+                SearchItems: =[]
                 Width: =585
                 X: =30
                 Y: =44
-                ZIndex: =5
+                ZIndex: =4
 
         "'Process Group_DataCard1_1' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
@@ -1788,8 +1808,8 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-            Update: =ProcessGroup_Dropdown_1.Selected
-            Visible: =If (DataCardValueEpicLevelItem_1.Text = "Yes" , false, true)
+            Update: =ProcessGroup_ComboBox.Selected
+            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes, false, true)
             Width: =645
             WidthFit: =true
             X: =0
@@ -1821,13 +1841,17 @@
                 Y: =88
                 ZIndex: =3
 
-            ProcessGroup_Dropdown_1 As dropdown:
-                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-                Items: =LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.'Process Group')
+            ProcessGroup_ComboBox As combobox:
+                DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, 'Process Group')
+                DisplayFields: =["neu_processgroupname"]
+                IsSearchable: =false
+                Items: =Sort(Filter('Process Groups', 'Capability'.'Capability Name' = Capability_ComboBox.Selected.'Capability Name'), 'Process Group Name')
+                SearchFields: =["neu_processgroupname"]
+                SearchItems: =[]
                 Width: =585
                 X: =30
-                Y: =48
-                ZIndex: =5
+                Y: =44
+                ZIndex: =4
 
         Process_DataCard1_1 As typedDataCard.comboBoxEditCard:
             BorderStyle: =BorderStyle.Solid
@@ -1838,8 +1862,8 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =Process_Dropdown_1.Selected
-            Visible: =If (DataCardValueEpicLevelItem_1.Text = "Yes" , false, true)
+            Update: =Process_ComboBox.Selected
+            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes, false, true)
             Width: =215
             WidthFit: =true
             X: =0
@@ -1881,12 +1905,16 @@
                 Y: =DataCardKey17_1.Y
                 ZIndex: =4
 
-            Process_Dropdown_1 As dropdown:
-                Fill: =If(varOpenUserStoryCreate, RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-                Items: =LookUp('User Stories',Name = galUserStories.Selected.Name, ThisItem.Process)
+            Process_ComboBox As combobox:
+                DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, Process)
+                DisplayFields: =["neu_processname"]
+                IsSearchable: =false
+                Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' = ProcessGroup_ComboBox.Selected.'Process Group Name'), 'Process Name')
+                SearchFields: =["neu_processname"]
+                SearchItems: =[]
                 Width: =585
                 X: =30
-                Y: =48
+                Y: =44
                 ZIndex: =5
 
         "'Effort Percentage_DataCard1_1' As typedDataCard.numberEditCard":
@@ -1899,7 +1927,7 @@
             Height: =0
             Required: =false
             Update: =Value(DataCardValue11_1.Text)
-            Visible: =If (DataCardValueEpicLevelItem_1.Text = "Yes" , false, true)
+            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes, false, true)
             Width: =215
             X: =0
             Y: =7
@@ -2010,6 +2038,14 @@
                 Y: =DataCardValue4_1.Y + DataCardValue4_1.Height
                 ZIndex: =3
 
+            Star_Important_Label_1 As label:
+                Height: =20
+                Text: ="*"
+                Width: =19
+                X: =11
+                Y: =17
+                ZIndex: =4
+
         Description_DataCard1_1 As typedDataCard.textualMultiLineEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="neu_description"
@@ -2068,6 +2104,14 @@
                 X: =30
                 Y: =DataCardValue8_1.Y + DataCardValue8_1.Height
                 ZIndex: =3
+
+            Star_Important_Label_2 As label:
+                Height: =20
+                Text: ="*"
+                Width: =19
+                X: =11
+                Y: =17
+                ZIndex: =4
 
         "'Estimated Hours_DataCard1_1' As typedDataCard.numberEditCard":
             BorderStyle: =BorderStyle.Solid
