@@ -1419,9 +1419,7 @@
 
         "'Create US Button' As button":
             OnSelect: |-
-                =//SubmitForm(UserStoryForm)
-                
-                If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.No,
+                =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.No,
                     Patch(
                         'User Stories',
                         Defaults('User Stories'),
@@ -1430,10 +1428,18 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Operating Model':'Operating Model US ComboBox'.Selected,
-                            Capability:'Capability US ComboBox'.Selected,
-                            'Process Group':'Process Group US ComboBox'.Selected,
-                            Process:'Process US ComboBox'.Selected,
+                            'Operating Model':If(IsBlank('Operating Model US ComboBox'.SelectedItems), 
+                                                Blank(), 
+                                                'Operating Model US ComboBox'.SelectedItems),
+                            Capability:If(IsBlank('Capability US ComboBox'.Selected),
+                                                Blank(),
+                                                'Capability US ComboBox'.SelectedItems),
+                            'Process Group':If(IsBlank('Process Group US ComboBox'.Selected),
+                                                Blank(),
+                                                'Process Group US ComboBox'.SelectedItems),
+                            Process:If(IsBlank('Process US ComboBox'.Selected),
+                                                Blank(),
+                                                'Process US ComboBox'.Selected),
                             'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
