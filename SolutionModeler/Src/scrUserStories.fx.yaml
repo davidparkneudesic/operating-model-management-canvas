@@ -1,6 +1,6 @@
 "scrUserStories As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     Fill: |-
-        =If(varOpenUserStoryCreate, 
+        =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
         RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
     OnVisible: |-
         =UpdateContext({resetControl: !resetControl});
@@ -16,7 +16,7 @@
         Default: =//varGalDefault
         DelayItemLoading: =true
         Fill: |-
-            =If(varOpenUserStoryCreate, 
+            =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =597
         Items: |-
@@ -26,7 +26,7 @@
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
             =If(ThisItem.Name = galUserStories.Selected.Name && 
-                    !(varOpenUserStoryCreate), 
+                    !(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow), 
                  RGBA(204, 208, 225, 1),
                 If (ThisItem.Name = galUserStories.Selected.Name && 
                         varOpenUserStoryCreate,
@@ -996,6 +996,7 @@
                     Items: =Sort('Operating Models', 'Operating Model Name')
                     SearchFields: =["neu_operatingmodelname"]
                     SearchItems: =Search(Sort('Operating Models', 'Operating Model Name'),'Operating Model US ComboBox'.SearchText,"neu_operatingmodelname")
+                    SelectMultiple: =false
                     Width: =799
                     X: =30
                     Y: =44
@@ -1048,6 +1049,7 @@
                     Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name')
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =Search(Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name'),'Capability US ComboBox'.SearchText,"neu_capabilityname")
+                    SelectMultiple: =false
                     Width: =799
                     X: =30
                     Y: =44
@@ -1097,10 +1099,10 @@
 
                 "'Process Group US ComboBox' As combobox":
                     DisplayFields: =["neu_processgroupname"]
-                    IsSearchable: =false
                     Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name')
                     SearchFields: =["neu_processgroupname"]
-                    SearchItems: =[]
+                    SearchItems: =Search(Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name'),'Process Group US ComboBox'.SearchText,"neu_processgroupname")
+                    SelectMultiple: =false
                     Width: =799
                     X: =30
                     Y: =44
@@ -1160,10 +1162,10 @@
 
                 "'Process US ComboBox' As combobox":
                     DisplayFields: =["neu_processname"]
-                    IsSearchable: =false
                     Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name')
                     SearchFields: =["neu_processname"]
-                    SearchItems: =[]
+                    SearchItems: =Search(Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name'),'Process US ComboBox'.SearchText,"neu_processname")
+                    SelectMultiple: =false
                     Width: =799
                     X: =30
                     Y: =44
@@ -1428,10 +1430,10 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Operating Model':If(IsBlank('Operating Model US ComboBox'.Selected), Blank(), 'Operating Model US ComboBox'.Selected),
-                            Capability:If(IsBlank('Capability US ComboBox'.Selected), Blank(), 'Capability US ComboBox'.Selected),
-                            'Process Group':If(IsBlank('Process Group US ComboBox'.Selected), Blank(), 'Process Group US ComboBox'.Selected),
-                            Process:If(IsBlank('Process US ComboBox'.Selected), Blank(), 'Process US ComboBox'.Selected),
+                            'Operating Model':'Operating Model US ComboBox'.Selected,
+                            Capability:'Capability US ComboBox'.Selected,
+                            'Process Group':'Process Group US ComboBox'.Selected,
+                            Process:'Process US ComboBox'.Selected,
                             'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
@@ -1526,7 +1528,8 @@
                 )
             );
             
-            UpdateContext({varUserStoryUpdated:true})
+            UpdateContext({varUserStoryUpdated:true});
+            UpdateContext({varOpenUserStoryUpdatedWindow:true});
         Text: ="Update"
         Visible: =If(varUpdateUserStory,true,false)
         Width: =150
@@ -1549,10 +1552,7 @@
 
     "'Delete User Story Button' As button":
         OnSelect: |-
-            =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-            //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-            
-            UpdateContext({varDeleteUserStory:true})
+            =UpdateContext({varOpenDeleteUserStoryWindow:true});
         Text: ="Delete Story"
         Visible: =If(varUpdateUserStory,true, false)
         Width: =158
@@ -1564,7 +1564,7 @@
         BorderThickness: =1
         DataSource: ='User Stories'
         Fill: |-
-            =If(varOpenUserStoryCreate, 
+            =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =597
         Item: =galUserStories.Selected
@@ -1616,6 +1616,9 @@
                 ZIndex: =3
 
             "'Client Solution US Dropdown_1' As dropdown":
+                Fill: |-
+                    =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =Filter('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution')
                 Width: =340
                 X: =30
@@ -1683,6 +1686,9 @@
 
             EpicLevelItem_Dropdown_Update As dropdown:
                 Default: =galUserStories.Selected.'Epic Level Item'
+                Fill: |-
+                    =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Items: =Choices('Epic Level Item (User Stories)')
                 Width: =155
                 X: =30
@@ -1734,12 +1740,16 @@
             OperatingModel_ComboBox As combobox:
                 DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, 'Operating Model')
                 DisplayFields: =["neu_operatingmodelname"]
+                Fill: |-
+                    =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 Height: =36
                 IsSearchable: =false
                 Items: |
                     =Sort('Operating Models', 'Operating Model Name')
                 SearchFields: =["neu_operatingmodelname"]
                 SearchItems: =[]
+                SelectMultiple: =false
                 Width: =585
                 X: =30
                 Y: =44
@@ -1790,10 +1800,14 @@
             Capability_ComboBox As combobox:
                 DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, Capability)
                 DisplayFields: =["neu_capabilityname"]
+                Fill: |-
+                    =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 IsSearchable: =false
                 Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = OperatingModel_ComboBox.Selected.'Operating Model Name'), 'Capability Name')
                 SearchFields: =["neu_capabilityname"]
                 SearchItems: =[]
+                SelectMultiple: =false
                 Width: =585
                 X: =30
                 Y: =44
@@ -1844,10 +1858,14 @@
             ProcessGroup_ComboBox As combobox:
                 DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, 'Process Group')
                 DisplayFields: =["neu_processgroupname"]
+                Fill: |-
+                    =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 IsSearchable: =false
                 Items: =Sort(Filter('Process Groups', 'Capability'.'Capability Name' = Capability_ComboBox.Selected.'Capability Name'), 'Process Group Name')
                 SearchFields: =["neu_processgroupname"]
                 SearchItems: =[]
+                SelectMultiple: =false
                 Width: =585
                 X: =30
                 Y: =44
@@ -1908,10 +1926,14 @@
             Process_ComboBox As combobox:
                 DefaultSelectedItems: =LookUp('User Stories', Name = galUserStories.Selected.Name, Process)
                 DisplayFields: =["neu_processname"]
+                Fill: |-
+                    =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                    RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 IsSearchable: =false
                 Items: =Sort(Filter(Processes, 'Process Group'.'Process Group Name' = ProcessGroup_ComboBox.Selected.'Process Group Name'), 'Process Name')
                 SearchFields: =["neu_processname"]
                 SearchItems: =[]
+                SelectMultiple: =false
                 Width: =585
                 X: =30
                 Y: =44
@@ -2009,7 +2031,7 @@
                 Default: =Parent.Default
                 DelayOutput: =true
                 Fill: |-
-                    =If(varOpenUserStoryCreate, 
+                    =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
                     RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 MaxLength: =Parent.MaxLength
                 PaddingLeft: =5
@@ -2179,4 +2201,107 @@
                 Wrap: =false
                 Y: =DataCardKey11_1.Y
                 ZIndex: =4
+
+    UserStoryUpdatedWindow_Container As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Visible: =If(varOpenUserStoryUpdatedWindow,true,false)
+        X: =433
+        Y: =303
+        ZIndex: =16
+
+        Icon2 As icon.Cancel:
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenUserStoryUpdatedWindow:false})
+            Width: =52
+            X: =440
+            Y: =5
+            ZIndex: =1
+
+        Label8 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =77
+            Size: =15
+            Text: ="User Story has been successfully Updated!"
+            Width: =448
+            X: =26
+            Y: =75
+            ZIndex: =2
+
+    UserStoryDeletedWindow_Container As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =275
+        Visible: =If(varOpenDeleteUserStoryWindow,true,false)
+        Width: =608
+        X: =379
+        Y: =247
+        ZIndex: =17
+
+        "'Exit Before Deletion Icon' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+            Visible: =If(varMessageUserStoryDeleted,false,true)
+            Width: =52
+            X: =550
+            Y: =5
+            ZIndex: =1
+
+        "'User Story Deleted Message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =54
+            Size: =15
+            Text: ="User Story has been successfully deleted!"
+            Visible: =If(varMessageUserStoryDeleted,true, false)
+            Width: =448
+            X: =89
+            Y: =109
+            ZIndex: =2
+
+        Button2 As button:
+            OnSelect: |-
+                =Remove('User Stories', LookUp('User Stories', Name = galUserStories.Selected.Name));
+                UpdateContext({varMessageUserStoryDeleted:true})
+            Text: ="Delete"
+            Visible: =If(varMessageUserStoryDeleted,false, true)
+            X: =59
+            Y: =211
+            ZIndex: =3
+
+        "'Do you want to continue Label' As label":
+            Align: =Align.Center
+            Height: =54
+            Size: =15
+            Text: ="Please click 'Delete' button to continue"
+            Visible: =If(varMessageUserStoryDeleted,false, true)
+            Width: =507
+            X: =59
+            Y: =109
+            ZIndex: =4
+
+        Button2_1 As button:
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+            Text: ="Cancel"
+            Visible: =If(varMessageUserStoryDeleted,false, true)
+            X: =390
+            Y: =211
+            ZIndex: =5
+
+        "'Exit After Deletion Icon' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+                UpdateContext({varMessageUserStoryDeleted:false});
+                UpdateContext({varUpdateUserStory:false});
+            Visible: =If(varMessageUserStoryDeleted,true,false)
+            Width: =52
+            X: =550
+            Y: =5
+            ZIndex: =6
 
