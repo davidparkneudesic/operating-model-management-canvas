@@ -251,7 +251,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCancel",
-      "ParentIndex": 10,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -515,7 +515,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSubmit",
-      "ParentIndex": 11,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -729,14 +729,7 @@
         "PressedColor",
         "HoverColor",
         "DisplayMode",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Fill",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Fill",
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -786,7 +779,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button1",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1528,14 +1521,7 @@
         "PressedColor",
         "HoverColor",
         "DisplayMode",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Fill",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Fill",
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -1585,7 +1571,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button5",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1799,14 +1785,7 @@
         "PressedColor",
         "HoverColor",
         "DisplayMode",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Fill",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Fill",
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -1856,7 +1835,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button5_1",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2127,7 +2106,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Cancel User Story Update Button",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3411,7 +3390,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Capability_DataCard1_2",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17444,7 +17423,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Delete User Story Button",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19390,7 +19369,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Effort Percentage_DataCard1_2",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -28889,7 +28868,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Estimated Hours_DataCard1_2",
-      "ParentIndex": 4,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -29447,7 +29426,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateGallery.ID%",
       "Name": "galUserStories",
-      "ParentIndex": 12,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -32841,7 +32820,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "OperatingModel_DataCard1_2",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -33983,7 +33962,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Process Group_DataCard1_2",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -35175,7 +35154,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Process_DataCard1_2",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -37054,7 +37033,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
+          "AutoRuleBindingString": "Color.White",
           "InvariantPropertyName": "Fill",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -42802,7 +42781,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Update Button",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -43919,7 +43898,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "UserStoryDeletedWindow_Container",
-      "ParentIndex": 15,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -44111,7 +44090,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "UserStoryFormEdit",
-      "ParentIndex": 14,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -44250,7 +44229,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "UserStoryFormView",
-      "ParentIndex": 13,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -44373,7 +44352,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "UserStoryUpdatedWindow_Container",
-      "ParentIndex": 16,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

@@ -85,6 +85,44 @@
             Width: =4
             ZIndex: =5
 
+    "'Operating Model CS Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Fill: |-
+            =If(varOpenCreateClientSolution, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Height: =140
+        Items: =SolutionGallery.Selected.'Operating Models'
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =80
+        Width: =688
+        X: =612
+        Y: =480
+        ZIndex: =1
+
+        Title13 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =79.5
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Operating Model Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Rectangle13 As rectangle:
+            Height: =Parent.TemplateHeight - Separator5.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =4
+
     Label4 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
@@ -112,9 +150,9 @@
     ClientsSolutionsForm As form:
         AcceptsFocus: =true
         DataSource: ='Client Solutions'
-        Height: =312
+        Height: =513
         Item: =SolutionGallery.Selected
-        Width: =1015
+        Width: =507
         X: =346
         Y: =145
         ZIndex: =7
@@ -129,7 +167,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue10.Selected
-            Width: =338
+            Width: =169
             X: =0
             Y: =1
             ZIndex: =1
@@ -195,9 +233,9 @@
             Height: =50
             Required: =false
             Update: =DateValue2.SelectedDate
-            Width: =338
+            Width: =169
             X: =0
-            Y: =1
+            Y: =4
             ZIndex: =1
 
             DataCardKey4 As label:
@@ -293,7 +331,7 @@
             Height: =40
             Required: =false
             Visible: =false
-            Width: =338
+            Width: =169
             X: =1
             Y: =1
             ZIndex: =1
@@ -332,7 +370,7 @@
             Height: =50
             Required: =false
             Update: =DateValue1.SelectedDate
-            Width: =338
+            Width: =169
             X: =1
             Y: =1
             ZIndex: =1
@@ -415,7 +453,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue2.Text
-            Width: =676
+            Width: =338
             X: =0
             Y: =2
             ZIndex: =1
@@ -481,7 +519,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue3.Selected
-            Width: =338
+            Width: =169
             X: =2
             Y: =2
             ZIndex: =1
@@ -548,7 +586,7 @@
             Height: =24
             Required: =false
             Visible: =false
-            Width: =338
+            Width: =169
             X: =2
             Y: =3
             ZIndex: =1
@@ -587,7 +625,7 @@
             MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
             Required: =true
             Update: =DataCardValue5.Text
-            Width: =338
+            Width: =169
             X: =0
             Y: =0
             ZIndex: =8
@@ -655,7 +693,7 @@
             MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
             Required: =true
             Update: =DataCardValue6.Text
-            Width: =338
+            Width: =169
             X: =1
             Y: =0
             ZIndex: =8
@@ -722,7 +760,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue7.Selected.Value
-            Width: =298
+            Width: =169
             X: =2
             Y: =0
             ZIndex: =8
@@ -848,6 +886,7 @@
                 );
                 
                 //If(!IsBlank('Related Operating Models Combobox'.SelectedItems), Relate(First(Filter('Client Solutions', 'Solution Name' = 'New Solution Name Input'.Text)), 'Related Operating Models Combobox'.SelectedItems));
+                
                 
                 UpdateContext({varClientSolutionCreated:true});
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
