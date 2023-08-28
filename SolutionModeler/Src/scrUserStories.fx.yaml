@@ -1002,6 +1002,13 @@
                     Y: =44
                     ZIndex: =4
 
+                "'Operating Model US Dropdown' As dropdown":
+                    Items: =Sort('Operating Models', 'Operating Model Name')
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =5
+
             Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_CapabilityID"
@@ -1055,6 +1062,13 @@
                     Y: =44
                     ZIndex: =4
 
+                "'Capability US Dropdown' As dropdown":
+                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US Dropdown'.Selected.'Operating Model Name'), 'Capability Name')
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =5
+
             "'Process Group_DataCard1_2' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_ProcessGroupID"
@@ -1107,6 +1121,13 @@
                     X: =30
                     Y: =44
                     ZIndex: =4
+
+                "'Process Group US Dropdown' As dropdown":
+                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US Dropdown'.Selected.'Capability Name'), 'Process Group Name')
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =5
 
             Process_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -1170,6 +1191,13 @@
                     X: =30
                     Y: =44
                     ZIndex: =5
+
+                "'Process US Dropdown' As dropdown":
+                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US Dropdown'.Selected.'Process Group Name'), 'Process Name')
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =6
 
             "'Effort Percentage_DataCard1_2' As typedDataCard.numberEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -1428,18 +1456,10 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Operating Model':If(IsBlank('Operating Model US ComboBox'.SelectedItems), 
-                                                Blank(), 
-                                                'Operating Model US ComboBox'.SelectedItems),
-                            Capability:If(IsBlank('Capability US ComboBox'.Selected),
-                                                Blank(),
-                                                'Capability US ComboBox'.SelectedItems),
-                            'Process Group':If(IsBlank('Process Group US ComboBox'.Selected),
-                                                Blank(),
-                                                'Process Group US ComboBox'.SelectedItems),
-                            Process:If(IsBlank('Process US ComboBox'.Selected),
-                                                Blank(),
-                                                'Process US ComboBox'.Selected),
+                            'Operating Model':'Operating Model US Dropdown'.Selected,
+                            Capability:'Capability US Dropdown'.Selected,
+                            'Process Group':'Process Group US Dropdown'.Selected,
+                            Process:'Process US Dropdown'.Selected,
                             'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
@@ -1484,6 +1504,24 @@
             X: =281
             Y: =575
             ZIndex: =5
+
+        Button3 As button:
+            OnSelect: |-
+                =Patch(
+                    'User Stories',
+                    Defaults('User Stories'),
+                    {
+                        Name:'User Story Name Input'.Text,
+                        Description:'Description US Input'.Text,
+                        'Client Solution':'Client Solution US Dropdown for Create'.Selected,
+                        'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
+                        'Estimated Hours':Value('Estimated Hours Input'.Text)
+                    }
+                )
+            Text: ="Button"
+            X: =651
+            Y: =615
+            ZIndex: =6
 
     Button5_1 As button:
         OnSelect: |-
@@ -1868,7 +1906,7 @@
                     =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
                     RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                 IsSearchable: =false
-                Items: =Sort(Filter('Process Groups', 'Capability'.'Capability Name' = Capability_ComboBox.Selected.'Capability Name'), 'Process Group Name')
+                Items: =Sort(Filter('Process Groups', Capability.'Capability Name' = Capability_ComboBox.Selected.'Capability Name'), 'Process Group Name')
                 SearchFields: =["neu_processgroupname"]
                 SearchItems: =[]
                 SelectMultiple: =false
