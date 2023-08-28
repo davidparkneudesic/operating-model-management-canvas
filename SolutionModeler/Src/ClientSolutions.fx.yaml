@@ -114,7 +114,7 @@
     ClientsSolutionsForm As form:
         AcceptsFocus: =true
         DataSource: ='Client Solutions'
-        Height: =535
+        Height: =312
         Item: =SolutionGallery.Selected
         Width: =1015
         X: =346
@@ -236,7 +236,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue2.Text
-            Width: =600
+            Width: =676
             X: =0
             Y: =2
             ZIndex: =1
@@ -371,7 +371,7 @@
             Update: =DateValue2.SelectedDate
             Width: =338
             X: =0
-            Y: =3
+            Y: =1
             ZIndex: =1
 
             DataCardKey4 As label:
@@ -469,7 +469,7 @@
             Update: =DateValue1.SelectedDate
             Width: =338
             X: =1
-            Y: =3
+            Y: =1
             ZIndex: =1
 
             DataCardKey1 As label:
