@@ -251,7 +251,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCancel",
-      "ParentIndex": 10,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -515,7 +515,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSubmit",
-      "ParentIndex": 11,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -779,7 +779,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button1",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1571,7 +1571,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button5",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1835,7 +1835,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button5_1",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2106,7 +2106,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Cancel User Story Update Button",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17423,7 +17423,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Delete User Story Button",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -28853,14 +28853,7 @@
         "BorderStyle",
         "Fill",
         "X",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "3",
-          "InvariantPropertyName": "Y",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Y",
         "Width",
         "Height",
         "ZIndex"
@@ -29433,7 +29426,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateGallery.ID%",
       "Name": "galUserStories",
-      "ParentIndex": 12,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -31573,7 +31566,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryNextIcon.ID%",
       "Name": "NextArrow3",
-      "ParentIndex": 2,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -42671,7 +42664,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Update Button",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -43788,7 +43781,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "UserStoryDeletedWindow_Container",
-      "ParentIndex": 15,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -43980,7 +43973,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "UserStoryFormEdit",
-      "ParentIndex": 14,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -44119,7 +44112,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "UserStoryFormView",
-      "ParentIndex": 13,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -44242,7 +44235,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "UserStoryUpdatedWindow_Container",
-      "ParentIndex": 16,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

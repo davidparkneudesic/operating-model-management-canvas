@@ -1,7 +1,5 @@
 "'Implementation Model Screen' As screen":
-    Fill: |-
-        =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    Fill: =RGBA(116, 116, 116, 1)
 
     "'Back Button_2' As icon.ChevronLeft":
         Height: =51
@@ -326,6 +324,7 @@
         ZIndex: =10
 
     "'Creatte Implementation Model Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =68
         OnSelect: |-
             =UpdateContext({varCreateOpenImplementationModel:true});
@@ -347,6 +346,7 @@
         ZIndex: =11
 
     "'Create Implementation Phase Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =68
         OnSelect: |-
             =UpdateContext({varCreateOpenImplementationModel:false});
@@ -370,6 +370,7 @@
         ZIndex: =12
 
     "'Create Implementation Stage Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =68
         OnSelect: |-
             =UpdateContext({varCreateOpenImplementationModel:false});
@@ -393,6 +394,7 @@
         ZIndex: =13
 
     "'Create Product Backlog Item Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =68
         OnSelect: |-
             =UpdateContext({varCreateOpenImplementationModel:false});
@@ -417,6 +419,7 @@
         ZIndex: =14
 
     "'Create Task Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =68
         OnSelect: |-
             =UpdateContext({varCreateOpenImplementationModel:false});
