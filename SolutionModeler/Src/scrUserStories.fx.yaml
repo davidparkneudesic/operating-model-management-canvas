@@ -833,7 +833,6 @@
                         Capability:Capability_ComboBox.Selected,
                         'Process Group':ProcessGroup_ComboBox.Selected,
                         Process:Process_ComboBox.Selected,
-                        'Effort Percentage':Value(DataCardValue11_1.Text) / 100,
                         'Estimated Hours':Value(DataCardValue9_1.Text)
                     }
                 ),
@@ -845,6 +844,7 @@
                         Description:DataCardValue8_1.Text,
                         'Client Solution':'Client Solution US Dropdown_1'.Selected,
                         'Epic Level Item':EpicLevelItem_Dropdown_Update.Selected.Value,
+                        'Effort Percentage':Value(DataCardValue11_1.Text) / 100,
                         'Estimated Hours':Value(DataCardValue9_1.Text)
                     }
                 )
