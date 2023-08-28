@@ -2291,3 +2291,12 @@
             Y: =5
             ZIndex: =6
 
+    Button1 As button:
+        OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
+        Text: ="Run Epic Balancer"
+        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Width: =212
+        X: =28
+        Y: =81
+        ZIndex: =17
+
