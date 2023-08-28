@@ -1,7 +1,5 @@
 "'Operating Models Screen' As screen":
-    Fill: |-
-        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
-        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    Fill: =RGBA(116, 116, 116, 1)
     OnVisible: =
 
     "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -430,6 +428,7 @@
         ZIndex: =29
 
     "'Create OM Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenOperatingModelCreate:true});
@@ -447,6 +446,7 @@
         ZIndex: =30
 
     "'Create Cap Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenCapabilityCreate:true});
@@ -462,6 +462,7 @@
         ZIndex: =31
 
     "'Create PG Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenProcessGroupCreate:true});
@@ -477,6 +478,7 @@
         ZIndex: =32
 
     "'Create Process Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenProcessCreate:true});

@@ -1,7 +1,5 @@
 "ClientSolutions As screen.'autoLayout_SplitScreen_ver1.0'":
-    Fill: |-
-        =If(varOpenCreateClientSolution, 
-        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    Fill: =RGBA(116, 116, 116, 1)
 
     "SolutionGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
@@ -785,6 +783,7 @@
                 ZIndex: =4
 
     btnNewClientSolution As button:
+        Fill: =RGBA(0, 16, 96, 1)
         Height: =44
         OnSelect: |-
             =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -796,6 +795,7 @@
         ZIndex: =11
 
     btnViewUserStories As button:
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             UpdateContext({varOpenCreateClientSolution:false})

@@ -1,7 +1,5 @@
 "scrUserStories As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
-    Fill: |-
-        =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
-        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    Fill: =RGBA(116, 116, 116, 1)
     OnVisible: |-
         =UpdateContext({resetControl: !resetControl});
         UpdateContext({resetControl: !resetControl})
@@ -754,6 +752,7 @@
                 ZIndex: =5
 
     Button5 As button:
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =
             If(IsBlank(galUserStories.Selected),Select(galUserStories,1));
@@ -803,6 +802,7 @@
         ZIndex: =8
 
     Button5_1 As button:
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -2292,6 +2292,7 @@
             ZIndex: =6
 
     Button1 As button:
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
         Text: ="Run Epic Balancer"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
