@@ -11,7 +11,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-    "galUserStories As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+    "galUserStories As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
         Default: =//varGalDefault
         DelayItemLoading: =true
@@ -35,13 +35,13 @@
                 )
             )
         TemplatePadding: =0
-        TemplateSize: =94
+        TemplateSize: =90
         Width: =646
         X: =28
         Y: =148
         ZIndex: =1
 
-        Title5 As label:
+        Title12 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
@@ -53,42 +53,24 @@
             Text: =ThisItem.Name
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 86
-            X: =14
-            Y: =11
+            X: =16
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle1.Size * 1.8)) / 2
             ZIndex: =1
 
-        Subtitle3 As label:
+        Subtitle1 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =43
+            Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
-            Overflow: =Overflow.Scroll
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
             Text: =ThisItem.Description
             VerticalAlign: =VerticalAlign.Top
-            Width: =568
-            X: =14
-            Y: =43
+            Width: =Title12.Width
+            X: =Title12.X
+            Y: =Title12.Y + Title12.Height
             ZIndex: =2
-
-        Body1 As label:
-            Align: =Align.Right
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =18
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =14
-            Text: =ThisItem.'Estimated Hours'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =167
-            X: =402
-            Y: =11
-            ZIndex: =3
 
         NextArrow3 As icon.ChevronRight:
             AccessibleLabel: =Self.Tooltip
@@ -104,14 +86,21 @@
             Width: =50
             X: =Parent.TemplateWidth - Self.Width - 12
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        Separator4 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
             ZIndex: =4
 
-        Rectangle4 As rectangle:
+        Rectangle12 As rectangle:
             Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4
-            ZIndex: =6
+            ZIndex: =5
 
     "'Client User Stories Title' As label":
         Align: =Align.Center
@@ -276,7 +265,7 @@
             Width: =215
             WidthFit: =true
             X: =0
-            Y: =3
+            Y: =4
             ZIndex: =1
 
             DataCardKey16 As label:
@@ -330,7 +319,7 @@
             Width: =215
             WidthFit: =true
             X: =0
-            Y: =4
+            Y: =5
             ZIndex: =1
 
             DataCardKey15 As label:
@@ -381,7 +370,7 @@
             Width: =645
             WidthFit: =true
             X: =0
-            Y: =5
+            Y: =6
             ZIndex: =1
 
             DataCardKey18 As label:
@@ -431,7 +420,7 @@
             Width: =215
             WidthFit: =true
             X: =0
-            Y: =6
+            Y: =7
             ZIndex: =1
 
             DataCardKey17 As label:
@@ -490,7 +479,7 @@
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , true, false)
             Width: =215
             X: =0
-            Y: =7
+            Y: =8
             ZIndex: =1
 
             DataCardKey12 As label:
@@ -698,8 +687,8 @@
             Required: =false
             Update: =Value(DataCardValue9.Text)
             Width: =215
-            X: =1
-            Y: =7
+            X: =0
+            Y: =3
             ZIndex: =4
 
             DataCardKey11 As label:
