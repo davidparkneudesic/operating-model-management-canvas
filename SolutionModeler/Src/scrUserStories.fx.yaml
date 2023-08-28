@@ -83,13 +83,6 @@
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
             ZIndex: =3
 
-        Separator4 As rectangle:
-            Height: =8
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - Self.Height
-            ZIndex: =4
-
         Rectangle12 As rectangle:
             Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
@@ -688,7 +681,8 @@
             Update: =Value(DataCardValue9.Text)
             Width: =215
             X: =0
-            Y: =3
+            Y: |
+                =8
             ZIndex: =4
 
             DataCardKey11 As label:
@@ -1535,7 +1529,8 @@
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenUserStoryUpdatedWindow:false})
+                =UpdateContext({varOpenUserStoryUpdatedWindow:false});
+                UpdateContext({varUpdateUserStory:false})
             Width: =52
             X: =440
             Y: =5
@@ -2097,7 +2092,8 @@
                 Update: =Value('Estimated Hours Input'.Text)
                 Width: =286
                 X: =0
-                Y: =3
+                Y: |
+                    =8
                 ZIndex: =4
 
                 DataCardKey11_2 As label:
