@@ -1002,13 +1002,6 @@
                     Y: =44
                     ZIndex: =4
 
-                "'Operating Model US Dropdown' As dropdown":
-                    Items: =Sort('Operating Models', 'Operating Model Name')
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =5
-
             Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_CapabilityID"
@@ -1062,13 +1055,6 @@
                     Y: =44
                     ZIndex: =4
 
-                "'Capability US Dropdown' As dropdown":
-                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US Dropdown'.Selected.'Operating Model Name'), 'Capability Name')
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =5
-
             "'Process Group_DataCard1_2' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_ProcessGroupID"
@@ -1121,13 +1107,6 @@
                     X: =30
                     Y: =44
                     ZIndex: =4
-
-                "'Process Group US Dropdown' As dropdown":
-                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US Dropdown'.Selected.'Capability Name'), 'Process Group Name')
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =5
 
             Process_DataCard1_2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -1191,13 +1170,6 @@
                     X: =30
                     Y: =44
                     ZIndex: =5
-
-                "'Process US Dropdown' As dropdown":
-                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US Dropdown'.Selected.'Process Group Name'), 'Process Name')
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =6
 
             "'Effort Percentage_DataCard1_2' As typedDataCard.numberEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -1456,10 +1428,10 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Operating Model':'Operating Model US Dropdown'.Selected,
-                            Capability:'Capability US Dropdown'.Selected,
-                            'Process Group':'Process Group US Dropdown'.Selected,
-                            Process:'Process US Dropdown'.Selected,
+                            'Operating Model':'Operating Model US ComboBox'.Selected,
+                            Capability:'Capability US ComboBox'.Selected,
+                            'Process Group':'Process Group US ComboBox'.Selected,
+                            Process:'Process US ComboBox'.Selected,
                             'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
@@ -1505,24 +1477,6 @@
             Y: =575
             ZIndex: =5
 
-        Button3 As button:
-            OnSelect: |-
-                =Patch(
-                    'User Stories',
-                    Defaults('User Stories'),
-                    {
-                        Name:'User Story Name Input'.Text,
-                        Description:'Description US Input'.Text,
-                        'Client Solution':'Client Solution US Dropdown for Create'.Selected,
-                        'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                        'Estimated Hours':Value('Estimated Hours Input'.Text)
-                    }
-                )
-            Text: ="Button"
-            X: =651
-            Y: =615
-            ZIndex: =6
-
     Button5_1 As button:
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1541,8 +1495,7 @@
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             
-            If(EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.No &&
-                !(IsBlank(OperatingModel_ComboBox.Selected) || IsBlank(Capability_ComboBox.Selected) || IsBlank(ProcessGroup_ComboBox.Selected) || IsBlank(Process_ComboBox.Selected)),
+            If(EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.No,
                 Patch(
                     'User Stories',
                     galUserStories.Selected,
