@@ -104,7 +104,8 @@
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
-            Navigate(HomePage, ScreenTransition.UnCoverRight)
+            Navigate(HomePage, ScreenTransition.UnCoverRight);
+            UpdateContext({varOpenCreateClientSolution:false})
         Width: =52
         X: =29
         Y: =37
@@ -113,7 +114,7 @@
     ClientsSolutionsForm As form:
         AcceptsFocus: =true
         DataSource: ='Client Solutions'
-        Height: =535
+        Height: =312
         Item: =SolutionGallery.Selected
         Width: =1015
         X: =346
@@ -235,7 +236,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue2.Text
-            Width: =600
+            Width: =676
             X: =0
             Y: =2
             ZIndex: =1
@@ -370,7 +371,7 @@
             Update: =DateValue2.SelectedDate
             Width: =338
             X: =0
-            Y: =3
+            Y: =1
             ZIndex: =1
 
             DataCardKey4 As label:
@@ -468,7 +469,7 @@
             Update: =DateValue1.SelectedDate
             Width: =338
             X: =1
-            Y: =3
+            Y: =1
             ZIndex: =1
 
             DataCardKey1 As label:
@@ -795,7 +796,9 @@
         ZIndex: =11
 
     btnViewUserStories As button:
-        OnSelect: =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text)
+        OnSelect: |-
+            =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+            UpdateContext({varOpenCreateClientSolution:false})
         Text: ="View User Stories"
         Width: =225
         X: =1094
@@ -846,7 +849,8 @@
                 
                 //If(!IsBlank('Related Operating Models Combobox'.SelectedItems), Relate(First(Filter('Client Solutions', 'Solution Name' = 'New Solution Name Input'.Text)), 'Related Operating Models Combobox'.SelectedItems));
                 
-                UpdateContext({varClientSolutionCreated:true})
+                UpdateContext({varClientSolutionCreated:true});
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             Text: ="Submit"
             Visible: |-
                 =//If(ClientsSolutionsForm.Mode = FormMode.New, true, false)
@@ -994,9 +998,10 @@
         "'Exit Create CS Icon' As icon.Cancel":
             Height: =56
             Icon: =Icon.Cancel
-            OnSelect: |
+            OnSelect: |-
                 =UpdateContext({varOpenCreateClientSolution:false});
                 UpdateContext({varClientSolutionCreated:false});
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             X: =1081
             Y: =33
             ZIndex: =21
