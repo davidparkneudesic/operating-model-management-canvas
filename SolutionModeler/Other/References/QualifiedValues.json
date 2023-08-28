@@ -15,41 +15,6 @@
       }
     },
     {
-      "Kind": "default.cds_neu_operatingmodel_forms",
-      "Namespace": "Operating Models (Forms)",
-      "Values": {
-        "Information": "8e20f39b-6ad7-41b7-8a04-796c020ba912"
-      }
-    },
-    {
-      "Kind": "default.cds_neu_processgroup_forms",
-      "Namespace": "Process Groups (Forms)",
-      "Values": {
-        "Information": "83a3d9b9-1736-4743-9877-726db35dae9b"
-      }
-    },
-    {
-      "Kind": "default.cds_neu_process_forms",
-      "Namespace": "Processes (Forms)",
-      "Values": {
-        "Information": "ad2df471-35d7-4328-8038-f3b22fcea31f"
-      }
-    },
-    {
-      "Kind": "default.cds_neu_solutionarea_forms",
-      "Namespace": "Solution Areas (Forms)",
-      "Values": {
-        "Information": "8a3efa13-b05c-4cf0-a7e5-d908f8ba9114"
-      }
-    },
-    {
-      "Kind": "default.cds_neu_userstory_forms",
-      "Namespace": "User Stories (Forms)",
-      "Values": {
-        "Information": "6ca74cc0-034d-4c64-ab75-c2e509cded2b"
-      }
-    },
-    {
       "Kind": "default.cds_neu_implementationmodel_forms",
       "Namespace": "Implementation Models (Forms)",
       "Values": {
@@ -71,10 +36,45 @@
       }
     },
     {
+      "Kind": "default.cds_neu_operatingmodel_forms",
+      "Namespace": "Operating Models (Forms)",
+      "Values": {
+        "Information": "8e20f39b-6ad7-41b7-8a04-796c020ba912"
+      }
+    },
+    {
+      "Kind": "default.cds_neu_platform_forms",
+      "Namespace": "Platforms (Forms)",
+      "Values": {
+        "Information": "eb53398b-e0fb-4321-9824-beed46f0edec"
+      }
+    },
+    {
+      "Kind": "default.cds_neu_processgroup_forms",
+      "Namespace": "Process Groups (Forms)",
+      "Values": {
+        "Information": "83a3d9b9-1736-4743-9877-726db35dae9b"
+      }
+    },
+    {
+      "Kind": "default.cds_neu_process_forms",
+      "Namespace": "Processes (Forms)",
+      "Values": {
+        "Information": "ad2df471-35d7-4328-8038-f3b22fcea31f"
+      }
+    },
+    {
       "Kind": "default.cds_neu_productbacklogitem_forms",
       "Namespace": "Product Backlog Items (Forms)",
       "Values": {
         "Information": "7700e57e-83db-41f4-a18d-c34681bd7fce"
+      }
+    },
+    {
+      "Kind": "default.cds_neu_solutionarea_forms",
+      "Namespace": "Solution Areas (Forms)",
+      "Values": {
+        "Information": "8a3efa13-b05c-4cf0-a7e5-d908f8ba9114"
       }
     },
     {
@@ -85,10 +85,10 @@
       }
     },
     {
-      "Kind": "default.cds_neu_platform_forms",
-      "Namespace": "Platforms (Forms)",
+      "Kind": "default.cds_neu_userstory_forms",
+      "Namespace": "User Stories (Forms)",
       "Values": {
-        "Information": "eb53398b-e0fb-4321-9824-beed46f0edec"
+        "Information": "6ca74cc0-034d-4c64-ab75-c2e509cded2b"
       }
     },
     {
