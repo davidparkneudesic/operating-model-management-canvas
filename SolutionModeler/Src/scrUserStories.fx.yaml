@@ -487,7 +487,7 @@
             Height: =0
             Required: =false
             Update: =Value(DataCardValue11.Text)
-            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
+            Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , true, false)
             Width: =215
             X: =0
             Y: =7
@@ -1181,7 +1181,7 @@
                 Height: =89
                 Required: =false
                 Update: =Value('Effort Percentage Input'.Text)
-                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , true, false)
                 Width: =286
                 X: =0
                 Y: =7
@@ -1432,7 +1432,6 @@
                             Capability:'Capability US ComboBox'.Selected,
                             'Process Group':'Process Group US ComboBox'.Selected,
                             Process:'Process US ComboBox'.Selected,
-                            'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
                     ),
@@ -1444,6 +1443,7 @@
                             Description:'Description US Input'.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
+                            'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
                             'Estimated Hours':Value('Estimated Hours Input'.Text)
                         }
                     )
@@ -1946,7 +1946,7 @@
             Height: =0
             Required: =false
             Update: =Value(DataCardValue11_1.Text)
-            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes, false, true)
+            Visible: =If (EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.Yes, true, false)
             Width: =215
             X: =0
             Y: =7
