@@ -767,7 +767,7 @@
     Button5 As button:
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-            
+            Select(galUserStories,1);
             UpdateContext({varOpenUserStoryCreate:true})
         Text: ="New User Story"
         Visible: =If(varUpdateUserStory,false,true)
