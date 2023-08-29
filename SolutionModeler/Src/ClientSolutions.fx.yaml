@@ -1,5 +1,5 @@
 "ClientSolutions As screen.'autoLayout_SplitScreen_ver1.0'":
-    Fill: =RGBA(255, 255, 255, 1)
+    Fill: =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, RGBA(153, 160, 196, 1), RGBA(215, 223, 240, 1))
 
     "OperatingModel_CS_Gallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -166,6 +166,7 @@
         DataSource: ='Client Solutions'
         Height: =531
         Item: =SolutionGallery.Selected
+        NumberOfColumns: =2
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =665
         X: =344
@@ -182,9 +183,9 @@
             Height: =50
             Required: =false
             Update: =
-            Width: =221
-            X: =0
-            Y: =2
+            Width: =332
+            X: =1
+            Y: =1
             ZIndex: =1
 
             DataCardKey14 As label:
@@ -243,7 +244,7 @@
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =161
+                Width: =272
                 X: =30
                 Y: =49
                 ZIndex: =6
@@ -258,8 +259,8 @@
             Height: =50
             Required: =false
             Update: =DataCardValue2.Text
-            Width: =442
-            X: =1
+            Width: =664
+            X: =0
             Y: =2
             ZIndex: =1
 
@@ -285,7 +286,7 @@
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
-                Width: =382
+                Width: =604
                 X: =30
                 Y: =DataCardKey2.Y + DataCardKey2.Height + 5
                 ZIndex: =2
@@ -319,7 +320,7 @@
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =382
+                Width: =604
                 X: =30
                 Y: =49
                 ZIndex: =5
@@ -334,7 +335,7 @@
             Height: =40
             Required: =false
             Visible: =false
-            Width: =221
+            Width: =332
             X: =0
             Y: =3
             ZIndex: =1
@@ -373,9 +374,9 @@
             Height: =50
             Required: =false
             Update: =
-            Width: =442
-            X: =1
-            Y: =3
+            Width: =664
+            X: =0
+            Y: =4
             ZIndex: =1
 
             DataCardValue6_4 As text:
@@ -434,7 +435,7 @@
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =382
+                Width: =604
                 X: =30
                 Y: =49
                 ZIndex: =6
@@ -449,9 +450,9 @@
             Height: =81
             Required: =false
             Update: =DateValue2.SelectedDate
-            Width: =221
+            Width: =332
             X: =0
-            Y: =4
+            Y: =5
             ZIndex: =1
 
             DataCardKey4 As label:
@@ -557,9 +558,9 @@
             Height: =50
             Required: =false
             Update: =DateValue1.SelectedDate
-            Width: =221
+            Width: =332
             X: =1
-            Y: =4
+            Y: =5
             ZIndex: =1
 
             DataCardKey1 As label:
@@ -651,9 +652,9 @@
             Height: =24
             Required: =false
             Visible: =false
-            Width: =221
-            X: =2
-            Y: =4
+            Width: =332
+            X: =0
+            Y: =6
             ZIndex: =1
 
             DataCardKey21 As label:
@@ -690,7 +691,7 @@
             MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
             Required: =true
             Update: =DataCardValue5.Text
-            Width: =442
+            Width: =332
             X: =0
             Y: =0
             ZIndex: =8
@@ -743,7 +744,7 @@
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =382
+                Width: =272
                 X: =30
                 Y: =49
                 ZIndex: =4
@@ -759,9 +760,9 @@
             MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
             Required: =true
             Update: =DataCardValue6.Text
-            Width: =442
-            X: =0
-            Y: =1
+            Width: =332
+            X: =1
+            Y: =0
             ZIndex: =8
 
             DataCardKey8 As label:
@@ -811,7 +812,7 @@
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =382
+                Width: =272
                 X: =30
                 Y: =49
                 ZIndex: =4
@@ -826,8 +827,8 @@
             Height: =50
             Required: =false
             Update: =
-            Width: =221
-            X: =2
+            Width: =332
+            X: =0
             Y: =1
             ZIndex: =8
 
@@ -887,7 +888,7 @@
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =161
+                Width: =272
                 X: =30
                 Y: =49
                 ZIndex: =6

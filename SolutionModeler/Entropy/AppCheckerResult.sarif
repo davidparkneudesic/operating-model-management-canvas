@@ -8119,19 +8119,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel",
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "ClientSolutions",
-                "type": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox"
+                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'"
               }
             }
           ],
@@ -8143,6 +8143,96 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -8192,66 +8282,6 @@
                 "member": "TabIndex",
                 "module": "ClientSolutions",
                 "type": "ClientSolutions.'Back Button_to HomePage'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
               }
             }
           ],
@@ -9343,6 +9373,96 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -13909,6 +14029,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Estimated Hours_DataCard1_2'.'Estimated Hours Input'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Estimated Hours_DataCard1_2'.'Estimated Hours Input'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrUserStories",
+                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Estimated Hours_DataCard1_2'.'Estimated Hours Input'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.OperatingModel_DataCard1_2.'Operating Model US ComboBox'.AccessibleLabel"
                 }
               ],
@@ -14042,36 +14192,6 @@
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
                 "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Effort Percentage_DataCard1_2'.'Effort Percentage Input'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Estimated Hours_DataCard1_2'.'Estimated Hours Input'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Estimated Hours_DataCard1_2'.'Estimated Hours Input'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrUserStories",
-                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Estimated Hours_DataCard1_2'.'Estimated Hours Input'"
               }
             }
           ],
@@ -14269,6 +14389,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Estimated Hours_DataCard1'.DataCardValue9.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Estimated Hours_DataCard1'.DataCardValue9.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStoryFormView.'Estimated Hours_DataCard1'.DataCardValue9"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_Dropdown.AccessibleLabel"
                 }
               ],
@@ -14402,36 +14552,6 @@
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
                 "type": "scrUserStories.UserStoryFormView.'Effort Percentage_DataCard1'.DataCardValue11"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Estimated Hours_DataCard1'.DataCardValue9.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Estimated Hours_DataCard1'.DataCardValue9.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryFormView.'Estimated Hours_DataCard1'.DataCardValue9"
               }
             }
           ],
@@ -14912,126 +15032,6 @@
                 "member": "TabIndex",
                 "module": "scrUserStories",
                 "type": "scrUserStories.UserStoryUpdatedWindow_Container.Icon2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container Before Delete Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
               }
             }
           ],

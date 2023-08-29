@@ -1,5 +1,9 @@
 "'Implementation Model Screen' As screen":
-    Fill: =RGBA(255, 255, 255, 1)
+    Fill: |-
+        =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+            RGBA(153, 160, 196, 1), 
+            RGBA(215, 223, 240, 1)
+        )
 
     "'Implementation Models Title' As label":
         Align: =Align.Center

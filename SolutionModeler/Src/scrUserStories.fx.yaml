@@ -1,5 +1,5 @@
 "scrUserStories As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
-    Fill: =RGBA(255, 255, 255, 1)
+    Fill: =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, RGBA(153, 160, 196, 1), RGBA(215, 223, 240, 1))
     OnVisible: |-
         =UpdateContext({resetControl: !resetControl});
         UpdateContext({resetControl: !resetControl})
@@ -682,7 +682,7 @@
             Update: =Value(DataCardValue9.Text)
             Width: =215
             X: =0
-            Y: =3
+            Y: =9
             ZIndex: =4
 
             DataCardKey11 As label:
@@ -1523,12 +1523,22 @@
                 Y: =DataCardKey11_1.Y
                 ZIndex: =4
 
+    Button1 As button:
+        Fill: =RGBA(0, 16, 96, 1)
+        OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
+        Text: ="Run Epic Balancer"
+        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Width: =212
+        X: =28
+        Y: =95
+        ZIndex: =14
+
     UserStoryUpdatedWindow_Container As groupContainer.manualLayoutContainer:
         Fill: =RGBA(255, 255, 255, 1)
         Visible: =If(varOpenUserStoryUpdatedWindow,true,false)
         X: =433
         Y: =303
-        ZIndex: =14
+        ZIndex: =15
 
         Icon2 As icon.Cancel:
             Height: =54
@@ -1559,7 +1569,7 @@
         Width: =905
         X: =231
         Y: =64
-        ZIndex: =15
+        ZIndex: =16
 
         "'Create UserStory Form' As form":
             DataSource: ='User Stories'
@@ -2098,7 +2108,8 @@
                 Update: =Value('Estimated Hours Input'.Text)
                 Width: =286
                 X: =0
-                Y: =3
+                Y: |
+                    =9
                 ZIndex: =4
 
                 DataCardKey11_2 As label:
@@ -2224,7 +2235,7 @@
         Width: =608
         X: =379
         Y: =247
-        ZIndex: =16
+        ZIndex: =17
 
         "'Exit Before Deletion Icon' As icon.Cancel":
             Height: =54
@@ -2291,14 +2302,4 @@
             X: =550
             Y: =5
             ZIndex: =6
-
-    Button1 As button:
-        Fill: =RGBA(0, 16, 96, 1)
-        OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
-        Text: ="Run Epic Balancer"
-        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
-        Width: =212
-        X: =28
-        Y: =95
-        ZIndex: =17
 

@@ -1,5 +1,5 @@
 "'Operating Models Screen' As screen":
-    Fill: =RGBA(255, 255, 255, 1)
+    Fill: =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, RGBA(153, 160, 196, 1), RGBA(215, 223, 240, 1))
     OnVisible: =
 
     "'Operating Model Screen Label' As label":
