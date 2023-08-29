@@ -1,5 +1,5 @@
 "'Process Detail Screen' As screen":
-    Fill: =RGBA(204, 208, 225, 1)
+    Fill: =RGBA(255, 255, 255, 1)
     OnVisible: =Parent
 
     "'Back Button_3' As icon.ChevronLeft":

@@ -1,15 +1,8 @@
 "scrUserStories As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
-    Fill: |-
-        =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
-        RGBA(153, 160, 196, 1), RGBA(204, 208, 225, 1))
+    Fill: =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, RGBA(153, 160, 196, 1), RGBA(215, 223, 240, 1))
     OnVisible: |-
         =UpdateContext({resetControl: !resetControl});
         UpdateContext({resetControl: !resetControl})
-
-    RectQuickActionBar1 As rectangle:
-        Height: =64
-        Width: =Parent.Width
-        ZIndex: =1
 
     "galUserStories As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -35,13 +28,13 @@
                 )
             )
         TemplatePadding: =0
-        TemplateSize: =94
+        TemplateSize: =90
         Width: =646
         X: =28
         Y: =148
         ZIndex: =1
 
-        Title5 As label:
+        Title12 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
             Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
@@ -53,42 +46,24 @@
             Text: =ThisItem.Name
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 86
-            X: =14
-            Y: =11
+            X: =16
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle1.Size * 1.8)) / 2
             ZIndex: =1
 
-        Subtitle3 As label:
+        Subtitle1 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =43
+            Height: =Self.Size * 1.8
             OnSelect: =Select(Parent)
-            Overflow: =Overflow.Scroll
             PaddingBottom: =0
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
             Text: =ThisItem.Description
             VerticalAlign: =VerticalAlign.Top
-            Width: =568
-            X: =14
-            Y: =43
+            Width: =Title12.Width
+            X: =Title12.X
+            Y: =Title12.Y + Title12.Height
             ZIndex: =2
-
-        Body1 As label:
-            Align: =Align.Right
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =18
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =14
-            Text: =ThisItem.'Estimated Hours'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =167
-            X: =402
-            Y: =11
-            ZIndex: =3
 
         NextArrow3 As icon.ChevronRight:
             AccessibleLabel: =Self.Tooltip
@@ -104,23 +79,30 @@
             Width: =50
             X: =Parent.TemplateWidth - Self.Width - 12
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =4
+            ZIndex: =3
 
-        Rectangle4 As rectangle:
+        Rectangle12 As rectangle:
             Height: =Parent.TemplateHeight
             OnSelect: =Select(Parent)
             Visible: =ThisItem.IsSelected
             Width: =4
-            ZIndex: =6
+            ZIndex: =5
+
+    RectQuickActionBar1 As rectangle:
+        Height: =64
+        Width: =Parent.Width
+        ZIndex: =2
 
     "'Client User Stories Title' As label":
         Align: =Align.Center
-        Height: =64
+        Fill: =RGBA(0, 16, 96, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =76
         PaddingRight: =10
-        Size: =20
+        Size: =24
         Text: ="Client Solution User Stories"
         Width: =Parent.Width
-        ZIndex: =2
+        ZIndex: =3
 
     UserStoryFormView As form:
         BorderThickness: =1
@@ -133,7 +115,7 @@
         Width: =646
         X: =692
         Y: =148
-        ZIndex: =3
+        ZIndex: =4
 
         "'Client Solution_DataCard2' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
@@ -145,7 +127,8 @@
             Height: =99
             Required: =true
             Update: ='Client Solution US Dropdown'.Selected
-            Width: =430
+            Visible: =false
+            Width: =215
             WidthFit: =false
             X: =0
             Y: =0
@@ -195,7 +178,7 @@
             Required: =false
             Update: =//DataCardValueEpicLevelItem
             Width: =215
-            X: =2
+            X: =1
             Y: =0
             ZIndex: =1
 
@@ -273,9 +256,9 @@
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
             Update: =OperatingModel_Dropdown.Selected
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
-            Width: =215
+            Width: =645
             WidthFit: =true
-            X: =0
+            X: =1
             Y: =3
             ZIndex: =1
 
@@ -329,8 +312,8 @@
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =215
             WidthFit: =true
-            X: =0
-            Y: =4
+            X: =2
+            Y: =3
             ZIndex: =1
 
             DataCardKey15 As label:
@@ -381,7 +364,7 @@
             Width: =645
             WidthFit: =true
             X: =0
-            Y: =5
+            Y: =4
             ZIndex: =1
 
             DataCardKey18 As label:
@@ -431,7 +414,7 @@
             Width: =215
             WidthFit: =true
             X: =0
-            Y: =6
+            Y: =5
             ZIndex: =1
 
             DataCardKey17 As label:
@@ -489,8 +472,8 @@
             Update: =Value(DataCardValue11.Text)
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , true, false)
             Width: =215
-            X: =0
-            Y: =7
+            X: =1
+            Y: =5
             ZIndex: =1
 
             DataCardKey12 As label:
@@ -698,8 +681,8 @@
             Required: =false
             Update: =Value(DataCardValue9.Text)
             Width: =215
-            X: =1
-            Y: =7
+            X: =0
+            Y: =9
             ZIndex: =4
 
             DataCardKey11 As label:
@@ -765,16 +748,16 @@
                 ZIndex: =5
 
     Button5 As button:
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
-            =
-            If(IsBlank(galUserStories.Selected),Select(galUserStories,1));
+            =If(IsBlank(galUserStories.Selected),Select(galUserStories,1));
             UpdateContext({varOpenUserStoryCreate:true})
         Text: ="New User Story"
         Visible: =If(varUpdateUserStory,false,true)
         Width: =177
         X: =692
-        Y: =81
-        ZIndex: =4
+        Y: =95
+        ZIndex: =5
 
     btnCancel As button:
         OnSelect: |-
@@ -787,7 +770,7 @@
             false
         X: =908
         Y: =104
-        ZIndex: =5
+        ZIndex: =6
 
     btnSubmit As button:
         OnSelect: =SubmitForm(UserStoryFormView)
@@ -797,11 +780,11 @@
             false
         X: =1093
         Y: =104
-        ZIndex: =6
+        ZIndex: =7
 
     "'Back to Client Solution Page Icon' As icon.ChevronLeft":
         Color: =RGBA(255, 255, 255, 1)
-        Height: =42
+        Height: =52
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
@@ -809,675 +792,13 @@
             UpdateContext({varOpenUserStoryCreate:false});
             UpdateContext({varUpdateUserStory:false});
             UpdateContext({varDeleteUserStory:false});
-        X: =4
+        Width: =62
+        X: =14
         Y: =12
-        ZIndex: =7
-
-    "'Create User Story Container' As groupContainer.manualLayoutContainer":
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =679
-        Visible: =If(varOpenUserStoryCreate,true,false)
-        Width: =905
-        X: =231
-        Y: =64
-        ZIndex: =10
-
-        "'Create UserStory Form' As form":
-            DataSource: ='User Stories'
-            Fill: =RGBA(255, 255, 255, 1)
-            Height: =474
-            Item: =galUserStories.Selected
-            Visible: =If(varOpenUserStoryCreate,true,false)
-            Width: =859
-            X: =27
-            Y: =90
-            ZIndex: =1
-
-            "'Client Solution_DataCard2_2' As typedDataCard.comboBoxEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_ClientSolutionID"
-                Default: =ThisItem.'Client Solution'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ClientSolutionID")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =true
-                Update: ='Client Solution US Dropdown for Create'.Selected
-                Width: =572
-                WidthFit: =false
-                X: =0
-                Y: =0
-                ZIndex: =1
-
-                DataCardKey20_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =13
-                    ZIndex: =1
-
-                ErrorMessage19_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='Client Solution US Dropdown for Create'.Y + 'Client Solution US Dropdown for Create'.Height
-                    ZIndex: =3
-
-                StarVisible19_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey20_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey20_2.Y
-                    ZIndex: =4
-
-                "'Client Solution US Dropdown for Create' As dropdown":
-                    Items: =Filter('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution')
-                    Width: =512
-                    X: =30
-                    Y: =47
-                    ZIndex: =5
-
-            "'Epic Level Item_DataCard2_2' As typedDataCard.comboBoxOptionSetSingleEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_epiclevelitem"
-                Default: =ThisItem.'Epic Level Item'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_epiclevelitem")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: ='EpicLevelItemDropdown For Create'.Selected.Value
-                Width: =286
-                X: =2
-                Y: =0
-                ZIndex: =1
-
-                DataCardKey19_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage18_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='EpicLevelItemDropdown For Create'.Y + 'EpicLevelItemDropdown For Create'.Height
-                    ZIndex: =3
-
-                StarVisible18_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey19_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey19_2.Y
-                    ZIndex: =4
-
-                "'EpicLevelItemDropdown For Create' As dropdown":
-                    Default: ="No"
-                    Items: =Choices('Epic Level Item (User Stories)')
-                    Width: =161
-                    X: =30
-                    Y: =44
-                    ZIndex: =5
-
-            OperatingModel_DataCard1_2 As typedDataCard.comboBoxEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_OperatingModelID"
-                Default: =
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_OperatingModelID")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Operating Model US ComboBox'.Selected
-                Visible: =If ('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
-                Width: =350
-                WidthFit: =true
-                X: =0
-                Y: =3
-                ZIndex: =1
-
-                DataCardKey16_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage15_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='Operating Model US ComboBox'.Height + 'Operating Model US ComboBox'.Y
-                    ZIndex: =3
-
-                "'Operating Model US ComboBox' As combobox":
-                    DisplayFields: =["neu_operatingmodelname"]
-                    Items: =Sort('Operating Models', 'Operating Model Name')
-                    SearchFields: =["neu_operatingmodelname"]
-                    SearchItems: =Search(Sort('Operating Models', 'Operating Model Name'),'Operating Model US ComboBox'.SearchText,"neu_operatingmodelname")
-                    SelectMultiple: =false
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =4
-
-            Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_CapabilityID"
-                Default: =ThisItem.Capability
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_CapabilityID")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Capability US ComboBox'.Selected
-                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
-                Width: =286
-                WidthFit: =true
-                X: =0
-                Y: =4
-                ZIndex: =1
-
-                DataCardKey15_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage14_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='Capability US ComboBox'.Y + 'Capability US ComboBox'.Height
-                    ZIndex: =3
-
-                "'Capability US ComboBox' As combobox":
-                    DisplayFields: =["neu_capabilityname"]
-                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name')
-                    SearchFields: =["neu_capabilityname"]
-                    SearchItems: =Search(Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name'),'Capability US ComboBox'.SearchText,"neu_capabilityname")
-                    SelectMultiple: =false
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =4
-
-            "'Process Group_DataCard1_2' As typedDataCard.comboBoxEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_ProcessGroupID"
-                Default: =ThisItem.'Process Group'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ProcessGroupID")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Process Group US ComboBox'.Selected
-                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
-                Width: =858
-                WidthFit: =true
-                X: =0
-                Y: =5
-                ZIndex: =1
-
-                DataCardKey18_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage17_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =60
-                    Y: =88
-                    ZIndex: =3
-
-                "'Process Group US ComboBox' As combobox":
-                    DisplayFields: =["neu_processgroupname"]
-                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name')
-                    SearchFields: =["neu_processgroupname"]
-                    SearchItems: =Search(Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name'),'Process Group US ComboBox'.SearchText,"neu_processgroupname")
-                    SelectMultiple: =false
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =4
-
-            Process_DataCard1_2 As typedDataCard.comboBoxEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_ProcessID"
-                Default: =ThisItem.Process
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ProcessID")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: ='Process US ComboBox'.Selected
-                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
-                Width: =858
-                WidthFit: =true
-                X: =0
-                Y: =6
-                ZIndex: =1
-
-                DataCardKey17_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage16_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =60
-                    Y: =88
-                    ZIndex: =3
-
-                StarVisible16_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey17_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey17_2.Y
-                    ZIndex: =4
-
-                "'Process US ComboBox' As combobox":
-                    DisplayFields: =["neu_processname"]
-                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name')
-                    SearchFields: =["neu_processname"]
-                    SearchItems: =Search(Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name'),'Process US ComboBox'.SearchText,"neu_processname")
-                    SelectMultiple: =false
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =5
-
-            "'Effort Percentage_DataCard1_2' As typedDataCard.numberEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_effortpercentage"
-                Default: =ThisItem.'Effort Percentage'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_effortpercentage")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =89
-                Required: =false
-                Update: =Value('Effort Percentage Input'.Text)
-                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , true, false)
-                Width: =286
-                X: =0
-                Y: =7
-                ZIndex: =1
-
-                DataCardKey12_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                StarVisible13_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey12_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey12_2.Y
-                    ZIndex: =4
-
-                "'Effort Percentage Input' As text":
-                    Default: ="0"
-                    Format: =TextFormat.Number
-                    Reset: =resetControl
-                    Width: =240
-                    X: =30
-                    Y: =51
-                    ZIndex: =5
-
-                Label6 As label:
-                    Text: ="%"
-                    Width: =33
-                    X: =237
-                    Y: =51
-                    ZIndex: =6
-
-            Name_DataCard1_2 As typedDataCard.textualEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_name"
-                Default: =ThisItem.Name
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_name")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                MaxLength: =DataSourceInfo([@'User Stories'], DataSourceInfo.MaxLength, "neu_name")
-                Required: =true
-                Update: ='User Story Name Input'.Text
-                Width: =858
-                WidthFit: =true
-                X: =0
-                Y: =1
-                ZIndex: =4
-
-                DataCardKey6_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage9_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='User Story Name Input'.Y + 'User Story Name Input'.Height
-                    ZIndex: =3
-
-                StarVisible9_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey6_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey6_2.Y
-                    ZIndex: =4
-
-                "'User Story Name Input' As text":
-                    Default: =""
-                    OnSelect: |-
-                        =UpdateContext({varUSCreated:false})
-                    Reset: =resetControl
-                    Width: =799
-                    X: =30
-                    Y: =49
-                    ZIndex: =5
-
-            Description_DataCard1_2 As typedDataCard.textualMultiLineEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_description"
-                Default: =ThisItem.Description
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_description")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =217
-                Required: =true
-                Update: ='Description US Input'.Text
-                Width: =858
-                WidthFit: =true
-                X: =0
-                Y: =2
-                ZIndex: =4
-
-                DataCardKey10_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage10_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='Description US Input'.Y + 'Description US Input'.Height
-                    ZIndex: =3
-
-                StarVisible10_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey10_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey10_2.Y
-                    ZIndex: =4
-
-                "'Description US Input' As text":
-                    Default: =""
-                    Height: =156
-                    Mode: =TextMode.MultiLine
-                    Reset: =resetControl
-                    Width: =799
-                    X: =30
-                    Y: =44
-                    ZIndex: =5
-
-            "'Estimated Hours_DataCard1_2' As typedDataCard.numberEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_estimatedhours"
-                Default: =ThisItem.'Estimated Hours'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_estimatedhours")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: =Value('Estimated Hours Input'.Text)
-                Width: =286
-                X: =1
-                Y: =7
-                ZIndex: =4
-
-                DataCardKey11_2 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage12_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='Estimated Hours Input'.Y + 'Estimated Hours Input'.Height
-                    ZIndex: =3
-
-                StarVisible12_2 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey11_2.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey11_2.Y
-                    ZIndex: =4
-
-                "'Estimated Hours Input' As text":
-                    Default: ="0"
-                    Format: =TextFormat.Number
-                    Reset: =resetControl
-                    Width: =240
-                    X: =30
-                    Y: =49
-                    ZIndex: =5
-
-        Icon1 As icon.Cancel:
-            Height: =51
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenUserStoryCreate:false});
-                UpdateContext({varUSCreated:false});
-                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
-            Width: =55
-            X: =831
-            Y: =26
-            ZIndex: =2
-
-        "'Create US Button' As button":
-            OnSelect: |-
-                =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.No,
-                    Patch(
-                        'User Stories',
-                        Defaults('User Stories'),
-                        {
-                            Name:'User Story Name Input'.Text,
-                            Description:'Description US Input'.Text,
-                            'Client Solution':'Client Solution US Dropdown for Create'.Selected,
-                            'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Operating Model':'Operating Model US ComboBox'.Selected,
-                            Capability:'Capability US ComboBox'.Selected,
-                            'Process Group':'Process Group US ComboBox'.Selected,
-                            Process:'Process US ComboBox'.Selected,
-                            'Estimated Hours':Value('Estimated Hours Input'.Text)
-                        }
-                    ),
-                    Patch(
-                        'User Stories',
-                        Defaults('User Stories'),
-                        {
-                            Name:'User Story Name Input'.Text,
-                            Description:'Description US Input'.Text,
-                            'Client Solution':'Client Solution US Dropdown for Create'.Selected,
-                            'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
-                            'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
-                            'Estimated Hours':Value('Estimated Hours Input'.Text)
-                        }
-                    )
-                );
-                
-                UpdateContext({varUSCreated:true});
-                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
-            Text: ="Create"
-            X: =376
-            Y: =622
-            ZIndex: =3
-
-        "'Create New User Story Title' As label":
-            Align: =Align.Center
-            FontWeight: =FontWeight.Bold
-            Height: =64
-            Size: =20
-            Text: ="Create New User Story"
-            Width: =481
-            X: =216
-            Y: =19
-            ZIndex: =4
-
-        "'User Story Created Message' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="User Story was successfully created!"
-            Visible: =If(varUSCreated,true,false)
-            Width: =350
-            X: =281
-            Y: =575
-            ZIndex: =5
+        ZIndex: =8
 
     Button5_1 As button:
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1487,10 +808,11 @@
         Visible: =If(varUpdateUserStory,false,true)
         Width: =168
         X: =1170
-        Y: =81
-        ZIndex: =11
+        Y: =95
+        ZIndex: =9
 
     "'Update Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1508,7 +830,6 @@
                         Capability:Capability_ComboBox.Selected,
                         'Process Group':ProcessGroup_ComboBox.Selected,
                         Process:Process_ComboBox.Selected,
-                        'Effort Percentage':Value(DataCardValue11_1.Text) / 100,
                         'Estimated Hours':Value(DataCardValue9_1.Text)
                     }
                 ),
@@ -1520,6 +841,7 @@
                         Description:DataCardValue8_1.Text,
                         'Client Solution':'Client Solution US Dropdown_1'.Selected,
                         'Epic Level Item':EpicLevelItem_Dropdown_Update.Selected.Value,
+                        'Effort Percentage':Value(DataCardValue11_1.Text) / 100,
                         'Estimated Hours':Value(DataCardValue9_1.Text)
                     }
                 )
@@ -1531,10 +853,11 @@
         Visible: =If(varUpdateUserStory,true,false)
         Width: =150
         X: =692
-        Y: =81
-        ZIndex: =12
+        Y: =95
+        ZIndex: =10
 
     "'Cancel User Story Update Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1544,18 +867,19 @@
         Visible: =If(varUpdateUserStory,true, false)
         Width: =150
         X: =1188
-        Y: =81
-        ZIndex: =13
+        Y: =95
+        ZIndex: =11
 
     "'Delete User Story Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =UpdateContext({varOpenDeleteUserStoryWindow:true});
         Text: ="Delete Story"
         Visible: =If(varUpdateUserStory,true, false)
         Width: =158
         X: =927
-        Y: =81
-        ZIndex: =14
+        Y: =95
+        ZIndex: =12
 
     UserStoryFormEdit As form:
         BorderThickness: =1
@@ -1569,7 +893,7 @@
         Width: =646
         X: =692
         Y: =148
-        ZIndex: =15
+        ZIndex: =13
 
         "'Client Solution_DataCard2_1' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
@@ -2199,18 +1523,29 @@
                 Y: =DataCardKey11_1.Y
                 ZIndex: =4
 
+    Button1 As button:
+        Fill: =RGBA(0, 16, 96, 1)
+        OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
+        Text: ="Run Epic Balancer"
+        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Width: =212
+        X: =28
+        Y: =95
+        ZIndex: =14
+
     UserStoryUpdatedWindow_Container As groupContainer.manualLayoutContainer:
         Fill: =RGBA(255, 255, 255, 1)
         Visible: =If(varOpenUserStoryUpdatedWindow,true,false)
         X: =433
         Y: =303
-        ZIndex: =16
+        ZIndex: =15
 
         Icon2 As icon.Cancel:
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenUserStoryUpdatedWindow:false})
+                =UpdateContext({varOpenUserStoryUpdatedWindow:false});
+                UpdateContext({varUpdateUserStory:false})
             Width: =52
             X: =440
             Y: =5
@@ -2226,6 +1561,672 @@
             X: =26
             Y: =75
             ZIndex: =2
+
+    "'Create User Story Container' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =679
+        Visible: =If(varOpenUserStoryCreate,true,false)
+        Width: =905
+        X: =231
+        Y: =64
+        ZIndex: =16
+
+        "'Create UserStory Form' As form":
+            DataSource: ='User Stories'
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =474
+            Item: =galUserStories.Selected
+            Visible: =If(varOpenUserStoryCreate,true,false)
+            Width: =859
+            X: =27
+            Y: =90
+            ZIndex: =1
+
+            "'Client Solution_DataCard2_2' As typedDataCard.comboBoxEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_ClientSolutionID"
+                Default: =ThisItem.'Client Solution'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ClientSolutionID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =true
+                Update: ='Client Solution US Dropdown for Create'.Selected
+                Visible: =false
+                Width: =572
+                WidthFit: =false
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+                DataCardKey20_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =13
+                    ZIndex: =1
+
+                ErrorMessage19_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='Client Solution US Dropdown for Create'.Y + 'Client Solution US Dropdown for Create'.Height
+                    ZIndex: =3
+
+                StarVisible19_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey20_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey20_2.Y
+                    ZIndex: =4
+
+                "'Client Solution US Dropdown for Create' As dropdown":
+                    Items: =Filter('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution')
+                    Width: =512
+                    X: =30
+                    Y: =47
+                    ZIndex: =5
+
+            "'Epic Level Item_DataCard2_2' As typedDataCard.comboBoxOptionSetSingleEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_epiclevelitem"
+                Default: =ThisItem.'Epic Level Item'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_epiclevelitem")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: ='EpicLevelItemDropdown For Create'.Selected.Value
+                Width: =286
+                X: =2
+                Y: =0
+                ZIndex: =1
+
+                DataCardKey19_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage18_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='EpicLevelItemDropdown For Create'.Y + 'EpicLevelItemDropdown For Create'.Height
+                    ZIndex: =3
+
+                StarVisible18_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey19_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey19_2.Y
+                    ZIndex: =4
+
+                "'EpicLevelItemDropdown For Create' As dropdown":
+                    Default: ="No"
+                    Items: =Choices('Epic Level Item (User Stories)')
+                    Width: =161
+                    X: =30
+                    Y: =44
+                    ZIndex: =5
+
+            OperatingModel_DataCard1_2 As typedDataCard.comboBoxEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_OperatingModelID"
+                Default: =
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_OperatingModelID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
+                Update: ='Operating Model US ComboBox'.Selected
+                Visible: =If ('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
+                Width: =350
+                WidthFit: =true
+                X: =0
+                Y: =4
+                ZIndex: =1
+
+                DataCardKey16_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage15_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='Operating Model US ComboBox'.Height + 'Operating Model US ComboBox'.Y
+                    ZIndex: =3
+
+                "'Operating Model US ComboBox' As combobox":
+                    DisplayFields: =["neu_operatingmodelname"]
+                    Items: =Sort('Operating Models', 'Operating Model Name')
+                    SearchFields: =["neu_operatingmodelname"]
+                    SearchItems: =Search(Sort('Operating Models', 'Operating Model Name'),'Operating Model US ComboBox'.SearchText,"neu_operatingmodelname")
+                    SelectMultiple: =false
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =4
+
+            Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_CapabilityID"
+                Default: =ThisItem.Capability
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_CapabilityID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
+                Update: ='Capability US ComboBox'.Selected
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
+                Width: =286
+                WidthFit: =true
+                X: =0
+                Y: =5
+                ZIndex: =1
+
+                DataCardKey15_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage14_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='Capability US ComboBox'.Y + 'Capability US ComboBox'.Height
+                    ZIndex: =3
+
+                "'Capability US ComboBox' As combobox":
+                    DisplayFields: =["neu_capabilityname"]
+                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name')
+                    SearchFields: =["neu_capabilityname"]
+                    SearchItems: =Search(Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name'),'Capability US ComboBox'.SearchText,"neu_capabilityname")
+                    SelectMultiple: =false
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =4
+
+            "'Process Group_DataCard1_2' As typedDataCard.comboBoxEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_ProcessGroupID"
+                Default: =ThisItem.'Process Group'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ProcessGroupID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
+                Update: ='Process Group US ComboBox'.Selected
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
+                Width: =858
+                WidthFit: =true
+                X: =0
+                Y: =6
+                ZIndex: =1
+
+                DataCardKey18_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage17_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =60
+                    Y: =88
+                    ZIndex: =3
+
+                "'Process Group US ComboBox' As combobox":
+                    DisplayFields: =["neu_processgroupname"]
+                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name')
+                    SearchFields: =["neu_processgroupname"]
+                    SearchItems: =Search(Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name'),'Process Group US ComboBox'.SearchText,"neu_processgroupname")
+                    SelectMultiple: =false
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =4
+
+            Process_DataCard1_2 As typedDataCard.comboBoxEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_ProcessID"
+                Default: =ThisItem.Process
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ProcessID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: ='Process US ComboBox'.Selected
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
+                Width: =858
+                WidthFit: =true
+                X: =0
+                Y: =7
+                ZIndex: =1
+
+                DataCardKey17_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage16_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =60
+                    Y: =88
+                    ZIndex: =3
+
+                StarVisible16_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey17_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey17_2.Y
+                    ZIndex: =4
+
+                "'Process US ComboBox' As combobox":
+                    DisplayFields: =["neu_processname"]
+                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name')
+                    SearchFields: =["neu_processname"]
+                    SearchItems: =Search(Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name'),'Process US ComboBox'.SearchText,"neu_processname")
+                    SelectMultiple: =false
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =5
+
+            "'Effort Percentage_DataCard1_2' As typedDataCard.numberEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_effortpercentage"
+                Default: =ThisItem.'Effort Percentage'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_effortpercentage")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =89
+                Required: =false
+                Update: =Value('Effort Percentage Input'.Text)
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , true, false)
+                Width: =286
+                X: =0
+                Y: =8
+                ZIndex: =1
+
+                DataCardKey12_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                StarVisible13_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey12_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey12_2.Y
+                    ZIndex: =4
+
+                "'Effort Percentage Input' As text":
+                    Default: ="0"
+                    Format: =TextFormat.Number
+                    Reset: =resetControl
+                    Width: =240
+                    X: =30
+                    Y: =51
+                    ZIndex: =5
+
+                Label6 As label:
+                    Text: ="%"
+                    Width: =33
+                    X: =237
+                    Y: =51
+                    ZIndex: =6
+
+            Name_DataCard1_2 As typedDataCard.textualEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_name"
+                Default: =ThisItem.Name
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_name")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                MaxLength: =DataSourceInfo([@'User Stories'], DataSourceInfo.MaxLength, "neu_name")
+                Required: =true
+                Update: ='User Story Name Input'.Text
+                Width: =858
+                WidthFit: =true
+                X: =0
+                Y: =1
+                ZIndex: =4
+
+                DataCardKey6_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage9_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='User Story Name Input'.Y + 'User Story Name Input'.Height
+                    ZIndex: =3
+
+                StarVisible9_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey6_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey6_2.Y
+                    ZIndex: =4
+
+                "'User Story Name Input' As text":
+                    Default: =""
+                    OnSelect: |-
+                        =UpdateContext({varUSCreated:false})
+                    Reset: =resetControl
+                    Width: =799
+                    X: =30
+                    Y: =49
+                    ZIndex: =5
+
+            Description_DataCard1_2 As typedDataCard.textualMultiLineEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_description"
+                Default: =ThisItem.Description
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_description")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =217
+                Required: =true
+                Update: ='Description US Input'.Text
+                Width: =858
+                WidthFit: =true
+                X: =0
+                Y: =2
+                ZIndex: =4
+
+                DataCardKey10_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage10_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='Description US Input'.Y + 'Description US Input'.Height
+                    ZIndex: =3
+
+                StarVisible10_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey10_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey10_2.Y
+                    ZIndex: =4
+
+                "'Description US Input' As text":
+                    Default: =""
+                    Height: =156
+                    Mode: =TextMode.MultiLine
+                    Reset: =resetControl
+                    Width: =799
+                    X: =30
+                    Y: =44
+                    ZIndex: =5
+
+            "'Estimated Hours_DataCard1_2' As typedDataCard.numberEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_estimatedhours"
+                Default: =ThisItem.'Estimated Hours'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_estimatedhours")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =Value('Estimated Hours Input'.Text)
+                Width: =286
+                X: =0
+                Y: |
+                    =9
+                ZIndex: =4
+
+                DataCardKey11_2 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage12_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='Estimated Hours Input'.Y + 'Estimated Hours Input'.Height
+                    ZIndex: =3
+
+                StarVisible12_2 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey11_2.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey11_2.Y
+                    ZIndex: =4
+
+                "'Estimated Hours Input' As text":
+                    Default: ="0"
+                    Format: =TextFormat.Number
+                    Reset: =resetControl
+                    Width: =240
+                    X: =30
+                    Y: =49
+                    ZIndex: =5
+
+        Icon1 As icon.Cancel:
+            Height: =51
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenUserStoryCreate:false});
+                UpdateContext({varUSCreated:false});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+            Width: =55
+            X: =831
+            Y: =26
+            ZIndex: =2
+
+        "'Create US Button' As button":
+            OnSelect: |-
+                =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.No,
+                    Patch(
+                        'User Stories',
+                        Defaults('User Stories'),
+                        {
+                            Name:'User Story Name Input'.Text,
+                            Description:'Description US Input'.Text,
+                            'Client Solution':'Client Solution US Dropdown for Create'.Selected,
+                            'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
+                            'Operating Model':'Operating Model US ComboBox'.Selected,
+                            Capability:'Capability US ComboBox'.Selected,
+                            'Process Group':'Process Group US ComboBox'.Selected,
+                            Process:'Process US ComboBox'.Selected,
+                            'Estimated Hours':Value('Estimated Hours Input'.Text)
+                        }
+                    ),
+                    Patch(
+                        'User Stories',
+                        Defaults('User Stories'),
+                        {
+                            Name:'User Story Name Input'.Text,
+                            Description:'Description US Input'.Text,
+                            'Client Solution':'Client Solution US Dropdown for Create'.Selected,
+                            'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
+                            'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
+                            'Estimated Hours':Value('Estimated Hours Input'.Text)
+                        }
+                    )
+                );
+                
+                UpdateContext({varUSCreated:true});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+            Text: ="Create"
+            X: =376
+            Y: =622
+            ZIndex: =3
+
+        "'Create New User Story Title' As label":
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            Size: =20
+            Text: ="Create New User Story"
+            Width: =481
+            X: =216
+            Y: =19
+            ZIndex: =4
+
+        "'User Story Created Message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="User Story was successfully created!"
+            Visible: =If(varUSCreated,true,false)
+            Width: =350
+            X: =281
+            Y: =575
+            ZIndex: =5
 
     UserStoryDeletedWindow_Container As groupContainer.manualLayoutContainer:
         Fill: =RGBA(255, 255, 255, 1)

@@ -41,7 +41,7 @@
       "enableonstart": true,
       "enableonstartnavigate": false,
       "enablepcfmoderndatasets": true,
-      "enablerowscopeonetonexpand": false,
+      "enablerowscopeonetonexpand": true,
       "enablerpawarecomponentdependency": true,
       "enablerulespanel": false,
       "enableruntimepolicies": true,
@@ -95,7 +95,7 @@
       "zeroalltabindexes": false
     },
     "Author": "",
-    "BindingErrorCount": 1,
+    "BindingErrorCount": 7,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "DesktopOrTablet",
@@ -108,7 +108,7 @@
     "DocumentType": "App",
     "EnableInstrumentation": false,
     "FileID": "e37a3992-228f-4e80-8812-c04c353fb479",
-    "Id": "0a546407-def9-435d-baa5-ada0752ff890",
+    "Id": "597c94e5-83df-442c-93bf-e95dfb8eb5e9",
     "InstrumentationKey": "",
     "ManualOfflineProfileId": "",
     "Name": "Solution++Modeler.msapp",
@@ -129,10 +129,10 @@
   },
   "ScreenOrder": [
     "HomePage",
-    "Operating Models Screen",
-    "Process Detail Screen",
     "ClientSolutions",
     "scrUserStories",
-    "Implementation Model Screen"
+    "Operating Models Screen",
+    "Implementation Model Screen",
+    "Process Detail Screen"
   ]
 }
