@@ -8,7 +8,7 @@
             =If(varOpenCreateClientSolution, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =436
-        Items: =SolutionGallery.Selected.'Operating Models'
+        Items: =Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
@@ -1727,7 +1727,7 @@
     RelatedOperatingModel_CS_Edit_ComboBox As combobox:
         DefaultSelectedItems: |-
             =//LookUp('Client Solutions', 'Solution Name' = SolutionGallery.Selected.'Solution Name')
-            SolutionGallery.Selected.'Operating Models'
+            Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
         DisplayFields: =["neu_operatingmodelname"]
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
