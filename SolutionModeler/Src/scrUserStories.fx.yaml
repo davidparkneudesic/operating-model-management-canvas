@@ -96,9 +96,10 @@
     "'Client User Stories Title' As label":
         Align: =Align.Center
         Fill: =RGBA(0, 16, 96, 1)
-        Height: =64
+        FontWeight: =FontWeight.Semibold
+        Height: =76
         PaddingRight: =10
-        Size: =20
+        Size: =24
         Text: ="Client Solution User Stories"
         Width: =Parent.Width
         ZIndex: =3
@@ -749,14 +750,13 @@
     Button5 As button:
         Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
-            =
-            If(IsBlank(galUserStories.Selected),Select(galUserStories,1));
+            =If(IsBlank(galUserStories.Selected),Select(galUserStories,1));
             UpdateContext({varOpenUserStoryCreate:true})
         Text: ="New User Story"
         Visible: =If(varUpdateUserStory,false,true)
         Width: =177
         X: =692
-        Y: =81
+        Y: =95
         ZIndex: =5
 
     btnCancel As button:
@@ -784,7 +784,7 @@
 
     "'Back to Client Solution Page Icon' As icon.ChevronLeft":
         Color: =RGBA(255, 255, 255, 1)
-        Height: =42
+        Height: =52
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
@@ -792,7 +792,8 @@
             UpdateContext({varOpenUserStoryCreate:false});
             UpdateContext({varUpdateUserStory:false});
             UpdateContext({varDeleteUserStory:false});
-        X: =4
+        Width: =62
+        X: =14
         Y: =12
         ZIndex: =8
 
@@ -807,10 +808,11 @@
         Visible: =If(varUpdateUserStory,false,true)
         Width: =168
         X: =1170
-        Y: =81
+        Y: =95
         ZIndex: =9
 
     "'Update Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -851,10 +853,11 @@
         Visible: =If(varUpdateUserStory,true,false)
         Width: =150
         X: =692
-        Y: =81
+        Y: =95
         ZIndex: =10
 
     "'Cancel User Story Update Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -864,17 +867,18 @@
         Visible: =If(varUpdateUserStory,true, false)
         Width: =150
         X: =1188
-        Y: =81
+        Y: =95
         ZIndex: =11
 
     "'Delete User Story Button' As button":
+        Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
             =UpdateContext({varOpenDeleteUserStoryWindow:true});
         Text: ="Delete Story"
         Visible: =If(varUpdateUserStory,true, false)
         Width: =158
         X: =927
-        Y: =81
+        Y: =95
         ZIndex: =12
 
     UserStoryFormEdit As form:
@@ -2295,6 +2299,6 @@
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Width: =212
         X: =28
-        Y: =81
+        Y: =95
         ZIndex: =17
 

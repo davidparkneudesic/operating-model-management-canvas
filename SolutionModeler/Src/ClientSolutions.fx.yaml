@@ -2,6 +2,7 @@
     Fill: =RGBA(166, 166, 166, 1)
 
     "OperatingModel_CS_Gallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        BorderThickness: =1
         DelayItemLoading: =true
         Fill: |-
             =If(varOpenCreateClientSolution, 
@@ -66,10 +67,10 @@
             =//If(ThisItem.IsSelected,ColorFade(RGBA(204, 208, 225, 1),-2%), If(varOpenCreateClientSolution && ThisItem.IsSelected, RGBA(153, 160, 196, 1) , RGBA(0,0,0,0)))
             
             
-            If(ThisItem.'Solution Name' = SolutionGallery.Selected.'Solution Name' && 
+            If(ThisItem.'Client Solution' = SolutionGallery.Selected.'Client Solution' && 
                     !(varOpenCreateClientSolution || varUpdatedCSWindow), 
                  RGBA(204, 208, 225, 1),
-                If (ThisItem.'Solution Name' = SolutionGallery.Selected.'Solution Name' && 
+                If (ThisItem.'Client Solution' = SolutionGallery.Selected.'Client Solution' && 
                         (varOpenCreateClientSolution || varUpdatedCSWindow),
                         RGBA(153, 160, 196, 1),
                         RGBA(0,0,0,0)
@@ -135,18 +136,19 @@
             Width: =4
             ZIndex: =5
 
-    Label4 As label:
+    "'Client Solutions Page Label' As label":
         Align: =Align.Center
-        FontWeight: =FontWeight.Bold
-        Height: =78
-        Size: =28
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 16, 96, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =76
+        Size: =26
         Text: ="Client Solutions"
-        Width: =622
-        X: =372
-        Y: =37
+        Width: =1366
         ZIndex: =3
 
     "'Back Button_to HomePage' As icon.ChevronLeft":
+        Color: =RGBA(255, 255, 255, 1)
         Height: =51
         Icon: =Icon.ChevronLeft
         OnSelect: |-
@@ -155,8 +157,8 @@
             Navigate(HomePage, ScreenTransition.UnCoverRight);
             UpdateContext({varOpenCreateClientSolution:false})
         Width: =52
-        X: =29
-        Y: =37
+        X: =15
+        Y: =12
         ZIndex: =4
 
     ClientsSolutionsForm As form:
@@ -539,7 +541,7 @@
             Rectangle4_4 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =37
+                Height: =36
                 Width: =178
                 X: =30
                 Y: =44
@@ -1588,6 +1590,7 @@
         Height: =44
         OnSelect: |-
             =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
+            If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
             UpdateContext({varOpenCreateClientSolution:true})
         Text: ="New Client Solution"
         Visible: =If(varUpdateClientSolution,false,true)
@@ -1599,7 +1602,8 @@
     btnViewUserStories As button:
         Fill: =RGBA(0, 16, 96, 1)
         OnSelect: |-
-            =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+            =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+            Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             UpdateContext({varOpenCreateClientSolution:false})
         Text: ="View User Stories"
         Visible: =If(varUpdateClientSolution,false,true)
@@ -1668,14 +1672,10 @@
                 )
             );
             
-            
-            //Relate(SolutionGallery.Selected.'Operating Models', RelatedOperatingModel_CS_Edit_ComboBox.Selected);
-            
             ForAll(
                 RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
                 Relate(SolutionGallery.Selected.'Operating Models', ThisRecord)
             );
-            //If(!IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),Relate(SolutionGallery.Selected.'Operating Models', RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems));
             
             UpdateContext({varUpdatedCSWindow:true})
         Text: ="Update"
@@ -1714,7 +1714,7 @@
     RelatedOperatingModel_Edit_Label As label:
         Color: =RGBA(0, 18, 107, 1)
         Text: ="Related Operating Model"
-        Visible: =If(varUpdateClientSolution,true,false)
+        Visible: =If(varUpdateClientSolution || IsBlank(SolutionGallery.Selected),true,false)
         Width: =289
         X: =847
         Y: =352
@@ -1729,7 +1729,7 @@
         Items: =Sort('Operating Models','Operating Model Name')
         SearchFields: =["neu_operatingmodelname"]
         SearchItems: =[]
-        Visible: =If(varUpdateClientSolution,true,false)
+        Visible: =If(varUpdateClientSolution || IsBlank(SolutionGallery.Selected),true,false)
         Width: =410
         X: =847
         Y: =392
@@ -1745,6 +1745,7 @@
         ZIndex: =16
 
         btnReset As button:
+            Fill: =RGBA(0, 16, 96, 1)
             OnSelect: |
                 =//ResetForm(ClientsSolutionsForm);Set(varGalDefault,Blank())
                 UpdateContext({varOpenCreateClientSolution:false});
@@ -1759,6 +1760,7 @@
             ZIndex: =1
 
         BtnSubmit As button:
+            Fill: =RGBA(0, 16, 96, 1)
             OnSelect: |-
                 =If(IsBlank('Estimate URL Input'.Text),
                     Patch(
@@ -1790,8 +1792,26 @@
                     )
                 );
                 
-                //If(!IsBlank('Related Operating Models Combobox'.SelectedItems), Relate(First(Filter('Client Solutions', 'Solution Name' = 'New Solution Name Input'.Text)), 'Related Operating Models Combobox'.SelectedItems));
+                // Create a temporary collection to capture the newly created data
+                ClearCollect(colCreatedClientSolutionTemp, Filter('Client Solutions', 
+                                            'Solution Name' = 'New Solution Name Input'.Text && 
+                                            'Client/Prospect Name' = 'Client/Prospect Name Input'.Text && 
+                                            'Status Reason' = 'Status Reason CS Dropdown'.Selected.Value &&
+                                            'Solution Area'.'Solution Area Name' = 'Solution Area CS Dropdown'.Selected.'Solution Area Name' && 
+                                            'Implementation Model'.'Implementation Model Name' = 'Implementation Model CS Dropdown'.Selected.'Implementation Model Name' &&
+                                            'Project Start Date' = 'Project Start Date DatePicker'.SelectedDate &&
+                                            'Project End Date' = 'Project End Date DatePicker'.SelectedDate
+                    )
+                );
                 
+                // Update the Many-to-Many relationship with the selected items in the Operating Model Combo Box
+                ForAll(
+                    'Related Operating Models Combobox'.SelectedItems, 
+                    Relate(
+                        First(colCreatedClientSolutionTemp).'Operating Models', 
+                        ThisRecord
+                    )
+                );
                 
                 UpdateContext({varClientSolutionCreated:true});
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
@@ -1994,4 +2014,77 @@
             X: =49
             Y: =80
             ZIndex: =2
+
+    "'Delete Client Solution Confirmation Container' As groupContainer.manualLayoutContainer":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =266
+        Visible: =If(varDeleteClientSolutionWindow,true,false)
+        Width: =589
+        X: =389
+        Y: =251
+        ZIndex: =18
+
+        "'Exit Container Before Delete Button' As icon.Cancel":
+            Height: =56
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varDeleteClientSolutionWindow:false})
+            Visible: =If(varMessageCSDeleted,false,true)
+            Width: =57
+            X: =516
+            Y: =12
+            ZIndex: =1
+
+        "'Delete Confirmation Button' As button":
+            Fill: =RGBA(0, 16, 96, 1)
+            OnSelect: |-
+                =Remove('Client Solutions', LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution'));
+                UpdateContext({varMessageCSDeleted:true})
+            Text: ="Delete"
+            Visible: =If(varMessageCSDeleted,false,true)
+            X: =40
+            Y: =204
+            ZIndex: =2
+
+        "'Delete Confirmation Message' As label":
+            Align: =Align.Center
+            Text: ="Please click ""Delete"" Button to continue"
+            Visible: =If(varMessageCSDeleted,false,true)
+            Width: =482
+            X: =54
+            Y: =113
+            ZIndex: =3
+
+        "'Delete Confirmation Button_1' As button":
+            Fill: =RGBA(0, 16, 96, 1)
+            OnSelect: |-
+                =UpdateContext({varDeleteClientSolutionWindow:false})
+            Text: ="Cancel"
+            Visible: =If(varMessageCSDeleted,false,true)
+            X: =413
+            Y: =204
+            ZIndex: =4
+
+        "'CS Deleted Message' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="The Client Solution was successfully deleted!"
+            Visible: =If(varMessageCSDeleted,true,false)
+            Width: =482
+            X: =54
+            Y: =113
+            ZIndex: =5
+
+        "'Exit Container After Delete Button' As icon.Cancel":
+            Height: =56
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varDeleteClientSolutionWindow:false});
+                UpdateContext({varMessageCSDeleted:false});
+                UpdateContext({varUpdateClientSolution:false})
+            Visible: =If(varMessageCSDeleted,true,false)
+            Width: =57
+            X: =516
+            Y: =12
+            ZIndex: =6
 

@@ -2,6 +2,17 @@
     Fill: =RGBA(166, 166, 166, 1)
     OnVisible: =
 
+    "'Operating Model Screen Label' As label":
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 16, 96, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =76
+        Size: =26
+        Text: ="Operating Models"
+        Width: =1366
+        ZIndex: =1
+
     "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
         DelayItemLoading: =true
@@ -35,7 +46,7 @@
         Width: =308
         X: =37
         Y: =164
-        ZIndex: =1
+        ZIndex: =2
 
         Title3 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
@@ -59,6 +70,7 @@
             ZIndex: =4
 
     "'Back Button_1' As icon.ChevronLeft":
+        Color: =RGBA(255, 255, 255, 1)
         Height: =51
         Icon: =Icon.ChevronLeft
         OnSelect: |-
@@ -72,9 +84,9 @@
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
         Width: =52
-        X: =15
-        Y: =25
-        ZIndex: =20
+        X: =16
+        Y: =12
+        ZIndex: =3
 
     "'Capability Level 1 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -106,7 +118,7 @@
         Width: =308
         X: =365
         Y: =164
-        ZIndex: =21
+        ZIndex: =4
 
         "'Head Capability Label' As label":
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
@@ -163,7 +175,7 @@
         Width: =308
         X: =365
         Y: =429
-        ZIndex: =22
+        ZIndex: =5
 
         "'L2 Sub Capability Label' As label":
             Height: =41
@@ -297,7 +309,7 @@
         Width: =308
         X: =689
         Y: =164
-        ZIndex: =23
+        ZIndex: =6
 
         Title3_2 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
@@ -351,7 +363,7 @@
         Width: =308
         X: =1014
         Y: =164
-        ZIndex: =24
+        ZIndex: =7
 
         Title3_3 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
@@ -383,7 +395,7 @@
         Width: =277
         X: =53
         Y: =120
-        ZIndex: =25
+        ZIndex: =8
 
     "'Capability Label' As label":
         FontWeight: =FontWeight.Bold
@@ -393,7 +405,7 @@
         Width: =280
         X: =376
         Y: =120
-        ZIndex: =26
+        ZIndex: =9
 
     "'Process Group Label' As label":
         FontWeight: =FontWeight.Bold
@@ -403,7 +415,7 @@
         Width: =288
         X: =699
         Y: =120
-        ZIndex: =27
+        ZIndex: =10
 
     "'Process Label' As label":
         FontWeight: =FontWeight.Bold
@@ -413,7 +425,7 @@
         Width: =288
         X: =1024
         Y: =120
-        ZIndex: =28
+        ZIndex: =11
 
     "'Sub Capability Label' As label":
         FontWeight: =FontWeight.Bold
@@ -425,7 +437,7 @@
         Width: =299
         X: =369
         Y: =385
-        ZIndex: =29
+        ZIndex: =12
 
     "'Create OM Button' As button":
         Fill: =RGBA(0, 16, 96, 1)
@@ -443,7 +455,7 @@
         Width: =308
         X: =37
         Y: =681
-        ZIndex: =30
+        ZIndex: =13
 
     "'Create Cap Button' As button":
         Fill: =RGBA(0, 16, 96, 1)
@@ -459,7 +471,7 @@
         Width: =308
         X: =365
         Y: =681
-        ZIndex: =31
+        ZIndex: =14
 
     "'Create PG Button' As button":
         Fill: =RGBA(0, 16, 96, 1)
@@ -475,7 +487,7 @@
         Width: =308
         X: =689
         Y: =681
-        ZIndex: =32
+        ZIndex: =15
 
     "'Create Process Button' As button":
         Fill: =RGBA(0, 16, 96, 1)
@@ -491,18 +503,7 @@
         Width: =308
         X: =1024
         Y: =681
-        ZIndex: =33
-
-    "'Operating Model Screen Label' As label":
-        Align: =Align.Center
-        FontWeight: =FontWeight.Bold
-        Height: =75
-        Size: =28
-        Text: ="Operating Models"
-        Width: =538
-        X: =410
-        Y: =25
-        ZIndex: =34
+        ZIndex: =16
 
     "'Create OM Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -511,7 +512,7 @@
         Width: =757
         X: =330
         Y: =150
-        ZIndex: =35
+        ZIndex: =17
 
         "'Exit OM Create Icon' As icon.Cancel":
             Height: =56
@@ -627,7 +628,7 @@
         Width: =814
         X: =272
         Y: =122
-        ZIndex: =36
+        ZIndex: =18
 
         "'Exit Cap Create Icon' As icon.Cancel":
             Height: =56
@@ -803,7 +804,7 @@
         Width: =814
         X: =272
         Y: =122
-        ZIndex: =37
+        ZIndex: =19
 
         "'Exit Cap Create Icon_1' As icon.Cancel":
             Height: =56
@@ -984,7 +985,7 @@
         Width: =1160
         X: =99
         Y: =65
-        ZIndex: =38
+        ZIndex: =20
 
         "'Exit Cap Create Icon_2' As icon.Cancel":
             Height: =56
@@ -1242,7 +1243,7 @@
         Width: =1160
         X: =103
         Y: =43
-        ZIndex: =39
+        ZIndex: =21
 
         "'Exit Cap Create Icon_3' As icon.Cancel":
             Height: =56
