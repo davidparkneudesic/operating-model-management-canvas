@@ -126,7 +126,8 @@
             Height: =99
             Required: =true
             Update: ='Client Solution US Dropdown'.Selected
-            Width: =430
+            Visible: =false
+            Width: =215
             WidthFit: =false
             X: =0
             Y: =0
@@ -176,7 +177,7 @@
             Required: =false
             Update: =//DataCardValueEpicLevelItem
             Width: =215
-            X: =2
+            X: =1
             Y: =0
             ZIndex: =1
 
@@ -254,10 +255,10 @@
             Required: =If(ThisItem.'Epic Level Item' = true, false, true)
             Update: =OperatingModel_Dropdown.Selected
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
-            Width: =215
+            Width: =645
             WidthFit: =true
-            X: =0
-            Y: =4
+            X: =1
+            Y: =3
             ZIndex: =1
 
             DataCardKey16 As label:
@@ -310,8 +311,8 @@
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =215
             WidthFit: =true
-            X: =0
-            Y: =5
+            X: =2
+            Y: =3
             ZIndex: =1
 
             DataCardKey15 As label:
@@ -362,7 +363,7 @@
             Width: =645
             WidthFit: =true
             X: =0
-            Y: =6
+            Y: =4
             ZIndex: =1
 
             DataCardKey18 As label:
@@ -412,7 +413,7 @@
             Width: =215
             WidthFit: =true
             X: =0
-            Y: =7
+            Y: =5
             ZIndex: =1
 
             DataCardKey17 As label:
@@ -470,8 +471,8 @@
             Update: =Value(DataCardValue11.Text)
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , true, false)
             Width: =215
-            X: =0
-            Y: =8
+            X: =1
+            Y: =5
             ZIndex: =1
 
             DataCardKey12 As label:
@@ -680,8 +681,7 @@
             Update: =Value(DataCardValue9.Text)
             Width: =215
             X: =0
-            Y: |
-                =8
+            Y: =3
             ZIndex: =4
 
             DataCardKey11 As label:
@@ -1578,6 +1578,7 @@
                 Height: =50
                 Required: =true
                 Update: ='Client Solution US Dropdown for Create'.Selected
+                Visible: =false
                 Width: =572
                 WidthFit: =false
                 X: =0
@@ -2093,8 +2094,7 @@
                 Update: =Value('Estimated Hours Input'.Text)
                 Width: =286
                 X: =0
-                Y: |
-                    =8
+                Y: =3
                 ZIndex: =4
 
                 DataCardKey11_2 As label:
