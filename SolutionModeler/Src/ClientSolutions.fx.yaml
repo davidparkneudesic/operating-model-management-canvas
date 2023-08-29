@@ -912,7 +912,7 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DataCardValue10_1.Selected
+            Update: =SolutionArea_CS_Edit_ComboBox.Selected
             Width: =472
             X: =1
             Y: =1
@@ -928,7 +928,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue10_1 As combobox:
+            SolutionArea_CS_Edit_ComboBox As combobox:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 DefaultSelectedItems: =Parent.Default
                 DisplayFields: =["neu_solutionareaname"]
@@ -936,7 +936,7 @@
                 Items: =Choices([@'Client Solutions'].neu_SolutionArea)
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 SearchFields: =["neu_solutionareaname"]
-                SearchItems: =Search(Choices([@'Client Solutions'].neu_SolutionArea),DataCardValue10_1.SearchText,"neu_solutionareaname")
+                SearchItems: =Search(Choices([@'Client Solutions'].neu_SolutionArea),SolutionArea_CS_Edit_ComboBox.SearchText,"neu_solutionareaname")
                 SelectMultiple: =false
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
@@ -956,7 +956,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue10_1.Y + DataCardValue10_1.Height
+                Y: =SolutionArea_CS_Edit_ComboBox.Y + SolutionArea_CS_Edit_ComboBox.Height
                 ZIndex: =3
 
             StarVisible11_1 As label:
@@ -1017,10 +1017,9 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DataCardValue2_1.Text
+            Update: =EstimateURL_CS_Edit_Input.Text
             Width: =472
-            X: |
-                =0
+            X: =1
             Y: =2
             ZIndex: =1
 
@@ -1034,7 +1033,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue2_1 As text:
+            EstimateURL_CS_Edit_Input As text:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
@@ -1061,7 +1060,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue2_1.Y + DataCardValue2_1.Height
+                Y: =EstimateURL_CS_Edit_Input.Y + EstimateURL_CS_Edit_Input.Height
                 ZIndex: =3
 
             StarVisible2_1 As label:
@@ -1074,73 +1073,6 @@
                 Y: =DataCardKey2_1.Y
                 ZIndex: =4
 
-        "'Operating Models_DataCard1' As typedDataCard.comboBoxOptionSetMultiViewCard":
-            BorderStyle: =BorderStyle.Solid
-            DataField: ="neu_ClientSolution_neu_OperatingModel_neu"
-            Default: =ThisItem.'Operating Models'
-            DisplayMode: =DisplayMode.Edit
-            DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_ClientSolution_neu_OperatingModel_neu")
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Required: =false
-            Update: =
-            Width: =472
-            X: =2
-            Y: =2
-            ZIndex: =1
-
-            DataCardKey5 As label:
-                AutoHeight: =true
-                Height: =34
-                Text: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                Wrap: =false
-                X: =30
-                Y: =10
-                ZIndex: =1
-
-            ErrorMessage1 As label:
-                AutoHeight: =true
-                Height: =10
-                Live: =Live.Assertive
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Text: =Parent.Error
-                Visible: =Parent.DisplayMode=DisplayMode.Edit
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =OperatingModel_CS_Edit_ComboBox.Y + OperatingModel_CS_Edit_ComboBox.Height
-                ZIndex: =3
-
-            StarVisible5 As label:
-                Align: =Align.Center
-                Height: =DataCardKey5.Height
-                Text: ="*"
-                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                Width: =30
-                Wrap: =false
-                Y: =DataCardKey5.Y
-                ZIndex: =4
-
-            OperatingModel_CS_Edit_ComboBox As combobox:
-                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                DefaultSelectedItems: =
-                DisplayFields: =["neu_model"]
-                DisplayMode: =Parent.DisplayMode
-                IsSearchable: =false
-                Items: =Sort('Operating Models','Operating Model Name')
-                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                SearchFields: =["neu_model"]
-                SearchItems: =[]
-                SelectMultiple: =false
-                Tooltip: =Parent.DisplayName
-                Width: =Parent.Width - 60
-                X: =30
-                Y: =44
-                ZIndex: =5
-
         "'Implementation Model_DataCard1_1' As typedDataCard.comboBoxEditCard":
             BorderStyle: =BorderStyle.Solid
             DataField: ="neu_ImplementationModelID"
@@ -1150,9 +1082,9 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DataCardValue3_1.Selected
+            Update: =ImplementationModel_CS_Edit_ComboBox.Selected
             Width: =472
-            X: =1
+            X: =0
             Y: =3
             ZIndex: =1
 
@@ -1166,7 +1098,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue3_1 As combobox:
+            ImplementationModel_CS_Edit_ComboBox As combobox:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 DefaultSelectedItems: =Parent.Default
                 DisplayFields: =["neu_implementationmodelname"]
@@ -1195,7 +1127,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue3_1.Y + DataCardValue3_1.Height
+                Y: =ImplementationModel_CS_Edit_ComboBox.Y + ImplementationModel_CS_Edit_ComboBox.Height
                 ZIndex: =3
 
             StarVisible3_1 As label:
@@ -1217,7 +1149,7 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =81
             Required: =false
-            Update: =DateValue2_1.SelectedDate
+            Update: =ProjectStartDate_CS_Edit_DateValue.SelectedDate
             Width: =472
             X: =0
             Y: =4
@@ -1233,7 +1165,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DateValue2_1 As datepicker:
+            ProjectStartDate_CS_Edit_DateValue As datepicker:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 DefaultDate: =Parent.Default
                 DisplayMode: =Parent.DisplayMode
@@ -1315,9 +1247,9 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DateValue1_1.SelectedDate
+            Update: =ProjectEndDate_CS_Edit_DateValue.SelectedDate
             Width: =472
-            X: =1
+            X: =0
             Y: =4
             ZIndex: =1
 
@@ -1331,7 +1263,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DateValue1_1 As datepicker:
+            ProjectEndDate_CS_Edit_DateValue As datepicker:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 DefaultDate: =Parent.Default
                 DisplayMode: =Parent.DisplayMode
@@ -1400,8 +1332,8 @@
             Required: =false
             Visible: =false
             Width: =472
-            X: =0
-            Y: =5
+            X: =1
+            Y: =4
             ZIndex: =1
 
             DataCardKey21_1 As label:
@@ -1437,7 +1369,7 @@
             Height: =50
             MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
             Required: =true
-            Update: =DataCardValue5_1.Text
+            Update: =SolutionName_CS_Edit_Input.Text
             Width: =472
             X: =0
             Y: =0
@@ -1453,7 +1385,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue5_1 As text:
+            SolutionName_CS_Edit_Input As text:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
@@ -1481,7 +1413,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue5_1.Y + DataCardValue5_1.Height
+                Y: =SolutionName_CS_Edit_Input.Y + SolutionName_CS_Edit_Input.Height
                 ZIndex: =3
 
             StarVisible6_1 As label:
@@ -1504,7 +1436,7 @@
             Height: =50
             MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
             Required: =true
-            Update: =DataCardValue6_1.Text
+            Update: ='Client/Prospect_CS_Edit_Input'.Text
             Width: =472
             X: =1
             Y: =0
@@ -1520,7 +1452,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue6_1 As text:
+            "'Client/Prospect_CS_Edit_Input' As text":
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
@@ -1548,7 +1480,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue6_1.Y + DataCardValue6_1.Height
+                Y: ='Client/Prospect_CS_Edit_Input'.Y + 'Client/Prospect_CS_Edit_Input'.Height
                 ZIndex: =3
 
             StarVisible7_1 As label:
@@ -1570,7 +1502,7 @@
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
             Required: =false
-            Update: =DataCardValue7_1.Selected.Value
+            Update: =StatusReason_CS_Edit_ComboBox.Selected.Value
             Width: =472
             X: =0
             Y: =1
@@ -1586,7 +1518,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue7_1 As combobox:
+            StatusReason_CS_Edit_ComboBox As combobox:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 DefaultSelectedItems: =[Parent.Default]
                 DisplayFields: =["Value"]
@@ -1618,7 +1550,7 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue7_1.Y + DataCardValue7_1.Height
+                Y: =StatusReason_CS_Edit_ComboBox.Y + StatusReason_CS_Edit_ComboBox.Height
                 ZIndex: =3
 
             StarVisible8_1 As label:
@@ -1687,6 +1619,44 @@
         Height: =44
         OnSelect: |-
             =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
+            
+            If(IsBlank(EstimateURL_CS_Edit_Input.Text),
+                Patch(
+                    'Client Solutions',
+                    Defaults('Client Solutions'),
+                    {
+                        'Solution Name':SolutionName_CS_Edit_Input.Text,
+                        'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
+                        'Status Reason':StatusReason_CS_Edit_ComboBox.Selected.Value,
+                        'Solution Area':SolutionArea_CS_Edit_ComboBox.Selected,
+                        'Implementation Model':ImplementationModel_CS_Edit_ComboBox.Selected,
+                        'Project Start Date':ProjectStartDate_CS_Edit_DateValue.SelectedDate,
+                        'Project End Date':ProjectEndDate_CS_Edit_DateValue.SelectedDate
+                    }
+                ),
+                Patch(
+                    'Client Solutions',
+                    Defaults('Client Solutions'),
+                    {
+                        'Solution Name':SolutionName_CS_Edit_Input.Text,
+                        'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
+                        'Status Reason':StatusReason_CS_Edit_ComboBox.Selected.Value,
+                        'Solution Area':SolutionArea_CS_Edit_ComboBox.Selected,
+                        'Estimate URL':"<a href='" & EstimateURL_CS_Edit_Input.Text & "'>URL</a>",
+                        'Implementation Model':ImplementationModel_CS_Edit_ComboBox.Selected,
+                        'Project Start Date':ProjectStartDate_CS_Edit_DateValue.SelectedDate,
+                        'Project End Date':ProjectEndDate_CS_Edit_DateValue.SelectedDate
+                    }
+                )
+            );
+            
+            
+            ForAll(
+                RenameColumns(RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems,  'Operating Model Name', "OperatingModelName_Selected"), 
+                Relate(SolutionGallery.Selected.'Operating Models', LookUp('Operating Models', 'Operating Model Name' = OperatingModel_Selected))
+            )
+            //If(!IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),Relate(SolutionGallery.Selected.'Operating Models', RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems));
+            
             UpdateContext({varUpdatedCSWindow:true})
         Text: ="Update"
         Visible: =If(varUpdateClientSolution,true,false)
@@ -1735,21 +1705,34 @@
 
         BtnSubmit As button:
             OnSelect: |-
-                =//SubmitForm(ClientsSolutionsForm)
-                
-                Patch(
-                    'Client Solutions',
-                    Defaults('Client Solutions'),
-                    {
-                        'Solution Name':'New Solution Name Input'.Text,
-                        'Client/Prospect Name':'Client/Prospect Name Input'.Text,
-                        'Status Reason':'Status Reason CS Dropdown'.Selected.Value,
-                        'Solution Area':'Solution Area CS Dropdown'.Selected,
-                        'Estimate URL':'Estimate URL Input'.Text,
-                        'Implementation Model':'Implementation Model CS Dropdown'.Selected,
-                        'Project Start Date':'Project Start Date DatePicker'.SelectedDate,
-                        'Project End Date':'Project End Date DatePicker'.SelectedDate
-                    }
+                =If(IsBlank('Estimate URL Input'.Text),
+                    Patch(
+                        'Client Solutions',
+                        Defaults('Client Solutions'),
+                        {
+                            'Solution Name':'New Solution Name Input'.Text,
+                            'Client/Prospect Name':'Client/Prospect Name Input'.Text,
+                            'Status Reason':'Status Reason CS Dropdown'.Selected.Value,
+                            'Solution Area':'Solution Area CS Dropdown'.Selected,
+                            'Implementation Model':'Implementation Model CS Dropdown'.Selected,
+                            'Project Start Date':'Project Start Date DatePicker'.SelectedDate,
+                            'Project End Date':'Project End Date DatePicker'.SelectedDate
+                        }
+                    ),
+                    Patch(
+                        'Client Solutions',
+                        Defaults('Client Solutions'),
+                        {
+                            'Solution Name':'New Solution Name Input'.Text,
+                            'Client/Prospect Name':'Client/Prospect Name Input'.Text,
+                            'Status Reason':'Status Reason CS Dropdown'.Selected.Value,
+                            'Solution Area':'Solution Area CS Dropdown'.Selected,
+                            'Estimate URL':"<a href='" & 'Estimate URL Input'.Text & "'>URL</a>",
+                            'Implementation Model':'Implementation Model CS Dropdown'.Selected,
+                            'Project Start Date':'Project Start Date DatePicker'.SelectedDate,
+                            'Project End Date':'Project End Date DatePicker'.SelectedDate
+                        }
+                    )
                 );
                 
                 //If(!IsBlank('Related Operating Models Combobox'.SelectedItems), Relate(First(Filter('Client Solutions', 'Solution Name' = 'New Solution Name Input'.Text)), 'Related Operating Models Combobox'.SelectedItems));
@@ -1930,7 +1913,7 @@
             Y: =239
             ZIndex: =23
 
-    Label2 As label:
+    "'Related Operating Model Label' As label":
         FontWeight: =FontWeight.Bold
         Height: =44
         Size: =20
@@ -1940,4 +1923,25 @@
         X: =1020
         Y: =145
         ZIndex: =14
+
+    RelatedOperatingModel_Edit_Label As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Text: ="Related Operating Model"
+        Visible: =If(varUpdateClientSolution,true,false)
+        Width: =289
+        X: =847
+        Y: =352
+        ZIndex: =15
+
+    RelatedOperatingModel_CS_Edit_ComboBox As combobox:
+        DisplayFields: =["neu_operatingmodelname"]
+        IsSearchable: =false
+        Items: =Sort('Operating Models','Operating Model Name')
+        SearchFields: =["neu_operatingmodelname"]
+        SearchItems: =[]
+        Visible: =If(varUpdateClientSolution,true,false)
+        Width: =410
+        X: =847
+        Y: =392
+        ZIndex: =16
 
