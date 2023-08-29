@@ -1714,7 +1714,7 @@
     RelatedOperatingModel_Edit_Label As label:
         Color: =RGBA(0, 18, 107, 1)
         Text: ="Related Operating Model"
-        Visible: =If(varUpdateClientSolution || IsBlank(SolutionGallery.Selected),true,false)
+        Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
         Width: =289
         X: =847
         Y: =352
@@ -1729,7 +1729,7 @@
         Items: =Sort('Operating Models','Operating Model Name')
         SearchFields: =["neu_operatingmodelname"]
         SearchItems: =[]
-        Visible: =If(varUpdateClientSolution || IsBlank(SolutionGallery.Selected),true,false)
+        Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
         Width: =410
         X: =847
         Y: =392
