@@ -43,26 +43,29 @@ HomePage As screen:
         ZIndex: =4
 
     lblClientSolutions As label:
+        FontWeight: =FontWeight.Semibold
         Height: =55
         Text: =" The Client Solution area allows you to start the scoping and estimation process leveraging the models."
         Width: =948
-        X: =385
-        Y: =301
+        X: =371
+        Y: =294
         ZIndex: =5
 
     lblOperatingModels As label:
+        FontWeight: =FontWeight.Semibold
         Height: =55
         Text: =" Browse, create and modify the various Operating Models, which serve as scoping templates."
         Width: =948
-        X: =385
-        Y: =410
+        X: =371
+        Y: =402
         ZIndex: =6
 
     lblOperatingModels_1 As label:
+        FontWeight: =FontWeight.Semibold
         Height: =55
         Text: =" Browse, create and modify the various Implementation Models, which serve as patterns for solution delivery"
         Width: =948
-        X: =385
-        Y: =524
+        X: =371
+        Y: =517
         ZIndex: =7
 

@@ -1676,6 +1676,13 @@
                 )
             );
             
+            // Clear all the relationship before creating another relationship with the selected values
+            ForAll(
+                'Operating Model Gallery'.AllItems,
+                Unrelate(SolutionGallery.Selected.'Operating Models', ThisRecord)
+            );
+            
+            // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
             ForAll(
                 RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
                 Relate(SolutionGallery.Selected.'Operating Models', ThisRecord)
@@ -1705,10 +1712,11 @@
         ZIndex: =12
 
     "'Related Operating Model Label' As label":
+        Color: =RGBA(0, 18, 107, 1)
         FontWeight: =FontWeight.Bold
         Height: =44
-        Size: =20
-        Text: ="Operating Models"
+        Size: =16
+        Text: ="Related Operating Models"
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =302
         X: =1020
@@ -1734,6 +1742,7 @@
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         IsSearchable: =false
         Items: =Sort('Operating Models','Operating Model Name')
+        OnSelect: =//Collect(colTempOperatingModelCSForEdit,Filter('Operating Models', 'Operating Model Name' = RelatedOperatingModel_CS_Edit_ComboBox.Selected.'Operating Model Name'))
         SearchFields: =["neu_operatingmodelname"]
         SearchItems: =[]
         Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
