@@ -570,7 +570,7 @@
                 PaddingRight: =0
                 PaddingTop: =0
                 Size: =12
-                Text: =ThisItem.Sequence
+                Text: =Value(ThisItem.Sequence) / 1000
                 Width: =165
                 X: =12
                 ZIndex: =1
@@ -1300,8 +1300,9 @@
             ZIndex: =10
 
         "'Sequence Task Label' As label":
+            FontWeight: =FontWeight.Semibold
             Text: ="Sequence" & " (Range within " & Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) & " to " & (Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
-            Width: =306
+            Width: =413
             X: =64
             Y: =547
             ZIndex: =11

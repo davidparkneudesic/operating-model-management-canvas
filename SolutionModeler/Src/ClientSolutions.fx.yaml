@@ -155,7 +155,8 @@
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
             Navigate(HomePage, ScreenTransition.UnCoverRight);
-            UpdateContext({varOpenCreateClientSolution:false})
+            UpdateContext({varOpenCreateClientSolution:false});
+            UpdateContext({varUpdateClientSolution:false});
         Width: =52
         X: =15
         Y: =12
@@ -1595,22 +1596,24 @@
             UpdateContext({varOpenCreateClientSolution:true})
         Text: ="New Client Solution"
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =235
+        Width: =246
         X: =372
         Y: =689
         ZIndex: =7
 
     btnViewUserStories As button:
         Fill: =RGBA(0, 16, 96, 1)
+        Height: =44
         OnSelect: |-
             =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
             Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
-            UpdateContext({varOpenCreateClientSolution:false})
+            UpdateContext({varOpenCreateClientSolution:false});
+            UpdateContext({varUpdateClientSolution:false})
         Text: ="View User Stories"
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =225
-        X: =1086
-        Y: =691
+        Width: =241
+        X: =1092
+        Y: =689
         ZIndex: =8
 
     UpdateClientSolution_Button As button:
@@ -1622,7 +1625,7 @@
         Text: ="Update Client Solution"
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =261
-        X: =720
+        X: =717
         Y: =689
         ZIndex: =9
 
@@ -1635,7 +1638,7 @@
         Text: ="Cancel"
         Visible: =If(varUpdateClientSolution,true,false)
         Width: =187
-        X: =698
+        X: =725
         Y: =691
         ZIndex: =10
 
@@ -1697,7 +1700,7 @@
             "
         Visible: =If(varUpdateClientSolution,true,false)
         Width: =187
-        X: =1025
+        X: =1070
         Y: =691
         ZIndex: =12
 
@@ -1722,6 +1725,7 @@
         ZIndex: =14
 
     RelatedOperatingModel_CS_Edit_ComboBox As combobox:
+        DefaultSelectedItems: =LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model')
         DisplayFields: =["neu_operatingmodelname"]
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
