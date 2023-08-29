@@ -1620,8 +1620,8 @@
         Fill: =RGBA(0, 16, 96, 1)
         Height: =44
         OnSelect: |-
-            =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-            UpdateContext({varUpdateClientSolution:true})
+            =UpdateContext({varUpdateClientSolution:true});
+            //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
         Text: ="Update Client Solution"
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =261
@@ -1725,7 +1725,9 @@
         ZIndex: =14
 
     RelatedOperatingModel_CS_Edit_ComboBox As combobox:
-        DefaultSelectedItems: =LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model')
+        DefaultSelectedItems: |-
+            =//LookUp('Client Solutions', 'Solution Name' = SolutionGallery.Selected.'Solution Name')
+            SolutionGallery.Selected.'Operating Models'
         DisplayFields: =["neu_operatingmodelname"]
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
