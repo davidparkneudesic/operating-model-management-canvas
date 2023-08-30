@@ -179,7 +179,8 @@
             Update: =//DataCardValueEpicLevelItem
             Width: =215
             X: =1
-            Y: =0
+            Y: |
+                =1
             ZIndex: =1
 
             DataCardKey19 As label:
@@ -596,7 +597,7 @@
                 BorderThickness: =2
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =40
-                Width: =585
+                Width: =370
                 X: =30
                 Y: =49
                 ZIndex: =4
@@ -1652,8 +1653,8 @@
                 Required: =false
                 Update: ='EpicLevelItemDropdown For Create'.Selected.Value
                 Width: =286
-                X: =2
-                Y: =0
+                X: =0
+                Y: =2
                 ZIndex: =1
 
                 DataCardKey19_2 As label:
@@ -1984,7 +1985,7 @@
                 MaxLength: =DataSourceInfo([@'User Stories'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
                 Update: ='User Story Name Input'.Text
-                Width: =858
+                Width: =572
                 WidthFit: =true
                 X: =0
                 Y: =1
@@ -2048,7 +2049,7 @@
                 Width: =858
                 WidthFit: =true
                 X: =0
-                Y: =2
+                Y: =3
                 ZIndex: =4
 
                 DataCardKey10_2 As label:
@@ -2107,9 +2108,8 @@
                 Required: =false
                 Update: =Value('Estimated Hours Input'.Text)
                 Width: =286
-                X: =0
-                Y: |
-                    =9
+                X: =1
+                Y: =8
                 ZIndex: =4
 
                 DataCardKey11_2 As label:
