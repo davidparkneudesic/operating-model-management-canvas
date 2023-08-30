@@ -12,12 +12,10 @@
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
-            =
-            
-            If(ThisItem.'Solution Name' = OperatingModel_CS_Gallery.Selected.'Solution Name' && 
+            =If(ThisItem.'Operating Model Name' = OperatingModel_CS_Gallery.Selected.'Operating Model Name' && 
                     !(varOpenCreateClientSolution), 
                  RGBA(204, 208, 225, 1),
-                If (ThisItem.'Solution Name' = OperatingModel_CS_Gallery.Selected.'Solution Name' && 
+                If (ThisItem.'Operating Model Name' = OperatingModel_CS_Gallery.Selected.'Operating Model Name' && 
                         varOpenCreateClientSolution,
                         RGBA(153, 160, 196, 1),
                         RGBA(0,0,0,0)
@@ -2103,4 +2101,12 @@
             X: =516
             Y: =12
             ZIndex: =6
+
+    Button3 As button:
+        Fill: =RGBA(0, 16, 96, 1)
+        Text: ="Create DevOps Project"
+        Width: =264
+        X: =1070
+        Y: =91
+        ZIndex: =19
 
