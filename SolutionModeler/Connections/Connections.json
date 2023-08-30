@@ -1,16 +1,54 @@
 {
-  "d730b80a-0cec-4fb8-8786-8ea98aa4a8e6": {
+  "60cdf598-358b-417c-9188-3f1044bca64c": {
     "connectionRef": {
-      "displayName": "Azure DevOps",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1649/1.0.1649.3368/vsts/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_visualstudioteamservices"
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1653/1.0.1653.3403/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "9d84011e-01b7-4c98-86a8-508b1df03e11": {
+          "value": "shared_commondataserviceforapps"
+        },
+        "workflowEntityId": {
+          "value": "8028e9eb-ec3a-ee11-bdf4-0022482bd981"
+        },
+        "workflowName": {
+          "value": "7fb20ab2-e07e-8742-df41-6ceade05029c"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_commondataserviceforapps": {
+          "value": "9d84011e-01b7-4c98-86a8-508b1df03e11"
+        },
+        "workflowEntityId": {
+          "value": "8028e9eb-ec3a-ee11-bdf4-0022482bd981"
+        },
+        "workflowName": {
+          "value": "7fb20ab2-e07e-8742-df41-6ceade05029c"
+        }
+      }
     },
     "datasets": {},
     "dataSources": [
-      "AzureDevOps"
+      "RunMultiplier"
     ],
-    "dependencies": {},
+    "dependencies": {
+      "shared_commondataserviceforapps": "9d84011e-01b7-4c98-86a8-508b1df03e11"
+    },
     "dependents": [],
-    "id": "d730b80a-0cec-4fb8-8786-8ea98aa4a8e6"
+    "id": "60cdf598-358b-417c-9188-3f1044bca64c"
+  },
+  "9d84011e-01b7-4c98-86a8-508b1df03e11": {
+    "connectionRef": {
+      "displayName": "Microsoft Dataverse",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1651/1.0.1651.3382/commondataserviceforapps/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_commondataserviceforapps"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "60cdf598-358b-417c-9188-3f1044bca64c"
+    ],
+    "id": "9d84011e-01b7-4c98-86a8-508b1df03e11"
   }
 }
