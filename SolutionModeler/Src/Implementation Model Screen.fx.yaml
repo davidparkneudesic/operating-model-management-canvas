@@ -1188,6 +1188,7 @@
             ZIndex: =16
 
     "'Create Task Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =731
         Visible: =If(varCreateOpenTask,true,false)

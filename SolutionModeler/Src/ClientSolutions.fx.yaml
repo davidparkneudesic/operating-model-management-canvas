@@ -1,5 +1,9 @@
 "ClientSolutions As screen.'autoLayout_SplitScreen_ver1.0'":
-    Fill: =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, RGBA(153, 160, 196, 1), RGBA(215, 223, 240, 1))
+    Fill: |-
+        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), 
+            RGBA(237, 237, 237, 1)
+        )
 
     "OperatingModel_CS_Gallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
