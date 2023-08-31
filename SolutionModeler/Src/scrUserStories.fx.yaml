@@ -42,7 +42,7 @@
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Size: =15
+            Size: =12
             Text: =ThisItem.Name
             VerticalAlign: =VerticalAlign.Top
             Width: =Parent.TemplateWidth - 86
@@ -58,6 +58,7 @@
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
+            Size: =10
             Text: =ThisItem.Description
             VerticalAlign: =VerticalAlign.Top
             Width: =Title12.Width
@@ -95,7 +96,11 @@
 
     "'Client User Stories Title' As label":
         Align: =Align.Center
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Font: =Font.'Lato Light'
         FontWeight: =FontWeight.Semibold
         Height: =76
@@ -161,6 +166,7 @@
                 ZIndex: =3
 
             "'Client Solution US Dropdown' As dropdown":
+                Height: =30
                 Items: =Filter('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution')
                 Width: =340
                 X: =30
@@ -226,11 +232,13 @@
                 Fill: |-
                     =If(varOpenUserStoryCreate, 
                     RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+                Height: =30
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
@@ -240,7 +248,7 @@
             Rectangle11_2 As rectangle:
                 BorderThickness: =2
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =155
                 X: =30
                 Y: =49
@@ -749,7 +757,11 @@
                 ZIndex: =5
 
     Button5 As button:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         OnSelect: |-
             =If(IsBlank(galUserStories.Selected),Select(galUserStories,1));
             UpdateContext({varOpenUserStoryCreate:true})
@@ -793,13 +805,17 @@
             UpdateContext({varOpenUserStoryCreate:false});
             UpdateContext({varUpdateUserStory:false});
             UpdateContext({varDeleteUserStory:false});
-        Width: =62
-        X: =14
+        Width: =45
+        X: =17
         Y: =12
         ZIndex: =8
 
     Button5_1 As button:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         OnSelect: |-
             =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
@@ -1525,7 +1541,11 @@
                 ZIndex: =4
 
     Button1 As button:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
         Text: ="Run Epic Balancer"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
