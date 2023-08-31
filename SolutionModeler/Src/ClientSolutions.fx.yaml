@@ -10,19 +10,11 @@
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =702
-        Width: =1311
-        X: =28
-        Y: =40
+        Height: =647
+        Width: =1054
+        X: =284
+        Y: =96
         ZIndex: =1
-
-        NeudesicLogo_ClientSolutions_Page As image:
-            Height: =49
-            Image: ='Neudesic Logo'
-            Width: =138
-            X: =22
-            Y: =642
-            ZIndex: =1
 
     "OperatingModel_CS_Gallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -80,7 +72,7 @@
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =487
+        Height: =648
         Items: =Filter('Client Solutions', 'Client Solutions (Views)'.'Active Client Solutions')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -99,9 +91,8 @@
             )
         TemplatePadding: =0
         TemplateSize: =75
-        Width: =280
-        X: =71
-        Y: =151
+        Width: =253
+        Y: =120
         ZIndex: =3
 
         Title2 As label:
@@ -1845,32 +1836,6 @@
         Y: =330
         ZIndex: =15
 
-    RelatedOperatingModel_CS_Edit_ComboBox As combobox:
-        ChevronBackground: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                ColorFade(RGBA(26, 76, 145, 1), -30%),
-                RGBA(26, 76, 145, 1)
-            )
-        DefaultSelectedItems: |-
-            =//LookUp('Client Solutions', 'Solution Name' = SolutionGallery.Selected.'Solution Name')
-            Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
-        DisplayFields: =["neu_operatingmodelname"]
-        Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =30
-        IsSearchable: =false
-        Items: =Sort('Operating Models','Operating Model Name')
-        OnSelect: =//Collect(colTempOperatingModelCSForEdit,Filter('Operating Models', 'Operating Model Name' = RelatedOperatingModel_CS_Edit_ComboBox.Selected.'Operating Model Name'))
-        SearchFields: =["neu_operatingmodelname"]
-        SearchItems: =[]
-        Size: =12
-        Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
-        Width: =347
-        X: =805
-        Y: =369
-        ZIndex: =16
-
     "'Create DevOps Project Button' As button":
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
@@ -1887,14 +1852,15 @@
         ZIndex: =17
 
     "'Related Operating Model Label_1' As label":
+        BorderThickness: =2
         Color: =RGBA(26, 76, 145, 1)
+        Fill: =RGBA(255, 255, 255, 1)
         FontWeight: =FontWeight.Bold
         Height: =44
         Size: =15
         Text: ="Client Solutions"
-        Width: =257
-        X: =74
-        Y: =107
+        Width: =253
+        Y: =76
         ZIndex: =18
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
