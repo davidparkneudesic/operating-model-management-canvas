@@ -1,9 +1,28 @@
 "ClientSolutions As screen.'autoLayout_SplitScreen_ver1.0'":
     Fill: |-
         =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-            RGBA(202, 202, 202, 1), 
+            RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
+
+    Container2 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Height: =702
+        Width: =1311
+        X: =28
+        Y: =40
+        ZIndex: =1
+
+        NeudesicLogo_ClientSolutions_Page As image:
+            Height: =49
+            Image: ='Neudesic Logo'
+            Width: =138
+            X: =22
+            Y: =642
+            ZIndex: =1
 
     "OperatingModel_CS_Gallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
         BorderThickness: =1
@@ -11,7 +30,7 @@
         Fill: |-
             =If(varOpenCreateClientSolution, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =436
+        Height: =382
         Items: =Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -28,9 +47,9 @@
         TemplatePadding: =0
         TemplateSize: =60
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =325
-        X: =1009
-        Y: =175
+        Width: =268
+        X: =1036
+        Y: =151
         ZIndex: =2
 
         Title13 As label:
@@ -61,7 +80,7 @@
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =588
+        Height: =487
         Items: =Filter('Client Solutions', 'Client Solutions (Views)'.'Active Client Solutions')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -80,14 +99,14 @@
             )
         TemplatePadding: =0
         TemplateSize: =90
-        Width: =297
-        X: =36
-        Y: =131
+        Width: =280
+        X: =63
+        Y: =151
         ZIndex: =3
 
         Title2 As label:
             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
+            Height: =27
             OnSelect: =Select(Parent)
             PaddingBottom: =0
             PaddingLeft: =0
@@ -95,9 +114,9 @@
             PaddingTop: =0
             Text: =ThisItem.'Solution Name'
             VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - 86
+            Width: =246
             X: =16
-            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle2.Size * 1.8)) / 2
+            Y: =29
             ZIndex: =1
 
         Subtitle2 As label:
@@ -108,28 +127,13 @@
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
+            Size: =10
             Text: =ThisItem.'Client/Prospect Name'
             VerticalAlign: =VerticalAlign.Top
             Width: =Title2.Width
             X: =Title2.X
-            Y: =Title2.Y + Title2.Height
+            Y: =56
             ZIndex: =2
-
-        NextArrow2 As icon.ChevronRight:
-            AccessibleLabel: =Self.Tooltip
-            Color: =RGBA(166, 166, 166, 1)
-            Height: =50
-            Icon: =Icon.ChevronRight
-            OnSelect: =Select(Parent);Set(SelectedClientSolution,ThisItem.'Client Solution')
-            PaddingBottom: =16
-            PaddingLeft: =16
-            PaddingRight: =16
-            PaddingTop: =16
-            Tooltip: ="View item details"
-            Width: =50
-            X: =Parent.TemplateWidth - Self.Width - 12
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =3
 
         Rectangle3 As rectangle:
             Height: =Parent.TemplateHeight
@@ -141,7 +145,11 @@
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Font: =Font.'Lato Light'
         FontWeight: =FontWeight.Semibold
         Height: =76
@@ -152,7 +160,7 @@
 
     "'Back Button_to HomePage' As icon.ChevronLeft":
         Color: =RGBA(255, 255, 255, 1)
-        Height: =51
+        Height: =45
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
@@ -160,21 +168,21 @@
             Navigate(HomePage, ScreenTransition.UnCoverRight);
             UpdateContext({varOpenCreateClientSolution:false});
             UpdateContext({varUpdateClientSolution:false});
-        Width: =52
-        X: =15
-        Y: =12
+        Width: =45
+        X: =18
+        Y: =15
         ZIndex: =5
 
     ClientsSolutionsForm As form:
         AcceptsFocus: =true
         DataSource: ='Client Solutions'
-        Height: =531
+        Height: =464
         Item: =SolutionGallery.Selected
         NumberOfColumns: =2
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =665
-        X: =344
-        Y: =132
+        X: =359
+        Y: =158
         ZIndex: =6
 
         "'Solution Area_DataCard1' As typedDataCard.comboBoxEditCard":
@@ -200,7 +208,7 @@
                 Width: =Parent.Width - 60
                 Wrap: =false
                 X: =30
-                Y: =10
+                Y: =15
                 ZIndex: =1
 
             ErrorMessage11 As label:
@@ -233,11 +241,13 @@
                 Default: =ThisItem.'Solution Area'.'Solution Area Name'
                 DelayOutput: =true
                 DisplayMode: =DisplayMode.View
+                Height: =30
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
@@ -247,7 +257,7 @@
             Rectangle4_6 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =272
                 X: =30
                 Y: =49
@@ -284,11 +294,13 @@
                 Default: =Parent.Default
                 DelayOutput: =true
                 DisplayMode: =DisplayMode.View
+                Height: =30
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =604
                 X: =30
@@ -323,7 +335,7 @@
             Rectangle4_2 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =604
                 X: =30
                 Y: =49
@@ -388,11 +400,13 @@
                 Default: =ThisItem.'Implementation Model'.'Implementation Model Name'
                 DelayOutput: =true
                 DisplayMode: =DisplayMode.View
+                Height: =30
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
@@ -438,7 +452,7 @@
             Rectangle4_3 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =604
                 X: =30
                 Y: =49
@@ -475,10 +489,11 @@
                 DefaultDate: =Parent.Default
                 DisplayMode: =Parent.DisplayMode
                 EndYear: =Year(Today())+100
-                Height: =37
+                Height: =30
                 IsEditable: =true
                 PaddingBottom: =0
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                Size: =12
                 StartYear: =1899
                 Tooltip: =Parent.DisplayName
                 Width: =178
@@ -546,7 +561,7 @@
             Rectangle4_4 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =36
+                Height: =30
                 Width: =178
                 X: =30
                 Y: =44
@@ -584,10 +599,11 @@
                 DisabledBorderColor: =RGBA(0, 0, 0, 1)
                 DisplayMode: =DisplayMode.View
                 EndYear: =Year(Today())+100
-                Height: =37
+                Height: =30
                 IsEditable: =true
                 PaddingBottom: =0
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                Size: =12
                 StartYear: =1899
                 Tooltip: =Parent.DisplayName
                 Width: =178
@@ -640,7 +656,7 @@
             Rectangle4_5 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =36
+                Height: =30
                 Width: =178
                 X: =30
                 Y: =44
@@ -702,8 +718,10 @@
 
             DataCardKey7 As label:
                 AutoHeight: =true
+                Color: =RGBA(26, 76, 145, 1)
                 FontWeight: =FontWeight.Bold
                 Height: =34
+                Size: =12
                 Text: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 Wrap: =false
@@ -717,12 +735,14 @@
                 DelayOutput: =true
                 DisplayMode: |
                     =DisplayMode.View
+                Height: =30
                 MaxLength: =Parent.MaxLength
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
@@ -747,7 +767,7 @@
             Rectangle4 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =272
                 X: =30
                 Y: =49
@@ -771,8 +791,10 @@
 
             DataCardKey8 As label:
                 AutoHeight: =true
+                Color: =RGBA(26, 76, 145, 1)
                 FontWeight: =FontWeight.Bold
                 Height: =34
+                Size: =12
                 Text: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 Wrap: =false
@@ -785,12 +807,14 @@
                 Default: =Parent.Default
                 DelayOutput: =true
                 DisplayMode: =DisplayMode.View
+                Height: =30
                 MaxLength: =Parent.MaxLength
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
@@ -815,7 +839,7 @@
             Rectangle4_1 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =272
                 X: =30
                 Y: =49
@@ -828,7 +852,7 @@
             DisplayMode: =Parent.DisplayMode
             DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"statuscode")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
+            Height: =84
             Required: =false
             Update: =
             Width: =332
@@ -841,11 +865,13 @@
                 Default: =Parent.Default
                 DelayOutput: =true
                 DisplayMode: =DisplayMode.View
+                Height: =30
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
+                Size: =12
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
@@ -891,7 +917,7 @@
             Rectangle4_7 As rectangle:
                 BorderThickness: =1
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
+                Height: =30
                 Width: =272
                 X: =30
                 Y: =49
@@ -1591,8 +1617,13 @@
                 ZIndex: =4
 
     btnNewClientSolution As button:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =44
+        HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
         OnSelect: |-
             =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
@@ -1601,12 +1632,17 @@
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =246
         X: =372
-        Y: =675
+        Y: =668
         ZIndex: =8
 
     btnViewUserStories As button:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =44
+        HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
         OnSelect: |-
             =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
             Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
@@ -1615,13 +1651,18 @@
         Text: ="View User Stories"
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =241
-        X: =1092
-        Y: =675
+        X: =1063
+        Y: =668
         ZIndex: =9
 
     UpdateClientSolution_Button As button:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =44
+        HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
         OnSelect: |-
             =UpdateContext({varUpdateClientSolution:true});
             //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
@@ -1629,7 +1670,7 @@
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =261
         X: =717
-        Y: =675
+        Y: =668
         ZIndex: =10
 
     Cancel_Update_Form_Button As button:
@@ -1715,15 +1756,15 @@
         ZIndex: =13
 
     "'Related Operating Model Label' As label":
-        Color: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(26, 76, 145, 1)
         FontWeight: =FontWeight.Bold
         Height: =44
-        Size: =16
+        Size: =14
         Text: ="Related Operating Models"
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =302
-        X: =1020
-        Y: =131
+        Width: =257
+        X: =1041
+        Y: =107
         ZIndex: =14
 
     RelatedOperatingModel_Edit_Label As label:
@@ -1755,12 +1796,29 @@
         ZIndex: =16
 
     "'Create DevOps Project Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
+        HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
         Text: ="Create DevOps Project"
         Width: =264
-        X: =1070
-        Y: =91
+        X: =1040
+        Y: =585
         ZIndex: =17
+
+    "'Related Operating Model Label_1' As label":
+        Color: =RGBA(26, 76, 145, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =44
+        Size: =15
+        Text: ="Client Solutions"
+        Visible: =If(varUpdateClientSolution,false,true)
+        Width: =257
+        X: =74
+        Y: =107
+        ZIndex: =18
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -1769,7 +1827,7 @@
         Width: =1188
         X: =89
         Y: =37
-        ZIndex: =18
+        ZIndex: =19
 
         btnReset As button:
             Fill: =RGBA(0, 16, 96, 1)
@@ -2020,7 +2078,7 @@
         Visible: =If(varUpdatedCSWindow,true,false)
         X: =426
         Y: =279
-        ZIndex: =19
+        ZIndex: =20
 
         Icon3 As icon.Cancel:
             Height: =50
@@ -2049,7 +2107,7 @@
         Width: =589
         X: =389
         Y: =251
-        ZIndex: =20
+        ZIndex: =21
 
         "'Exit Container Before Delete Button' As icon.Cancel":
             Height: =56

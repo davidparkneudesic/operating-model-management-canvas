@@ -1,5 +1,5 @@
 HomePage As screen:
-    Fill: =RGBA(202, 202, 202, 1)
+    Fill: =RGBA(237, 237, 237, 1)
 
     Container1 As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
@@ -73,7 +73,7 @@ HomePage As screen:
             Y: =419
             ZIndex: =6
 
-        Image1 As image:
+        NeudesicLogo_HomePage As image:
             Height: =66
             Image: ='Neudesic Logo'
             Width: =164
