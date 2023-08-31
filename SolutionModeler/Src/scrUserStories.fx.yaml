@@ -127,8 +127,8 @@
             Height: =99
             Required: =true
             Update: ='Client Solution US Dropdown'.Selected
-            Visible: =false
-            Width: =215
+            Visible: =true
+            Width: =430
             WidthFit: =false
             X: =0
             Y: =0
@@ -178,7 +178,7 @@
             Required: =false
             Update: =//DataCardValueEpicLevelItem
             Width: =215
-            X: =1
+            X: =2
             Y: =0
             ZIndex: =1
 
@@ -258,7 +258,7 @@
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =645
             WidthFit: =true
-            X: =1
+            X: =0
             Y: =3
             ZIndex: =1
 
@@ -312,8 +312,8 @@
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
             Width: =215
             WidthFit: =true
-            X: =2
-            Y: =3
+            X: =0
+            Y: =4
             ZIndex: =1
 
             DataCardKey15 As label:
@@ -364,7 +364,7 @@
             Width: =645
             WidthFit: =true
             X: =0
-            Y: =4
+            Y: =5
             ZIndex: =1
 
             DataCardKey18 As label:
@@ -414,7 +414,7 @@
             Width: =215
             WidthFit: =true
             X: =0
-            Y: =5
+            Y: =6
             ZIndex: =1
 
             DataCardKey17 As label:
@@ -472,8 +472,8 @@
             Update: =Value(DataCardValue11.Text)
             Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , true, false)
             Width: =215
-            X: =1
-            Y: =5
+            X: =0
+            Y: =7
             ZIndex: =1
 
             DataCardKey12 As label:
@@ -681,8 +681,8 @@
             Required: =false
             Update: =Value(DataCardValue9.Text)
             Width: =215
-            X: =0
-            Y: =9
+            X: =1
+            Y: =7
             ZIndex: =4
 
             DataCardKey11 As label:
@@ -1592,7 +1592,7 @@
                 Height: =50
                 Required: =true
                 Update: ='Client Solution US Dropdown for Create'.Selected
-                Visible: =false
+                Visible: =true
                 Width: =572
                 WidthFit: =false
                 X: =0
