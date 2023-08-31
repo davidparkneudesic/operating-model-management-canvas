@@ -513,6 +513,7 @@
         ZIndex: =16
 
     "'Create OM Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =516
         Visible: =If(varOpenOperatingModelCreate, true, false)
@@ -629,6 +630,7 @@
             ZIndex: =11
 
     "'Create Cap Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =587
         Visible: =If(varOpenCapabilityCreate, true, false)
@@ -986,6 +988,7 @@
             ZIndex: =20
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =683
         Visible: =If(varOpenProcessCreate, true, false)
