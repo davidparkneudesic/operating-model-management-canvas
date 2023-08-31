@@ -51,6 +51,36 @@
     "dependents": [],
     "id": "60cdf598-358b-417c-9188-3f1044bca64c"
   },
+  "9cbcfd55-71fc-4d9e-a3b1-652123b106fe": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1653/1.0.1653.3403/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "f42ce0bb-3048-ee11-be6d-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "1b50f99f-9e82-faf9-5dd4-e6c6bb6aebd8"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "f42ce0bb-3048-ee11-be6d-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "1b50f99f-9e82-faf9-5dd4-e6c6bb6aebd8"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "CreateDevOpsProject"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "9cbcfd55-71fc-4d9e-a3b1-652123b106fe"
+  },
   "9d84011e-01b7-4c98-86a8-508b1df03e11": {
     "connectionRef": {
       "displayName": "Microsoft Dataverse",

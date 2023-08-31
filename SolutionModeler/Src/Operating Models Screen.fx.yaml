@@ -6,6 +6,7 @@
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
         Fill: =RGBA(0, 16, 96, 1)
+        Font: =Font.'Lato Light'
         FontWeight: =FontWeight.Semibold
         Height: =76
         Size: =26
@@ -1243,6 +1244,7 @@
             ZIndex: =23
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =683
         Visible: =If(varOpenProcessDetail, true, false)
