@@ -1866,7 +1866,7 @@
         SearchItems: =[]
         Size: =12
         Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
-        Width: =376
+        Width: =347
         X: =805
         Y: =369
         ZIndex: =16
