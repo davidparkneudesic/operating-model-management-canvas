@@ -61,8 +61,8 @@
                 PaddingTop: =0
                 Size: =10
                 Text: =ThisItem.'Task Name'
-                Width: =232
-                X: =8
+                Width: =224
+                X: =10
                 Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                 ZIndex: =1
 
@@ -111,7 +111,7 @@
                 Size: =10
                 Text: =ThisItem.'Product Backlog Item Name'
                 Width: =224
-                X: =8
+                X: =10
                 Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                 ZIndex: =1
 
@@ -150,7 +150,6 @@
             ZIndex: =3
 
             Title7 As label:
-                Font: =Font.Arial
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                 Height: =55
                 OnSelect: =Select(Parent)
@@ -161,7 +160,7 @@
                 Size: =9
                 Text: =ThisItem.'Implementation Stage Name'
                 Width: =224
-                X: =8
+                X: =10
                 Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                 ZIndex: =1
 
@@ -257,8 +256,8 @@
                 PaddingTop: =0
                 Size: =9
                 Text: =ThisItem.'Implementation Model Name'
-                Width: =231
-                X: =9
+                Width: =224
+                X: =10
                 Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                 ZIndex: =1
 
@@ -515,6 +514,7 @@
         ZIndex: =8
 
     "'Task Details Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =697
         Visible: =If(varOpenTaskDetailWindow, true, false)
@@ -525,6 +525,7 @@
 
         "'Task Details Title' As label":
             Align: =Align.Center
+            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Height: =53
             Size: =20
@@ -572,6 +573,7 @@
                 ZIndex: =1
 
         "'Task Name Detail Label' As label":
+            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Task Name"
             X: =93
@@ -609,6 +611,7 @@
                 ZIndex: =1
 
         "'Task Description Label' As label":
+            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Description"
             X: =93
@@ -643,6 +646,7 @@
                 ZIndex: =1
 
         "'Task Sequence Label' As label":
+            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Sequence"
             X: =93
@@ -677,6 +681,7 @@
                 ZIndex: =1
 
         "'Task Sequence Label_1' As label":
+            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Determination"
             X: =500
@@ -711,6 +716,7 @@
                 ZIndex: =1
 
         "'Task Sequence Label_2' As label":
+            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Status Reason"
             X: =93

@@ -3,7 +3,8 @@ HomePage As screen:
 
     "'Title Page Label' As label":
         Align: =Align.Center
-        Color: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+        Color: |-
+            =ColorFade(ColorValue("#00467F"), -30%)
         Font: =Font.Lato
         FontWeight: =FontWeight.Bold
         Height: =60
@@ -30,9 +31,12 @@ HomePage As screen:
         ZIndex: =10
 
         btnClientSolutions As button:
-            Fill: =RGBA(26, 76, 145, 1)
+            Fill: |-
+                =//RGBA(26, 76, 145, 1)
+                ColorValue("#00467f")
             Height: =70
-            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =Navigate(ClientSolutions, ScreenTransition.Cover)
             Text: ="Go to Client Solutions"
             Width: =280
@@ -74,9 +78,11 @@ HomePage As screen:
         ZIndex: =11
 
         btnOperatingModels As button:
-            Fill: =RGBA(26, 76, 145, 1)
+            Fill: |-
+                =ColorValue("#00467f")
             Height: =70
-            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =Navigate('Operating Models Screen', ScreenTransition.Cover)
             Text: ="Go to Operating Models"
             Width: =280
@@ -118,9 +124,11 @@ HomePage As screen:
         ZIndex: =12
 
         btnImplementationModels As button:
-            Fill: =RGBA(26, 76, 145, 1)
+            Fill: |-
+                =ColorValue("#00467f")
             Height: =70
-            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =Navigate('Implementation Model Screen', ScreenTransition.Cover)
             RadiusBottomLeft: =9
             RadiusBottomRight: =9
