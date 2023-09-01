@@ -1652,8 +1652,7 @@
         Font: =Font.'Lato Light'
         FontWeight: =FontWeight.Semibold
         Height: =76
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
+        HoverFill: =
         PaddingRight: =10
         Size: =24
         Text: ="Client Solution User Stories"
