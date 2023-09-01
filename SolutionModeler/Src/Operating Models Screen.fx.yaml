@@ -1,11 +1,19 @@
 "'Operating Models Screen' As screen":
-    Fill: =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, RGBA(153, 160, 196, 1), RGBA(215, 223, 240, 1))
+    Fill: |-
+        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(149, 149, 149, 1),
+            RGBA(237, 237, 237, 1)
+        )
     OnVisible: =
 
     "'Operating Model Screen Label' As label":
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Font: =Font.'Lato Light'
         FontWeight: =FontWeight.Semibold
         Height: =76
@@ -78,7 +86,7 @@
 
     "'Back Button_1' As icon.ChevronLeft":
         Color: =RGBA(255, 255, 255, 1)
-        Height: =51
+        Height: =45
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
@@ -90,9 +98,9 @@
             UpdateContext({varOpenCapabilityCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
-        Width: =52
-        X: =16
-        Y: =12
+        Width: =45
+        X: =23
+        Y: =15
         ZIndex: =3
 
     "'Capability Level 1 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -229,7 +237,7 @@
             NextArrow7 As icon.ChevronRight:
                 AccessibleLabel: =Self.Tooltip
                 Color: =RGBA(166, 166, 166, 1)
-                Height: =38
+                Height: =32
                 Icon: =Icon.ChevronRight
                 OnSelect: =Select(Parent)
                 PaddingBottom: =12
@@ -237,8 +245,10 @@
                 PaddingRight: =12
                 PaddingTop: =12
                 Tooltip: ="View item details"
-                Width: =36
-                X: =238
+                Width: =32
+                X: |
+                    ='Sub Capability L3 Gallery'.Width - 44
+                Y: =2
                 ZIndex: =2
 
             Rectangle7 As rectangle:
@@ -265,7 +275,8 @@
                 UpdateContext({varExpandCapGal:true})
             Visible: =If(!varExpandCapGal,true, false)
             Width: =40
-            X: =250
+            X: |
+                ='Sub Capability L2 Gallery'.Width - 60
             Y: =7
             ZIndex: =2
 
@@ -278,7 +289,8 @@
                 Clear(colCapabiilitiesL2)
             Visible: =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name',varExpandCapGal)
             Width: =40
-            X: =250
+            X: |
+                ='Sub Capability L2 Gallery'.Width - 60
             Y: =7
             ZIndex: =3
 
@@ -447,7 +459,11 @@
         ZIndex: =12
 
     "'Create OM Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenOperatingModelCreate:true});
@@ -456,6 +472,7 @@
             UpdateContext({varOpenProcessCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
+        Size: =14
         Text: |-
             ="Create Operating Model
             "
@@ -465,7 +482,11 @@
         ZIndex: =13
 
     "'Create Cap Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenCapabilityCreate:true});
@@ -474,6 +495,7 @@
             UpdateContext({varOpenProcessCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
+        Size: =14
         Text: ="Create Capability"
         Width: =308
         X: =365
@@ -481,7 +503,11 @@
         ZIndex: =14
 
     "'Create PG Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenProcessGroupCreate:true});
@@ -490,6 +516,7 @@
             UpdateContext({varOpenProcessCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
+        Size: =14
         Text: ="Create Process Group"
         Width: =308
         X: =689
@@ -497,7 +524,11 @@
         ZIndex: =15
 
     "'Create Process Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Height: =56
         OnSelect: |-
             =UpdateContext({varOpenProcessCreate:true});
@@ -506,6 +537,7 @@
             UpdateContext({varOpenCapabilityCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
+        Size: =14
         Text: ="Create Process"
         Width: =308
         X: =1014

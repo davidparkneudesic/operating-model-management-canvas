@@ -106,7 +106,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnClientSolutions",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -427,7 +427,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnImplementationModels",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -720,7 +720,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOperatingModels",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1247,7 +1247,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ClientSolutions_Container",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1472,7 +1472,14 @@
         "LayoutOverflowX",
         "LayoutOverflowY",
         "LayoutWrap",
-        "DropShadow",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "DropShadow",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ZIndex",
         "RadiusTopLeft",
         "RadiusTopRight",
@@ -1489,7 +1496,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ImplementationModel_Container",
-      "ParentIndex": 1,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2302,7 +2309,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblClientSolutions",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2620,7 +2627,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblImplmentationModels",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2938,7 +2945,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblOperatingModels",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3190,7 +3197,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "NeudesicLogo_HomePage",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3392,7 +3399,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "OperatingModel_Container",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3625,7 +3632,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Title Page Label",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

@@ -7962,6 +7962,54 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 8
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 8
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 8
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 8
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
             }
           ]
         }
@@ -14129,19 +14177,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Client Solution_DataCard2'.'Client Solution US Dropdown'.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.Process_DataCard1.Process_US_Input.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Client Solution_DataCard2'.'Client Solution US Dropdown'.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.Process_DataCard1.Process_US_Input.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryFormView.'Client Solution_DataCard2'.'Client Solution US Dropdown'"
+                "type": "scrUserStories.UserStoryFormView.Process_DataCard1.Process_US_Input"
               }
             }
           ],
@@ -14249,19 +14297,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_Dropdown.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Process Group_DataCard1'.ProcessGroup_US_Input.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_Dropdown.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Process Group_DataCard1'.ProcessGroup_US_Input.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_Dropdown"
+                "type": "scrUserStories.UserStoryFormView.'Process Group_DataCard1'.ProcessGroup_US_Input"
               }
             }
           ],
@@ -14309,19 +14357,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Process Group_DataCard1'.ProcessGroup_Dropdown.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_US_Input.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Process Group_DataCard1'.ProcessGroup_Dropdown.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_US_Input.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryFormView.'Process Group_DataCard1'.ProcessGroup_Dropdown"
+                "type": "scrUserStories.UserStoryFormView.'Operating Model_DataCard1'.OperatingModel_US_Input"
               }
             }
           ],
@@ -14339,19 +14387,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.Process_DataCard1.Process_Dropdown.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Client Solution_DataCard2'.ClientSolution_Parent_Input.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.Process_DataCard1.Process_Dropdown.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.UserStoryFormView.'Client Solution_DataCard2'.ClientSolution_Parent_Input.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.UserStoryFormView.Process_DataCard1.Process_Dropdown"
+                "type": "scrUserStories.UserStoryFormView.'Client Solution_DataCard2'.ClientSolution_Parent_Input"
               }
             }
           ],

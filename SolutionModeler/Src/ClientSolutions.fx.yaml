@@ -1835,9 +1835,9 @@
             Size: =12
             Text: =ThisItem.'Solution Name'
             VerticalAlign: =VerticalAlign.Top
-            Width: =246
+            Width: =226
             X: =17
-            Y: =22
+            Y: =20
             ZIndex: =1
 
         Subtitle2 As label:
@@ -1854,7 +1854,7 @@
             VerticalAlign: =VerticalAlign.Top
             Width: =Title2.Width
             X: =17
-            Y: =45
+            Y: =43
             ZIndex: =2
 
         Rectangle3 As rectangle:
