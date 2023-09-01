@@ -145,16 +145,11 @@
                     ZIndex: =4
 
                 DataCardValue6_3 As text:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =ThisItem.'Solution Area'.'Solution Area Name'
                     DelayOutput: =true
                     DisplayMode: =DisplayMode.View
                     Height: =30
                     PaddingLeft: =5
-                    RadiusBottomLeft: =0
-                    RadiusBottomRight: =0
-                    RadiusTopLeft: =0
-                    RadiusTopRight: =0
                     Size: =12
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -268,7 +263,6 @@
                 DataCardKey13 As label:
                     AutoHeight: =true
                     Height: =34
-                    PaddingBottom: =0
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
@@ -305,16 +299,11 @@
                 ZIndex: =1
 
                 DataCardValue6_4 As text:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =ThisItem.'Implementation Model'.'Implementation Model Name'
                     DelayOutput: =true
                     DisplayMode: =DisplayMode.View
                     Height: =30
                     PaddingLeft: =5
-                    RadiusBottomLeft: =0
-                    RadiusBottomRight: =0
-                    RadiusTopLeft: =0
-                    RadiusTopRight: =0
                     Size: =12
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -775,16 +764,11 @@
                 ZIndex: =8
 
                 DataCardValue6_2 As text:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
                     DisplayMode: =DisplayMode.View
                     Height: =30
                     PaddingLeft: =5
-                    RadiusBottomLeft: =0
-                    RadiusBottomRight: =0
-                    RadiusTopLeft: =0
-                    RadiusTopRight: =0
                     Size: =12
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -888,9 +872,6 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_solutionareaname"]
                     DisplayMode: =Parent.DisplayMode
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     Items: =Choices([@'Client Solutions'].neu_SolutionArea)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -947,7 +928,6 @@
                 DataCardKey13_1 As label:
                     AutoHeight: =true
                     Height: =34
-                    PaddingBottom: =0
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
@@ -998,9 +978,6 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     PaddingLeft: =5
                     RadiusBottomLeft: =0
@@ -1075,9 +1052,6 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_implementationmodelname"]
                     DisplayMode: =Parent.DisplayMode
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
                     Items: =Choices([@'Client Solutions'].neu_ImplementationModelID)
@@ -1150,9 +1124,6 @@
                     DefaultDate: =Parent.Default
                     DisplayMode: =Parent.DisplayMode
                     EndYear: =Year(Today())+100
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsEditable: =true
                     PaddingBottom: =0
@@ -1253,9 +1224,6 @@
                     DefaultDate: =Parent.Default
                     DisplayMode: =Parent.DisplayMode
                     EndYear: =Year(Today())+100
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsEditable: =true
                     PaddingBottom: =0
@@ -1379,9 +1347,6 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     MaxLength: =Parent.MaxLength
                     PaddingLeft: =5
@@ -1453,9 +1418,6 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     MaxLength: =Parent.MaxLength
                     PaddingLeft: =5
@@ -2150,6 +2112,7 @@
             ZIndex: =16
 
         "'Project Start Date DatePicker' As datepicker":
+            Color: =RGBA(0, 70, 127, 1)
             IconBackground: |-
                 =ColorValue("#00467f")
             X: =83

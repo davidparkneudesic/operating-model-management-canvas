@@ -8,7 +8,9 @@
 
     OperatingModel_Gallery_Window As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =661
         Width: =1253
         X: =56
@@ -580,6 +582,8 @@
 
         "'Create Operating Model Label' As label":
             Align: =Align.Center
+            Color: |-
+                =ColorValue("#00467f")
             FontWeight: =FontWeight.Bold
             Height: =68
             Size: =20
@@ -590,6 +594,10 @@
             ZIndex: =2
 
         "'Create Button OM' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =Patch(
                     'Operating Models',
@@ -621,6 +629,7 @@
             ZIndex: =4
 
         "'New Operating Model Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="* New Operating Model Name"
@@ -630,6 +639,7 @@
             ZIndex: =5
 
         "'Solution Area Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: |-
@@ -641,12 +651,17 @@
             ZIndex: =7
 
         "'Solution Area Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
             Items: =Sort('Solution Areas', 'Solution Area Name')
             X: =99
             Y: =244
             ZIndex: =8
 
         "'Status Reason OM Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Status Reason"
@@ -656,6 +671,10 @@
             ZIndex: =9
 
         "'Status Reason OM Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
             Default: ="Draft"
             Items: =Choices('Status Reason (Operating Models)')
             Width: =284
@@ -873,6 +892,8 @@
 
         "'Create Capability Label_1' As label":
             Align: =Align.Center
+            Color: |-
+                =ColorValue("#00467f")
             FontWeight: =FontWeight.Bold
             Height: =68
             Size: =20
@@ -883,6 +904,10 @@
             ZIndex: =2
 
         "'Create Capability Button_1' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =Patch(
                     'Process Groups',
@@ -916,6 +941,7 @@
             ZIndex: =4
 
         "'New Process Group Name Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="* New Process Group Name"
@@ -925,6 +951,7 @@
             ZIndex: =5
 
         "'Operating Model PG Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Operating Model Filter"
@@ -934,6 +961,7 @@
             ZIndex: =7
 
         "'Status Reason PG Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Status Reason"
@@ -943,6 +971,10 @@
             ZIndex: =9
 
         "'Status Reason PG Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Default: ="Draft"
             Items: =Choices('Status Reason (Process Groups)')
             Width: =284
@@ -961,6 +993,7 @@
             ZIndex: =11
 
         "'Scope Review PG Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Scope Review"
@@ -970,6 +1003,10 @@
             ZIndex: =12
 
         "'Scope Review PG Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Default: ="In Review"
             Items: =Choices('Scope Review')
             Width: =284
@@ -978,6 +1015,7 @@
             ZIndex: =13
 
         "'Capability PG Label' As label":
+            Color: =RGBA(0,0,0,1)
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Capability"
@@ -987,6 +1025,10 @@
             ZIndex: =14
 
         "'Operating Model PG Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Items: |-
                 =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
                 colOperatingModelFilter
@@ -995,6 +1037,10 @@
             ZIndex: =17
 
         "'Capability PG Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model PG Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 
@@ -1012,6 +1058,10 @@
             ZIndex: =18
 
         "'Reset Operating Model Cap Button_1' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
             Text: |-
                 ="Reset
@@ -1022,6 +1072,10 @@
             ZIndex: =19
 
         "'Reset Operating Model Cap Button_2' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model PG Dropdown'.Selected.'Operating Model Name'))
             Text: |-
                 ="Reset
@@ -1055,6 +1109,8 @@
 
         "'Create Capability Label_2' As label":
             Align: =Align.Center
+            Color: |-
+                =ColorValue("#00467f")
             FontWeight: =FontWeight.Bold
             Height: =56
             Size: =20
@@ -1065,6 +1121,10 @@
             ZIndex: =2
 
         "'Create Capability Button_2' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =If(IsBlank('Data Flow Diagram URL Input'.Text),
                     Patch(
@@ -1140,6 +1200,10 @@
             ZIndex: =7
 
         "'Status Reason Proc Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Default: ="Draft"
             Items: =Choices('Status Reason (Processes)')
             Width: =213
@@ -1157,6 +1221,10 @@
             ZIndex: =9
 
         "'Scope Review Proc Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Default: ="In Review"
             Items: =Choices('Scope Review')
             Width: =213
@@ -1174,6 +1242,10 @@
             ZIndex: =11
 
         "'Operating Model Proc Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Items: |-
                 =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
                 colOperatingModelFilter
@@ -1183,6 +1255,10 @@
             ZIndex: =12
 
         "'Capability Proc Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 colCreateWindowCapacityFilter
@@ -1201,6 +1277,10 @@
             ZIndex: =14
 
         "'Process Group Proc Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             Items: |-
                 =//Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'),'Process Group Name')
                 //Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
@@ -1261,6 +1341,10 @@
             ZIndex: =20
 
         "'Reset Operating Model Cap Button_3' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
             Text: |-
                 ="Reset
@@ -1271,6 +1355,10 @@
             ZIndex: =21
 
         "'Reset Operating Model Cap Button_4' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'))
             Text: |-
                 ="Reset
@@ -1281,6 +1369,10 @@
             ZIndex: =22
 
         "'Reset Operating Model Cap Button_5' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'))
             Text: |-
                 ="Reset
@@ -1339,6 +1431,8 @@
 
         "'Process Details Title' As label":
             Align: =Align.Center
+            Color: |-
+                =ColorValue("#00467f")
             FontWeight: =FontWeight.Bold
             Height: =56
             Size: =20

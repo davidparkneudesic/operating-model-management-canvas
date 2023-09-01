@@ -525,7 +525,8 @@
 
         "'Task Details Title' As label":
             Align: =Align.Center
-            Color: =RGBA(26, 76, 145, 1)
+            Color: |-
+                =ColorValue("#00467f")
             FontWeight: =FontWeight.Bold
             Height: =53
             Size: =20
@@ -573,7 +574,6 @@
                 ZIndex: =1
 
         "'Task Name Detail Label' As label":
-            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Task Name"
             X: =93
@@ -611,7 +611,6 @@
                 ZIndex: =1
 
         "'Task Description Label' As label":
-            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Description"
             X: =93
@@ -646,7 +645,6 @@
                 ZIndex: =1
 
         "'Task Sequence Label' As label":
-            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Sequence"
             X: =93
@@ -681,7 +679,6 @@
                 ZIndex: =1
 
         "'Task Sequence Label_1' As label":
-            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Determination"
             X: =500
@@ -716,7 +713,6 @@
                 ZIndex: =1
 
         "'Task Sequence Label_2' As label":
-            Color: =RGBA(26, 76, 145, 1)
             FontWeight: =FontWeight.Bold
             Text: ="Status Reason"
             X: =93
