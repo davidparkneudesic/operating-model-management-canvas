@@ -1,452 +1,518 @@
 "'Implementation Model Screen' As screen":
     Fill: |-
         =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(153, 160, 196, 1), 
-            RGBA(215, 223, 240, 1)
+            RGBA(149, 149, 149, 1),
+            RGBA(237, 237, 237, 1)
         )
+
+    Container3 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Fill: |-
+            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Height: =649
+        Width: =1327
+        X: =20
+        Y: =92
+        ZIndex: =1
+
+        "'Task Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =1
+            DelayItemLoading: =true
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Height: =504
+            Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name'), Sequence)
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =//Navigate('Task Detail Screen',ScreenTransition.Cover)
+                UpdateContext({varOpenTaskDetailWindow:true});
+                UpdateContext({varCreateOpenImplementationModel:false});
+                UpdateContext({varCreateOpenImplementationPhase:false});
+                UpdateContext({varCreateOpenImplementationStage:false});
+                UpdateContext({varCreateOpenProductBacklogItem:false});
+                UpdateContext({varCreateOpenTask:false});
+            TemplateFill: |-
+                =If(ThisItem.'Task Name' = 'Task Gallery Parent'.Selected.'Task Name' && 
+                        !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
+                     RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Task Name' = 'Task Gallery Parent'.Selected.'Task Name' && 
+                            (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
+                            RGBA(153, 160, 196, 1),
+                            RGBA(0,0,0,0)
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =55
+            Width: =234
+            X: =1055
+            Y: =48
+            ZIndex: =1
+
+            Title11 As label:
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =55
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =10
+                Text: =ThisItem.'Task Name'
+                Width: =232
+                X: =8
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            Rectangle10 As rectangle:
+                Height: =Parent.TemplateHeight 
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
+        "'Product Backlog Item Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =1
+            DelayItemLoading: =true
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Height: =504
+            Items: =Sort(Filter('Product Backlog Items','Implementation Stage'.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name'), Sequence)
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name' && 
+                        !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
+                     RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name' && 
+                            (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
+                            RGBA(153, 160, 196, 1),
+                            RGBA(0,0,0,0)
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =55
+            Width: =234
+            X: =801
+            Y: =48
+            ZIndex: =2
+
+            Title9 As label:
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =55
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =10
+                Text: =ThisItem.'Product Backlog Item Name'
+                Width: =224
+                X: =8
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            Rectangle9 As rectangle:
+                Height: =Parent.TemplateHeight 
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
+        "'Implementation Stage Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =1
+            DelayItemLoading: =true
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Height: =504
+            Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name'), Sequence)
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
+                        !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
+                     RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
+                            (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
+                            RGBA(153, 160, 196, 1),
+                            RGBA(0,0,0,0)
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =55
+            Width: =234
+            X: =547
+            Y: =48
+            ZIndex: =3
+
+            Title7 As label:
+                Font: =Font.Arial
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =55
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =9
+                Text: =ThisItem.'Implementation Stage Name'
+                Width: =224
+                X: =8
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            Rectangle8 As rectangle:
+                Height: =Parent.TemplateHeight 
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
+        "'Implementation Phase Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =1
+            DelayItemLoading: =true
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Height: =504
+            Items: =Sort(Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name'), Sequence)
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name' && 
+                        !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
+                     RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name' && 
+                            (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
+                            RGBA(153, 160, 196, 1),
+                            RGBA(0,0,0,0)
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =55
+            Width: =234
+            X: =295
+            Y: =48
+            ZIndex: =4
+
+            Title1 As label:
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =55
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =9
+                Text: =ThisItem.'Implementation Phase Name'
+                Width: =224
+                X: =10
+                ZIndex: =1
+
+            Rectangle5 As rectangle:
+                Height: =Parent.TemplateHeight 
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
+        "'Implementation Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =1
+            DelayItemLoading: =true
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Height: =504
+            Items: ='Implementation Models'
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name' && 
+                        !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
+                     RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name' && 
+                            (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
+                            RGBA(153, 160, 196, 1),
+                            RGBA(0,0,0,0)
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =55
+            Width: =234
+            X: =41
+            Y: =48
+            ZIndex: =5
+
+            Title4 As label:
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =54.625
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =9
+                Text: =ThisItem.'Implementation Model Name'
+                Width: =231
+                X: =9
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =1
+
+            Rectangle6 As rectangle:
+                Height: =Parent.TemplateHeight
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
+        "'Implementation Model Label' As label":
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: |-
+                ="Implementation Model
+                "
+            Width: =234
+            X: =41
+            Y: =8
+            ZIndex: =6
+
+        "'Implementation Phase Label' As label":
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: ="Implementation Phase"
+            Width: =234
+            X: =295
+            Y: =8
+            ZIndex: =7
+
+        "'Implementation Stage Label' As label":
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: ="Implementation Stage"
+            Width: =234
+            X: =547
+            Y: =8
+            ZIndex: =8
+
+        "'Product Backlog Item Label' As label":
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: ="Product Backlog Item"
+            Width: =234
+            X: =803
+            Y: =8
+            ZIndex: =9
+
+        "'Task Label Parent' As label":
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: ="Task"
+            Width: =234
+            X: =1055
+            Y: =8
+            ZIndex: =10
+
+        "'Creatte Implementation Model Button' As button":
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =57
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationModel:true});
+                UpdateContext({varCreateOpenImplementationPhase:false});
+                UpdateContext({varCreateOpenImplementationStage:false});
+                UpdateContext({varCreateOpenProductBacklogItem:false});
+                UpdateContext({varCreateOpenTask:false});
+                UpdateContext({varOpenTaskDetailWindow:false});
+                Reset('New Implementation Model Name Input');
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+                Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
+            Size: =12
+            Text: ="Create Implementation Model"
+            Width: =234
+            X: =41
+            Y: =565
+            ZIndex: =11
+
+        "'Create Implementation Phase Button' As button":
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =57
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationModel:false});
+                UpdateContext({varCreateOpenImplementationPhase:true});
+                UpdateContext({varCreateOpenImplementationStage:false});
+                UpdateContext({varCreateOpenProductBacklogItem:false});
+                UpdateContext({varCreateOpenTask:false});
+                UpdateContext({varOpenTaskDetailWindow:false});
+                Reset('New Implementation Model Name Input');
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+                Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
+            Size: =12
+            Text: |-
+                ="Create Implementation Phase
+                "
+            Width: =234
+            X: =295
+            Y: =565
+            ZIndex: =12
+
+        "'Create Implementation Stage Button' As button":
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =57
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationModel:false});
+                UpdateContext({varCreateOpenImplementationPhase:false});
+                UpdateContext({varCreateOpenImplementationStage:true});
+                UpdateContext({varCreateOpenProductBacklogItem:false});
+                UpdateContext({varCreateOpenTask:false});
+                UpdateContext({varOpenTaskDetailWindow:false});
+                Reset('New Implementation Model Name Input');
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+                Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
+            Size: =12
+            Text: |-
+                ="Create Implementation Stage
+                "
+            Width: =234
+            X: =548
+            Y: =565
+            ZIndex: =13
+
+        "'Create Product Backlog Item Button' As button":
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =57
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationModel:false});
+                UpdateContext({varCreateOpenImplementationPhase:false});
+                UpdateContext({varCreateOpenImplementationStage:false});
+                UpdateContext({varCreateOpenProductBacklogItem:true});
+                UpdateContext({varCreateOpenTask:false});
+                UpdateContext({varOpenTaskDetailWindow:false});
+                Reset('New Implementation Model Name Input');
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+                Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
+            Size: =12
+            Text: |-
+                ="Create Product
+                Backlog Item
+                "
+            Width: =234
+            X: =800
+            Y: =565
+            ZIndex: =14
+
+        "'Create Task Button' As button":
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =57
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |-
+                =UpdateContext({varCreateOpenImplementationModel:false});
+                UpdateContext({varCreateOpenImplementationPhase:false});
+                UpdateContext({varCreateOpenImplementationStage:false});
+                UpdateContext({varCreateOpenProductBacklogItem:false});
+                UpdateContext({varCreateOpenTask:true});
+                UpdateContext({varOpenTaskDetailWindow:false});
+                Reset('New Implementation Model Name Input');
+                Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
+                Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
+                Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
+                Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
+            Size: =12
+            Text: |-
+                ="Create Task
+                "
+            Width: =234
+            X: =1055
+            Y: =565
+            ZIndex: =15
 
     "'Implementation Models Title' As label":
         Align: =Align.Center
         Color: =RGBA(255, 255, 255, 1)
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: |-
+            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
         Font: =Font.'Lato Light'
         FontWeight: =FontWeight.Semibold
         Height: =76
         Size: =26
         Text: ="Implementation Models"
         Width: =1366
-        ZIndex: =1
-
-    "'Task Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =504
-        Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name'), Sequence)
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: |-
-            =//Navigate('Task Detail Screen',ScreenTransition.Cover)
-            UpdateContext({varOpenTaskDetailWindow:true});
-            UpdateContext({varCreateOpenImplementationModel:false});
-            UpdateContext({varCreateOpenImplementationPhase:false});
-            UpdateContext({varCreateOpenImplementationStage:false});
-            UpdateContext({varCreateOpenProductBacklogItem:false});
-            UpdateContext({varCreateOpenTask:false});
-        TemplateFill: |-
-            =If(ThisItem.'Task Name' = 'Task Gallery Parent'.Selected.'Task Name' && 
-                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Task Name' = 'Task Gallery Parent'.Selected.'Task Name' && 
-                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =55
-        Width: =256
-        X: =1092
-        Y: =168
         ZIndex: =2
-
-        Title11 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =55
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =10
-            Text: =ThisItem.'Task Name'
-            Width: =232
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Rectangle10 As rectangle:
-            Height: =Parent.TemplateHeight 
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
-    "'Product Backlog Item Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =504
-        Items: =Sort(Filter('Product Backlog Items','Implementation Stage'.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name'), Sequence)
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: |-
-            =If(ThisItem.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name' && 
-                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name' && 
-                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =55
-        Width: =256
-        X: =823
-        Y: =168
-        ZIndex: =3
-
-        Title9 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =55
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =10
-            Text: =ThisItem.'Product Backlog Item Name'
-            Width: =232
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Rectangle9 As rectangle:
-            Height: =Parent.TemplateHeight 
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
-    "'Implementation Stage Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =504
-        Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name'), Sequence)
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: |-
-            =If(ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
-                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Implementation Stage Name' = 'Implementation Stage Gallery'.Selected.'Implementation Stage Name' && 
-                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =55
-        Width: =256
-        X: =554
-        Y: =168
-        ZIndex: =4
-
-        Title7 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =55
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =10
-            Text: =ThisItem.'Implementation Stage Name'
-            Width: =232
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Rectangle8 As rectangle:
-            Height: =Parent.TemplateHeight 
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
-    "'Implementation Phase Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =504
-        Items: =Sort(Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name'), Sequence)
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: |-
-            =If(ThisItem.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name' && 
-                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Implementation Phase Name' = 'Implementation Phase Gallery'.Selected.'Implementation Phase Name' && 
-                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =55
-        Width: =256
-        X: =284
-        Y: =168
-        ZIndex: =5
-
-        Title1 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =55
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =10
-            Text: =ThisItem.'Implementation Phase Name'
-            Width: =230
-            X: =16
-            ZIndex: =1
-
-        Rectangle5 As rectangle:
-            Height: =Parent.TemplateHeight 
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
-    "'Implementation Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =504
-        Items: ='Implementation Models'
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: |-
-            =If(ThisItem.'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name' && 
-                    !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Implementation Model Name' = 'Implementation Model Gallery'.Selected.'Implementation Model Name' && 
-                        (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =55
-        Width: =256
-        X: =15
-        Y: =168
-        ZIndex: =6
-
-        Title4 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =54.625
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =10
-            Text: =ThisItem.'Implementation Model Name'
-            Width: =231
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Rectangle6 As rectangle:
-            Height: =Parent.TemplateHeight
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
 
     "'Back Button_2' As icon.ChevronLeft":
         Color: =RGBA(255, 255, 255, 1)
-        Height: =51
+        Height: =45
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
             Navigate(HomePage,ScreenTransition.UnCoverRight)
-        Width: =52
-        X: =15
-        Y: =12
-        ZIndex: =7
-
-    "'Implementation Model Label' As label":
-        FontWeight: =FontWeight.Bold
-        Size: =16
-        Text: |-
-            ="Implementation Model
-            "
-        Width: =256
-        X: =15
-        Y: =128
+        Width: =45
+        X: =18
+        Y: =15
         ZIndex: =8
-
-    "'Implementation Phase Label' As label":
-        FontWeight: =FontWeight.Bold
-        Size: =16
-        Text: ="Implementation Phase"
-        Width: =256
-        X: =284
-        Y: =128
-        ZIndex: =9
-
-    "'Implementation Stage Label' As label":
-        FontWeight: =FontWeight.Bold
-        Size: =16
-        Text: ="Implementation Stage"
-        Width: =256
-        X: =554
-        Y: =128
-        ZIndex: =10
-
-    "'Product Backlog Item Label' As label":
-        FontWeight: =FontWeight.Bold
-        Size: =16
-        Text: ="Product Backlog Item"
-        Width: =256
-        X: =821
-        Y: =128
-        ZIndex: =11
-
-    "'Task Label Parent' As label":
-        FontWeight: =FontWeight.Bold
-        Size: =16
-        Text: ="Task"
-        Width: =256
-        X: =1092
-        Y: =128
-        ZIndex: =12
-
-    "'Creatte Implementation Model Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: |-
-            =UpdateContext({varCreateOpenImplementationModel:true});
-            UpdateContext({varCreateOpenImplementationPhase:false});
-            UpdateContext({varCreateOpenImplementationStage:false});
-            UpdateContext({varCreateOpenProductBacklogItem:false});
-            UpdateContext({varCreateOpenTask:false});
-            UpdateContext({varOpenTaskDetailWindow:false});
-            Reset('New Implementation Model Name Input');
-            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
-            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
-            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
-            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
-        Size: =13
-        Text: ="Create Implementation Model"
-        Width: =256
-        X: =15
-        Y: =685
-        ZIndex: =13
-
-    "'Create Implementation Phase Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: |-
-            =UpdateContext({varCreateOpenImplementationModel:false});
-            UpdateContext({varCreateOpenImplementationPhase:true});
-            UpdateContext({varCreateOpenImplementationStage:false});
-            UpdateContext({varCreateOpenProductBacklogItem:false});
-            UpdateContext({varCreateOpenTask:false});
-            UpdateContext({varOpenTaskDetailWindow:false});
-            Reset('New Implementation Model Name Input');
-            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
-            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
-            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
-            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
-        Size: =13
-        Text: |-
-            ="Create Implementation Phase
-            "
-        Width: =256
-        X: =284
-        Y: =685
-        ZIndex: =14
-
-    "'Create Implementation Stage Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: |-
-            =UpdateContext({varCreateOpenImplementationModel:false});
-            UpdateContext({varCreateOpenImplementationPhase:false});
-            UpdateContext({varCreateOpenImplementationStage:true});
-            UpdateContext({varCreateOpenProductBacklogItem:false});
-            UpdateContext({varCreateOpenTask:false});
-            UpdateContext({varOpenTaskDetailWindow:false});
-            Reset('New Implementation Model Name Input');
-            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
-            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
-            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
-            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
-        Size: =13
-        Text: |-
-            ="Create Implementation Stage
-            "
-        Width: =256
-        X: =555
-        Y: =685
-        ZIndex: =15
-
-    "'Create Product Backlog Item Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: |-
-            =UpdateContext({varCreateOpenImplementationModel:false});
-            UpdateContext({varCreateOpenImplementationPhase:false});
-            UpdateContext({varCreateOpenImplementationStage:false});
-            UpdateContext({varCreateOpenProductBacklogItem:true});
-            UpdateContext({varCreateOpenTask:false});
-            UpdateContext({varOpenTaskDetailWindow:false});
-            Reset('New Implementation Model Name Input');
-            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
-            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
-            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
-            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
-        Size: =13
-        Text: |-
-            ="Create Product
-            Backlog Item
-            "
-        Width: =256
-        X: =823
-        Y: =685
-        ZIndex: =16
-
-    "'Create Task Button' As button":
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: |-
-            =UpdateContext({varCreateOpenImplementationModel:false});
-            UpdateContext({varCreateOpenImplementationPhase:false});
-            UpdateContext({varCreateOpenImplementationStage:false});
-            UpdateContext({varCreateOpenProductBacklogItem:false});
-            UpdateContext({varCreateOpenTask:true});
-            UpdateContext({varOpenTaskDetailWindow:false});
-            Reset('New Implementation Model Name Input');
-            Reset('New Implementation Phase Name Input'); Reset('Sequence IP Input');
-            Reset('New Implementation Stage Name Input'); Reset('Sequence IS Input');
-            Reset('New Product Backlog Item Name Input'); Reset('Sequence PBI Input');
-            Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
-        Size: =13
-        Text: |-
-            ="Create Task
-            "
-        Width: =256
-        X: =1092
-        Y: =685
-        ZIndex: =17
 
     "'Task Details Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -455,7 +521,7 @@
         Width: =991
         X: =188
         Y: =36
-        ZIndex: =18
+        ZIndex: =19
 
         "'Task Details Title' As label":
             Align: =Align.Center
@@ -658,7 +724,7 @@
         Width: =892
         X: =237
         Y: =160
-        ZIndex: =19
+        ZIndex: =20
 
         "'Exit Implementation Model Create Icon' As icon.Cancel":
             Height: =54
@@ -765,7 +831,7 @@
         Width: =892
         X: =237
         Y: =121
-        ZIndex: =20
+        ZIndex: =21
 
         "'Exit Implementation Phase Create Icon' As icon.Cancel":
             Height: =54
@@ -893,7 +959,7 @@
         Width: =892
         X: =237
         Y: =74
-        ZIndex: =21
+        ZIndex: =22
 
         "'Exit Implementation Stage Create Icon' As icon.Cancel":
             Height: =54
@@ -1036,7 +1102,7 @@
         Width: =892
         X: =237
         Y: =45
-        ZIndex: =22
+        ZIndex: =23
 
         "'Exit Product Backlog Item Create Icon' As icon.Cancel":
             Height: =54
@@ -1195,7 +1261,7 @@
         Width: =1091
         X: =138
         Y: =19
-        ZIndex: =23
+        ZIndex: =24
 
         "'Exit Task Create Icon' As icon.Cancel":
             Height: =54

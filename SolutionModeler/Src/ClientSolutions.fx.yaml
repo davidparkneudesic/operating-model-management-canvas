@@ -1753,21 +1753,23 @@
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
                     RGBA(26, 76, 145, 1)
                 )
+            Height: =44
             HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
             Size: =14
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
             X: =740
-            Y: =497
+            Y: =495
             ZIndex: =13
 
         DetailFields_Window_Label As label:
             Color: =RGBA(26, 76, 145, 1)
+            Font: =Font.'Lato Black'
             FontWeight: =FontWeight.Bold
             Height: =54
             Size: =20
-            Text: ="Detail Fields"
+            Text: ="Client Solution Detail"
             Width: =305
             X: =69
             Y: =28
