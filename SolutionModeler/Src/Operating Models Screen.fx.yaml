@@ -434,6 +434,9 @@
             ZIndex: =10
 
         "'Create OM Button' As button":
+            Color: |-
+                =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -458,6 +461,9 @@
             ZIndex: =11
 
         "'Create Cap Button' As button":
+            Color: |-
+                =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -480,6 +486,9 @@
             ZIndex: =12
 
         "'Create PG Button' As button":
+            Color: |-
+                =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -502,6 +511,9 @@
             ZIndex: =13
 
         "'Create Process Button' As button":
+            Color: |-
+                =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -525,7 +537,9 @@
 
     "'Operating Model Screen Label' As label":
         Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
+        Color: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Fill: |-
             =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
                 ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -540,7 +554,9 @@
         ZIndex: =2
 
     "'Back Button_1' As icon.ChevronLeft":
-        Color: =RGBA(255, 255, 255, 1)
+        Color: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =45
         Icon: =Icon.ChevronLeft
         OnSelect: |-
@@ -573,6 +589,7 @@
             Color: =RGBA(255,255,255,1)
             Fill: |-
                 =ColorValue("#00467f")
+            Font: =Font.Lato
             FontWeight: =FontWeight.Bold
             Height: =62
             Size: =20
@@ -582,13 +599,13 @@
 
         "'Exit OM Create Icon' As icon.Cancel":
             Color: =RGBA(255, 255, 255, 1)
-            Height: =56
+            Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenOperatingModelCreate:false});
                 UpdateContext({varOMCreated:false});
                 Reset('New Operating Model Input')
-            Width: =56
+            Width: =54
             X: ='Create OM Container'.Width - 60
             Y: =3
             ZIndex: =2
@@ -708,29 +725,31 @@
         Y: =122
         ZIndex: =19
 
+        "'Create Capability Label' As label":
+            Align: =Align.Center
+            Color: |-
+                =ColorValue("#FFFFFF")
+            Fill: |-
+                =ColorValue("#00467f")
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =20
+            Text: ="Create New Capability"
+            Width: ='Create Cap Container'.Width
+            ZIndex: =1
+
         "'Exit Cap Create Icon' As icon.Cancel":
-            Height: =56
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenCapabilityCreate:false});
                 UpdateContext({varCapCreated:false});
                 Reset('New Capability Name Input');
-            Width: =53
-            X: =721
-            Y: =30
-            ZIndex: =1
-
-        "'Create Capability Label' As label":
-            Align: =Align.Center
-            Color: |-
-                =ColorValue("#00467f")
-            FontWeight: =FontWeight.Bold
-            Height: =68
-            Size: =20
-            Text: ="Create New Capability"
-            Width: =395
-            X: =207
-            Y: =25
+            Width: =54
+            X: ='Create Cap Container'.Width - 60
+            Y: =3
             ZIndex: =2
 
         "'Create Capability Button' As button":
@@ -788,7 +807,7 @@
             Width: =307
             X: =89
             Y: =175
-            ZIndex: =7
+            ZIndex: =6
 
         "'Status Reason Cap Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -797,7 +816,7 @@
             Width: =307
             X: =89
             Y: =350
-            ZIndex: =9
+            ZIndex: =7
 
         "'Status Reason Cap Dropdown' As dropdown":
             ChevronBackground: |-
@@ -811,7 +830,7 @@
             Width: =284
             X: =89
             Y: =390
-            ZIndex: =10
+            ZIndex: =8
 
         "'Capability Created Label' As label":
             Align: =Align.Center
@@ -821,7 +840,7 @@
             Width: =367
             X: =221
             Y: =466
-            ZIndex: =11
+            ZIndex: =9
 
         "'Scope Review Cap Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -830,7 +849,7 @@
             Width: =307
             X: =417
             Y: =350
-            ZIndex: =12
+            ZIndex: =10
 
         "'Scope Review Cap Dropdown' As dropdown":
             ChevronBackground: |-
@@ -844,7 +863,7 @@
             Width: =284
             X: =417
             Y: =390
-            ZIndex: =13
+            ZIndex: =11
 
         "'Parent Capability Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -853,7 +872,7 @@
             Width: =307
             X: =89
             Y: =263
-            ZIndex: =14
+            ZIndex: =12
 
         "'Parent Capability Combobox' As combobox":
             ChevronBackground: |-
@@ -870,7 +889,7 @@
             Size: =12
             X: =89
             Y: =303
-            ZIndex: =16
+            ZIndex: =13
 
         "'Operating Model Cap Dropdown' As dropdown":
             ChevronBackground: |-
@@ -884,7 +903,7 @@
             Size: =12
             X: =89
             Y: =215
-            ZIndex: =17
+            ZIndex: =14
 
         "'Reset Operating Model Cap Button' As button":
             Fill: |-
@@ -898,7 +917,7 @@
             Width: =146
             X: =442
             Y: =215
-            ZIndex: =18
+            ZIndex: =15
 
         "'Reset Parent Capability Button' As button":
             Fill: |-
@@ -912,40 +931,42 @@
             Width: =146
             X: =442
             Y: =303
-            ZIndex: =19
+            ZIndex: =16
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
         Height: =587
         Visible: =If(varOpenProcessGroupCreate, true, false)
         Width: =814
-        X: =272
-        Y: =122
+        X: =276
+        Y: =91
         ZIndex: =20
 
+        "'Create Capability Label_1' As label":
+            Align: =Align.Center
+            Color: |-
+                =ColorValue("#FFFFFF")
+            Fill: |-
+                =ColorValue("#00467f")
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =20
+            Text: ="Create New Process Group"
+            Width: ='Create Process Group Container'.Width
+            ZIndex: =1
+
         "'Exit Cap Create Icon_1' As icon.Cancel":
-            Height: =56
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenProcessGroupCreate:false});
                 UpdateContext({varPGCreated:false});
                 Reset('New Process Group Name Input')
-            Width: =53
-            X: =721
-            Y: =30
-            ZIndex: =1
-
-        "'Create Capability Label_1' As label":
-            Align: =Align.Center
-            Color: |-
-                =ColorValue("#00467f")
-            FontWeight: =FontWeight.Bold
-            Height: =68
-            Size: =20
-            Text: ="Create New Process Group"
-            Width: =395
-            X: =207
-            Y: =25
+            Width: =54
+            X: ='Create Process Group Container'.Width - 60
+            Y: =3
             ZIndex: =2
 
         "'Create Capability Button_1' As button":
@@ -1004,7 +1025,7 @@
             Width: =307
             X: =89
             Y: =175
-            ZIndex: =7
+            ZIndex: =6
 
         "'Status Reason PG Label' As label":
             Color: =RGBA(0,0,0,1)
@@ -1014,7 +1035,7 @@
             Width: =307
             X: =89
             Y: =350
-            ZIndex: =9
+            ZIndex: =7
 
         "'Status Reason PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1028,7 +1049,7 @@
             Width: =240
             X: =89
             Y: =390
-            ZIndex: =10
+            ZIndex: =8
 
         "'Process Group Created Label' As label":
             Align: =Align.Center
@@ -1038,7 +1059,7 @@
             Width: =367
             X: =221
             Y: =466
-            ZIndex: =11
+            ZIndex: =9
 
         "'Scope Review PG Label' As label":
             Color: =RGBA(0,0,0,1)
@@ -1048,7 +1069,7 @@
             Width: =307
             X: =417
             Y: =350
-            ZIndex: =12
+            ZIndex: =10
 
         "'Scope Review PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1062,7 +1083,7 @@
             Width: =240
             X: =417
             Y: =390
-            ZIndex: =13
+            ZIndex: =11
 
         "'Capability PG Label' As label":
             Color: =RGBA(0,0,0,1)
@@ -1072,7 +1093,7 @@
             Width: =307
             X: =89
             Y: =263
-            ZIndex: =14
+            ZIndex: =12
 
         "'Operating Model PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1087,7 +1108,7 @@
             Width: =310
             X: =89
             Y: =215
-            ZIndex: =17
+            ZIndex: =13
 
         "'Capability PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1111,7 +1132,7 @@
             Width: =310
             X: =89
             Y: =303
-            ZIndex: =18
+            ZIndex: =14
 
         "'Reset Operating Model Cap Button_1' As button":
             Fill: |-
@@ -1125,7 +1146,7 @@
             Width: =152
             X: =436
             Y: =206
-            ZIndex: =19
+            ZIndex: =15
 
         "'Reset Operating Model Cap Button_2' As button":
             Fill: |-
@@ -1139,7 +1160,7 @@
             Width: =152
             X: =436
             Y: =294
-            ZIndex: =20
+            ZIndex: =16
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -1151,29 +1172,31 @@
         Y: =65
         ZIndex: =21
 
+        "'Create Capability Label_2' As label":
+            Align: =Align.Center
+            Color: |-
+                =ColorValue("#FFFFFF")
+            Fill: |-
+                =ColorValue("#00467f")
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =20
+            Text: ="Create New Process"
+            Width: ='Create Process Container'.Width
+            ZIndex: =1
+
         "'Exit Cap Create Icon_2' As icon.Cancel":
-            Height: =56
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenProcessCreate:false});
                 UpdateContext({varProcCreated:false});
                 Reset('New Process Name Input'); Reset( 'Description Proc Input');
-            Width: =53
-            X: =1077
-            Y: =25
-            ZIndex: =1
-
-        "'Create Capability Label_2' As label":
-            Align: =Align.Center
-            Color: |-
-                =ColorValue("#00467f")
-            FontWeight: =FontWeight.Bold
-            Height: =56
-            Size: =20
-            Text: ="Create New Process"
-            Width: =395
-            X: =383
-            Y: =25
+            Width: =54
+            X: ='Create Process Container'.Width - 60
+            Y: =3
             ZIndex: =2
 
         "'Create Capability Button_2' As button":
@@ -1224,8 +1247,8 @@
             OnSelect: |-
                 =UpdateContext({varProcCreated:false})
             Width: =434
-            X: =56
-            Y: =119
+            X: =63
+            Y: =133
             ZIndex: =4
 
         "'New Process Name Label' As label":
@@ -1233,8 +1256,8 @@
             Size: =14
             Text: ="* New Process Name"
             Width: =307
-            X: =42
-            Y: =79
+            X: =49
+            Y: =93
             ZIndex: =5
 
         "'Operating Model Proc Label' As label":
@@ -1242,8 +1265,8 @@
             Size: =14
             Text: ="Operating Model Filter"
             Width: =307
-            X: =56
-            Y: =174
+            X: =63
+            Y: =188
             ZIndex: =6
 
         "'Status Reason Proc Label' As label":
@@ -1251,8 +1274,8 @@
             Size: =14
             Text: ="Status Reason"
             Width: =213
-            X: =56
-            Y: =443
+            X: =63
+            Y: =457
             ZIndex: =7
 
         "'Status Reason Proc Dropdown' As dropdown":
@@ -1263,9 +1286,9 @@
             Default: ="Draft"
             Height: =35
             Items: =Choices('Status Reason (Processes)')
-            Width: =213
-            X: =56
-            Y: =483
+            Width: =185
+            X: =63
+            Y: =497
             ZIndex: =8
 
         "'Scope Review Proc Label' As label":
@@ -1273,8 +1296,8 @@
             Size: =14
             Text: ="Scope Review"
             Width: =213
-            X: =299
-            Y: =443
+            X: =306
+            Y: =457
             ZIndex: =9
 
         "'Scope Review Proc Dropdown' As dropdown":
@@ -1285,9 +1308,9 @@
             Default: ="In Review"
             Height: =35
             Items: =Choices('Scope Review')
-            Width: =213
-            X: =299
-            Y: =483
+            Width: =185
+            X: =306
+            Y: =497
             ZIndex: =10
 
         "'Capability Proc Label' As label":
@@ -1295,8 +1318,8 @@
             Size: =14
             Text: ="Capability Filter"
             Width: =307
-            X: =56
-            Y: =262
+            X: =63
+            Y: =276
             ZIndex: =11
 
         "'Operating Model Proc Dropdown' As dropdown":
@@ -1309,8 +1332,8 @@
                 =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
                 colOperatingModelFilter
             Width: =293
-            X: =56
-            Y: =214
+            X: =63
+            Y: =228
             ZIndex: =12
 
         "'Capability Proc Dropdown' As dropdown":
@@ -1323,8 +1346,8 @@
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 colCreateWindowCapacityFilter
             Width: =293
-            X: =56
-            Y: =302
+            X: =63
+            Y: =316
             ZIndex: =13
 
         "'Process Group Proc Label' As label":
@@ -1332,8 +1355,8 @@
             Size: =14
             Text: ="Process Group"
             Width: =307
-            X: =56
-            Y: =350
+            X: =63
+            Y: =364
             ZIndex: =14
 
         "'Process Group Proc Dropdown' As dropdown":
@@ -1347,8 +1370,8 @@
                 //Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
                 colCreateWindowPGFilter
             Width: =293
-            X: =56
-            Y: =390
+            X: =63
+            Y: =404
             ZIndex: =15
 
         "'Description Proc Input' As text":
@@ -1360,7 +1383,7 @@
                 =UpdateContext({varPGCreated:false})
             Width: =555
             X: =549
-            Y: =119
+            Y: =133
             ZIndex: =16
 
         "'Description Proc Label' As label":
@@ -1369,7 +1392,7 @@
             Text: ="* Description"
             Width: =307
             X: =535
-            Y: =79
+            Y: =93
             ZIndex: =17
 
         "'Process Created Label' As label":
@@ -1389,7 +1412,7 @@
                 =UpdateContext({varProcCreated:false})
             Width: =555
             X: =549
-            Y: =483
+            Y: =497
             ZIndex: =19
 
         "'Data Flow Diagram URL Label' As label":
@@ -1398,7 +1421,7 @@
             Text: ="Data Flow Diagram URL"
             Width: =307
             X: =549
-            Y: =443
+            Y: =457
             ZIndex: =20
 
         "'Reset Operating Model Cap Button_3' As button":
@@ -1411,8 +1434,8 @@
                 ="Reset
                 "
             Width: =115
-            X: =375
-            Y: =214
+            X: =382
+            Y: =228
             ZIndex: =21
 
         "'Reset Operating Model Cap Button_4' As button":
@@ -1425,8 +1448,8 @@
                 ="Reset
                 "
             Width: =115
-            X: =375
-            Y: =302
+            X: =382
+            Y: =316
             ZIndex: =22
 
         "'Reset Operating Model Cap Button_5' As button":
@@ -1439,8 +1462,8 @@
                 ="Reset
                 "
             Width: =115
-            X: =375
-            Y: =388
+            X: =382
+            Y: =402
             ZIndex: =23
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
@@ -1452,16 +1475,6 @@
         X: =103
         Y: =43
         ZIndex: =22
-
-        "'Exit Cap Create Icon_3' As icon.Cancel":
-            Height: =56
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenProcessDetail:false});
-            Width: =53
-            X: =1077
-            Y: =25
-            ZIndex: =1
 
         "'Process Name Detail Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -1475,7 +1488,7 @@
             Width: =479
             X: =56
             Y: =119
-            ZIndex: =2
+            ZIndex: =1
 
             Title10 As label:
                 Height: =45
@@ -1493,15 +1506,16 @@
         "'Process Details Title' As label":
             Align: =Align.Center
             Color: |-
+                =ColorValue("#FFFFFF")
+            Fill: |-
                 =ColorValue("#00467f")
+            Font: =Font.Lato
             FontWeight: =FontWeight.Bold
-            Height: =56
+            Height: =62
             Size: =20
             Text: ="Process Details"
-            Width: =395
-            X: =383
-            Y: =25
-            ZIndex: =3
+            Width: ='Process Detail Container'.Width
+            ZIndex: =2
 
         "'Process Status Reason Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -1510,7 +1524,7 @@
             Width: =213
             X: =589
             Y: =179
-            ZIndex: =4
+            ZIndex: =3
 
         "'Process Name Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -1519,7 +1533,7 @@
             Width: =307
             X: =56
             Y: =79
-            ZIndex: =5
+            ZIndex: =4
 
         "'Process Scope Review Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -1528,7 +1542,7 @@
             Width: =213
             X: =837
             Y: =179
-            ZIndex: =6
+            ZIndex: =5
 
         "'Process Description Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -1537,7 +1551,7 @@
             Width: =307
             X: =56
             Y: =179
-            ZIndex: =7
+            ZIndex: =6
 
         "'Process Description Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -1551,7 +1565,7 @@
             Width: =479
             X: =56
             Y: =219
-            ZIndex: =8
+            ZIndex: =7
 
             Title10_1 As label:
                 Height: =415
@@ -1581,7 +1595,7 @@
             Width: =213
             X: =589
             Y: =219
-            ZIndex: =9
+            ZIndex: =8
 
             Title10_2 As label:
                 Height: =43
@@ -1608,7 +1622,7 @@
             Width: =213
             X: =837
             Y: =219
-            ZIndex: =10
+            ZIndex: =9
 
             Title10_3 As label:
                 Height: =43
@@ -1635,7 +1649,7 @@
             Width: =461
             X: =589
             Y: =119
-            ZIndex: =11
+            ZIndex: =10
 
             Title10_4 As label:
                 Height: =43
@@ -1657,7 +1671,7 @@
             Width: =307
             X: =589
             Y: =79
-            ZIndex: =12
+            ZIndex: =11
 
         "'Process Data Flow Diagram Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -1673,7 +1687,7 @@
             Width: =461
             X: =589
             Y: =320
-            ZIndex: =13
+            ZIndex: =12
 
             Title8_6 As label:
                 FontWeight: =FontWeight.Bold
@@ -1709,5 +1723,16 @@
             Width: =228
             X: =589
             Y: =280
+            ZIndex: =13
+
+        "'Exit Cap Create Icon_3' As icon.Cancel":
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenProcessDetail:false});
+            Width: =54
+            X: ='Process Detail Container'.Width - 60
+            Y: =3
             ZIndex: =14
 

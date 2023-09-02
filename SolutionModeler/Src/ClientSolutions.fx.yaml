@@ -872,6 +872,9 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_solutionareaname"]
                     DisplayMode: =Parent.DisplayMode
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     Items: =Choices([@'Client Solutions'].neu_SolutionArea)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -978,6 +981,9 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     PaddingLeft: =5
                     RadiusBottomLeft: =0
@@ -1052,6 +1058,9 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_implementationmodelname"]
                     DisplayMode: =Parent.DisplayMode
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
                     Items: =Choices([@'Client Solutions'].neu_ImplementationModelID)
@@ -1124,6 +1133,9 @@
                     DefaultDate: =Parent.Default
                     DisplayMode: =Parent.DisplayMode
                     EndYear: =Year(Today())+100
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsEditable: =true
                     PaddingBottom: =0
@@ -1224,6 +1236,9 @@
                     DefaultDate: =Parent.Default
                     DisplayMode: =Parent.DisplayMode
                     EndYear: =Year(Today())+100
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsEditable: =true
                     PaddingBottom: =0
@@ -1347,6 +1362,9 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     MaxLength: =Parent.MaxLength
                     PaddingLeft: =5
@@ -1418,6 +1436,9 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
+                    Fill: |-
+                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     MaxLength: =Parent.MaxLength
                     PaddingLeft: =5
@@ -1537,6 +1558,9 @@
                     ZIndex: =4
 
         btnNewClientSolution As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1558,6 +1582,9 @@
             ZIndex: =5
 
         btnViewUserStories As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1580,6 +1607,9 @@
             ZIndex: =6
 
         UpdateClientSolution_Button As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1600,6 +1630,9 @@
             ZIndex: =7
 
         Cancel_Update_Form_Button As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1619,7 +1652,9 @@
             ZIndex: =8
 
         Update_Button As button:
-            Color: =RGBA(255,255,255,1)
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1680,6 +1715,9 @@
             ZIndex: =9
 
         Delete_ClientSolution_Button As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1725,6 +1763,9 @@
             ZIndex: =12
 
         "'Create DevOps Project Button' As button":
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1762,7 +1803,7 @@
                 )
             DisplayFields: =["neu_operatingmodelname"]
             Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =30
             Items: =Sort('Operating Models', 'Operating Model Name')
@@ -1847,7 +1888,9 @@
 
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
+        Color: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                 ColorFade(ColorValue("#00467f"), -30%),
@@ -1862,7 +1905,9 @@
         ZIndex: =4
 
     "'Back Button_to HomePage' As icon.ChevronLeft":
-        Color: =RGBA(255, 255, 255, 1)
+        Color: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =45
         Icon: =Icon.ChevronLeft
         OnSelect: |-
@@ -1992,7 +2037,7 @@
             Text: ="* New Solution Name"
             Width: =239
             X: =80
-            Y: =132
+            Y: =125
             ZIndex: =3
 
         "'New Solution Name Input' As text":
@@ -2001,7 +2046,7 @@
                 =UpdateContext({varClientSolutionCreated:false})
             Width: =296
             X: =80
-            Y: =172
+            Y: =165
             ZIndex: =4
 
         "'Client/Prospect Name Label' As label":
@@ -2009,7 +2054,7 @@
             Text: ="* Client / Prospect Name"
             Width: =239
             X: =414
-            Y: =132
+            Y: =125
             ZIndex: =5
 
         "'Client/Prospect Name Input' As text":
@@ -2017,7 +2062,7 @@
             OnSelect: |-
                 =UpdateContext({varClientSolutionCreated:false})
             X: =414
-            Y: =172
+            Y: =165
             ZIndex: =6
 
         "'Status Reason CS Label' As label":
@@ -2025,7 +2070,7 @@
             Text: ="Status Reason"
             Width: =239
             X: =773
-            Y: =132
+            Y: =125
             ZIndex: =7
 
         "'Status Reason CS Dropdown' As dropdown":
@@ -2037,7 +2082,7 @@
             Items: =Choices('Status Reason (Client Solutions)')
             Width: =293
             X: =773
-            Y: =172
+            Y: =165
             ZIndex: =8
 
         "'Solution Area CS Label' As label":
@@ -2045,7 +2090,7 @@
             Text: ="Solution Area"
             Width: =239
             X: =83
-            Y: =239
+            Y: =225
             ZIndex: =9
 
         "'Solution Area CS Dropdown' As dropdown":
@@ -2055,9 +2100,9 @@
                 =ColorFade(ColorValue("#00467f"), -20%)
             Default: ="Proposal"
             Items: =Sort('Solution Areas', 'Solution Area Name')
-            Width: =293
+            Width: =340
             X: =83
-            Y: =279
+            Y: =265
             ZIndex: =10
 
         "'Estimate URL Label' As label":
@@ -2065,14 +2110,14 @@
             Text: ="Estimate URL"
             Width: =239
             X: =83
-            Y: =348
+            Y: =327
             ZIndex: =11
 
         "'Estimate URL Input' As text":
             Default: =""
             Width: =651
             X: =83
-            Y: =388
+            Y: =367
             ZIndex: =12
 
         "'Implementation Model CS Label' As label":
@@ -2080,7 +2125,7 @@
             Text: ="Implementation Model"
             Width: =239
             X: =788
-            Y: =348
+            Y: =327
             ZIndex: =13
 
         "'Implementation Model CS Dropdown' As dropdown":
@@ -2092,7 +2137,7 @@
             Items: ='Implementation Models'
             Width: =293
             X: =788
-            Y: =388
+            Y: =367
             ZIndex: =14
 
         "'Project Start Date Label' As label":
@@ -2100,7 +2145,7 @@
             Text: ="* Project Start Date"
             Width: =239
             X: =83
-            Y: =451
+            Y: =437
             ZIndex: =15
 
         "'Project End Date Label' As label":
@@ -2108,22 +2153,24 @@
             Text: ="* Project End Date"
             Width: =239
             X: =611
-            Y: =451
+            Y: =437
             ZIndex: =16
 
         "'Project Start Date DatePicker' As datepicker":
             Color: =RGBA(0, 70, 127, 1)
             IconBackground: |-
                 =ColorValue("#00467f")
+            Width: =280
             X: =83
-            Y: =491
+            Y: =477
             ZIndex: =17
 
         "'Project End Date DatePicker' As datepicker":
             IconBackground: |-
                 =ColorValue("#00467f")
+            Width: =280
             X: =608
-            Y: =491
+            Y: =477
             ZIndex: =18
 
         "'Client Solution Created Message' As label":
@@ -2139,25 +2186,30 @@
         "'Create New Client Solution Title' As label":
             Align: =Align.Center
             Color: |-
+                =ColorValue("#FFFFFF")
+            Fill: |-
                 =ColorValue("#00467f")
+            Font: =Font.Lato
             FontWeight: =FontWeight.Bold
-            Height: =84
+            Height: =70
             Size: =25
             Text: ="Create New Client Solution"
-            Width: =601
-            X: =273
-            Y: =33
+            Width: ='Client Solution Create Container'.Width
             ZIndex: =20
 
         "'Exit Create CS Icon' As icon.Cancel":
-            Height: =56
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =60
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenCreateClientSolution:false});
                 UpdateContext({varClientSolutionCreated:false});
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
-            X: =1081
-            Y: =33
+            Width: =60
+            X: |+
+                ='Client Solution Create Container'.Width - 65
+                
+            Y: =5
             ZIndex: =21
 
         "'Related Operating Models Combobox' As combobox":
@@ -2172,7 +2224,7 @@
             SearchItems: =[]
             Width: =430
             X: =636
-            Y: =279
+            Y: =265
             ZIndex: =22
 
         "'Related Operating Models Label' As label":
@@ -2180,10 +2232,11 @@
             Text: ="Related Operating Models"
             Width: =259
             X: =638
-            Y: =239
+            Y: =225
             ZIndex: =23
 
     "'Client Solution Updated Message Window' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Visible: =If(varUpdatedCSWindow,true,false)
         X: =426
@@ -2211,6 +2264,7 @@
             ZIndex: =2
 
     "'Delete Client Solution Confirmation Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =266
         Visible: =If(varDeleteClientSolutionWindow,true,false)
@@ -2231,7 +2285,10 @@
             ZIndex: =1
 
         "'Delete Confirmation Button' As button":
-            Fill: =RGBA(0, 16, 96, 1)
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =Remove('Client Solutions', LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution'));
                 UpdateContext({varMessageCSDeleted:true})
@@ -2251,7 +2308,10 @@
             ZIndex: =3
 
         "'Delete Confirmation Button_1' As button":
-            Fill: =RGBA(0, 16, 96, 1)
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =UpdateContext({varDeleteClientSolutionWindow:false})
             Text: ="Cancel"

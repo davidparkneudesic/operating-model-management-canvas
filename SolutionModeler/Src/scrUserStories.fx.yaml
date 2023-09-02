@@ -1714,6 +1714,7 @@
         ZIndex: =8
 
     UserStoryUpdatedWindow_Container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Visible: =If(varOpenUserStoryUpdatedWindow,true,false)
         X: =433
@@ -2377,18 +2378,6 @@
                     Y: =49
                     ZIndex: =5
 
-        Icon1 As icon.Cancel:
-            Height: =51
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenUserStoryCreate:false});
-                UpdateContext({varUSCreated:false});
-                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
-            Width: =55
-            X: =831
-            Y: =26
-            ZIndex: =2
-
         "'Create US Button' As button":
             Fill: |-
                 =ColorValue("#00467f")
@@ -2430,20 +2419,20 @@
             Text: ="Create"
             X: =376
             Y: =622
-            ZIndex: =3
+            ZIndex: =2
 
         "'Create New User Story Title' As label":
             Align: =Align.Center
-            Color: =RGBA(26, 76, 145, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: |-
+                =ColorValue("#00467f")
             Font: =Font.'Lato Black'
             FontWeight: =FontWeight.Bold
-            Height: =64
+            Height: =62
             Size: =20
             Text: ="Create New User Story"
-            Width: =481
-            X: =216
-            Y: =19
-            ZIndex: =4
+            Width: ='Create User Story Container'.Width
+            ZIndex: =3
 
         "'User Story Created Message' As label":
             Align: =Align.Center
@@ -2453,9 +2442,23 @@
             Width: =350
             X: =281
             Y: =575
+            ZIndex: =4
+
+        Icon1 As icon.Cancel:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenUserStoryCreate:false});
+                UpdateContext({varUSCreated:false});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+            Width: =54
+            X: ='Create User Story Container'.Width - 60
+            Y: =3
             ZIndex: =5
 
     UserStoryDeletedWindow_Container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =275
         Visible: =If(varOpenDeleteUserStoryWindow,true,false)
