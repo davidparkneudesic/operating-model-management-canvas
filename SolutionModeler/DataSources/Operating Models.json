@@ -31,6 +31,7 @@
       "neu_operatingmodel_SyncErrors": "Sync Errors",
       "neu_operatingmodelid": "Operating Model",
       "neu_operatingmodelname": "Operating Model Name",
+      "neu_sharedmodel": "Shared Model",
       "neu_SolutionAreaID": "Solution Area",
       "overriddencreatedon": "Record Created On",
       "owningbusinessunit": "Owning Business Unit",
@@ -59,6 +60,26 @@
       "d0dd79c4-13d2-4428-a358-ad25df3f51c8": "Active Operating Models",
       "d35106ba-e614-49e7-b14b-79cef509a80a": "Operating Model Associated View"
     }
+  },
+  {
+    "DisplayName": "Shared Model (Operating Models)",
+    "Name": "neu_operatingmodel_neu_sharedmodel",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_sharedmodel",
+        "OptionSetReferenceEntityName": "Operating Models"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "neu_sharedmodel",
+    "RelatedEntityName": "Operating Models",
+    "Type": "OptionSetInfo"
   },
   {
     "DisplayName": "Status (Operating Models)",

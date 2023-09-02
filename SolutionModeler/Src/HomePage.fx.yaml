@@ -1,71 +1,166 @@
 HomePage As screen:
-    Fill: =RGBA(215, 223, 240, 1)
+    Fill: =RGBA(237, 237, 237, 1)
 
-    btnOperatingModels As button:
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: =Navigate('Operating Models Screen', ScreenTransition.Cover)
-        Text: ="Operating Models"
-        Width: =268
-        X: =88
-        Y: =397
+    "'Title Page Label' As label":
+        Align: =Align.Center
+        Color: |-
+            =ColorFade(ColorValue("#00467F"), -30%)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Bold
+        Height: =60
+        Size: =34
+        Text: ="Solution Modeler"
+        Width: =535
+        X: =416
+        Y: =81
         ZIndex: =1
 
-    btnImplementationModels As button:
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: =Navigate('Implementation Model Screen', ScreenTransition.Cover)
-        Text: ="Implementation Models"
-        Width: =270
-        X: =88
-        Y: =511
-        ZIndex: =2
+    NeudesicLogo_HomePage As image:
+        Height: =81
+        Image: ='Neudesic Logo'
+        Width: =200
+        ZIndex: =9
 
-    btnClientSolutions As button:
-        Fill: =RGBA(0, 16, 96, 1)
-        Height: =68
-        OnSelect: =Navigate(ClientSolutions, ScreenTransition.Cover)
-        Text: ="Client Solutions"
-        Width: =270
-        X: =88
-        Y: =288
-        ZIndex: =3
+    ClientSolutions_Container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =450
+        Width: =369
+        X: =64
+        Y: =200
+        ZIndex: =10
 
-    Label1 As label:
-        Align: =Align.Center
-        Color: =RGBA(255, 255, 255, 1)
-        Fill: =RGBA(0, 16, 96, 1)
-        FontWeight: =FontWeight.Bold
-        Height: =137
-        Size: =36
-        Text: ="Solution Modeler"
-        Width: =1366
-        ZIndex: =4
+        btnClientSolutions As button:
+            Fill: |-
+                =//RGBA(26, 76, 145, 1)
+                ColorValue("#00467f")
+            Height: =70
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =Navigate(ClientSolutions, ScreenTransition.Cover)
+            Text: ="Go to Client Solutions"
+            Width: =280
+            X: =45
+            Y: =355
+            ZIndex: =1
 
-    lblClientSolutions As label:
-        FontWeight: =FontWeight.Semibold
-        Height: =55
-        Text: =" The Client Solution area allows you to start the scoping and estimation process leveraging the models."
-        Width: =948
-        X: =371
-        Y: =294
-        ZIndex: =5
+        lblClientSolutions As label:
+            Font: =Font.'Lato Light'
+            Height: =144
+            Size: =14
+            Text: ="The Client Solution area allows you to start the scoping and estimation process leveraging the models."
+            VerticalAlign: =VerticalAlign.Top
+            Width: =295
+            X: =36
+            Y: =102
+            ZIndex: =2
 
-    lblOperatingModels As label:
-        FontWeight: =FontWeight.Semibold
-        Height: =55
-        Text: =" Browse, create and modify the various Operating Models, which serve as scoping templates."
-        Width: =948
-        X: =371
-        Y: =402
-        ZIndex: =6
+        "'Client Solutions Title' As label":
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =18
+            Text: |-
+                ="Client Solutions
+                "
+            Width: =303
+            X: =36
+            Y: =40
+            ZIndex: =3
 
-    lblOperatingModels_1 As label:
-        FontWeight: =FontWeight.Semibold
-        Height: =55
-        Text: =" Browse, create and modify the various Implementation Models, which serve as patterns for solution delivery"
-        Width: =948
-        X: =371
-        Y: =517
-        ZIndex: =7
+    OperatingModel_Container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =450
+        Width: =369
+        X: =499
+        Y: =200
+        ZIndex: =11
+
+        btnOperatingModels As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            Height: =70
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =Navigate('Operating Models Screen', ScreenTransition.Cover)
+            Text: ="Go to Operating Models"
+            Width: =280
+            X: =45
+            Y: =355
+            ZIndex: =1
+
+        lblOperatingModels As label:
+            Font: =Font.'Lato Light'
+            Height: =144
+            Size: =14
+            Text: ="Browse, create and modify the various Operating Models, which serve as scoping templates."
+            VerticalAlign: =VerticalAlign.Top
+            Width: =295
+            X: =36
+            Y: =102
+            ZIndex: =2
+
+        Label4 As label:
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =18
+            Text: |-
+                ="Operating Models
+                "
+            Width: =303
+            X: =36
+            Y: =40
+            ZIndex: =3
+
+    ImplementationModel_Container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =450
+        Width: =369
+        X: =934
+        Y: =200
+        ZIndex: =12
+
+        btnImplementationModels As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            Height: =70
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =Navigate('Implementation Model Screen', ScreenTransition.Cover)
+            RadiusBottomLeft: =9
+            RadiusBottomRight: =9
+            RadiusTopLeft: =9
+            RadiusTopRight: =9
+            Text: ="Go to Implementation Models"
+            Width: =280
+            X: =45
+            Y: =355
+            ZIndex: =1
+
+        lblImplmentationModels As label:
+            Font: =Font.'Lato Light'
+            Height: =144
+            Size: =14
+            Text: ="Browse, create and modify the various Implementation Models, which serve as patterns for solution delivery"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =295
+            X: =36
+            Y: =102
+            ZIndex: =2
+
+        Label4_1 As label:
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =18
+            Text: |-
+                ="Implementation Models
+                "
+            Width: =303
+            X: =36
+            Y: =40
+            ZIndex: =3
 
