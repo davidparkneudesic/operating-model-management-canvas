@@ -8,7 +8,7 @@
     DetailFields_Container_Window As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =647
         Width: =1054
@@ -32,7 +32,7 @@
             DelayItemLoading: =true
             DisplayMode: =DisplayMode.View
             Fill: |-
-                =If(varOpenCreateClientSolution, 
+                =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =328
             Items: =Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
@@ -40,10 +40,10 @@
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
                 =If(ThisItem.'Operating Model Name' = OperatingModel_CS_Gallery.Selected.'Operating Model Name' && 
-                        !(varOpenCreateClientSolution), 
+                        !(varOpenCreateClientSolution || varCreateDevOpsProjectWindow), 
                      RGBA(204, 208, 225, 1),
                     If (ThisItem.'Operating Model Name' = OperatingModel_CS_Gallery.Selected.'Operating Model Name' && 
-                            varOpenCreateClientSolution,
+                            varOpenCreateClientSolution || varCreateDevOpsProjectWindow,
                             RGBA(153, 160, 196, 1),
                             RGBA(0,0,0,0)
                     )
@@ -1559,10 +1559,10 @@
 
         btnNewClientSolution As button:
             Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -1583,10 +1583,10 @@
 
         btnViewUserStories As button:
             Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -1608,10 +1608,10 @@
 
         UpdateClientSolution_Button As button:
             Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -1764,16 +1764,18 @@
 
         "'Create DevOps Project Button' As button":
             Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
             Height: =44
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =UpdateContext({varCreateDevOpsProjectWindow:true})
             Size: =14
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
@@ -1821,7 +1823,7 @@
         Default: =//varGalDefault
         DelayItemLoading: =true
         Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =636
         Items: =Filter('Client Solutions', 'Client Solutions (Views)'.'Active Client Solutions')
@@ -1889,10 +1891,10 @@
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
         Color: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
@@ -1927,7 +1929,7 @@
         Color: |-
             =ColorValue("#00467f")
         Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         FontWeight: =FontWeight.Bold
         Height: =56
@@ -2342,4 +2344,48 @@
             X: =516
             Y: =12
             ZIndex: =6
+
+    "'Create Azure DevOps Project Window' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =645
+        Visible: =If(varCreateDevOpsProjectWindow,true,false)
+        Width: =1082
+        X: =142
+        Y: =62
+        ZIndex: =22
+
+        "'Create New Azure DevOps Project Title' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: |-
+                =ColorValue("#00467f")
+            Height: =60
+            Size: =20
+            Text: ="Create New Azure DevOps Project"
+            Width: |
+                ='Create Azure DevOps Project Window'.Width
+            ZIndex: =1
+
+        "'Exit Create Window Button' As icon.Cancel":
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varCreateDevOpsProjectWindow:false})
+            Width: =54
+            X: ='Create Azure DevOps Project Window'.Width - 60
+            Y: =3
+            ZIndex: =2
+
+        Button3 As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =CreateDevOpsProject.Run()
+            Text: ="Create"
+            X: =461
+            Y: =563
+            ZIndex: =3
 
