@@ -1,6 +1,6 @@
 "ClientSolutions As screen.'autoLayout_SplitScreen_ver1.0'":
     Fill: |-
-        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
