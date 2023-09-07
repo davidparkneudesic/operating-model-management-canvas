@@ -2,7 +2,12 @@
   <doc title="CreateDevOpsProject" />
   <grammars>
     <jsonTypes targetNamespace="https://unitedstates-002.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
-      <object name="ManualTriggerInput" />
+      <string name="ManualTriggerInput_ProjectName_Value_def" />
+      <string name="ManualTriggerInput_ProjectDescription_Value_def" />
+      <object name="ManualTriggerInput">
+        <property name="ProjectName_Value" type="string" />
+        <property name="ProjectDescription_Value" type="string" />
+      </object>
     </jsonTypes>
   </grammars>
   <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://unitedstates-002.azure-apim.net/apim/logicflows">
@@ -14,7 +19,10 @@
           <param style="query" name="api-version" type="xs:string" required="true" fixed="2015-02-01-preview">
             <doc title="The api version" />
           </param>
-          <representation mediaType="application/json" />
+          <representation mediaType="application/json">
+            <param style="plain" name="ProjectName_Value" path="/ProjectName_Value" type="xs:string" required="true" />
+            <param style="plain" name="ProjectDescription_Value" path="/ProjectDescription_Value" type="xs:string" required="true" />
+          </representation>
         </request>
       </method>
     </resource>

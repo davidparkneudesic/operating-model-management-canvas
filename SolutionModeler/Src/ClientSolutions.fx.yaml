@@ -2378,14 +2378,46 @@
             Y: =3
             ZIndex: =2
 
-        Button3 As button:
+        Create_DevOps_Project_Button As button:
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =CreateDevOpsProject.Run()
+            OnSelect: =CreateDevOpsProject.Run(ProjectName_Input.Text,ProjectDescription_Input.Text)
             Text: ="Create"
             X: =461
             Y: =563
             ZIndex: =3
+
+        ProjectName_Label As label:
+            FontWeight: =FontWeight.Semibold
+            Text: |-
+                ="Project Name:"
+            X: =116
+            Y: =100
+            ZIndex: =4
+
+        ProjectName_Input As text:
+            Default: =""
+            Width: =350
+            X: =116
+            Y: =140
+            ZIndex: =5
+
+        ProjectDescription_Label As label:
+            FontWeight: =FontWeight.Semibold
+            Text: |-
+                ="Description:"
+            X: =116
+            Y: =196
+            ZIndex: =6
+
+        ProjectDescription_Input As text:
+            Default: =""
+            Height: =117
+            Mode: =TextMode.MultiLine
+            Width: =858
+            X: =116
+            Y: =236
+            ZIndex: =7
 
