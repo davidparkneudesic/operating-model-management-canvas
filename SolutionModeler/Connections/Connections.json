@@ -111,6 +111,36 @@
     "dependents": [],
     "id": "7e35eddf-2838-46ef-be2d-6de169df35b4"
   },
+  "8ad3105a-dfe6-49ff-8ebd-1af6b6ab6ea4": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1653/1.0.1653.3403/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "c460f79e-0551-ee11-be6f-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "4f75c7ed-fcc6-efc8-2db9-a3422e63a766"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "c460f79e-0551-ee11-be6f-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "4f75c7ed-fcc6-efc8-2db9-a3422e63a766"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ConvertJSONtoCollection"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "8ad3105a-dfe6-49ff-8ebd-1af6b6ab6ea4"
+  },
   "9d84011e-01b7-4c98-86a8-508b1df03e11": {
     "connectionRef": {
       "displayName": "Microsoft Dataverse",
@@ -124,5 +154,35 @@
       "60cdf598-358b-417c-9188-3f1044bca64c"
     ],
     "id": "9d84011e-01b7-4c98-86a8-508b1df03e11"
+  },
+  "dbe90307-d786-44f5-ad67-9245656d6503": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1653/1.0.1653.3403/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "9c0ce609-e550-ee11-be6f-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "25b42bdb-7ed4-cc7d-c6e4-0dd24b8acae4"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "9c0ce609-e550-ee11-be6f-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "25b42bdb-7ed4-cc7d-c6e4-0dd24b8acae4"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetDevOpsProcessJSONString"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "dbe90307-d786-44f5-ad67-9245656d6503"
   }
 }
