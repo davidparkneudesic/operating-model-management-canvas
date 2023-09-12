@@ -48,7 +48,7 @@
         Default: ='Process Gallery Parent'.Selected
         DelayItemLoading: =true
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =587
+        Height: =418
         Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
@@ -61,7 +61,7 @@
         TemplateSize: =42
         Width: =325
         X: =67
-        Y: =122
+        Y: =290
         ZIndex: =2
 
         Title3_4 As label:
@@ -93,7 +93,7 @@
         Size: =28
         Text: ="Process Detail"
         Width: =436
-        X: =465
+        X: =132
         Y: =30
         ZIndex: =3
 
@@ -309,4 +309,27 @@
         X: =432
         Y: =621
         ZIndex: =14
+
+    Button3 As button:
+        OnSelect: =Set(varTempDevOpsRESTGETBody, GetDevOpsOrgnizations.Run().processarr)
+        Text: ="Button"
+        X: =1028
+        Y: =59
+        ZIndex: =15
+
+    Dropdown1 As dropdown:
+        Items: =DropDownSample
+        Width: =325
+        X: =67
+        Y: =162
+        ZIndex: =16
+
+    TextInput1 As text:
+        Default: =varTempDevOpsRESTGETBody
+        Height: =435
+        Mode: =TextMode.MultiLine
+        Width: =354
+        X: =645
+        Y: =59
+        ZIndex: =17
 
