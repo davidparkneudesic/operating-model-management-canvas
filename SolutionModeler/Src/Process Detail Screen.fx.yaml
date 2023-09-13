@@ -2,6 +2,79 @@
     Fill: =RGBA(255, 255, 255, 1)
     OnVisible: =Parent
 
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =561
+        Items: =colTempDevOpsProcesses
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =90
+        Width: =368
+        X: =937
+        Y: =76
+        ZIndex: =1
+
+        Title8 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Value
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =16
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle4.Size * 1.8)) / 2
+            ZIndex: =1
+
+        Subtitle4 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Value
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title8.Width
+            X: =Title8.X
+            Y: =Title8.Y + Title8.Height
+            ZIndex: =2
+
+        NextArrow2 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="View item details"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        Separator4 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =4
+
+        Rectangle15 As rectangle:
+            Height: =Parent.TemplateHeight - Separator4.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =5
+
     "'Back Button_3' As icon.ChevronLeft":
         Height: =51
         Icon: =Icon.ChevronLeft
@@ -14,78 +87,6 @@
         Y: =25
         ZIndex: =1
 
-    "'Process Name Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255,255,255,1)
-        Height: =48
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =48
-        Width: =339
-        X: =432
-        Y: =162
-        ZIndex: =1
-
-        Title8 As label:
-            DisplayMode: =DisplayMode.View
-            Height: =48
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Process Name'
-            Width: =331
-            X: =6
-            ZIndex: =1
-
-    "'Process Gallery Child' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        Default: ='Process Gallery Parent'.Selected
-        DelayItemLoading: =true
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =587
-        Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name'), 'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: =Navigate('Process Detail Screen',ScreenTransition.Cover)
-        TemplateFill: |-
-            =If(ThisItem.'Process Name' = 'Process Gallery Child'.Selected.'Process Name', RGBA(204, 208, 225, 1), RGBA(0,0,0,0))
-            
-            //RGBA(204, 208, 225, 1)
-        TemplatePadding: =0
-        TemplateSize: =42
-        Width: =325
-        X: =67
-        Y: =122
-        ZIndex: =2
-
-        Title3_4 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =42
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Process Name'
-            Width: =309
-            X: =15
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Rectangle2_4 As rectangle:
-            Height: =Parent.TemplateHeight
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =4
-
     "'Process Detail Page Label' As label":
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
@@ -93,220 +94,33 @@
         Size: =28
         Text: ="Process Detail"
         Width: =436
-        X: =465
+        X: =132
         Y: =30
         ZIndex: =3
 
-    "'Process Detail Label' As label":
-        FontWeight: =FontWeight.Semibold
-        Size: =14
-        Text: |-
-            ="Process Name:"
-        X: =432
-        Y: =122
-        ZIndex: =4
-
-    "'Process Group Detail Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255,255,255,1)
-        Height: =48
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =48
-        Width: =339
-        X: =849
-        Y: =162
-        ZIndex: =5
-
-        Title8_1 As label:
-            DisplayMode: =DisplayMode.View
-            Height: =48
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Process Group'.'Process Group Name'
-            Width: =331
-            X: =5
-            ZIndex: =1
-
-    "'Process Group Detail Label' As label":
-        FontWeight: =FontWeight.Semibold
-        Size: =14
-        Text: |-
-            ="Process Group:"
-        X: =849
-        Y: =122
-        ZIndex: =6
-
-    "'Detail Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255,255,255,1)
-        Height: =238
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =238
-        Width: =808
-        X: =432
-        Y: =256
-        ZIndex: =7
-
-        Title8_2 As label:
-            DisplayMode: =DisplayMode.View
-            Height: =229
-            OnSelect: =Select(Parent)
-            Overflow: =Overflow.Scroll
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =13
-            Text: =ThisItem.Description
-            Width: =791
-            X: =8
-            Y: =8
-            ZIndex: =1
-
-    "'Detail Label' As label":
-        FontWeight: =FontWeight.Semibold
-        Size: =14
-        Text: |-
-            ="Description:"
-        X: =432
+    Button3 As button:
+        Height: =67
+        OnSelect: =Set(varTempDevOpsRESTGETBody, GetDevOpsProcessJSONString.Run().processarr)
+        Text: ="Get JSON"
+        X: =159
         Y: =216
-        ZIndex: =8
+        ZIndex: =15
 
-    "'Status Reason Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255,255,255,1)
-        Height: =48
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =48
-        Width: =245
-        X: =432
-        Y: =553
-        ZIndex: =9
+    TextInput1 As text:
+        Default: =varTempDevOpsRESTGETBody
+        Height: =432
+        Mode: =TextMode.MultiLine
+        Width: =276
+        X: =364
+        Y: =216
+        ZIndex: =17
 
-        Title8_3 As label:
-            DisplayMode: =DisplayMode.View
-            Height: =48
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =13
-            Text: =ThisItem.'Status Reason'
-            Width: =239
-            X: =6
-            ZIndex: =1
-
-    "'Status Reason Label' As label":
-        FontWeight: =FontWeight.Semibold
-        Size: =14
-        Text: |-
-            ="Status Reason:"
-        X: =432
-        Y: =517
-        ZIndex: =10
-
-    "'Scope Review Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255,255,255,1)
-        Height: =48
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =48
-        Width: =245
-        X: =823
-        Y: =553
-        ZIndex: =11
-
-        Title8_4 As label:
-            DisplayMode: =DisplayMode.View
-            Height: =48
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Scope Review'
-            Width: =239
-            X: =6
-            ZIndex: =1
-
-    "'Scope Review Label' As label":
-        FontWeight: =FontWeight.Semibold
-        Size: =14
-        Text: |-
-            ="Scope Review:"
-        X: =823
-        Y: =517
-        ZIndex: =12
-
-    "'Scope Review Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-        BorderThickness: =1
-        DelayItemLoading: =true
-        Fill: =RGBA(255,255,255,1)
-        Height: =48
-        Items: =Filter(Processes, 'Process Name' = 'Process Gallery Child'.Selected.'Process Name')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        OnSelect: =
-        TemplatePadding: =0
-        TemplateSize: =48
-        Width: =808
-        X: =432
-        Y: =661
-        ZIndex: =13
-
-        Title8_5 As label:
-            FontWeight: =FontWeight.Bold
-            Height: =48
-            OnSelect: |+
-                =If(IsBlank(ThisItem.'Data Flow URL'),
-                    Launch("https://lucid.app/documents#/documents?folder_id=335606626"),
-                    Launch(ThisItem.'Data Flow URL')
-                )
-                
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: |-
-                =If(IsBlank(ThisItem.'Data Flow URL'), 
-                    "The Data Flow Diagram does not yet exist. Please click here to create a new Data Flow in the Team Repo.",
-                    "Click here to open the Data Flow."
-                )
-            Underline: =true
-            Width: =802
-            X: =6
-            ZIndex: =1
-
-    "'Scope Review Label_1' As label":
-        FontWeight: =FontWeight.Semibold
-        Size: =14
-        Text: |-
-            ="Data Flow Diagram:"
-        Width: =245
-        X: =432
-        Y: =621
-        ZIndex: =14
+    Button4 As button:
+        Height: =67
+        OnSelect: =ClearCollect(colTempDevOpsProcesses, ConvertJSONtoCollection.Run())
+        Text: ="Convert JSON to collection"
+        Width: =186
+        X: =716
+        Y: =216
+        ZIndex: =18
 
