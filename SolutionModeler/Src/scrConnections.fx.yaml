@@ -1,6 +1,6 @@
 "scrConnections As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     Fill: |-
-        =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+        =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
@@ -11,7 +11,7 @@
     ConnectionsDetail As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
-            =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+            =If(varOpenConnectionCreate || varOpenConnectionUpdatedWindow || varOpenDeleteUserStoryWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =650
         Width: =996
@@ -21,7 +21,7 @@
 
         btnNew As button:
             Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -29,7 +29,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =
             Text: ="New Connection"
-            Visible: =If(varUpdateUserStory,false,true)
+            Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =67
             Y: =577
@@ -37,15 +37,17 @@
 
         btnUpdate As button:
             Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =
+            OnSelect: |-
+                =If(IsBlank(galConnections.Selected),Select(galConnections,1));
+                UpdateContext({varOpenConnectionCreate:true})
             Text: ="Update Connection"
-            Visible: =If(varUpdateUserStory,false,true)
+            Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =325
             Y: =577
@@ -66,7 +68,7 @@
 
         btnDelete As button:
             Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -74,7 +76,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =
             Text: ="Delete Connection"
-            Visible: =If(varUpdateUserStory,false,true)
+            Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =585
             Y: =577
@@ -296,7 +298,7 @@
         Default: =//varGalDefault
         DelayItemLoading: =true
         Fill: |-
-            =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+            =If(varOpenConnectionCreate || varOpenConnectionWindow || varOpenDeleteUserStoryWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =636
         Items: =Filter('Client Solution Connections', 'Client Solution'.'Client Solution' = SolutionGallery.Selected.'Client Solution')
@@ -365,7 +367,7 @@
     "'Connections Title_1' As label":
         Align: =Align.Center
         Fill: |-
-            =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+            =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
@@ -399,9 +401,9 @@
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
             Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
-            UpdateContext({varOpenUserStoryCreate:false});
-            UpdateContext({varUpdateUserStory:false});
-            UpdateContext({varDeleteUserStory:false});
+            UpdateContext({varOpenConnectionCreate:false});
+            UpdateContext({varUpdateConnection:false});
+            UpdateContext({varDeletConnection:false});
         Width: =45
         X: =17
         Y: =12
@@ -413,7 +415,7 @@
         Color: |-
             =ColorValue("#00467f")
         Fill: |-
-            =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+            =If(varOpenConnectionCreate || varOpenConnectionUpdatedWindow || varOpenDeleteConnectionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         FontWeight: =FontWeight.Bold
         Height: =56
@@ -426,7 +428,7 @@
     ConnectionUpdatedWindow_Container_1 As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Visible: =If(varOpenUserStoryUpdatedWindow,true,false)
+        Visible: =If(varOpenConnectionUpdatedWindow,true,false)
         X: =433
         Y: =303
         ZIndex: =9
@@ -435,8 +437,8 @@
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenUserStoryUpdatedWindow:false});
-                UpdateContext({varUpdateUserStory:false})
+                =UpdateContext({varOpenConnectionUpdatedWindow:false});
+                UpdateContext({varUpdateConnection:false})
             Width: =52
             X: =440
             Y: =5
@@ -468,7 +470,7 @@
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenDeleteUserStoryWindow:false});
-            Visible: =If(varMessageUserStoryDeleted,false,true)
+            Visible: =If(varMessageConnectionDeleted,false,true)
             Width: =52
             X: =550
             Y: =5
@@ -479,8 +481,8 @@
             Color: =RGBA(255, 0, 0, 1)
             Height: =54
             Size: =15
-            Text: ="User Story has been successfully deleted!"
-            Visible: =If(varMessageUserStoryDeleted,true, false)
+            Text: ="Connection has been successfully deleted!"
+            Visible: =If(varMessageConnectionDeleted,true, false)
             Width: =448
             X: =89
             Y: =109
@@ -493,7 +495,7 @@
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: =
             Text: ="Delete"
-            Visible: =If(varMessageUserStoryDeleted,false, true)
+            Visible: =If(varMessageConnectionDeleted,false, true)
             X: =59
             Y: =211
             ZIndex: =3
@@ -503,7 +505,7 @@
             Height: =54
             Size: =15
             Text: ="Please click 'Delete' button to continue"
-            Visible: =If(varMessageUserStoryDeleted,false, true)
+            Visible: =If(varMessageConnectionDeleted,false, true)
             Width: =507
             X: =59
             Y: =109
@@ -515,9 +517,9 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
-                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+                =UpdateContext({varOpenDeleteConnectionWindow:false});
             Text: ="Cancel"
-            Visible: =If(varMessageUserStoryDeleted,false, true)
+            Visible: =If(varMessageConnectionDeleted,false, true)
             X: =390
             Y: =211
             ZIndex: =5
@@ -526,12 +528,294 @@
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenDeleteUserStoryWindow:false});
-                UpdateContext({varMessageUserStoryDeleted:false});
-                UpdateContext({varUpdateUserStory:false});
-            Visible: =If(varMessageUserStoryDeleted,true,false)
+                =UpdateContext({varOpenDeleteConnectionWindow:false});
+                UpdateContext({varMessageConnectionDeleted:false});
+                UpdateContext({varUpdateConnection:false});
+            Visible: =If(varMessageConnectionDeleted,true,false)
             Width: =52
             X: =550
             Y: =5
             ZIndex: =6
+
+    CreateConnectionContainer_1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =679
+        Visible: =If(varOpenConnectionCreate,true,false)
+        Width: =905
+        X: =231
+        Y: =64
+        ZIndex: =12
+
+        "'Create Connection Form_1' As form":
+            DataSource: ='Client Solution Connections'
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =474
+            Item: =galConnections.Selected
+            NumberOfColumns: =2
+            Visible: =If(varOpenConnectionCreate,true,false)
+            Width: =859
+            X: =27
+            Y: =90
+            ZIndex: =1
+
+            "'Personal Access Token' As typedDataCard.textualEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_personalaccesstoken"
+                Default: =ThisItem.'Personal Access Token'
+                DisplayMode: =DisplayMode.Edit
+                DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_personalaccesstoken")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_personalaccesstoken")
+                Required: =true
+                Update: =DataCardValue15.Text
+                Width: =800
+                X: =0
+                Y: =1
+                ZIndex: =1
+
+                DataCardKey28 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue15 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    MaxLength: =Parent.MaxLength
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey28.Y + DataCardKey28.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage24 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue15.Y + DataCardValue15.Height
+                    ZIndex: =3
+
+                StarVisible17 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey28.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey28.Y
+                    ZIndex: =4
+
+            ConnectionName As typedDataCard.textualEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_name"
+                Default: =ThisItem.Name
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_name")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_name")
+                Required: =true
+                Update: =DataCardValue12.Text
+                Width: =429
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+                DataCardKey25 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue12 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    MaxLength: =Parent.MaxLength
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey25.Y + DataCardKey25.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage21 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue12.Y + DataCardValue12.Height
+                    ZIndex: =3
+
+                StarVisible10 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey25.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey25.Y
+                    ZIndex: =4
+
+            "'DevOps Organization URL' As typedDataCard.urlEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_devopsorganizationurl"
+                Default: =ThisItem.'DevOps Organization URL'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_devopsorganizationurl")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =true
+                Update: =DataCardValue13.Text
+                Width: =429
+                X: =1
+                Y: =0
+                ZIndex: =2
+
+                DataCardKey26 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue13 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey26.Y + DataCardKey26.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage22 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue13.Y + DataCardValue13.Height
+                    ZIndex: =3
+
+                StarVisible14 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey26.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey26.Y
+                    ZIndex: =4
+
+        "'Create Conn Button_1' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =    Patch('Client Solution Connections',
+                    Defaults('Client Solution Connections'),
+                        {
+                            Name:ConnectionName.DataField,
+                            'DevOps Organization URL':'DevOps Organization URL'.DataField,
+                            'Personal Access Token':'Personal Access Token'.DataField
+                        }
+                    );
+                
+                UpdateContext({varConnCreated:true});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+            Text: ="Create"
+            X: =376
+            Y: =622
+            ZIndex: =2
+
+        "'Create New Connection Title_1' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: |-
+                =ColorValue("#00467f")
+            Font: =Font.'Lato Black'
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =20
+            Text: ="Create New Connection"
+            Width: =CreateConnectionContainer_1.Width
+            ZIndex: =3
+
+        "'Connection Created Message_1' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Text: ="Connection was successfully created!"
+            Visible: =If(varConnCreated,true,false)
+            Width: =350
+            X: =281
+            Y: =575
+            ZIndex: =4
+
+        Icon1_1 As icon.Cancel:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenConnectionCreate:false});
+                UpdateContext({varConnCreated:false});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+            Width: =54
+            X: =CreateConnectionContainer_1.Width - 60
+            Y: =3
+            ZIndex: =5
 
