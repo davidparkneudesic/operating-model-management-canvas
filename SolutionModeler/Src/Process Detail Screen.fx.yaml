@@ -2,6 +2,18 @@
     Fill: =RGBA(255, 255, 255, 1)
     OnVisible: =Parent
 
+    "'Back Button_3' As icon.ChevronLeft":
+        Height: =51
+        Icon: =Icon.ChevronLeft
+        OnSelect: |-
+            =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
+            Back(ScreenTransition.UnCoverRight);
+            Navigate('Operating Models Screen',ScreenTransition.UnCoverRight)
+        Width: =52
+        X: =15
+        Y: =25
+        ZIndex: =1
+
     "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         DelayItemLoading: =true
         Height: =561
@@ -74,18 +86,6 @@
             Visible: =ThisItem.IsSelected
             Width: =4
             ZIndex: =5
-
-    "'Back Button_3' As icon.ChevronLeft":
-        Height: =51
-        Icon: =Icon.ChevronLeft
-        OnSelect: |-
-            =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
-            Back(ScreenTransition.UnCoverRight);
-            Navigate('Operating Models Screen',ScreenTransition.UnCoverRight)
-        Width: =52
-        X: =15
-        Y: =25
-        ZIndex: =1
 
     "'Process Detail Page Label' As label":
         Align: =Align.Center

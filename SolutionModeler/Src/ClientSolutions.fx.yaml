@@ -1818,6 +1818,27 @@
             Y: =295
             ZIndex: =15
 
+        UpdateClientSolution_Button_1 As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Fill: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            Height: =44
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =
+            Size: =14
+            Text: ="Manage Connections"
+            Visible: =If(varUpdateClientSolution,false,true)
+            Width: =261
+            X: =414
+            Y: =495
+            ZIndex: =16
+
     "SolutionGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
         Default: =//varGalDefault
