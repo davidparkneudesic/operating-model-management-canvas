@@ -1830,9 +1830,11 @@
             Height: =44
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =
+            OnSelect: |-
+                =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+                Navigate(scrConnections, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             Size: =14
-            Text: ="Manage Connections"
+            Text: ="Manage ADO Connections"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
             X: =414

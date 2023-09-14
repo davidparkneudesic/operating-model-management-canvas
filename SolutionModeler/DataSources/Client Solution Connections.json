@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "neu_connections",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "neu_connection",
+    "Name": "Client Solution Connections",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_ClientSolutionID": "Client Solution",
+      "neu_connection_AsyncOperations": "System Jobs",
+      "neu_connection_BulkDeleteFailures": "Bulk Delete Failures",
+      "neu_connection_DuplicateBaseRecord": "Duplicate Records (neu_connection_DuplicateBaseRecord)",
+      "neu_connection_DuplicateMatchingRecord": "Duplicate Records (neu_connection_DuplicateMatchingRecord)",
+      "neu_connection_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "neu_connection_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "neu_connection_ProcessSession": "Process Sessions",
+      "neu_connection_SyncErrors": "Sync Errors",
+      "neu_connectionid": "Connection",
+      "neu_devopsorganizationurl": "DevOps Organization URL",
+      "neu_name": "Name",
+      "neu_personalaccesstoken": "Personal Access Token",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Client Solution Connections",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Client Solution Connections (Views)",
+    "Name": "_neu_connection_views",
+    "RelatedEntityName": "Client Solution Connections",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "547f16d6-abbb-4956-8803-eecd9302683c": "Connection Associated View",
+      "5679d9d8-8ea6-4219-a400-e8d51dd46c5f": "Inactive Connections",
+      "93c6d6c4-3025-4e39-98cf-2ba2bec4403b": "Active Connections",
+      "a1ef78a9-1c8a-4813-a846-a958e2cf6ed5": "Connection Lookup View",
+      "c4f4049c-c961-4919-b119-d81312a1c4b5": "Connection Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Client Solution Connections)",
+    "Name": "neu_connection_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Client Solution Connections"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Client Solution Connections",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Client Solution Connections)",
+    "Name": "neu_connection_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Client Solution Connections"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Client Solution Connections",
+    "Type": "OptionSetInfo"
+  }
+]
