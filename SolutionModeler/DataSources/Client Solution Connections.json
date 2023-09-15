@@ -6,6 +6,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "neu_connection",
+    "MaxGetRowsCount": 500,
     "Name": "Client Solution Connections",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
