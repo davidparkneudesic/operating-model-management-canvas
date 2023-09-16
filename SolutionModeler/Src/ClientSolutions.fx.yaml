@@ -1686,7 +1686,7 @@
                             'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
                             'Status Reason':StatusReason_CS_Edit_ComboBox.Selected.Value,
                             'Solution Area':SolutionArea_CS_Edit_ComboBox.Selected,
-                            'Estimate URL':"<a href='" & EstimateURL_CS_Edit_Input.Text & "'>URL</a>",
+                            'Estimate URL':EstimateURL_CS_Edit_Input.Text,
                             'Implementation Model':ImplementationModel_CS_Edit_ComboBox.Selected,
                             'Project Start Date':ProjectStartDate_CS_Edit_DateValue.SelectedDate,
                             'Project End Date':ProjectEndDate_CS_Edit_DateValue.SelectedDate
@@ -2017,7 +2017,8 @@
                             'Client/Prospect Name':'Client/Prospect Name Input'.Text,
                             'Status Reason':'Status Reason CS Dropdown'.Selected.Value,
                             'Solution Area':'Solution Area CS Dropdown'.Selected,
-                            'Estimate URL':"<a href='" & 'Estimate URL Input'.Text & "'>URL</a>",
+                            //'Estimate URL':"<a href='" & 'Estimate URL Input'.Text & "'>URL</a>",
+                            'Estimate URL':'Estimate URL Input'.Text,
                             'Implementation Model':'Implementation Model CS Dropdown'.Selected,
                             'Project Start Date':'Project Start Date DatePicker'.SelectedDate,
                             'Project End Date':'Project End Date DatePicker'.SelectedDate
