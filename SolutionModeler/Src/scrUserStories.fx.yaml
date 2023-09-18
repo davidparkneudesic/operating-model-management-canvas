@@ -1,6 +1,6 @@
 "scrUserStories As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     Fill: |-
-        =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+        =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted || varOpenUserStoryUpdatedWindow, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
@@ -27,6 +27,7 @@
             Height: =477
             Item: =galUserStories.Selected
             NumberOfColumns: =4
+            Visible: =If(varUpdateUserStory,false,true)
             Width: =906
             X: =44
             Y: =76
@@ -469,6 +470,7 @@
                     DisplayMode: =DisplayMode.View
                     Fill: =RGBA(0, 0, 0, 0)
                     Format: =TextFormat.Number
+                    Height: =30
                     PaddingLeft: =5
                     RadiusBottomLeft: =0
                     RadiusBottomRight: =0
@@ -493,13 +495,14 @@
                 Rectangle11_4 As rectangle:
                     BorderThickness: =2
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =40
+                    Height: =DataCardValue11.Height
                     Width: =155
                     X: =30
                     Y: =49
                     ZIndex: =5
 
                 Label5 As label:
+                    Height: =DataCardValue11.Height
                     Text: ="%"
                     Width: =26
                     X: =158
@@ -1440,10 +1443,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                
-                UpdateContext({varUpdateUserStory:true})
+                =UpdateContext({varUpdateUserStory:true})
             Text: ="Update Story"
             Visible: =If(varUpdateUserStory,false,true)
             Width: =212
@@ -1453,7 +1453,7 @@
 
         "'Update Button' As button":
             Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted || varOpenUserStoryUpdatedWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -1504,7 +1504,7 @@
 
         "'Cancel User Story Update Button' As button":
             Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted || varOpenUserStoryUpdatedWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
@@ -1524,7 +1524,7 @@
 
         "'Delete User Story Button' As button":
             Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted || varOpenUserStoryUpdatedWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
