@@ -837,7 +837,7 @@
             Y: =5
             ZIndex: =6
 
-    CreateConnectionContainer_1 As groupContainer.manualLayoutContainer:
+    CreateConnectionContainer As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =679
@@ -1101,7 +1101,7 @@
             Height: =62
             Size: =20
             Text: ="Create New Connection"
-            Width: =CreateConnectionContainer_1.Width
+            Width: =CreateConnectionContainer.Width
             ZIndex: =3
 
         "'Connection Created Message_1' As label":
@@ -1123,7 +1123,7 @@
                 UpdateContext({varConnCreated:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Width: =54
-            X: =CreateConnectionContainer_1.Width - 60
+            X: =CreateConnectionContainer.Width - 60
             Y: =3
             ZIndex: =5
 
