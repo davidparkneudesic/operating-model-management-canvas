@@ -1,6 +1,6 @@
 "scrUserStories As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     Fill: |-
-        =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
+        =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted || varOpenUserStoryUpdatedWindow, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
