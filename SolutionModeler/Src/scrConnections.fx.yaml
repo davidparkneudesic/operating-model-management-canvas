@@ -50,7 +50,7 @@
             Text: ="Update Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =376
+            X: =666
             Y: =577
             ZIndex: =4
 
@@ -67,24 +67,9 @@
             Y: =36
             ZIndex: =9
 
-        btnDelete As button:
-            Fill: |-
-                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =
-            Text: ="Delete Connection"
-            Visible: =If(varUpdateConnection,false,true)
-            Width: =212
-            X: =685
-            Y: =577
-            ZIndex: =10
-
         ConnectionsViewForm As form:
             DataSource: ='Client Solution Connections'
+            DefaultMode: =FormMode.View
             Height: =416
             Item: =galConnections.Selected
             Visible: =If(varUpdateConnection,false, true)
@@ -161,6 +146,15 @@
                     Y: =DataCardKey24.Y
                     ZIndex: =4
 
+                Rectangle13 As rectangle:
+                    BorderThickness: =2
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =DataCardValue10.Height
+                    Width: =DataCardValue10.Width
+                    X: =30
+                    Y: =49
+                    ZIndex: =5
+
             "'DevOps Organization URL_DataCard1' As typedDataCard.urlEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_devopsorganizationurl"
@@ -227,6 +221,15 @@
                     Wrap: =false
                     Y: =DataCardKey5.Y
                     ZIndex: =4
+
+                Rectangle13_1 As rectangle:
+                    BorderThickness: =2
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =DataCardValue1.Height
+                    Width: =DataCardValue1.Width
+                    X: =30
+                    Y: =49
+                    ZIndex: =5
 
             "'Personal Access Token_DataCard1' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -298,6 +301,15 @@
                     Y: =DataCardKey22.Y
                     ZIndex: =4
 
+                Rectangle13_2 As rectangle:
+                    BorderThickness: =2
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =DataCardValue3.Height
+                    Width: =DataCardValue3.Width
+                    X: =30
+                    Y: =49
+                    ZIndex: =5
+
         ConnectionsEditForm As form:
             DataSource: ='Client Solution Connections'
             Height: =416
@@ -317,7 +329,7 @@
                 Height: =50
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
-                Update: =DataCardValue10_1.Text
+                Update: =ConnectionName_Edit_Input.Text
                 Width: =798
                 X: =0
                 Y: =0
@@ -333,7 +345,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue10_1 As text:
+                ConnectionName_Edit_Input As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -363,7 +375,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue10_1.Y + DataCardValue10_1.Height
+                    Y: =ConnectionName_Edit_Input.Y + ConnectionName_Edit_Input.Height
                     ZIndex: =3
 
                 StarVisible9_1 As label:
@@ -385,7 +397,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =true
-                Update: =DataCardValue1_1.Text
+                Update: =DevOpsURL_Edit_Input.Text
                 Width: =798
                 X: =0
                 Y: =1
@@ -401,7 +413,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue1_1 As text:
+                DevOpsURL_Edit_Input As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -430,7 +442,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue1_1.Y + DataCardValue1_1.Height
+                    Y: =DevOpsURL_Edit_Input.Y + DevOpsURL_Edit_Input.Height
                     ZIndex: =3
 
                 StarVisible5_1 As label:
@@ -453,7 +465,7 @@
                 Height: =50
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_personalaccesstoken")
                 Required: =true
-                Update: =DataCardValue3_1.Text
+                Update: =PAT_Edit_Input.Text
                 Width: =798
                 X: =0
                 Y: =2
@@ -469,7 +481,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue3_1 As text:
+                PAT_Edit_Input As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -500,7 +512,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue3_1.Y + DataCardValue3_1.Height
+                    Y: =PAT_Edit_Input.Y + PAT_Edit_Input.Height
                     ZIndex: =3
 
                 StarVisible6_2 As label:
@@ -513,6 +525,71 @@
                     Y: =DataCardKey22_1.Y
                     ZIndex: =4
 
+        btnUpdate_1 As button:
+            ContentLanguage: |-
+                =Patch(
+                    'Client Solution Connections',
+                    galConnections.Selected,
+                    {
+                        Name:ConnectionName_Edit_Input.Text,
+                        'DevOps Organization URL':DevOpsURL_Edit_Input.Text,
+                        'Personal Access Token':PAT_Edit_Input.Text
+                    }
+                );
+                
+                UpdateContext({varUpdateConnectionWindow:true})
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =UpdateContext({varOpenConnectionUpdate:true})
+            Text: ="Update"
+            Visible: =If(varUpdateConnection,true,false)
+            Width: =212
+            X: =67
+            Y: =577
+            ZIndex: =13
+
+        DeleteRecord_Button As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =UpdateContext({varUpdateConnection:true})
+            Text: ="Delete Record"
+            Visible: =If(varUpdateConnection,true,false)
+            Width: =212
+            X: =376
+            Y: =577
+            ZIndex: =14
+
+        Cancel_Update_Button As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =UpdateContext({varUpdateConnection:false})
+            Text: |-
+                ="Cancel
+                "
+            Visible: =If(varUpdateConnection,true,false)
+            Width: =212
+            X: =666
+            Y: =577
+            ZIndex: =15
+
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
         Default: =//varGalDefault
@@ -524,7 +601,7 @@
         Items: |-
             =//Filter('Client Solution Connections', 'Client Solution'.'Client Solution' = SolutionGallery.Selected.'Client Solution')
             
-            Sort('Client Solution Connections', 'Name')
+            Sort('Client Solution Connections', Name)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
@@ -945,7 +1022,8 @@
 
                 DevOpsURL_Input As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =
+                    Default: |-
+                        ="https://devops.azure.com"
                     DelayOutput: =true
                     DisplayMode: =Parent.DisplayMode
                     OnSelect: =

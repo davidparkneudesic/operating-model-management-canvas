@@ -1689,7 +1689,7 @@
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
             Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
-            UpdateContext({varOpenUserStoryCreate:false});
+            UpdateContext({var:false});
             UpdateContext({varUpdateUserStory:false});
             UpdateContext({varDeleteUserStory:false});
         Width: =45
