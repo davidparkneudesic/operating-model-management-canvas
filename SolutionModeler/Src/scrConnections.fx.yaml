@@ -600,7 +600,7 @@
             Y: =577
             ZIndex: =15
 
-        Button7_Update As button:
+        Button_Update As button:
             Height: =41
             OnSelect: |-
                 =UpdateContext({varUpdateConnection:false})
@@ -610,6 +610,18 @@
             X: =641
             Y: =576
             ZIndex: =16
+
+        Button_Delete As button:
+            Height: =44
+            OnSelect: |-
+                =If(IsBlank(galConnections.Selected),Select(galConnections,1));
+                UpdateContext({varOpenConnectionCreate:true})
+            Text: ="Button"
+            Visible: =false
+            Width: =288
+            X: =347
+            Y: =576
+            ZIndex: =17
 
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -728,7 +740,7 @@
         Width: =45
         X: =17
         Y: =12
-        ZIndex: =7
+        ZIndex: =6
 
     Connections_Gallery_Label_2 As label:
         Align: =Align.Center
@@ -744,7 +756,7 @@
         Text: ="Connections"
         Width: =313
         Y: =76
-        ZIndex: =8
+        ZIndex: =7
 
     ConnectionUpdatedWindow_Container_1 As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
@@ -752,7 +764,7 @@
         Visible: =If(varOpenConnectionUpdatedWindow,true,false)
         X: =433
         Y: =303
-        ZIndex: =9
+        ZIndex: =8
 
         Icon2_1 As icon.Cancel:
             Height: =54
@@ -776,88 +788,6 @@
             Y: =75
             ZIndex: =2
 
-    ConnectionDeletedWindow_Container_1 As groupContainer.manualLayoutContainer:
-        DropShadow: =DropShadow.Semibold
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =275
-        Visible: =If(varOpenDeleteUserStoryWindow,true,false)
-        Width: =608
-        X: =379
-        Y: =247
-        ZIndex: =11
-
-        "'Exit Before Deletion Icon_1' As icon.Cancel":
-            Height: =54
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteUserStoryWindow:false});
-            Visible: =If(varMessageConnectionDeleted,false,true)
-            Width: =52
-            X: =550
-            Y: =5
-            ZIndex: =1
-
-        "'User Story Deleted Message_1' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Height: =54
-            Size: =15
-            Text: ="Connection has been successfully deleted!"
-            Visible: =If(varMessageConnectionDeleted,true, false)
-            Width: =448
-            X: =89
-            Y: =109
-            ZIndex: =2
-
-        Button2_2 As button:
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =
-            Text: ="Delete"
-            Visible: =If(varMessageConnectionDeleted,false, true)
-            X: =59
-            Y: =211
-            ZIndex: =3
-
-        "'Do you want to continue Label_1' As label":
-            Align: =Align.Center
-            Height: =54
-            Size: =15
-            Text: ="Please click 'Delete' button to continue"
-            Visible: =If(varMessageConnectionDeleted,false, true)
-            Width: =507
-            X: =59
-            Y: =109
-            ZIndex: =4
-
-        Button2_3 As button:
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteConnectionWindow:false});
-            Text: ="Cancel"
-            Visible: =If(varMessageConnectionDeleted,false, true)
-            X: =390
-            Y: =211
-            ZIndex: =5
-
-        "'Exit After Deletion Icon_1' As icon.Cancel":
-            Height: =54
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteConnectionWindow:false});
-                UpdateContext({varMessageConnectionDeleted:false});
-                UpdateContext({varUpdateConnection:false});
-            Visible: =If(varMessageConnectionDeleted,true,false)
-            Width: =52
-            X: =550
-            Y: =5
-            ZIndex: =6
-
     CreateConnectionContainer As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -866,7 +796,7 @@
         Width: =905
         X: =231
         Y: =64
-        ZIndex: =12
+        ZIndex: =9
 
         "'Create Connection Form_1' As form":
             DataSource: ='Client Solution Connections'
@@ -1156,5 +1086,88 @@
             Width: =615
             X: =145
             Y: =564
+            ZIndex: =6
+
+    ConnectionDeletedWindow_Container_1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =275
+        Width: =608
+        X: =489
+        Y: =265
+        ZIndex: =10
+
+        "'Exit Before Deletion Icon_1' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+            Visible: =If(varMessageConnectionDeleted,false,true)
+            Width: =52
+            X: =550
+            Y: =5
+            ZIndex: =1
+
+        "'User Story Deleted Message_1' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =54
+            Size: =15
+            Text: ="Connection has been successfully deleted!"
+            Visible: =If(varMessageConnectionDeleted,true, false)
+            Width: =448
+            X: =89
+            Y: =109
+            ZIndex: =2
+
+        Button2_2 As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
+            OnSelect: |-
+                =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.'Connection'));
+                UpdateContext({varMessageUserStoryDeleted:true})
+            Text: ="Delete"
+            Visible: =If(varMessageConnectionDeleted,false, true)
+            X: =59
+            Y: =211
+            ZIndex: =3
+
+        "'Do you want to continue Label_1' As label":
+            Align: =Align.Center
+            Height: =54
+            Size: =15
+            Text: ="Please click 'Delete' button to continue"
+            Visible: =If(varMessageConnectionDeleted,false, true)
+            Width: =507
+            X: =59
+            Y: =109
+            ZIndex: =4
+
+        Button2_3 As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteConnectionWindow:false});
+            Text: ="Cancel"
+            Visible: =If(varMessageConnectionDeleted,false, true)
+            X: =390
+            Y: =211
+            ZIndex: =5
+
+        "'Exit After Deletion Icon_1' As icon.Cancel":
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteConnectionWindow:false});
+                UpdateContext({varMessageConnectionDeleted:false});
+                UpdateContext({varUpdateConnection:false});
+            Visible: =If(varMessageConnectionDeleted,true,false)
+            Width: =52
+            X: =550
+            Y: =5
             ZIndex: =6
 

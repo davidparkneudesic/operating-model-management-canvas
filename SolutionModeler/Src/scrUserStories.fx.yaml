@@ -2461,10 +2461,9 @@
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =275
-        Visible: =If(varOpenDeleteUserStoryWindow,true,false)
         Width: =608
-        X: =379
-        Y: =247
+        X: =536
+        Y: =254
         ZIndex: =11
 
         "'Exit Before Deletion Icon' As icon.Cancel":
