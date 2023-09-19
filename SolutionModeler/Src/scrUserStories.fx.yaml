@@ -1460,10 +1460,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                
-                If(EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.No,
+                =If(EpicLevelItem_Dropdown_Update.Selected.Value = 'Epic Level Item (User Stories)'.No,
                     Patch(
                         'User Stories',
                         galUserStories.Selected,

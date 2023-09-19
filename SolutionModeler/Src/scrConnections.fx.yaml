@@ -1,6 +1,6 @@
 "scrConnections As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
     Fill: |-
-        =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+        =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varOpenConnectionUpdatedWindow, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
@@ -74,7 +74,7 @@
             Item: =galConnections.Selected
             Visible: =If(varUpdateConnection,false, true)
             X: =78
-            Y: =86
+            Y: =85
             ZIndex: =11
 
             Name_DataCard2 As typedDataCard.textualEditCard:
@@ -84,7 +84,7 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_name")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =99
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
                 Update: =DataCardValue10.Text
@@ -162,7 +162,7 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_devopsorganizationurl")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =99
                 Required: =true
                 Update: =DataCardValue1.Text
                 Width: =798
@@ -238,7 +238,7 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_personalaccesstoken")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =99
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_personalaccesstoken")
                 Required: =true
                 Update: =DataCardValue3.Text
@@ -526,18 +526,6 @@
                     ZIndex: =4
 
         btnUpdate_1 As button:
-            ContentLanguage: |-
-                =Patch(
-                    'Client Solution Connections',
-                    galConnections.Selected,
-                    {
-                        Name:ConnectionName_Edit_Input.Text,
-                        'DevOps Organization URL':DevOpsURL_Edit_Input.Text,
-                        'Personal Access Token':PAT_Edit_Input.Text
-                    }
-                );
-                
-                UpdateContext({varOpenConnectionUpdatedWindow:true});
             Fill: |-
                 =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -556,7 +544,7 @@
                         }
                     );
                 
-                UpdateContext({varOpenConnectionUpdate:true})
+                UpdateContext({varOpenConnectionUpdatedWindow:true})
             Text: ="Update"
             Visible: =If(varUpdateConnection,true,false)
             Width: =212
@@ -616,10 +604,10 @@
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
             =If(ThisItem.Name = galConnections.Selected.Name && 
-                    !(varOpenConnectionCreate || varOpenDeleteUserStoryWindow), 
+                    !(varOpenConnectionCreate || varOpenDeleteConnectionWindow || varOpenConnectionUpdatedWindow), 
                  RGBA(204, 208, 225, 1),
                 If (ThisItem.Name = galConnections.Selected.Name && 
-                        (varOpenConnectionCreate || varOpenDeleteUserStoryWindow),
+                        (varOpenConnectionCreate || varOpenDeleteConnectionWindow || varOpenConnectionUpdatedWindow),
                         RGBA(153, 160, 196, 1),
                         RGBA(0,0,0,0)
                 )
@@ -677,7 +665,7 @@
     "'Connections Title_1' As label":
         Align: =Align.Center
         Fill: |-
-            =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+            =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varOpenConnectionUpdatedWindow, 
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
@@ -768,17 +756,17 @@
     CreateConnectionContainer As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =679
+        Height: =476
         Visible: =If(varOpenConnectionCreate,true,false)
         Width: =905
         X: =231
-        Y: =64
+        Y: =146
         ZIndex: =9
 
         "'Create Connection Form_1' As form":
             DataSource: ='Client Solution Connections'
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =474
+            Height: =254
             Item: =galConnections.Selected
             NumberOfColumns: =2
             Visible: =If(varOpenConnectionCreate,true,false)
@@ -1016,7 +1004,7 @@
                 UpdateContext({resetControl: !resetControl});
             Text: ="Create"
             X: =373
-            Y: =615
+            Y: =395
             ZIndex: =2
 
         "'Create New Connection Title_1' As label":
@@ -1039,7 +1027,7 @@
             Visible: =If(varConnCreated,true,false)
             Width: =350
             X: =281
-            Y: =575
+            Y: =344
             ZIndex: =4
 
         Icon1_1 As icon.Cancel:
@@ -1105,7 +1093,7 @@
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.Connection));
-                UpdateContext({varOpenDeleteConnectionWindow:true})
+                UpdateContext({varMessageConnectionDeleted:true})
             Text: ="Delete"
             Visible: =If(varMessageConnectionDeleted,false, true)
             X: =59
