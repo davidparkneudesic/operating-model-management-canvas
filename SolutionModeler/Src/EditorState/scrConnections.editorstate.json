@@ -543,7 +543,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnNew",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -828,7 +828,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnUpdate",
-      "ParentIndex": 4,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1121,7 +1121,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnUpdate_1",
-      "ParentIndex": 5,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1919,6 +1919,14 @@
           "InvariantPropertyName": "Visible",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -1931,7 +1939,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button7_Update",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2113,6 +2121,11 @@
           "Category": "Design",
           "PropertyName": "HoverBorderColor",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnSelect",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultButtonStyle",
@@ -2211,7 +2224,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Cancel_Update_Button",
-      "ParentIndex": 7,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4757,7 +4770,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "ConnectionsEditForm",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4884,7 +4897,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "ConnectionsViewForm",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9593,7 +9606,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "DeleteRecord_Button",
-      "ParentIndex": 6,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

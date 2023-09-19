@@ -602,6 +602,8 @@
 
         Button7_Update As button:
             Height: =41
+            OnSelect: |-
+                =UpdateContext({varUpdateConnection:false})
             Text: ="Button"
             Visible: =false
             Width: =261
