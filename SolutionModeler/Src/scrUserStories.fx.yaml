@@ -1531,7 +1531,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =UpdateContext({varOpenDeleteUserStoryWindow:true});
+                =UpdateContext({varOpenDeleteUserStoryWindow:true}); 
             Text: ="Delete Story"
             Visible: =If(varUpdateUserStory,true, false)
             Width: =158
