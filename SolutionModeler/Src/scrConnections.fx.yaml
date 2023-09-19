@@ -1100,8 +1100,7 @@
         "'Exit Before Deletion Icon_1' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+            OnSelect: =
             Visible: =If(varMessageConnectionDeleted,false,true)
             Width: =52
             X: =550
@@ -1126,7 +1125,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
-                =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.'Connection'));
+                =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.Connection));
                 UpdateContext({varMessageUserStoryDeleted:true})
             Text: ="Delete"
             Visible: =If(varMessageConnectionDeleted,false, true)
