@@ -1100,8 +1100,7 @@
         "'Exit Before Deletion Icon_1' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteUserStoryWindow:false});
+            OnSelect: =""
             Visible: =If(varMessageConnectionDeleted,false,true)
             Width: =52
             X: =550
