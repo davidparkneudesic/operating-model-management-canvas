@@ -1941,6 +1941,8 @@
             Navigate(HomePage, ScreenTransition.UnCoverRight);
             UpdateContext({varOpenCreateClientSolution:false});
             UpdateContext({varUpdateClientSolution:false});
+            UpdateContext({varDeleteClientSolutionWindow:false});
+            UpdateContext({varUpdatedCSWindow:false});
         Width: =45
         X: =18
         Y: =15

@@ -70,11 +70,11 @@
         ConnectionsViewForm As form:
             DataSource: ='Client Solution Connections'
             DefaultMode: =FormMode.View
-            Height: =416
+            Height: =392
             Item: =galConnections.Selected
             Visible: =If(varUpdateConnection,false, true)
             X: =78
-            Y: =85
+            Y: =108
             ZIndex: =11
 
             Name_DataCard2 As typedDataCard.textualEditCard:
@@ -312,11 +312,11 @@
 
         ConnectionsEditForm As form:
             DataSource: ='Client Solution Connections'
-            Height: =416
+            Height: =392
             Item: =galConnections.Selected
             Visible: =If(varUpdateConnection,true, false)
             X: =78
-            Y: =85
+            Y: =108
             ZIndex: =12
 
             Name_DataCard2_1 As typedDataCard.textualEditCard:
@@ -380,6 +380,7 @@
 
                 StarVisible9_1 As label:
                     Align: =Align.Center
+                    Color: =RGBA(255, 0, 0, 1)
                     Height: =DataCardKey24_1.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -447,6 +448,7 @@
 
                 StarVisible5_1 As label:
                     Align: =Align.Center
+                    Color: =RGBA(255, 0, 0, 1)
                     Height: =DataCardKey5_1.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -517,6 +519,7 @@
 
                 StarVisible6_2 As label:
                     Align: =Align.Center
+                    Color: =RGBA(255, 0, 0, 1)
                     Height: =DataCardKey22_1.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -587,6 +590,15 @@
             X: =666
             Y: =577
             ZIndex: =15
+
+        RquiredFields_ConnectionDetail As label:
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =31
+            Text: ="* Required fields"
+            Visible: =If(varUpdateConnection,true,false)
+            X: =105
+            Y: =85
+            ZIndex: =16
 
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -701,7 +713,8 @@
             Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
             UpdateContext({varOpenConnectionCreate:false});
             UpdateContext({varUpdateConnection:false});
-            UpdateContext({varDeletConnection:false});
+            UpdateContext({varOpenDeleteConnectionWindow:false});
+            UpdateContext({varOpenConnectionUpdatedWindow:false})
         Width: =45
         X: =17
         Y: =12
@@ -756,7 +769,7 @@
     CreateConnectionContainer As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =476
+        Height: =499
         Visible: =If(varOpenConnectionCreate,true,false)
         Width: =905
         X: =231
@@ -771,8 +784,8 @@
             NumberOfColumns: =2
             Visible: =If(varOpenConnectionCreate,true,false)
             Width: =859
-            X: =27
-            Y: =90
+            X: =24
+            Y: =117
             ZIndex: =1
 
             "'Personal Access Token' As typedDataCard.textualEditCard":
@@ -835,6 +848,7 @@
 
                 StarVisible17 As label:
                     Align: =Align.Center
+                    Color: =RGBA(255, 0, 0, 1)
                     Height: =DataCardKey28.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -903,6 +917,7 @@
 
                 StarVisible10 As label:
                     Align: =Align.Center
+                    Color: =RGBA(255, 0, 0, 1)
                     Height: =DataCardKey25.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -971,6 +986,7 @@
 
                 StarVisible14 As label:
                     Align: =Align.Center
+                    Color: =RGBA(255, 0, 0, 1)
                     Height: =DataCardKey26.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
@@ -1003,8 +1019,8 @@
                 UpdateContext({resetControl: !resetControl});
                 UpdateContext({resetControl: !resetControl});
             Text: ="Create"
-            X: =373
-            Y: =395
+            X: =376
+            Y: =430
             ZIndex: =2
 
         "'Create New Connection Title_1' As label":
@@ -1027,7 +1043,7 @@
             Visible: =If(varConnCreated,true,false)
             Width: =350
             X: =281
-            Y: =344
+            Y: =379
             ZIndex: =4
 
         Icon1_1 As icon.Cancel:
@@ -1052,6 +1068,16 @@
             X: =145
             Y: =564
             ZIndex: =6
+
+        Required_fields_Label_Conn_Create As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Font: =Font.Lato
+            Text: ="* Required fields"
+            Width: =233
+            X: =336
+            Y: =77
+            ZIndex: =7
 
     ConnectionDeletedWindow_Container_1 As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold

@@ -1416,7 +1416,7 @@
                     Y: =DataCardKey11_1.Y
                     ZIndex: =4
 
-        Button5 As button:
+        Create_UserStory_Button As button:
             Fill: |-
                 =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1430,11 +1430,11 @@
             Text: ="New User Story"
             Visible: =If(varUpdateUserStory,false,true)
             Width: =212
-            X: =398
+            X: =390
             Y: =577
             ZIndex: =3
 
-        Button5_1 As button:
+        UpdateStory_EditMode_Button As button:
             Fill: |-
                 =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1447,7 +1447,7 @@
             Text: ="Update Story"
             Visible: =If(varUpdateUserStory,false,true)
             Width: =212
-            X: =745
+            X: =738
             Y: =577
             ZIndex: =4
 
@@ -1490,11 +1490,10 @@
                     )
                 );
                 
-                UpdateContext({varUserStoryUpdated:true});
                 UpdateContext({varOpenUserStoryUpdatedWindow:true});
-            Text: ="Update"
+            Text: ="Update Story"
             Visible: =If(varUpdateUserStory,true,false)
-            Width: =150
+            Width: =212
             X: =67
             Y: =577
             ZIndex: =5
@@ -1508,14 +1507,13 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =//ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                //ResetForm(UserStoryForm);NewForm(UserStoryForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                
-                UpdateContext({varUpdateUserStory:false})
-            Text: ="Cancel"
+                =UpdateContext({varUpdateUserStory:false})
+            Text: |-
+                ="Cancel
+                "
             Visible: =If(varUpdateUserStory,true, false)
-            Width: =150
-            X: =776
+            Width: =212
+            X: =722
             Y: =577
             ZIndex: =6
 
@@ -1531,12 +1529,12 @@
                 =UpdateContext({varOpenDeleteUserStoryWindow:true}); 
             Text: ="Delete Story"
             Visible: =If(varUpdateUserStory,true, false)
-            Width: =158
-            X: =427
+            Width: =212
+            X: =402
             Y: =577
             ZIndex: =7
 
-        Button1 As button:
+        Run_EpicBalancerFunction_Button As button:
             Fill: |-
                 =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1553,7 +1551,7 @@
             Y: =577
             ZIndex: =8
 
-        Label1 As label:
+        UserStory_Detail_Title As label:
             Color: |-
                 =ColorValue("#00467f")
             Font: =Font.'Lato Black'
@@ -1686,9 +1684,9 @@
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
             Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
-            UpdateContext({var:false});
             UpdateContext({varUpdateUserStory:false});
-            UpdateContext({varDeleteUserStory:false});
+            UpdateContext({varOpenDeleteUserStoryWindow:false}); 
+            UpdateContext({varOpenUserStoryUpdatedWindow:false});
         Width: =45
         X: =17
         Y: =12

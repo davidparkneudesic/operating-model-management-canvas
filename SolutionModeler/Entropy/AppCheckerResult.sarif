@@ -7615,36 +7615,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrConnections.varDeletConnection"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.varDeletConnection",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varDeletConnection",
-                "module": "scrConnections",
-                "type": "scrConnections"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrConnections.varOpenConnectionUpdate"
                 }
               ],
@@ -7658,96 +7628,6 @@
                 "member": "varOpenConnectionUpdate",
                 "module": "scrConnections",
                 "type": "scrConnections"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.var"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.var",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "var",
-                "module": "scrUserStories",
-                "type": "scrUserStories"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.varDeleteUserStory"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.varDeleteUserStory",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varDeleteUserStory",
-                "module": "scrUserStories",
-                "type": "scrUserStories"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.varUserStoryUpdated"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.varUserStoryUpdated",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varUserStoryUpdated",
-                "module": "scrUserStories",
-                "type": "scrUserStories"
               }
             }
           ],
