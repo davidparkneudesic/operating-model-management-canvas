@@ -546,7 +546,17 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =UpdateContext({varOpenConnectionUpdate:true})
+                =Patch(
+                    'Client Solution Connections',
+                        galConnections.Selected,
+                        {
+                            Name:ConnectionName_Edit_Input.Text,
+                            'DevOps Organization URL':DevOpsURL_Edit_Input.Text,
+                            'Personal Access Token':PAT_Edit_Input.Text
+                        }
+                    );
+                
+                UpdateContext({varOpenConnectionUpdate:true})
             Text: ="Update"
             Visible: =If(varUpdateConnection,true,false)
             Width: =212
