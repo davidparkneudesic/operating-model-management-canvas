@@ -1126,7 +1126,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
-                =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.'Connection'));
+                =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.Connection));
                 UpdateContext({varMessageUserStoryDeleted:true})
             Text: ="Delete"
             Visible: =If(varMessageConnectionDeleted,false, true)
@@ -1151,7 +1151,8 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
-                =UpdateContext({varOpenDeleteConnectionWindow:false});
+                =UpdateContext({varOpenCreateDConnection:false});
+                UpdateContext({varOpenConnectionUpdate:false});
             Text: ="Cancel"
             Visible: =If(varMessageConnectionDeleted,false, true)
             X: =390
