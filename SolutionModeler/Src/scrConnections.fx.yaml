@@ -537,7 +537,7 @@
                     }
                 );
                 
-                UpdateContext({varUpdateConnectionWindow:true})
+                UpdateContext({varOpenConnectionUpdatedWindow:true});
             Fill: |-
                 =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -599,17 +599,6 @@
             X: =666
             Y: =577
             ZIndex: =15
-
-        Button_Update As button:
-            Height: =41
-            OnSelect: |-
-                =UpdateContext({varUpdateConnection:false})
-            Text: ="Button"
-            Visible: =false
-            Width: =261
-            X: =641
-            Y: =576
-            ZIndex: =16
 
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -746,7 +735,7 @@
         Y: =76
         ZIndex: =7
 
-    ConnectionUpdatedWindow_Container_1 As groupContainer.manualLayoutContainer:
+    ConnectionUpdatedWindow_Container As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Visible: =If(varOpenConnectionUpdatedWindow,true,false)
@@ -1089,7 +1078,8 @@
         "'Exit Before Deletion Icon_1' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
-            OnSelect: =""
+            OnSelect: |-
+                =UpdateContext({varOpenDeleteConnectionWindow:false})
             Visible: =If(varMessageConnectionDeleted,false,true)
             Width: =52
             X: =550
@@ -1139,7 +1129,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
-                =UpdateContext({varOpenCreateDConnection:false});
+                =UpdateContext({varOpenDeleteConnectionWindow:false});
                 UpdateContext({varOpenConnectionUpdate:false});
             Text: ="Cancel"
             Visible: =If(varMessageConnectionDeleted,false, true)
