@@ -206,6 +206,46 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 28,
+                  "charOffset": 64,
+                  "snippet": {
+                    "text": "varOpenDeleteUserStoryWindow"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "scrConnections",
+                "type": "scrConnections.ConnectionsDetail"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "varOpenDeleteUserStoryWindow"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scrConnections.ConnectionsDetail.btnUpdate_1.ContentLanguage"
                 }
               ],
@@ -348,6 +388,126 @@
           },
           "ruleId": "app-ErrOperatorExpected",
           "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.galConnections.Fill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.galConnections.Fill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 28,
+                  "charOffset": 30,
+                  "snippet": {
+                    "text": "varOpenDeleteUserStoryWindow"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Fill",
+                "module": "scrConnections",
+                "type": "scrConnections.galConnections"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "varOpenDeleteUserStoryWindow"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.galConnections.galleryTemplate1_1.TemplateFill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.galConnections.galleryTemplate1_1.TemplateFill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 28,
+                  "charOffset": 89,
+                  "snippet": {
+                    "text": "varOpenDeleteUserStoryWindow"
+                  }
+                }
+              },
+              "properties": {
+                "member": "TemplateFill",
+                "module": "scrConnections",
+                "type": "scrConnections.galConnections.galleryTemplate1_1"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "varOpenDeleteUserStoryWindow"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.galConnections.galleryTemplate1_1.TemplateFill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.galConnections.galleryTemplate1_1.TemplateFill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 28,
+                  "charOffset": 247,
+                  "snippet": {
+                    "text": "varOpenDeleteUserStoryWindow"
+                  }
+                }
+              },
+              "properties": {
+                "member": "TemplateFill",
+                "module": "scrConnections",
+                "type": "scrConnections.galConnections.galleryTemplate1_1"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "varOpenDeleteUserStoryWindow"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -5994,96 +6154,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.Name_DataCard2.DataCardValue10.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.Name_DataCard2.DataCardValue10.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrConnections",
-                "type": "scrConnections.ConnectionsDetail.ConnectionsViewForm.Name_DataCard2.DataCardValue10"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'DevOps Organization URL_DataCard1'.DataCardValue1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'DevOps Organization URL_DataCard1'.DataCardValue1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrConnections",
-                "type": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'DevOps Organization URL_DataCard1'.DataCardValue1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'Personal Access Token_DataCard1'.DataCardValue3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'Personal Access Token_DataCard1'.DataCardValue3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrConnections",
-                "type": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'Personal Access Token_DataCard1'.DataCardValue3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsEditForm.Name_DataCard2_1.ConnectionName_Edit_Input.AccessibleLabel"
                 }
               ],
@@ -6157,6 +6227,96 @@
                 "member": "AccessibleLabel",
                 "module": "scrConnections",
                 "type": "scrConnections.ConnectionsDetail.ConnectionsEditForm.'Personal Access Token_DataCard1_1'.PAT_Edit_Input"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.Name_DataCard2.DataCardValue10.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.Name_DataCard2.DataCardValue10.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrConnections",
+                "type": "scrConnections.ConnectionsDetail.ConnectionsViewForm.Name_DataCard2.DataCardValue10"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'DevOps Organization URL_DataCard1'.DataCardValue1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'DevOps Organization URL_DataCard1'.DataCardValue1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrConnections",
+                "type": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'DevOps Organization URL_DataCard1'.DataCardValue1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'Personal Access Token_DataCard1'.DataCardValue3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'Personal Access Token_DataCard1'.DataCardValue3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrConnections",
+                "type": "scrConnections.ConnectionsDetail.ConnectionsViewForm.'Personal Access Token_DataCard1'.DataCardValue3"
               }
             }
           ],
@@ -7834,6 +7994,36 @@
               },
               "properties": {
                 "member": "varOpenConnectionUpdate",
+                "module": "scrConnections",
+                "type": "scrConnections"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.varOpenCreateDConnection"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.varOpenCreateDConnection",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varOpenCreateDConnection",
                 "module": "scrConnections",
                 "type": "scrConnections"
               }
