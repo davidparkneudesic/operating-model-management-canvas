@@ -1100,7 +1100,7 @@
         "'Exit Before Deletion Icon_1' As icon.Cancel":
             Height: =54
             Icon: =Icon.Cancel
-            OnSelect: =
+            OnSelect: =""
             Visible: =If(varMessageConnectionDeleted,false,true)
             Width: =52
             X: =550
@@ -1149,8 +1149,7 @@
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteConnectionWindow:false});
+            OnSelect: =
             Text: ="Cancel"
             Visible: =If(varMessageConnectionDeleted,false, true)
             X: =390

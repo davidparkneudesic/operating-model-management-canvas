@@ -7774,6 +7774,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrConnections.ConnectionDeletedWindow_Container_1.'Exit Before Deletion Icon_1'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.ConnectionDeletedWindow_Container_1.'Exit Before Deletion Icon_1'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrConnections",
+                "type": "scrConnections.ConnectionDeletedWindow_Container_1.'Exit Before Deletion Icon_1'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.ConnectionDeletedWindow_Container_1.'Exit Before Deletion Icon_1'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.ConnectionDeletedWindow_Container_1.'Exit Before Deletion Icon_1'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "scrConnections",
+                "type": "scrConnections.ConnectionDeletedWindow_Container_1.'Exit Before Deletion Icon_1'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.ClientSolutionIdentifier"
                 }
               ],
