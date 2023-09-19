@@ -7873,36 +7873,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrConnections.varMessageUserStoryDeleted"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.varMessageUserStoryDeleted",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varMessageUserStoryDeleted",
-                "module": "scrConnections",
-                "type": "scrConnections"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrConnections.varOpenConnectionUpdate"
                 }
               ],

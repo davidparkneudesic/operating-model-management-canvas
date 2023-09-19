@@ -573,7 +573,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =UpdateContext({varUpdateConnection:true})
+                =UpdateContext({varOpenDeleteConnectionWindow:true})
             Text: ="Delete Record"
             Visible: =If(varUpdateConnection,true,false)
             Width: =212
@@ -610,18 +610,6 @@
             X: =641
             Y: =576
             ZIndex: =16
-
-        Button_Delete As button:
-            Height: =44
-            OnSelect: |-
-                =If(IsBlank(galConnections.Selected),Select(galConnections,1));
-                UpdateContext({varOpenConnectionCreate:true})
-            Text: ="Button"
-            Visible: =false
-            Width: =288
-            X: =347
-            Y: =576
-            ZIndex: =17
 
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -1092,9 +1080,10 @@
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =275
+        Visible: =If(varOpenDeleteConnectionWindow,true, false)
         Width: =608
-        X: =489
-        Y: =265
+        X: =379
+        Y: =247
         ZIndex: =10
 
         "'Exit Before Deletion Icon_1' As icon.Cancel":
@@ -1126,7 +1115,7 @@
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = galConnections.Selected.Connection));
-                UpdateContext({varMessageUserStoryDeleted:true})
+                UpdateContext({varOpenDeleteConnectionWindow:true})
             Text: ="Delete"
             Visible: =If(varMessageConnectionDeleted,false, true)
             X: =59
