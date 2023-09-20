@@ -825,6 +825,7 @@
                     RadiusBottomRight: =0
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
+                    Reset: =resetControl
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
@@ -894,6 +895,7 @@
                     RadiusBottomRight: =0
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
+                    Reset: =resetControl
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
@@ -1016,8 +1018,7 @@
                 );
                 
                 UpdateContext({varConnCreated:true});
-                UpdateContext({resetControl: !resetControl});
-                UpdateContext({resetControl: !resetControl});
+                UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
             X: =376
             Y: =430
