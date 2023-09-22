@@ -100,7 +100,7 @@
 
     Button3 As button:
         Height: =67
-        OnSelect: =Set(varTempDevOpsRESTGETBody, GetDevOpsProcessJSONString.Run().processarr)
+        OnSelect: =Set(varTempDevOpsRESTGETBody, ExtractJSONBody.Run().jsoncontent)
         Text: ="Get JSON"
         X: =159
         Y: =216
@@ -117,7 +117,7 @@
 
     Button4 As button:
         Height: =67
-        OnSelect: =ClearCollect(colTempDevOpsProcesses, ConvertJSONtoCollection.Run())
+        OnSelect: =ClearCollect(colTempDevOpsProcesses, ExtractJSONBody.Run())
         Text: ="Convert JSON to collection"
         Width: =186
         X: =716
@@ -167,4 +167,11 @@
             X: =341
             Y: =4
             ZIndex: =2
+
+    Button1 As button:
+        OnSelect: =GetDevOpsProcessJSONString.Run()
+        Text: ="Button"
+        X: =159
+        Y: =363
+        ZIndex: =21
 

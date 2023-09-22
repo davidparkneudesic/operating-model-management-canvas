@@ -1018,6 +1018,7 @@
                 );
                 
                 UpdateContext({varConnCreated:true});
+                UpdateContext({varOpenConnectionCreate:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
             X: =376
@@ -1041,7 +1042,10 @@
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
             Text: ="Connection was successfully created!"
-            Visible: =If(varConnCreated,true,false)
+            Visible: |-
+                =//If(varConnCreated,true,false)
+                
+                false
             Width: =350
             X: =281
             Y: =379
