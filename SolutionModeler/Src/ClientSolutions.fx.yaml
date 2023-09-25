@@ -35,7 +35,7 @@
                 =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =328
-            Items: =Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
+            Items: =Sort(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', 'Operating Model Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -1697,13 +1697,13 @@
                 // Clear all the relationship before creating another relationship with the selected values
                 ForAll(
                     'Operating Model Gallery'.AllItems,
-                    Unrelate(SolutionGallery.Selected.'Operating Models', ThisRecord)
+                    Unrelate(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
                 );
                 
                 // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
                 ForAll(
                     RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
-                    Relate(SolutionGallery.Selected.'Operating Models', ThisRecord)
+                    Relate(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
                 );
                 
                 UpdateContext({varUpdatedCSWindow:true})
@@ -2069,7 +2069,7 @@
                 ForAll(
                     'Related Operating Models Combobox'.SelectedItems, 
                     Relate(
-                        First(colCreatedClientSolutionTemp).'Operating Models', 
+                        First(colCreatedClientSolutionTemp).'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', 
                         ThisRecord
                     )
                 );

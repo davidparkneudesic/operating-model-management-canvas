@@ -25,11 +25,14 @@
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: |
-                =SortByColumns( 
-                    Filter('Operating Models','Shared Model' = true
+                =//If(ClientSolutionIdentifier <> "",
+                
+                
+                SortByColumns( 
+                    Filter('Operating Models','Client Solution Ide
                     )
                     ,"neu_operatingmodelname"
-                    ,SortOrder.Descending
+                    ,SortOrder.Ascending
                 )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -534,6 +537,13 @@
             X: =935
             Y: =580
             ZIndex: =14
+
+        TextInput2 As text:
+            Default: =ClientSolutionIdentifier
+            Height: =37
+            Width: =189
+            X: =1064
+            ZIndex: =15
 
     "'Operating Model Screen Label' As label":
         Align: =Align.Center

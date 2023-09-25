@@ -17,7 +17,9 @@
       "modifiedby": "Modified By",
       "modifiedon": "Modified On",
       "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_ClientSolution": "Client Solution",
       "neu_ClientSolution_neu_OperatingModel_neu": "Client Solutions",
+      "neu_clientspecific": "Client Specific",
       "neu_model": "Model",
       "neu_neu_capability_OperatingModelID_neu_opera": "Capabilities",
       "neu_neu_userstory_OperatingModelID_neu_operat": "User Stories",
@@ -60,6 +62,26 @@
       "d0dd79c4-13d2-4428-a358-ad25df3f51c8": "Active Operating Models",
       "d35106ba-e614-49e7-b14b-79cef509a80a": "Operating Model Associated View"
     }
+  },
+  {
+    "DisplayName": "Client Specific (Operating Models)",
+    "Name": "neu_operatingmodel_neu_clientspecific",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_clientspecific",
+        "OptionSetReferenceEntityName": "Operating Models"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "neu_clientspecific",
+    "RelatedEntityName": "Operating Models",
+    "Type": "OptionSetInfo"
   },
   {
     "DisplayName": "Shared Model (Operating Models)",
