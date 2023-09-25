@@ -36,7 +36,7 @@
                     ,
                 
                     SortByColumns( 
-                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' =
+                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text)
                     )
                     ,"neu_operatingmodelname"
                         ,SortOrder.Ascending
@@ -548,9 +548,9 @@
 
         txtClientID As text:
             Default: =ClientSolutionIdentifier
-            Height: =37
-            Width: =189
-            X: =1064
+            Height: =56
+            Width: =197
+            X: =1055
             ZIndex: =15
 
     "'Operating Model Screen Label' As label":
