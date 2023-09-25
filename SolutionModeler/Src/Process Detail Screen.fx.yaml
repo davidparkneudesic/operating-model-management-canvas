@@ -100,7 +100,7 @@
 
     Button3 As button:
         Height: =67
-        OnSelect: =Set(varTempDevOpsRESTGETBody, ExtractJSONBody.Run().jsoncontent)
+        OnSelect: =Set(varTempDevOpsRESTGETBody, ExtractJSONBody.Run().process1)
         Text: ="Get JSON"
         X: =159
         Y: =216
