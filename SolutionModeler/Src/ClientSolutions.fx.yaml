@@ -35,7 +35,7 @@
                 =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =328
-            Items: =Sort(SolutionGallery.Selected.'Operating Models', 'Operating Model Name')
+            Items: =Sort(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', 'Operating Model Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -1625,7 +1625,7 @@
             Text: ="Update Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =414
+            X: =355
             Y: =570
             ZIndex: =7
 
@@ -1697,13 +1697,13 @@
                 // Clear all the relationship before creating another relationship with the selected values
                 ForAll(
                     'Operating Model Gallery'.AllItems,
-                    Unrelate(SolutionGallery.Selected.'Operating Models', ThisRecord)
+                    Unrelate(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
                 );
                 
                 // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
                 ForAll(
                     RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
-                    Relate(SolutionGallery.Selected.'Operating Models', ThisRecord)
+                    Relate(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
                 );
                 
                 UpdateContext({varUpdatedCSWindow:true})
@@ -1780,7 +1780,7 @@
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =740
+            X: =69
             Y: =495
             ZIndex: =13
 
@@ -1837,9 +1837,34 @@
             Text: ="Manage ADO Connections"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =414
+            X: =355
             Y: =495
             ZIndex: =16
+
+        btnViewUserStories_1 As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Fill: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            Height: =44
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+                Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+                //UpdateContext({varOpenCreateClientSolution:false});
+                //UpdateContext({varUpdateClientSolution:false})
+            Size: =14
+            Text: ="New Operating Model"
+            Visible: =If(varUpdateClientSolution,false,true)
+            Width: =261
+            X: =740
+            Y: =495
+            ZIndex: =17
 
     "SolutionGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
@@ -2044,7 +2069,7 @@
                 ForAll(
                     'Related Operating Models Combobox'.SelectedItems, 
                     Relate(
-                        First(colCreatedClientSolutionTemp).'Operating Models', 
+                        First(colCreatedClientSolutionTemp).'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', 
                         ThisRecord
                     )
                 );
