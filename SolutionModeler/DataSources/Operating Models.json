@@ -83,26 +83,6 @@
     "Type": "OptionSetInfo"
   },
   {
-    "DisplayName": "Shared Model (Operating Models)",
-    "Name": "neu_operatingmodel_neu_sharedmodel",
-    "OptionSetInfoNameMapping": {
-      "0": "No",
-      "1": "Yes"
-    },
-    "OptionSetIsBooleanValued": true,
-    "OptionSetIsGlobal": false,
-    "OptionSetReference": {
-      "OptionSetReferenceItem0": {
-        "OptionSetReferenceColumnName": "neu_sharedmodel",
-        "OptionSetReferenceEntityName": "Operating Models"
-      }
-    },
-    "OptionSetTypeKey": "BooleanType",
-    "RelatedColumnInvariantName": "neu_sharedmodel",
-    "RelatedEntityName": "Operating Models",
-    "Type": "OptionSetInfo"
-  },
-  {
     "DisplayName": "Status (Operating Models)",
     "Name": "neu_operatingmodel_statecode",
     "OptionSetInfoNameMapping": {
