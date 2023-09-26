@@ -1,9 +1,10 @@
 "ClientSolutions As screen.'autoLayout_SplitScreen_ver1.0'":
-    Fill: |-
+    Fill: |+
         =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
+        
 
     DetailFields_Container_Window As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
@@ -20,7 +21,7 @@
             BorderColor: =RGBA(56, 96, 178, 1)
             BorderThickness: =2
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =328
+            Height: =188
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =268
             X: =716
@@ -34,7 +35,7 @@
             Fill: |-
                 =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Height: =328
+            Height: =188
             Items: =Sort(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', 'Operating Model Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -611,7 +612,7 @@
                 Height: =50
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
                 Required: =true
-                Update: =DataCardValue5.Text
+                Update: =ClientSolutionName.Text
                 Width: =332
                 X: =0
                 Y: =0
@@ -631,7 +632,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue5 As text:
+                ClientSolutionName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -663,7 +664,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue5.Y + DataCardValue5.Height
+                    Y: =ClientSolutionName.Y + ClientSolutionName.Height
                     ZIndex: =3
 
                 Rectangle4 As rectangle:
@@ -1602,7 +1603,7 @@
             Text: ="View User Stories"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =740
+            X: =646
             Y: =570
             ZIndex: =6
 
@@ -1856,15 +1857,68 @@
             OnSelect: |-
                 =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
                 Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+                Collect(SelectedClientSolution,
+                { ClientSolutionRecord:SolutionGallery.Selected }
+                )
                 //UpdateContext({varOpenCreateClientSolution:false});
                 //UpdateContext({varUpdateClientSolution:false})
             Size: =14
             Text: ="New Operating Model"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =740
+            X: =646
             Y: =495
             ZIndex: =17
+
+        "glyClientSpecificOM As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =2
+            DelayItemLoading: =true
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Height: =123
+            Items: =Sort(SolutionGallery.Selected.'Operating Models (neu_neu_operatingmodel_ClientSolution_neu_cli)', 'Operating Model Name')
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.'Operating Model Name' = glyClientSpecificOM.Selected.'Operating Model Name' && 
+                        !(varOpenCreateClientSolution || varCreateDevOpsProjectWindow), 
+                     RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Operating Model Name' = glyClientSpecificOM.Selected.'Operating Model Name' && 
+                            varOpenCreateClientSolution || varCreateDevOpsProjectWindow,
+                            RGBA(153, 160, 196, 1),
+                            RGBA(0,0,0,0)
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =110
+            Visible: =If(varUpdateClientSolution,false,true)
+            Width: =268
+            X: =715
+            Y: =348
+            ZIndex: =18
+
+            Title13_1 As label:
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =55
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =12
+                Text: =ThisItem.'Operating Model Name'
+                Width: =264
+                X: =4
+                ZIndex: =1
+
+            Rectangle14_1 As rectangle:
+                Height: =Parent.TemplateHeight
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
 
     "SolutionGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
