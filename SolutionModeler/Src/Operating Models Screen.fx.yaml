@@ -585,13 +585,13 @@
             UpdateContext({varOpenCapabilityCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
-            Set(ClientSolutionIdentifier,"");Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
+            Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
             
             If(IsBlank(txtClientID.Text),
                 Back(ScreenTransition.UnCoverRight);
-                Navigate(HomePage,ScreenTransition.UnCoverRight)
+                Navigate(HomePage,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
                 ,
-                Navigate(ClientSolutions,ScreenTransition.UnCoverRight)
+                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
             )
         Width: =45
         X: =18
@@ -662,11 +662,9 @@
                             'Solution Area':'Solution Area Dropdown'.Selected,
                             'Status Reason':'Status Reason OM Dropdown'.Selected.Value,
                             Model:Model.'Operating Model',
-                            'Client Solution Identifier': 
-                            'Client Specific':true,
-                
-                            
-                        }
+                            'Client Solution Identifier': SolutionGallery.Selected,
+                            'Client Specific':true        
+                      }
                     );
                     UpdateContext({varOMCreated:true});
                     Reset('New Operating Model Input');
