@@ -3,15 +3,6 @@
   <grammars>
     <jsonTypes targetNamespace="https://unitedstates-002.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
       <object name="ManualTriggerInput" />
-      <string name="ResponseActionOutput_statuscode_def" />
-      <string name="ResponseActionOutput_httpheaders_def" />
-      <string name="ResponseActionOutput_httpbody_def" />
-      <object name="ResponseActionOutput">
-        <property name="statuscode" type="string" />
-        <property name="httpheaders" type="string" />
-        <property name="httpbody" type="string" />
-      </object>
-      <object name="Run_responses_default_def" />
     </jsonTypes>
   </grammars>
   <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://unitedstates-002.azure-apim.net/apim/logicflows">
@@ -25,9 +16,6 @@
           </param>
           <representation mediaType="application/json" />
         </request>
-        <response>
-          <representation mediaType="application/json" element="service:ResponseActionOutput" />
-        </response>
       </method>
     </resource>
   </resources>
