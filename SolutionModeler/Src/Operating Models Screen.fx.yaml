@@ -570,7 +570,7 @@
             Size: =14
             Text: ="Create Process Group"
             Width: =280
-            X: =638
+            X: =631
             Y: =580
             ZIndex: =13
 
@@ -655,7 +655,7 @@
     "'Create OM Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =516
+        Height: =354
         Visible: =If(varOpenOperatingModelCreate, true, false)
         Width: =757
         X: =330
@@ -700,8 +700,7 @@
                     Defaults('Operating Models'),
                     {
                         'Operating Model Name':'New Operating Model Input'.Text,
-                        'Solution Area':'Solution Area Dropdown'.Selected,
-                        'Status Reason':'Status Reason OM Dropdown'.Selected.Value,
+                        'Status Reason':'Status Reason (Operating Models)'.Active,
                         Model:Model.'Operating Model'
                     }
                 );
@@ -713,8 +712,7 @@
                         Defaults('Operating Models'),
                         {
                             'Operating Model Name':'New Operating Model Input'.Text,
-                            'Solution Area':'Solution Area Dropdown'.Selected,
-                            'Status Reason':'Status Reason OM Dropdown'.Selected.Value,
+                            'Status Reason':'Status Reason (Operating Models)'.Active,
                             Model:Model.'Operating Model',
                             'Client Solution Identifier': SolutionGallery.Selected,
                             'Client Specific':true        
@@ -726,8 +724,9 @@
             Text: |-
                 ="Create
                 "
-            X: =276
-            Y: =431
+            Visible: =If(IsBlank('New Operating Model Input'.Text),false,true)
+            X: =264
+            Y: =275
             ZIndex: =3
 
         "'New Operating Model Input' As text":
@@ -750,55 +749,6 @@
             X: =92
             Y: =159
             ZIndex: =5
-
-        "'Solution Area Label' As label":
-            Color: =RGBA(0,0,0,1)
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: |-
-                ="Solution Area
-                "
-            Width: =307
-            X: =99
-            Y: =239
-            ZIndex: =6
-
-        "'Solution Area Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            Height: =35
-            Items: =Sort('Solution Areas', 'Solution Area Name')
-            Size: =12
-            Width: =300
-            X: =99
-            Y: =280
-            ZIndex: =7
-
-        "'Status Reason OM Label' As label":
-            Color: =RGBA(0,0,0,1)
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: ="Status Reason"
-            Width: =307
-            X: =99
-            Y: =315
-            ZIndex: =8
-
-        "'Status Reason OM Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Operating Models)')
-            Size: =12
-            Width: =250
-            X: =99
-            Y: =356
-            ZIndex: =9
 
         "'Operating Model Created Label' As label":
             Align: =Align.Center
@@ -880,7 +830,6 @@
                         'Capability Name':'New Capability Name Input'.Text,
                         'Operating Model':'Operating Model Cap Dropdown'.Selected,
                         'Parent Capability':'Parent Capability Combobox'.Selected,
-                        'Status Reason':'Status Reason Cap Dropdown'.Selected.Value,
                         'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
                         Model:Model.'Operating Model'
                     }
@@ -890,6 +839,7 @@
             Text: |-
                 ="Create
                 "
+            Visible: =If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.SelectedText),false,true)
             X: =324
             Y: =518
             ZIndex: =3
@@ -918,34 +868,11 @@
         "'Operating Model Cap Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="Operating Model"
+            Text: ="* Operating Model"
             Width: =307
             X: =89
             Y: =175
             ZIndex: =6
-
-        "'Status Reason Cap Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: ="Status Reason"
-            Width: =307
-            X: =89
-            Y: =350
-            ZIndex: =7
-
-        "'Status Reason Cap Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Capabilities)')
-            Size: =12
-            Width: =284
-            X: =89
-            Y: =390
-            ZIndex: =8
 
         "'Capability Created Label' As label":
             Align: =Align.Center
@@ -962,8 +889,8 @@
             Size: =14
             Text: ="Scope Review"
             Width: =307
-            X: =417
-            Y: =350
+            X: =89
+            Y: =364
             ZIndex: =10
 
         "'Scope Review Cap Dropdown' As dropdown":
@@ -976,8 +903,8 @@
             Items: =Choices('Scope Review')
             Size: =12
             Width: =284
-            X: =417
-            Y: =390
+            X: =89
+            Y: =404
             ZIndex: =11
 
         "'Parent Capability Label' As label":
@@ -1096,7 +1023,6 @@
                     {
                         'Process Group Name':'New Process Group Name Input'.Text,
                         Capability:'Capability PG Dropdown'.Selected,
-                        'Status Reason':'Status Reason PG Dropdown'.Selected.Value,
                         'Scope Review':'Scope Review PG Dropdown'.Selected.Value,
                         Model:Model.'Operating Model'
                     }
@@ -1106,6 +1032,7 @@
             Text: |-
                 ="Create
                 "
+            Visible: =If(IsBlank('New Process Group Name Input'.Text),false,true)
             X: =324
             Y: =518
             ZIndex: =3
@@ -1142,30 +1069,6 @@
             Y: =175
             ZIndex: =6
 
-        "'Status Reason PG Label' As label":
-            Color: =RGBA(0,0,0,1)
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: ="Status Reason"
-            Width: =307
-            X: =89
-            Y: =350
-            ZIndex: =7
-
-        "'Status Reason PG Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Process Groups)')
-            Size: =12
-            Width: =240
-            X: =89
-            Y: =390
-            ZIndex: =8
-
         "'Process Group Created Label' As label":
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
@@ -1182,8 +1085,8 @@
             Size: =14
             Text: ="Scope Review"
             Width: =307
-            X: =417
-            Y: =350
+            X: =92
+            Y: =362
             ZIndex: =10
 
         "'Scope Review PG Dropdown' As dropdown":
@@ -1196,8 +1099,8 @@
             Items: =Choices('Scope Review')
             Size: =12
             Width: =240
-            X: =417
-            Y: =390
+            X: =92
+            Y: =402
             ZIndex: =11
 
         "'Capability PG Label' As label":
@@ -1328,7 +1231,6 @@
                             'Process Name':'New Process Name Input'.Text,
                             'Process Group':'Process Group Proc Dropdown'.Selected,
                             Description:'Description Proc Input'.Text,
-                            'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
                             'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                             Model:Model.'Operating Model'
                         }
@@ -1341,7 +1243,6 @@
                             'Process Group':'Process Group Proc Dropdown'.Selected,
                             Description:'Description Proc Input'.Text,
                             'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
-                            'Status Reason':'Status Reason Proc Dropdown'.Selected.Value,
                             'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                             Model:Model.'Operating Model'
                         }
@@ -1352,6 +1253,7 @@
             Text: |-
                 ="Create
                 "
+            Visible: =If(IsBlank('New Process Name Input'.Text) || IsBlank('Description Proc Input'.Text),false,true)
             X: =499
             Y: =620
             ZIndex: =3
@@ -1384,34 +1286,12 @@
             Y: =188
             ZIndex: =6
 
-        "'Status Reason Proc Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: ="Status Reason"
-            Width: =213
-            X: =63
-            Y: =457
-            ZIndex: =7
-
-        "'Status Reason Proc Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Processes)')
-            Width: =185
-            X: =63
-            Y: =497
-            ZIndex: =8
-
         "'Scope Review Proc Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Scope Review"
             Width: =213
-            X: =306
+            X: =63
             Y: =457
             ZIndex: =9
 
@@ -1424,7 +1304,7 @@
             Height: =35
             Items: =Choices('Scope Review')
             Width: =185
-            X: =306
+            X: =63
             Y: =497
             ZIndex: =10
 

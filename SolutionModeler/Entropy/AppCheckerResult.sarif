@@ -4288,36 +4288,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.'Status Reason Proc Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.'Status Reason Proc Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Container'.'Status Reason Proc Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.'Scope Review Proc Dropdown'.AccessibleLabel"
                 }
               ],
@@ -5158,36 +5128,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Status Reason PG Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Status Reason PG Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Group Container'.'Status Reason PG Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Scope Review PG Dropdown'.AccessibleLabel"
                 }
               ],
@@ -5368,36 +5308,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.'Status Reason Cap Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.'Status Reason Cap Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Cap Container'.'Status Reason Cap Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.'Scope Review Cap Dropdown'.AccessibleLabel"
                 }
               ],
@@ -5531,66 +5441,6 @@
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
                 "type": "'Operating Models Screen'.'Create OM Container'.'New Operating Model Input'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create OM Container'.'Solution Area Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create OM Container'.'Solution Area Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create OM Container'.'Solution Area Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create OM Container'.'Status Reason OM Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create OM Container'.'Status Reason OM Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create OM Container'.'Status Reason OM Dropdown'"
               }
             }
           ],
@@ -8251,7 +8101,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 393, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 383, which exceeds the maximum threshold recommended (300)."
               }
             },
             {
