@@ -107,7 +107,7 @@
         ZIndex: =15
 
     TextInput1 As text:
-        Default: =varFlowResponse.statuscode
+        Default: =varFlowResponse.returnmessage
         Height: =147
         Mode: =TextMode.MultiLine
         Width: =276
@@ -175,42 +175,11 @@
         Y: =363
         ZIndex: =21
 
-    TextInput2 As text:
-        Default: =varFlowResponse.httpbody
-        Height: =144
-        Mode: =TextMode.MultiLine
-        Width: =276
-        X: =364
-        Y: =403
-        ZIndex: =22
-
     Label7 As label:
-        Text: ="Status Code"
+        Text: |-
+            ="Return Message
+            "
         X: =364
         Y: =176
         ZIndex: =23
-
-    Label10 As label:
-        Text: ="HTTP Response Body"
-        Width: =218
-        X: =364
-        Y: =363
-        ZIndex: =24
-
-    Label11 As label:
-        Height: =41
-        Text: ="HTTP Response Header"
-        Width: =218
-        X: =364
-        Y: =547
-        ZIndex: =25
-
-    TextInput2_1 As text:
-        Default: =varFlowResponse.httpheaders
-        Height: =144
-        Mode: =TextMode.MultiLine
-        Width: =276
-        X: =364
-        Y: =588
-        ZIndex: =26
 
