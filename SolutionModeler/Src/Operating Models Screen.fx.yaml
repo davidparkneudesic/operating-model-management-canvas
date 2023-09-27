@@ -28,7 +28,7 @@
                 =If(IsBlank(ClientSolutionIdentifier),
                 
                     SortByColumns( 
-                        Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status' ='Status (Operating Models)'.Active
+                        Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && Status ='Status (Operating Models)'.Active
                         )
                         ,"neu_operatingmodelname"
                         ,SortOrder.Ascending
@@ -36,7 +36,7 @@
                     ,
                 
                     SortByColumns( 
-                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && 'Status' ='Status (Operating Models)'.Active
+                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && Status ='Status (Operating Models)'.Active
                     )
                     ,"neu_operatingmodelname"
                         ,SortOrder.Ascending
@@ -97,6 +97,7 @@
                 OnSelect: |-
                     =Select(Parent);
                     If(IsBlank(txtClientID),UpdateContext({varEditOM:false}),UpdateContext({varEditOM:true}))
+                Visible: =If(IsBlank(txtClientID.Text),false,true)
                 Width: =35
                 X: =230
                 Y: =7
@@ -109,7 +110,7 @@
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =212
-            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && IsBlank('Parent Capability')&& 'Status' ='Status (Capabilities)'.Active), 'Capability Name')
+            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -166,6 +167,7 @@
                 OnSelect: |-
                     =Select(Parent);
                     If(IsBlank(txtClientID),UpdateContext({varEditCap:false}),UpdateContext({varEditCap:true}))
+                Visible: =If(IsBlank(txtClientID.Text),false,true)
                 Width: =35
                 X: =237
                 Y: =6
@@ -312,16 +314,6 @@
                 Width: =4
                 ZIndex: =4
 
-            Icon5_2 As icon.NextArrow:
-                Color: =RGBA(149, 149, 149, 1)
-                Height: =19
-                Icon: =Icon.NextArrow
-                OnSelect: =Select(Parent)
-                Width: =40
-                X: =230
-                Y: =11
-                ZIndex: =5
-
         "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
             DelayItemLoading: =true
@@ -373,16 +365,6 @@
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =4
-
-            Icon5_3 As icon.NextArrow:
-                Color: =RGBA(149, 149, 149, 1)
-                Height: =19
-                Icon: =Icon.NextArrow
-                OnSelect: =Select(Parent)
-                Width: =40
-                X: =232
-                Y: =11
-                ZIndex: =5
 
         "'Process Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -436,16 +418,6 @@
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =4
-
-            Icon5_4 As icon.NextArrow:
-                Color: =RGBA(149, 149, 149, 1)
-                Height: =19
-                Icon: =Icon.NextArrow
-                OnSelect: =Select(Parent)
-                Width: =40
-                X: =240
-                Y: =11
-                ZIndex: =5
 
         "'Operating Model Label' As label":
             FontWeight: =FontWeight.Bold
@@ -1905,7 +1877,7 @@
                             {
                                 'Operating Model Name':dcOperatingModelName.Text,
                                 'Status Reason': dcStatusReason.Selected.Value,
-                                'Status':'Status (Operating Models)'.Inactive
+                                Status:'Status (Operating Models)'.Inactive
                             }
                         )
                         ,
@@ -1914,7 +1886,7 @@
                             {
                                 'Operating Model Name':dcOperatingModelName.Text,
                                 'Status Reason': dcStatusReason.Selected.Value,
-                                'Status':'Status (Operating Models)'.Active
+                                Status:'Status (Operating Models)'.Active
                             }
                         )
                         );
