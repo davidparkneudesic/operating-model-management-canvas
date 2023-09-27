@@ -28,7 +28,7 @@
                 =If(IsBlank(ClientSolutionIdentifier),
                 
                     SortByColumns( 
-                        Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution')
+                        Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status' ='Status (Operating Models)'.Active
                         )
                         ,"neu_operatingmodelname"
                         ,SortOrder.Ascending
@@ -36,7 +36,7 @@
                     ,
                 
                     SortByColumns( 
-                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text)
+                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && 'Status' ='Status (Operating Models)'.Active
                     )
                     ,"neu_operatingmodelname"
                         ,SortOrder.Ascending
@@ -65,7 +65,7 @@
             TemplatePadding: =0
             TemplateSize: =42
             Width: =280
-            X: =39
+            X: =26
             Y: =56
             ZIndex: =1
 
@@ -90,16 +90,16 @@
                 Width: =4
                 ZIndex: =4
 
-            Icon5_1 As icon.NextArrow:
-                Color: =RGBA(149, 149, 149, 1)
-                Height: =19
-                Icon: =Icon.NextArrow
+            IcoEditOM As icon.Edit:
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =29
+                Icon: =Icon.Edit
                 OnSelect: |-
                     =Select(Parent);
                     If(IsBlank(txtClientID),UpdateContext({varEditOM:false}),UpdateContext({varEditOM:true}))
-                Width: =40
-                X: =232
-                Y: =11
+                Width: =35
+                X: =230
+                Y: =7
                 ZIndex: =5
 
         "'Capability Level 1 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -109,7 +109,7 @@
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =212
-            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && IsBlank('Parent Capability')), 'Capability Name')
+            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && IsBlank('Parent Capability')&& 'Status' ='Status (Capabilities)'.Active), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -159,15 +159,17 @@
                 Width: =4
                 ZIndex: =4
 
-            Icon5 As icon.NextArrow:
-                Color: =RGBA(149, 149, 149, 1)
-                Height: =19
-                Icon: =Icon.NextArrow
-                OnSelect: =Select(Parent)
-                Width: =40
-                X: =240
-                Y: =11
-                ZIndex: =5
+            icoEditCap As icon.Edit:
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =29
+                Icon: =Icon.Edit
+                OnSelect: |-
+                    =Select(Parent);
+                    If(IsBlank(txtClientID),UpdateContext({varEditCap:false}),UpdateContext({varEditCap:true}))
+                Width: =35
+                X: =237
+                Y: =6
+                ZIndex: =6
 
         "'Sub Capability L2 Gallery' As gallery.variableTemplateHeightGallery":
             BorderThickness: =1
@@ -570,7 +572,7 @@
             Size: =14
             Text: ="Create Process Group"
             Width: =280
-            X: =631
+            X: =641
             Y: =580
             ZIndex: =13
 
