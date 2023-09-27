@@ -100,15 +100,15 @@
 
     Button3 As button:
         Height: =67
-        OnSelect: =ExtractJSONBody.Run()
+        OnSelect: =Set(varFlowResponse,MigrateDevOpsProcessTemplateFlow.Run());
         Text: ="Get JSON"
         X: =159
         Y: =216
         ZIndex: =15
 
     TextInput1 As text:
-        Default: =varTempDevOpsRESTGETBody
-        Height: =432
+        Default: =varFlowResponse.returnmessage
+        Height: =147
         Mode: =TextMode.MultiLine
         Width: =276
         X: =364
@@ -174,4 +174,12 @@
         X: =159
         Y: =363
         ZIndex: =21
+
+    Label7 As label:
+        Text: |-
+            ="Return Message
+            "
+        X: =364
+        Y: =176
+        ZIndex: =23
 
