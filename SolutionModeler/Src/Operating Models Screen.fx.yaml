@@ -726,8 +726,8 @@
             Text: |-
                 ="Create
                 "
-            X: =295
-            Y: =443
+            X: =276
+            Y: =431
             ZIndex: =3
 
         "'New Operating Model Input' As text":
@@ -1854,7 +1854,7 @@
     "'Operating Model Edit Container' As groupContainer.verticalAutoLayoutContainer":
         BorderThickness: =1
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =344
+        Height: =257
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         Visible: =If(varEditOM = true,true,false)
@@ -1869,73 +1869,6 @@
             LayoutMinHeight: =250
             LayoutMinWidth: =400
             ZIndex: =1
-
-            "'State Code Value' As typedDataCard.comboBoxOptionSetSingleEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="statecode"
-                Default: =ThisItem.Status
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Operating Models'],DataSourceInfo.DisplayName,"statecode")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =
-                Required: =false
-                Update: =dcStateCode.Selected.Value
-                Width: =166
-                X: =1
-                Y: =1
-                ZIndex: =1
-
-                DataCardKey29 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                dcStateCode As combobox:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    DefaultSelectedItems: =[Parent.Default]
-                    DisplayFields: =["Value"]
-                    DisplayMode: =Parent.DisplayMode
-                    IsSearchable: =false
-                    Items: =Choices('Status (Operating Models)')
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    SearchFields: =["Value"]
-                    SearchItems: =[]
-                    SelectMultiple: =false
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey29.Y + DataCardKey29.Height + 5
-                    ZIndex: =2
-
-                ErrorMessage25 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =dcStateCode.Y + dcStateCode.Height
-                    ZIndex: =3
-
-                StarVisible19 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey29.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey29.Y
-                    ZIndex: =4
 
             "'Operating Model Name_DataCard1' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -2046,7 +1979,7 @@
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
                     Items: =Choices('Status Reason (Operating Models)')
-                    OnChange: =If(dcStatusReason.Selected.Value = 1,dcStateCode.Selected.Value = 1,dcStateCode.Selected.Value = 0)
+                    OnChange: =
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["Value"]
                     SearchItems: =[]
@@ -2083,13 +2016,25 @@
 
                 btnSaveOM As button:
                     OnSelect: |-
-                        =Patch('Operating Models',
+                        =If(dcStatusReason.Selected.Value = 'Status Reason (Operating Models)'.Inactive,
+                        
+                        Patch('Operating Models',
                             'Operating Model Gallery'.Selected,
                             {
                                 'Operating Model Name':dcOperatingModelName.Text,
                                 'Status Reason': dcStatusReason.Selected.Value,
-                                Status:dcStateCode.Selected.Value
+                                'Status':'Status (Operating Models)'.Inactive
                             }
+                        )
+                        ,
+                        Patch('Operating Models',
+                            'Operating Model Gallery'.Selected,
+                            {
+                                'Operating Model Name':dcOperatingModelName.Text,
+                                'Status Reason': dcStatusReason.Selected.Value,
+                                'Status':'Status (Operating Models)'.Active
+                            }
+                        )
                         );
                         UpdateContext({varEditOM:false})
                     Text: ="Save"
