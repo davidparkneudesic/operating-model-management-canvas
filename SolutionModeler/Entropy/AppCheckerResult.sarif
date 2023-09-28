@@ -7818,6 +7818,96 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Scope Review_DataCard3'.dcCapEditScopeReview.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Scope Review_DataCard3'.dcCapEditScopeReview.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Scope Review_DataCard3'.dcCapEditScopeReview"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Parent Capability_DataCard3'.dcCapEditParentCapability.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Parent Capability_DataCard3'.dcCapEditParentCapability.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Parent Capability_DataCard3'.dcCapEditParentCapability"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Operating Model_DataCard4'.dcCapEditOpModelName.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Operating Model_DataCard4'.dcCapEditOpModelName.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Operating Model_DataCard4'.dcCapEditOpModelName"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.'Cap Status Reason'.AccessibleLabel"
                 }
               ],
@@ -7831,6 +7921,66 @@
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
                 "type": "'Operating Models Screen'.'Create Cap Container'.'Cap Status Reason'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Status Reason Data Control'.CapEditStatusReason.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Status Reason Data Control'.CapEditStatusReason.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Status Reason Data Control'.CapEditStatusReason"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Capability Name_DataCard3'.dcCapEditCapabilityNameCap.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Capability Name_DataCard3'.dcCapEditCapabilityNameCap.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Cap Container'.frmEditCapability.'Capability Name_DataCard3'.dcCapEditCapabilityNameCap"
               }
             }
           ],
@@ -8271,7 +8421,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 371, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 397, which exceeds the maximum threshold recommended (300)."
               }
             },
             {
