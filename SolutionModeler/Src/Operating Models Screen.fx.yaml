@@ -1,6 +1,6 @@
 "'Operating Models Screen' As screen":
     Fill: |-
-        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditOM ||varEditCap, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
@@ -493,8 +493,9 @@
             Text: |-
                 ="Create Operating Model
                 "
+            Visible: =If(IsBlank(txtClientID.Text),false,true)
             Width: =280
-            X: =44
+            X: =26
             Y: =580
             ZIndex: =11
 
@@ -518,6 +519,7 @@
                 Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Size: =14
             Text: ="Create Capability"
+            Visible: =If(IsBlank(txtClientID.Text),false,true)
             Width: =280
             X: =341
             Y: =580
@@ -543,6 +545,7 @@
                 Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Size: =14
             Text: ="Create Process Group"
+            Visible: =If(IsBlank(txtClientID.Text),false,true)
             Width: =280
             X: =641
             Y: =580
@@ -568,6 +571,7 @@
                 Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Size: =14
             Text: ="Create Process"
+            Visible: =If(IsBlank(txtClientID.Text),false,true)
             Width: =280
             X: =935
             Y: =580
@@ -758,7 +762,7 @@
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =587
-        Visible: =If(varOpenCapabilityCreate, true, false)
+        Visible: =If(varOpenCapabilityCreate ||varEditCap, true, false)
         Width: =814
         X: =272
         Y: =122
@@ -774,7 +778,7 @@
             FontWeight: =FontWeight.Bold
             Height: =62
             Size: =20
-            Text: ="Create New Capability"
+            Text: =If(varEditCap = true, "Edit Capability","Create New Capability")
             Width: ='Create Cap Container'.Width
             ZIndex: =1
 
@@ -785,6 +789,7 @@
             OnSelect: |-
                 =UpdateContext({varOpenCapabilityCreate:false});
                 UpdateContext({varCapCreated:false});
+                UpdateContext({varEditCap:false});
                 Reset('New Capability Name Input');
             Width: =54
             X: ='Create Cap Container'.Width - 60
@@ -805,6 +810,7 @@
                         'Operating Model':'Operating Model Cap Dropdown'.Selected,
                         'Parent Capability':'Parent Capability Combobox'.Selected,
                         'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
+                        'Status Reason':'Status Reason (Capabilities)'.Active,
                         Model:Model.'Operating Model'
                     }
                 );
@@ -813,13 +819,13 @@
             Text: |-
                 ="Create
                 "
-            Visible: =If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.SelectedText),false,true)
+            Visible: =If(varOpenCapabilityCreate = true, If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.SelectedText), false,true),false)
             X: =324
             Y: =518
             ZIndex: =3
 
         "'New Capability Name Input' As text":
-            Default: =""
+            Default: =If(varEditCap = true,'Capability Level 1 Gallery'.Selected.'Capability Name',"")
             Height: =35
             OnSelect: |-
                 =UpdateContext({varCapCreated:false})
@@ -833,7 +839,7 @@
         "'New Capability Name Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="* New Capability Name"
+            Text: ="* Capability Name"
             Width: =307
             X: =75
             Y: =94
@@ -842,7 +848,7 @@
         "'Operating Model Cap Label' As label":
             FontWeight: =FontWeight.Semibold
             Size: =14
-            Text: ="* Operating Model"
+            Text: ="Operating Model"
             Width: =307
             X: =89
             Y: =175
@@ -899,7 +905,7 @@
             Height: =35
             IsSearchable: =false
             Items: |
-                =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name'), 'Capability Name')
+                =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             Size: =12
@@ -926,10 +932,11 @@
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
+            OnSelect: =ClearCollect(colOperatingModelFilter,Filter('Operating Models','Operating Model Name', Status = 'Status (Operating Models)'.Active))
             Text: |-
                 ="Reset
                 "
+            Visible: =If(varEditCap = false ,true,false)
             Width: =146
             X: =442
             Y: =215
@@ -944,10 +951,69 @@
             Text: |-
                 ="Reset
                 "
+            Visible: =If(varEditCap = false ,true,false)
             Width: =146
             X: =442
             Y: =303
             ZIndex: =16
+
+        btnUpdateCapability As button:
+            OnSelect: |-
+                =If('Cap Status Reason'.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
+                
+                Patch('Capabilities',
+                    'Capability Level 1 Gallery'.Selected,
+                    {
+                        'Capability Name':'New Capability Name Input'.Text,
+                        'Status Reason': 'Cap Status Reason'.Selected.Value,
+                        'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
+                       'Parent Capability':'Parent Capability Combobox'.Selected,
+                        Status:'Status (Capabilities)'.Inactive
+                    }
+                )
+                ,
+                Patch('Capabilities',
+                    'Capability Level 1 Gallery'.Selected,
+                    {
+                        'Capability Name':'New Capability Name Input'.Text,
+                        'Status Reason': 'Cap Status Reason'.Selected.Value,
+                        'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
+                        'Parent Capability':'Parent Capability Combobox'.Selected,
+                         Status:'Status (Capabilities)'.Active
+                    }
+                )
+                );
+                UpdateContext({varEditCap:false})
+            Text: ="Update"
+            Visible: =If(varEditCap = true, If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.SelectedText), false,true),false)
+            X: =466
+            Y: =478
+            ZIndex: =17
+
+        "'Cap Status Reason' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            Default: =//If(varEditCap = true,'Capability Level 1 Gallery'.Selected.'Status Reason',"")
+            Height: =35
+            Items: =Choices('Status Reason (Capabilities)')
+            Size: =12
+            Visible: =If(varEditCap = false, false,true)
+            Width: =284
+            X: =426
+            Y: =404
+            ZIndex: =18
+
+        "'Scope Review Cap Label_1' As label":
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: ="Status Reason"
+            Visible: =If(varEditCap = false, false,true)
+            Width: =307
+            X: =426
+            Y: =364
+            ZIndex: =19
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -1398,7 +1464,9 @@
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
+            OnSelect: |-
+                =//ClearCollect(colOperatingModelFilter,Filter('Operating Models','Operating Model Name', Status = 'Status (Operating Models)'.Active))
+                ClearCollect(colOperatingModelFilter,'Operating Model Gallery'.Selected)
             Text: |-
                 ="Reset
                 "
