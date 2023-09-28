@@ -683,7 +683,7 @@
                         'Operating Model Name':dcEditOMOperatingModelName.Text,
                         'Status Reason':dcEditOMStatusReason.Selected.Value,
                         'Client Solution Identifier':dcEditOMClientSolutionID.Selected,
-                        'Status':'Status (Operating Models)'.Active,
+                        Status:'Status (Operating Models)'.Active,
                         'Client Specific':true,
                         Model:Model.'Operating Model'
                     }
@@ -696,7 +696,7 @@
                         'Operating Model Name':dcEditOMOperatingModelName.Text,
                         'Status Reason':dcEditOMStatusReason.Selected.Value,
                         'Client Solution Identifier':dcEditOMClientSolutionID.Selected,
-                        'Status':'Status (Operating Models)'.Active,
+                        Status:'Status (Operating Models)'.Active,
                         'Client Specific':true       
                       }
                     );
@@ -1506,9 +1506,9 @@
 
         btnUpdateCapability As button:
             OnSelect: |-
-                =If('CapEditStatusReason'.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
+                =If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
                 
-                    Patch('Capabilities',
+                    Patch(Capabilities,
                     'Capability Level 1 Gallery'.Selected,
                     {
                     'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1519,13 +1519,13 @@
                 
                     }
                 ),
-                    Patch('Capabilities',
+                    Patch(Capabilities,
                     'Capability Level 1 Gallery'.Selected,
                     {
                     'Capability Name':dcCapEditCapabilityNameCap.Text,
                     'Scope Review':dcCapEditScopeReview.Selected.Value,
                     'Parent Capability':dcCapEditParentCapability.Selected,
-                    'Status':'Status (Capabilities)'.Active,
+                    Status:'Status (Capabilities)'.Active,
                      'Status Reason':CapEditStatusReason.Selected.Value
                     }
                 )
