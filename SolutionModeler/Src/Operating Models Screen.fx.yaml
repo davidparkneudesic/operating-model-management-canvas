@@ -682,10 +682,10 @@
                         {
                             'Operating Model Name':dcEditOMOperatingModelName.Text,
                             'Status Reason':dcEditOMStatusReason.Selected.Value,
-                            //'Client Solution Identifier':ClientSolutionName_Input,
-                            Status:'Status (Operating Models)'.Active,
-                            'Client Specific':'Client Specific (Operating Models)'.Yes
-                            //Model:Model.'Operating Model'
+                            'Client Solution Identifier':SolutionGallery.Selected,
+                            //Status:'Status (Operating Models)'.Active,
+                            'Client Specific':'Client Specific (Operating Models)'.Yes,
+                            Model:Model.'Operating Model'
                         }
                     ),
                     //Update Existing OM
@@ -695,7 +695,7 @@
                         {
                             'Operating Model Name':dcEditOMOperatingModelName.Text,
                             'Status Reason':dcEditOMStatusReason.Selected.Value,
-                            'Client Solution Identifier':ClientSolutionName_Input,
+                            'Client Solution Identifier':SolutionGallery.Selected,
                             Status:'Status (Operating Models)'.Active,
                             'Client Specific':'Client Specific (Operating Models)'.Yes
                         }
@@ -779,7 +779,7 @@
                     ZIndex: =4
 
                 ClientSolutionName_Input As text:
-                    Default: =varClientSolutionName
+                    Default: =SolutionGallery.Selected.'Solution Name'
                     DisplayMode: =DisplayMode.View
                     Width: =Parent.Width - 60
                     X: =30

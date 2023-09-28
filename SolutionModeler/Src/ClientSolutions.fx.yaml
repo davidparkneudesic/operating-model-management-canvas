@@ -1922,10 +1922,8 @@
             OnSelect: |-
                 =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
                 Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
-                Collect(SelectedClientSolution,
-                { ClientSolutionRecord:SolutionGallery.Selected }
-                );
-                Set(varClientSolutionName,SolutionGallery.Selected.'Solution Name');
+                ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = SolutionGallery.Selected.'Solution Name'));
+                //Set(varClientSolutionName,SolutionGallery.Selected.'Solution Name');
                 //UpdateContext({varOpenCreateClientSolution:false});
                 //UpdateContext({varUpdateClientSolution:false})
             Size: =14
