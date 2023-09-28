@@ -675,30 +675,30 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |+
                 =If(varOpenOperatingModelCreate,
-                //Create New OM
-                Patch(
-                    'Operating Models',
-                    Defaults('Operating Models'),
-                    {
-                        'Operating Model Name':dcEditOMOperatingModelName.Text,
-                        'Status Reason':dcEditOMStatusReason.Selected.Value,
-                        'Client Solution Identifier':dcEditOMClientSolutionID.Selected,
-                        Status:'Status (Operating Models)'.Active,
-                        'Client Specific':true,
-                        Model:Model.'Operating Model'
-                    }
-                ),
-                //Update Existing OM
+                    //Create New OM
+                    Patch(
+                        'Operating Models',
+                        Defaults('Operating Models'),
+                        {
+                            'Operating Model Name':dcEditOMOperatingModelName.Text,
+                            'Status Reason':dcEditOMStatusReason.Selected.Value,
+                            //'Client Solution Identifier':ClientSolutionName_Input,
+                            Status:'Status (Operating Models)'.Active,
+                            'Client Specific':'Client Specific (Operating Models)'.Yes
+                            //Model:Model.'Operating Model'
+                        }
+                    ),
+                    //Update Existing OM
                     Patch(
                         'Operating Models',
                         'Operating Model Gallery'.Selected,
                         {
-                        'Operating Model Name':dcEditOMOperatingModelName.Text,
-                        'Status Reason':dcEditOMStatusReason.Selected.Value,
-                        'Client Solution Identifier':dcEditOMClientSolutionID.Selected,
-                        Status:'Status (Operating Models)'.Active,
-                        'Client Specific':true       
-                      }
+                            'Operating Model Name':dcEditOMOperatingModelName.Text,
+                            'Status Reason':dcEditOMStatusReason.Selected.Value,
+                            'Client Solution Identifier':ClientSolutionName_Input,
+                            Status:'Status (Operating Models)'.Active,
+                            'Client Specific':'Client Specific (Operating Models)'.Yes
+                        }
                     );
                 )
                 
@@ -737,7 +737,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =DataCardValue5.Selected
+                Update: =
                 Width: =756
                 X: =0
                 Y: =0
@@ -753,23 +753,6 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue5 As combobox:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =varClientSolutionName
-                    DefaultSelectedItems: =Parent.Default
-                    DisplayFields: =["neu_solutionname"]
-                    DisplayMode: =Parent.DisplayMode
-                    Items: =Choices([@'Operating Models'].neu_ClientSolution)
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    SearchFields: =["neu_solutionname"]
-                    SearchItems: =Search(Choices([@'Operating Models'].neu_ClientSolution),DataCardValue5.SearchText,"neu_solutionname")
-                    SelectMultiple: =false
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey23.Y + DataCardKey23.Height + 5
-                    ZIndex: =2
-
                 ErrorMessage13 As label:
                     AutoHeight: =true
                     Height: =10
@@ -782,7 +765,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue5.Y + DataCardValue5.Height
+                    Y: =ClientSolutionName_Input.Y + ClientSolutionName_Input.Height
                     ZIndex: =3
 
                 StarVisible7 As label:
@@ -794,6 +777,14 @@
                     Wrap: =false
                     Y: =DataCardKey23.Y
                     ZIndex: =4
+
+                ClientSolutionName_Input As text:
+                    Default: =varClientSolutionName
+                    DisplayMode: =DisplayMode.View
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey23.Y + DataCardKey23.Height + 5
+                    ZIndex: =5
 
             "'Operating Model Name_DataCard2' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
