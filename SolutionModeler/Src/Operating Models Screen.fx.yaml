@@ -616,7 +616,7 @@
             UpdateContext({varOpenCapabilityCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             UpdateContext({varEditOM:false});
-            Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
+            Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
             
             If(IsBlank(txtClientID.Text),
@@ -722,7 +722,7 @@
         frmEditOpModel As form:
             DataSource: ='Operating Models'
             Height: =354
-            Item: ='Operating Model Gallery'.Selected
+            Item: =Defaults('Operating Models')
             Visible: =If(varEditOM || varOpenOperatingModelCreate,true,false)
             Width: =757
             Y: =62
@@ -732,18 +732,18 @@
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_ClientSolution"
                 Default: =ThisItem.'Client Solution Identifier'
-                DisplayMode: =DisplayMode.View
+                DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Operating Models'],DataSourceInfo.DisplayName,"neu_ClientSolution")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =dcEditOMClientSolutionID.Selected
-                Width: =504
+                Update: =DataCardValue5.Selected
+                Width: =756
                 X: =0
                 Y: =0
                 ZIndex: =1
 
-                DataCardKey46 As label:
+                DataCardKey23 As label:
                     AutoHeight: =true
                     Height: =34
                     Text: =Parent.DisplayName
@@ -753,23 +753,24 @@
                     Y: =10
                     ZIndex: =1
 
-                dcEditOMClientSolutionID As combobox:
+                DataCardValue5 As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =varClientSolutionName
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_solutionname"]
                     DisplayMode: =Parent.DisplayMode
                     Items: =Choices([@'Operating Models'].neu_ClientSolution)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_solutionname"]
-                    SearchItems: =Search(Choices([@'Operating Models'].neu_ClientSolution),dcEditOMClientSolutionID.SearchText,"neu_solutionname")
+                    SearchItems: =Search(Choices([@'Operating Models'].neu_ClientSolution),DataCardValue5.SearchText,"neu_solutionname")
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardKey46.Y + DataCardKey46.Height + 5
+                    Y: =DataCardKey23.Y + DataCardKey23.Height + 5
                     ZIndex: =2
 
-                ErrorMessage42 As label:
+                ErrorMessage13 As label:
                     AutoHeight: =true
                     Height: =10
                     Live: =Live.Assertive
@@ -781,17 +782,17 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =dcEditOMClientSolutionID.Y + dcEditOMClientSolutionID.Height
+                    Y: =DataCardValue5.Y + DataCardValue5.Height
                     ZIndex: =3
 
-                StarVisible36 As label:
+                StarVisible7 As label:
                     Align: =Align.Center
-                    Height: =DataCardKey46.Height
+                    Height: =DataCardKey23.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                     Width: =30
                     Wrap: =false
-                    Y: =DataCardKey46.Y
+                    Y: =DataCardKey23.Y
                     ZIndex: =4
 
             "'Operating Model Name_DataCard2' As typedDataCard.textualEditCard":
