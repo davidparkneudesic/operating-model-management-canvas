@@ -1924,7 +1924,8 @@
                 Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
                 Collect(SelectedClientSolution,
                 { ClientSolutionRecord:SolutionGallery.Selected }
-                )
+                );
+                Set(varClientSolutionName,SolutionGallery.Selected.'Solution Name');
                 //UpdateContext({varOpenCreateClientSolution:false});
                 //UpdateContext({varUpdateClientSolution:false})
             Size: =14
