@@ -1438,6 +1438,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Process Group Name Data Card'.dcPGEditPGName.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Process Group Name Data Card'.dcPGEditPGName.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Process Group Name Data Card'.dcPGEditPGName"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Process Group Gallery'.icoEditCap_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Process Group Gallery'.icoEditCap_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Process Group Gallery'.icoEditCap_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
                 }
               ],
@@ -5428,6 +5488,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Process Group Gallery'.icoEditCap_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Process Group Gallery'.icoEditCap_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Process Group Gallery'.icoEditCap_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.AccessibleLabel"
                 }
               ],
@@ -7888,6 +7978,276 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.dcPGEditCapability.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.dcPGEditCapability.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.dcPGEditCapability"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Scope Review_DataCard1'.dcPGEditScopeReview.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Scope Review_DataCard1'.dcPGEditScopeReview.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Scope Review_DataCard1'.dcPGEditScopeReview"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Status Reason_DataCard1'.dcPGEditStatusReason.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Status Reason_DataCard1'.dcPGEditStatusReason.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.'Status Reason_DataCard1'.dcPGEditStatusReason"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Process Name_DataCard1'.dcProcEditProcessName.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Process Name_DataCard1'.dcProcEditProcessName.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Process Name_DataCard1'.dcProcEditProcessName"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Scope Review_DataCard2'.dcProcEditScopeReview.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Scope Review_DataCard2'.dcProcEditScopeReview.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Scope Review_DataCard2'.dcProcEditScopeReview"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.Description_DataCard2.dcProcEditDescription.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.Description_DataCard2.dcProcEditDescription.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.Description_DataCard2.dcProcEditDescription"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Data Flow URL_DataCard1'.dcProcEditDataFlow.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Data Flow URL_DataCard1'.dcProcEditDataFlow.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Data Flow URL_DataCard1'.dcProcEditDataFlow"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Process Group_DataCard2'.dcProcEditProcessGroup.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Process Group_DataCard2'.dcProcEditProcessGroup.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Process Group_DataCard2'.dcProcEditProcessGroup"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Status Reason_DataCard3'.dcProcEditStatusReason.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Status Reason_DataCard3'.dcProcEditStatusReason.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Process Detail Container'.frmEditProcess.'Status Reason_DataCard3'.dcProcEditStatusReason"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.Neudesic_an_IBM_Company_rev_white_RGB"
                 }
               ],
@@ -8311,7 +8671,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 394, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 456, which exceeds the maximum threshold recommended (300)."
               }
             },
             {
