@@ -687,20 +687,38 @@
                             'Client Specific':'Client Specific (Operating Models)'.Yes,
                             Model:Model.'Operating Model'
                         }
-                    ),
-                    //Update Existing OM
-                    Patch(
-                        'Operating Models',
-                        'Operating Model Gallery'.Selected,
-                        {
-                            'Operating Model Name':dcEditOMOperatingModelName.Text,
-                            'Status Reason':dcEditOMStatusReason.Selected.Value,
-                            'Client Solution Identifier':SolutionGallery.Selected,
-                            Status:'Status (Operating Models)'.Active,
-                            'Client Specific':'Client Specific (Operating Models)'.Yes
-                        }
                     );
-                )
+                    UpdateContext({varOpenOperatingModelCreate:false}),
+                        //Update Existing OM - Inactive
+                        If(dcEditOMStatusReason.Selected.Value = 'Status Reason (Operating Models)'.Inactive,
+                            Patch(
+                            'Operating Models',
+                            'Operating Model Gallery'.Selected,
+                            {
+                                'Operating Model Name':dcEditOMOperatingModelName.Text,
+                                'Client Solution Identifier':SolutionGallery.Selected,
+                                Status:'Status (Operating Models)'.Inactive,
+                                'Client Specific':'Client Specific (Operating Models)'.Yes
+                            }
+                            ),
+                        //Update Existing OM - Active
+                            Patch(
+                            'Operating Models',
+                            'Operating Model Gallery'.Selected,
+                            {
+                                'Operating Model Name':dcEditOMOperatingModelName.Text,
+                                'Status Reason':dcEditOMStatusReason.Selected.Value,
+                                'Client Solution Identifier':SolutionGallery.Selected,
+                                Status:'Status (Operating Models)'.Active,
+                                'Client Specific':'Client Specific (Operating Models)'.Yes
+                            }
+                        )
+                    )
+                );
+                UpdateContext({varEditOM:false})
+                        
+                    
+                
                 
                 
             Text: =If(varOpenOperatingModelCreate,"Create","Update")
@@ -722,7 +740,7 @@
         frmEditOpModel As form:
             DataSource: ='Operating Models'
             Height: =354
-            Item: =Defaults('Operating Models')
+            Item: =If(varEditOM = true,'Operating Model Gallery'.Selected,Defaults('Operating Models'))
             Visible: =If(varEditOM || varOpenOperatingModelCreate,true,false)
             Width: =757
             Y: =62
@@ -2286,4 +2304,16 @@
             X: ='Process Detail Container'.Width - 60
             Y: =3
             ZIndex: =14
+
+    Label1 As label:
+        Color: =RGBA(246, 88, 16, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =78
+        Text: |-
+            ="WARNING:   If you save a record as Inactive, the Operating Model and all related records will be deleted."
+        Visible: =If(dcEditOMStatusReason.Selected.Value = 'Status Reason (Operating Models)'.Inactive,true,false)
+        Width: =455
+        X: =584
+        Y: =444
+        ZIndex: =9
 
