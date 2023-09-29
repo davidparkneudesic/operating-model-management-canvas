@@ -990,8 +990,8 @@
                         'Capability Name':'New Capability Name Input'.Text,
                         'Operating Model':'Operating Model Cap Dropdown'.Selected,
                         'Parent Capability':'Parent Capability Combobox'.Selected,
-                        'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
                         'Status Reason':'Status Reason (Capabilities)'.Active,
+                        'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
                         Model:Model.'Operating Model'
                     }
                 );
@@ -1000,7 +1000,7 @@
             Text: |-
                 ="Create
                 "
-            Visible: =If(varEditCap = true, false,true)
+            Visible: =If(varEditCap = false, If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.Selected), false,true),false)
             X: =324
             Y: =518
             ZIndex: =3
@@ -1125,7 +1125,9 @@
             Text: |-
                 ="Reset
                 "
-            Visible: =If(varEditCap = true, false,true)
+            Visible: |-
+                =//If(varEditCap = true, false,true)
+                false
             Width: =146
             X: =442
             Y: =215
@@ -1140,36 +1142,13 @@
             Text: |-
                 ="Reset
                 "
-            Visible: =If(varEditCap = true, false,true)
+            Visible: |-
+                =//If(varEditCap = true, false,true)
+                false
             Width: =146
             X: =442
             Y: =303
             ZIndex: =14
-
-        "'Cap Status Reason' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            Default: ="Active"
-            Height: =35
-            Items: =Choices('Status Reason (Capabilities)')
-            Size: =12
-            Visible: =If(varEditCap = true, false,true)
-            Width: =284
-            X: =426
-            Y: =404
-            ZIndex: =15
-
-        "'Scope Review Cap Label_1' As label":
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: ="Status Reason"
-            Visible: =If(varEditCap = true, false,true)
-            Width: =307
-            X: =426
-            Y: =364
-            ZIndex: =16
 
         frmEditCapability As form:
             DataSource: =Capabilities
@@ -2305,7 +2284,7 @@
             Y: =3
             ZIndex: =14
 
-    Label1 As label:
+    lblInactiveWarning As label:
         Color: =RGBA(246, 88, 16, 1)
         FontWeight: =FontWeight.Bold
         Height: =78
