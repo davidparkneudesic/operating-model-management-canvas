@@ -96,7 +96,7 @@
                 Icon: =Icon.Edit
                 OnSelect: |-
                     =Select(Parent);
-                    If(IsBlank(txtClientID),UpdateContext({varEditOM:false}),UpdateContext({varEditOM:true}))
+                    UpdateContext({varEditOM:true})
                 Visible: =If(IsBlank(txtClientID.Text),false,true)
                 Width: =35
                 X: =230
@@ -166,7 +166,7 @@
                 Icon: =Icon.Edit
                 OnSelect: |-
                     =Select(Parent);
-                    If(IsBlank(txtClientID),UpdateContext({varEditCap:false}),UpdateContext({varEditCap:true}))
+                    UpdateContext({varEditCap:true})
                 Visible: =If(IsBlank(txtClientID.Text),false,true)
                 Width: =35
                 X: =237
@@ -314,6 +314,20 @@
                 Width: =4
                 ZIndex: =4
 
+            icoEditCap_2 As icon.Edit:
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =29
+                Icon: =Icon.Edit
+                OnSelect: |-
+                    =Select(Parent);
+                    UpdateContext({varEditCap:true});
+                    UpdateContext({varEditSubCap:true})
+                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Width: =35
+                X: =185
+                Y: =7
+                ZIndex: =5
+
         "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
             DelayItemLoading: =true
@@ -372,7 +386,7 @@
                 Icon: =Icon.Edit
                 OnSelect: |-
                     =Select(Parent);
-                    If(IsBlank(txtClientID),UpdateContext({varOpenProcessGroupCreate:false}),UpdateContext({varOpenProcessGroupEdit:true}))
+                    UpdateContext({varOpenProcessGroupEdit:true})
                 Visible: =If(IsBlank(txtClientID.Text),false,true)
                 Width: =35
                 X: =237
@@ -1165,7 +1179,7 @@
 
         frmEditCapability As form:
             DataSource: =Capabilities
-            Item: ='Capability Level 1 Gallery'.Selected
+            Item: =If(varEditSubCap,'Sub Capability L2 Gallery'.Selected,'Capability Level 1 Gallery'.Selected)
             Visible: =If(varEditCap = true,true,false)
             Width: =567
             X: =71
@@ -1190,7 +1204,7 @@
                 DataCardKey43 As label:
                     AutoHeight: =true
                     Height: =34
-                    Text: ="* Operating Model"
+                    Text: =If(IsBlank(dcCapEditParentCapability.Selected),"* Operating Model","Operating Model")
                     Width: =Parent.Width - 60
                     Wrap: =false
                     X: =30
@@ -1201,7 +1215,7 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_operatingmodelname"]
-                    DisplayMode: =Parent.DisplayMode
+                    DisplayMode: =If(IsBlank(dcCapEditParentCapability.Selected),DisplayMode.Edit,DisplayMode.View)
                     Items: =Choices([@Capabilities].neu_OperatingModelID)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_operatingmodelname"]
@@ -1268,10 +1282,13 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_capabilityname"]
                     DisplayMode: =Parent.DisplayMode
-                    Items: =Choices([@Capabilities].neu_ParentCapability)
+                    IsSearchable: =false
+                    Items: |-
+                        =Choices([@Capabilities].neu_ParentCapability)
+                        //Filter([@Capabilities], neu_OperatingModelID = 'Capability Level 1 Gallery'.Selected)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
-                    SearchItems: =Search(Choices([@Capabilities].neu_ParentCapability),dcCapEditParentCapability.SearchText,"neu_capabilityname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
