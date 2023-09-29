@@ -169,10 +169,10 @@
             ZIndex: =2
 
     Button1 As button:
-        OnSelect: =GetDevOpsProcessJSONString.Run()
+        OnSelect: =Set(varHTTPResponseBody, ExtractJSONBody.Run())
         Text: ="Button"
         X: =159
-        Y: =363
+        Y: =452
         ZIndex: =21
 
     Label7 As label:
@@ -182,4 +182,21 @@
         X: =364
         Y: =176
         ZIndex: =23
+
+    TextInput1_1 As text:
+        Default: =varHTTPResponseBody.httpbodyscript
+        Height: =147
+        Mode: =TextMode.MultiLine
+        Width: =276
+        X: =364
+        Y: =463
+        ZIndex: =24
+
+    Label7_1 As label:
+        Text: |-
+            ="Return Message
+            "
+        X: =364
+        Y: =423
+        ZIndex: =25
 

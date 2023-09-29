@@ -3,9 +3,9 @@
   <grammars>
     <jsonTypes targetNamespace="https://unitedstates-002.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
       <object name="ManualTriggerInput" />
-      <string name="ResponseActionOutput_jsoncontent_def" />
+      <string name="ResponseActionOutput_httpbodyscript_def" />
       <object name="ResponseActionOutput">
-        <property name="jsoncontent" type="string" />
+        <property name="httpbodyscript" type="string" />
       </object>
       <object name="Run_responses_default_def" />
     </jsonTypes>
