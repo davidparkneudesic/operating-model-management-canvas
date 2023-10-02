@@ -1781,7 +1781,7 @@
             Height: =30
             IsSearchable: =false
             Items: |-
-                =Filter('Operating Models','Client Specific' = false && 'Status' = 'Status (Operating Models)'.Active)
+                =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
                 //Sort('Operating Models', 'Operating Model Name')
             SearchFields: =["neu_operatingmodelname"]
             SearchItems: =[]

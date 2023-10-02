@@ -1122,6 +1122,7 @@
                 =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
+            SelectMultiple: =false
             Size: =12
             Visible: =If(varEditCap = true, false,true)
             X: =89
@@ -1283,9 +1284,9 @@
                     DisplayFields: =["neu_capabilityname"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: |-
-                        =Choices([@Capabilities].neu_ParentCapability)
-                        //Filter([@Capabilities], neu_OperatingModelID = 'Capability Level 1 Gallery'.Selected)
+                    Items: |
+                        =//Choices([@Capabilities].neu_ParentCapability)
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
@@ -2066,7 +2067,7 @@
                         {
                             'Process Group Name':dcPGEditPGName.Text,
                             'Scope Review':dcPGEditScopeReview.Selected.Value,
-                            'Status':'Status (Process Groups)'.Inactive
+                            Status:'Status (Process Groups)'.Inactive
                         }
                     ),
                     //Update to Active State
@@ -3084,12 +3085,12 @@
                         {
                             'Process Name':dcProcEditProcessName.Text,
                             'Scope Review':dcProcEditScopeReview.Selected.Value,
-                            'Status':'Status (Processes)'.Inactive
+                            Status:'Status (Processes)'.Inactive
                         }
                     ),
                     //Update to Active State
                      Patch(
-                        'Processes',
+                        Processes,
                         'Process Gallery Parent'.Selected,
                         {
                             'Process Name':dcProcEditProcessName.Text,
