@@ -1117,11 +1117,12 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             DisplayFields: =["neu_capabilityname"]
             Height: =35
-            IsSearchable: =false
             Items: |
                 =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
             SearchFields: =["neu_capabilityname"]
-            SearchItems: =[]
+            SearchItems: |-
+                =Search(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
+                ,'Parent Capability Combobox'.SearchText,"neu_capabilityname")
             SelectMultiple: =false
             Size: =12
             Visible: =If(varEditCap = true, false,true)

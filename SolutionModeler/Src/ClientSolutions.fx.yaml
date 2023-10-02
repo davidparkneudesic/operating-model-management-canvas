@@ -1780,9 +1780,7 @@
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =30
             IsSearchable: =false
-            Items: |-
-                =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
-                //Sort('Operating Models', 'Operating Model Name')
+            Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
             SearchFields: =["neu_operatingmodelname"]
             SearchItems: =[]
             Size: =12
