@@ -1877,6 +1877,26 @@
             Y: =4
             ZIndex: =20
 
+        Update_Button_1 As button:
+            Color: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Fill: |-
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            Height: =44
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =CopyOperatingModeltoClientSolution.Run(SolutionName_CS_Edit_Input.Text,SolutionID_1.Text,'Client/Prospect_CS_Edit_Input'.Text)
+            Text: ="Copy Operating Model"
+            Visible: =If(varUpdateClientSolution,true,false)
+            Width: =187
+            X: =517
+            Y: =345
+            ZIndex: =21
+
     "SolutionGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
         BorderThickness: =1
         Default: =//varGalDefault
