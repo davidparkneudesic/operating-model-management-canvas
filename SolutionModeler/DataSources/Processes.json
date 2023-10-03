@@ -17,6 +17,7 @@
       "modifiedby": "Modified By",
       "modifiedon": "Modified On",
       "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_clientspecific": "Client Specific",
       "neu_dataflowurl": "Data Flow URL",
       "neu_description": "Description",
       "neu_model": "Model",
@@ -62,6 +63,26 @@
       "d23a3121-22e3-46a8-b424-16ff63d3806a": "Active Processes",
       "fe2fbdb6-b175-4cf9-a7dd-e56097f1e911": "Process Advanced Find View"
     }
+  },
+  {
+    "DisplayName": "Client Specific (Processes)",
+    "Name": "neu_process_neu_clientspecific",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_clientspecific",
+        "OptionSetReferenceEntityName": "Processes"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "neu_clientspecific",
+    "RelatedEntityName": "Processes",
+    "Type": "OptionSetInfo"
   },
   {
     "DisplayName": "Status (Processes)",
