@@ -403,7 +403,7 @@
             Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active),'Process Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: |-
+            OnSelect: |
                 =//Navigate('Process Detail Screen',ScreenTransition.Cover)
                 UpdateContext({varOpenProcessDetail:true});
             TemplateFill: |-
@@ -2660,6 +2660,7 @@
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenProcessDetail:false});
+                UpdateContext({varEditProcess:false});
             Width: =54
             X: ='Process Detail Container'.Width - 60
             Y: =3
