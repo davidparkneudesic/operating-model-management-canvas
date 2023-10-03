@@ -32,7 +32,7 @@
             TemplatePadding: =0
             TemplateSize: =32
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =348
+            Width: =366
             X: =681
             Y: =132
             ZIndex: =1
@@ -1779,6 +1779,8 @@
             Height: =30
             IsSearchable: =false
             Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
+            OnSelect: |-
+                =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected})
             SearchFields: =["neu_operatingmodelname"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -1888,7 +1890,7 @@
             Height: =44
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =CopyOperatingModeltoClientSolution.Run("Dynamics 365 Sales",SolutionID_1.Text,'Client/Prospect_CS_Edit_Input'.Text)
+            OnSelect: =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',SolutionID_1.Text,SolutionName_CS_Edit_Input.Text,'Client/Prospect_CS_Edit_Input'.Text)
             Text: ="Associate Model"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187

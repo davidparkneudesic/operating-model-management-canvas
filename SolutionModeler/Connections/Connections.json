@@ -175,19 +175,16 @@
     "dependencies": {},
     "dependents": [
       "60cdf598-358b-417c-9188-3f1044bca64c",
-      "b8eb79d9-719d-49fd-981f-06380470bf1a"
+      "c0cc3ca0-dac0-4332-8106-f217f284189c"
     ],
     "id": "9d84011e-01b7-4c98-86a8-508b1df03e11"
   },
-  "b8eb79d9-719d-49fd-981f-06380470bf1a": {
+  "c0cc3ca0-dac0-4332-8106-f217f284189c": {
     "connectionRef": {
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1653/1.0.1653.3403/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "9d84011e-01b7-4c98-86a8-508b1df03e11": {
-          "value": "shared_commondataserviceforapps"
-        },
         "workflowEntityId": {
           "value": "f137fc16-3d61-ee11-be6d-000d3a4e9005"
         },
@@ -196,9 +193,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_commondataserviceforapps": {
-          "value": "9d84011e-01b7-4c98-86a8-508b1df03e11"
-        },
         "workflowEntityId": {
           "value": "f137fc16-3d61-ee11-be6d-000d3a4e9005"
         },
@@ -215,7 +209,7 @@
       "shared_commondataserviceforapps": "9d84011e-01b7-4c98-86a8-508b1df03e11"
     },
     "dependents": [],
-    "id": "b8eb79d9-719d-49fd-981f-06380470bf1a"
+    "id": "c0cc3ca0-dac0-4332-8106-f217f284189c"
   },
   "db2506b7-68cf-43a3-a342-992be7ca8002": {
     "connectionRef": {
