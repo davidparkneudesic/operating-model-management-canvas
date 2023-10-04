@@ -1,9 +1,13 @@
-Screen1 As screen:
+scrClientSolutionSelection As screen:
 
-    "Gallery3 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+    "glyClientSolutionGallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         DelayItemLoading: =true
         Height: =549
-        Items: =Sort(Filter('Client Solutions',Status = 'Status (Client Solutions)'.Active),'Client/Prospect Name')
+        Items: |-
+            =If(ddFilter.Selected.Value = "My Client Solutions",
+             Sort(Filter('Client Solutions',Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),'Client/Prospect Name'),
+             Sort(Filter('Client Solutions',Status = 'Status (Client Solutions)'.Active),'Client/Prospect Name')
+            )
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
@@ -51,7 +55,7 @@ Screen1 As screen:
             PaddingLeft: =0
             PaddingRight: =0
             PaddingTop: =0
-            Text: =ThisItem.'Created On'
+            Text: =ThisItem.'Created By'.'Full Name'
             VerticalAlign: =VerticalAlign.Top
             Width: =Title18.Width
             X: =Title18.X
@@ -63,7 +67,7 @@ Screen1 As screen:
             Color: =RGBA(166, 166, 166, 1)
             Height: =50
             Icon: =Icon.ChevronRight
-            OnSelect: =Select(Parent)
+            OnSelect: =Select(Parent);Navigate(ClientSolutions)
             PaddingBottom: =16
             PaddingLeft: =16
             PaddingRight: =16
@@ -100,4 +104,28 @@ Screen1 As screen:
         Text: ="Client Solutions"
         Width: =1366
         ZIndex: =2
+
+    ddFilter As dropdown:
+        Items: =["My Client Solutions", "All Client Solutions"]
+        X: =64
+        Y: =92
+        ZIndex: =3
+
+    btnNewClientSolution As button:
+        Fill: |-
+            =ColorValue("#00467f")
+        Height: =44
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |-
+            =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
+            //If(IsBlank(glyClientSolutionGallery.Selected),Select(glyClientSolutionGallery,1));
+            Navigate(ClientSolutions);
+            Set(varOpenCreateClientSolution,true);
+        Size: =14
+        Text: ="New Client Solution"
+        Width: =261
+        X: =946
+        Y: =168
+        ZIndex: =4
 

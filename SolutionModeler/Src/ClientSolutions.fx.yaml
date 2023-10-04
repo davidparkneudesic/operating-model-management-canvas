@@ -12,8 +12,8 @@
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =633
-        Width: =1145
-        X: =220
+        Width: =1331
+        X: =32
         Y: =108
         ZIndex: =1
 
@@ -24,7 +24,7 @@
             Fill: =RGBA(255, 255, 255, 1)
             FocusedBorderColor: =
             Height: =185
-            Items: =Filter(SolutionGallery.Selected.'Operating Models (neu_neu_operatingmodel_ClientSolution_neu_cli)',Status = 'Status (Operating Models)'.Active)
+            Items: =Filter(glyClientSolutionGallery.Selected.'Operating Models (neu_neu_operatingmodel_ClientSolution_neu_cli)',Status = 'Status (Operating Models)'.Active)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             ShowScrollbar: =false
@@ -32,7 +32,7 @@
             TemplatePadding: =0
             TemplateSize: =36
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =436
+            Width: =421
             X: =704
             Y: =132
             ZIndex: =1
@@ -93,7 +93,7 @@
             DataSource: ='Client Solutions'
             DefaultMode: =FormMode.View
             Height: =464
-            Item: =SolutionGallery.Selected
+            Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =665
@@ -763,7 +763,7 @@
             AcceptsFocus: =true
             DataSource: ='Client Solutions'
             Height: =430
-            Item: =SolutionGallery.Selected
+            Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =910
@@ -1505,9 +1505,9 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+                =//If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
                 Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
-                UpdateContext({varOpenCreateClientSolution:false});
+                Set(varOpenCreateClientSolution,false);
                 UpdateContext({varUpdateClientSolution:false})
             Size: =14
             Text: ="Manage User Stories"
@@ -1579,7 +1579,7 @@
                 =If(IsBlank(EstimateURL_CS_Edit_Input.Text),
                     Patch(
                         'Client Solutions',
-                        SolutionGallery.Selected,
+                        glyClientSolutionGallery.Selected,
                         {
                             'Solution Name':SolutionName_CS_Edit_Input.Text,
                             'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
@@ -1591,7 +1591,7 @@
                     ),
                     Patch(
                         'Client Solutions',
-                        SolutionGallery.Selected,
+                        glyClientSolutionGallery.Selected,
                         {
                             'Solution Name':SolutionName_CS_Edit_Input.Text,
                             'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
@@ -1613,7 +1613,7 @@
                 // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
                 ForAll(
                     RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
-                    Relate(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
+                    Relate(glyClientSolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
                 );
                 
                 UpdateContext({varUpdatedCSWindow:true});
@@ -1656,7 +1656,7 @@
             Height: =32
             Size: =12
             Text: ="Operating Model to Associate"
-            Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
+            Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
             Width: =289
             X: =524
             Y: =263
@@ -1716,7 +1716,7 @@
             SearchItems: =[]
             SelectMultiple: =false
             Size: =12
-            Visible: =If(varUpdateClientSolution && !IsBlank(SolutionGallery.Selected),true,false)
+            Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
             Width: =395
             X: =524
             Y: =299
@@ -1735,7 +1735,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+                =//If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
                 Navigate(scrConnections, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             Size: =14
             Text: ="Manage ADO Connections"
@@ -1758,9 +1758,9 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+                =//If(IsBlank(glyClientSolutionGallery.Selected),Select(glyClientSolutionGallery,1));
                 Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
-                ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = SolutionGallery.Selected.'Solution Name'));
+                ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = glyClientSolutionGallery.Selected.'Solution Name'));
                 //Set(varClientSolutionName,SolutionGallery.Selected.'Solution Name');
                 //UpdateContext({varOpenCreateClientSolution:false});
                 //UpdateContext({varUpdateClientSolution:false})
@@ -1784,30 +1784,6 @@
             X: =704
             Y: =102
             ZIndex: =19
-
-        btnNewClientSolution As button:
-            Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            Height: =44
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
-                UpdateContext({varOpenCreateClientSolution:true})
-            Size: =14
-            Text: ="New Client Solution"
-            Visible: =If(varUpdateClientSolution,false,true)
-            Width: =261
-            X: =793
-            Y: =4
-            ZIndex: =20
 
         Update_Button_1 As button:
             Color: |-
@@ -1842,76 +1818,6 @@
             Y: =341
             ZIndex: =22
 
-    "SolutionGallery As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
-        BorderThickness: =1
-        Default: =//varGalDefault
-        DelayItemLoading: =true
-        Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Height: =636
-        Items: =Filter('Client Solutions', 'Client Solutions (Views)'.'Active Client Solutions')
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplateFill: |-
-            =//If(ThisItem.IsSelected,ColorFade(RGBA(204, 208, 225, 1),-2%), If(varOpenCreateClientSolution && ThisItem.IsSelected, RGBA(153, 160, 196, 1) , RGBA(0,0,0,0)))
-            
-            
-            If(ThisItem.'Client Solution' = SolutionGallery.Selected.'Client Solution' && 
-                    !(varOpenCreateClientSolution || varUpdatedCSWindow), 
-                 RGBA(204, 208, 225, 1),
-                If (ThisItem.'Client Solution' = SolutionGallery.Selected.'Client Solution' && 
-                        (varOpenCreateClientSolution || varUpdatedCSWindow),
-                        RGBA(153, 160, 196, 1),
-                        RGBA(0,0,0,0)
-                )
-            )
-        TemplatePadding: =0
-        TemplateSize: =75
-        Width: =220
-        Y: =132
-        ZIndex: =3
-
-        Title2 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =23
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =12
-            Text: =ThisItem.'Solution Name'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =226
-            X: =17
-            Y: =20
-            ZIndex: =1
-
-        Subtitle2 As label:
-            Color: =RGBA(51, 51, 51, 1)
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =9
-            Text: =ThisItem.'Client/Prospect Name'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title2.Width
-            X: =17
-            Y: =43
-            ZIndex: =2
-
-        Rectangle3 As rectangle:
-            Height: =Parent.TemplateHeight
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =5
-
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
         Color: |-
@@ -1939,8 +1845,8 @@
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
-            Navigate(HomePage, ScreenTransition.UnCoverRight);
-            UpdateContext({varOpenCreateClientSolution:false});
+            Navigate(scrClientSolutionSelection, ScreenTransition.UnCoverRight);
+            Set(varOpenCreateClientSolution,false);
             UpdateContext({varUpdateClientSolution:false});
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});
@@ -1948,22 +1854,6 @@
         X: =18
         Y: =15
         ZIndex: =5
-
-    ClientSolutions_Gallery_Label As label:
-        Align: =Align.Center
-        BorderThickness: =1
-        Color: |-
-            =ColorValue("#00467f")
-        Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        FontWeight: =FontWeight.Bold
-        Height: =56
-        Size: =18
-        Text: ="Client Solutions"
-        Width: =220
-        Y: =76
-        ZIndex: =17
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -1981,7 +1871,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
                 =//ResetForm(ClientsSolutionsForm);Set(varGalDefault,Blank())
-                UpdateContext({varOpenCreateClientSolution:false});
+                Set(varOpenCreateClientSolution,false);
                 UpdateContext({varClientSolutionCreated:false});
             Text: ="Cancel"
             Visible: |-
@@ -2196,7 +2086,7 @@
             Height: =60
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varOpenCreateClientSolution:false});
+                =Set(varOpenCreateClientSolution,false);
                 UpdateContext({varClientSolutionCreated:false});
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             Width: =60
@@ -2270,7 +2160,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
-                =Remove('Client Solutions', LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution'));
+                =Remove('Client Solutions', LookUp('Client Solutions', 'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
                 UpdateContext({varMessageCSDeleted:true})
             Text: ="Delete"
             Visible: =If(varMessageCSDeleted,false,true)
