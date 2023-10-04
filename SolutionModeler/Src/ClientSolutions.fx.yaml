@@ -1533,7 +1533,7 @@
                 =UpdateContext({varUpdateClientSolution:true});
                 //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
             Size: =14
-            Text: ="Update Client Solution"
+            Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
             X: =50
@@ -1619,7 +1619,7 @@
                 UpdateContext({varUpdatedCSWindow:true});
                 UpdateContext({varUpdateClientSolution:false});
                 UpdateContext({varModelPropStarted:false})
-            Text: ="Update"
+            Text: ="Save"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187
             X: =69
@@ -1691,7 +1691,7 @@
             FontWeight: =FontWeight.Bold
             Height: =54
             Size: =20
-            Text: ="Client Solution Detail"
+            Text: ="Client Solution"
             Width: =305
             X: =69
             Y: =28
@@ -1917,6 +1917,7 @@
                     )
                 );
                 
+                
                 // Create a temporary collection to capture the newly created data
                 ClearCollect(colCreatedClientSolutionTemp, Filter('Client Solutions', 
                                             'Solution Name' = 'New Solution Name Input'.Text && 
@@ -1928,7 +1929,7 @@
                     )
                 );
                 UpdateContext({varClientSolutionCreated:true});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);UpdateContext({varUpdateClientSolution:false});ClientsSolutionsForm.
             Text: ="Submit"
             Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
             Width: =177
@@ -2143,17 +2144,6 @@
         Y: =251
         ZIndex: =21
 
-        "'Exit Container Before Delete Button' As icon.Cancel":
-            Height: =56
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varDeleteClientSolutionWindow:false})
-            Visible: =If(varMessageCSDeleted,false,true)
-            Width: =57
-            X: =516
-            Y: =12
-            ZIndex: =1
-
         "'Delete Confirmation Button' As button":
             Fill: |-
                 =ColorValue("#00467f")
@@ -2216,6 +2206,17 @@
             X: =516
             Y: =12
             ZIndex: =6
+
+        btnOK As button:
+            Fill: |-
+                = ColorValue("#00467f")
+            OnSelect: |-
+                =Navigate(scrClientSolutionSelection);UpdateContext({varDeleteClientSolutionWindow:false});UpdateContext({varMessageCSDeleted:false})
+            Text: ="OK"
+            Visible: =If(varMessageCSDeleted,true,false)
+            X: =200
+            Y: =183
+            ZIndex: =7
 
     "'Create Azure DevOps Project Window' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
