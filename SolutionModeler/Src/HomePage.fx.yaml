@@ -37,7 +37,7 @@ HomePage As screen:
             Height: =70
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =Navigate(ClientSolutions, ScreenTransition.Cover)
+            OnSelect: =Navigate(scrClientSolutionSelection, ScreenTransition.Cover)
             Text: ="Go to Client Solutions"
             Width: =280
             X: =45

@@ -12,7 +12,7 @@ scrClientSolutionSelection As screen:
         LoadingSpinner: =LoadingSpinner.Data
         TemplatePadding: =0
         TemplateSize: =116
-        Width: =717
+        Width: =362
         X: =48
         Y: =168
         ZIndex: =1
@@ -125,7 +125,25 @@ scrClientSolutionSelection As screen:
         Size: =14
         Text: ="New Client Solution"
         Width: =261
-        X: =946
-        Y: =168
+        X: =488
+        Y: =208
         ZIndex: =4
+
+    "'Back Button_to HomePage_1' As icon.ChevronLeft":
+        Color: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Height: =45
+        Icon: =Icon.ChevronLeft
+        OnSelect: |-
+            =Back(ScreenTransition.UnCoverRight);
+            Navigate(HomePage, ScreenTransition.UnCoverRight);
+            Set(varOpenCreateClientSolution,false);
+            UpdateContext({varUpdateClientSolution:false});
+            UpdateContext({varDeleteClientSolutionWindow:false});
+            UpdateContext({varUpdatedCSWindow:false});
+        Width: =45
+        X: =18
+        Y: =15
+        ZIndex: =5
 

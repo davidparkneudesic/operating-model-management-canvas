@@ -93,7 +93,11 @@
             DataSource: ='Client Solutions'
             DefaultMode: =FormMode.View
             Height: =464
-            Item: =glyClientSolutionGallery.Selected
+            Item: |-
+                =If(varClientSolutionCreated,
+                LookUp('Client Solutions','Created By'.'Full Name' = User().FullName && 'Created On' > Now()-.001),
+                glyClientSolutionGallery.Selected
+                )
             NumberOfColumns: =2
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =665
@@ -1616,7 +1620,7 @@
                     Relate(glyClientSolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
                 );
                 
-                UpdateContext({varUpdatedCSWindow:true});
+                UpdateContext({varUpdatedCSWindow:false});
                 UpdateContext({varUpdateClientSolution:false});
                 UpdateContext({varModelPropStarted:false})
             Text: ="Save"
@@ -1929,7 +1933,7 @@
                     )
                 );
                 UpdateContext({varClientSolutionCreated:true});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);UpdateContext({varUpdateClientSolution:false});ClientsSolutionsForm.
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);UpdateContext({varUpdateClientSolution:false});
             Text: ="Submit"
             Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
             Width: =177
