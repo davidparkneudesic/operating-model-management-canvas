@@ -72,12 +72,13 @@
             Title3 As label:
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                 Height: =42
+                LineHeight: =2
                 OnSelect: =Select(Parent)
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                Size: =12
+                PaddingBottom: =10
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =10
+                Size: =10
                 Text: =ThisItem.'Operating Model Name'
                 Width: =260
                 X: =12
@@ -146,7 +147,7 @@
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
-                Size: =12
+                Size: =10
                 Text: =ThisItem.'Capability Name'
                 Width: =260
                 X: =12
@@ -209,7 +210,7 @@
             "'L2 Sub Capability Label' As label":
                 Height: =41
                 OnSelect: =Select(Parent)
-                Size: =12
+                Size: =10
                 Text: =ThisItem.'Capability Name'
                 Width: |
                     =241
@@ -366,7 +367,7 @@
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
-                Size: =12
+                Size: =10
                 Text: =ThisItem.'Process Group Name'
                 Width: =260
                 X: =12
@@ -440,7 +441,7 @@
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
-                Size: =12
+                Size: =10
                 Text: =ThisItem.'Process Name'
                 Width: =260
                 X: =12

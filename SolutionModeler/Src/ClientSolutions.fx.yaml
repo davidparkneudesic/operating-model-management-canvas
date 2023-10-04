@@ -12,8 +12,8 @@
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =633
-        Width: =1054
-        X: =284
+        Width: =1145
+        X: =220
         Y: =108
         ZIndex: =1
 
@@ -30,10 +30,10 @@
             ShowScrollbar: =false
             TemplateFill: =
             TemplatePadding: =0
-            TemplateSize: =32
+            TemplateSize: =36
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =366
-            X: =681
+            Width: =436
+            X: =704
             Y: =132
             ZIndex: =1
 
@@ -41,16 +41,19 @@
                 Color: =RGBA(0,0,0,1)
                 Fill: =RGBA(0, 0, 0, 1)
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                Height: =25
+                Height: =35
                 LineHeight: =.75
                 OnSelect: =Select(Parent)
+                Overflow: =Overflow.Scroll
                 PaddingBottom: =0
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
+                Size: =10
                 Text: =ThisItem.'Operating Model Name'
                 VerticalAlign: =VerticalAlign.Top
-                Width: =297
+                Width: =413
+                Wrap: =false
                 X: =14
                 Y: =7
                 ZIndex: =1
@@ -97,82 +100,6 @@
             X: =39
             Y: =91
             ZIndex: =3
-
-            "'Solution Area_DataCard1' As typedDataCard.comboBoxEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_SolutionArea"
-                Default: =ThisItem.'Solution Area'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_SolutionArea")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: =
-                Width: =332
-                X: =1
-                Y: =1
-                ZIndex: =1
-
-                DataCardKey14 As label:
-                    AutoHeight: =true
-                    Color: |-
-                        =ColorValue("#00467f")
-                    FontWeight: =FontWeight.Bold
-                    Height: =34
-                    Size: =12
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =15
-                    ZIndex: =1
-
-                ErrorMessage11 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardValue6_3.Y + DataCardValue6_3.Height
-                    ZIndex: =3
-
-                StarVisible11 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey14.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey14.Y
-                    ZIndex: =4
-
-                DataCardValue6_3 As text:
-                    Default: =ThisItem.'Solution Area'.'Solution Area Name'
-                    DelayOutput: =true
-                    DisplayMode: =DisplayMode.View
-                    Height: =30
-                    PaddingLeft: =5
-                    Size: =12
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey8.Y + DataCardKey8.Height + 5
-                    ZIndex: =5
-
-                Rectangle4_6 As rectangle:
-                    BorderThickness: =1
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =30
-                    Width: =272
-                    X: =30
-                    Y: =49
-                    ZIndex: =6
 
             "'Estimate URL_DataCard1' As typedDataCard.urlEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -1713,7 +1640,8 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                UpdateContext({varDeleteClientSolutionWindow:true})
+                UpdateContext({varDeleteClientSolutionWindow:true});
+                UpdateContext({varModelPropStarted:false})
             Text: |-
                 ="Delete
                 "
@@ -1752,7 +1680,7 @@
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =724
+            X: =794
             Y: =540
             ZIndex: =13
 
@@ -1813,7 +1741,7 @@
             Text: ="Manage ADO Connections"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =724
+            X: =794
             Y: =481
             ZIndex: =16
 
@@ -1840,7 +1768,7 @@
             Text: ="Client Operating Models"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =723
+            X: =799
             Y: =329
             ZIndex: =17
 
@@ -1853,7 +1781,7 @@
             Text: ="Client Operating Models"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =257
-            X: =675
+            X: =704
             Y: =102
             ZIndex: =19
 
@@ -1877,7 +1805,7 @@
             Text: ="New Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =723
+            X: =793
             Y: =4
             ZIndex: =20
 
@@ -1940,7 +1868,7 @@
             )
         TemplatePadding: =0
         TemplateSize: =75
-        Width: =253
+        Width: =220
         Y: =132
         ZIndex: =3
 
@@ -2033,13 +1961,13 @@
         Height: =56
         Size: =18
         Text: ="Client Solutions"
-        Width: =253
+        Width: =220
         Y: =76
         ZIndex: =17
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =684
+        Height: =529
         Visible: =If(varOpenCreateClientSolution,true,false)
         Width: =1188
         X: =89
@@ -2060,8 +1988,8 @@
                 =//If(ClientsSolutionsForm.Mode = FormMode.New, true, false)
                 true
             Width: =177
-            X: =638
-            Y: =610
+            X: =421
+            Y: =447
             ZIndex: =1
 
         BtnSubmit As button:
@@ -2078,7 +2006,6 @@
                             'Solution Name':'New Solution Name Input'.Text,
                             'Client/Prospect Name':'Client/Prospect Name Input'.Text,
                             'Status Reason':'Status Reason CS Dropdown'.Selected.Value,
-                            'Solution Area':'Solution Area CS Dropdown'.Selected,
                             'Implementation Model':'Implementation Model CS Dropdown'.Selected,
                             'Project Start Date':'Project Start Date DatePicker'.SelectedDate,
                             'Project End Date':'Project End Date DatePicker'.SelectedDate
@@ -2091,7 +2018,6 @@
                             'Solution Name':'New Solution Name Input'.Text,
                             'Client/Prospect Name':'Client/Prospect Name Input'.Text,
                             'Status Reason':'Status Reason CS Dropdown'.Selected.Value,
-                            'Solution Area':'Solution Area CS Dropdown'.Selected,
                             //'Estimate URL':"<a href='" & 'Estimate URL Input'.Text & "'>URL</a>",
                             'Estimate URL':'Estimate URL Input'.Text,
                             'Implementation Model':'Implementation Model CS Dropdown'.Selected,
@@ -2106,31 +2032,18 @@
                                             'Solution Name' = 'New Solution Name Input'.Text && 
                                             'Client/Prospect Name' = 'Client/Prospect Name Input'.Text && 
                                             'Status Reason' = 'Status Reason CS Dropdown'.Selected.Value &&
-                                            'Solution Area'.'Solution Area Name' = 'Solution Area CS Dropdown'.Selected.'Solution Area Name' && 
                                             'Implementation Model'.'Implementation Model Name' = 'Implementation Model CS Dropdown'.Selected.'Implementation Model Name' &&
                                             'Project Start Date' = 'Project Start Date DatePicker'.SelectedDate &&
                                             'Project End Date' = 'Project End Date DatePicker'.SelectedDate
                     )
                 );
-                
-                // Update the Many-to-Many relationship with the selected items in the Operating Model Combo Box
-                ForAll(
-                    'Related Operating Models Combobox'.SelectedItems, 
-                    Relate(
-                        First(colCreatedClientSolutionTemp).'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', 
-                        ThisRecord
-                    )
-                );
-                
                 UpdateContext({varClientSolutionCreated:true});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             Text: ="Submit"
-            Visible: |-
-                =//If(ClientsSolutionsForm.Mode = FormMode.New, true, false)
-                true
+            Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
             Width: =177
-            X: =373
-            Y: =610
+            X: =183
+            Y: =447
             ZIndex: =2
 
         "'New Solution Name Label' As label":
@@ -2186,47 +2099,27 @@
             Y: =165
             ZIndex: =8
 
-        "'Solution Area CS Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Solution Area"
-            Width: =239
-            X: =83
-            Y: =225
-            ZIndex: =9
-
-        "'Solution Area CS Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Default: ="Proposal"
-            Items: =Sort('Solution Areas', 'Solution Area Name')
-            Width: =340
-            X: =83
-            Y: =265
-            ZIndex: =10
-
         "'Estimate URL Label' As label":
             FontWeight: =FontWeight.Semibold
             Text: ="Estimate URL"
             Width: =239
-            X: =83
-            Y: =327
+            X: =80
+            Y: =233
             ZIndex: =11
 
         "'Estimate URL Input' As text":
             Default: =""
             Width: =651
-            X: =83
-            Y: =367
+            X: =80
+            Y: =273
             ZIndex: =12
 
         "'Implementation Model CS Label' As label":
             FontWeight: =FontWeight.Semibold
             Text: ="Implementation Model"
             Width: =239
-            X: =788
-            Y: =327
+            X: =768
+            Y: =233
             ZIndex: =13
 
         "'Implementation Model CS Dropdown' As dropdown":
@@ -2237,24 +2130,24 @@
             Default: ="Proposal"
             Items: ='Implementation Models'
             Width: =293
-            X: =788
-            Y: =367
+            X: =768
+            Y: =273
             ZIndex: =14
 
         "'Project Start Date Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="* Project Start Date"
+            Text: ="Project Start Date"
             Width: =239
-            X: =83
-            Y: =437
+            X: =80
+            Y: =340
             ZIndex: =15
 
         "'Project End Date Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="* Project End Date"
+            Text: ="Project End Date"
             Width: =239
-            X: =611
-            Y: =437
+            X: =406
+            Y: =340
             ZIndex: =16
 
         "'Project Start Date DatePicker' As datepicker":
@@ -2262,16 +2155,16 @@
             IconBackground: |-
                 =ColorValue("#00467f")
             Width: =280
-            X: =83
-            Y: =477
+            X: =80
+            Y: =380
             ZIndex: =17
 
         "'Project End Date DatePicker' As datepicker":
             IconBackground: |-
                 =ColorValue("#00467f")
             Width: =280
-            X: =608
-            Y: =477
+            X: =403
+            Y: =380
             ZIndex: =18
 
         "'Client Solution Created Message' As label":
@@ -2305,7 +2198,7 @@
             OnSelect: |-
                 =UpdateContext({varOpenCreateClientSolution:false});
                 UpdateContext({varClientSolutionCreated:false});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Related Operating Models Combobox'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             Width: =60
             X: |+
                 ='Client Solution Create Container'.Width - 65
@@ -2313,28 +2206,14 @@
             Y: =5
             ZIndex: =21
 
-        "'Related Operating Models Combobox' As combobox":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            DisplayFields: =["neu_operatingmodelname"]
-            IsSearchable: =false
-            Items: =Sort('Operating Models','Operating Model Name')
-            SearchFields: =["neu_operatingmodelname"]
-            SearchItems: =[]
-            Width: =430
-            X: =636
-            Y: =265
+        Label10 As label:
+            Align: =Align.Center
+            Height: =67
+            Text: ="Associate any Standard Operating Models in the Update Client Solutions area."
+            Width: =403
+            X: =720
+            Y: =420
             ZIndex: =22
-
-        "'Related Operating Models Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Related Operating Models"
-            Width: =259
-            X: =638
-            Y: =225
-            ZIndex: =23
 
     "'Client Solution Updated Message Window' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
