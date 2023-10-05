@@ -33,8 +33,8 @@ scrClientSolutionSelection As screen:
         Size: =14
         Text: ="New Client Solution"
         Width: =261
-        X: =1038
-        Y: =101
+        X: =1026
+        Y: =95
         ZIndex: =4
 
     "'Back Button_to HomePage_1' As icon.ChevronLeft":
@@ -68,7 +68,7 @@ scrClientSolutionSelection As screen:
         Text: ="Modify Client Solution"
         Width: =261
         X: =53
-        Y: =602
+        Y: =638
         ZIndex: =6
 
     glyClientSolutionGallery As dataTable.datatable:
@@ -78,13 +78,34 @@ scrClientSolutionSelection As screen:
         Fill: =RGBA(0, 0, 0, 0)
         Height: =415
         Items: |-
-            =If(ddFilter.Selected.Value = "My Client Solutions",
-            Sort(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),'Client/Prospect Name'),
-            Sort(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active),'Client/Prospect Name')
+            =If(chkShowClosed,
+                If(IsBlank(txtSearchInput),
+                    If(ddFilter.Selected.Value = "My Client Solutions",
+                        SortByColumns(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),varSortType),
+                        SortByColumns(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active),varSortType)
+                    )
+                    ,
+                    If(ddFilter.Selected.Value = "My Client Solutions",
+                        SortByColumns(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName && StartsWith('Solution Name',txtSearchInput.Text)),varSortType),
+                        SortByColumns(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && StartsWith('Solution Name',txtSearchInput.Text)),varSortType)
+                    )
+                )
+            ,
+            If(IsBlank(txtSearchInput),
+                    If(ddFilter.Selected.Value = "My Client Solutions",
+                        SortByColumns(Filter('Client Solutions', 'Status Reason' <> 'Status Reason (Client Solutions)'.Lost && 'Status Reason' <> 'Status Reason (Client Solutions)'.Won && Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),varSortType),
+                        SortByColumns(Filter('Client Solutions', 'Status Reason' <> 'Status Reason (Client Solutions)'.Lost && 'Status Reason' <> 'Status Reason (Client Solutions)'.Won && Status = 'Status (Client Solutions)'.Active),varSortType)
+                    )
+                    ,
+                    If(ddFilter.Selected.Value = "My Client Solutions",
+                        SortByColumns(Filter('Client Solutions', 'Status Reason' <> 'Status Reason (Client Solutions)'.Lost && 'Status Reason' <> 'Status Reason (Client Solutions)'.Won && Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName && StartsWith('Solution Name',txtSearchInput.Text)),varSortType),
+                        SortByColumns(Filter('Client Solutions', 'Status Reason' <> 'Status Reason (Client Solutions)'.Lost && 'Status Reason' <> 'Status Reason (Client Solutions)'.Won && Status = 'Status (Client Solutions)'.Active && StartsWith('Solution Name',txtSearchInput.Text)),varSortType)
+                    )
+                )
             )
         Width: =1246
-        X: =53
-        Y: =170
+        X: =54
+        Y: =213
         ZIndex: =8
 
         "'Created On_Column2' As dataTableColumn.textualColumn":
@@ -159,4 +180,35 @@ scrClientSolutionSelection As screen:
             X: =0
             Y: =0
             ZIndex: =7
+
+    ddSortControl As dropdown:
+        Items: =["Client/Prospect Name", "Created On","Status Reason"]
+        OnChange: =If(ddSortControl.Selected.Value = "Client/Prospect Name", Set(varSortType,"neu_clientprospectname"),If(ddSortControl.Selected.Value = "Created On", Set(varSortType,"createdon"),Set(varSortType, "statuscode")))
+        OnSelect: =
+        X: =644
+        Y: =95
+        ZIndex: =9
+
+    Label1 As label:
+        Align: =Align.Right
+        Text: |-
+            ="Sort By:"
+        X: =494
+        Y: =95
+        ZIndex: =10
+
+    txtSearchInput As text:
+        Default: =
+        Height: =43
+        HintText: ="Search for Client Solution Name"
+        Width: =555
+        X: =64
+        Y: =154
+        ZIndex: =11
+
+    chkShowClosed As checkbox:
+        Text: ="Show Closed Solutions"
+        X: =412
+        Y: =87
+        ZIndex: =13
 

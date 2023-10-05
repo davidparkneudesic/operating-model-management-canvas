@@ -335,7 +335,7 @@
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     Size: =12
                     StartYear: =1899
-                    Tooltip: =Parent.DisplayName
+                    Tooltip: ="Enter Date"
                     Width: =178
                     X: =30
                     Y: =42
@@ -446,7 +446,7 @@
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     Size: =12
                     StartYear: =1899
-                    Tooltip: =Parent.DisplayName
+                    Tooltip: ="Enter Date"
                     Width: =178
                     X: =30
                     Y: =42
@@ -973,7 +973,7 @@
                 Height: =81
                 Required: =false
                 Update: =ProjectStartDate_CS_Edit_DateValue.SelectedDate
-                Width: =225
+                Width: =245
                 X: =0
                 Y: =3
                 ZIndex: =1
@@ -985,7 +985,7 @@
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
-                    X: =30
+                    X: =42
                     Y: =10
                     ZIndex: =1
 
@@ -1005,8 +1005,8 @@
                     StartYear: =1899
                     Tooltip: =Parent.DisplayName
                     Width: =200
-                    X: =12
-                    Y: =56
+                    X: =42
+                    Y: =57
                     ZIndex: =2
 
                 Separator3_1 As label:
@@ -1076,8 +1076,8 @@
                 Height: =101
                 Required: =false
                 Update: =ProjectEndDate_CS_Edit_DateValue.SelectedDate
-                Width: =225
-                X: =0
+                Width: =598
+                X: =1
                 Y: =3
                 ZIndex: =1
 
@@ -1088,7 +1088,7 @@
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
-                    X: =30
+                    X: =54
                     Y: =10
                     ZIndex: =1
 
@@ -1108,7 +1108,7 @@
                     StartYear: =1899
                     Tooltip: =Parent.DisplayName
                     Width: =200
-                    X: =30
+                    X: =54
                     Y: =57
                     ZIndex: =2
 
@@ -1165,8 +1165,8 @@
                 Required: =false
                 Visible: =false
                 Width: =598
-                X: =1
-                Y: =3
+                X: =0
+                Y: =4
                 ZIndex: =1
 
                 DataCardKey21_1 As label:
@@ -1349,7 +1349,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =StatusReason_CS_Edit_ComboBox.Selected.Value
+                Update: =
                 Width: =598
                 X: =0
                 Y: =1
@@ -1381,7 +1381,14 @@
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
-                    Items: =Choices('Status Reason (Client Solutions)')
+                    Items: =["Won","Proposal","Lost","Postponed"]
+                    OnChange: |-
+                        =Switch(StatusReason_CS_Edit_ComboBox.Selected.Value,
+                        "Postponed",UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Postponed}),
+                        "Won",UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Won}),
+                        "Lost", UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Lost}),
+                        "Proposal", UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Proposal})
+                        )
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["Value"]
                     SearchItems: =[]
@@ -1507,7 +1514,7 @@
                         {
                             'Solution Name':SolutionName_CS_Edit_Input.Text,
                             'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
-                            'Status Reason':StatusReason_CS_Edit_ComboBox.Selected.Value,
+                            'Status Reason':varStatusReason,
                             'Implementation Model':ImplementationModel_CS_Edit_ComboBox.Selected,
                             'Project Start Date':ProjectStartDate_CS_Edit_DateValue.SelectedDate,
                             'Project End Date':ProjectEndDate_CS_Edit_DateValue.SelectedDate
@@ -1519,7 +1526,7 @@
                         {
                             'Solution Name':SolutionName_CS_Edit_Input.Text,
                             'Client/Prospect Name':'Client/Prospect_CS_Edit_Input'.Text,
-                            'Status Reason':StatusReason_CS_Edit_ComboBox.Selected.Value,
+                            'Status Reason':varStatusReason,
                             'Estimate URL':EstimateURL_CS_Edit_Input.Text,
                             'Implementation Model':ImplementationModel_CS_Edit_ComboBox.Selected,
                             'Project Start Date':ProjectStartDate_CS_Edit_DateValue.SelectedDate,
@@ -1536,7 +1543,8 @@
                 
                 UpdateContext({varUpdatedCSWindow:false});
                 Set(varUpdateClientSolution,false);
-                UpdateContext({varModelPropStarted:false})
+                UpdateContext({varModelPropStarted:false});
+                Navigate(scrClientSolutionSelection)
             Text: ="Save"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187

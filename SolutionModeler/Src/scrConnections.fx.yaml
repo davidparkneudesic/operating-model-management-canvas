@@ -834,6 +834,7 @@
             Fill: =RGBA(255, 255, 255, 1)
             Height: =311
             NumberOfColumns: =2
+            OnSuccess: =NewForm('Create Connection Form_1')
             Visible: =If(varOpenConnectionCreate,true,false)
             Width: =859
             X: =24
@@ -910,7 +911,7 @@
                     Y: =DataCardKey28.Y
                     ZIndex: =4
 
-            "'Client Solution_DataCard6' As typedDataCard.comboBoxEditCard":
+            "'Client Solution_DataCard7' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_ClientSolutionID"
                 Default: =ThisItem.'Client Solution'
@@ -920,13 +921,12 @@
                 Height: =50
                 Required: =false
                 Update: =dcClientSolution.Selected
-                Visible: =false
                 Width: =429
                 X: =1
                 Y: =1
                 ZIndex: =1
 
-                DataCardKey47 As label:
+                DataCardKey48 As label:
                     AutoHeight: =true
                     Height: =34
                     Text: =Parent.DisplayName
@@ -938,10 +938,9 @@
 
                 dcClientSolution As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: ="1"
-                    DefaultSelectedItems: =Parent.Default
+                    DefaultSelectedItems: =glyClientSolutionGallery.Selected
                     DisplayFields: =["neu_solutionname"]
-                    DisplayMode: =DisplayMode.View
+                    DisplayMode: =Parent.DisplayMode
                     Items: =Filter('Client Solutions', 'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_solutionname"]
@@ -950,10 +949,10 @@
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardKey47.Y + DataCardKey47.Height + 5
+                    Y: =DataCardKey48.Y + DataCardKey48.Height + 5
                     ZIndex: =2
 
-                ErrorMessage42 As label:
+                ErrorMessage43 As label:
                     AutoHeight: =true
                     Height: =10
                     Live: =Live.Assertive
@@ -968,14 +967,14 @@
                     Y: =dcClientSolution.Y + dcClientSolution.Height
                     ZIndex: =3
 
-                StarVisible36 As label:
+                StarVisible37 As label:
                     Align: =Align.Center
-                    Height: =DataCardKey47.Height
+                    Height: =DataCardKey48.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                     Width: =30
                     Wrap: =false
-                    Y: =DataCardKey47.Y
+                    Y: =DataCardKey48.Y
                     ZIndex: =4
 
             ConnectionName As typedDataCard.textualEditCard:
@@ -1123,22 +1122,12 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
-                =    Patch('Client Solution Connections',
-                        Defaults('Client Solution Connections'),
-                        {
-                            Name:ConnectionName_Input.Text,
-                            'DevOps Organization URL':DevOpsURL_Input.Text,
-                            'Personal Access Token':PersonalAccessToken_Input.Text,
-                            'Client Solution':dcClientSolution.Selected
-                        }
-                    )
-                ;
-                
+                =SubmitForm('Create Connection Form_1');
                 UpdateContext({varConnCreated:true});
                 UpdateContext({varOpenConnectionCreate:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
-            Visible: =If(IsBlank(ConnectionName_Input.Text) || IsBlank(DevOpsURL_Input.Text) || IsBlank(PersonalAccessToken_Input.Text),false,true)
+            Visible: =If(IsBlank(ConnectionName_Input.Text) || IsBlank(DevOpsURL_Input.Text) || IsBlank(PersonalAccessToken_Input.Text) || IsBlank(dcClientSolution),false,true)
             X: =376
             Y: =430
             ZIndex: =2
