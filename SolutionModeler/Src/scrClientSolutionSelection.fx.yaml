@@ -147,3 +147,21 @@ scrClientSolutionSelection As screen:
         Y: =15
         ZIndex: =5
 
+    UpdateClientSolution_Button_2 As button:
+        Fill: |-
+            =ColorValue("#00467f")
+        Height: =44
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |-
+            =
+            UpdateContext({varUpdateClientSolution:true});
+            Navigate(ClientSolutions)
+            //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
+        Size: =14
+        Text: ="Modify Client Solution"
+        Width: =261
+        X: =488
+        Y: =287
+        ZIndex: =6
+

@@ -95,10 +95,11 @@
             Height: =464
             Item: |-
                 =If(varClientSolutionCreated,
-                LookUp('Client Solutions','Created By'.'Full Name' = User().FullName && 'Created On' > Now()-.001),
+                LookUp('Client Solutions','Created By'.'Full Name' = User().FullName && 'Created On' = Now()-.001),
                 glyClientSolutionGallery.Selected
                 )
             NumberOfColumns: =2
+            OnReset: =Reset('ClientSolutionName')
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =665
             X: =39
@@ -770,125 +771,10 @@
             Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
             Visible: =If(varUpdateClientSolution,true,false)
-            Width: =910
-            X: =39
+            Width: =1196
+            X: =22
             Y: =91
             ZIndex: =4
-
-            "'Solution Area_DataCard1_1' As typedDataCard.comboBoxEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_SolutionArea"
-                Default: =ThisItem.'Solution Area'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_SolutionArea")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =false
-                Update: =SolutionArea_CS_Edit_ComboBox.Selected
-                Width: =455
-                X: =1
-                Y: =1
-                ZIndex: =1
-
-                DataCardKey14_1 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Size: =12
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                SolutionArea_CS_Edit_ComboBox As combobox:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    ChevronBackground: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                            ColorFade(RGBA(26, 76, 145, 1), -30%),
-                            RGBA(26, 76, 145, 1)
-                        )
-                    DefaultSelectedItems: =Parent.Default
-                    DisplayFields: =["neu_solutionareaname"]
-                    DisplayMode: =Parent.DisplayMode
-                    Fill: |-
-                        =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                        RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-                    Height: =30
-                    Items: =Choices([@'Client Solutions'].neu_SolutionArea)
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    SearchFields: =["neu_solutionareaname"]
-                    SearchItems: =Search(Choices([@'Client Solutions'].neu_SolutionArea),SolutionArea_CS_Edit_ComboBox.SearchText,"neu_solutionareaname")
-                    SelectMultiple: =false
-                    Size: =12
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =42
-                    ZIndex: =2
-
-                ErrorMessage11_1 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =SolutionArea_CS_Edit_ComboBox.Y + SolutionArea_CS_Edit_ComboBox.Height
-                    ZIndex: =3
-
-                StarVisible11_1 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey14_1.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey14_1.Y
-                    ZIndex: =4
-
-            "'Client Solution_DataCard1_1' As typedDataCard.textualViewCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_clientsolutionid"
-                Default: =ThisItem.'Client Solution'
-                DisplayMode: =DisplayMode.View
-                DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_clientsolutionid")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =40
-                Required: =false
-                Visible: =false
-                Width: =455
-                X: =0
-                Y: =2
-                ZIndex: =1
-
-                DataCardKey13_1 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ClientSolutionGUID_1 As label:
-                    AutoHeight: =true
-                    DisplayMode: =Parent.DisplayMode
-                    Height: =27
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Default
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey13_1.Y + DataCardKey13_1.Height + 5
-                    ZIndex: =2
 
             "'Estimate URL_DataCard1_1' As typedDataCard.urlEditCard":
                 BorderStyle: =BorderStyle.Solid
@@ -900,9 +786,9 @@
                 Height: =50
                 Required: =false
                 Update: =EstimateURL_CS_Edit_Input.Text
-                Width: =455
+                Width: =598
                 X: =1
-                Y: =2
+                Y: =1
                 ZIndex: =1
 
                 DataCardKey2_1 As label:
@@ -961,6 +847,44 @@
                     Y: =DataCardKey2_1.Y
                     ZIndex: =4
 
+            "'Client Solution_DataCard1_1' As typedDataCard.textualViewCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_clientsolutionid"
+                Default: =ThisItem.'Client Solution'
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_clientsolutionid")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Visible: =false
+                Width: =598
+                X: =0
+                Y: =2
+                ZIndex: =1
+
+                DataCardKey13_1 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ClientSolutionGUID_1 As label:
+                    AutoHeight: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey13_1.Y + DataCardKey13_1.Height + 5
+                    ZIndex: =2
+
             "'Implementation Model_DataCard1_1' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_ImplementationModelID"
@@ -968,12 +892,12 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_ImplementationModelID")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =49
                 Required: =false
                 Update: =ImplementationModel_CS_Edit_ComboBox.Selected
-                Width: =455
-                X: =0
-                Y: =3
+                Width: =450
+                X: =1
+                Y: =2
                 ZIndex: =1
 
                 DataCardKey3_1 As label:
@@ -984,7 +908,7 @@
                     Width: =Parent.Width - 60
                     Wrap: =false
                     X: =30
-                    Y: =10
+                    Y: =19
                     ZIndex: =1
 
                 ImplementationModel_CS_Edit_ComboBox As combobox:
@@ -1011,7 +935,7 @@
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =42
+                    Y: =51
                     ZIndex: =2
 
                 ErrorMessage3_1 As label:
@@ -1049,11 +973,9 @@
                 Height: =81
                 Required: =false
                 Update: =ProjectStartDate_CS_Edit_DateValue.SelectedDate
-                Width: =455
-                X: |
-                    =0
-                Y: |
-                    =4
+                Width: =225
+                X: =0
+                Y: =3
                 ZIndex: =1
 
                 DataCardKey4_1 As label:
@@ -1083,8 +1005,8 @@
                     StartYear: =1899
                     Tooltip: =Parent.DisplayName
                     Width: =200
-                    X: =30
-                    Y: =42
+                    X: =12
+                    Y: =56
                     ZIndex: =2
 
                 Separator3_1 As label:
@@ -1151,12 +1073,12 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_projectenddate")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =101
                 Required: =false
                 Update: =ProjectEndDate_CS_Edit_DateValue.SelectedDate
-                Width: =455
+                Width: =225
                 X: =0
-                Y: =4
+                Y: =3
                 ZIndex: =1
 
                 DataCardKey1_1 As label:
@@ -1187,7 +1109,7 @@
                     Tooltip: =Parent.DisplayName
                     Width: =200
                     X: =30
-                    Y: =42
+                    Y: =57
                     ZIndex: =2
 
                 Separator1_1 As label:
@@ -1242,9 +1164,9 @@
                 Height: =24
                 Required: =false
                 Visible: =false
-                Width: =455
+                Width: =598
                 X: =1
-                Y: =4
+                Y: =3
                 ZIndex: =1
 
                 DataCardKey21_1 As label:
@@ -1281,7 +1203,7 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
                 Required: =true
                 Update: =SolutionName_CS_Edit_Input.Text
-                Width: =455
+                Width: =598
                 X: =0
                 Y: =0
                 ZIndex: =8
@@ -1355,7 +1277,7 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
                 Required: =true
                 Update: ='Client/Prospect_CS_Edit_Input'.Text
-                Width: =455
+                Width: =598
                 X: =1
                 Y: =0
                 ZIndex: =8
@@ -1428,7 +1350,7 @@
                 Height: =50
                 Required: =false
                 Update: =StatusReason_CS_Edit_ComboBox.Selected.Value
-                Width: =455
+                Width: =598
                 X: =0
                 Y: =1
                 ZIndex: =8
@@ -1482,7 +1404,7 @@
                     Text: =Parent.Error
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
-                    X: =30
+                    X: =28
                     Y: =StatusReason_CS_Edit_ComboBox.Y + StatusReason_CS_Edit_ComboBox.Height
                     ZIndex: =3
 
@@ -1517,7 +1439,7 @@
             Text: ="Manage User Stories"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =390
+            X: =382
             Y: =511
             ZIndex: =6
 
@@ -1662,8 +1584,8 @@
             Text: ="Operating Model to Associate"
             Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
             Width: =289
-            X: =524
-            Y: =263
+            X: =651
+            Y: =270
             ZIndex: =12
 
         "'Create DevOps Project Button' As button":
@@ -1722,8 +1644,8 @@
             Size: =12
             Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
             Width: =395
-            X: =524
-            Y: =299
+            X: =651
+            Y: =311
             ZIndex: =15
 
         UpdateClientSolution_Button_1 As button:
@@ -1807,8 +1729,8 @@
             Text: ="Associate Model"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187
-            X: =626
-            Y: =346
+            X: =728
+            Y: =360
             ZIndex: =21
 
         lblModelPropMessage As label:
@@ -1818,8 +1740,8 @@
             Text: ="Model Association has been started.   Please allow up to 5 minutes to fully propagate"
             Visible: =If(varModelPropStarted && varUpdateClientSolution,true,false)
             Width: =212
-            X: =824
-            Y: =341
+            X: =984
+            Y: =344
             ZIndex: =22
 
     "'Client Solutions Page Label' As label":
@@ -1846,14 +1768,13 @@
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =45
         Icon: =Icon.ChevronLeft
-        OnSelect: |-
-            =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
-            Back(ScreenTransition.UnCoverRight);
-            Navigate(scrClientSolutionSelection, ScreenTransition.UnCoverRight);
+        OnSelect: |
+            =Navigate(scrClientSolutionSelection, ScreenTransition.UnCoverRight);
             Set(varOpenCreateClientSolution,false);
             UpdateContext({varUpdateClientSolution:false});
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});
+            UpdateContext({varClientSolutionCreated:false});
         Width: =45
         X: =18
         Y: =15
@@ -2094,6 +2015,7 @@
                 =Set(varOpenCreateClientSolution,false);
                 UpdateContext({varClientSolutionCreated:false});
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
+                ResetForm(ClientsSolutionsForm);
             Width: =60
             X: |+
                 ='Client Solution Create Container'.Width - 65

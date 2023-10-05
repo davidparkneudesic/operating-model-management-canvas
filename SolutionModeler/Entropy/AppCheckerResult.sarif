@@ -814,7 +814,7 @@
                   "charLength": 1,
                   "charOffset": 115,
                   "snippet": {
-                    "text": ">"
+                    "text": "="
                   }
                 }
               },
@@ -4144,36 +4144,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Back Button_to HomePage'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.TabIndex"
                 }
               ],
@@ -4198,6 +4168,36 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Back Button_to HomePage'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -4937,36 +4937,6 @@
                 "member": "AccessibleLabel",
                 "module": "ClientSolutions",
                 "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Area_DataCard1_1'.SolutionArea_CS_Edit_ComboBox.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Area_DataCard1_1'.SolutionArea_CS_Edit_ComboBox.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Area_DataCard1_1'.SolutionArea_CS_Edit_ComboBox"
               }
             }
           ],
