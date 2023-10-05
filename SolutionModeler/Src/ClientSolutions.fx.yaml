@@ -95,7 +95,7 @@
             Height: =464
             Item: |-
                 =If(varClientSolutionCreated,
-                LookUp('Client Solutions','Created By'.'Full Name' = User().FullName && 'Created On' = Now()-.001),
+                LookUp('Client Solutions','Created By'.'Full Name' = User().FullName && 'Created On' > Now()-.001),
                 glyClientSolutionGallery.Selected
                 )
             NumberOfColumns: =2
@@ -436,7 +436,7 @@
 
                 DateValue1 As datepicker:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    DefaultDate: =Parent.Default
+                    DefaultDate: =
                     DisabledBorderColor: =RGBA(0, 0, 0, 1)
                     DisplayMode: =DisplayMode.View
                     EndYear: =Year(Today())+100
@@ -1842,7 +1842,7 @@
                     )
                 );
                 UpdateContext({varClientSolutionCreated:true});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
             Text: ="Submit"
             Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
             Width: =177
@@ -1964,6 +1964,7 @@
             ZIndex: =17
 
         "'Project End Date DatePicker' As datepicker":
+            DefaultDate: =
             IconBackground: |-
                 =ColorValue("#00467f")
             Width: =280

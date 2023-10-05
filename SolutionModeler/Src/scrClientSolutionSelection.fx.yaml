@@ -79,8 +79,8 @@ scrClientSolutionSelection As screen:
         Height: =415
         Items: |-
             =If(ddFilter.Selected.Value = "My Client Solutions",
-            Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),
-            Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active)
+            Sort(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),'Client/Prospect Name'),
+            Sort(Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active),'Client/Prospect Name')
             )
         Width: =1246
         X: =53

@@ -28,7 +28,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =If(IsBlank(galConnections.Selected),Select(galConnections,1));
+                =//If(IsBlank(galConnections.Selected),Select(galConnections,1));
                 UpdateContext({varOpenConnectionCreate:true})
             Text: ="New Connection"
             Visible: =If(varUpdateConnection,false,true)
@@ -50,7 +50,7 @@
             Text: ="Update Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =653
+            X: =354
             Y: =577
             ZIndex: =4
 
@@ -309,6 +309,44 @@
                     X: =30
                     Y: =49
                     ZIndex: =5
+
+            Connection_DataCard1 As typedDataCard.textualViewCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_connectionid"
+                Default: =ThisItem.Connection
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_connectionid")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Visible: =false
+                Width: =266
+                X: =1
+                Y: =2
+                ZIndex: =1
+
+                DataCardKey29 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcConnectionID As label:
+                    AutoHeight: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey29.Y + DataCardKey29.Height + 5
+                    ZIndex: =2
 
         ConnectionsEditForm As form:
             DataSource: ='Client Solution Connections'
@@ -600,6 +638,22 @@
             Y: =85
             ZIndex: =16
 
+        btnDeleteConnection As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = GUID(dcConnectionID.Text)));
+            Text: ="Delete Connection"
+            Visible: =If(varUpdateConnection,false,true)
+            Width: =212
+            X: =633
+            Y: =577
+            ZIndex: =17
+
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
         Default: =//varGalDefault
@@ -608,7 +662,8 @@
             =If(varOpenConnectionCreate || varOpenConnectionUpdatedWindow || varOpenDeleteConnectionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =636
-        Items: =Sort('Client Solution Connections', Name)
+        Items: |
+            =Filter('Client Solution Connections', 'Client Solution'.'Client Solution' = GUID(SolutionID.Text))
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-
@@ -775,9 +830,9 @@
 
         "'Create Connection Form_1' As form":
             DataSource: ='Client Solution Connections'
+            DefaultMode: =FormMode.New
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =254
-            Item: =galConnections.Selected
+            Height: =311
             NumberOfColumns: =2
             Visible: =If(varOpenConnectionCreate,true,false)
             Width: =859
@@ -853,6 +908,74 @@
                     Width: =30
                     Wrap: =false
                     Y: =DataCardKey28.Y
+                    ZIndex: =4
+
+            "'Client Solution_DataCard6' As typedDataCard.comboBoxEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_ClientSolutionID"
+                Default: =ThisItem.'Client Solution'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Client Solution Connections'],DataSourceInfo.DisplayName,"neu_ClientSolutionID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =dcClientSolution.Selected
+                Visible: =false
+                Width: =429
+                X: =1
+                Y: =1
+                ZIndex: =1
+
+                DataCardKey47 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcClientSolution As combobox:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: ="1"
+                    DefaultSelectedItems: =Parent.Default
+                    DisplayFields: =["neu_solutionname"]
+                    DisplayMode: =DisplayMode.View
+                    Items: =Filter('Client Solutions', 'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["neu_solutionname"]
+                    SearchItems: =Search(Filter('Client Solutions', 'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'),dcClientSolution.SearchText,"neu_solutionname")
+                    SelectMultiple: =false
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey47.Y + DataCardKey47.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage42 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcClientSolution.Y + dcClientSolution.Height
+                    ZIndex: =3
+
+                StarVisible36 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey47.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey47.Y
                     ZIndex: =4
 
             ConnectionName As typedDataCard.textualEditCard:
@@ -1000,24 +1123,22 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
-                =UpdateContext({varURLEmptyMessage:false});
-                
-                If(IsBlank(DevOpsURL_Input.Text),
-                    UpdateContext({varURLEmptyMessage:true}),
-                    Patch('Client Solution Connections',
+                =    Patch('Client Solution Connections',
                         Defaults('Client Solution Connections'),
                         {
                             Name:ConnectionName_Input.Text,
                             'DevOps Organization URL':DevOpsURL_Input.Text,
-                            'Personal Access Token':PersonalAccessToken_Input.Text
+                            'Personal Access Token':PersonalAccessToken_Input.Text,
+                            'Client Solution':dcClientSolution.Selected
                         }
                     )
-                );
+                ;
                 
                 UpdateContext({varConnCreated:true});
                 UpdateContext({varOpenConnectionCreate:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
+            Visible: =If(IsBlank(ConnectionName_Input.Text) || IsBlank(DevOpsURL_Input.Text) || IsBlank(PersonalAccessToken_Input.Text),false,true)
             X: =376
             Y: =430
             ZIndex: =2
@@ -1060,16 +1181,6 @@
             X: =CreateConnectionContainer.Width - 60
             Y: =3
             ZIndex: =5
-
-        "'Connection Created Message_2' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="The DevOps URL field is empty! Please specify the URL and try again."
-            Visible: =If(varURLEmptyMessage,true,false)
-            Width: =615
-            X: =145
-            Y: =564
-            ZIndex: =6
 
         Required_fields_Label_Conn_Create As label:
             Align: =Align.Center
