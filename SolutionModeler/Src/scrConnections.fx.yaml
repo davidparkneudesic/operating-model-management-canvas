@@ -50,7 +50,7 @@
             Text: ="Update Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =666
+            X: =653
             Y: =577
             ZIndex: =4
 
@@ -608,10 +608,7 @@
             =If(varOpenConnectionCreate || varOpenConnectionUpdatedWindow || varOpenDeleteConnectionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =636
-        Items: |-
-            =//Filter('Client Solution Connections', 'Client Solution'.'Client Solution' = SolutionGallery.Selected.'Client Solution')
-            
-            Sort('Client Solution Connections', Name)
+        Items: =Sort('Client Solution Connections', Name)
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-

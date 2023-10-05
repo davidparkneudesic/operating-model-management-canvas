@@ -1817,7 +1817,7 @@
                 "'Client Solution US Dropdown for Create' As dropdown":
                     ChevronBackground: =RGBA(26, 76, 145, 1)
                     ChevronHoverBackground: =ColorFade(RGBA(26, 76, 145, 1), -30%)
-                    Items: =Filter('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution')
+                    Items: =Filter('Client Solutions', 'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
                     Width: =369
                     X: =30
                     Y: =47
