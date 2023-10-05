@@ -717,7 +717,7 @@
                         {
                             'Operating Model Name':dcEditOMOperatingModelName.Text,
                             'Status Reason':dcEditOMStatusReason.Selected.Value,
-                            'Client Solution Identifier':SolutionGallery.Selected,
+                            'Client Solution Identifier':glyClientSolutionGallery.Selected,
                             //Status:'Status (Operating Models)'.Active,
                             'Client Specific':'Client Specific (Operating Models)'.Yes,
                             Model:Model.'Operating Model'
@@ -731,7 +731,7 @@
                             'Operating Model Gallery'.Selected,
                             {
                                 'Operating Model Name':dcEditOMOperatingModelName.Text,
-                                'Client Solution Identifier':SolutionGallery.Selected,
+                                'Client Solution Identifier':glyClientSolutionGallery.Selected,
                                 Status:'Status (Operating Models)'.Inactive,
                                 'Client Specific':'Client Specific (Operating Models)'.Yes
                             }
@@ -743,7 +743,7 @@
                             {
                                 'Operating Model Name':dcEditOMOperatingModelName.Text,
                                 'Status Reason':dcEditOMStatusReason.Selected.Value,
-                                'Client Solution Identifier':SolutionGallery.Selected,
+                                'Client Solution Identifier':glyClientSolutionGallery.Selected,
                                 Status:'Status (Operating Models)'.Active,
                                 'Client Specific':'Client Specific (Operating Models)'.Yes
                             }
@@ -832,7 +832,7 @@
                     ZIndex: =4
 
                 ClientSolutionName_Input As text:
-                    Default: =SolutionGallery.Selected.'Solution Name'
+                    Default: =glyClientSolutionGallery.Selected.'Solution Name'
                     DisplayMode: =DisplayMode.View
                     Width: =Parent.Width - 60
                     X: =30

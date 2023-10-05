@@ -99,7 +99,7 @@
                 glyClientSolutionGallery.Selected
                 )
             NumberOfColumns: =2
-            OnReset: =Reset('ClientSolutionName')
+            OnReset: =Reset(ClientSolutionName)
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =665
             X: =39
@@ -1431,10 +1431,9 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =//If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
-                Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+                =Navigate(scrUserStories, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
                 Set(varOpenCreateClientSolution,false);
-                UpdateContext({varUpdateClientSolution:false})
+                Set(varUpdateClientSolution,false);
             Size: =14
             Text: ="Manage User Stories"
             Visible: =If(varUpdateClientSolution,false,true)
@@ -1456,7 +1455,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =UpdateContext({varUpdateClientSolution:true});
+                =Set(varUpdateClientSolution,true);
                 //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
             Size: =14
             Text: ="Modify Client Solution"
@@ -1480,8 +1479,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                UpdateContext({varUpdateClientSolution:false});
-                UpdateContext({varModelPropStarted:false})
+                Set(varUpdateClientSolution,false);
             Text: ="Cancel"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187
@@ -1530,12 +1528,6 @@
                     )
                 );
                 
-                // Clear all the relationship before creating another relationship with the selected values
-                //ForAll(
-                 //   'Operating Model Gallery'.AllItems,
-                 //   Unrelate(SolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
-                //);
-                
                 // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
                 ForAll(
                     RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
@@ -1543,7 +1535,7 @@
                 );
                 
                 UpdateContext({varUpdatedCSWindow:false});
-                UpdateContext({varUpdateClientSolution:false});
+                Set(varUpdateClientSolution,false);
                 UpdateContext({varModelPropStarted:false})
             Text: ="Save"
             Visible: =If(varUpdateClientSolution,true,false)
@@ -1661,7 +1653,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =//If(IsBlank(SolutionGallery.Selected),Select(SolutionGallery,1));
+                =
                 Navigate(scrConnections, ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             Size: =14
             Text: ="Manage ADO Connections"
@@ -1683,13 +1675,9 @@
             Height: =44
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =//If(IsBlank(glyClientSolutionGallery.Selected),Select(glyClientSolutionGallery,1));
-                Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+            OnSelect: |
+                =Navigate('Operating Models Screen', ScreenTransition.Cover);Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
                 ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = glyClientSolutionGallery.Selected.'Solution Name'));
-                //Set(varClientSolutionName,SolutionGallery.Selected.'Solution Name');
-                //UpdateContext({varOpenCreateClientSolution:false});
-                //UpdateContext({varUpdateClientSolution:false})
             Size: =14
             Text: ="Client Operating Models"
             Visible: =If(varUpdateClientSolution,false,true)
@@ -1771,7 +1759,7 @@
         OnSelect: |
             =Navigate(scrClientSolutionSelection, ScreenTransition.UnCoverRight);
             Set(varOpenCreateClientSolution,false);
-            UpdateContext({varUpdateClientSolution:false});
+            Set(varUpdateClientSolution,false);
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});
             UpdateContext({varClientSolutionCreated:false});
@@ -1854,7 +1842,7 @@
                     )
                 );
                 UpdateContext({varClientSolutionCreated:true});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);UpdateContext({varUpdateClientSolution:false});
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);
             Text: ="Submit"
             Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
             Width: =177
@@ -2015,7 +2003,6 @@
                 =Set(varOpenCreateClientSolution,false);
                 UpdateContext({varClientSolutionCreated:false});
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
-                ResetForm(ClientsSolutionsForm);
             Width: =60
             X: |+
                 ='Client Solution Create Container'.Width - 65
@@ -2044,7 +2031,7 @@
             Height: =50
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varUpdateClientSolution:false});
+                =Set(varUpdateClientSolution,false);
                 UpdateContext({varUpdatedCSWindow:false});
             Width: =50
             X: =438
@@ -2126,7 +2113,7 @@
             OnSelect: |-
                 =UpdateContext({varDeleteClientSolutionWindow:false});
                 UpdateContext({varMessageCSDeleted:false});
-                UpdateContext({varUpdateClientSolution:false})
+                Set(varUpdateClientSolution,false);
             Visible: =If(varMessageCSDeleted,true,false)
             Width: =57
             X: =516

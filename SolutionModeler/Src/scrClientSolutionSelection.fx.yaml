@@ -1,97 +1,5 @@
 scrClientSolutionSelection As screen:
 
-    "glyClientSolutionGallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-        DelayItemLoading: =true
-        Height: =549
-        Items: |-
-            =If(ddFilter.Selected.Value = "My Client Solutions",
-             Sort(Filter('Client Solutions',Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),'Client/Prospect Name'),
-             Sort(Filter('Client Solutions',Status = 'Status (Client Solutions)'.Active),'Client/Prospect Name')
-            )
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =116
-        Width: =362
-        X: =48
-        Y: =168
-        ZIndex: =1
-
-        Title18 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.'Solution Name'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - 86
-            X: =16
-            Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle9.Size*1.8 + 2 + Body2.Size*1.8)) / 2
-            ZIndex: =1
-
-        Subtitle9 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.'Client/Prospect Name'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title18.Width
-            X: =Title18.X
-            Y: =Title18.Y + Title18.Height
-            ZIndex: =2
-
-        Body2 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.'Created By'.'Full Name'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title18.Width
-            X: =Title18.X
-            Y: =Subtitle9.Y + Subtitle9.Height
-            ZIndex: =3
-
-        NextArrow8 As icon.ChevronRight:
-            AccessibleLabel: =Self.Tooltip
-            Color: =RGBA(166, 166, 166, 1)
-            Height: =50
-            Icon: =Icon.ChevronRight
-            OnSelect: =Select(Parent);Navigate(ClientSolutions)
-            PaddingBottom: =16
-            PaddingLeft: =16
-            PaddingRight: =16
-            PaddingTop: =16
-            Tooltip: ="View item details"
-            Width: =50
-            X: =Parent.TemplateWidth - Self.Width - 12
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =4
-
-        Separator9 As rectangle:
-            Height: =8
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - Self.Height
-            ZIndex: =5
-
-        Rectangle20 As rectangle:
-            Height: =Parent.TemplateHeight - Separator9.Height
-            OnSelect: =Select(Parent)
-            Visible: =ThisItem.IsSelected
-            Width: =4
-            ZIndex: =6
-
     "'Client Solutions Page Label_1' As label":
         Align: =Align.Center
         Color: = RGBA(255, 255, 255, 1)
@@ -125,8 +33,8 @@ scrClientSolutionSelection As screen:
         Size: =14
         Text: ="New Client Solution"
         Width: =261
-        X: =488
-        Y: =208
+        X: =1038
+        Y: =101
         ZIndex: =4
 
     "'Back Button_to HomePage_1' As icon.ChevronLeft":
@@ -154,14 +62,101 @@ scrClientSolutionSelection As screen:
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
-            =
-            UpdateContext({varUpdateClientSolution:true});
+            =Set(varUpdateClientSolution,true);
             Navigate(ClientSolutions)
-            //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
         Size: =14
         Text: ="Modify Client Solution"
         Width: =261
-        X: =488
-        Y: =287
+        X: =53
+        Y: =602
         ZIndex: =6
+
+    glyClientSolutionGallery As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =415
+        Items: |-
+            =If(ddFilter.Selected.Value = "My Client Solutions",
+            Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active && 'Created By'.'Full Name' = User().FullName),
+            Filter('Client Solutions', Status = 'Status (Client Solutions)'.Active)
+            )
+        Width: =1246
+        X: =53
+        Y: =170
+        ZIndex: =8
+
+        "'Created On_Column2' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Created On"
+            FieldName: ="createdon"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.'Created On'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        "'Solution Name_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Solution Name"
+            FieldName: ="neu_solutionname"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            IsHyperlink: =true
+            LayoutHeight: =Parent.Height
+            OnSelect: =Navigate(ClientSolutions)
+            Order: =1
+            Text: =ThisItem.'Solution Name'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =4
+
+        "'Client/Prospect Name_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Client/Prospect Name"
+            FieldName: ="neu_clientprospectname"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            IsHyperlink: =false
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.'Client/Prospect Name'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+        "'Status Reason_Column1' As dataTableColumn.complexOptionSetColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Status Reason"
+            FieldName: ="statuscode"
+            FieldVariantName: ="complexOptionSetColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.'Status Reason'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =6
+
+        "'Created By_Column1' As dataTableColumn.complexTypeColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Created By"
+            FieldName: ="createdby"
+            FieldVariantName: ="complexTypeColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =5
+            Text: =ThisItem.'Created By'.'Full Name'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =7
 
