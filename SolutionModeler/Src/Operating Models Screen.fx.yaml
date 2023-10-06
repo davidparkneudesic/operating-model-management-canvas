@@ -48,7 +48,7 @@
                 =Clear(colSubCapabilities);
                 Clear(colCapabiilitiesL2);
                 Clear(colProcessGroups);
-                ClearCollect(colOperatingModelFilter, Filter('Operating Models','Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name'));
+                ClearCollect(colOperatingModelFilter, Filter('Operating Models','Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'));
                 UpdateContext({varExpandCapGal:false})
             TemplateFill: |-
                 =If(ThisItem.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
@@ -111,14 +111,14 @@
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =212
-            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
+            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
-                =ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.'Capability Name' = 'Head Capability Label'.Text));
-                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.'Capability Name' = 'Head Capability Label'.Text && Status = 'Status (Process Groups)'.Active));
+                =ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.'Capability' = GUID('Head Capability Label'.Text)));
+                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.'Capability' = GUID('Head Capability Label'.Text) && Status = 'Status (Process Groups)'.Active));
                 Clear(colCapabiilitiesL2);
-                ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Capability Name' = 'Head Capability Label'.Text));
+                ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Capability' = GUID('Head Capability Label'.Text)));
             ShowNavigation: =true
             TemplateFill: |-
                 =If(ThisItem.'Capability Name' = 'Capability Level 1 Gallery'.Selected.'Capability Name' && 
@@ -185,7 +185,7 @@
             Items: =colProcessGroups
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name'))
+            OnSelect: =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = 'Process Group Gallery'.Selected.'Process Group'))
             TemplateFill: |-
                 =If(ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -478,9 +478,9 @@
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
-                =ClearCollect(colCapabiilitiesL2, Filter(Capabilities,'Parent Capability'.'Capability Name' = 'L2 Sub Capability Label'.Text));
-                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.'Capability Name' = 'L2 Sub Capability Label'.Text && Status = 'Status (Process Groups)'.Active));
-                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, 'Capability Name' = 'L2 Sub Capability Label'.Text));
+                =ClearCollect(colCapabiilitiesL2, Filter(Capabilities,'Parent Capability'.'Capability' = GUID('L2 Sub Capability Label'.Text)));
+                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.'Capability' = GUID('L2 Sub Capability Label'.Text) && Status = 'Status (Process Groups)'.Active));
+                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, 'Capability' = GUID('L2 Sub Capability Label'.Text)));
             TemplateFill: |-
                 =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -519,8 +519,8 @@
                 Layout: =Layout.Vertical
                 LoadingSpinner: =LoadingSpinner.Data
                 OnSelect: |-
-                    =ClearCollect(colProcessGroups, Filter('Process Groups', Capability.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name'&& Status = 'Status (Process Groups)'.Active));
-                    ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities,'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name'));
+                    =ClearCollect(colProcessGroups, Filter('Process Groups', Capability.'Capability' = 'Sub Capability L3 Gallery'.Selected.'Capability'&& Status = 'Status (Process Groups)'.Active));
+                    ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities,'Capability' = 'Sub Capability L3 Gallery'.Selected.'Capability'));
                 TemplateFill: |-
                     =If(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
                             !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate), 
