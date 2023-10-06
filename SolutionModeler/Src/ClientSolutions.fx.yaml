@@ -137,8 +137,8 @@
             Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =50
-            Y: =511
+            X: =52
+            Y: =512
             ZIndex: =7
 
         Cancel_Update_Form_Button As button:
@@ -1374,7 +1374,7 @@
         cbConnection As combobox:
             DisplayFields: =["neu_name"]
             IsSearchable: =false
-            Items: =Filter('Client Solution Connections','Client Solution'.'Solution Name' =ClientSolutionName.Text)
+            Items: =Filter('Client Solution Connections','Client Solution'.'Solution Name' = dcSolutionName.Text)
             SearchFields: =["neu_name"]
             SearchItems: =[]
             X: =116
