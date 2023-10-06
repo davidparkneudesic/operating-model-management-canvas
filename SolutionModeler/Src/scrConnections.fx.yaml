@@ -663,7 +663,7 @@
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =636
         Items: |
-            =Filter('Client Solution Connections', 'Client Solution'.'Client Solution' = GUID(SolutionID.Text))
+            =Filter('Client Solution Connections', 'Client Solution'.'Client Solution' = GUID(dcClientSolutionID.Text))
         Layout: =Layout.Vertical
         LoadingSpinner: =LoadingSpinner.Data
         TemplateFill: |-

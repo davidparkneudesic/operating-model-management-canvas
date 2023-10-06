@@ -1542,7 +1542,7 @@
                 )
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =RunMultiplier.Run(ClientSolutionGUID)
+            OnSelect: =RunMultiplier.Run(dcClientSolutionID)
             Text: ="Run Epic Balancer"
             Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
             Visible: =If(varUpdateUserStory, false,true)

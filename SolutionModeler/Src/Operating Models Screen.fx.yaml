@@ -647,7 +647,7 @@
         FontWeight: =FontWeight.Semibold
         Height: =76
         Size: =26
-        Text: =If(IsBlank(txtClientID.Text),"Operating Models","Operating Model(s) for "& ClientSolutionName)
+        Text: =If(IsBlank(txtClientID.Text),"Operating Models","Operating Model(s) for "& dcSolutionName)
         Width: =1366
         ZIndex: =2
 
@@ -667,7 +667,7 @@
             Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
             
-            If(IsBlank(txtClientID.Text),
+            If(IsBlank(ClientSolutionIdentifier),
                 Back(ScreenTransition.UnCoverRight);
                 Navigate(HomePage,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
                 ,

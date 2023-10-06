@@ -283,7 +283,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
                 =Navigate('Operating Models Screen', ScreenTransition.Cover);
-                //Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
+                Set(ClientSolutionIdentifier,dcClientSolutionID.Text);
                 ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = glyClientSolutionGallery.Selected.'Solution Name'));
             Size: =14
             Text: ="Client Operating Models"
@@ -924,6 +924,7 @@
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});
             UpdateContext({varClientSolutionCreated:false});
+            Set(ClientSolutionIdentifier,"");
         Width: =45
         X: =18
         Y: =15
@@ -1181,34 +1182,6 @@
             Y: =420
             ZIndex: =22
 
-    "'Client Solution Updated Message Window' As groupContainer.manualLayoutContainer":
-        DropShadow: =DropShadow.Semibold
-        Fill: =RGBA(255, 255, 255, 1)
-        Visible: =If(varUpdatedCSWindow,true,false)
-        X: =426
-        Y: =279
-        ZIndex: =20
-
-        Icon3 As icon.Cancel:
-            Height: =50
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =Set(varUpdateClientSolution,false);
-                UpdateContext({varUpdatedCSWindow:false});
-            Width: =50
-            X: =438
-            Y: =8
-            ZIndex: =1
-
-        Label2 As label:
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="The Client Solution was successfully updated!"
-            Width: =403
-            X: =49
-            Y: =80
-            ZIndex: =2
-
     "'Delete Client Solution Confirmation Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -1286,7 +1259,10 @@
             Fill: |-
                 = ColorValue("#00467f")
             OnSelect: |-
-                =Navigate(scrClientSolutionSelection);UpdateContext({varDeleteClientSolutionWindow:false});UpdateContext({varMessageCSDeleted:false})
+                =Navigate(scrClientSolutionSelection);
+                UpdateContext({varDeleteClientSolutionWindow:false});
+                UpdateContext({varMessageCSDeleted:false});
+                UpdateContext({varUpdateClientSolution:false})
             Text: ="OK"
             Visible: =If(varMessageCSDeleted,true,false)
             X: =200
