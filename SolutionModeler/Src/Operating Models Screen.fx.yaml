@@ -511,10 +511,7 @@
 
             "'Sub Capability L3 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                 DelayItemLoading: =true
-                Height: |
-                    =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name', 42 * CountRows(colCapabiilitiesL2), 0)
-                    
-                    //CountRows(Filter(Ca)) * 42
+                Height: =200
                 Items: =colCapabiilitiesL2
                 Layout: =Layout.Vertical
                 LoadingSpinner: =LoadingSpinner.Data
@@ -732,38 +729,23 @@
                         Defaults('Operating Models'),
                         {
                             'Operating Model Name':dcEditOMOperatingModelName.Text,
-                            'Status Reason':dcEditOMStatusReason.Selected.Value,
+                            'Status Reason':varOMStatusReason,
                             'Client Solution Identifier':glyClientSolutionGallery.Selected,
-                            //Status:'Status (Operating Models)'.Active,
                             'Client Specific':'Client Specific (Operating Models)'.Yes,
                             Model:Model.'Operating Model'
                         }
                     );
                     UpdateContext({varOpenOperatingModelCreate:false}),
-                        //Update Existing OM - Inactive
-                        If(dcEditOMStatusReason.Selected.Value = 'Status Reason (Operating Models)'.Inactive,
                             Patch(
                             'Operating Models',
                             'Operating Model Gallery'.Selected,
                             {
                                 'Operating Model Name':dcEditOMOperatingModelName.Text,
-                                'Client Solution Identifier':glyClientSolutionGallery.Selected,
-                                Status:'Status (Operating Models)'.Inactive,
-                                'Client Specific':'Client Specific (Operating Models)'.Yes
-                            }
-                            ),
-                        //Update Existing OM - Active
-                            Patch(
-                            'Operating Models',
-                            'Operating Model Gallery'.Selected,
-                            {
-                                'Operating Model Name':dcEditOMOperatingModelName.Text,
-                                'Status Reason':dcEditOMStatusReason.Selected.Value,
+                                'Status Reason':varOMStatusReason,
                                 'Client Solution Identifier':glyClientSolutionGallery.Selected,
                                 Status:'Status (Operating Models)'.Active,
                                 'Client Specific':'Client Specific (Operating Models)'.Yes
                             }
-                        )
                     )
                 );
                 UpdateContext({varEditOM:false})
@@ -774,7 +756,7 @@
                 
             Text: =If(varOpenOperatingModelCreate,"Create","Update")
             Visible: =If(IsBlank(dcEditOMOperatingModelName.Text),false,true)
-            X: =76
+            X: =121
             Y: =444
             ZIndex: =3
 
@@ -932,7 +914,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =true
-                Update: =dcEditOMStatusReason.Selected.Value
+                Update: =
                 Width: =267
                 X: =2
                 Y: =1
@@ -954,7 +936,12 @@
                     DisplayFields: =["Value"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =Choices('Status Reason (Operating Models)')
+                    Items: =["Active","Draft"]
+                    OnChange: |-
+                        =If(dcEditOMStatusReason.Selected.Value = "Active",
+                            Set(varOMStatusReason,'Status Reason (Operating Models)'.Active),
+                            Set(varOMStatusReason,'Status Reason (Operating Models)'.Draft)
+                        )
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["Value"]
                     SearchItems: =[]
@@ -989,6 +976,53 @@
                     Wrap: =false
                     Y: =DataCardKey45.Y
                     ZIndex: =4
+
+        btnDeleteOM As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            OnSelect: |-
+                =UpdateContext({varDeleteOM:true})
+            Text: ="Delete Operating Model"
+            Width: =261
+            X: =336
+            Y: =444
+            ZIndex: =14
+
+        cntDeleteOMVerification As groupContainer.manualLayoutContainer:
+            BorderThickness: =1
+            Fill: =RGBA(255, 255, 255, 1)
+            Visible: =If(varDeleteOM,true,false)
+            X: =155
+            Y: =139
+            ZIndex: =15
+
+            lblOMInactiveWarning As label:
+                Color: =RGBA(246, 88, 16, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =96
+                Text: |-
+                    ="WARNING:   If you delete the Operating Model, all related Capabilities, Process Groups and Processes will be deleted. This is irreversible"
+                Width: =455
+                X: =28
+                Y: =16
+                ZIndex: =1
+
+            Button7 As button:
+                OnSelect: |-
+                    =Remove('Operating Models','Operating Model Gallery'.Selected);
+                    UpdateContext({varDeleteOM:false})
+                Text: ="DELETE!"
+                X: =51
+                Y: =132
+                ZIndex: =2
+
+            Button8 As button:
+                OnSelect: |-
+                    =UpdateContext({varDeleteOM:false})
+                Text: ="Cancel"
+                X: =264
+                Y: =132
+                ZIndex: =3
 
     "'Create Cap Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -3151,18 +3185,6 @@
             X: =739
             Y: =423
             ZIndex: =17
-
-    lblOMInactiveWarning As label:
-        Color: =RGBA(246, 88, 16, 1)
-        FontWeight: =FontWeight.Bold
-        Height: =78
-        Text: |-
-            ="WARNING:   If you save a record as Inactive, the Operating Model and all related records will be deleted."
-        Visible: =If(dcEditOMStatusReason.Selected.Value = 'Status Reason (Operating Models)'.Inactive,true,false)
-        Width: =455
-        X: =584
-        Y: =444
-        ZIndex: =9
 
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
