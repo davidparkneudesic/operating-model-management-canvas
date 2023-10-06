@@ -2160,9 +2160,10 @@
 
         cbConnection As combobox:
             DisplayFields: =["neu_name"]
+            IsSearchable: =false
             Items: =Filter('Client Solution Connections','Client Solution'.'Solution Name' =ClientSolutionName.Text)
             SearchFields: =["neu_name"]
-            SearchItems: =Search(Filter('Client Solution Connections','Client Solution'.'Solution Name' =ClientSolutionName.Text),cbConnection.SearchText,"neu_name")
+            SearchItems: =[]
             X: =116
             Y: =413
             ZIndex: =8
