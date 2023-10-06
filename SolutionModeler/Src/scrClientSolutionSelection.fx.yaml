@@ -1,4 +1,5 @@
 scrClientSolutionSelection As screen:
+    OnVisible: =Refresh('Client Solutions')
 
     "'Client Solutions Page Label_1' As label":
         Align: =Align.Center

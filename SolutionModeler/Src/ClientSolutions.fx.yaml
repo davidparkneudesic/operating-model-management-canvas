@@ -195,8 +195,8 @@
             Text: ="Operating Model to Associate"
             Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
             Width: =289
-            X: =859
-            Y: =82
+            X: =846
+            Y: =331
             ZIndex: =12
 
         "'Create DevOps Project Button' As button":
@@ -231,7 +231,6 @@
             Fill: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Height: =30
             IsSearchable: =false
             Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
             OnSelect: |-
@@ -242,8 +241,8 @@
             Size: =12
             Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
             Width: =395
-            X: =859
-            Y: =123
+            X: =846
+            Y: =363
             ZIndex: =15
 
         UpdateClientSolution_Button_1 As button:
@@ -301,7 +300,6 @@
             Height: =30
             Size: =12
             Text: ="Client Operating Models"
-            Visible: =If(varUpdateClientSolution,false,true)
             Width: =257
             X: =846
             Y: =82
@@ -332,8 +330,8 @@
                     ,false
                 )
             Width: =187
-            X: =935
-            Y: =173
+            X: =930
+            Y: =418
             ZIndex: =21
 
         lblModelPropMessage As label:
@@ -343,8 +341,8 @@
             Text: ="Model Association has been started.   Please allow up to 5 minutes to fully propagate"
             Visible: =If(varModelPropStarted && varUpdateClientSolution,true,false)
             Width: =212
-            X: =984
-            Y: =344
+            X: =1103
+            Y: =430
             ZIndex: =22
 
         frmClientsSolutionsForm As form:
