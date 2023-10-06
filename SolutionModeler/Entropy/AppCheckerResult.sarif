@@ -51,126 +51,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 121,
-                  "snippet": {
-                    "text": "-"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Item",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Add"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 114,
-                  "snippet": {
-                    "text": ">"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Item",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 98,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Item",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
                 }
               ],
@@ -204,7 +84,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -244,7 +124,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -284,7 +164,127 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 121,
+                  "snippet": {
+                    "text": "-"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Add"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
           "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 114,
+                  "snippet": {
+                    "text": ">"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 98,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -458,7 +458,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 257,
+                  "charOffset": 254,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -481,7 +481,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -498,7 +498,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 370,
+                  "charOffset": 366,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -521,7 +521,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -538,7 +538,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 662,
+                  "charOffset": 654,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -561,7 +561,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -578,7 +578,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 826,
+                  "charOffset": 817,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -601,7 +601,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -618,7 +618,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 1218,
+                  "charOffset": 1203,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -641,7 +641,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -658,7 +658,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 1454,
+                  "charOffset": 1438,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -681,7 +681,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -698,7 +698,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 1869,
+                  "charOffset": 1849,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -721,7 +721,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -738,7 +738,7 @@
                 },
                 "region": {
                   "charLength": 11,
-                  "charOffset": 2156,
+                  "charOffset": 2135,
                   "snippet": {
                     "text": "varSortType"
                   }
@@ -761,1207 +761,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Back Button_to HomePage'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Back Button_to HomePage'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'New Solution Name Input'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'New Solution Name Input'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'New Solution Name Input'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Client/Prospect Name Input'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Client/Prospect Name Input'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Client/Prospect Name Input'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Status Reason CS Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Status Reason CS Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Status Reason CS Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Estimate URL Input'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Estimate URL Input'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Estimate URL Input'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Implementation Model CS Dropdown'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Implementation Model CS Dropdown'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Implementation Model CS Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project Start Date DatePicker'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project Start Date DatePicker'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Project Start Date DatePicker'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project End Date DatePicker'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project End Date DatePicker'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Create Container'.'Project End Date DatePicker'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectName_Input.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectName_Input.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectName_Input"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectDescription_Input.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectDescription_Input.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectDescription_Input"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Name_DataCard2_1'.SolutionName_CS_Edit_Input.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Name_DataCard2_1'.SolutionName_CS_Edit_Input.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Name_DataCard2_1'.SolutionName_CS_Edit_Input"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Client/Prospect Name_DataCard2_1'.'Client/Prospect_CS_Edit_Input'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Client/Prospect Name_DataCard2_1'.'Client/Prospect_CS_Edit_Input'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Client/Prospect Name_DataCard2_1'.'Client/Prospect_CS_Edit_Input'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Estimate URL_DataCard1_1'.EstimateURL_CS_Edit_Input.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Estimate URL_DataCard1_1'.EstimateURL_CS_Edit_Input.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Estimate URL_DataCard1_1'.EstimateURL_CS_Edit_Input"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Implementation Model_DataCard1_1'.ImplementationModel_CS_Edit_ComboBox.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Implementation Model_DataCard1_1'.ImplementationModel_CS_Edit_ComboBox.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Implementation Model_DataCard1_1'.ImplementationModel_CS_Edit_ComboBox"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.MinuteValue2_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.MinuteValue2_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.MinuteValue2_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.ProjectStartDate_CS_Edit_DateValue.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.ProjectStartDate_CS_Edit_DateValue.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.ProjectStartDate_CS_Edit_DateValue"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.MinuteValue1_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.MinuteValue1_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.MinuteValue1_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.ProjectEndDate_CS_Edit_DateValue.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.ProjectEndDate_CS_Edit_DateValue.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.ProjectEndDate_CS_Edit_DateValue"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Solution Name_DataCard2'.ClientSolutionName.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Solution Name_DataCard2'.ClientSolutionName.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Solution Name_DataCard2'.ClientSolutionName"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Client/Prospect Name_DataCard2'.DataCardValue6.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Client/Prospect Name_DataCard2'.DataCardValue6.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Client/Prospect Name_DataCard2'.DataCardValue6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Status Reason_DataCard2'.DataCardValue6_2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Status Reason_DataCard2'.DataCardValue6_2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Status Reason_DataCard2'.DataCardValue6_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Estimate URL_DataCard1'.DataCardValue2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Estimate URL_DataCard1'.DataCardValue2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Estimate URL_DataCard1'.DataCardValue2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Implementation Model_DataCard1'.DataCardValue6_4.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Implementation Model_DataCard1'.DataCardValue6_4.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Implementation Model_DataCard1'.DataCardValue6_4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.MinuteValue2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.MinuteValue2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.MinuteValue2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.DateValue2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.DateValue2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.DateValue2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.MinuteValue1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.MinuteValue1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.MinuteValue1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.DateValue1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.DateValue1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.DateValue1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 6
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -6438,6 +5238,1206 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Back Button_to HomePage'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Back Button_to HomePage'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Back Button_to HomePage'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Exit Create CS Icon'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'New Solution Name Input'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'New Solution Name Input'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'New Solution Name Input'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Client/Prospect Name Input'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Client/Prospect Name Input'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Client/Prospect Name Input'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Status Reason CS Dropdown'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Status Reason CS Dropdown'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Status Reason CS Dropdown'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Estimate URL Input'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Estimate URL Input'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Estimate URL Input'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Implementation Model CS Dropdown'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Implementation Model CS Dropdown'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Implementation Model CS Dropdown'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project Start Date DatePicker'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project Start Date DatePicker'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Project Start Date DatePicker'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project End Date DatePicker'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Create Container'.'Project End Date DatePicker'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Create Container'.'Project End Date DatePicker'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Create Azure DevOps Project Window'.'Exit Create Window Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectName_Input.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectName_Input.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectName_Input"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectDescription_Input.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectDescription_Input.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Create Azure DevOps Project Window'.ProjectDescription_Input"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Name_DataCard2_1'.SolutionName_CS_Edit_Input.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Name_DataCard2_1'.SolutionName_CS_Edit_Input.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Solution Name_DataCard2_1'.SolutionName_CS_Edit_Input"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Client/Prospect Name_DataCard2_1'.'Client/Prospect_CS_Edit_Input'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Client/Prospect Name_DataCard2_1'.'Client/Prospect_CS_Edit_Input'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Client/Prospect Name_DataCard2_1'.'Client/Prospect_CS_Edit_Input'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Status Reason_DataCard2_1'.StatusReason_CS_Edit_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Estimate URL_DataCard1_1'.EstimateURL_CS_Edit_Input.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Estimate URL_DataCard1_1'.EstimateURL_CS_Edit_Input.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Estimate URL_DataCard1_1'.EstimateURL_CS_Edit_Input"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Implementation Model_DataCard1_1'.ImplementationModel_CS_Edit_ComboBox.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Implementation Model_DataCard1_1'.ImplementationModel_CS_Edit_ComboBox.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Implementation Model_DataCard1_1'.ImplementationModel_CS_Edit_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.MinuteValue2_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.MinuteValue2_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.MinuteValue2_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.ProjectStartDate_CS_Edit_DateValue.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.ProjectStartDate_CS_Edit_DateValue.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project Start Date_DataCard1_1'.ProjectStartDate_CS_Edit_DateValue"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.MinuteValue1_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.MinuteValue1_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.MinuteValue1_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.ProjectEndDate_CS_Edit_DateValue.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.ProjectEndDate_CS_Edit_DateValue.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.'Project End Date_DataCard1_1'.ProjectEndDate_CS_Edit_DateValue"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Solution Name_DataCard2'.ClientSolutionName.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Solution Name_DataCard2'.ClientSolutionName.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Solution Name_DataCard2'.ClientSolutionName"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Client/Prospect Name_DataCard2'.DataCardValue6.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Client/Prospect Name_DataCard2'.DataCardValue6.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Client/Prospect Name_DataCard2'.DataCardValue6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Status Reason_DataCard2'.DataCardValue6_2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Status Reason_DataCard2'.DataCardValue6_2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Status Reason_DataCard2'.DataCardValue6_2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Estimate URL_DataCard1'.DataCardValue2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Estimate URL_DataCard1'.DataCardValue2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Estimate URL_DataCard1'.DataCardValue2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Implementation Model_DataCard1'.DataCardValue6_4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Implementation Model_DataCard1'.DataCardValue6_4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Implementation Model_DataCard1'.DataCardValue6_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.MinuteValue2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.MinuteValue2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.MinuteValue2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.DateValue2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.DateValue2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project Start Date_DataCard1'.DateValue2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.MinuteValue1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.MinuteValue1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.MinuteValue1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.DateValue1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.DateValue1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.'Project End Date_DataCard1'.DateValue1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Delete Client Solution Confirmation Container'.'Exit Container After Delete Button'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Updated Message Window'.Icon3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Updated Message Window'.Icon3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Process Detail Screen'.'Back Button_3'.AccessibleLabel"
                 }
               ],
@@ -7111,6 +7111,36 @@
                 "member": "AccessibleLabel",
                 "module": "scrConnections",
                 "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Personal Access Token'.PersonalAccessToken_Input"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrConnections",
+                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
               }
             }
           ],
@@ -8658,36 +8688,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrClientSolutionSelection.txtSearchInput.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrClientSolutionSelection.txtSearchInput.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrClientSolutionSelection",
-                "type": "scrClientSolutionSelection.txtSearchInput"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrClientSolutionSelection.ddSortControl.AccessibleLabel"
                 }
               ],
@@ -8718,19 +8718,109 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.AccessibleLabel"
+                  "fullyQualifiedName": "scrClientSolutionSelection.txtSearchInput.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.AccessibleLabel",
+                  "fullyQualifiedName": "scrClientSolutionSelection.txtSearchInput.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "scrConnections",
-                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
+                "module": "scrClientSolutionSelection",
+                "type": "scrClientSolutionSelection.txtSearchInput"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.cbConnection.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Create Azure DevOps Project Window'.cbConnection.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Create Azure DevOps Project Window'.cbConnection"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Sub Capability L3 Gallery'.icoEditCap_3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Sub Capability L3 Gallery'.icoEditCap_3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Sub Capability L3 Gallery'.icoEditCap_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Sub Capability L3 Gallery'.icoEditCap_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Sub Capability L3 Gallery'.icoEditCap_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Sub Capability L3 Gallery'.icoEditCap_3"
               }
             }
           ],
@@ -8778,156 +8868,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.Item"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.Item",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Item",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Item",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.Items"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.Items",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Items",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_Edit_Label.Visible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_Edit_Label.Visible",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Visible",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_Edit_Label"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.Visible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.Visible",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Visible",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'"
                 }
               ],
@@ -8950,7 +8890,7 @@
             "level": "Medium"
           },
           "ruleId": "app-ScreenHasManyControls",
-          "ruleIndex": 10
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -8980,7 +8920,7 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -9040,7 +8980,157 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit.Item",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm_Edit"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm.Item",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.ClientsSolutionsForm"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM.Items",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.glyClientSpecificOM"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_Edit_Label.Visible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_Edit_Label.Visible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Visible",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_Edit_Label"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.Visible"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox.Visible",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Visible",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.DetailFields_Container_Window.RelatedOperatingModel_CS_Edit_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -9130,7 +9220,97 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.SearchItems"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.SearchItems",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "SearchItems",
+                "module": "scrConnections",
+                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.Items",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "scrConnections",
+                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.DefaultSelectedItems"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.DefaultSelectedItems",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "DefaultSelectedItems",
+                "module": "scrConnections",
+                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -9160,7 +9340,7 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -9190,7 +9370,7 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -9220,7 +9400,7 @@
             "level": "Medium"
           },
           "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -9251,96 +9431,6 @@
           },
           "ruleId": "app-UnusedVariables",
           "ruleIndex": 12
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.SearchItems"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.SearchItems",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "SearchItems",
-                "module": "scrConnections",
-                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.Items"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.Items",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Items",
-                "module": "scrConnections",
-                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.DefaultSelectedItems"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution.DefaultSelectedItems",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "DefaultSelectedItems",
-                "module": "scrConnections",
-                "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
         }
       ],
       "tool": {
@@ -9366,10 +9456,10 @@
               }
             },
             {
-              "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
+              "id": "app-SuggestRemoteExecutionHint",
               "messageStrings": {
                 "issue": {
-                  "text": "Delegation warning. The highlighted part of this formula might not work correctly on large data sets. The \"{0}\" operation is not supported by this connector."
+                  "text": "Delegation warning. The \"{0}\" part of this formula might not work correctly on large data sets."
                 }
               },
               "properties": {
@@ -9385,10 +9475,10 @@
               }
             },
             {
-              "id": "app-SuggestRemoteExecutionHint",
+              "id": "app-SuggestRemoteExecutionHint-OpNotSupportedByService",
               "messageStrings": {
                 "issue": {
-                  "text": "Delegation warning. The \"{0}\" part of this formula might not work correctly on large data sets."
+                  "text": "Delegation warning. The highlighted part of this formula might not work correctly on large data sets. The \"{0}\" operation is not supported by this connector."
                 }
               },
               "properties": {
@@ -9503,23 +9593,6 @@
               }
             },
             {
-              "id": "app-InefficientDelayLoading",
-              "messageStrings": {
-                "issue": {
-                  "text": "Inefficient delay loading"
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Use variables, collections, and navigation context to share state across screens instead."
-                ],
-                "level": "Medium",
-                "primaryCategory": "performance",
-                "whyFix": "Controls that reference controls on other screens can slow down app loading and navigation. Doing this may force the app to load the other screens immediately, rather than waiting until the user navigates to that screen."
-              }
-            },
-            {
               "id": "app-ScreenHasManyControls",
               "messageStrings": {
                 "issue": {
@@ -9537,7 +9610,24 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 461, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 486, which exceeds the maximum threshold recommended (300)."
+              }
+            },
+            {
+              "id": "app-InefficientDelayLoading",
+              "messageStrings": {
+                "issue": {
+                  "text": "Inefficient delay loading"
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Use variables, collections, and navigation context to share state across screens instead."
+                ],
+                "level": "Medium",
+                "primaryCategory": "performance",
+                "whyFix": "Controls that reference controls on other screens can slow down app loading and navigation. Doing this may force the app to load the other screens immediately, rather than waiting until the user navigates to that screen."
               }
             },
             {

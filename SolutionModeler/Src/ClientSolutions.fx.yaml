@@ -5,6 +5,7 @@
             RGBA(237, 237, 237, 1)
         )
         
+    OnVisible: =Refresh('Operating Models')
 
     DetailFields_Container_Window As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
@@ -1723,7 +1724,7 @@
                 =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',SolutionID_1.Text,SolutionName_CS_Edit_Input.Text,'Client/Prospect_CS_Edit_Input'.Text);
                 UpdateContext({varModelPropStarted:true})
             Text: ="Associate Model"
-            Visible: =If(varUpdateClientSolution,true,false)
+            Visible: =If(varUpdateClientSolution || IsBlank(RelatedOperatingModel_CS_Edit_ComboBox),true,false)
             Width: =187
             X: =728
             Y: =360
@@ -2215,4 +2216,22 @@
             X: =116
             Y: =236
             ZIndex: =7
+
+        cbConnection As combobox:
+            DisplayFields: =["neu_name"]
+            Items: =Filter('Client Solution Connections','Client Solution'.'Solution Name' ='ClientSolutionName'.Text)
+            SearchFields: =["neu_name"]
+            SearchItems: =Search(Filter('Client Solution Connections','Client Solution'.'Solution Name' =ClientSolutionName.Text),cbConnection.SearchText,"neu_name")
+            X: =116
+            Y: =413
+            ZIndex: =8
+
+        Label11 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            Text: ="Select Connection"
+            Width: =216
+            X: =116
+            Y: =363
+            ZIndex: =9
 
