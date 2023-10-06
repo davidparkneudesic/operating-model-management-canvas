@@ -834,7 +834,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =dcStatusReason.Selected.Value
+                Update: =dcCSStatusReason.Selected.Value
                 Width: =394
                 X: =1
                 Y: =3
@@ -850,19 +850,13 @@
                     Y: =10
                     ZIndex: =1
 
-                dcStatusReason As combobox:
+                dcCSStatusReason As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =[Parent.Default]
                     DisplayFields: =["Value"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =["Proposal","Won","Lost","Postponed"]
-                    OnChange: |-
-                        =Switch(dcStatusReason.Selected.Value = "Proposal",UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Proposal}),
-                        "Won", UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Won}),
-                        "Lost", UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Lost}),
-                        "Postponed",UpdateContext({varStatusReason:'Status Reason (Client Solutions)'.Postponed})
-                        )
+                    Items: =Choices('Status Reason (Client Solutions)')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["Value"]
                     SearchItems: =[]
@@ -885,7 +879,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =dcStatusReason.Y + dcStatusReason.Height
+                    Y: =dcCSStatusReason.Y + dcCSStatusReason.Height
                     ZIndex: =3
 
                 StarVisible28 As label:
@@ -1382,20 +1376,8 @@
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
-            =//SubmitForm(frmClientsSolutionsForm);
-             Patch(
-                    'Client Solutions',
-                    glyClientSolutionGallery.Selected,
-                    {
-                        'Solution Name':dcSolutionName.Text,
-                        'Client/Prospect Name':dcClientProspectName.Text,
-                        'Status Reason':varStatusReason,
-                        'Estimate URL':dcEstimateURL.Text,
-                        'Implementation Model':dcImplementationModel.Selected,
-                        'Project Start Date':dcProjectStart.SelectedDate,
-                        'Project End Date':dcProjectEnd.SelectedDate
-                    }
-                );
+            =SubmitForm(frmClientsSolutionsForm);
+             
             
             // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
             //ForAll(
