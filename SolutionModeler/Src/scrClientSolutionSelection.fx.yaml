@@ -56,22 +56,6 @@ scrClientSolutionSelection As screen:
         Y: =15
         ZIndex: =5
 
-    UpdateClientSolution_Button_2 As button:
-        Fill: |-
-            =ColorValue("#00467f")
-        Height: =44
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: |-
-            =Set(varUpdateClientSolution,true);
-            Navigate(ClientSolutions)
-        Size: =14
-        Text: ="Modify Client Solution"
-        Width: =261
-        X: =53
-        Y: =638
-        ZIndex: =6
-
     glyClientSolutionGallery As dataTable.datatable:
         BorderStyle: =BorderStyle.Solid
         BorderThickness: =1

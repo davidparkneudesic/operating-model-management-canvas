@@ -129,8 +129,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =Set(varUpdateClientSolution,true);
-                frmClientsSolutionsForm.DisplayMode.Edit
+                =UpdateContext({varUpdateClientSolution:true});
                 
                 //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
             Size: =14
@@ -155,7 +154,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
-                Set(varUpdateClientSolution,false);
+                UpdateContext({varUpdateClientSolution:false});
             Text: ="Cancel"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187
