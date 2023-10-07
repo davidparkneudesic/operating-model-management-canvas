@@ -1003,7 +1003,7 @@
                     )
                 );
                 UpdateContext({varClientSolutionCreated:true});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
+                //Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
             Text: ="Submit"
             Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
             Width: =177
@@ -1164,7 +1164,7 @@
             OnSelect: |-
                 =Set(varOpenCreateClientSolution,false);
                 UpdateContext({varClientSolutionCreated:false});
-                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
+                //Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');
             Width: =60
             X: |+
                 ='Client Solution Create Container'.Width - 65

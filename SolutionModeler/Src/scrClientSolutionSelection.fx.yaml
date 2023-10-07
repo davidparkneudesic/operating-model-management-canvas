@@ -88,9 +88,9 @@ scrClientSolutionSelection As screen:
                     )
                 )
             )
-        Width: =1246
-        X: =54
-        Y: =213
+        Width: =1312
+        X: =0
+        Y: =210
         ZIndex: =8
 
         "'Created On_Column2' As dataTableColumn.textualColumn":
@@ -165,6 +165,66 @@ scrClientSolutionSelection As screen:
             X: =0
             Y: =0
             ZIndex: =7
+
+        neu_ImplementationModelID_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="neu_ImplementationModelID"
+            FieldName: ="neu_ImplementationModelID"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =6
+            Text: =ThisItem.neu_ImplementationModelID.'Implementation Model Name'
+            Visible: =false
+            Width: =100
+            X: =821
+            Y: =0
+            ZIndex: =8
+
+        neu_projectenddate_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="neu_projectenddate"
+            FieldName: ="neu_projectenddate"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =7
+            Text: =ThisItem.neu_projectenddate
+            Visible: =false
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =9
+
+        neu_projectstartdate_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="neu_projectstartdate"
+            FieldName: ="neu_projectstartdate"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =8
+            Text: =ThisItem.neu_projectstartdate
+            Visible: =false
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =10
+
+        neu_estimateurl_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="neu_estimateurl"
+            FieldName: ="neu_estimateurl"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =9
+            Text: =ThisItem.neu_estimateurl
+            Visible: =false
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =11
 
     ddSortControl As dropdown:
         Items: =["Client/Prospect Name", "Created On","Status Reason"]
