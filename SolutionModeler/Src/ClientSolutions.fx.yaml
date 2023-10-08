@@ -834,7 +834,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =dcCSStatusReason.Selected.Value
+                Update: =
                 Width: =394
                 X: =1
                 Y: =3
@@ -856,7 +856,14 @@
                     DisplayFields: =["Value"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =Choices('Status Reason (Client Solutions)')
+                    Items: =["Proposal","Postponed","Won","Lost"]
+                    OnChange: |
+                        =Switch(dcCSStatusReason.Selected.Value,
+                        "Proposal", UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Proposal}),
+                        "Won", UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Won}),
+                        "Lost", UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Lost}),
+                        "Postponed",UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Postponed})
+                        )
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["Value"]
                     SearchItems: =[]
@@ -1376,8 +1383,19 @@
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
-            =SubmitForm(frmClientsSolutionsForm);
-             
+            =  Patch(
+                    'Client Solutions',
+                    glyClientSolutionGallery.Selected,
+                    {
+                        'Solution Name':dcSolutionName.Text,
+                        'Client/Prospect Name':dcClientProspectName.Text,
+                        'Status Reason':varCSStatusReason,
+                        'Estimate URL':dcEstimateURL.Text,
+                        'Implementation Model':dcImplementationModel.Selected,
+                        'Project Start Date':dcProjectStart.SelectedDate,
+                        'Project End Date':dcProjectEnd.SelectedDate
+                    }
+                );
             
             // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
             //ForAll(
