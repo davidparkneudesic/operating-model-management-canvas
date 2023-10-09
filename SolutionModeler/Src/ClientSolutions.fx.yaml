@@ -534,6 +534,8 @@
                     IconBackground: |-
                         =ColorValue("#00467f")
                     IsEditable: =true
+                    OnChange: |-
+                        =If(dcProjectStart.SelectedDate > dcProjectEnd.SelectedDate, UpdateContext({varBadDate:true}),UpdateContext({varBadDate:false}))
                     PaddingBottom: =0
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     StartYear: =1899
@@ -619,6 +621,8 @@
                     IconBackground: |-
                         =ColorValue("#00467f")
                     IsEditable: =true
+                    OnChange: |-
+                        =If(dcProjectStart.SelectedDate > dcProjectEnd.SelectedDate, UpdateContext({varBadDate:true}),UpdateContext({varBadDate:false}))
                     PaddingBottom: =0
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     StartYear: =1899
@@ -1044,6 +1048,16 @@
             X: =34
             Y: =342
             ZIndex: =26
+
+        Label12 As label:
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =37
+            Text: ="Please verify project dates!"
+            Visible: =If(varBadDate, true,false)
+            Width: =333
+            X: =645
+            Y: =238
+            ZIndex: =27
 
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
