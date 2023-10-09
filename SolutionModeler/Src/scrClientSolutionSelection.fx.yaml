@@ -234,7 +234,7 @@ scrClientSolutionSelection As screen:
         Y: =95
         ZIndex: =9
 
-    Label1 As label:
+    lblSortBy As label:
         Align: =Align.Right
         Text: |-
             ="Sort By:"
