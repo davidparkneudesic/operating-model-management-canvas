@@ -250,11 +250,10 @@
             AcceptsFocus: =true
             DataSource: ='Client Solutions'
             DefaultMode: =If(varUpdateClientSolution, FormMode.Edit,FormMode.View)
-            Height: =435
+            Height: =475
             Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
             Width: =798
-            Y: =25
             ZIndex: =23
 
             "'Client/Prospect Name_DataCard1' As typedDataCard.textualEditCard":
@@ -1035,6 +1034,16 @@
             X: =835
             Y: =323
             ZIndex: =25
+
+        Label2 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =38
+            Text: ="Client Solution User Stories"
+            Visible: =If(varUpdateClientSolution,false,true)
+            Width: =384
+            X: =34
+            Y: =342
+            ZIndex: =26
 
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
