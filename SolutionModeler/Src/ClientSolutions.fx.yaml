@@ -104,6 +104,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =UpdateContext({varUpdateClientSolution:true});
+                UpdateContext({varModelPropStarted:false})
                 
                 //ClearCollect(colTempOperatingModelForEdit, LookUp('Client Solutions', 'Client Solution' = SolutionGallery.Selected.'Client Solution', 'Operating Model'))
             Size: =14
@@ -161,17 +162,6 @@
             Y: =570
             ZIndex: =10
 
-        RelatedOperatingModel_Edit_Label As label:
-            Color: =RGBA(0, 18, 107, 1)
-            Height: =32
-            Size: =12
-            Text: ="Operating Model to Associate"
-            Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
-            Width: =289
-            X: =846
-            Y: =331
-            ZIndex: =12
-
         "'Create DevOps Project Button' As button":
             Color: |-
                 =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
@@ -186,6 +176,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =UpdateContext({varCreateDevOpsProjectWindow:true})
+                UpdateContext({varModelPropStarted:false})
             Size: =14
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
@@ -193,30 +184,6 @@
             X: =1095
             Y: =557
             ZIndex: =13
-
-        RelatedOperatingModel_CS_Edit_ComboBox As combobox:
-            ChevronBackground: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                    ColorFade(RGBA(26, 76, 145, 1), -30%),
-                    RGBA(26, 76, 145, 1)
-                )
-            DisplayFields: =["neu_operatingmodelname"]
-            Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            IsSearchable: =false
-            Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
-            OnSelect: |-
-                =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected})
-            SearchFields: =["neu_operatingmodelname"]
-            SearchItems: =[]
-            SelectMultiple: =false
-            Size: =12
-            Visible: =If(varUpdateClientSolution && !IsBlank(glyClientSolutionGallery.Selected),true,false)
-            Width: =395
-            X: =846
-            Y: =363
-            ZIndex: =15
 
         UpdateClientSolution_Button_1 As button:
             Color: |-
@@ -233,6 +200,7 @@
             OnSelect: |-
                 =
                 Navigate(scrConnections, ScreenTransition.Cover);
+                UpdateContext({varModelPropStarted:false})
                 //Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             Size: =14
             Text: ="Manage ADO Connections"
@@ -258,6 +226,7 @@
                 =Navigate('Operating Models Screen', ScreenTransition.Cover);
                 Set(ClientSolutionIdentifier,dcClientSolutionID.Text);
                 ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = glyClientSolutionGallery.Selected.'Solution Name'));
+                UpdateContext({varModelPropStarted:false})
             Size: =14
             Text: ="Client Operating Models"
             Visible: =If(varUpdateClientSolution,false,true)
@@ -277,51 +246,22 @@
             X: =836
             ZIndex: =19
 
-        btnAssociateModel As button:
-            Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            Height: =44
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
-                UpdateContext({varModelPropStarted:true})
-            Text: ="Associate Model"
-            Visible: |-
-                =If(varUpdateClientSolution, 
-                        If(IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),
-                        false,
-                        true
-                        )
-                    ,false
-                )
-            Width: =187
-            X: =930
-            Y: =418
-            ZIndex: =21
-
         lblModelPropMessage As label:
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
-            Height: =140
+            Height: =70
             Text: ="Model Association has been started.   Please allow up to 5 minutes to fully propagate"
-            Visible: =If(varModelPropStarted && varUpdateClientSolution,true,false)
-            Width: =212
-            X: =1103
-            Y: =430
+            Visible: =If(varModelPropStarted,true,false)
+            Width: =279
+            X: =689
+            Y: =236
             ZIndex: =22
 
         frmClientsSolutionsForm As form:
             AcceptsFocus: =true
             DataSource: ='Client Solutions'
             DefaultMode: =If(varUpdateClientSolution, FormMode.Edit,FormMode.View)
-            Height: =352
+            Height: =435
             Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
             Width: =798
@@ -603,6 +543,8 @@
                     DefaultDate: =Parent.Default
                     DisplayMode: =Parent.DisplayMode
                     EndYear: =Year(Today())+100
+                    IconBackground: |-
+                        =ColorValue("#00467f")
                     IsEditable: =true
                     PaddingBottom: =0
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -686,6 +628,8 @@
                     DefaultDate: =Parent.Default
                     DisplayMode: =Parent.DisplayMode
                     EndYear: =Year(Today())+100
+                    IconBackground: |-
+                        =ColorValue("#00467f")
                     IsEditable: =true
                     PaddingBottom: =0
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
@@ -766,6 +710,8 @@
 
                 dcImplementationModel As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    ChevronBackground: |-
+                        =ColorValue("#00467f")
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_implementationmodelname"]
                     DisplayMode: =Parent.DisplayMode
@@ -833,6 +779,8 @@
 
                 dcCSStatusReason As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    ChevronBackground: |-
+                        =ColorValue("#00467f")
                     DefaultSelectedItems: =[Parent.Default]
                     DisplayFields: =["Value"]
                     DisplayMode: =Parent.DisplayMode
@@ -1089,7 +1037,8 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//If(IsBlank(glyCSUserStories.Selected),Select(glyCSUserStories,1));
-                UpdateContext({varOpenUserStoryCreate:true})
+                UpdateContext({varOpenUserStoryCreate:true});
+                UpdateContext({varModelPropStarted:false})
             Text: ="New User Story"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =212
@@ -1128,7 +1077,8 @@
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});
             UpdateContext({varClientSolutionCreated:false});
-            Set(ClientSolutionIdentifier,"")
+            Set(ClientSolutionIdentifier,"");
+            UpdateContext({varModelPropStarted:false})
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =45
         X: =18
@@ -1633,14 +1583,57 @@
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
+        Height: =38
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: =RunMultiplier.Run(dcClientSolutionID)
         Text: ="Update Epic Hours"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =212
-        X: =1120
+        Width: =199
+        X: =1132
         Y: =540
         ZIndex: =24
+
+    RelatedOperatingModel_CS_Edit_ComboBox As combobox:
+        ChevronBackground: |-
+            =ColorValue("#00467f")
+        DisplayFields: =["neu_operatingmodelname"]
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        IsSearchable: =false
+        Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
+        OnSelect: |-
+            =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected})
+        SearchFields: =["neu_operatingmodelname"]
+        SearchItems: =[]
+        SelectMultiple: =false
+        Size: =12
+        Width: =395
+        X: =919
+        Y: =288
+        ZIndex: =26
+
+    btnAssociateModel As button:
+        Color: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
+                ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            )
+        Height: =44
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |
+            =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
+            UpdateContext({varModelPropStarted:true});
+            Reset(RelatedOperatingModel_CS_Edit_ComboBox)
+        Text: ="Associate Model"
+        Width: =187
+        X: =1008
+        Y: =345
+        ZIndex: =27
 

@@ -320,6 +320,8 @@
                 Height: =50
                 Required: =false
                 Update: =DataCardValue6.Selected
+                Visible: |
+                    =If(DataCardValueEpicLevelItem.Text = "Yes",false,true)
                 Width: =324
                 X: =2
                 Y: =3
@@ -1333,8 +1335,8 @@
             Text: ="Modify Story"
             Visible: =If(varUpdateUserStory,false,true)
             Width: =212
-            X: =44
-            Y: =577
+            X: =16
+            Y: =432
             ZIndex: =4
 
         "'Update Button' As button":
