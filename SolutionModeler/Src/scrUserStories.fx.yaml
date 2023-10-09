@@ -1935,9 +1935,10 @@
                     ChevronHoverBackground: |-
                         =ColorFade(ColorValue("#00467f"), -30%)
                     DisplayFields: =["neu_operatingmodelname"]
-                    Items: =Sort('Operating Models', 'Operating Model Name')
+                    IsSearchable: =false
+                    Items: =Sort(Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(dcClientSolutionID.Text)),'Operating Model Name')
                     SearchFields: =["neu_operatingmodelname"]
-                    SearchItems: =Search(Sort('Operating Models', 'Operating Model Name'),'Operating Model US ComboBox'.SearchText,"neu_operatingmodelname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Width: =369
                     X: =30
@@ -1994,9 +1995,11 @@
                     ChevronHoverBackground: |-
                         =ColorFade(ColorValue("#00467f"), -30%)
                     DisplayFields: =["neu_capabilityname"]
-                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name')
+                    DisplayMode: =If(IsBlank('Operating Model US ComboBox'),DisplayMode.View,DisplayMode.Edit)
+                    IsSearchable: =false
+                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model' = 'Operating Model US ComboBox'.Selected.'Operating Model'),'Capability Name')
                     SearchFields: =["neu_capabilityname"]
-                    SearchItems: =Search(Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model US ComboBox'.Selected.'Operating Model Name'), 'Capability Name'),'Capability US ComboBox'.SearchText,"neu_capabilityname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Width: =369
                     X: =30
@@ -2053,9 +2056,11 @@
                     ChevronHoverBackground: |-
                         =ColorFade(ColorValue("#00467f"), -30%)
                     DisplayFields: =["neu_processgroupname"]
-                    Items: =Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name')
+                    DisplayMode: =If(IsBlank('Capability US ComboBox'), DisplayMode.View,DisplayMode.Edit)
+                    IsSearchable: =false
+                    Items: =Sort(Filter('Process Groups',Capability.Capability = 'Capability US ComboBox'.Selected.Capability),'Process Group Name')
                     SearchFields: =["neu_processgroupname"]
-                    SearchItems: =Search(Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability US ComboBox'.Selected.'Capability Name'), 'Process Group Name'),'Process Group US ComboBox'.SearchText,"neu_processgroupname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Width: =369
                     X: =30
@@ -2122,9 +2127,11 @@
                     ChevronHoverBackground: |-
                         =ColorFade(ColorValue("#00467f"), -30%)
                     DisplayFields: =["neu_processname"]
-                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name')
+                    DisplayMode: =If(IsBlank('Process Group US ComboBox'), DisplayMode.View,DisplayMode.Edit)
+                    IsSearchable: =false
+                    Items: =Sort(Filter(Processes,'Process Group'.'Process Group' = 'Process Group US ComboBox'.Selected.'Process Group'),'Process Name')
                     SearchFields: =["neu_processname"]
-                    SearchItems: =Search(Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group US ComboBox'.Selected.'Process Group Name'), 'Process Name'),'Process US ComboBox'.SearchText,"neu_processname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Width: =369
                     X: =30
