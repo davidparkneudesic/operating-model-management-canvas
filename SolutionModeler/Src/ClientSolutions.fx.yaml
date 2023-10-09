@@ -1076,13 +1076,17 @@
 
         Create_UserStory_Button As button:
             Fill: |-
-                =ColorValue("#00467f")
+                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//If(IsBlank(glyCSUserStories.Selected),Select(glyCSUserStories,1));
                 UpdateContext({varOpenUserStoryCreate:true})
             Text: ="New User Story"
+            Visible: =If(varUpdateClientSolution,false,true)
             Width: =212
             X: =748
             Y: =580
@@ -1202,7 +1206,7 @@
                 UpdateContext({varClientSolutionCreated:true});
                 //Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
             Text: ="Submit"
-            Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input'),false,true)
+            Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input')  ||varBadDate ,false,true)
             Width: =177
             X: =183
             Y: =447
@@ -1316,6 +1320,8 @@
             Color: =RGBA(0, 70, 127, 1)
             IconBackground: |-
                 =ColorValue("#00467f")
+            OnChange: |-
+                =If('Project Start Date DatePicker'.SelectedDate < Today() ||'Project End Date DatePicker'.SelectedDate < 'Project Start Date DatePicker'.SelectedDate ,UpdateContext({varBadDate:true}),UpdateContext({varBadDate:false}))
             Width: =280
             X: =80
             Y: =380
@@ -1325,6 +1331,8 @@
             DefaultDate: =
             IconBackground: |-
                 =ColorValue("#00467f")
+            OnChange: |-
+                =If('Project End Date DatePicker'.SelectedDate < 'Project Start Date DatePicker'.SelectedDate,UpdateContext({varBadDate:true}),UpdateContext({varBadDate:false}))
             Width: =280
             X: =403
             Y: =380
@@ -1377,6 +1385,16 @@
             X: =720
             Y: =420
             ZIndex: =22
+
+        Label1 As label:
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =34
+            Text: ="Please verify your dates"
+            Visible: =If(varBadDate,true,false)
+            Width: =224
+            X: =159
+            Y: =450
+            ZIndex: =23
 
     "'Delete Client Solution Confirmation Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -1615,6 +1633,7 @@
         OnSelect: =RunMultiplier.Run(dcClientSolutionID)
         Text: ="Update Epic Hours"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Visible: =If(varUpdateClientSolution,false,true)
         Width: =212
         X: =1112
         Y: =688
