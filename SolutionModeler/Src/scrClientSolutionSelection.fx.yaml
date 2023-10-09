@@ -178,7 +178,7 @@ scrClientSolutionSelection As screen:
             Height: =Parent.Height
             LayoutHeight: =Parent.Height
             Order: =6
-            Text: =ThisItem.neu_ImplementationModelID.'Implementation Model Name'
+            Text: =ThisItem.'Implementation Model'.'Implementation Model Name'
             Visible: =false
             Width: =100
             X: =821

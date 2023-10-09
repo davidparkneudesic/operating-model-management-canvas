@@ -25,7 +25,7 @@
             Fill: =RGBA(255, 255, 255, 1)
             FocusedBorderColor: =
             Height: =78
-            Items: =Filter(glyClientSolutionGallery.Selected.'Operating Models (neu_neu_operatingmodel_ClientSolution_neu_cli)',Status = 'Status (Operating Models)'.Active)
+            Items: =Filter(glyClientSolutionGallery.Selected.'Operating Models',Status = 'Status (Operating Models)'.Active)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             ShowScrollbar: =false
@@ -36,8 +36,8 @@
                 =//If(varUpdateClientSolution,false,true)
                 true
             Width: =476
-            X: =836
-            Y: =51
+            X: =835
+            Y: =30
             ZIndex: =1
 
             Title14 As label:
@@ -100,7 +100,6 @@
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
-            Height: =44
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
@@ -110,9 +109,9 @@
             Size: =14
             Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =261
-            X: =52
-            Y: =512
+            Width: =231
+            X: =1084
+            Y: =323
             ZIndex: =7
 
         Cancel_Update_Form_Button As button:
@@ -182,7 +181,7 @@
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
-            Height: =44
+            Height: =57
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
@@ -190,9 +189,9 @@
             Size: =14
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =261
-            X: =381
-            Y: =580
+            Width: =209
+            X: =1095
+            Y: =557
             ZIndex: =13
 
         RelatedOperatingModel_CS_Edit_ComboBox As combobox:
@@ -228,7 +227,7 @@
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
-            Height: =44
+            Height: =60
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
@@ -238,9 +237,9 @@
             Size: =14
             Text: ="Manage ADO Connections"
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =261
-            X: =381
-            Y: =512
+            Width: =209
+            X: =1095
+            Y: =486
             ZIndex: =16
 
         btnViewUserStories_1 As button:
@@ -263,8 +262,8 @@
             Text: ="Client Operating Models"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =943
-            Y: =138
+            X: =942
+            Y: =121
             ZIndex: =17
 
         "'Related Operating Model Label_1' As label":
@@ -276,7 +275,6 @@
             Text: ="Client Operating Models"
             Width: =347
             X: =836
-            Y: =21
             ZIndex: =19
 
         btnAssociateModel As button:
@@ -323,10 +321,10 @@
             AcceptsFocus: =true
             DataSource: ='Client Solutions'
             DefaultMode: =If(varUpdateClientSolution, FormMode.Edit,FormMode.View)
-            Height: =469
+            Height: =352
             Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
-            Width: =821
+            Width: =798
             Y: =25
             ZIndex: =23
 
@@ -341,13 +339,14 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
                 Required: =true
                 Update: =dcClientProspectName.Text
-                Width: =410
+                Width: =399
                 X: =0
                 Y: =0
                 ZIndex: =1
 
                 DataCardKey1 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -409,7 +408,7 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
                 Required: =true
                 Update: =dcSolutionName.Text
-                Width: =350
+                Width: =399
                 WidthFit: =false
                 X: =1
                 Y: =0
@@ -417,6 +416,7 @@
 
                 DataCardKey8 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -476,7 +476,7 @@
                 Height: =24
                 Required: =false
                 Visible: =false
-                Width: =410
+                Width: =399
                 X: =0
                 Y: =1
                 ZIndex: =1
@@ -514,7 +514,7 @@
                 Height: =50
                 Required: =false
                 Update: =dcEstimateURL.Text
-                Width: =410
+                Width: =798
                 WidthFit: =true
                 X: =1
                 Y: =1
@@ -522,6 +522,7 @@
 
                 DataCardKey2 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -581,13 +582,14 @@
                 Height: =50
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectStart.SelectedDate), dcProjectStart.SelectedDate, 0)
-                Width: =410
+                Width: =399
                 X: =0
                 Y: =2
                 ZIndex: =1
 
                 DataCardKey7 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -663,13 +665,14 @@
                 Height: =50
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectEnd.SelectedDate), dcProjectEnd.SelectedDate, 0)
-                Width: =400
+                Width: =399
                 X: =1
                 Y: =2
                 ZIndex: =1
 
                 DataCardKey4 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -745,13 +748,14 @@
                 Height: =50
                 Required: =false
                 Update: =dcImplementationModel.Selected
-                Width: =410
+                Width: =399
                 X: =0
                 Y: =3
                 ZIndex: =1
 
                 DataCardKey3 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -811,13 +815,14 @@
                 Height: =50
                 Required: =false
                 Update: =
-                Width: =400
+                Width: =399
                 X: =1
                 Y: =3
                 ZIndex: =1
 
                 DataCardKey9 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -884,12 +889,12 @@
             Fill: =RGBA(0, 0, 0, 0)
             HeadingFill: |-
                 = ColorValue("#00467f")
-            Height: =376
+            Height: =236
             Items: =Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =653
-            X: =659
-            Y: =191
+            Width: =1029
+            X: =34
+            Y: =377
             ZIndex: =24
 
             "'Epic Level Item_Column1' As dataTableColumn.complexOptionSetColumn":
@@ -920,7 +925,7 @@
                     Set(varUpdateClientSolution,false);
                 Order: =1
                 Text: =ThisItem.Name
-                Width: =100
+                Width: =160
                 X: =0
                 Y: =0
                 ZIndex: =26
@@ -980,7 +985,7 @@
                 Text: =ThisItem.'Client Solution'.'Client Solution'
                 Visible: =false
                 Width: =100
-                X: =0
+                X: =493
                 Y: =0
                 ZIndex: =30
 
@@ -1088,8 +1093,8 @@
             Text: ="New User Story"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =212
-            X: =748
-            Y: =580
+            X: =846
+            Y: =323
             ZIndex: =25
 
     "'Client Solutions Page Label' As label":
@@ -1635,7 +1640,7 @@
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =212
-        X: =1112
-        Y: =688
+        X: =1120
+        Y: =540
         ZIndex: =24
 
