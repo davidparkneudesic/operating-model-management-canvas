@@ -36,7 +36,7 @@
                 =//If(varUpdateClientSolution,false,true)
                 true
             Width: =476
-            X: =765
+            X: =836
             Y: =51
             ZIndex: =1
 
@@ -275,7 +275,7 @@
             Size: =12
             Text: ="Client Operating Models"
             Width: =347
-            X: =760
+            X: =836
             Y: =21
             ZIndex: =19
 
@@ -515,6 +515,7 @@
                 Required: =false
                 Update: =dcEstimateURL.Text
                 Width: =410
+                WidthFit: =true
                 X: =1
                 Y: =1
                 ZIndex: =1
@@ -582,7 +583,7 @@
                 Update: =dcImplementationModel.Selected
                 Width: =410
                 X: =0
-                Y: =2
+                Y: =3
                 ZIndex: =1
 
                 DataCardKey3 As label:
@@ -647,7 +648,7 @@
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectStart.SelectedDate), dcProjectStart.SelectedDate, 0)
                 Width: =410
-                X: =1
+                X: =0
                 Y: =2
                 ZIndex: =1
 
@@ -729,8 +730,8 @@
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectEnd.SelectedDate), dcProjectEnd.SelectedDate, 0)
                 Width: =400
-                X: =0
-                Y: =3
+                X: =1
+                Y: =2
                 ZIndex: =1
 
                 DataCardKey4 As label:
@@ -810,7 +811,7 @@
                 Height: =50
                 Required: =false
                 Update: =
-                Width: =600
+                Width: =400
                 X: =1
                 Y: =3
                 ZIndex: =1
@@ -885,6 +886,7 @@
                 = ColorValue("#00467f")
             Height: =376
             Items: =Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
+            Visible: =If(varUpdateClientSolution,false,true)
             Width: =653
             X: =659
             Y: =191
@@ -933,7 +935,7 @@
                 Order: =3
                 Text: =ThisItem.Description
                 Width: =100
-                X: =0
+                X: =184
                 Y: =0
                 ZIndex: =27
 

@@ -4008,6 +4008,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Process_DataCard3.DataCardValue6.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Process_DataCard3.DataCardValue6.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Process_DataCard3.DataCardValue6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.'Effort Percentage_DataCard1'.DataCardValue11.AccessibleLabel"
                 }
               ],
