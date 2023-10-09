@@ -1458,19 +1458,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.RelatedOperatingModel_CS_Edit_ComboBox.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
-                "module": "ClientSolutions",
-                "type": "ClientSolutions.RelatedOperatingModel_CS_Edit_ComboBox"
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.RelatedOperatingModel_CS_Edit_ComboBox"
               }
             }
           ],
@@ -8388,6 +8388,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "ClientSolutions.varModelPropStarted"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.varModelPropStarted",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varModelPropStarted",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "ClientSolutions.'Client Solution Management Container'.frmClientsSolutionsForm.Item"
                 }
               ],
@@ -9355,7 +9385,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 491, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 494, which exceeds the maximum threshold recommended (300)."
               }
             },
             {

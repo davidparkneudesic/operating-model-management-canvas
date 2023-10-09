@@ -23,7 +23,7 @@
             Fill: |-
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Height: =504
+            Height: =409
             Items: |-
                 =If(IsBlank(ClientSolutionIdentifier),
                 
@@ -668,6 +668,7 @@
             UpdateContext({varOpenCapabilityCreate:false});
             UpdateContext({varOpenProcessDetail:false});
             UpdateContext({varEditOM:false});
+            UpdateContext({varModelPropStarted:false});
             Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
             
@@ -682,6 +683,25 @@
         Y: =15
         ZIndex: =3
 
+    RelatedOperatingModel_CS_Edit_ComboBox As combobox:
+        ChevronBackground: |-
+            =ColorValue("#00467f")
+        DisplayFields: =["neu_operatingmodelname"]
+        Height: =33
+        IsSearchable: =false
+        Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
+        OnSelect: |-
+            =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected})
+        SearchFields: =["neu_operatingmodelname"]
+        SearchItems: =[]
+        SelectMultiple: =false
+        Size: =12
+        Visible: =If(IsBlank(txtClientID.Text),false,true)
+        Width: =293
+        X: =81
+        Y: =572
+        ZIndex: =4
+
     "'Create OM Container' As groupContainer.manualLayoutContainer":
         BorderThickness: =1
         DropShadow: =DropShadow.Semibold
@@ -691,7 +711,7 @@
         Width: =757
         X: =330
         Y: =150
-        ZIndex: =4
+        ZIndex: =5
 
         "'Create Operating Model Label' As label":
             Align: =Align.Center
@@ -995,6 +1015,7 @@
         cntDeleteOMVerification As groupContainer.manualLayoutContainer:
             BorderThickness: =1
             Fill: =RGBA(255, 255, 255, 1)
+            Height: =252
             Visible: =If(varDeleteOM,true,false)
             X: =155
             Y: =139
@@ -1003,9 +1024,9 @@
             lblOMInactiveWarning As label:
                 Color: =RGBA(246, 88, 16, 1)
                 FontWeight: =FontWeight.Bold
-                Height: =96
+                Height: =153
                 Text: |-
-                    ="WARNING:   If you delete the Operating Model, all related Capabilities, Process Groups and Processes will be deleted. This is irreversible"
+                    ="WARNING:   If you delete the Operating Model, all related Capabilities, Process Groups and Processes  THIS IS IRREVERSIBLE.  Note that this only possible if there are no User Stories linked."
                 Width: =455
                 X: =28
                 Y: =16
@@ -1016,16 +1037,16 @@
                     =Remove('Operating Models','Operating Model Gallery'.Selected);
                     UpdateContext({varDeleteOM:false})
                 Text: ="DELETE!"
-                X: =51
-                Y: =132
+                X: =44
+                Y: =184
                 ZIndex: =2
 
             Button8 As button:
                 OnSelect: |-
                     =UpdateContext({varDeleteOM:false})
                 Text: ="Cancel"
-                X: =264
-                Y: =132
+                X: =261
+                Y: =184
                 ZIndex: =3
 
     "'Create Cap Container' As groupContainer.manualLayoutContainer":
@@ -1036,7 +1057,7 @@
         Width: =800
         X: =147
         Y: =91
-        ZIndex: =5
+        ZIndex: =6
 
         "'Create Capability Label' As label":
             Align: =Align.Center
@@ -1639,7 +1660,7 @@
         Width: =650
         X: =354
         Y: =91
-        ZIndex: =6
+        ZIndex: =7
 
         "'Create Capability Label_1' As label":
             Align: =Align.Center
@@ -2174,7 +2195,7 @@
         Width: =1160
         X: =99
         Y: =65
-        ZIndex: =7
+        ZIndex: =8
 
         "'Create Capability Label_2' As label":
             Align: =Align.Center
@@ -2459,7 +2480,7 @@
         Width: =1119
         X: =103
         Y: =43
-        ZIndex: =8
+        ZIndex: =9
 
         "'Process Name Detail Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -3230,4 +3251,38 @@
         X: =657
         Y: =489
         ZIndex: =12
+
+    btnAssociateModel As button:
+        Color: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
+        Height: =41
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |
+            =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
+            UpdateContext({varModelPropStarted:true});
+            Reset(RelatedOperatingModel_CS_Edit_ComboBox)
+        Text: ="Associate Model"
+        Visible: =If(IsBlank(txtClientID.Text),false,true)
+        Width: =204
+        X: =125
+        Y: =617
+        ZIndex: =13
+
+    lblModelPropMessage As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 0, 0, 1)
+        Height: =148
+        Text: ="Model Association has been started.   Please allow up to 2 minutes to fully propagate.  You will need to navigate back to the Home Page and then come back here to see the model"
+        Visible: =If(varModelPropStarted,true,false)
+        Width: =279
+        X: =81
+        Y: =393
+        ZIndex: =14
 
