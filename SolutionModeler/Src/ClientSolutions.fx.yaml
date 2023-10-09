@@ -175,7 +175,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =UpdateContext({varCreateDevOpsProjectWindow:true})
+                =UpdateContext({varCreateDevOpsProjectWindow:true});
                 UpdateContext({varModelPropStarted:false})
             Size: =14
             Text: ="Create DevOps Project"
@@ -1037,7 +1037,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//If(IsBlank(glyCSUserStories.Selected),Select(glyCSUserStories,1));
-                UpdateContext({varOpenUserStoryCreate:true});
+                Set(varOpenUserStoryCreate,true);
                 UpdateContext({varModelPropStarted:false})
             Text: ="New User Story"
             Visible: =If(varUpdateClientSolution,false,true)
@@ -1610,6 +1610,7 @@
         SearchItems: =[]
         SelectMultiple: =false
         Size: =12
+        Visible: =If(varUpdateClientSolution,false,true)
         Width: =395
         X: =919
         Y: =288
@@ -1632,8 +1633,22 @@
             UpdateContext({varModelPropStarted:true});
             Reset(RelatedOperatingModel_CS_Edit_ComboBox)
         Text: ="Associate Model"
+        Visible: =If(varUpdateClientSolution,false,true)
         Width: =187
         X: =1008
         Y: =345
         ZIndex: =27
+
+    TextInput2 As text:
+        Default: =varOpenUserStoryCreate
+        X: =645
+        Y: =355
+        ZIndex: =28
+
+    Button5 As button:
+        OnSelect: =Set(varOpenUserStoryCreate,false)
+        Text: ="Button"
+        X: =708
+        Y: =280
+        ZIndex: =29
 
