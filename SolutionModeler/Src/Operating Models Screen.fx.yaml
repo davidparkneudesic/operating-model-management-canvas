@@ -1619,7 +1619,12 @@
                      'Status Reason':CapEditStatusReason.Selected.Value
                     }
                 )
-                )
+                );
+                UpdateContext({varOpenCapabilityCreate:false});
+                UpdateContext({varCapCreated:false});
+                UpdateContext({varEditCap:false});
+                UpdateContext({varEditL3Cap:false});
+                Reset('New Capability Name Input');
             Text: ="Update"
             Visible: |
                 =If(varEditCap || varEditSubCap || varEditL3Cap, If(IsBlank(dcCapEditCapabilityNameCap.Text) || IsBlank(dcCapEditOpModelName.Selected), false,true),false)

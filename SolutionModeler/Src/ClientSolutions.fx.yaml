@@ -926,6 +926,7 @@
                 ZIndex: =26
 
             Description_Column1 As dataTableColumn.textualColumn:
+                AutoWidth: =false
                 DisplayMode: =DisplayMode.Edit
                 FieldDisplayName: ="Description"
                 FieldName: ="neu_description"
@@ -934,7 +935,7 @@
                 LayoutHeight: =Parent.Height
                 Order: =3
                 Text: =ThisItem.Description
-                Width: =100
+                Width: =400
                 X: =184
                 Y: =0
                 ZIndex: =27
@@ -1072,6 +1073,20 @@
                 X: =0
                 Y: =0
                 ZIndex: =36
+
+        Create_UserStory_Button As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =//If(IsBlank(glyCSUserStories.Selected),Select(glyCSUserStories,1));
+                UpdateContext({varOpenUserStoryCreate:true})
+            Text: ="New User Story"
+            Width: =212
+            X: =748
+            Y: =580
+            ZIndex: =25
 
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
@@ -1588,4 +1603,20 @@
         X: =89
         Y: =674
         ZIndex: =23
+
+    Run_EpicBalancerFunction_Button As button:
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            )
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: =RunMultiplier.Run(dcClientSolutionID)
+        Text: ="Update Epic Hours"
+        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Width: =212
+        X: =1112
+        Y: =688
+        ZIndex: =24
 

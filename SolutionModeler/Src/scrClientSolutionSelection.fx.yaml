@@ -15,6 +15,8 @@ scrClientSolutionSelection As screen:
         ZIndex: =2
 
     ddFilter As dropdown:
+        ChevronBackground: |-
+            =ColorValue("#00467f")
         Items: =["My Client Solutions", "All Client Solutions"]
         X: =64
         Y: =92
@@ -61,6 +63,8 @@ scrClientSolutionSelection As screen:
         BorderThickness: =1
         DisplayMode: =DisplayMode.Edit
         Fill: =RGBA(0, 0, 0, 0)
+        HeadingFill: |-
+            =ColorValue("#00467f")
         Height: =415
         Items: |-
             =If(chkShowClosed,
@@ -89,8 +93,8 @@ scrClientSolutionSelection As screen:
                 )
             )
         Width: =1312
-        X: =0
-        Y: =210
+        X: =31
+        Y: =211
         ZIndex: =8
 
         "'Created On_Column2' As dataTableColumn.textualColumn":
@@ -227,6 +231,8 @@ scrClientSolutionSelection As screen:
             ZIndex: =11
 
     ddSortControl As dropdown:
+        ChevronBackground: |-
+            =ColorValue("#00467f")
         Items: =["Client/Prospect Name", "Created On","Status Reason"]
         OnChange: =If(ddSortControl.Selected.Value = "Client/Prospect Name", Set(varSortType,"neu_clientprospectname"),If(ddSortControl.Selected.Value = "Created On", Set(varSortType,"createdon"),Set(varSortType, "statuscode")))
         OnSelect: =

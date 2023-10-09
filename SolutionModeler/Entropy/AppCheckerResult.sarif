@@ -3558,19 +3558,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Name_DataCard1_2.'User Story Name Input'.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Name_DataCard1_2.txtUserStoryNameInput.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Name_DataCard1_2.'User Story Name Input'.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Name_DataCard1_2.txtUserStoryNameInput.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Name_DataCard1_2.'User Story Name Input'"
+                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Name_DataCard1_2.txtUserStoryNameInput"
               }
             }
           ],
@@ -3588,19 +3588,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Description_DataCard1_2.'Description US Input'.AccessibleLabel"
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Description_DataCard1_2.txtUSDescription.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Description_DataCard1_2.'Description US Input'.AccessibleLabel",
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Description_DataCard1_2.txtUSDescription.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scrUserStories",
-                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Description_DataCard1_2.'Description US Input'"
+                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Description_DataCard1_2.txtUSDescription"
               }
             }
           ],
@@ -8388,6 +8388,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "ClientSolutions.varOpenUserStoryCreate"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.varOpenUserStoryCreate",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varOpenUserStoryCreate",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "ClientSolutions.'Client Solution Management Container'.frmClientsSolutionsForm.Item"
                 }
               ],
@@ -8502,6 +8532,36 @@
           },
           "ruleId": "app-InefficientDelayLoading",
           "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrUserStories.varUSCreated"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.varUSCreated",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varUSCreated",
+                "module": "scrUserStories",
+                "type": "scrUserStories"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 7
         },
         {
           "locations": [

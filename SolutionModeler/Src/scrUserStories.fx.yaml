@@ -1320,24 +1320,6 @@
                     Y: =17
                     ZIndex: =4
 
-        Create_UserStory_Button As button:
-            Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =//If(IsBlank(glyCSUserStories.Selected),Select(glyCSUserStories,1));
-                UpdateContext({varOpenUserStoryCreate:true})
-            Text: ="New User Story"
-            Visible: =If(varUpdateUserStory,false,true)
-            Width: =212
-            X: =390
-            Y: =577
-            ZIndex: =3
-
         UpdateStory_EditMode_Button As button:
             Fill: |-
                 =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
@@ -1348,10 +1330,10 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =UpdateContext({varUpdateUserStory:true})
-            Text: ="Update Story"
+            Text: ="Modify Story"
             Visible: =If(varUpdateUserStory,false,true)
             Width: =212
-            X: =738
+            X: =44
             Y: =577
             ZIndex: =4
 
@@ -1437,23 +1419,6 @@
             X: =402
             Y: =577
             ZIndex: =7
-
-        Run_EpicBalancerFunction_Button As button:
-            Fill: |-
-                =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =RunMultiplier.Run(dcClientSolutionID)
-            Text: ="Run Epic Balancer"
-            Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
-            Visible: =If(varUpdateUserStory, false,true)
-            Width: =212
-            X: =51
-            Y: =577
-            ZIndex: =8
 
         UserStory_Detail_Title As label:
             Color: |-
@@ -1584,7 +1549,7 @@
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_ClientSolutionID"
                 Default: =ThisItem.'Client Solution'
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.View
                 DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_ClientSolutionID")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
@@ -2022,7 +1987,7 @@
                 Height: =86
                 MaxLength: =DataSourceInfo([@'User Stories'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
-                Update: ='User Story Name Input'.Text
+                Update: =txtUserStoryNameInput.Text
                 Width: =858
                 WidthFit: =true
                 X: =0
@@ -2053,7 +2018,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: ='User Story Name Input'.Y + 'User Story Name Input'.Height
+                    Y: =txtUserStoryNameInput.Y + txtUserStoryNameInput.Height
                     ZIndex: =3
 
                 StarVisible9_2 As label:
@@ -2066,7 +2031,7 @@
                     Y: =DataCardKey6_2.Y
                     ZIndex: =4
 
-                "'User Story Name Input' As text":
+                txtUserStoryNameInput As text:
                     Default: =""
                     OnSelect: |-
                         =UpdateContext({varUSCreated:false})
@@ -2085,7 +2050,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =217
                 Required: =true
-                Update: ='Description US Input'.Text
+                Update: =txtUSDescription.Text
                 Width: =429
                 WidthFit: =true
                 X: =0
@@ -2116,7 +2081,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: ='Description US Input'.Y + 'Description US Input'.Height
+                    Y: =txtUSDescription.Y + txtUSDescription.Height
                     ZIndex: =3
 
                 StarVisible10_2 As label:
@@ -2129,7 +2094,7 @@
                     Y: =DataCardKey10_2.Y
                     ZIndex: =4
 
-                "'Description US Input' As text":
+                txtUSDescription As text:
                     Default: =""
                     Height: =156
                     Mode: =TextMode.MultiLine
@@ -2211,8 +2176,8 @@
                         'User Stories',
                         Defaults('User Stories'),
                         {
-                            Name:'User Story Name Input'.Text,
-                            Description:'Description US Input'.Text,
+                            Name:txtUserStoryNameInput.Text,
+                            Description:txtUSDescription.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
                             'Operating Model':'Operating Model US ComboBox'.Selected,
@@ -2226,8 +2191,8 @@
                         'User Stories',
                         Defaults('User Stories'),
                         {
-                            Name:'User Story Name Input'.Text,
-                            Description:'Description US Input'.Text,
+                            Name:txtUserStoryNameInput.Text,
+                            Description:txtUSDescription.Text,
                             'Client Solution':'Client Solution US Dropdown for Create'.Selected,
                             'Epic Level Item':'EpicLevelItemDropdown For Create'.Selected.Value,
                             'Effort Percentage':Value('Effort Percentage Input'.Text) / 100,
@@ -2238,7 +2203,10 @@
                 
                 UpdateContext({varUSCreated:true});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+                UpdateContext({varOpenUserStoryCreate:false});
+                Back(ScreenTransition.CoverRight)
             Text: ="Create"
+            Visible: =If(IsBlank(txtUSDescription)|| IsBlank(txtUserStoryNameInput), false, true)
             X: =376
             Y: =622
             ZIndex: =2
@@ -2255,16 +2223,6 @@
             Text: ="Create New User Story"
             Width: ='Create User Story Container'.Width
             ZIndex: =3
-
-        "'User Story Created Message' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="User Story was successfully created!"
-            Visible: =If(varUSCreated,true,false)
-            Width: =350
-            X: =281
-            Y: =575
-            ZIndex: =4
 
         Icon1 As icon.Cancel:
             Color: =RGBA(255, 255, 255, 1)
@@ -2357,6 +2315,7 @@
                 =UpdateContext({varOpenDeleteUserStoryWindow:false});
                 UpdateContext({varMessageUserStoryDeleted:false});
                 UpdateContext({varUpdateUserStory:false});
+                Back(ScreenTransition.CoverRight)
             Visible: =If(varMessageUserStoryDeleted,true,false)
             Width: =52
             X: =550
