@@ -24,7 +24,7 @@
             DisplayMode: =DisplayMode.Disabled
             Fill: =RGBA(255, 255, 255, 1)
             FocusedBorderColor: =
-            Height: =185
+            Height: =78
             Items: =Filter(glyClientSolutionGallery.Selected.'Operating Models (neu_neu_operatingmodel_ClientSolution_neu_cli)',Status = 'Status (Operating Models)'.Active)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -35,9 +35,9 @@
             Visible: |-
                 =//If(varUpdateClientSolution,false,true)
                 true
-            Width: =421
-            X: =846
-            Y: =112
+            Width: =476
+            X: =765
+            Y: =51
             ZIndex: =1
 
             Title14 As label:
@@ -90,31 +90,6 @@
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =4
-
-        btnViewUserStories As button:
-            Color: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Fill: |-
-                =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            Height: =44
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =Navigate(scrUserStories, ScreenTransition.Cover);
-                //Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
-                Set(varOpenCreateClientSolution,false);
-                Set(varUpdateClientSolution,false);
-            Size: =14
-            Text: ="Manage User Stories"
-            Visible: =If(varUpdateClientSolution,false,true)
-            Width: =261
-            X: =382
-            Y: =511
-            ZIndex: =6
 
         UpdateClientSolution_Button As button:
             Color: |-
@@ -216,8 +191,8 @@
             Text: ="Create DevOps Project"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =913
-            Y: =526
+            X: =381
+            Y: =580
             ZIndex: =13
 
         RelatedOperatingModel_CS_Edit_ComboBox As combobox:
@@ -264,8 +239,8 @@
             Text: ="Manage ADO Connections"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =913
-            Y: =455
+            X: =381
+            Y: =512
             ZIndex: =16
 
         btnViewUserStories_1 As button:
@@ -288,8 +263,8 @@
             Text: ="Client Operating Models"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =913
-            Y: =310
+            X: =855
+            Y: =138
             ZIndex: =17
 
         "'Related Operating Model Label_1' As label":
@@ -299,9 +274,9 @@
             Height: =30
             Size: =12
             Text: ="Client Operating Models"
-            Width: =257
-            X: =846
-            Y: =82
+            Width: =347
+            X: =760
+            Y: =21
             ZIndex: =19
 
         btnAssociateModel As button:
@@ -348,10 +323,10 @@
             AcceptsFocus: =true
             DataSource: ='Client Solutions'
             DefaultMode: =If(varUpdateClientSolution, FormMode.Edit,FormMode.View)
-            Height: =430
+            Height: =469
             Item: =glyClientSolutionGallery.Selected
             NumberOfColumns: =2
-            Width: =788
+            Width: =821
             Y: =25
             ZIndex: =23
 
@@ -366,7 +341,7 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
                 Required: =true
                 Update: =dcClientProspectName.Text
-                Width: =394
+                Width: =410
                 X: =0
                 Y: =0
                 ZIndex: =1
@@ -434,7 +409,7 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
                 Required: =true
                 Update: =dcSolutionName.Text
-                Width: =394
+                Width: =350
                 WidthFit: =false
                 X: =1
                 Y: =0
@@ -501,7 +476,7 @@
                 Height: =24
                 Required: =false
                 Visible: =false
-                Width: =394
+                Width: =410
                 X: =0
                 Y: =1
                 ZIndex: =1
@@ -539,7 +514,7 @@
                 Height: =50
                 Required: =false
                 Update: =dcEstimateURL.Text
-                Width: =394
+                Width: =410
                 X: =1
                 Y: =1
                 ZIndex: =1
@@ -605,7 +580,7 @@
                 Height: =50
                 Required: =false
                 Update: =dcImplementationModel.Selected
-                Width: =394
+                Width: =410
                 X: =0
                 Y: =2
                 ZIndex: =1
@@ -671,7 +646,7 @@
                 Height: =50
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectStart.SelectedDate), dcProjectStart.SelectedDate, 0)
-                Width: =394
+                Width: =410
                 X: =1
                 Y: =2
                 ZIndex: =1
@@ -753,7 +728,7 @@
                 Height: =50
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectEnd.SelectedDate), dcProjectEnd.SelectedDate, 0)
-                Width: =394
+                Width: =400
                 X: =0
                 Y: =3
                 ZIndex: =1
@@ -835,7 +810,7 @@
                 Height: =50
                 Required: =false
                 Update: =
-                Width: =394
+                Width: =600
                 X: =1
                 Y: =3
                 ZIndex: =1
@@ -898,6 +873,203 @@
                     Wrap: =false
                     Y: =DataCardKey9.Y
                     ZIndex: =4
+
+        glyCSUserStories As dataTable.datatable:
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            Color: |-
+                =ColorValue("#00467f")
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            HeadingFill: |-
+                = ColorValue("#00467f")
+            Height: =376
+            Items: =Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
+            Width: =653
+            X: =659
+            Y: =191
+            ZIndex: =24
+
+            "'Epic Level Item_Column1' As dataTableColumn.complexOptionSetColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Epic Level Item"
+                FieldName: ="neu_epiclevelitem"
+                FieldVariantName: ="complexOptionSetColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =5
+                Text: =ThisItem.'Epic Level Item'
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =25
+
+            Name_Column1 As dataTableColumn.textualColumn:
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Name"
+                FieldName: ="neu_name"
+                FieldVariantName: ="textualColumn"
+                Height: =Parent.Height
+                IsHyperlink: =true
+                LayoutHeight: =Parent.Height
+                OnSelect: |-
+                    =Navigate(scrUserStories, ScreenTransition.Cover);
+                    Set(varOpenCreateClientSolution,false);
+                    Set(varUpdateClientSolution,false);
+                Order: =1
+                Text: =ThisItem.Name
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =26
+
+            Description_Column1 As dataTableColumn.textualColumn:
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Description"
+                FieldName: ="neu_description"
+                FieldVariantName: ="textualColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =3
+                Text: =ThisItem.Description
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =27
+
+            "'Estimated Hours_Column1' As dataTableColumn.numberColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Estimated Hours"
+                FieldName: ="neu_estimatedhours"
+                FieldVariantName: ="numberColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =4
+                Text: =ThisItem.'Estimated Hours'
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =28
+
+            Capability_Column1 As dataTableColumn.complexTypeColumn:
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Capability"
+                FieldName: ="neu_CapabilityID"
+                FieldVariantName: ="complexTypeColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =6
+                Text: =ThisItem.Capability.Capability
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =29
+
+            "'Client Solution_Column1' As dataTableColumn.complexTypeColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Client Solution"
+                FieldName: ="neu_ClientSolutionID"
+                FieldVariantName: ="complexTypeColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =7
+                Text: =ThisItem.'Client Solution'.'Client Solution'
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =30
+
+            "'Effort Percentage_Column1' As dataTableColumn.numberColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Effort Percentage"
+                FieldName: ="neu_effortpercentage"
+                FieldVariantName: ="numberColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =8
+                Text: =ThisItem.'Effort Percentage'
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =31
+
+            Process_Column1 As dataTableColumn.complexTypeColumn:
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Process"
+                FieldName: ="neu_ProcessID"
+                FieldVariantName: ="complexTypeColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =9
+                Text: =ThisItem.Process.Process
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =32
+
+            "'Process Group_Column1' As dataTableColumn.complexTypeColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Process Group"
+                FieldName: ="neu_ProcessGroupID"
+                FieldVariantName: ="complexTypeColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =10
+                Text: =ThisItem.'Process Group'.'Process Group'
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =33
+
+            "'Status Reason_Column2' As dataTableColumn.complexOptionSetColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Status Reason"
+                FieldName: ="statuscode"
+                FieldVariantName: ="complexOptionSetColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =11
+                Text: =ThisItem.'Status Reason'
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =34
+
+            "'User Story_Column1' As dataTableColumn.textualColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="User Story"
+                FieldName: ="neu_userstoryid"
+                FieldVariantName: ="textualColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =12
+                Text: =ThisItem.'User Story'
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =35
+
+            "'Operating Model_Column1' As dataTableColumn.complexTypeColumn":
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Operating Model"
+                FieldName: ="neu_OperatingModelID"
+                FieldVariantName: ="complexTypeColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =13
+                Text: =ThisItem.'Operating Model'.'Operating Model'
+                Visible: =false
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =36
 
     "'Client Solutions Page Label' As label":
         Align: =Align.Center

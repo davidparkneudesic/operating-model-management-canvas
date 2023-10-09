@@ -4008,36 +4008,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Process_DataCard1.Process_US_Input.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Process_DataCard1.Process_US_Input.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrUserStories",
-                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Process_DataCard1.Process_US_Input"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.'Effort Percentage_DataCard1'.DataCardValue11.AccessibleLabel"
                 }
               ],
@@ -4392,66 +4362,6 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.galUserStories.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.galUserStories.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrUserStories",
-                "type": "scrUserStories.galUserStories"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrUserStories.galUserStories.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrUserStories.galUserStories.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "scrUserStories",
-                "type": "scrUserStories.galUserStories"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
         },
         {
           "locations": [
@@ -8568,6 +8478,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.Item",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "scrUserStories",
+                "type": "scrUserStories.'Create User Story Container'.'Create UserStory Form'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scrUserStories.'Create User Story Container'.'Create UserStory Form'.'Client Solution_DataCard2_2'.'Client Solution US Dropdown for Create'.Items"
                 }
               ],
@@ -8628,6 +8568,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormView.Item",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormView"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Item"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Item",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Item",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Client Solution_DataCard2_1'.'Client Solution US Dropdown_1'.Items"
                 }
               ],
@@ -8658,19 +8658,139 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrUserStories.galUserStories.Items"
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Epic Level Item_DataCard2_1'.EpicLevelItem_Dropdown_Update.Default"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scrUserStories.galUserStories.Items",
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Epic Level Item_DataCard2_1'.EpicLevelItem_Dropdown_Update.Default",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "Items",
+                "member": "Default",
                 "module": "scrUserStories",
-                "type": "scrUserStories.galUserStories"
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Epic Level Item_DataCard2_1'.EpicLevelItem_Dropdown_Update"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Operating Model_DataCard1_1'.OperatingModel_ComboBox.DefaultSelectedItems"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Operating Model_DataCard1_1'.OperatingModel_ComboBox.DefaultSelectedItems",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "DefaultSelectedItems",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Operating Model_DataCard1_1'.OperatingModel_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Capability_DataCard1_1.Capability_ComboBox.DefaultSelectedItems"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Capability_DataCard1_1.Capability_ComboBox.DefaultSelectedItems",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "DefaultSelectedItems",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Capability_DataCard1_1.Capability_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Process Group_DataCard1_1'.ProcessGroup_ComboBox.DefaultSelectedItems"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Process Group_DataCard1_1'.ProcessGroup_ComboBox.DefaultSelectedItems",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "DefaultSelectedItems",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.'Process Group_DataCard1_1'.ProcessGroup_ComboBox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Process_DataCard1_1.Process_ComboBox.DefaultSelectedItems"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Process_DataCard1_1.Process_ComboBox.DefaultSelectedItems",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "DefaultSelectedItems",
+                "module": "scrUserStories",
+                "type": "scrUserStories.UserStories_Detail_Window.UserStoryFormEdit.Process_DataCard1_1.Process_ComboBox"
               }
             }
           ],
@@ -9000,6 +9120,36 @@
                 "member": "DefaultSelectedItems",
                 "module": "scrConnections",
                 "type": "scrConnections.CreateConnectionContainer.'Create Connection Form_1'.'Client Solution_DataCard7'.dcClientSolution"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-InefficientDelayLoading",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Management Container'.glyCSUserStories.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "ClientSolutions.'Client Solution Management Container'.glyCSUserStories.Items",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "ClientSolutions",
+                "type": "ClientSolutions.'Client Solution Management Container'.glyCSUserStories"
               }
             }
           ],
