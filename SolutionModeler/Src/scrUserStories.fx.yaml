@@ -1335,8 +1335,8 @@
             Text: ="Modify Story"
             Visible: =If(varUpdateUserStory,false,true)
             Width: =212
-            X: =16
-            Y: =432
+            X: =28
+            Y: =513
             ZIndex: =4
 
         "'Update Button' As button":

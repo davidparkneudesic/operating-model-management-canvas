@@ -1037,6 +1037,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =//If(IsBlank(glyCSUserStories.Selected),Select(glyCSUserStories,1));
+                Navigate(scrUserStories, ScreenTransition.Cover);
                 Set(varOpenUserStoryCreate,true);
                 UpdateContext({varModelPropStarted:false})
             Text: ="New User Story"
@@ -1638,17 +1639,4 @@
         X: =1008
         Y: =345
         ZIndex: =27
-
-    TextInput2 As text:
-        Default: =varOpenUserStoryCreate
-        X: =645
-        Y: =355
-        ZIndex: =28
-
-    Button5 As button:
-        OnSelect: =Set(varOpenUserStoryCreate,false)
-        Text: ="Button"
-        X: =708
-        Y: =280
-        ZIndex: =29
 
