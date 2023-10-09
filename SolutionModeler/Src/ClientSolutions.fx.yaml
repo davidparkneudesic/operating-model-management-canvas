@@ -1075,7 +1075,7 @@
         Size: =26
         Text: ="Client Solutions"
         Width: =1366
-        ZIndex: =4
+        ZIndex: =2
 
     "'Back Button_to HomePage' As icon.ChevronLeft":
         Color: |-
@@ -1096,7 +1096,25 @@
         Width: =45
         X: =18
         Y: =15
-        ZIndex: =5
+        ZIndex: =3
+
+    Run_EpicBalancerFunction_Button As button:
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            )
+        Height: =38
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: =RunMultiplier.Run(dcClientSolutionID)
+        Text: ="Update Epic Hours"
+        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Visible: =If(varUpdateClientSolution,false,true)
+        Width: =199
+        X: =1132
+        Y: =540
+        ZIndex: =4
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
@@ -1105,7 +1123,7 @@
         Width: =1188
         X: =89
         Y: =37
-        ZIndex: =19
+        ZIndex: =5
 
         btnReset As button:
             Fill: |-
@@ -1345,15 +1363,6 @@
             Y: =5
             ZIndex: =21
 
-        Label10 As label:
-            Align: =Align.Center
-            Height: =67
-            Text: ="Associate any Standard Operating Models in the Update Client Solutions area."
-            Width: =403
-            X: =720
-            Y: =420
-            ZIndex: =22
-
         Label1 As label:
             Color: =RGBA(255, 0, 0, 1)
             Height: =34
@@ -1372,7 +1381,7 @@
         Width: =589
         X: =389
         Y: =251
-        ZIndex: =21
+        ZIndex: =6
 
         "'Delete Confirmation Button' As button":
             Fill: |-
@@ -1459,7 +1468,7 @@
         Width: =1082
         X: =142
         Y: =62
-        ZIndex: =22
+        ZIndex: =7
 
         "'Create New Azure DevOps Project Title' As label":
             Align: =Align.Center
@@ -1588,23 +1597,5 @@
         Width: =187
         X: =89
         Y: =674
-        ZIndex: =23
-
-    Run_EpicBalancerFunction_Button As button:
-        Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-                ColorFade(ColorValue("#00467f"), -30%),
-                ColorValue("#00467f")
-            )
-        Height: =38
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: =RunMultiplier.Run(dcClientSolutionID)
-        Text: ="Update Epic Hours"
-        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
-        Visible: =If(varUpdateClientSolution,false,true)
-        Width: =199
-        X: =1132
-        Y: =540
-        ZIndex: =24
+        ZIndex: =8
 
