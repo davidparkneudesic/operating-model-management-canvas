@@ -810,7 +810,7 @@
                     {
                         'Implementation Model Name':'New Implementation Model Name Input'.Text,
                         Platform:'Platform IM Dropdown'.Selected,
-                        'Status Reason':'Status Reason IM Dropdown'.Selected.Value
+                        'Status Reason':'Status Reason (Implementation Models)'.Draft
                     }
                 );
                 
@@ -841,27 +841,6 @@
             X: =78
             Y: =231
             ZIndex: =7
-
-        "'Status Reason IM Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Status Reason"
-            X: =470
-            Y: =191
-            ZIndex: =8
-
-        "'Status Reason IM Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Implementation Models)')
-            Size: =12
-            Width: =270
-            X: =470
-            Y: =231
-            ZIndex: =9
 
         "'Implmentation Model created message' As label":
             Align: =Align.Center
@@ -941,7 +920,7 @@
                         'Implementation Phase Name':'New Implementation Phase Name Input'.Text,
                         'Implementation Model':'Implementation Model IP Dropdown'.Selected,
                         Sequence:Value('Sequence IP Input'.Text) * 1000,
-                        'Status Reason':'Status Reason IP Dropdown'.Selected.Value,
+                        'Status Reason':'Status Reason (Implementation Phases)'.Draft,
                         Model:Model.'Implementation Model'
                     }
                 );
@@ -974,27 +953,6 @@
             X: =64
             Y: =231
             ZIndex: =7
-
-        "'Status Reason IP Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Status Reason"
-            X: =490
-            Y: =289
-            ZIndex: =8
-
-        "'Status Reason IP Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Implementation Phases)')
-            Size: =12
-            Width: =333
-            X: =490
-            Y: =329
-            ZIndex: =9
 
         "'Implmentation Phase created message' As label":
             Align: =Align.Center
@@ -1091,7 +1049,7 @@
                         'Implementation Stage Name':'New Implementation Stage Name Input'.Text,
                         'Implementation Phase':'Implementation Phase IS Dropdown'.Selected,
                         Sequence:Value('Sequence IS Input'.Text) * 1000,
-                        'Status Reason':'Status Reason IS Dropdown'.Selected.Value,
+                        'Status Reason':'Status Reason (Implementation Stages)'.Draft,
                         Model:Model.'Implementation Model'
                     }
                 );
@@ -1124,27 +1082,6 @@
             X: =64
             Y: =238
             ZIndex: =7
-
-        "'Status Reason IS Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Status Reason"
-            X: =490
-            Y: =381
-            ZIndex: =8
-
-        "'Status Reason IS Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Implementation Stages)')
-            Size: =12
-            Width: =260
-            X: =490
-            Y: =421
-            ZIndex: =9
 
         "'Implmentation Stage created message' As label":
             Align: =Align.Center
@@ -1263,7 +1200,7 @@
                         'Product Backlog Item Name':'New Product Backlog Item Name Input'.Text,
                         'Implementation Stage':'Implementation Stage PBI Dropdown'.Selected,
                         Sequence:Value('Sequence PBI Input'.Text) * 1000,
-                        'Status Reason':'Status Reason PBI Dropdown'.Selected.Value,
+                        'Status Reason':'Status Reason (Product Backlog Items)'.Draft,
                         Model:Model.'Implementation Model'
                     }
                 );
@@ -1296,27 +1233,6 @@
             X: =64
             Y: =231
             ZIndex: =7
-
-        "'Status Reason PBI Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Status Reason"
-            X: =490
-            Y: =461
-            ZIndex: =8
-
-        "'Status Reason PBI Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Product Backlog Items)')
-            Size: =12
-            Width: =260
-            X: =490
-            Y: =501
-            ZIndex: =9
 
         "'Product Backlog Item created message' As label":
             Align: =Align.Center
@@ -1455,8 +1371,9 @@
                     {
                         'Task Name':'New Task Name Input'.Text,
                         'Product Backlog':'Product Backlog Task Dropdown'.Selected,
-                        Sequence:Value('Sequence Task Input'.Text) * 1000,
-                        'Status Reason':'Status Reason Task Dropdown'.Selected.Value,
+                       // Sequence:Value('Sequence Task Input'.Text) * 1000,
+                            Sequence:Value('Sequence Task Input'.Text),
+                        'Status Reason':'Status Reason (Tasks)'.Draft,
                         Determination:'Determination Task Dropdown'.Selected.Value,
                         Model:Model.'Implementation Model'
                     }
@@ -1501,30 +1418,11 @@
             Y: =231
             ZIndex: =8
 
-        "'Status Reason Task Label' As label":
-            FontWeight: =FontWeight.Semibold
-            Text: ="Status Reason"
-            X: =558
-            Y: =461
-            ZIndex: =9
-
-        "'Status Reason Task Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Default: ="Draft"
-            Height: =35
-            Items: =Choices('Status Reason (Tasks)')
-            Size: =12
-            Width: =197
-            X: =558
-            Y: =501
-            ZIndex: =10
-
         "'Sequence Task Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Sequence" & " (Range within " & Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) & " to " & (Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
+            Text: |-
+                =//"Sequence" & " (Range within " & Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) & " to " & (Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
+                "Sequence"
             Width: =413
             X: =64
             Y: =547
