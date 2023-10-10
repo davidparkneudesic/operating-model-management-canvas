@@ -687,6 +687,9 @@
         ChevronBackground: |-
             =ColorValue("#00467f")
         DisplayFields: =["neu_operatingmodelname"]
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =33
         IsSearchable: =false
         Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
@@ -1049,6 +1052,29 @@
                 Y: =184
                 ZIndex: =3
 
+    btnAssociateModel As button:
+        Color: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+        Fill: |-
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
+                ColorFade(RGBA(26, 76, 145, 1), -30%),
+                RGBA(26, 76, 145, 1)
+            )
+        Height: =41
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |
+            =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
+            UpdateContext({varModelPropStarted:true});
+            Reset(RelatedOperatingModel_CS_Edit_ComboBox)
+        Text: ="Associate Model"
+        Visible: =If(IsBlank(txtClientID.Text),false,true)
+        Width: =204
+        X: =125
+        Y: =617
+        ZIndex: =6
+
     "'Create Cap Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -1057,7 +1083,7 @@
         Width: =800
         X: =147
         Y: =91
-        ZIndex: =6
+        ZIndex: =7
 
         "'Create Capability Label' As label":
             Align: =Align.Center
@@ -1088,7 +1114,7 @@
             Y: =3
             ZIndex: =2
 
-        "'Create Capability Button' As button":
+        btnCreateCapability As button:
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -1111,7 +1137,10 @@
             Text: |-
                 ="Create
                 "
-            Visible: =If(varEditCap = false, If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.Selected), false,true),false)
+            Visible: |-
+                =If(varOpenCapabilityCreate,
+                    If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.Selected),false,true)
+                )
             X: =324
             Y: =518
             ZIndex: =3
@@ -1221,8 +1250,8 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
             Items: |-
-                =//Filter('Operating Models','Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
-                colOperatingModelFilter
+                =Filter('Operating Models','Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model')
+                //colOperatingModelFilter
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
             X: =89
@@ -1660,7 +1689,7 @@
         Width: =650
         X: =354
         Y: =91
-        ZIndex: =7
+        ZIndex: =8
 
         "'Create Capability Label_1' As label":
             Align: =Align.Center
@@ -2179,10 +2208,13 @@
                 );
                 UpdateContext({varOpenProcessGroupEdit:false});
                 
-            Text: |-
-                ="Update
-                "
-            Visible: =If(varOpenProcessGroupEdit = true, If(IsBlank(dcPGEditPGName.Text), false,true),false)
+            Text: ="Update"
+            Visible: |-
+                =If(varOpenProcessGroupEdit,
+                    If(IsBlank(dcPGEditPGName.Text),
+                    false,
+                    true)
+                )
             X: =61
             Y: =478
             ZIndex: =18
@@ -2195,7 +2227,7 @@
         Width: =1160
         X: =99
         Y: =65
-        ZIndex: =8
+        ZIndex: =9
 
         "'Create Capability Label_2' As label":
             Align: =Align.Center
@@ -2370,9 +2402,9 @@
                 =ColorFade(ColorValue("#00467f"), -20%)
             Height: =35
             Items: |-
-                =//Sort(Filter('Process Groups',Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'),'Process Group Name')
+                =Sort(Filter('Process Groups','Process Group' = 'Process Group Gallery'.Selected.'Process Group'),'Process Group Name')
                 //Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
-                colCreateWindowPGFilter
+                //colCreateWindowPGFilter
             Width: =293
             X: =63
             Y: =404
@@ -2480,7 +2512,7 @@
         Width: =1119
         X: =103
         Y: =43
-        ZIndex: =9
+        ZIndex: =10
 
         "'Process Name Detail Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -3226,7 +3258,7 @@
         Width: =290
         X: =687
         Y: =472
-        ZIndex: =10
+        ZIndex: =11
 
     lblProcInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3238,7 +3270,7 @@
         Width: =584
         X: =519
         Y: =330
-        ZIndex: =11
+        ZIndex: =12
 
     lblCapInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3250,29 +3282,6 @@
         Width: =290
         X: =657
         Y: =489
-        ZIndex: =12
-
-    btnAssociateModel As button:
-        Color: |-
-            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-        Fill: |-
-            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail,
-                ColorFade(RGBA(26, 76, 145, 1), -30%),
-                RGBA(26, 76, 145, 1)
-            )
-        Height: =41
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: |
-            =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
-            UpdateContext({varModelPropStarted:true});
-            Reset(RelatedOperatingModel_CS_Edit_ComboBox)
-        Text: ="Associate Model"
-        Visible: =If(IsBlank(txtClientID.Text),false,true)
-        Width: =204
-        X: =125
-        Y: =617
         ZIndex: =13
 
     lblModelPropMessage As label:
