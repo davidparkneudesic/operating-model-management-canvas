@@ -1835,13 +1835,13 @@
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             DisplayMode: =DisplayMode.View
-            Height: =35
+            Height: =31
             Items: |-
-                =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
-                colOperatingModelFilter
+                =Filter('Operating Models', 'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model')
+                //colOperatingModelFilter
             Size: =12
             Visible: =If(varOpenProcessGroupCreate,true,false)
-            Width: =310
+            Width: =536
             X: =89
             Y: =215
             ZIndex: =13
@@ -1891,14 +1891,13 @@
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model PG Dropdown'.Selected.'Operating Model Name'))
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
             Text: |-
                 ="Reset
                 "
-            Visible: =false
             Width: =152
-            X: =436
-            Y: =294
+            X: =418
+            Y: =303
             ZIndex: =16
 
         frmEditProcessGroup As form:
