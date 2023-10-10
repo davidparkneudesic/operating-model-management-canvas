@@ -709,11 +709,11 @@
         BorderThickness: =1
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =600
+        Height: =455
         Visible: =If(varOpenOperatingModelCreate ||varEditOM, true, false)
         Width: =757
-        X: =330
-        Y: =150
+        X: =318
+        Y: =134
         ZIndex: =5
 
         "'Create Operating Model Label' As label":
@@ -727,6 +727,7 @@
             Size: =20
             Text: =If(varEditOM = true,"Edit Operating Model","Create New Operating Model")
             Width: ='Create OM Container'.Width
+            Y: =3
             ZIndex: =1
 
         "'Exit OM Create Icon' As icon.Cancel":
@@ -756,7 +757,7 @@
                         Defaults('Operating Models'),
                         {
                             'Operating Model Name':dcEditOMOperatingModelName.Text,
-                            'Status Reason':varOMStatusReason,
+                            'Status Reason':'Status Reason (Operating Models)'.Active,
                             'Client Solution Identifier':glyClientSolutionGallery.Selected,
                             'Client Specific':'Client Specific (Operating Models)'.Yes,
                             Model:Model.'Operating Model'
@@ -768,9 +769,9 @@
                             'Operating Model Gallery'.Selected,
                             {
                                 'Operating Model Name':dcEditOMOperatingModelName.Text,
-                                'Status Reason':varOMStatusReason,
+                                'Status Reason':'Status Reason (Operating Models)'.Active,
                                 'Client Solution Identifier':glyClientSolutionGallery.Selected,
-                                Status:'Status (Operating Models)'.Active,
+                                 Status:'Status (Operating Models)'.Active,
                                 'Client Specific':'Client Specific (Operating Models)'.Yes
                             }
                     )
@@ -783,8 +784,8 @@
                 
             Text: =If(varOpenOperatingModelCreate,"Create","Update")
             Visible: =If(IsBlank(dcEditOMOperatingModelName.Text),false,true)
-            X: =121
-            Y: =444
+            X: =62
+            Y: =336
             ZIndex: =3
 
         "'Operating Model Created Label' As label":
@@ -799,7 +800,7 @@
 
         frmEditOpModel As form:
             DataSource: ='Operating Models'
-            Height: =354
+            Height: =237
             Item: =If(varEditOM = true,'Operating Model Gallery'.Selected,Defaults('Operating Models'))
             Visible: =If(varEditOM || varOpenOperatingModelCreate,true,false)
             Width: =757
@@ -886,8 +887,8 @@
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
-                    X: =30
-                    Y: =10
+                    X: =20
+                    Y: =8
                     ZIndex: =1
 
                 dcEditOMOperatingModelName As text:
@@ -932,78 +933,6 @@
                     Y: =DataCardKey44.Y
                     ZIndex: =4
 
-            "'Status Reason_DataCard6' As typedDataCard.comboBoxOptionSetSingleEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="statuscode"
-                Default: =ThisItem.'Status Reason'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Operating Models'],DataSourceInfo.DisplayName,"statuscode")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =true
-                Update: =
-                Width: =267
-                X: =2
-                Y: =1
-                ZIndex: =14
-
-                DataCardKey45 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                dcEditOMStatusReason As combobox:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    DefaultSelectedItems: =[Parent.Default]
-                    DisplayFields: =["Value"]
-                    DisplayMode: =Parent.DisplayMode
-                    IsSearchable: =false
-                    Items: =["Active","Draft"]
-                    OnChange: |-
-                        =If(dcEditOMStatusReason.Selected.Value = "Active",
-                            Set(varOMStatusReason,'Status Reason (Operating Models)'.Active),
-                            Set(varOMStatusReason,'Status Reason (Operating Models)'.Draft)
-                        )
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    SearchFields: =["Value"]
-                    SearchItems: =[]
-                    SelectMultiple: =false
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey45.Y + DataCardKey45.Height + 5
-                    ZIndex: =2
-
-                ErrorMessage41 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =dcEditOMStatusReason.Y + dcEditOMStatusReason.Height
-                    ZIndex: =3
-
-                StarVisible35 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey45.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey45.Y
-                    ZIndex: =4
-
         btnDeleteOM As button:
             Fill: |-
                 =ColorValue("#00467f")
@@ -1011,8 +940,8 @@
                 =UpdateContext({varDeleteOM:true})
             Text: ="Delete Operating Model"
             Width: =261
-            X: =336
-            Y: =444
+            X: =303
+            Y: =336
             ZIndex: =14
 
         cntDeleteOMVerification As groupContainer.manualLayoutContainer:
@@ -1743,7 +1672,7 @@
                 ="Create
                 "
             Visible: =If(varOpenProcessGroupEdit = false, If(IsBlank('New Process Group Name Input'.Text) || IsBlank('Capability PG Dropdown'.Selected), false,true),false)
-            X: =324
+            X: =89
             Y: =518
             ZIndex: =3
 
@@ -2443,6 +2372,7 @@
         "'Data Flow Diagram URL Input' As text":
             Default: =""
             Height: =35
+            HintText: =""
             OnSelect: |-
                 =UpdateContext({varProcCreated:false})
             Width: =555
@@ -2502,6 +2432,19 @@
             X: =382
             Y: =402
             ZIndex: =23
+
+        Label10 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =64
+            OnSelect: |-
+                =Launch("https://lucid.app/documents#/documents?folder_id=335606626")
+            Text: ="The Data Flow Diagram does not yet exist. Please click here to create a new Data Flow in the Team Repo.  When your diagram is complete, place the hyperlink to it in the Data Flow Diagram URL"
+            Visible: =If(IsBlank('Data Flow Diagram URL Input'.Text) && varOpenProcessCreate, true,false)
+            Width: =581
+            X: =549
+            Y: =544
+            ZIndex: =24
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
