@@ -365,7 +365,6 @@
                 Reset('New Task Name Input'); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: ="Create Implementation Model"
-            Visible: =false
             Width: =234
             X: =41
             Y: =565
@@ -398,7 +397,6 @@
             Text: |-
                 ="Create Implementation Phase
                 "
-            Visible: =false
             Width: =234
             X: =295
             Y: =565
@@ -431,7 +429,6 @@
             Text: |-
                 ="Create Implementation Stage
                 "
-            Visible: =false
             Width: =234
             X: =548
             Y: =565
@@ -465,7 +462,6 @@
                 ="Create Product
                 Backlog Item
                 "
-            Visible: =false
             Width: =234
             X: =800
             Y: =565
@@ -498,7 +494,6 @@
             Text: |-
                 ="Create Task
                 "
-            Visible: =false
             Width: =234
             X: =1055
             Y: =565
