@@ -103,12 +103,13 @@ HomePage As screen:
             ZIndex: =2
 
         Label4 As label:
+            Align: =Align.Center
             Font: =Font.Lato
             FontWeight: =FontWeight.Bold
             Height: =62
             Size: =18
             Text: |-
-                ="Shared Operating Models
+                ="Standard Operating Models
                 "
             Width: =303
             X: =36

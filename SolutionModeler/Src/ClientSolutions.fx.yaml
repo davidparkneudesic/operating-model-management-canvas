@@ -183,7 +183,7 @@
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
             X: =1095
-            Y: =557
+            Y: =494
             ZIndex: =13
 
         UpdateClientSolution_Button_1 As button:
@@ -208,7 +208,7 @@
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
             X: =1095
-            Y: =486
+            Y: =423
             ZIndex: =16
 
         btnViewUserStories_1 As button:
@@ -1117,7 +1117,7 @@
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =199
         X: =1132
-        Y: =540
+        Y: =484
         ZIndex: =4
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
@@ -1613,4 +1613,22 @@
         X: =832
         Y: =336
         ZIndex: =9
+
+    btnSyncModels As button:
+        Fill: |-
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+                ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            )
+        Height: =38
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: =
+        Text: ="Sync Models"
+        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
+        Visible: =If(varUpdateClientSolution,false,true)
+        Width: =199
+        X: =1132
+        Y: =677
+        ZIndex: =10
 
