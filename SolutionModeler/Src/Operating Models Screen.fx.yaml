@@ -2111,6 +2111,7 @@
                         'Process Groups',
                         'Process Group Gallery'.Selected,
                         {
+                            Capability:dcPGEditCapability.Selected,
                             'Process Group Name':dcPGEditPGName.Text,
                             'Scope Review':dcPGEditScopeReview.Selected.Value,
                             Status:'Status (Process Groups)'.Inactive
@@ -2121,6 +2122,7 @@
                         'Process Groups',
                         'Process Group Gallery'.Selected,
                         {
+                            Capability:dcPGEditCapability.Selected,
                             'Process Group Name':dcPGEditPGName.Text,
                             'Scope Review':dcPGEditScopeReview.Selected.Value,
                             'Status Reason':dcPGEditStatusReason.Selected.Value
@@ -2230,8 +2232,8 @@
                 ="Create
                 "
             Visible: =If(IsBlank('New Process Name Input'.Text) || IsBlank('Description Proc Input'.Text),false,true)
-            X: =499
-            Y: =620
+            X: =65
+            Y: =580
             ZIndex: =3
 
         "'New Process Name Input' As text":
@@ -2257,9 +2259,10 @@
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Operating Model Filter"
+            Visible: =false
             Width: =307
-            X: =63
-            Y: =188
+            X: =49
+            Y: =580
             ZIndex: =6
 
         "'Scope Review Proc Label' As label":
@@ -2267,8 +2270,8 @@
             Size: =14
             Text: ="Scope Review"
             Width: =213
-            X: =63
-            Y: =457
+            X: =65
+            Y: =368
             ZIndex: =9
 
         "'Scope Review Proc Dropdown' As dropdown":
@@ -2280,8 +2283,8 @@
             Height: =35
             Items: =Choices('Scope Review')
             Width: =185
-            X: =63
-            Y: =497
+            X: =65
+            Y: =408
             ZIndex: =10
 
         "'Capability Proc Label' As label":
@@ -2289,8 +2292,8 @@
             Size: =14
             Text: ="Capability Filter"
             Width: =307
-            X: =63
-            Y: =276
+            X: =65
+            Y: =187
             ZIndex: =11
 
         "'Operating Model Proc Dropdown' As dropdown":
@@ -2302,9 +2305,10 @@
             Items: |-
                 =//Filter('Operating Models', 'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name')
                 colOperatingModelFilter
+            Visible: =false
             Width: =293
-            X: =63
-            Y: =228
+            X: =49
+            Y: =620
             ZIndex: =12
 
         "'Capability Proc Dropdown' As dropdown":
@@ -2316,9 +2320,11 @@
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 colCreateWindowCapacityFilter
-            Width: =293
+            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.'Capability'))
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+            Width: =432
             X: =63
-            Y: =316
+            Y: =222
             ZIndex: =13
 
         "'Process Group Proc Label' As label":
@@ -2326,24 +2332,9 @@
             Size: =14
             Text: ="Process Group"
             Width: =307
-            X: =63
-            Y: =364
+            X: =65
+            Y: =275
             ZIndex: =14
-
-        "'Process Group Proc Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            Height: =35
-            Items: |-
-                =Sort(Filter('Process Groups','Process Group' = 'Process Group Gallery'.Selected.'Process Group'),'Process Group Name')
-                //Filter('Process Groups','Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name')
-                //colCreateWindowPGFilter
-            Width: =293
-            X: =63
-            Y: =404
-            ZIndex: =15
 
         "'Description Proc Input' As text":
             Clear: =true
@@ -2372,8 +2363,8 @@
             Text: ="Process was successfully created!"
             Visible: =If(varProcCreated, true, false)
             Width: =367
-            X: =395
-            Y: =567
+            X: =132
+            Y: =580
             ZIndex: =18
 
         "'Data Flow Diagram URL Input' As text":
@@ -2407,38 +2398,11 @@
             Text: |-
                 ="Reset
                 "
+            Visible: =false
             Width: =115
-            X: =382
-            Y: =228
+            X: =368
+            Y: =620
             ZIndex: =21
-
-        "'Reset Operating Model Cap Button_4' As button":
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'))
-            Text: |-
-                ="Reset
-                "
-            Width: =115
-            X: =382
-            Y: =316
-            ZIndex: =22
-
-        "'Reset Operating Model Cap Button_5' As button":
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.'Capability Name' = 'Capability Proc Dropdown'.Selected.'Capability Name'))
-            Text: |-
-                ="Reset
-                "
-            Width: =115
-            X: =382
-            Y: =402
-            ZIndex: =23
 
         lblDataDiagramInstructions As label:
             Align: =Align.Center
@@ -2452,6 +2416,18 @@
             X: =549
             Y: =544
             ZIndex: =24
+
+        "'Process Group Proc Dropdown' As dropdown":
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            ChevronHoverBackground: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
+            Height: =35
+            Items: =colCreateWindowPGFilter
+            Width: =456
+            X: =63
+            Y: =310
+            ZIndex: =25
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -2781,7 +2757,6 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_processgroupname"]
-                    DisplayMode: =DisplayMode.View
                     Items: =Choices([@Processes].neu_ProcessGroupID)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_processgroupname"]
@@ -3197,6 +3172,12 @@
             Y: =423
             ZIndex: =17
 
+        Dropdown1 As dropdown:
+            Items: =colCreateWindowCapacityFilter
+            X: =655
+            Y: =558
+            ZIndex: =18
+
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
         FontWeight: =FontWeight.Bold
@@ -3253,5 +3234,12 @@
         Width: =275
         X: =81
         Y: =468
-        ZIndex: =15
+        ZIndex: =16
+
+    TextInput3 As text:
+        Default: =First(colCreateWindowPGFilter).'Process Group Name'
+        Visible: =false
+        X: =168
+        Y: =678
+        ZIndex: =17
 
