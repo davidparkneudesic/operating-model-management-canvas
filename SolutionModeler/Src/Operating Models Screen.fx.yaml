@@ -281,6 +281,7 @@
             ZIndex: =4
 
             Title3_3 As label:
+                Color: =RGBA(50, 86, 160, 1)
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                 Height: =42
                 OnSelect: |-
@@ -293,6 +294,7 @@
                 PaddingTop: =0
                 Size: =10
                 Text: =ThisItem.'Process Name'
+                Underline: =true
                 Width: =260
                 X: =12
                 ZIndex: =1
@@ -303,6 +305,20 @@
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =4
+
+            icoEditCap_4 As icon.Edit:
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =29
+                Icon: =Icon.Edit
+                OnSelect: |-
+                    =Select(Parent);
+                    UpdateContext({varEditProcess:true})
+                    //UpdateContext({varOpenProcessDetail:true})
+                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Width: =35
+                X: =237
+                Y: =6
+                ZIndex: =5
 
         "'Operating Model Label' As label":
             FontWeight: =FontWeight.Bold
@@ -2927,6 +2943,45 @@
                     Y: =DataCardKey36.Y
                     ZIndex: =4
 
+            Process_DataCard1 As typedDataCard.textualViewCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_processid"
+                Default: =ThisItem.Process
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@Processes],DataSourceInfo.DisplayName,"neu_processid")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =106
+                Required: =false
+                Width: =337
+                X: =2
+                Y: =3
+                ZIndex: =1
+
+                DataCardKey13 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Visible: =false
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcProcessID As label:
+                    AutoHeight: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Default
+                    Visible: =false
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey13.Y + DataCardKey13.Height + 5
+                    ZIndex: =2
+
             "'Process Name_DataCard1' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_processname"
@@ -3170,23 +3225,54 @@
             Y: =463
             ZIndex: =16
 
-        btnUpdateProcess As button:
+        btnSaveProcess_1 As button:
             Fill: =RGBA(39, 67, 125, 1)
             OnSelect: |-
-                =UpdateContext({varEditProcess:true})
-            Text: ="Update Process"
-            Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = false,true,false))
-            X: =739
-            Y: =423
+                =UpdateContext({varDeleteProcess:true})
+            Text: ="Delete Process"
+            Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+            X: =736
+            Y: =551
             ZIndex: =17
 
-        dpCapabilityFilter As dropdown:
-            Items: =colCreateWindowCapacityFilter
-            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.'Capability'))
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
-            X: =671
-            Y: =111
+        cntDeleteProcess As groupContainer.manualLayoutContainer:
+            BorderThickness: =1
+            Fill: =RGBA(255, 255, 255, 1)
+            Visible: =If(varDeleteProcess, true, false)
+            X: =420
+            Y: =408
             ZIndex: =18
+
+            Label10 As label:
+                Height: =51
+                Text: ="Are you sure you want to delete this process?"
+                Width: =401
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+            btnDeleteProcessConfirmed As button:
+                Fill: =RGBA(39, 67, 125, 1)
+                OnSelect: |
+                    =Remove(Processes,'Process Gallery Parent'.Selected);
+                    UpdateContext({varDeleteProcess:false});
+                    UpdateContext({varOpenProcessDetail:false});
+                    UpdateContext({varEditProcess:false})
+                Text: ="DELETE"
+                Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+                X: =68
+                Y: =118
+                ZIndex: =2
+
+            btnDeleteProcessCancelled As button:
+                Fill: =RGBA(39, 67, 125, 1)
+                OnSelect: |
+                    =UpdateContext({varDeleteProcess:false})
+                Text: ="Cancel"
+                Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+                X: =263
+                Y: =118
+                ZIndex: =3
 
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3252,4 +3338,13 @@
         X: =168
         Y: =678
         ZIndex: =17
+
+    dpCapabilityFilter As dropdown:
+        Items: =colCreateWindowCapacityFilter
+        OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.'Capability'))
+        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+        Visible: =If(varEditProcess,true,false)
+        X: =764
+        Y: =156
+        ZIndex: =18
 
