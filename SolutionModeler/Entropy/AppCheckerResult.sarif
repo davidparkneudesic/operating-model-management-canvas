@@ -8418,19 +8418,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.Dropdown1.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.dpCapabilityFilter.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.Dropdown1.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.dpCapabilityFilter.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Process Detail Container'.Dropdown1"
+                "type": "'Operating Models Screen'.'Process Detail Container'.dpCapabilityFilter"
               }
             }
           ],
@@ -9535,7 +9535,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 491, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Operating Models Screen\" is 492, which exceeds the maximum threshold recommended (300)."
               }
             },
             {

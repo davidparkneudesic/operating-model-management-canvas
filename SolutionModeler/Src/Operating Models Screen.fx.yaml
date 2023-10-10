@@ -2735,13 +2735,13 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@Processes],DataSourceInfo.DisplayName,"neu_ProcessGroupID")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =99
                 Required: =false
                 Update: =dcProcEditProcessGroup.Selected
-                Width: =337
-                WidthFit: =true
-                X: =2
-                Y: =0
+                Width: =610
+                WidthFit: =false
+                X: =0
+                Y: =1
                 ZIndex: =1
 
                 DataCardKey37 As label:
@@ -2750,6 +2750,7 @@
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
+                    X: =13
                     Y: =10
                     ZIndex: =1
 
@@ -2757,13 +2758,14 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_processgroupname"]
-                    Items: =Choices([@Processes].neu_ProcessGroupID)
+                    Items: =colCreateWindowPGFilter
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_processgroupname"]
-                    SearchItems: =Search(Choices([@Processes].neu_ProcessGroupID),dcProcEditProcessGroup.SearchText,"neu_processgroupname")
+                    SearchItems: =Search(colCreateWindowPGFilter,dcProcEditProcessGroup.SearchText,"neu_processgroupname")
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =385
+                    X: =13
                     Y: =DataCardKey37.Y + DataCardKey37.Height + 5
                     ZIndex: =2
 
@@ -2803,7 +2805,7 @@
                 Required: =true
                 Update: =dcProcEditStatusReason.Selected.Value
                 Width: =337
-                X: =0
+                X: =2
                 Y: =1
                 ZIndex: =1
 
@@ -2870,8 +2872,8 @@
                 Required: =false
                 Update: =dcProcEditDataFlow.Text
                 Width: =500
-                X: =1
-                Y: =1
+                X: =0
+                Y: =2
                 ZIndex: =1
 
                 DataCardKey36 As label:
@@ -2936,7 +2938,7 @@
                 MaxLength: =DataSourceInfo([@Processes], DataSourceInfo.MaxLength, "neu_processname")
                 Required: =true
                 Update: =dcProcEditProcessName.Text
-                Width: =625
+                Width: =800
                 X: =0
                 Y: =0
                 ZIndex: =18
@@ -2993,6 +2995,12 @@
                     Y: =DataCardKey33.Y
                     ZIndex: =4
 
+                Label2 As label:
+                    Color: =RGBA(0, 18, 107, 1)
+                    Text: ="Capability Filter"
+                    X: =632
+                    ZIndex: =5
+
             "'Scope Review_DataCard2' As typedDataCard.comboBoxOptionSetSingleEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_scopereview"
@@ -3004,8 +3012,8 @@
                 Required: =true
                 Update: =dcProcEditScopeReview.Selected.Value
                 Width: =337
-                X: =2
-                Y: =1
+                X: =1
+                Y: =2
                 ZIndex: =18
 
                 DataCardKey34 As label:
@@ -3072,7 +3080,7 @@
                 Update: =dcProcEditDescription.Text
                 Width: =600
                 X: =0
-                Y: =2
+                Y: =3
                 ZIndex: =18
 
                 DataCardKey35 As label:
@@ -3172,10 +3180,12 @@
             Y: =423
             ZIndex: =17
 
-        Dropdown1 As dropdown:
+        dpCapabilityFilter As dropdown:
             Items: =colCreateWindowCapacityFilter
-            X: =655
-            Y: =558
+            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.'Capability'))
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+            X: =671
+            Y: =111
             ZIndex: =18
 
     lblPGInactiveWarning As label:
