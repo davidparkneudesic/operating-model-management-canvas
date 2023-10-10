@@ -993,11 +993,14 @@
         Height: =41
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: |
-            =CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
+        OnSelect: |-
+            =If(IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),0=0,
+            CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
             UpdateContext({varModelPropStarted:true});
             Reset(RelatedOperatingModel_CS_Edit_ComboBox)
+            )
         Text: ="Associate Model"
+        Tooltip: ="Select a Standard Operating Model from the above drop down to copy it into this Client Solution"
         Visible: =If(IsBlank(txtClientID.Text),false,true)
         Width: =204
         X: =125
@@ -1265,11 +1268,11 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_operatingmodelname"]
-                    DisplayMode: =If(IsBlank(dcCapEditParentCapability.Selected),DisplayMode.Edit,DisplayMode.View)
-                    Items: =Choices([@Capabilities].neu_OperatingModelID)
+                    IsSearchable: =false
+                    Items: =Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text))
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_operatingmodelname"]
-                    SearchItems: =Search(Choices([@Capabilities].neu_OperatingModelID),dcCapEditOpModelName.SearchText,"neu_operatingmodelname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -1580,6 +1583,7 @@
                     Patch(Capabilities,
                     'Capability Level 1 Gallery'.Selected,
                     {
+                    'Operating Model':dcCapEditOpModelName.Selected,
                     'Capability Name':dcCapEditCapabilityNameCap.Text,
                     'Scope Review':dcCapEditScopeReview.Selected.Value,
                     'Parent Capability':dcCapEditParentCapability.Selected,
@@ -1591,6 +1595,7 @@
                     Patch(Capabilities,
                     'Capability Level 1 Gallery'.Selected,
                     {
+                    'Operating Model':dcCapEditOpModelName.Selected,
                     'Capability Name':dcCapEditCapabilityNameCap.Text,
                     'Scope Review':dcCapEditScopeReview.Selected.Value,
                     'Parent Capability':dcCapEditParentCapability.Selected,
@@ -1615,8 +1620,8 @@
         Fill: =RGBA(255, 255, 255, 1)
         Height: =587
         Visible: =If(varOpenProcessGroupCreate ||varOpenProcessGroupEdit, true, false)
-        Width: =650
-        X: =354
+        Width: =721
+        X: =276
         Y: =91
         ZIndex: =8
 
@@ -1719,7 +1724,7 @@
             Width: =367
             X: =221
             Y: =466
-            ZIndex: =9
+            ZIndex: =7
 
         "'Scope Review PG Label' As label":
             Color: =RGBA(0,0,0,1)
@@ -1730,7 +1735,7 @@
             Width: =307
             X: =92
             Y: =362
-            ZIndex: =10
+            ZIndex: =8
 
         "'Scope Review PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1745,7 +1750,7 @@
             Width: =240
             X: =92
             Y: =402
-            ZIndex: =11
+            ZIndex: =9
 
         "'Capability PG Label' As label":
             Color: =RGBA(0,0,0,1)
@@ -1756,7 +1761,7 @@
             Width: =307
             X: =89
             Y: =263
-            ZIndex: =12
+            ZIndex: =10
 
         "'Operating Model PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1773,7 +1778,7 @@
             Width: =536
             X: =89
             Y: =215
-            ZIndex: =13
+            ZIndex: =11
 
         "'Capability PG Dropdown' As dropdown":
             ChevronBackground: |-
@@ -1798,7 +1803,7 @@
             Width: =310
             X: =89
             Y: =303
-            ZIndex: =14
+            ZIndex: =12
 
         "'Reset Operating Model Cap Button_1' As button":
             Fill: |-
@@ -1813,30 +1818,17 @@
             Width: =152
             X: =436
             Y: =206
-            ZIndex: =15
-
-        "'Reset Operating Model Cap Button_2' As button":
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
-            Text: |-
-                ="Reset
-                "
-            Width: =152
-            X: =418
-            Y: =303
-            ZIndex: =16
+            ZIndex: =13
 
         frmEditProcessGroup As form:
             DataSource: ='Process Groups'
+            Height: =421
             Item: ='Process Group Gallery'.Selected
             Visible: =If(varOpenProcessGroupEdit, true, false)
-            Width: =627
-            X: =23
-            Y: =65
-            ZIndex: =17
+            Width: =629
+            X: =58
+            Y: =74
+            ZIndex: =14
 
             Capability_DataCard2 As typedDataCard.comboBoxEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -1867,11 +1859,10 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_capabilityname"]
-                    DisplayMode: =DisplayMode.View
-                    Items: =Choices([@'Process Groups'].neu_CapabilityID)
+                    Items: =colCreateWindowCapacityFilter
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
-                    SearchItems: =Search(Choices([@'Process Groups'].neu_CapabilityID),dcPGEditCapability.SearchText,"neu_capabilityname")
+                    SearchItems: =Search(colCreateWindowCapacityFilter,dcPGEditCapability.SearchText,"neu_capabilityname")
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -1883,6 +1874,7 @@
                     AutoHeight: =true
                     Height: =10
                     Live: =Live.Assertive
+                    OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
                     PaddingBottom: =0
                     PaddingLeft: =0
                     PaddingRight: =0
@@ -1958,8 +1950,7 @@
                     Text: =Parent.Error
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
-                    X: =30
-                    Y: =dcPGEditPGName.Y + dcPGEditPGName.Height
+                    Y: =88
                     ZIndex: =3
 
                 StarVisible15 As label:
@@ -2143,9 +2134,23 @@
                     false,
                     true)
                 )
-            X: =61
-            Y: =478
-            ZIndex: =18
+            X: =108
+            Y: =495
+            ZIndex: =15
+
+        "'Reset Operating Model Cap Button_2' As button":
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+            Text: |-
+                ="Reset
+                "
+            Width: =152
+            X: =484
+            Y: =120
+            ZIndex: =16
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -2433,7 +2438,7 @@
             Y: =402
             ZIndex: =23
 
-        Label10 As label:
+        lblDataDiagramInstructions As label:
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
             Height: =64
@@ -3193,13 +3198,13 @@
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
         FontWeight: =FontWeight.Bold
-        Height: =100
+        Height: =133
         Text: |-
-            ="WARNING:  Setting a Process Group to Inactive will delete the Process Group and all related Processes"
+            ="WARNING:  Setting a Process Group to Inactive will delete the Process Group and all related Processes.    If there are any User Stories linked, you will receive an error."
         Visible: =If(varOpenProcessGroupEdit && dcPGEditStatusReason.Selected.Value = 'Status Reason (Process Groups)'.Inactive,true,false)
-        Width: =290
-        X: =687
-        Y: =472
+        Width: =322
+        X: =567
+        Y: =408
         ZIndex: =11
 
     lblProcInactiveWarning As label:
@@ -3217,9 +3222,9 @@
     lblCapInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
         FontWeight: =FontWeight.Bold
-        Height: =100
+        Height: =169
         Text: |-
-            ="WARNING:  Setting a Capability to Inactive will delete the Capability and all Processes Groups / Processes that are associated to it"
+            ="WARNING:  Setting a Capability to Inactive will delete the Capability and all Processes Groups / Processes that are associated to it.   You wll receive an error if any User Stories are linked."
         Visible: =If((varOpenCapabilityCreate ||varEditCap || varEditL3Cap) && CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,true,false)
         Width: =290
         X: =657

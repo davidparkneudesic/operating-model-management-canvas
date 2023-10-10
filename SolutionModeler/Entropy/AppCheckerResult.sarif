@@ -8298,19 +8298,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.Label10.FocusedBorderThickness"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.lblDataDiagramInstructions.FocusedBorderThickness"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.Label10.FocusedBorderThickness",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.lblDataDiagramInstructions.FocusedBorderThickness",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "FocusedBorderThickness",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Container'.Label10"
+                "type": "'Operating Models Screen'.'Create Process Container'.lblDataDiagramInstructions"
               }
             }
           ],
@@ -8328,19 +8328,79 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.Label10.TabIndex"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.lblDataDiagramInstructions.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.Label10.TabIndex",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Container'.lblDataDiagramInstructions.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Container'.Label10"
+                "type": "'Operating Models Screen'.'Create Process Container'.lblDataDiagramInstructions"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.ErrorMessage27.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.ErrorMessage27.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.ErrorMessage27"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.ErrorMessage27.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.ErrorMessage27.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.ErrorMessage27"
               }
             }
           ],
