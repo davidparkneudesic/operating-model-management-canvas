@@ -1693,7 +1693,7 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =434
             X: =89
-            Y: =134
+            Y: =306
             ZIndex: =4
 
         "'New Process Group Name Label' As label":
@@ -1703,8 +1703,8 @@
             Text: ="* Process Group Name"
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =307
-            X: =75
-            Y: =94
+            X: =89
+            Y: =266
             ZIndex: =5
 
         "'Operating Model PG Label' As label":
@@ -1762,7 +1762,7 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =307
             X: =89
-            Y: =263
+            Y: =82
             ZIndex: =10
 
         "'Operating Model PG Dropdown' As dropdown":
@@ -1804,7 +1804,7 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =310
             X: =89
-            Y: =303
+            Y: =122
             ZIndex: =12
 
         "'Reset Operating Model Cap Button_1' As button":
@@ -2150,8 +2150,8 @@
                 ="Reset
                 "
             Width: =152
-            X: =484
-            Y: =120
+            X: =486
+            Y: =117
             ZIndex: =16
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
