@@ -1092,7 +1092,8 @@
             UpdateContext({varUpdatedCSWindow:false});
             UpdateContext({varClientSolutionCreated:false});
             Set(ClientSolutionIdentifier,"");
-            UpdateContext({varModelPropStarted:false})
+            UpdateContext({varModelPropStarted:false});
+            UpdateContext({varEpicHoursCalcd:false})
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =45
         X: =18
@@ -1108,7 +1109,9 @@
         Height: =38
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: =RunMultiplier.Run(dcClientSolutionID)
+        OnSelect: |-
+            =RunMultiplier.Run(dcClientSolutionID);
+            UpdateContext({varEpicHoursCalcd:true})
         Text: ="Update Epic Hours"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Visible: =If(varUpdateClientSolution,false,true)
@@ -1599,4 +1602,15 @@
         X: =89
         Y: =674
         ZIndex: =8
+
+    lblEpicHoursUpdate As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 0, 0, 1)
+        Height: =62
+        Text: ="Epic Hours are being updated.  You may need to exit the Client Solution and return in order to see the updates in the sub grid"
+        Visible: =If(varEpicHoursCalcd,true,false)
+        Width: =499
+        X: =832
+        Y: =336
+        ZIndex: =9
 

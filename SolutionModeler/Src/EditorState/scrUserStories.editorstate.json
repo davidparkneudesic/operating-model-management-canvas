@@ -2675,7 +2675,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "221",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Width",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -2709,7 +2709,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Capability_DataCard1_2",
-      "ParentIndex": 5,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7099,8 +7099,8 @@
       "ControlPropertyState": [
         {
           "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": true,
-          "AutoRuleBindingString": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Parent.DisplayName",
           "InvariantPropertyName": "Text",
           "IsLockable": true,
           "NameMapSourceSchema": "?"
@@ -18242,7 +18242,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "221",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Width",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -18252,7 +18252,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "WidthFit",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -18268,7 +18268,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Description_DataCard1_2",
-      "ParentIndex": 3,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19327,7 +19327,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Effort Percentage_DataCard1_2",
-      "ParentIndex": 8,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19835,7 +19835,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Epic Level Item_DataCard2_2",
-      "ParentIndex": 2,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -28923,7 +28923,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Estimated Hours_DataCard1_2",
-      "ParentIndex": 9,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -32530,7 +32530,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "WidthFit",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -32554,7 +32554,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "OperatingModel_DataCard1_2",
-      "ParentIndex": 4,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -33692,7 +33692,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "221",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Width",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -33726,7 +33726,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Process Group_DataCard1_2",
-      "ParentIndex": 6,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -34767,7 +34767,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "221",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Width",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -34801,7 +34801,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Process_DataCard1_2",
-      "ParentIndex": 7,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
