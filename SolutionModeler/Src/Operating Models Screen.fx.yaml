@@ -669,6 +669,7 @@
             UpdateContext({varOpenProcessDetail:false});
             UpdateContext({varEditOM:false});
             UpdateContext({varModelPropStarted:false});
+            UpdateContext({varAssociateError:false});
             Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
             
@@ -694,7 +695,8 @@
         IsSearchable: =false
         Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
         OnSelect: |-
-            =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected})
+            =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected});
+            UpdateContext({varAssociateError:false})
         SearchFields: =["neu_operatingmodelname"]
         SearchItems: =[]
         SelectMultiple: =false
@@ -994,7 +996,7 @@
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
-            =If(IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),0=0,
+            =If(IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),UpdateContext({varAssociateError:true}),
             CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
             UpdateContext({varModelPropStarted:true});
             Reset(RelatedOperatingModel_CS_Edit_ComboBox)
@@ -1269,7 +1271,7 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_operatingmodelname"]
                     IsSearchable: =false
-                    Items: =Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text))
+                    Items: =Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier))
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_operatingmodelname"]
                     SearchItems: =[]
@@ -3241,4 +3243,15 @@
         X: =81
         Y: =393
         ZIndex: =14
+
+    lblAssociateError As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 0, 0, 1)
+        Height: =73
+        Text: ="Please select an Operating Model from the drop down control"
+        Visible: =If(varAssociateError, true,false)
+        Width: =275
+        X: =81
+        Y: =468
+        ZIndex: =15
 
