@@ -51,6 +51,7 @@
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
+                Size: =12
                 Text: =ThisItem.'Implementation Model Name'
                 VerticalAlign: =VerticalAlign.Top
                 Width: =Parent.TemplateWidth - 86
@@ -66,6 +67,7 @@
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
+                Size: =8
                 Text: =ThisItem.Platform.'Platform Name'
                 VerticalAlign: =VerticalAlign.Top
                 Width: =Title4.Width
@@ -1133,7 +1135,9 @@
 
         "'Sequence IS Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Sequence" & " (Range within " & Value('Implementation Phase Gallery'.Selected.Sequence / 1000) & " to " & (Value('Implementation Phase Gallery'.Selected.Sequence / 1000) + 1) & ")"
+            Text: |-
+                =//"Sequence" & " (Range within " & Value('Implementation Phase Gallery'.Selected.Sequence / 1000) & " to " & (Value('Implementation Phase Gallery'.Selected.Sequence / 1000) + 1) & ")"
+                "Sequence"
             Width: =306
             X: =64
             Y: =381
@@ -1284,7 +1288,9 @@
 
         "'Sequence PBI Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Sequence" & " (Range within " & Value('Implementation Stage Gallery'.Selected.Sequence / 1000) & " to " & (Value('Implementation Stage Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
+            Text: |-
+                =//"Sequence" & " (Range within " & Value('Implementation Stage Gallery'.Selected.Sequence / 1000) & " to " & (Value('Implementation Stage Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
+                "Sequence"
             Width: =306
             X: =64
             Y: =461
@@ -1379,7 +1385,7 @@
 
         "'New Task Name Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="New Task Name"
+            Text: ="* New Task Name"
             Width: =306
             X: =64
             Y: =103
@@ -1437,7 +1443,7 @@
 
         "'Implementation Model Task Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Implementation Model"
+            Text: ="* Implementation Model"
             Width: =258
             X: =64
             Y: =191
@@ -1460,7 +1466,7 @@
             FontWeight: =FontWeight.Semibold
             Text: |-
                 =//"Sequence" & " (Range within " & Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) & " to " & (Value('Product Backlog Item Gallery'.Selected.Sequence / 1000) + 0.1) & ")"
-                "Sequence"
+                "* Sequence"
             Width: =413
             X: =64
             Y: =547
@@ -1478,7 +1484,7 @@
 
         "'Implementation Phase Task Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Implementation Phase"
+            Text: ="* Implementation Phase"
             Width: =258
             X: =64
             Y: =282
@@ -1499,7 +1505,7 @@
 
         "'Implementation Stage Task Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Implementation Stage"
+            Text: ="* Implementation Stage"
             Width: =258
             X: =64
             Y: =369
@@ -1562,7 +1568,7 @@
 
         "'Product Backlog Task Label' As label":
             FontWeight: =FontWeight.Semibold
-            Text: ="Product Backlog"
+            Text: ="* Product Backlog"
             Width: =258
             X: =64
             Y: =461
