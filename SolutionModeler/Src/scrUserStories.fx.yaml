@@ -1697,67 +1697,6 @@
                     Y: =47
                     ZIndex: =5
 
-            Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_CapabilityID"
-                Default: =ThisItem.Capability
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_CapabilityID")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
-                Update: ='Capability US ComboBox'.Selected
-                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
-                Width: =638
-                WidthFit: =true
-                X: =2
-                Y: =3
-                ZIndex: =1
-
-                DataCardKey15_2 As label:
-                    AutoHeight: =true
-                    Color: =RGBA(0, 0, 0, 1)
-                    FontWeight: =FontWeight.Semibold
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                ErrorMessage14_2 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: ='Capability US ComboBox'.Y + 'Capability US ComboBox'.Height
-                    ZIndex: =3
-
-                "'Capability US ComboBox' As combobox":
-                    ChevronBackground: |-
-                        =ColorValue("#00467f")
-                    ChevronHoverBackground: |-
-                        =ColorFade(ColorValue("#00467f"), -30%)
-                    DisplayFields: =["neu_capabilityname"]
-                    DisplayMode: =If(IsBlank('Operating Model US ComboBox'),DisplayMode.View,DisplayMode.Edit)
-                    IsSearchable: =false
-                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model' = 'Operating Model US ComboBox'.Selected.'Operating Model'),'Capability Name')
-                    SearchFields: =["neu_capabilityname"]
-                    SearchItems: =[]
-                    SelectMultiple: =false
-                    Width: =369
-                    X: =30
-                    Y: =44
-                    ZIndex: =4
-
             "'Epic Level Item_DataCard2_2' As typedDataCard.comboBoxOptionSetSingleEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_epiclevelitem"
@@ -1873,6 +1812,67 @@
                     IsSearchable: =false
                     Items: =Sort(Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(dcClientSolutionID.Text)),'Operating Model Name')
                     SearchFields: =["neu_operatingmodelname"]
+                    SearchItems: =[]
+                    SelectMultiple: =false
+                    Width: =369
+                    X: =30
+                    Y: =44
+                    ZIndex: =4
+
+            Capability_DataCard1_2 As typedDataCard.comboBoxEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_CapabilityID"
+                Default: =ThisItem.Capability
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'User Stories'],DataSourceInfo.DisplayName,"neu_CapabilityID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =If(ThisItem.'Epic Level Item' = true, false, true)
+                Update: ='Capability US ComboBox'.Selected
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
+                Width: =638
+                WidthFit: =true
+                X: =2
+                Y: =3
+                ZIndex: =1
+
+                DataCardKey15_2 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(0, 0, 0, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                ErrorMessage14_2 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: ='Capability US ComboBox'.Y + 'Capability US ComboBox'.Height
+                    ZIndex: =3
+
+                "'Capability US ComboBox' As combobox":
+                    ChevronBackground: |-
+                        =ColorValue("#00467f")
+                    ChevronHoverBackground: |-
+                        =ColorFade(ColorValue("#00467f"), -30%)
+                    DisplayFields: =["neu_capabilityname"]
+                    DisplayMode: =If(IsBlank('Operating Model US ComboBox'),DisplayMode.View,DisplayMode.Edit)
+                    IsSearchable: =false
+                    Items: =Sort(Filter(Capabilities,'Operating Model'.'Operating Model' = 'Operating Model US ComboBox'.Selected.'Operating Model'),'Capability Name')
+                    SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
                     SelectMultiple: =false
                     Width: =369

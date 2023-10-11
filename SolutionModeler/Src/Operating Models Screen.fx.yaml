@@ -2336,7 +2336,7 @@
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 colCreateWindowCapacityFilter
-            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.'Capability'))
+            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability))
             OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
             Width: =432
             X: =63
@@ -3341,7 +3341,7 @@
 
     dpCapabilityFilter As dropdown:
         Items: =colCreateWindowCapacityFilter
-        OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.'Capability'))
+        OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability))
         OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
         Visible: =If(varEditProcess,true,false)
         X: =764
