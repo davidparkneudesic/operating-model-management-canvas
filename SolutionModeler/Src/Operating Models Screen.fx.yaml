@@ -189,7 +189,9 @@
             Items: =colProcessGroups
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = 'Process Group Gallery'.Selected.'Process Group'))
+            OnSelect: |-
+                =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = 'Process Group Gallery'.Selected.'Process Group'));
+                ClearCollect(colFilteredProcesses, Filter('Processes', 'Process Group'.'Process Group' = 'Process Group Gallery'.Selected.'Process Group')
             TemplateFill: |-
                 =If(ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -474,7 +476,7 @@
             Text: ="Create Process"
             Visible: =If(IsBlank(txtClientID.Text),false,true)
             Width: =280
-            X: =935
+            X: =941
             Y: =580
             ZIndex: =13
 
