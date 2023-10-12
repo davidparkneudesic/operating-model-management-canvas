@@ -251,7 +251,7 @@
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name'), Sequence)
+            Items: =Sort(Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && Status = 'Status (Implementation Phases)'.Active), Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -1312,20 +1312,19 @@
             Height: =49
             HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
             OnSelect: |-
-                =If(dcIPStatusReason.Selected.Value = 'Status Reason (Implementation Phases)'.Inactive,
+                =If(dcIPStatusReasonEdit.Selected.Value = 'Status Reason (Implementation Phases)'.Inactive,
                 Patch(
                     'Implementation Phases',
-                    glyImplementationPhases.Selected,
+                    glyImplementationPhase.Selected,
                     {
-                        //'Implementation Model Name':dcImplementationModelName
-                        Status: 'Status (Implementation Models)'.Inactive
-                        //'Status Reason':'Status Reason (Implementation Models)'.Inactive,
-                        //Platform:dcIMPlatform.Selected
+                       
+                        Status: 'Status (Implementation Phases)'.Inactive
+                
                     }
                 ),
-                    SubmitForm(frmEditImplementationModel)
+                    SubmitForm(frmEditImplementationPhase)
                 );
-                UpdateContext({varEditOpenImplementationModel:false});
+                UpdateContext({varEditOpenImplementationPhase:false});
             Size: =12
             Text: ="Update"
             Visible: =If(varEditOpenImplementationPhase && Len(dcImplementationPhaseNameEdit.Text)>0 && Len(dcIPSequenceEdit)>0, true,false)
@@ -1333,6 +1332,17 @@
             X: =76
             Y: =440
             ZIndex: =14
+
+        lblDeletionMesssage As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =158
+            Text: ="Setting an Implementation Phase to Inactive will render it and all related records inacessible."
+            Visible: =If(dcIPStatusReasonEdit.Selected.Value = 'Status Reason (Implementation Phases)'.Inactive,true,false)
+            Width: =224
+            X: =608
+            Y: =256
+            ZIndex: =15
 
     "'Create Implmentation Stage Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
