@@ -191,7 +191,7 @@
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
                 =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = 'Process Group Gallery'.Selected.'Process Group'));
-                ClearCollect(colFilteredProcesses, Filter('Processes', 'Process Group'.'Process Group' = 'Process Group Gallery'.Selected.'Process Group')
+                ClearCollect(colFilteredProcesses, Filter('Processes', 'Process Group'.'Process Group' = 'Process Group Gallery'.Selected.'Process Group'))
             TemplateFill: |-
                 =If(ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -255,8 +255,9 @@
             Height: =504
             Items: |-
                 =If(IsBlank(txtClientID.Text),
-                    Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),'Process Name')
-                    ,Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),'Process Name')
+                    Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),'Process Name'),
+                 //   Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),'Process Name')
+                 colFilteredProcesses
                 )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
