@@ -1395,7 +1395,7 @@
                     IsSearchable: =false
                     Items: |
                         =//Choices([@Capabilities].neu_ParentCapability)
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name')
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name' && Capability <> )
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
