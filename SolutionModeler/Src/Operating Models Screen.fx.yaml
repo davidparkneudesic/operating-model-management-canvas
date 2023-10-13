@@ -3389,9 +3389,7 @@
 
     chkDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
-        Default: |-
-            =If(Len(ClientSolutionIdentifier)>0,false,
-            If(HomePagefalse)
+        Default: =If(Len(ClientSolutionIdentifier)>0,false,false)
         Size: =12
         Text: ="Show Draft Models"
         Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)
