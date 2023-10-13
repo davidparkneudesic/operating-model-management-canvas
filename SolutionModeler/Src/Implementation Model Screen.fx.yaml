@@ -1166,73 +1166,6 @@
                     Y: =DataCardKey50.Y
                     ZIndex: =4
 
-            "'Status Reason_DataCard6' As typedDataCard.comboBoxOptionSetSingleEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="statuscode"
-                Default: =ThisItem.'Status Reason'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Implementation Phases'],DataSourceInfo.DisplayName,"statuscode")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =true
-                Update: =dcIPStatusReasonEdit.Selected.Value
-                Width: =511
-                X: =0
-                Y: =2
-                ZIndex: =27
-
-                DataCardKey52 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                dcIPStatusReasonEdit As combobox:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    DefaultSelectedItems: =[Parent.Default]
-                    DisplayFields: =["Value"]
-                    DisplayMode: =Parent.DisplayMode
-                    IsSearchable: =false
-                    Items: =Choices('Status Reason (Implementation Phases)')
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    SearchFields: =["Value"]
-                    SearchItems: =[]
-                    SelectMultiple: =false
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey52.Y + DataCardKey52.Height + 5
-                    ZIndex: =2
-
-                ErrorMessage47 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =dcIPStatusReasonEdit.Y + dcIPStatusReasonEdit.Height
-                    ZIndex: =3
-
-                StarVisible42 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey52.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey52.Y
-                    ZIndex: =4
-
             Sequence_DataCard1 As typedDataCard.numberEditCard:
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_sequence"
@@ -1298,6 +1231,73 @@
                     Width: =30
                     Wrap: =false
                     Y: =DataCardKey51.Y
+                    ZIndex: =4
+
+            "'Status Reason_DataCard6' As typedDataCard.comboBoxOptionSetSingleEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="statuscode"
+                Default: =ThisItem.'Status Reason'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Implementation Phases'],DataSourceInfo.DisplayName,"statuscode")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =true
+                Update: =dcIPStatusReasonEdit.Selected.Value
+                Width: =511
+                X: =0
+                Y: =2
+                ZIndex: =27
+
+                DataCardKey52 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcIPStatusReasonEdit As combobox:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    DefaultSelectedItems: =[Parent.Default]
+                    DisplayFields: =["Value"]
+                    DisplayMode: =Parent.DisplayMode
+                    IsSearchable: =false
+                    Items: =Choices('Status Reason (Implementation Phases)')
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["Value"]
+                    SearchItems: =[]
+                    SelectMultiple: =false
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey52.Y + DataCardKey52.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage47 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcIPStatusReasonEdit.Y + dcIPStatusReasonEdit.Height
+                    ZIndex: =3
+
+                StarVisible42 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey52.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey52.Y
                     ZIndex: =4
 
         btnUpdateImplementationPhase As button:

@@ -25,21 +25,14 @@
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =409
             Items: |-
-                =If(IsBlank(ClientSolutionIdentifier),
-                
-                    SortByColumns( 
-                        Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && Status ='Status (Operating Models)'.Active
-                        )
-                        ,"neu_operatingmodelname"
-                        ,SortOrder.Ascending
-                    )
-                    ,
-                
-                    SortByColumns( 
-                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && Status ='Status (Operating Models)'.Active
-                    )
-                    ,"neu_operatingmodelname"
-                        ,SortOrder.Ascending
+                =
+                If(IsBlank(ClientSolutionIdentifier),
+                    //Standard Operating Models
+                        If(chkDraftModels.Value = false,
+                            SortByColumns(Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' ='Status Reason (Operating Models)'.Active),"neu_operatingmodelname",SortOrder.Ascending),
+                            SortByColumns(Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' ='Status Reason (Operating Models)'.Draft),"neu_operatingmodelname",SortOrder.Ascending)
+                        ),
+                    SortByColumns(Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && Status ='Status (Operating Models)'.Active),"neu_operatingmodelname",SortOrder.Ascending
                     )
                 )
             Layout: =Layout.Vertical
@@ -3354,8 +3347,11 @@
         Y: =156
         ZIndex: =18
 
-    Checkbox1 As checkbox:
+    chkDraftModels As checkbox:
+        Color: =RGBA(255, 255, 255, 1)
+        Size: =12
         Text: ="Show Draft Models"
+        Width: =195
         X: =81
         Y: =15
         ZIndex: =19

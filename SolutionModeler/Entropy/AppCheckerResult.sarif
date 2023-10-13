@@ -61,7 +61,7 @@
                 },
                 "region": {
                   "charLength": 55,
-                  "charOffset": 93,
+                  "charOffset": 164,
                   "snippet": {
                     "text": "IsBlank('Client Solution Identifier'.'Client Solution')"
                   }
@@ -101,7 +101,87 @@
                 },
                 "region": {
                   "charLength": 2,
-                  "charOffset": 149,
+                  "charOffset": 220,
+                  "snippet": {
+                    "text": "&&"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 55,
+                  "charOffset": 382,
+                  "snippet": {
+                    "text": "IsBlank('Client Solution Identifier'.'Client Solution')"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Items",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "IsBlank"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2,
+                  "charOffset": 438,
                   "snippet": {
                     "text": "&&"
                   }
