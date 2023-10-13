@@ -2146,9 +2146,9 @@
             Height: =406
             Item: =glyProductBacklog.Selected
             NumberOfColumns: =1
-            Width: =581
-            X: =131
-            Y: =71
+            Width: =617
+            X: =64
+            Y: =73
             ZIndex: =17
 
             "'Implementation Stage_DataCard1' As typedDataCard.comboBoxEditCard":
@@ -2161,7 +2161,7 @@
                 Height: =50
                 Required: =false
                 Update: =DataCardValue13.Selected
-                Width: =581
+                Width: =617
                 X: =0
                 Y: =0
                 ZIndex: =1
@@ -2228,7 +2228,7 @@
                 MaxLength: =DataSourceInfo([@'Product Backlog Items'], DataSourceInfo.MaxLength, "neu_productbacklogitemname")
                 Required: =true
                 Update: =DataCardValue2.Text
-                Width: =581
+                Width: =617
                 X: =0
                 Y: =1
                 ZIndex: =18
@@ -2295,7 +2295,7 @@
                 Height: =50
                 Required: =true
                 Update: =Value(DataCardValue7.Text)
-                Width: =581
+                Width: =617
                 X: =0
                 Y: =2
                 ZIndex: =18
@@ -2362,7 +2362,7 @@
                 Height: =50
                 Required: =true
                 Update: =dcPBStatusReason.Selected.Value
-                Width: =581
+                Width: =617
                 X: =0
                 Y: =3
                 ZIndex: =18
@@ -2434,7 +2434,7 @@
                 =If(dcPBStatusReason.Selected.Value = 'Status Reason (Product Backlog Items)'.Inactive,
                 Patch(
                     'Product Backlog Items',
-                    glyImplementationStage.Selected,
+                    glyProductBacklog.Selected,
                     {
                        
                         Status: 'Status (Product Backlog Items)'.Inactive
@@ -2442,9 +2442,7 @@
                     }
                 ),
                  SubmitForm(frmEditProductBacklog)
-                 )
-                
-                
+                 );
                 UpdateContext({varEditOpenProductBacklogItem:false});
             Size: =12
             Text: ="Update"
@@ -2452,6 +2450,17 @@
             X: =160
             Y: =495
             ZIndex: =18
+
+        Label15 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =108
+            Text: ="Setting a Product Backlog Item to Inactive will render it and all associated Tasks inaccessible."
+            Visible: =If(varEditOpenProductBacklogItem && dcPBStatusReason.Selected.Value = 'Status Reason (Product Backlog Items)'.Inactive,true,false)
+            Width: =214
+            X: =672
+            Y: =377
+            ZIndex: =19
 
     "'Create Task Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
