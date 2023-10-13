@@ -764,34 +764,65 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |+
-                =If(varOpenOperatingModelCreate,
-                    //Create New OM
-                    Patch(
-                        'Operating Models',
-                        Defaults('Operating Models'),
-                        {
-                            'Operating Model Name':dcEditOMOperatingModelName.Text,
-                            'Status Reason':'Status Reason (Operating Models)'.Active,
-                            'Client Solution Identifier':glyClientSolutionGallery.Selected,
-                            'Client Specific':'Client Specific (Operating Models)'.Yes,
-                            Model:Model.'Operating Model'
-                        }
-                    );
-                    UpdateContext({varOpenOperatingModelCreate:false}),
-                            Patch(
+                = If(chkDraftModels,
+                
+                    If(varOpenOperatingModelCreate,
+                        //Create New OM
+                        Patch(
                             'Operating Models',
-                            'Operating Model Gallery'.Selected,
+                            Defaults('Operating Models'),
+                            {
+                                'Operating Model Name':dcEditOMOperatingModelName.Text,
+                                'Status Reason':'Status Reason (Operating Models)'.Active,
+                                'Client Specific':'Client Specific (Operating Models)'.No,
+                                Model:Model.'Operating Model'
+                            }
+                        );
+                        UpdateContext({varOpenOperatingModelCreate:false}),
+                        //Update OM
+                            Patch(
+                                'Operating Models',
+                                'Operating Model Gallery'.Selected,
+                                {
+                                    'Operating Model Name':dcEditOMOperatingModelName.Text,
+                                    'Status Reason':'Status Reason (Operating Models)'.Active,
+                                    Status:'Status (Operating Models)'.Active,
+                                    'Client Specific':'Client Specific (Operating Models)'.No
+                                }
+                        );
+                        UpdateContext({varEditOM:false})
+                    )
+                 ,
+                    If(varOpenOperatingModelCreate,
+                        //Create New OM
+                        Patch(
+                            'Operating Models',
+                            Defaults('Operating Models'),
                             {
                                 'Operating Model Name':dcEditOMOperatingModelName.Text,
                                 'Status Reason':'Status Reason (Operating Models)'.Active,
                                 'Client Solution Identifier':glyClientSolutionGallery.Selected,
-                                 Status:'Status (Operating Models)'.Active,
-                                'Client Specific':'Client Specific (Operating Models)'.Yes
+                                'Client Specific':'Client Specific (Operating Models)'.Yes,
+                                Model:Model.'Operating Model'
                             }
+                        );
+                        UpdateContext({varOpenOperatingModelCreate:false}),
+                        //Update OM
+                            Patch(
+                                'Operating Models',
+                                'Operating Model Gallery'.Selected,
+                                {
+                                    'Operating Model Name':dcEditOMOperatingModelName.Text,
+                                    'Status Reason':'Status Reason (Operating Models)'.Active,
+                                    'Client Solution Identifier':glyClientSolutionGallery.Selected,
+                                    Status:'Status (Operating Models)'.Active,
+                                    'Client Specific':'Client Specific (Operating Models)'.Yes
+                                }
+                        );
+                        UpdateContext({varEditOM:false})
                     )
-                );
-                UpdateContext({varEditOM:false})
-                        
+                
+                 )     
                     
                 
                 
@@ -831,6 +862,7 @@
                 Height: =50
                 Required: =false
                 Update: =
+                Visible: =If(chkDraftModels.Value = true,false,true)
                 Width: =756
                 X: =0
                 Y: =0
@@ -907,7 +939,7 @@
 
                 dcEditOMOperatingModelName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =Parent.Default
+                    Default: =If(varOpenOperatingModelCreate, "",Parent.Default)
                     DelayOutput: =true
                     DisplayMode: =Parent.DisplayMode
                     MaxLength: =Parent.MaxLength
