@@ -8,7 +8,7 @@ scrImplementationModels As screen:
     ImplmentationModels_Background As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =649
         Width: =1327
@@ -20,7 +20,7 @@ scrImplementationModels As screen:
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
-                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: =Filter('Implementation Models',Status = 'Status (Implementation Models)'.Active)
@@ -106,7 +106,7 @@ scrImplementationModels As screen:
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
-                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name'), Sequence)
@@ -133,7 +133,7 @@ scrImplementationModels As screen:
             TemplatePadding: =0
             TemplateSize: =55
             Width: =234
-            X: =1037
+            X: =1055
             Y: =48
             ZIndex: =1
 
@@ -163,7 +163,7 @@ scrImplementationModels As screen:
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
-                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: =Sort(Filter('Product Backlog Items','Implementation Stage'.'Implementation Stage Name' = glyImplementationStage.Selected.'Implementation Stage Name'), Sequence)
@@ -223,7 +223,7 @@ scrImplementationModels As screen:
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
-                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && 'Status Reason' <> 'Status Reason (Implementation Stages)'.Inactive),Sequence)
@@ -283,7 +283,7 @@ scrImplementationModels As screen:
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
-                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: =Sort(Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && Status = 'Status (Implementation Phases)'.Active), Sequence)
@@ -377,7 +377,6 @@ scrImplementationModels As screen:
             FontWeight: =FontWeight.Bold
             Size: =14
             Text: ="Implementation Stage"
-            Visible: =If(varEditOpenProductBacklogItem || varCreateOpenProductBacklogItem,true,false)
             Width: =234
             X: =547
             Y: =8
@@ -576,7 +575,7 @@ scrImplementationModels As screen:
             =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 ColorFade(RGBA(26, 76, 145, 1), -30%),
                 RGBA(26, 76, 145, 1)
             )
