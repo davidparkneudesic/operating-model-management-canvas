@@ -663,7 +663,14 @@
         FontWeight: =FontWeight.Semibold
         Height: =76
         Size: =26
-        Text: =If(IsBlank(txtClientID.Text),"Operating Models","Operating Model(s) for "& dcSolutionName)
+        Text: |-
+            =If(IsBlank(txtClientID.Text) && chkDraftModels.Value = false ,
+                "Standard Operating Models",
+                If(Len(ClientSolutionIdentifier)>0, 
+                    "Operating Model(s) for "& dcSolutionName,
+                    "Draft Operating Models"
+                    )
+            )
         Width: =1366
         ZIndex: =2
 
@@ -773,7 +780,7 @@
                             Defaults('Operating Models'),
                             {
                                 'Operating Model Name':dcEditOMOperatingModelName.Text,
-                                'Status Reason':'Status Reason (Operating Models)'.Active,
+                                'Status Reason':'Status Reason (Operating Models)'.Draft,
                                 'Client Specific':'Client Specific (Operating Models)'.No,
                                 Model:Model.'Operating Model'
                             }
@@ -785,7 +792,7 @@
                                 'Operating Model Gallery'.Selected,
                                 {
                                     'Operating Model Name':dcEditOMOperatingModelName.Text,
-                                    'Status Reason':'Status Reason (Operating Models)'.Active,
+                                    'Status Reason':'Status Reason (Operating Models)'.Draft,
                                     Status:'Status (Operating Models)'.Active,
                                     'Client Specific':'Client Specific (Operating Models)'.No
                                 }
@@ -3381,6 +3388,7 @@
 
     chkDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
+        Default: =If(Len(ClientSolutionIdentifier)>0,false,false)
         Size: =12
         Text: ="Show Draft Models"
         Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)
