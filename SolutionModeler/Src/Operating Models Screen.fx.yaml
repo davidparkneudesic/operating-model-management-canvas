@@ -91,7 +91,7 @@
                 OnSelect: |-
                     =Select(Parent);
                     UpdateContext({varEditOM:true})
-                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
                 X: =230
                 Y: =7
@@ -166,7 +166,7 @@
                     =Select(Parent);
                     UpdateContext({varEditCap:true});
                     UpdateContext({varEditSubCap:false})
-                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
                 X: =237
                 Y: =6
@@ -233,7 +233,7 @@
                 OnSelect: |-
                     =Select(Parent);
                     UpdateContext({varOpenProcessGroupEdit:true})
-                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
                 X: =237
                 Y: =6
@@ -310,7 +310,7 @@
                     =Select(Parent);
                     UpdateContext({varEditProcess:true})
                     //UpdateContext({varOpenProcessDetail:true})
-                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
                 X: =237
                 Y: =6
@@ -390,7 +390,7 @@
             Text: |-
                 ="Create Operating Model
                 "
-            Visible: =If(IsBlank(txtClientID.Text),false,true)
+            Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =26
             Y: =580
@@ -416,7 +416,7 @@
                 //Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Size: =14
             Text: ="Create Capability"
-            Visible: =If(IsBlank(txtClientID.Text),false,true)
+            Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =341
             Y: =580
@@ -442,7 +442,7 @@
                 //Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Size: =14
             Text: ="Create Process Group"
-            Visible: =If(IsBlank(txtClientID.Text),false,true)
+            Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =641
             Y: =580
@@ -468,7 +468,7 @@
                 //Reset('New Operating Model Input'); Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
             Size: =14
             Text: ="Create Process"
-            Visible: =If(IsBlank(txtClientID.Text),false,true)
+            Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =941
             Y: =580
@@ -643,7 +643,7 @@
                     =Select(Parent);
                     UpdateContext({varEditCap:true});
                     UpdateContext({varEditSubCap:true})
-                Visible: =If(IsBlank(txtClientID.Text),false,true)
+                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
                 X: =185
                 Y: =7
@@ -3351,6 +3351,7 @@
         Color: =RGBA(255, 255, 255, 1)
         Size: =12
         Text: ="Show Draft Models"
+        Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)
         Width: =195
         X: =81
         Y: =15
