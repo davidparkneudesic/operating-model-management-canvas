@@ -191,7 +191,7 @@
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
                 =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = 'Process Group Gallery'.Selected.'Process Group'));
-                ClearCollect(colFilteredProcesses, Filter('Processes', 'Process Group'.'Process Group' = 'Process Group Gallery'.Selected.'Process Group'))
+                ClearCollect(colFilteredProcesses, Filter(Processes, 'Process Group'.'Process Group' = 'Process Group Gallery'.Selected.'Process Group'))
             TemplateFill: |-
                 =If(ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -3350,4 +3350,10 @@
         X: =764
         Y: =156
         ZIndex: =18
+
+    Checkbox1 As checkbox:
+        Text: ="Show Draft Models"
+        X: =81
+        Y: =15
+        ZIndex: =19
 
