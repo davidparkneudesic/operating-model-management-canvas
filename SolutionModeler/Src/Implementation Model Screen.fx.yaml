@@ -133,7 +133,7 @@
             TemplatePadding: =0
             TemplateSize: =55
             Width: =234
-            X: =1055
+            X: =1037
             Y: =48
             ZIndex: =1
 
@@ -2146,6 +2146,7 @@
             Height: =406
             Item: =glyProductBacklog.Selected
             NumberOfColumns: =1
+            Visible: =If(varEditOpenProductBacklogItem,true,false)
             Width: =617
             X: =64
             Y: =73
@@ -2446,6 +2447,7 @@
                 UpdateContext({varEditOpenProductBacklogItem:false});
             Size: =12
             Text: ="Update"
+            Visible: =If(varEditOpenProductBacklogItem,true,false)
             Width: =234
             X: =160
             Y: =495
