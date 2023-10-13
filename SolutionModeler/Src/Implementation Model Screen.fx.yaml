@@ -55,7 +55,7 @@
                 Text: =ThisItem.'Implementation Model Name'
                 VerticalAlign: =VerticalAlign.Top
                 Width: =Parent.TemplateWidth - 86
-                X: =16
+                X: =4
                 Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle2.Size * 1.8)) / 2
                 ZIndex: =1
 
@@ -88,6 +88,17 @@
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =5
+
+            icoEditIM As icon.Edit:
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =26
+                Icon: =Icon.Edit
+                OnSelect: |-
+                    =UpdateContext({varEditOpenImplementationModel:true})
+                Width: =28
+                X: =188
+                Y: =27
+                ZIndex: =6
 
         "'Task Gallery Parent' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -533,17 +544,6 @@
             X: =1055
             Y: =565
             ZIndex: =15
-
-        icoEditIM As icon.Edit:
-            Color: =RGBA(128, 128, 128, 1)
-            Height: =26
-            Icon: =Icon.Edit
-            OnSelect: |-
-                =UpdateContext({varEditOpenImplementationModel:true})
-            Width: =28
-            X: =232
-            Y: =68
-            ZIndex: =16
 
     "'Implementation Models Title' As label":
         Align: =Align.Center
@@ -1878,7 +1878,7 @@
             Update: =dcIMPlatform.Selected
             Width: =610
             X: =0
-            Y: =0
+            Y: =1
             ZIndex: =1
 
             DataCardKey47 As label:
@@ -1944,7 +1944,7 @@
             Update: =dcIMStatusReason.Selected.Value
             Width: =610
             X: =0
-            Y: =1
+            Y: =2
             ZIndex: =1
 
             DataCardKey49 As label:
@@ -2012,7 +2012,7 @@
             Update: =dcImplementationModelName.Text
             Width: =610
             X: =0
-            Y: =2
+            Y: =0
             ZIndex: =26
 
             DataCardKey14 As label:
