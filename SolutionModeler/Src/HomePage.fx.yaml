@@ -133,7 +133,7 @@ HomePage As screen:
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
-                =Navigate('Implementation Model Screen', ScreenTransition.Cover);
+                =Navigate(scrImplementationModels, ScreenTransition.Cover);
                 Refresh('Implementation Models')
             RadiusBottomLeft: =9
             RadiusBottomRight: =9

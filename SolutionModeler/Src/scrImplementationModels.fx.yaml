@@ -1,4 +1,4 @@
-"'Implementation Model Screen' As screen":
+scrImplementationModels As screen:
     Fill: |-
         =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
             RGBA(149, 149, 149, 1),
