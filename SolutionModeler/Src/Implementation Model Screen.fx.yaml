@@ -109,7 +109,7 @@
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name'), Sequence)
+            Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name'), Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -133,8 +133,8 @@
             TemplatePadding: =0
             TemplateSize: =55
             Width: =234
-            X: =1036
-            Y: =56
+            X: =1055
+            Y: =48
             ZIndex: =1
 
             Title11 As label:
@@ -159,7 +159,7 @@
                 Width: =4
                 ZIndex: =4
 
-        "'Product Backlog Item Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        "glyProductBacklog As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
@@ -170,10 +170,10 @@
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
-                =If(ThisItem.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name' && 
+                =If(ThisItem.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name' && 
                         !(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow), 
                      RGBA(204, 208, 225, 1),
-                    If (ThisItem.'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name' && 
+                    If (ThisItem.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name' && 
                             (varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow),
                             RGBA(153, 160, 196, 1),
                             RGBA(0,0,0,0)
@@ -432,7 +432,7 @@
                 Reset(txtImplementationModelName);
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
                 Reset(txtImplementationStageName); Reset(txtISSequence);
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: ="Create Implementation Model"
@@ -462,7 +462,7 @@
                 Reset(txtImplementationModelName);
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
                 Reset(txtImplementationStageName); Reset(txtISSequence);
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: |-
@@ -494,7 +494,7 @@
                 Reset(txtImplementationModelName);
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
                 Reset(txtImplementationStageName); Reset(txtISSequence);
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: |-
@@ -526,7 +526,7 @@
                 Reset(txtImplementationModelName);
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
                 Reset(txtImplementationStageName); Reset(txtISSequence);
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: |-
@@ -559,7 +559,7 @@
                 Reset(txtImplementationModelName);
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
                 Reset(txtImplementationStageName); Reset(txtISSequence);
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: |-
@@ -987,14 +987,25 @@
             Y: =294
             ZIndex: =12
 
+        lblModelActiveMessage As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =135
+            Text: ="Implementation Models can be set to Active only by a Model Administrator.  The record will udpate to a Draft status."
+            Visible: =If(varEditOpenImplementationModel && dcIMStatusReason.Selected.Value = 'Status Reason (Implementation Models)'.Active,true,false)
+            Width: =233
+            X: =629
+            Y: =262
+            ZIndex: =13
+
     "'Create Implmentation Phase Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =527
+        Height: =572
         Visible: =If(varCreateOpenImplementationPhase || varEditOpenImplementationPhase,true,false)
         Width: =892
         X: =237
-        Y: =121
+        Y: =76
         ZIndex: =21
 
         "'Create New IP Title' As label":
@@ -1136,23 +1147,22 @@
             Y: =70
             ZIndex: =13
 
-            "'Implementation Phase Name_DataCard1' As typedDataCard.textualEditCard":
+            "'Implementation Model_DataCard2' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_implementationphasename"
-                Default: =ThisItem.'Implementation Phase Name'
+                DataField: ="neu_ImplementationModelID"
+                Default: =ThisItem.'Implementation Model'
                 DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Implementation Phases'],DataSourceInfo.DisplayName,"neu_implementationphasename")
+                DisplayName: =DataSourceInfo([@'Implementation Phases'],DataSourceInfo.DisplayName,"neu_ImplementationModelID")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
-                MaxLength: =DataSourceInfo([@'Implementation Phases'], DataSourceInfo.MaxLength, "neu_implementationphasename")
-                Required: =true
-                Update: =dcImplementationPhaseNameEdit.Text
+                Required: =false
+                Update: =dcIPImplementationModel.Selected
                 Width: =511
                 X: =0
                 Y: =0
-                ZIndex: =27
+                ZIndex: =1
 
-                DataCardKey50 As label:
+                DataCardKey60 As label:
                     AutoHeight: =true
                     Height: =34
                     Text: =Parent.DisplayName
@@ -1162,24 +1172,24 @@
                     Y: =10
                     ZIndex: =1
 
-                dcImplementationPhaseNameEdit As text:
+                dcIPImplementationModel As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =Parent.Default
-                    DelayOutput: =true
+                    DefaultSelectedItems: =Parent.Default
+                    DisplayFields: =["neu_implementationmodelname"]
                     DisplayMode: =Parent.DisplayMode
-                    MaxLength: =Parent.MaxLength
-                    PaddingLeft: =5
-                    RadiusBottomLeft: =0
-                    RadiusBottomRight: =0
-                    RadiusTopLeft: =0
-                    RadiusTopRight: =0
+                    IsSearchable: =false
+                    Items: =Filter('Implementation Models',Status = 'Status (Implementation Models)'.Active)
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["neu_implementationmodelname"]
+                    SearchItems: =[]
+                    SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardKey50.Y + DataCardKey50.Height + 5
+                    Y: =DataCardKey60.Y + DataCardKey60.Height + 5
                     ZIndex: =2
 
-                ErrorMessage45 As label:
+                ErrorMessage55 As label:
                     AutoHeight: =true
                     Height: =10
                     Live: =Live.Assertive
@@ -1191,17 +1201,17 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =dcImplementationPhaseNameEdit.Y + dcImplementationPhaseNameEdit.Height
+                    Y: =dcIPImplementationModel.Y + dcIPImplementationModel.Height
                     ZIndex: =3
 
-                StarVisible40 As label:
+                StarVisible50 As label:
                     Align: =Align.Center
-                    Height: =DataCardKey50.Height
+                    Height: =DataCardKey60.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                     Width: =30
                     Wrap: =false
-                    Y: =DataCardKey50.Y
+                    Y: =DataCardKey60.Y
                     ZIndex: =4
 
             Sequence_DataCard1 As typedDataCard.numberEditCard:
@@ -1216,7 +1226,7 @@
                 Update: =Value(dcIPSequenceEdit.Text)
                 Width: =511
                 X: =0
-                Y: =1
+                Y: =2
                 ZIndex: =27
 
                 DataCardKey51 As label:
@@ -1283,7 +1293,7 @@
                 Update: =dcIPStatusReasonEdit.Selected.Value
                 Width: =511
                 X: =0
-                Y: =2
+                Y: =3
                 ZIndex: =27
 
                 DataCardKey52 As label:
@@ -1338,6 +1348,74 @@
                     Y: =DataCardKey52.Y
                     ZIndex: =4
 
+            "'Implementation Phase Name_DataCard1' As typedDataCard.textualEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_implementationphasename"
+                Default: =ThisItem.'Implementation Phase Name'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Implementation Phases'],DataSourceInfo.DisplayName,"neu_implementationphasename")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                MaxLength: =DataSourceInfo([@'Implementation Phases'], DataSourceInfo.MaxLength, "neu_implementationphasename")
+                Required: =true
+                Update: =dcImplementationPhaseNameEdit.Text
+                Width: =511
+                X: =0
+                Y: =1
+                ZIndex: =27
+
+                DataCardKey50 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcImplementationPhaseNameEdit As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    MaxLength: =Parent.MaxLength
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey50.Y + DataCardKey50.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage45 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcImplementationPhaseNameEdit.Y + dcImplementationPhaseNameEdit.Height
+                    ZIndex: =3
+
+                StarVisible40 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey50.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey50.Y
+                    ZIndex: =4
+
         btnUpdateImplementationPhase As button:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
@@ -1365,10 +1443,12 @@
                 UpdateContext({varEditOpenImplementationPhase:false});
             Size: =12
             Text: ="Update"
-            Visible: =If(varEditOpenImplementationPhase && Len(dcImplementationPhaseNameEdit.Text)>0 && Len(dcIPSequenceEdit)>0, true,false)
+            Visible: |-
+                =If(IsBlank(dcIPImplementationModel.Selected),false,
+                If(varEditOpenImplementationPhase && Len(dcImplementationPhaseNameEdit.Text)>0 && Len(dcIPSequenceEdit)>0, true,false))
             Width: =189
-            X: =76
-            Y: =440
+            X: =64
+            Y: =501
             ZIndex: =14
 
         lblDeletionMesssage As label:
@@ -1384,11 +1464,11 @@
 
     "'Create Implmentation Stage Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =552
+        Height: =620
         Visible: =If(varCreateOpenImplementationStage || varEditOpenImplementationStage,true,false)
         Width: =892
         X: =237
-        Y: =160
+        Y: =92
         ZIndex: =22
 
         "'Create New IS Title' As label":
@@ -1558,23 +1638,22 @@
             Y: =72
             ZIndex: =15
 
-            "'Implementation Stage Name_DataCard1' As typedDataCard.textualEditCard":
+            "'Implementation Phase_DataCard1' As typedDataCard.comboBoxEditCard":
                 BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_implementationstagename"
-                Default: =ThisItem.'Implementation Stage Name'
+                DataField: ="neu_ImplementationPhaseID"
+                Default: =ThisItem.'Implementation Phase'
                 DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Implementation Stages'],DataSourceInfo.DisplayName,"neu_implementationstagename")
+                DisplayName: =DataSourceInfo([@'Implementation Stages'],DataSourceInfo.DisplayName,"neu_ImplementationPhaseID")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
-                MaxLength: =DataSourceInfo([@'Implementation Stages'], DataSourceInfo.MaxLength, "neu_implementationstagename")
-                Required: =true
-                Update: =dcImplementationStageName.Text
+                Required: =false
+                Update: =dcImplementationPhase.Selected
                 Width: =520
                 X: =0
                 Y: =0
-                ZIndex: =16
+                ZIndex: =1
 
-                DataCardKey46 As label:
+                DataCardKey59 As label:
                     AutoHeight: =true
                     Height: =34
                     Text: =Parent.DisplayName
@@ -1584,24 +1663,24 @@
                     Y: =10
                     ZIndex: =1
 
-                dcImplementationStageName As text:
+                dcImplementationPhase As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    Default: =Parent.Default
-                    DelayOutput: =true
+                    DefaultSelectedItems: =Parent.Default
+                    DisplayFields: =["neu_implementationphasename"]
                     DisplayMode: =Parent.DisplayMode
-                    MaxLength: =Parent.MaxLength
-                    PaddingLeft: =5
-                    RadiusBottomLeft: =0
-                    RadiusBottomRight: =0
-                    RadiusTopLeft: =0
-                    RadiusTopRight: =0
+                    IsSearchable: =false
+                    Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && Status = 'Status (Implementation Phases)'.Active)
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["neu_implementationphasename"]
+                    SearchItems: =[]
+                    SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardKey46.Y + DataCardKey46.Height + 5
+                    Y: =DataCardKey59.Y + DataCardKey59.Height + 5
                     ZIndex: =2
 
-                ErrorMessage44 As label:
+                ErrorMessage54 As label:
                     AutoHeight: =true
                     Height: =10
                     Live: =Live.Assertive
@@ -1613,17 +1692,17 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =dcImplementationStageName.Y + dcImplementationStageName.Height
+                    Y: =dcImplementationPhase.Y + dcImplementationPhase.Height
                     ZIndex: =3
 
-                StarVisible39 As label:
+                StarVisible49 As label:
                     Align: =Align.Center
-                    Height: =DataCardKey46.Height
+                    Height: =DataCardKey59.Height
                     Text: ="*"
                     Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                     Width: =30
                     Wrap: =false
-                    Y: =DataCardKey46.Y
+                    Y: =DataCardKey59.Y
                     ZIndex: =4
 
             Sequence_DataCard2 As typedDataCard.numberEditCard:
@@ -1638,7 +1717,7 @@
                 Update: =Value(dcISSequence.Text)
                 Width: =520
                 X: =0
-                Y: =1
+                Y: =2
                 ZIndex: =16
 
                 DataCardKey53 As label:
@@ -1705,7 +1784,7 @@
                 Update: =dcISStatusReason.Selected.Value
                 Width: =520
                 X: =0
-                Y: =2
+                Y: =3
                 ZIndex: =16
 
                 DataCardKey54 As label:
@@ -1760,6 +1839,74 @@
                     Y: =DataCardKey54.Y
                     ZIndex: =4
 
+            "'Implementation Stage Name_DataCard1' As typedDataCard.textualEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_implementationstagename"
+                Default: =ThisItem.'Implementation Stage Name'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Implementation Stages'],DataSourceInfo.DisplayName,"neu_implementationstagename")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                MaxLength: =DataSourceInfo([@'Implementation Stages'], DataSourceInfo.MaxLength, "neu_implementationstagename")
+                Required: =true
+                Update: =dcImplementationStageName.Text
+                Width: =520
+                X: =0
+                Y: =1
+                ZIndex: =16
+
+                DataCardKey46 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcImplementationStageName As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    MaxLength: =Parent.MaxLength
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey46.Y + DataCardKey46.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage44 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcImplementationStageName.Y + dcImplementationStageName.Height
+                    ZIndex: =3
+
+                StarVisible39 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey46.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey46.Y
+                    ZIndex: =4
+
         btnUpdateImplementationStage As button:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
@@ -1789,10 +1936,12 @@
             Text: |-
                 ="Update
                 "
-            Visible: =If(varEditOpenImplementationStage && Len(dcImplementationStageName.Text)>0 && Len(dcISSequence)>0,true,false)
+            Visible: |-
+                =If(IsBlank(dcImplementationPhase.Selected),false,
+                If(varEditOpenImplementationStage && Len(dcImplementationStageName.Text)>0 && Len(dcISSequence)>0 ,true))
             Width: =188
-            X: =136
-            Y: =398
+            X: =134
+            Y: =509
             ZIndex: =16
 
         lblDeletionMesssage_IS As label:
@@ -1824,7 +1973,7 @@
             FontWeight: =FontWeight.Bold
             Height: =62
             Size: =20
-            Text: ="Create New Product Backlog Item"
+            Text: =If(varEditOpenProductBacklogItem, "Edit Product Backlog Item","Create New Product Backlog Item")
             Width: ='Create Product Backlog Item Container'.Width
             ZIndex: =1
 
@@ -1836,7 +1985,7 @@
                 =UpdateContext({varCreateOpenProductBacklogItem:false});
                 UpdateContext({varPBICreated:false});
                 UpdateContext({varEditOpenProductBacklogItem:false});
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
             Width: =54
             X: ='Create Product Backlog Item Container'.Width - 60
             Y: =3
@@ -1876,16 +2025,16 @@
                     {
                         'Product Backlog Item Name':txtProductBacklogName.Text,
                         'Implementation Stage':'Implementation Stage PBI Dropdown'.Selected,
-                        Sequence:Value('Sequence PBI Input'.Text) * 1000,
+                        Sequence:Value(dcPBISequence.Text) * 1000,
                         'Status Reason':'Status Reason (Product Backlog Items)'.Draft,
                         Model:Model.'Implementation Model'
                     }
                 );
                 
                 UpdateContext({varPBICreated:true});
-                Reset(txtProductBacklogName); Reset('Sequence PBI Input');
+                Reset(txtProductBacklogName); Reset(dcPBISequence);
             Text: ="Create"
-            Visible: =If(IsBlank(txtProductBacklogName.Text) || Len(dc,false,true)
+            Visible: =If(IsBlank(txtProductBacklogName.Text) || IsBlank(dcPBISequence),false,true)
             Width: =180
             X: =356
             Y: =412
@@ -1935,7 +2084,7 @@
             Y: =304
             ZIndex: =11
 
-        "'Sequence PBI Input' As text":
+        dcPBISequence As text:
             Default: =""
             Format: =TextFormat.Number
             Height: =35
@@ -1991,6 +2140,318 @@
             X: =64
             Y: =241
             ZIndex: =16
+
+        frmEditProductBacklog As form:
+            DataSource: ='Product Backlog Items'
+            Height: =406
+            Item: =glyProductBacklog.Selected
+            NumberOfColumns: =1
+            Width: =581
+            X: =131
+            Y: =71
+            ZIndex: =17
+
+            "'Implementation Stage_DataCard1' As typedDataCard.comboBoxEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_ImplementationStageID"
+                Default: =ThisItem.'Implementation Stage'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Product Backlog Items'],DataSourceInfo.DisplayName,"neu_ImplementationStageID")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =DataCardValue13.Selected
+                Width: =581
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+                DataCardKey58 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue13 As combobox:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    DefaultSelectedItems: =Parent.Default
+                    DisplayFields: =["neu_implementationstagename"]
+                    DisplayMode: =Parent.DisplayMode
+                    Items: =Choices([@'Product Backlog Items'].neu_ImplementationStageID)
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["neu_implementationstagename"]
+                    SearchItems: =Search(Choices([@'Product Backlog Items'].neu_ImplementationStageID),DataCardValue13.SearchText,"neu_implementationstagename")
+                    SelectMultiple: =false
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey58.Y + DataCardKey58.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage53 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue13.Y + DataCardValue13.Height
+                    ZIndex: =3
+
+                StarVisible48 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey58.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey58.Y
+                    ZIndex: =4
+
+            "'Product Backlog Item Name_DataCard1' As typedDataCard.textualEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_productbacklogitemname"
+                Default: =ThisItem.'Product Backlog Item Name'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Product Backlog Items'],DataSourceInfo.DisplayName,"neu_productbacklogitemname")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                MaxLength: =DataSourceInfo([@'Product Backlog Items'], DataSourceInfo.MaxLength, "neu_productbacklogitemname")
+                Required: =true
+                Update: =DataCardValue2.Text
+                Width: =581
+                X: =0
+                Y: =1
+                ZIndex: =18
+
+                DataCardKey49 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue2 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    MaxLength: =Parent.MaxLength
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey49.Y + DataCardKey49.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage50 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue2.Y + DataCardValue2.Height
+                    ZIndex: =3
+
+                StarVisible45 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey49.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey49.Y
+                    ZIndex: =4
+
+            Sequence_DataCard3 As typedDataCard.numberEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_sequence"
+                Default: =ThisItem.Sequence
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Product Backlog Items'],DataSourceInfo.DisplayName,"neu_sequence")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =true
+                Update: =Value(DataCardValue7.Text)
+                Width: =581
+                X: =0
+                Y: =2
+                ZIndex: =18
+
+                DataCardKey56 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue7 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Format: =TextFormat.Number
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey56.Y + DataCardKey56.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage51 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue7.Y + DataCardValue7.Height
+                    ZIndex: =3
+
+                StarVisible46 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey56.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey56.Y
+                    ZIndex: =4
+
+            "'Status Reason_DataCard4' As typedDataCard.comboBoxOptionSetSingleEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="statuscode"
+                Default: =ThisItem.'Status Reason'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Product Backlog Items'],DataSourceInfo.DisplayName,"statuscode")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =true
+                Update: =dcPBStatusReason.Selected.Value
+                Width: =581
+                X: =0
+                Y: =3
+                ZIndex: =18
+
+                DataCardKey57 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcPBStatusReason As combobox:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    DefaultSelectedItems: =[Parent.Default]
+                    DisplayFields: =["Value"]
+                    DisplayMode: =Parent.DisplayMode
+                    IsSearchable: =false
+                    Items: =Choices('Status Reason (Product Backlog Items)')
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["Value"]
+                    SearchItems: =[]
+                    SelectMultiple: =false
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey57.Y + DataCardKey57.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage52 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcPBStatusReason.Y + dcPBStatusReason.Height
+                    ZIndex: =3
+
+                StarVisible47 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey57.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey57.Y
+                    ZIndex: =4
+
+        btnUpdateProductBacklog As button:
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =44
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |
+                =If(dcPBStatusReason.Selected.Value = 'Status Reason (Product Backlog Items)'.Inactive,
+                Patch(
+                    'Product Backlog Items',
+                    glyImplementationStage.Selected,
+                    {
+                       
+                        Status: 'Status (Product Backlog Items)'.Inactive
+                
+                    }
+                ),
+                 SubmitForm(frmEditProductBacklog)
+                 )
+                
+                
+                UpdateContext({varEditOpenProductBacklogItem:false});
+            Size: =12
+            Text: ="Update"
+            Width: =234
+            X: =160
+            Y: =495
+            ZIndex: =18
 
     "'Create Task Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -2162,7 +2623,7 @@
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             Height: =35
-            Items: =Filter('Product Backlog Items', 'Product Backlog Item Name' = 'Product Backlog Item Gallery'.Selected.'Product Backlog Item Name')
+            Items: =Filter('Product Backlog Items', 'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name')
             Size: =12
             Width: =413
             X: =64
