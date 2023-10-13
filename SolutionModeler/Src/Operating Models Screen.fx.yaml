@@ -1290,7 +1290,10 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_operatingmodelname"]
                     IsSearchable: =false
-                    Items: =Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier))
+                    Items: |-
+                        =If(Len(ClientSolutionIdentifier)>0,
+                        Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier)),
+                        'Operating Models')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_operatingmodelname"]
                     SearchItems: =[]
