@@ -28,7 +28,7 @@
                 =
                 If(IsBlank(ClientSolutionIdentifier),
                     //Standard Operating Models
-                        If(chkDraftModels.Value = false,
+                        If(chkDraftModels.Value = false || IsBlank(chkDraftModels),
                             SortByColumns(Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' ='Status Reason (Operating Models)'.Active),"neu_operatingmodelname",SortOrder.Ascending),
                             SortByColumns(Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' ='Status Reason (Operating Models)'.Draft),"neu_operatingmodelname",SortOrder.Ascending)
                         ),
@@ -664,7 +664,7 @@
         Height: =76
         Size: =26
         Text: |-
-            =If(IsBlank(txtClientID.Text) && chkDraftModels.Value = false ,
+            =If(IsBlank(txtClientID.Text) && (chkDraftModels.Value = false || IsBlank(chkDraftModels.Value)) ,
                 "Standard Operating Models",
                 If(Len(ClientSolutionIdentifier)>0, 
                     "Operating Model(s) for "& dcSolutionName,
@@ -690,7 +690,7 @@
             UpdateContext({varModelPropStarted:false});
             UpdateContext({varAssociateError:false});
             Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
-            Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);
+            Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);Reset(chkDraftModels);
             
             If(IsBlank(ClientSolutionIdentifier),
                 Back(ScreenTransition.UnCoverRight);
@@ -771,7 +771,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |+
-                = If(chkDraftModels,
+                = If(chkDraftModels.Value = true,
                 
                     If(varOpenOperatingModelCreate,
                         //Create New OM
@@ -1020,7 +1020,8 @@
             Button7 As button:
                 OnSelect: |-
                     =Remove('Operating Models','Operating Model Gallery'.Selected);
-                    UpdateContext({varDeleteOM:false})
+                    UpdateContext({varDeleteOM:false});
+                    UpdateContext({varEditOM:false})
                 Text: ="DELETE!"
                 X: =44
                 Y: =184
@@ -3388,7 +3389,9 @@
 
     chkDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
-        Default: =If(Len(ClientSolutionIdentifier)>0,false,false)
+        Default: |-
+            =If(Len(ClientSolutionIdentifier)>0,false,
+            If(HomePagefalse)
         Size: =12
         Text: ="Show Draft Models"
         Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)

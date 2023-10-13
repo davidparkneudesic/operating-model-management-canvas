@@ -1,5 +1,6 @@
 HomePage As screen:
     Fill: =RGBA(237, 237, 237, 1)
+    OnVisible: =
 
     "'Title Page Label' As label":
         Align: =Align.Center
