@@ -4328,36 +4328,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrImplementationModels",
-                "type": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'.TabIndex"
                 }
               ],
@@ -4382,6 +4352,36 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrImplementationModels",
+                "type": "scrImplementationModels.'Create Task Container'.'Exit Task Create Icon'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -9068,6 +9068,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrImplementationModels.ImplmentationModels_Background.'Task Gallery Parent'.icoEditIP_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrImplementationModels.ImplmentationModels_Background.'Task Gallery Parent'.icoEditIP_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrImplementationModels",
+                "type": "scrImplementationModels.ImplmentationModels_Background.'Task Gallery Parent'.icoEditIP_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrImplementationModels.ImplmentationModels_Background.'Task Gallery Parent'.icoEditIP_3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrImplementationModels.ImplmentationModels_Background.'Task Gallery Parent'.icoEditIP_3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "scrImplementationModels",
+                "type": "scrImplementationModels.ImplmentationModels_Background.'Task Gallery Parent'.icoEditIP_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.varUpdateClientSolution"
                 }
               ],
@@ -10154,7 +10214,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"scrImplementationModels\" is 338, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"scrImplementationModels\" is 343, which exceeds the maximum threshold recommended (300)."
               }
             },
             {
