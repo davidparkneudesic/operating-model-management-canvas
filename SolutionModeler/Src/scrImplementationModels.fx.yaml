@@ -23,7 +23,11 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Filter('Implementation Models',Status = 'Status (Implementation Models)'.Active)
+            Items: |-
+                =If(chkImpDraftModels.Value = true,
+                Filter('Implementation Models','Status Reason' = 'Status Reason (Implementation Models)'.Draft),
+                Filter('Implementation Models','Status Reason' = 'Status Reason (Implementation Models)'.Active)
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: =
@@ -435,6 +439,7 @@ scrImplementationModels As screen:
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input'); 
             Size: =12
             Text: ="Create Implementation Model"
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =234
             X: =41
             Y: =565
@@ -467,6 +472,7 @@ scrImplementationModels As screen:
             Text: |-
                 ="Create Implementation Phase
                 "
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =234
             X: =295
             Y: =565
@@ -499,6 +505,7 @@ scrImplementationModels As screen:
             Text: |-
                 ="Create Implementation Stage
                 "
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =234
             X: =548
             Y: =565
@@ -532,6 +539,7 @@ scrImplementationModels As screen:
                 ="Create Product
                 Backlog Item
                 "
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =234
             X: =801
             Y: =565
@@ -564,6 +572,7 @@ scrImplementationModels As screen:
             Text: |-
                 ="Create Task
                 "
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =234
             X: =1055
             Y: =565
@@ -2851,4 +2860,13 @@ scrImplementationModels As screen:
                 Wrap: =false
                 Y: =DataCardKey14.Y
                 ZIndex: =4
+
+    chkImpDraftModels As checkbox:
+        Color: =RGBA(255, 255, 255, 1)
+        Size: =11
+        Text: ="Show Draft Models"
+        Width: =263
+        X: =87
+        Y: =15
+        ZIndex: =26
 
