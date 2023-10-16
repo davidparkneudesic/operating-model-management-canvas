@@ -132,12 +132,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -151,7 +151,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels"
               }
             }
           ],
@@ -172,12 +172,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -191,7 +191,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels"
               }
             }
           ],
@@ -212,12 +212,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -231,7 +231,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels"
               }
             }
           ],
@@ -252,12 +252,12 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.Items",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.Items",
                   "relativeAddress": 0
                 },
                 "region": {
@@ -271,7 +271,7 @@
               "properties": {
                 "member": "Items",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels"
               }
             }
           ],
@@ -326,6 +326,46 @@
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
           "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 29,
+                  "charOffset": 169,
+                  "snippet": {
+                    "text": "'Operating Model PG Dropdown'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Operating Model PG Dropdown"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -6299,19 +6339,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels"
               }
             }
           ],
@@ -6329,19 +6369,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.TabIndex"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.TabIndex",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels"
               }
             }
           ],
@@ -6359,19 +6399,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.IcoEditOM.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.IcoEditOM.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.IcoEditOM.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.IcoEditOM.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.IcoEditOM"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.IcoEditOM"
               }
             }
           ],
@@ -6389,19 +6429,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.IcoEditOM.TabIndex"
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.IcoEditOM.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.IcoEditOM.TabIndex",
+                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.IcoEditOM.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Operating Model Gallery'.IcoEditOM"
+                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.glyOperatingModels.IcoEditOM"
               }
             }
           ],
@@ -7589,66 +7629,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Group Container'.'Exit Cap Create Icon_1'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.frmEditProcessGroup.Capability_DataCard2.dcPGEditCapability.AccessibleLabel"
                 }
               ],
@@ -7829,19 +7809,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Operating Model PG Dropdown'.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.ddCapability.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Operating Model PG Dropdown'.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.ddCapability.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Group Container'.'Operating Model PG Dropdown'"
+                "type": "'Operating Models Screen'.'Create Process Group Container'.ddCapability"
               }
             }
           ],
@@ -7859,49 +7839,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Capability PG Dropdown'.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.txtProcessGroupName.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'Capability PG Dropdown'.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.txtProcessGroupName.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Group Container'.'Capability PG Dropdown'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'New Process Group Name Input'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Create Process Group Container'.'New Process Group Name Input'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Create Process Group Container'.'New Process Group Name Input'"
+                "type": "'Operating Models Screen'.'Create Process Group Container'.txtProcessGroupName"
               }
             }
           ],

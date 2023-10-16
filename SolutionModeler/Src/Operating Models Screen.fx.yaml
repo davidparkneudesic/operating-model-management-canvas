@@ -17,7 +17,7 @@
         Y: =86
         ZIndex: =1
 
-        "'Operating Model Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        "glyOperatingModels As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
@@ -41,13 +41,13 @@
                 =Clear(colSubCapabilities);
                 Clear(colCapabiilitiesL2);
                 Clear(colProcessGroups);
-                ClearCollect(colOperatingModelFilter, Filter('Operating Models','Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'));
+                ClearCollect(colOperatingModelFilter, Filter('Operating Models','Operating Model' = glyOperatingModels.Selected.'Operating Model'));
                 UpdateContext({varExpandCapGal:false})
             TemplateFill: |-
-                =If(ThisItem.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
+                =If(ThisItem.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
                      RGBA(204, 208, 225, 1),
-                    If (ThisItem.'Operating Model Name' = 'Operating Model Gallery'.Selected.'Operating Model Name' && 
+                    If (ThisItem.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name' && 
                             (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail),
                             RGBA(153, 160, 196, 1),
                             RGBA(0,0,0,0)
@@ -104,7 +104,7 @@
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =212
-            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
+            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -689,8 +689,8 @@
             UpdateContext({varEditOM:false});
             UpdateContext({varModelPropStarted:false});
             UpdateContext({varAssociateError:false});
-            Reset('New Capability Name Input'); Reset('New Process Group Name Input'); Reset('New Process Name Input'); Reset('Description Proc Input');
-            Reset('Operating Model Gallery');Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);Reset(chkDraftModels);
+            Reset('New Capability Name Input'); Reset(txtProcessGroupName); Reset('New Process Name Input'); Reset('Description Proc Input');
+            Reset(glyOperatingModels);Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);Reset(chkDraftModels);
             
             If(IsBlank(ClientSolutionIdentifier),
                 Back(ScreenTransition.UnCoverRight);
@@ -789,7 +789,7 @@
                         //Update OM
                             Patch(
                                 'Operating Models',
-                                'Operating Model Gallery'.Selected,
+                                glyOperatingModels.Selected,
                                 {
                                     'Operating Model Name':dcEditOMOperatingModelName.Text,
                                     'Status Reason':'Status Reason (Operating Models)'.Draft,
@@ -817,7 +817,7 @@
                         //Update OM
                             Patch(
                                 'Operating Models',
-                                'Operating Model Gallery'.Selected,
+                                glyOperatingModels.Selected,
                                 {
                                     'Operating Model Name':dcEditOMOperatingModelName.Text,
                                     'Status Reason':'Status Reason (Operating Models)'.Active,
@@ -853,7 +853,7 @@
         frmEditOpModel As form:
             DataSource: ='Operating Models'
             Height: =237
-            Item: =If(varEditOM = true,'Operating Model Gallery'.Selected,Defaults('Operating Models'))
+            Item: =If(varEditOM = true,glyOperatingModels.Selected,Defaults('Operating Models'))
             Visible: =If(varEditOM || varOpenOperatingModelCreate,true,false)
             Width: =757
             Y: =62
@@ -1019,7 +1019,7 @@
 
             Button7 As button:
                 OnSelect: |-
-                    =Remove('Operating Models','Operating Model Gallery'.Selected);
+                    =Remove('Operating Models',glyOperatingModels.Selected);
                     UpdateContext({varDeleteOM:false});
                     UpdateContext({varEditOM:false})
                 Text: ="DELETE!"
@@ -1707,11 +1707,11 @@
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =587
-        Visible: =If(varOpenProcessGroupCreate ||varOpenProcessGroupEdit, true, false)
+        Height: =481
+        Visible: =If(varOpenProcessGroupCreate || varOpenProcessGroupEdit, true, false)
         Width: =721
         X: =276
-        Y: =91
+        Y: =214
         ZIndex: =8
 
         "'Create Capability Label_1' As label":
@@ -1733,17 +1733,20 @@
             Color: =RGBA(255, 255, 255, 1)
             Height: =54
             Icon: =Icon.Cancel
-            OnSelect: |-
+            OnSelect: |
                 =UpdateContext({varOpenProcessGroupCreate:false});
                 UpdateContext({varPGCreated:false});
                 UpdateContext({varOpenProcessGroupEdit:false});
-                Reset('New Process Group Name Input')
+                Reset(txtProcessGroupName);
+                Reset('Operating Model PG Dropdown');
+                Reset(ddCapability);
             Width: =54
             X: ='Create Process Group Container'.Width - 60
             Y: =3
             ZIndex: =2
 
         "'Create Capability Button_1' As button":
+            DisplayMode: =If(IsBlank(ddCapability.Selected) || IsBlank(txtProcessGroupName.Text),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -1753,24 +1756,24 @@
                     'Process Groups',
                     Defaults('Process Groups'),
                     {
-                        'Process Group Name':'New Process Group Name Input'.Text,
-                        Capability:'Capability PG Dropdown'.Selected,
+                        'Process Group Name':txtProcessGroupName.Text,
+                        Capability:ddCapability.Selected,
                         'Scope Review':'Scope Review PG Dropdown'.Selected.Value,
                         Model:Model.'Operating Model',
                         'Status Reason':'Status Reason (Process Groups)'.Active
                     }
                 );
                 UpdateContext({varPGCreated:true});
-                Reset('New Process Group Name Input');
+                Reset(txtProcessGroupName);
             Text: |-
                 ="Create
                 "
-            Visible: =If(varOpenProcessGroupEdit = false, If(IsBlank('New Process Group Name Input'.Text) || IsBlank('Capability PG Dropdown'.Selected), false,true),false)
-            X: =89
-            Y: =518
+            Visible: =If(varOpenProcessGroupCreate, true,false)
+            X: =86
+            Y: =426
             ZIndex: =3
 
-        "'New Process Group Name Input' As text":
+        txtProcessGroupName As text:
             Default: =""
             Height: =35
             OnSelect: |-
@@ -1780,7 +1783,7 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =434
             X: =89
-            Y: =306
+            Y: =215
             ZIndex: =4
 
         "'New Process Group Name Label' As label":
@@ -1791,19 +1794,8 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =307
             X: =89
-            Y: =266
+            Y: =175
             ZIndex: =5
-
-        "'Operating Model PG Label' As label":
-            Color: =RGBA(0,0,0,1)
-            FontWeight: =FontWeight.Semibold
-            Size: =14
-            Text: ="Operating Model"
-            Visible: =If(varOpenProcessGroupCreate,true,false)
-            Width: =307
-            X: =82
-            Y: =96
-            ZIndex: =6
 
         "'Process Group Created Label' As label":
             Align: =Align.Center
@@ -1823,7 +1815,7 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =307
             X: =92
-            Y: =362
+            Y: =271
             ZIndex: =8
 
         "'Scope Review PG Dropdown' As dropdown":
@@ -1838,7 +1830,7 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =240
             X: =92
-            Y: =402
+            Y: =311
             ZIndex: =9
 
         "'Capability PG Label' As label":
@@ -1849,27 +1841,10 @@
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =307
             X: =86
-            Y: =188
+            Y: =97
             ZIndex: =10
 
-        "'Operating Model PG Dropdown' As dropdown":
-            ChevronBackground: |-
-                =ColorValue("#00467f")
-            ChevronHoverBackground: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            DisplayMode: =DisplayMode.View
-            Height: =31
-            Items: |-
-                =Filter('Operating Models', 'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model')
-                //colOperatingModelFilter
-            Size: =12
-            Visible: =If(varOpenProcessGroupCreate,true,false)
-            Width: =536
-            X: =82
-            Y: =136
-            ZIndex: =11
-
-        "'Capability PG Dropdown' As dropdown":
+        ddCapability As dropdown:
             ChevronBackground: |-
                 =ColorValue("#00467f")
             ChevronHoverBackground: |-
@@ -1887,28 +1862,13 @@
                 //        Filter(Capabilities,'Capability Name' = 'Capability Level 1 Gallery'.Selected.'Capability Name')
                 //    )
                 //)
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
             Size: =12
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =310
             X: =86
-            Y: =228
+            Y: =137
             ZIndex: =12
-
-        "'Reset Operating Model Cap Button_1' As button":
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: =ClearCollect(colOperatingModelFilter,Sort('Operating Models','Operating Model Name'))
-            Text: |-
-                ="Reset
-                "
-            Visible: =false
-            Width: =152
-            X: =436
-            Y: =206
-            ZIndex: =13
 
         frmEditProcessGroup As form:
             DataSource: ='Process Groups'
@@ -1964,7 +1924,7 @@
                     AutoHeight: =true
                     Height: =10
                     Live: =Live.Assertive
-                    OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+                    OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
                     PaddingBottom: =0
                     PaddingLeft: =0
                     PaddingRight: =0
@@ -2395,7 +2355,7 @@
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 colCreateWindowCapacityFilter
             OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability))
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
             Width: =432
             X: =63
             Y: =222
@@ -2468,7 +2428,7 @@
                 =ColorFade(ColorValue("#00467f"), -20%)
             OnSelect: |-
                 =//ClearCollect(colOperatingModelFilter,Filter('Operating Models','Operating Model Name', Status = 'Status (Operating Models)'.Active))
-                ClearCollect(colOperatingModelFilter,'Operating Model Gallery'.Selected)
+                ClearCollect(colOperatingModelFilter,glyOperatingModels.Selected)
             Text: |-
                 ="Reset
                 "
@@ -3400,7 +3360,7 @@
     dpCapabilityFilter As dropdown:
         Items: =colCreateWindowCapacityFilter
         OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability))
-        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model'))
+        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
         Visible: =If(varEditProcess,true,false)
         X: =764
         Y: =156
