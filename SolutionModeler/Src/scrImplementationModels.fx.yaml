@@ -698,7 +698,7 @@ scrImplementationModels As screen:
         FontWeight: =FontWeight.Semibold
         Height: =76
         Size: =26
-        Text: ="Implementation Models"
+        Text: =If(chkImpDraftModels.Value, "Draft Implementation Models","Standard Implementation Models")
         Width: =1366
         ZIndex: =2
 
@@ -988,6 +988,7 @@ scrImplementationModels As screen:
             ZIndex: =4
 
         "'Create Button' As button":
+            DisplayMode: =If(varCreateOpenImplementationModel && Len(txtImplementationModelName.Text)>0,DisplayMode.Edit,DisplayMode.Disabled)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -1006,7 +1007,7 @@ scrImplementationModels As screen:
                 UpdateContext({varIMCreated:true});
                 Reset(txtImplementationModelName)
             Text: ="Create"
-            Visible: =If(varCreateOpenImplementationModel && Len(txtImplementationModelName.Text)>0,true,false)
+            Visible: =If(varEditOpenImplementationModel,false,true)
             Width: =180
             X: =356
             Y: =379
@@ -1048,6 +1049,7 @@ scrImplementationModels As screen:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            DisplayMode: =If(varEditOpenImplementationModel && Len(dcImplementationModelName.Text)>0 ,DisplayMode.Edit,DisplayMode.Disabled)
             Fill: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -1085,7 +1087,7 @@ scrImplementationModels As screen:
                 Refresh('Implementation Models')
             Size: =12
             Text: ="Update"
-            Visible: =If(varEditOpenImplementationModel && Len(dcImplementationModelName.Text)>0 ,true,false)
+            Visible: =If(varCreateOpenImplementationModel,false,true)
             Width: =194
             X: =72
             Y: =397
@@ -1171,6 +1173,7 @@ scrImplementationModels As screen:
             ZIndex: =4
 
         "'Create IP Button' As button":
+            DisplayMode: =If(varCreateOpenImplementationPhase && (Len(txtImplementationPhaseName.Text)>0 && Len(txtSequenceIpInput)>0) ,DisplayMode.Edit,DisplayMode.Disabled)
             Fill: |-
                 =ColorValue("#00467f")
             Height: =48
@@ -1192,7 +1195,7 @@ scrImplementationModels As screen:
                 UpdateContext({varIPCreated:true});
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
             Text: ="Create"
-            Visible: =If(varCreateOpenImplementationPhase && (Len(txtImplementationPhaseName.Text)>0 && Len(txtSequenceIpInput)>0) ,true,false)
+            Visible: =If(varCreateOpenImplementationPhase,true,false)
             Width: =180
             X: =355
             Y: =453
@@ -1535,6 +1538,7 @@ scrImplementationModels As screen:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            DisplayMode: =If(IsBlank(dcIPImplementationModel.Selected)  || IsBlank(dcImplementationPhaseNameEdit.Text) || IsBlank(dcIPSequenceEdit.Text),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -1558,9 +1562,7 @@ scrImplementationModels As screen:
                 UpdateContext({varEditOpenImplementationPhase:false});
             Size: =12
             Text: ="Update"
-            Visible: |-
-                =If(IsBlank(dcIPImplementationModel.Selected),false,
-                If(varEditOpenImplementationPhase && Len(dcImplementationPhaseNameEdit.Text)>0 && Len(dcIPSequenceEdit)>0, true,false))
+            Visible: =If(varEditOpenImplementationPhase, true,false)
             Width: =189
             X: =64
             Y: =501
@@ -1634,6 +1636,7 @@ scrImplementationModels As screen:
             ZIndex: =4
 
         "'Create IS Button' As button":
+            DisplayMode: =If(IsBlank(txtImplementationStageName.Text) || IsBlank(txtISSequence.Text) ,DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             Height: =48
@@ -1655,10 +1658,8 @@ scrImplementationModels As screen:
                 UpdateContext({varISCreated:true});
                 Reset(txtImplementationStageName); Reset(txtISSequence);
             Text: ="Create"
-            Visible: |-
-                =If(varCreateOpenImplementationStage,
-                If(IsBlank(txtImplementationStageName.Text) || IsBlank(txtISSequence.Text) ,false,true),
-                false)
+            Visible: |
+                =If(varCreateOpenImplementationStage,true,false)
             Width: =180
             X: =356
             Y: =407
@@ -1734,7 +1735,7 @@ scrImplementationModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
-            Items: =Filter('Implementation Phases', 'Implementation Phase Name' = glyImplementationPhase.Selected.'Implementation Phase Name')
+            Items: =Filter('Implementation Phases', 'Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model')
             Size: =12
             Visible: =If(varEditOpenImplementationStage,false,true)
             Width: =413
