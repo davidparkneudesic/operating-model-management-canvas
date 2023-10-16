@@ -46,6 +46,7 @@ HomePage As screen:
             ZIndex: =1
 
         lblClientSolutions As label:
+            Align: =Align.Center
             Font: =Font.'Lato Light'
             Height: =144
             Size: =14
@@ -57,6 +58,7 @@ HomePage As screen:
             ZIndex: =2
 
         "'Client Solutions Title' As label":
+            Align: =Align.Center
             Font: =Font.Lato
             FontWeight: =FontWeight.Bold
             Height: =62
@@ -93,10 +95,11 @@ HomePage As screen:
             ZIndex: =1
 
         lblOperatingModels As label:
+            Align: =Align.Center
             Font: =Font.'Lato Light'
             Height: =144
             Size: =14
-            Text: ="Browse the various standard Operating Models, which serve as scoping templates."
+            Text: ="Browse the various standard Operating Models, which serve as scoping templates.   Also create Draft Operating Models that can be promoted to Standard models."
             VerticalAlign: =VerticalAlign.Top
             Width: =295
             X: =36
@@ -110,7 +113,7 @@ HomePage As screen:
             Height: =62
             Size: =18
             Text: |-
-                ="Standard Operating Models
+                ="Operating Models
                 "
             Width: =303
             X: =36
@@ -146,10 +149,11 @@ HomePage As screen:
             ZIndex: =1
 
         lblImplmentationModels As label:
+            Align: =Align.Center
             Font: =Font.'Lato Light'
             Height: =144
             Size: =14
-            Text: ="Browse, create and modify the various Implementation Models, which serve as patterns for solution delivery"
+            Text: ="Browse, create and modify the various Implementation Models, which serve as patterns for solution delivery.   Also create draft Implementation Models that can be promoted."
             VerticalAlign: =VerticalAlign.Top
             Width: =295
             X: =36
@@ -157,6 +161,7 @@ HomePage As screen:
             ZIndex: =2
 
         Label4_1 As label:
+            Align: =Align.Center
             Font: =Font.Lato
             FontWeight: =FontWeight.Bold
             Height: =62
