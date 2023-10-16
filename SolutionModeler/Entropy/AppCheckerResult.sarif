@@ -5279,19 +5279,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.'Exit Cap Create Icon_3'.AccessibleLabel"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.icoExitProcess.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.'Exit Cap Create Icon_3'.AccessibleLabel",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.icoExitProcess.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Process Detail Container'.'Exit Cap Create Icon_3'"
+                "type": "'Operating Models Screen'.'Process Detail Container'.icoExitProcess"
               }
             }
           ],
@@ -5309,19 +5309,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.'Exit Cap Create Icon_3'.TabIndex"
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.icoExitProcess.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.'Exit Cap Create Icon_3'.TabIndex",
+                  "fullyQualifiedName": "'Operating Models Screen'.'Process Detail Container'.icoExitProcess.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.'Process Detail Container'.'Exit Cap Create Icon_3'"
+                "type": "'Operating Models Screen'.'Process Detail Container'.icoExitProcess"
               }
             }
           ],
@@ -9968,6 +9968,36 @@
               },
               "properties": {
                 "member": "varCapCreated",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.varProcCreated"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.varProcCreated",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varProcCreated",
                 "module": "Operating Models Screen",
                 "type": "'Operating Models Screen'"
               }

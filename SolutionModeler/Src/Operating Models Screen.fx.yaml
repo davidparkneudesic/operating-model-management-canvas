@@ -6,6 +6,13 @@
         )
     OnVisible: =
 
+    TextInput3 As text:
+        Default: =First(colCreateWindowPGFilter).'Process Group Name'
+        Visible: =false
+        X: =155
+        Y: =638
+        ZIndex: =1
+
     OperatingModel_Gallery_Window As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
@@ -15,7 +22,7 @@
         Width: =1253
         X: =56
         Y: =86
-        ZIndex: =1
+        ZIndex: =2
 
         "glyOperatingModels As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -246,12 +253,12 @@
                 =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: |-
+            Items: |+
                 =If(IsBlank(txtClientID.Text),
                     Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),'Process Name'),
-                 //   Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),'Process Name')
                  colFilteredProcesses
                 )
+                
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |
@@ -672,7 +679,7 @@
                     )
             )
         Width: =1366
-        ZIndex: =2
+        ZIndex: =3
 
     "'Back Button_1' As icon.ChevronLeft":
         Color: |-
@@ -701,7 +708,7 @@
         Width: =45
         X: =18
         Y: =15
-        ZIndex: =3
+        ZIndex: =4
 
     RelatedOperatingModel_CS_Edit_ComboBox As combobox:
         ChevronBackground: |-
@@ -724,7 +731,7 @@
         Width: =293
         X: =81
         Y: =572
-        ZIndex: =4
+        ZIndex: =5
 
     "'Create OM Container' As groupContainer.manualLayoutContainer":
         BorderThickness: =1
@@ -735,7 +742,7 @@
         Width: =757
         X: =318
         Y: =134
-        ZIndex: =5
+        ZIndex: =6
 
         "'Create Operating Model Label' As label":
             Align: =Align.Center
@@ -1059,7 +1066,7 @@
         Width: =204
         X: =125
         Y: =617
-        ZIndex: =6
+        ZIndex: =7
 
     "'Create Cap Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -1069,7 +1076,7 @@
         Width: =800
         X: =147
         Y: =91
-        ZIndex: =7
+        ZIndex: =8
 
         "'Create Capability Label' As label":
             Align: =Align.Center
@@ -1768,7 +1775,7 @@
         Width: =721
         X: =276
         Y: =214
-        ZIndex: =8
+        ZIndex: =9
 
         "'Create Capability Label_1' As label":
             Align: =Align.Center
@@ -1819,7 +1826,7 @@
                         'Status Reason':'Status Reason (Process Groups)'.Active
                     }
                 );
-                UpdateContext({varPGCreated:true});
+                UpdateContext({varOpenProcessGroupCreate:false});
                 Reset(txtProcessGroupName);
             Text: |-
                 ="Create
@@ -2204,6 +2211,7 @@
                     ZIndex: =4
 
         btnUpdateProcessGroup As button:
+            DisplayMode: =If(IsBlank(dcPGEditPGName.Text), DisplayMode.Disabled, DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -2236,14 +2244,9 @@
                 UpdateContext({varOpenProcessGroupEdit:false});
                 
             Text: ="Update"
-            Visible: |-
-                =If(varOpenProcessGroupEdit,
-                    If(IsBlank(dcPGEditPGName.Text),
-                    false,
-                    true)
-                )
-            X: =108
-            Y: =495
+            Visible: =If(varOpenProcessGroupEdit, true,false)
+            X: =86
+            Y: =406
             ZIndex: =15
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
@@ -2254,9 +2257,9 @@
         Width: =1160
         X: =99
         Y: =65
-        ZIndex: =9
+        ZIndex: =10
 
-        "'Create Capability Label_2' As label":
+        lblCreateProcess As label:
             Align: =Align.Center
             Color: |-
                 =ColorValue("#FFFFFF")
@@ -2283,49 +2286,6 @@
             Y: =3
             ZIndex: =2
 
-        "'Create Capability Button_2' As button":
-            Fill: |-
-                =ColorValue("#00467f")
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: |-
-                =If(IsBlank('Data Flow Diagram URL Input'.Text),
-                    Patch(
-                        Processes,
-                        Defaults(Processes),
-                        {
-                            'Process Name':'New Process Name Input'.Text,
-                            'Process Group':'Process Group Proc Dropdown'.Selected,
-                            Description:'Description Proc Input'.Text,
-                            'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
-                            Model:Model.'Operating Model',
-                            'Status Reason':'Status Reason (Processes)'.Active
-                        }
-                    ),
-                    Patch(
-                        Processes,
-                        Defaults(Processes),
-                        {
-                            'Process Name':'New Process Name Input'.Text,
-                            'Process Group':'Process Group Proc Dropdown'.Selected,
-                            Description:'Description Proc Input'.Text,
-                            'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
-                            'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
-                            Model:Model.'Operating Model',
-                            'Status Reason':'Status Reason (Processes)'.Active
-                        }
-                    )
-                );
-                UpdateContext({varProcCreated:true});
-                Reset('New Process Name Input'); Reset( 'Description Proc Input');
-            Text: |-
-                ="Create
-                "
-            Visible: =If(IsBlank('New Process Name Input'.Text) || IsBlank('Description Proc Input'.Text),false,true)
-            X: =65
-            Y: =580
-            ZIndex: =3
-
         "'New Process Name Input' As text":
             Default: =""
             Height: =35
@@ -2334,7 +2294,7 @@
             Width: =434
             X: =63
             Y: =133
-            ZIndex: =4
+            ZIndex: =3
 
         "'New Process Name Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -2343,6 +2303,84 @@
             Width: =307
             X: =49
             Y: =93
+            ZIndex: =4
+
+        btnCreateProcess As button:
+            DisplayMode: =If(IsBlank('New Process Name Input'.Text) || IsBlank('Description Proc Input'.Text), DisplayMode.Disabled, DisplayMode.Edit)
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -20%)
+            OnSelect: |-
+                =If(chkDraftModels.Value = true,
+                
+                    If(IsBlank('Data Flow Diagram URL Input'.Text),
+                        Patch(
+                            Processes,
+                            Defaults(Processes),
+                            {
+                                'Process Name':'New Process Name Input'.Text,
+                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                Description:'Description Proc Input'.Text,
+                                'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                                Model:Model.'Operating Model',
+                                'Status Reason':'Status Reason (Processes)'.Active,
+                                'Client Specific':'Client Specific (Processes)'.No
+                            }
+                        ),
+                        Patch(
+                            Processes,
+                            Defaults(Processes),
+                            {
+                                'Process Name':'New Process Name Input'.Text,
+                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                Description:'Description Proc Input'.Text,
+                                'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
+                                'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                                Model:Model.'Operating Model',
+                                'Status Reason':'Status Reason (Processes)'.Active,
+                                'Client Specific':'Client Specific (Processes)'.No
+                            }
+                        )
+                    ),
+                    If(IsBlank('Data Flow Diagram URL Input'.Text),
+                        Patch(
+                            Processes,
+                            Defaults(Processes),
+                            {
+                                'Process Name':'New Process Name Input'.Text,
+                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                Description:'Description Proc Input'.Text,
+                                'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                                Model:Model.'Operating Model',
+                                'Status Reason':'Status Reason (Processes)'.Active,
+                                'Client Specific':'Client Specific (Processes)'.Yes
+                            }
+                        ),
+                        Patch(
+                            Processes,
+                            Defaults(Processes),
+                            {
+                                'Process Name':'New Process Name Input'.Text,
+                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                Description:'Description Proc Input'.Text,
+                                'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
+                                'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
+                                Model:Model.'Operating Model',
+                                'Status Reason':'Status Reason (Processes)'.Active,
+                                'Client Specific':'Client Specific (Processes)'.Yes
+                            }
+                        )
+                    )
+                );
+                UpdateContext({varOpenProcessCreate:false});
+                Reset('New Process Name Input'); Reset( 'Description Proc Input');
+            Text: |-
+                ="Create
+                "
+            Visible: =If(varOpenProcessCreate,true,false)
+            X: =65
+            Y: =580
             ZIndex: =5
 
         "'Operating Model Proc Label' As label":
@@ -2351,8 +2389,8 @@
             Text: ="Operating Model Filter"
             Visible: =false
             Width: =307
-            X: =49
-            Y: =580
+            X: =61
+            Y: =556
             ZIndex: =6
 
         "'Scope Review Proc Label' As label":
@@ -2362,7 +2400,7 @@
             Width: =213
             X: =65
             Y: =368
-            ZIndex: =9
+            ZIndex: =7
 
         "'Scope Review Proc Dropdown' As dropdown":
             ChevronBackground: |-
@@ -2375,7 +2413,7 @@
             Width: =185
             X: =65
             Y: =408
-            ZIndex: =10
+            ZIndex: =8
 
         "'Capability Proc Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -2384,7 +2422,7 @@
             Width: =307
             X: =65
             Y: =187
-            ZIndex: =11
+            ZIndex: =9
 
         "'Operating Model Proc Dropdown' As dropdown":
             ChevronBackground: |-
@@ -2399,7 +2437,7 @@
             Width: =293
             X: =49
             Y: =620
-            ZIndex: =12
+            ZIndex: =10
 
         "'Capability Proc Dropdown' As dropdown":
             ChevronBackground: |-
@@ -2415,7 +2453,7 @@
             Width: =432
             X: =63
             Y: =222
-            ZIndex: =13
+            ZIndex: =11
 
         "'Process Group Proc Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -2424,7 +2462,7 @@
             Width: =307
             X: =65
             Y: =275
-            ZIndex: =14
+            ZIndex: =12
 
         "'Description Proc Input' As text":
             Clear: =true
@@ -2436,7 +2474,7 @@
             Width: =555
             X: =549
             Y: =133
-            ZIndex: =16
+            ZIndex: =13
 
         "'Description Proc Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -2445,17 +2483,7 @@
             Width: =307
             X: =535
             Y: =93
-            ZIndex: =17
-
-        "'Process Created Label' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="Process was successfully created!"
-            Visible: =If(varProcCreated, true, false)
-            Width: =367
-            X: =132
-            Y: =580
-            ZIndex: =18
+            ZIndex: =14
 
         "'Data Flow Diagram URL Input' As text":
             Default: =""
@@ -2466,7 +2494,7 @@
             Width: =555
             X: =549
             Y: =497
-            ZIndex: =19
+            ZIndex: =16
 
         "'Data Flow Diagram URL Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -2475,7 +2503,7 @@
             Width: =307
             X: =549
             Y: =457
-            ZIndex: =20
+            ZIndex: =17
 
         "'Reset Operating Model Cap Button_3' As button":
             Fill: |-
@@ -2492,7 +2520,7 @@
             Width: =115
             X: =368
             Y: =620
-            ZIndex: =21
+            ZIndex: =18
 
         lblDataDiagramInstructions As label:
             Align: =Align.Center
@@ -2505,7 +2533,7 @@
             Width: =581
             X: =549
             Y: =544
-            ZIndex: =24
+            ZIndex: =19
 
         "'Process Group Proc Dropdown' As dropdown":
             ChevronBackground: |-
@@ -2517,7 +2545,7 @@
             Width: =456
             X: =63
             Y: =310
-            ZIndex: =25
+            ZIndex: =20
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -2527,7 +2555,7 @@
         Width: =1119
         X: =103
         Y: =43
-        ZIndex: =10
+        ZIndex: =11
 
         "'Process Name Detail Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
@@ -2731,14 +2759,14 @@
                 X: =12
                 ZIndex: =1
 
-        "'Process Name Label_1' As label":
+        lblProcessGroupName As label:
             FontWeight: =FontWeight.Semibold
             Size: =14
             Text: ="Process Group Name"
-            Visible: =If(varEditProcess=false,true,false)
+            Visible: =If(varEditProcess,false,true)
             Width: =307
-            X: =589
-            Y: =79
+            X: =626
+            Y: =70
             ZIndex: =11
 
         "'Process Data Flow Diagram Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -2796,7 +2824,7 @@
             Y: =280
             ZIndex: =13
 
-        "'Exit Cap Create Icon_3' As icon.Cancel":
+        icoExitProcess As icon.Cancel:
             Color: =RGBA(255, 255, 255, 1)
             Height: =54
             Icon: =Icon.Cancel
@@ -2813,7 +2841,7 @@
             Height: =601
             Item: ='Process Gallery Parent'.Selected
             Visible: =If(varEditProcess,true,false)
-            Width: =1011
+            Width: =911
             X: =46
             Y: =67
             ZIndex: =15
@@ -2828,7 +2856,7 @@
                 Height: =99
                 Required: =false
                 Update: =dcProcEditProcessGroup.Selected
-                Width: =610
+                Width: =606
                 WidthFit: =false
                 X: =0
                 Y: =1
@@ -2848,10 +2876,11 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_processgroupname"]
-                    Items: =colCreateWindowPGFilter
+                    IsSearchable: =false
+                    Items: =colProcessGroups
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_processgroupname"]
-                    SearchItems: =Search(colCreateWindowPGFilter,dcProcEditProcessGroup.SearchText,"neu_processgroupname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =385
@@ -2894,7 +2923,7 @@
                 Height: =50
                 Required: =true
                 Update: =dcProcEditStatusReason.Selected.Value
-                Width: =337
+                Width: =303
                 X: =2
                 Y: =1
                 ZIndex: =1
@@ -3026,7 +3055,8 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =106
                 Required: =false
-                Width: =337
+                Visible: =false
+                Width: =303
                 X: =2
                 Y: =3
                 ZIndex: =1
@@ -3067,7 +3097,7 @@
                 MaxLength: =DataSourceInfo([@Processes], DataSourceInfo.MaxLength, "neu_processname")
                 Required: =true
                 Update: =dcProcEditProcessName.Text
-                Width: =800
+                Width: =606
                 X: =0
                 Y: =0
                 ZIndex: =18
@@ -3140,7 +3170,7 @@
                 Height: =120
                 Required: =true
                 Update: =dcProcEditScopeReview.Selected.Value
-                Width: =337
+                Width: =303
                 X: =1
                 Y: =2
                 ZIndex: =18
@@ -3207,7 +3237,7 @@
                 Height: =275
                 Required: =false
                 Update: =dcProcEditDescription.Text
-                Width: =600
+                Width: =606
                 X: =0
                 Y: =3
                 ZIndex: =18
@@ -3265,6 +3295,7 @@
                     ZIndex: =4
 
         btnSaveProcess As button:
+            DisplayMode: =If(IsBlank(dcProcEditProcessName.Text), DisplayMode.Disabled, DisplayMode.Edit)
             Fill: =RGBA(39, 67, 125, 1)
             OnSelect: |-
                 =If(dcProcEditStatusReason.Selected.Value = 'Status Reason (Processes)'.Inactive,
@@ -3294,17 +3325,17 @@
                 );
                 UpdateContext({varEditProcess:false})
             Text: ="Save Process"
-            Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+            Visible: =If(varEditProcess, true,false)
             X: =739
             Y: =463
             ZIndex: =16
 
-        btnSaveProcess_1 As button:
+        btnDeleteProcess As button:
             Fill: =RGBA(39, 67, 125, 1)
             OnSelect: |-
                 =UpdateContext({varDeleteProcess:true})
             Text: ="Delete Process"
-            Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+            Visible: =If(varEditProcess = true,true,false)
             X: =736
             Y: =551
             ZIndex: =17
@@ -3317,7 +3348,7 @@
             Y: =408
             ZIndex: =18
 
-            Label10 As label:
+            lblConfirmDelete As label:
                 Height: =51
                 Text: ="Are you sure you want to delete this process?"
                 Width: =401
@@ -3333,7 +3364,7 @@
                     UpdateContext({varOpenProcessDetail:false});
                     UpdateContext({varEditProcess:false})
                 Text: ="DELETE"
-                Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+                Visible: =If(varEditProcess = true,true,false)
                 X: =68
                 Y: =118
                 ZIndex: =2
@@ -3343,7 +3374,7 @@
                 OnSelect: |
                     =UpdateContext({varDeleteProcess:false})
                 Text: ="Cancel"
-                Visible: =If(IsBlank(txtClientID),false,If(varEditProcess = true,true,false))
+                Visible: =If(varEditProcess = true,true,false)
                 X: =263
                 Y: =118
                 ZIndex: =3
@@ -3358,7 +3389,7 @@
         Width: =322
         X: =567
         Y: =408
-        ZIndex: =11
+        ZIndex: =12
 
     lblProcInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3368,9 +3399,9 @@
             ="WARNING:  Setting a Process to Inactive will delete the Process."
         Visible: =If(varEditProcess && dcProcEditStatusReason.Selected.Value = 'Status Reason (Processes)'.Inactive,true,false)
         Width: =584
-        X: =519
-        Y: =330
-        ZIndex: =12
+        X: =621
+        Y: =416
+        ZIndex: =13
 
     lblCapInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3382,7 +3413,7 @@
         Width: =290
         X: =657
         Y: =489
-        ZIndex: =13
+        ZIndex: =14
 
     lblModelPropMessage As label:
         Align: =Align.Center
@@ -3393,7 +3424,7 @@
         Width: =279
         X: =81
         Y: =393
-        ZIndex: =14
+        ZIndex: =15
 
     lblAssociateError As label:
         Align: =Align.Center
@@ -3406,21 +3437,14 @@
         Y: =468
         ZIndex: =16
 
-    TextInput3 As text:
-        Default: =First(colCreateWindowPGFilter).'Process Group Name'
-        Visible: =false
-        X: =168
-        Y: =678
-        ZIndex: =17
-
     dpCapabilityFilter As dropdown:
         Items: =colCreateWindowCapacityFilter
         OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability))
         OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
         Visible: =If(varEditProcess,true,false)
-        X: =764
+        X: =728
         Y: =156
-        ZIndex: =18
+        ZIndex: =17
 
     chkDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
@@ -3430,5 +3454,5 @@
         Width: =195
         X: =81
         Y: =15
-        ZIndex: =19
+        ZIndex: =18
 
