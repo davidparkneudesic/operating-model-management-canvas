@@ -197,7 +197,7 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && 'Status Reason' <> 'Status Reason (Implementation Stages)'.Inactive),Sequence)
+            Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && 'Status' = 'Status (Implementation Stages)'.Active),Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -279,7 +279,7 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter('Product Backlog Items','Implementation Stage'.'Implementation Stage Name' = glyImplementationStage.Selected.'Implementation Stage Name'), Sequence)
+            Items: =Sort(Filter('Product Backlog Items','Implementation Stage'.'Implementation Stage Name' = glyImplementationStage.Selected.'Implementation Stage Name' && Status = 'Status (Product Backlog Items)'.Active), Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -322,7 +322,7 @@ scrImplementationModels As screen:
                 PaddingRight: =0
                 PaddingTop: =0
                 Size: =8
-                Text: =ThisItem.Sequence
+                Text: =ThisItem.'Product Backlog Item Name'
                 VerticalAlign: =VerticalAlign.Top
                 Width: =Title5.Width
                 X: =10
@@ -361,7 +361,7 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name'), Sequence)
+            Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name' && Status= 'Status (Tasks)'.Active), Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -412,7 +412,7 @@ scrImplementationModels As screen:
                 PaddingRight: =0
                 PaddingTop: =0
                 Size: =8
-                Text: =ThisItem.Sequence
+                Text: =ThisItem.'Task Name'
                 VerticalAlign: =VerticalAlign.Top
                 Width: =Title7.Width
                 X: =Title7.X
@@ -2786,7 +2786,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =DataCardValue19.Selected
+                Update: =dcProductBacklogItem.Selected
                 Width: =454
                 X: =1
                 Y: =0
@@ -2802,7 +2802,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue19 As combobox:
+                dcProductBacklogItem As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_productbacklogitemname"]
@@ -2831,7 +2831,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue19.Y + DataCardValue19.Height
+                    Y: =dcProductBacklogItem.Y + dcProductBacklogItem.Height
                     ZIndex: =3
 
                 StarVisible56 As label:
@@ -2854,7 +2854,7 @@ scrImplementationModels As screen:
                 Height: =50
                 MaxLength: =DataSourceInfo([@Tasks], DataSourceInfo.MaxLength, "neu_taskname")
                 Required: =true
-                Update: =DataCardValue5.Text
+                Update: =dcTaskName.Text
                 Width: =454
                 X: =0
                 Y: =0
@@ -2870,7 +2870,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue5 As text:
+                dcTaskName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -2899,7 +2899,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue5.Y + DataCardValue5.Height
+                    Y: =dcTaskName.Y + dcTaskName.Height
                     ZIndex: =3
 
                 StarVisible51 As label:
@@ -2921,7 +2921,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =true
-                Update: =DataCardValue14.Selected.Value
+                Update: =dcDetermination.Selected.Value
                 Width: =454
                 X: =0
                 Y: =1
@@ -2937,7 +2937,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue14 As combobox:
+                dcDetermination As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =[Parent.Default]
                     DisplayFields: =["Value"]
@@ -2966,7 +2966,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue14.Y + DataCardValue14.Height
+                    Y: =dcDetermination.Y + dcDetermination.Height
                     ZIndex: =3
 
                 StarVisible52 As label:
@@ -2988,7 +2988,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =250
                 Required: =false
-                Update: =DataCardValue15.Text
+                Update: =dcDescription.Text
                 Width: =454
                 X: =1
                 Y: =1
@@ -3004,7 +3004,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue15 As text:
+                dcDescription As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -3034,7 +3034,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue15.Y + DataCardValue15.Height
+                    Y: =dcDescription.Y + dcDescription.Height
                     ZIndex: =3
 
                 StarVisible53 As label:
@@ -3056,7 +3056,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =true
-                Update: =Value(DataCardValue16.Text)
+                Update: =Value(dcTaskSequence.Text)
                 Width: =454
                 X: =0
                 Y: =2
@@ -3072,7 +3072,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue16 As text:
+                dcTaskSequence As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -3101,7 +3101,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue16.Y + DataCardValue16.Height
+                    Y: =dcTaskSequence.Y + dcTaskSequence.Height
                     ZIndex: =3
 
                 StarVisible54 As label:
@@ -3123,7 +3123,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =DataCardValue17.Selected.Value
+                Update: =dcTaskStatusReason.Selected.Value
                 Width: =454
                 X: =1
                 Y: =2
@@ -3139,7 +3139,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue17 As combobox:
+                dcTaskStatusReason As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =[Parent.Default]
                     DisplayFields: =["Value"]
@@ -3168,7 +3168,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue17.Y + DataCardValue17.Height
+                    Y: =dcTaskStatusReason.Y + dcTaskStatusReason.Height
                     ZIndex: =3
 
                 StarVisible55 As label:
@@ -3193,7 +3193,18 @@ scrImplementationModels As screen:
             Height: =44
             HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
             OnSelect: |
-                =
+                =If(dcTaskStatusReason.Selected.Value = 'Status Reason (Tasks)'.Inactive,
+                Patch(
+                    'Tasks',
+                    glyTask.Selected,
+                    {
+                       
+                        Status: 'Status (Tasks)'.Inactive
+                
+                    }
+                ),
+                 SubmitForm(frmEditTask)
+                 );
                 
                 
                 UpdateContext({varEditOpenTask:false});
