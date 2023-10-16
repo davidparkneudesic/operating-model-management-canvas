@@ -3318,12 +3318,14 @@
                             'Scope Review':dcProcEditScopeReview.Selected.Value,
                             'Status Reason':dcProcEditStatusReason.Selected.Value,
                              Description:dcProcEditDescription.Text,
+                             'Process Group':dcProcEditProcessGroup.Selected,
                             'Data Flow URL':dcProcEditDataFlow.Text
                 
                         }
                     )
                 );
-                UpdateContext({varEditProcess:false})
+                UpdateContext({varEditProcess:false});
+                UpdateContext({varOpenProcessDetail:false})
             Text: ="Save Process"
             Visible: =If(varEditProcess, true,false)
             X: =739
