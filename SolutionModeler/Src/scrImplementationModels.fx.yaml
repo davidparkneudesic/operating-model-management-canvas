@@ -1192,7 +1192,7 @@ scrImplementationModels As screen:
                     }
                 );
                 
-                UpdateContext({varIPCreated:true});
+                UpdateContext({varCreateOpenImplementationPhase:false});
                 Reset(txtImplementationPhaseName); Reset(txtSequenceIpInput);
             Text: ="Create"
             Visible: =If(varCreateOpenImplementationPhase,true,false)
@@ -1216,7 +1216,7 @@ scrImplementationModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
-            Items: =Filter('Implementation Models', 'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name')
+            Items: =Filter('Implementation Models', 'Status Reason' = 'Status Reason (Implementation Models)'.Draft)
             Size: =12
             Visible: =If(varCreateOpenImplementationPhase,true,false)
             Width: =413
@@ -1573,7 +1573,7 @@ scrImplementationModels As screen:
             Color: =RGBA(255, 0, 0, 1)
             Height: =158
             Text: ="Setting an Implementation Phase to Inactive will render it and all related records inacessible."
-            Visible: =If(dcIPStatusReasonEdit.Selected.Value = 'Status Reason (Implementation Phases)'.Inactive,true,false)
+            Visible: =If(dcIPStatusReasonEdit.Selected.Value && varEditOpenImplementationPhase = 'Status Reason (Implementation Phases)'.Inactive,true,false)
             Width: =224
             X: =608
             Y: =256
@@ -1654,8 +1654,7 @@ scrImplementationModels As screen:
                         Model:Model.'Implementation Model'
                     }
                 );
-                
-                UpdateContext({varISCreated:true});
+                UpdateContext({varCreateOpenImplementationStage:false});
                 Reset(txtImplementationStageName); Reset(txtISSequence);
             Text: ="Create"
             Visible: |
@@ -1735,7 +1734,7 @@ scrImplementationModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
-            Items: =Filter('Implementation Phases', 'Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model')
+            Items: =Filter('Implementation Phases', 'Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model' && Status = 'Status (Implementation Phases)'.Active)
             Size: =12
             Visible: =If(varEditOpenImplementationStage,false,true)
             Width: =413
@@ -2027,6 +2026,7 @@ scrImplementationModels As screen:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            DisplayMode: =If(IsBlank(dcImplementationPhase.Selected) || IsBlank(dcImplementationStageName.Text) || IsBlank(dcISSequence.Text),DisplayMode.Disabled, DisplayMode.Edit)
             Fill: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -2052,9 +2052,7 @@ scrImplementationModels As screen:
             Text: |-
                 ="Update
                 "
-            Visible: |-
-                =If(IsBlank(dcImplementationPhase.Selected),false,
-                If(varEditOpenImplementationStage && Len(dcImplementationStageName.Text)>0 && Len(dcISSequence)>0 ,true))
+            Visible: =If(varEditOpenImplementationStage, true,false)
             Width: =188
             X: =134
             Y: =509
@@ -2129,6 +2127,7 @@ scrImplementationModels As screen:
             ZIndex: =4
 
         "'Create PBI Button' As button":
+            DisplayMode: =If(IsBlank(txtProductBacklogName.Text) || IsBlank(dcPBISequence),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             Height: =48
@@ -2148,12 +2147,13 @@ scrImplementationModels As screen:
                 );
                 
                 UpdateContext({varPBICreated:true});
+                UpdateContext({varCreateOpenProductBacklogItem:false});
                 Reset(txtProductBacklogName); Reset(dcPBISequence);
             Text: ="Create"
-            Visible: =If(IsBlank(txtProductBacklogName.Text) || IsBlank(dcPBISequence),false,true)
+            Visible: =If(varCreateOpenProductBacklogItem,true,false)
             Width: =180
-            X: =356
-            Y: =412
+            X: =53
+            Y: =442
             ZIndex: =5
 
         "'Implementation Model PBI Label' As label":
@@ -2249,7 +2249,7 @@ scrImplementationModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             Height: =35
-            Items: =Filter('Implementation Stages', 'Implementation Stage Name' = glyImplementationStage.Selected.'Implementation Stage Name')
+            Items: =Filter('Implementation Stages', 'Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active)
             Size: =12
             Visible: =If(varEditOpenProductBacklogItem,false,true)
             Width: =413
@@ -2277,7 +2277,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =DataCardValue13.Selected
+                Update: =dcImplementationStage.Selected
                 Width: =617
                 X: =0
                 Y: =0
@@ -2293,13 +2293,13 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue13 As combobox:
+                dcImplementationStage As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_implementationstagename"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =Filter('Implementation Stages','Implementation Phase'.'Implementation Phase'= glyImplementationPhase.Selected.'Implementation Phase')
+                    Items: =Filter('Implementation Stages','Implementation Phase'.'Implementation Phase'= glyImplementationPhase.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_implementationstagename"]
                     SearchItems: =[]
@@ -2322,7 +2322,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue13.Y + DataCardValue13.Height
+                    Y: =dcImplementationStage.Y + dcImplementationStage.Height
                     ZIndex: =3
 
                 StarVisible48 As label:
@@ -2345,7 +2345,7 @@ scrImplementationModels As screen:
                 Height: =50
                 MaxLength: =DataSourceInfo([@'Product Backlog Items'], DataSourceInfo.MaxLength, "neu_productbacklogitemname")
                 Required: =true
-                Update: =DataCardValue2.Text
+                Update: =dcProductBacklogItemName.Text
                 Width: =617
                 X: =0
                 Y: =1
@@ -2361,7 +2361,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue2 As text:
+                dcProductBacklogItemName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -2390,7 +2390,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue2.Y + DataCardValue2.Height
+                    Y: =dcProductBacklogItemName.Y + dcProductBacklogItemName.Height
                     ZIndex: =3
 
                 StarVisible45 As label:
@@ -2412,7 +2412,7 @@ scrImplementationModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =true
-                Update: =Value(DataCardValue7.Text)
+                Update: =Value(DcEditPBISequence.Text)
                 Width: =617
                 X: =0
                 Y: =2
@@ -2428,7 +2428,7 @@ scrImplementationModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue7 As text:
+                DcEditPBISequence As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -2457,7 +2457,7 @@ scrImplementationModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue7.Y + DataCardValue7.Height
+                    Y: =DcEditPBISequence.Y + DcEditPBISequence.Height
                     ZIndex: =3
 
                 StarVisible46 As label:
@@ -2541,6 +2541,7 @@ scrImplementationModels As screen:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            DisplayMode: =If(IsBlank(dcImplementationStage.Selected) || IsBlank(DcEditPBISequence.Text) || IsBlank(dcProductBacklogItemName.Text),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -2566,8 +2567,8 @@ scrImplementationModels As screen:
             Text: ="Update"
             Visible: =If(varEditOpenProductBacklogItem,true,false)
             Width: =234
-            X: =160
-            Y: =495
+            X: =88
+            Y: =490
             ZIndex: =18
 
         Label15 As label:
@@ -2639,6 +2640,7 @@ scrImplementationModels As screen:
             ZIndex: =4
 
         "'Create Task Button_1' As button":
+            DisplayMode: =If(IsBlank(txtTaskName.Text) || IsBlank('Sequence Task Input'.Text),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             Height: =48
@@ -2660,14 +2662,13 @@ scrImplementationModels As screen:
                 );
                 
                 UpdateContext({varTaskCreated:true});
+                UpdateContext({varCreateOpenTask:false});
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input');
             Text: ="Create"
-            Visible: |-
-                =If(varEditOpenTask,false,
-                    IsBlank(txtTaskName.Text) || IsBlank('Sequence Task Input'.Text),false
-                    ,true)
+            Visible: |
+                =If(varEditOpenTask,false,true)
             Width: =180
-            X: =455
+            X: =64
             Y: =520
             ZIndex: =5
 
@@ -2764,7 +2765,7 @@ scrImplementationModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             Height: =35
-            Items: =Filter('Product Backlog Items', 'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name')
+            Items: =Filter('Product Backlog Items', 'Implementation Stage'.'Implementation Stage' = glyImplementationStage.Selected.'Implementation Stage' && Status = 'Status (Product Backlog Items)'.Active)
             Size: =12
             Visible: =If(varEditOpenTask, false,true)
             Width: =413
@@ -2777,6 +2778,7 @@ scrImplementationModels As screen:
             Height: =448
             Item: =glyTask.Selected
             NumberOfColumns: =2
+            Visible: =If(varCreateOpenTask,false,true)
             Width: =908
             X: =36
             Y: =67
@@ -3191,6 +3193,7 @@ scrImplementationModels As screen:
             Color: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            DisplayMode: =If(IsBlank(dcTaskName.Text) || IsBlank(dcTaskSequence.Text), DisplayMode.Disabled, DisplayMode.Edit)
             Fill: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
                     ColorFade(RGBA(26, 76, 145, 1), -30%),
@@ -3216,7 +3219,7 @@ scrImplementationModels As screen:
                 UpdateContext({varEditOpenTask:false});
             Size: =12
             Text: ="Update Task"
-            Visible: =If(chkImpDraftModels.Value = true,true,false)
+            Visible: =If(varEditOpenTask,true,false)
             Width: =234
             X: =64
             Y: =539
