@@ -1120,6 +1120,7 @@
                         Model:Model.'Operating Model'
                     }
                 );
+                Reset('Parent Capability Combobox');
                 UpdateContext({varOpenCapabilityCreate:false});
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
@@ -1226,6 +1227,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
             Items: =Filter('Operating Models','Status Reason' = 'Status Reason (Operating Models)'.Draft)
+            OnChange: =Reset('Parent Capability Combobox')
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
             X: =89
@@ -1385,7 +1387,7 @@
                     Items: |-
                         =//Choices([@Capabilities].neu_ParentCapability)
                         //Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name' && Capability <> GUID(dcCapabilityID.Text))
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name')
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name' && 'Capability Name' <> dcCapEditCapabilityNameCap.Text)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
