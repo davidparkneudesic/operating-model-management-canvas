@@ -525,83 +525,6 @@
                 X: =15
                 ZIndex: =1
 
-            "'Sub Capability L3 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
-                DelayItemLoading: =true
-                Height: =If(varExpandCapGal, 200, 0)
-                Items: =colCapabiilitiesL2
-                Layout: =Layout.Vertical
-                LoadingSpinner: =LoadingSpinner.Data
-                OnSelect: |-
-                    =ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Sub Capability L3 Gallery'.Selected.Capability&& Status = 'Status (Process Groups)'.Active));
-                    ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities,Capability = 'Sub Capability L3 Gallery'.Selected.Capability));
-                TemplateFill: |-
-                    =If(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
-                            !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate), 
-                        RGBA(204, 208, 225, 1),
-                        If (ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
-                                (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
-                                RGBA(153, 160, 196, 1),
-                                If ((varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate) && !(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name'),
-                                    RGBA(202,202,202,1),
-                                    RGBA(255,255,255,1)
-                            )
-                        )
-                    )
-                TemplatePadding: =0
-                TemplateSize: =36
-                Width: ='Sub Capability L2 Gallery'.Width - 20
-                X: =10
-                Y: =41
-                ZIndex: =1
-
-                NextArrow7 As icon.ChevronRight:
-                    AccessibleLabel: =Self.Tooltip
-                    Color: =RGBA(166, 166, 166, 1)
-                    Height: =32
-                    Icon: =Icon.ChevronRight
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =12
-                    PaddingLeft: =12
-                    PaddingRight: =12
-                    PaddingTop: =12
-                    Tooltip: ="View item details"
-                    Width: =32
-                    X: |
-                        ='Sub Capability L3 Gallery'.Width - 44
-                    Y: =2
-                    ZIndex: =2
-
-                Rectangle7 As rectangle:
-                    Height: =Parent.TemplateHeight
-                    OnSelect: =Select(Parent)
-                    Visible: =ThisItem.IsSelected
-                    Width: =4
-                    ZIndex: =4
-
-                Label3 As label:
-                    Height: =36
-                    OnSelect: =Select(Parent)
-                    Size: =11
-                    Text: =ThisItem.'Capability Name'
-                    Width: =223
-                    X: =15
-                    ZIndex: =5
-
-                icoEditCap_3 As icon.Edit:
-                    Color: =RGBA(166, 166, 166, 1)
-                    Height: =29
-                    Icon: =Icon.Edit
-                    OnSelect: |-
-                        =Select(Parent);
-                        UpdateContext({varEditCap:false});
-                        UpdateContext({varEditSubCap:false});
-                        UpdateContext({varEditL3Cap:true})
-                    Visible: =If(IsBlank(txtClientID.Text),false,true)
-                    Width: =28
-                    X: =232
-                    Y: =7
-                    ZIndex: =6
-
             "'Expand Down Icon' As icon.ChevronDown":
                 Height: =27
                 Icon: =Icon.ChevronDown
@@ -613,7 +536,7 @@
                 X: |
                     ='Sub Capability L2 Gallery'.Width - 60
                 Y: =7
-                ZIndex: =2
+                ZIndex: =3
 
             "'Expand Up Icon' As icon.ChevronUp":
                 Height: =27
@@ -627,13 +550,13 @@
                 X: |
                     ='Sub Capability L2 Gallery'.Width - 60
                 Y: =7
-                ZIndex: =3
+                ZIndex: =4
 
             Rectangle1 As rectangle:
                 Height: =41
                 OnSelect: =Select(Parent)
                 Width: =4
-                ZIndex: =4
+                ZIndex: =5
 
             icoEditCap_2 As icon.Edit:
                 Color: =RGBA(166, 166, 166, 1)
@@ -641,13 +564,90 @@
                 Icon: =Icon.Edit
                 OnSelect: |-
                     =Select(Parent);
-                    UpdateContext({varEditCap:true});
+                    UpdateContext({varEditCap:false});
                     UpdateContext({varEditSubCap:true})
                 Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
                 X: =185
                 Y: =7
+                ZIndex: =6
+
+        "'Sub Capability L3 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            DelayItemLoading: =true
+            Height: =180
+            Items: =colCapabiilitiesL2
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Sub Capability L3 Gallery'.Selected.Capability&& Status = 'Status (Process Groups)'.Active));
+                ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities,Capability = 'Sub Capability L3 Gallery'.Selected.Capability));
+            TemplateFill: |-
+                =If(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
+                        !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate), 
+                    RGBA(204, 208, 225, 1),
+                    If (ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
+                            (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
+                            RGBA(153, 160, 196, 1),
+                            If ((varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate) && !(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name'),
+                                RGBA(202,202,202,1),
+                                RGBA(255,255,255,1)
+                        )
+                    )
+                )
+            TemplatePadding: =0
+            TemplateSize: =36
+            Width: ='Sub Capability L2 Gallery'.Width - 20
+            X: =348
+            Y: =380
+            ZIndex: =16
+
+            NextArrow7 As icon.ChevronRight:
+                AccessibleLabel: =Self.Tooltip
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =32
+                Icon: =Icon.ChevronRight
+                OnSelect: =Select(Parent)
+                PaddingBottom: =12
+                PaddingLeft: =12
+                PaddingRight: =12
+                PaddingTop: =12
+                Tooltip: ="View item details"
+                Width: =32
+                X: |
+                    ='Sub Capability L3 Gallery'.Width - 44
+                Y: =2
+                ZIndex: =2
+
+            Rectangle7 As rectangle:
+                Height: =Parent.TemplateHeight
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.IsSelected
+                Width: =4
+                ZIndex: =4
+
+            Label3 As label:
+                Height: =36
+                OnSelect: =Select(Parent)
+                Size: =11
+                Text: =ThisItem.'Capability Name'
+                Width: =223
+                X: =15
                 ZIndex: =5
+
+            icoEditCap_3 As icon.Edit:
+                Color: =RGBA(166, 166, 166, 1)
+                Height: =32
+                Icon: =Icon.Edit
+                OnSelect: |-
+                    =Select(Parent);
+                    UpdateContext({varEditCap:false});
+                    UpdateContext({varEditSubCap:false});
+                    UpdateContext({varEditL3Cap:true})
+                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
+                Width: =33
+                X: =226
+                Y: =2
+                ZIndex: =6
 
     "'Operating Model Screen Label' As label":
         Align: =Align.Center
@@ -1065,7 +1065,7 @@
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
         Height: =587
-        Visible: =If(varOpenCapabilityCreate ||varEditCap || varEditL3Cap, true, false)
+        Visible: =If(varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap, true, false)
         Width: =800
         X: =147
         Y: =91
@@ -1666,31 +1666,87 @@
         btnUpdateCapability As button:
             DisplayMode: =If(IsBlank(dcCapEditCapabilityNameCap.Text) || IsBlank(dcCapEditOpModelName.Selected),DisplayMode.Disabled,DisplayMode.Edit)
             OnSelect: |-
-                =If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
+                =If(varEditCap,
                 
-                    Patch(Capabilities,
-                    'Capability Level 1 Gallery'.Selected,
-                    {
-                    'Operating Model':dcCapEditOpModelName.Selected,
-                    'Capability Name':dcCapEditCapabilityNameCap.Text,
-                    'Scope Review':dcCapEditScopeReview.Selected.Value,
-                    'Parent Capability':dcCapEditParentCapability.Selected,
-                    Status:'Status (Capabilities)'.Inactive,
-                    'Status Reason':'Status Reason (Capabilities)'.Inactive
+                    If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
                 
-                    }
-                ),
-                    Patch(Capabilities,
-                    'Capability Level 1 Gallery'.Selected,
-                    {
-                    'Operating Model':dcCapEditOpModelName.Selected,
-                    'Capability Name':dcCapEditCapabilityNameCap.Text,
-                    'Scope Review':dcCapEditScopeReview.Selected.Value,
-                    'Parent Capability':dcCapEditParentCapability.Selected,
-                    Status:'Status (Capabilities)'.Active,
-                     'Status Reason':CapEditStatusReason.Selected.Value
-                    }
-                )
+                        Patch(Capabilities,
+                            'Capability Level 1 Gallery'.Selected,
+                            {
+                            'Operating Model':dcCapEditOpModelName.Selected,
+                            'Capability Name':dcCapEditCapabilityNameCap.Text,
+                            'Scope Review':dcCapEditScopeReview.Selected.Value,
+                            'Parent Capability':dcCapEditParentCapability.Selected,
+                            Status:'Status (Capabilities)'.Inactive,
+                            'Status Reason':'Status Reason (Capabilities)'.Inactive
+                            }
+                        ),
+                            Patch(Capabilities,
+                            'Capability Level 1 Gallery'.Selected,
+                            {
+                            'Operating Model':dcCapEditOpModelName.Selected,
+                            'Capability Name':dcCapEditCapabilityNameCap.Text,
+                            'Scope Review':dcCapEditScopeReview.Selected.Value,
+                            'Parent Capability':dcCapEditParentCapability.Selected,
+                            Status:'Status (Capabilities)'.Active,
+                            'Status Reason':CapEditStatusReason.Selected.Value
+                            }
+                        )
+                    ),
+                        If(varEditSubCap,
+                            If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
+                
+                            Patch(Capabilities,
+                                'Sub Capability L2 Gallery'.Selected,
+                                {
+                                'Operating Model':dcCapEditOpModelName.Selected,
+                                'Capability Name':dcCapEditCapabilityNameCap.Text,
+                                'Scope Review':dcCapEditScopeReview.Selected.Value,
+                                'Parent Capability':dcCapEditParentCapability.Selected,
+                                Status:'Status (Capabilities)'.Inactive,
+                                'Status Reason':'Status Reason (Capabilities)'.Inactive
+                                }
+                            ),
+                                Patch(Capabilities,
+                                'Sub Capability L2 Gallery'.Selected,
+                                {
+                                'Operating Model':dcCapEditOpModelName.Selected,
+                                'Capability Name':dcCapEditCapabilityNameCap.Text,
+                                'Scope Review':dcCapEditScopeReview.Selected.Value,
+                                'Parent Capability':dcCapEditParentCapability.Selected,
+                                Status:'Status (Capabilities)'.Active,
+                                'Status Reason':CapEditStatusReason.Selected.Value
+                                }
+                                )
+                        ),
+                        If(varEditL3Cap,
+                            If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
+                
+                                Patch(Capabilities,
+                                    'Sub Capability L3 Gallery'.Selected,
+                                    {
+                                    'Operating Model':dcCapEditOpModelName.Selected,
+                                    'Capability Name':dcCapEditCapabilityNameCap.Text,
+                                    'Scope Review':dcCapEditScopeReview.Selected.Value,
+                                    'Parent Capability':dcCapEditParentCapability.Selected,
+                                    Status:'Status (Capabilities)'.Inactive,
+                                    'Status Reason':'Status Reason (Capabilities)'.Inactive
+                                    }
+                                ),
+                                    Patch(Capabilities,
+                                    'Sub Capability L3 Gallery'.Selected,
+                                    {
+                                    'Operating Model':dcCapEditOpModelName.Selected,
+                                    'Capability Name':dcCapEditCapabilityNameCap.Text,
+                                    'Scope Review':dcCapEditScopeReview.Selected.Value,
+                                    'Parent Capability':dcCapEditParentCapability.Selected,
+                                    Status:'Status (Capabilities)'.Active,
+                                    'Status Reason':CapEditStatusReason.Selected.Value
+                                    }
+                                )
+                            )
+                        )
+                    )
                 );
                 UpdateContext({varOpenCapabilityCreate:false});
                 UpdateContext({varCapCreated:false});
@@ -1738,7 +1794,7 @@
                 UpdateContext({varPGCreated:false});
                 UpdateContext({varOpenProcessGroupEdit:false});
                 Reset(txtProcessGroupName);
-                Reset('Operating Model PG Dropdown');
+                //Reset('Operating Model PG Dropdown');
                 Reset(ddCapability);
             Width: =54
             X: ='Create Process Group Container'.Width - 60
