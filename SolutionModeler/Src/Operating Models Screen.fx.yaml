@@ -1102,6 +1102,7 @@
             ZIndex: =2
 
         btnCreateCapability As button:
+            DisplayMode: =If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.Selected),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -1119,17 +1120,16 @@
                         Model:Model.'Operating Model'
                     }
                 );
-                UpdateContext({varCapCreated:true});
+                UpdateContext({varOpenCapabilityCreate:false});
+                UpdateContext({varEditCap:false});
+                UpdateContext({varEditL3Cap:false});
                 Reset('New Capability Name Input');
             Text: |-
                 ="Create
                 "
-            Visible: |-
-                =If(varOpenCapabilityCreate,
-                    If(IsBlank('New Capability Name Input'.Text) || IsBlank('Operating Model Cap Dropdown'.Selected),false,true)
-                )
-            X: =324
-            Y: =518
+            Visible: =If(varOpenCapabilityCreate,true,false)
+            X: =89
+            Y: =506
             ZIndex: =3
 
         "'New Capability Name Input' As text":
@@ -1164,16 +1164,6 @@
             X: =89
             Y: =175
             ZIndex: =6
-
-        "'Capability Created Label' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="Capability was successfully created!"
-            Visible: =If(varCapCreated, true, false)
-            Width: =367
-            X: =221
-            Y: =466
-            ZIndex: =7
 
         "'Scope Review Cap Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -1217,12 +1207,11 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             DisplayFields: =["neu_capabilityname"]
             Height: =35
+            IsSearchable: =false
             Items: |
                 =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
             SearchFields: =["neu_capabilityname"]
-            SearchItems: |-
-                =Search(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
-                ,'Parent Capability Combobox'.SearchText,"neu_capabilityname")
+            SearchItems: =[]
             SelectMultiple: =false
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
@@ -1236,9 +1225,7 @@
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
-            Items: |-
-                =Filter('Operating Models','Operating Model' = 'Operating Model Gallery'.Selected.'Operating Model')
-                //colOperatingModelFilter
+            Items: =Filter('Operating Models','Status Reason' = 'Status Reason (Operating Models)'.Draft)
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
             X: =89
@@ -1324,10 +1311,11 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_operatingmodelname"]
                     IsSearchable: =false
-                    Items: |-
+                    Items: |
                         =If(Len(ClientSolutionIdentifier)>0,
                         Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier)),
-                        'Operating Models')
+                        Filter('Operating Models', 'Status Reason' = 'Status Reason (Operating Models)'.Draft)
+                        )
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_operatingmodelname"]
                     SearchItems: =[]
@@ -1394,9 +1382,10 @@
                     DisplayFields: =["neu_capabilityname"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: |
+                    Items: |-
                         =//Choices([@Capabilities].neu_ParentCapability)
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name' && Capability <> GUID(dcCapabilityID.Text))
+                        //Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name' && Capability <> GUID(dcCapabilityID.Text))
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
@@ -1673,6 +1662,7 @@
                     ZIndex: =4
 
         btnUpdateCapability As button:
+            DisplayMode: =If(IsBlank(dcCapEditCapabilityNameCap.Text) || IsBlank(dcCapEditOpModelName.Selected),DisplayMode.Disabled,DisplayMode.Edit)
             OnSelect: |-
                 =If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
                 
@@ -1708,9 +1698,9 @@
                 Reset('New Capability Name Input');
             Text: ="Update"
             Visible: |
-                =If(varEditCap || varEditSubCap || varEditL3Cap, If(IsBlank(dcCapEditCapabilityNameCap.Text) || IsBlank(dcCapEditOpModelName.Selected), false,true),false)
-            X: =324
-            Y: =410
+                =If(varEditCap || varEditSubCap || varEditL3Cap, true,false)
+            X: =89
+            Y: =486
             ZIndex: =18
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":

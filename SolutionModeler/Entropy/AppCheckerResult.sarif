@@ -9987,6 +9987,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Operating Models Screen'.varCapCreated"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.varCapCreated",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varCapCreated",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Operating Models Screen'.'Operating Model Screen Label'.Text"
                 }
               ],
