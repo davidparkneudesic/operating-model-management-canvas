@@ -1773,6 +1773,14 @@
             Y: =486
             ZIndex: =18
 
+        Label10 As label:
+            Height: =104
+            Text: ="Be careful to not select a Capability that is at a third level of Capabilities as the model only supports up to three levels of Capabilities."
+            Width: =316
+            X: =458
+            Y: =271
+            ZIndex: =19
+
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
         Height: =481
