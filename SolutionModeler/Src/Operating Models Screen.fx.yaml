@@ -1,6 +1,6 @@
 "'Operating Models Screen' As screen":
     Fill: |-
-        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditOM ||varEditCap, 
+        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditOM ||varEditCap || varEditL3Cap || varEditSubCap, 
             RGBA(149, 149, 149, 1),
             RGBA(237, 237, 237, 1)
         )
@@ -715,7 +715,7 @@
             =ColorValue("#00467f")
         DisplayFields: =["neu_operatingmodelname"]
         Fill: |-
-            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail, 
+            =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditCap || varEditL3Cap || varEditSubCap, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =33
         IsSearchable: =false
@@ -773,6 +773,7 @@
             ZIndex: =2
 
         "'Create Button OM' As button":
+            DisplayMode: =If(IsBlank(dcEditOMOperatingModelName.Text),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -842,7 +843,6 @@
                 
                 
             Text: =If(varOpenOperatingModelCreate,"Create","Update")
-            Visible: =If(IsBlank(dcEditOMOperatingModelName.Text),false,true)
             X: =62
             Y: =336
             ZIndex: =3
@@ -999,6 +999,7 @@
             OnSelect: |-
                 =UpdateContext({varDeleteOM:true})
             Text: ="Delete Operating Model"
+            Visible: =If(varEditOM,true,false)
             Width: =261
             X: =303
             Y: =336
@@ -1233,7 +1234,11 @@
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
-            Items: =Filter('Operating Models','Status Reason' = 'Status Reason (Operating Models)'.Draft)
+            Items: |-
+                =If(IsBlank(ClientSolutionIdentifier),
+                      Filter('Operating Models','Status Reason' = 'Status Reason (Operating Models)'.Draft),
+                      Filter('Operating Models', 'Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier))
+                      )
             OnChange: =Reset('Parent Capability Combobox')
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)

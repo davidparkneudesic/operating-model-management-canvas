@@ -198,7 +198,7 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && 'Status' = 'Status (Implementation Stages)'.Active),Sequence)
+            Items: =Sort(Filter('Implementation Stages','Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active),Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -1784,7 +1784,7 @@ scrImplementationModels As screen:
                     DisplayFields: =["neu_implementationphasename"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && 'Status' = 'Status (Implementation Phases)'.Active)
+                    Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && Status = 'Status (Implementation Phases)'.Active)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_implementationphasename"]
                     SearchItems: =[]
@@ -3204,7 +3204,7 @@ scrImplementationModels As screen:
             OnSelect: |
                 =If(dcTaskStatusReason.Selected.Value = 'Status Reason (Tasks)'.Inactive,
                 Patch(
-                    'Tasks',
+                    Tasks,
                     glyTask.Selected,
                     {
                        

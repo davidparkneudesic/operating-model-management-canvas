@@ -17,6 +17,7 @@
       "modifiedby": "Modified By",
       "modifiedon": "Modified On",
       "modifiedonbehalfby": "Modified By (Delegate)",
+      "neu_appliestouserstorytype": "Applies to User Story Type",
       "neu_ImplementationPhaseID": "Implementation Phase",
       "neu_implementationstage_AsyncOperations": "System Jobs",
       "neu_implementationstage_BulkDeleteFailures": "Bulk Delete Failures",
@@ -31,6 +32,7 @@
       "neu_model": "Model",
       "neu_neu_productbacklogitem_ImplementationStag": "Product Backlog Items",
       "neu_sequence": "Sequence",
+      "neu_worktype": "Work Type",
       "overriddencreatedon": "Record Created On",
       "owningbusinessunit": "Owning Business Unit",
       "owningteam": "Owning Team",
@@ -98,6 +100,53 @@
     },
     "OptionSetTypeKey": "StatusType",
     "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Implementation Stages",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "User Story Type",
+    "Name": "neu_userstorytype",
+    "OptionSetInfoNameMapping": {
+      "871820000": "Business Process",
+      "871820001": "Data Migration",
+      "871820002": "Integration",
+      "871820003": "Reporting"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_appliestouserstorytype",
+        "OptionSetReferenceEntityName": "Implementation Stages"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "neu_userstorytype",
+        "OptionSetReferenceEntityName": "Product Backlog Items"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_appliestouserstorytype",
+    "RelatedEntityName": "Implementation Stages",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Work Type",
+    "Name": "neu_worktype",
+    "OptionSetInfoNameMapping": {
+      "871820000": "Design",
+      "871820001": "Build",
+      "871820002": "Test"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_worktype",
+        "OptionSetReferenceEntityName": "Implementation Stages"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "neu_worktype",
     "RelatedEntityName": "Implementation Stages",
     "Type": "OptionSetInfo"
   }
