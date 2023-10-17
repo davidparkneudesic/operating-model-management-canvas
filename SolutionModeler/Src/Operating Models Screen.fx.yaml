@@ -1290,7 +1290,7 @@
                         )
                 )
             Visible: =If(varEditCap || varEditSubCap || varEditL3Cap,true,false)
-            Width: =567
+            Width: =558
             X: =71
             Y: =69
             ZIndex: =17
@@ -1305,7 +1305,7 @@
                 Height: =50
                 Required: =false
                 Update: =dcCapEditOpModelName.Selected
-                Width: =378
+                Width: =372
                 X: =0
                 Y: =0
                 ZIndex: =1
@@ -1375,7 +1375,7 @@
                 Height: =41
                 Required: =false
                 Update: =dcCapEditParentCapability.Selected
-                Width: =378
+                Width: =372
                 X: =0
                 Y: =2
                 ZIndex: =1
@@ -1445,8 +1445,8 @@
                 Height: =40
                 Required: =false
                 Visible: =false
-                Width: =189
-                X: =201
+                Width: =186
+                X: =1
                 Y: =3
                 ZIndex: =1
 
@@ -1484,7 +1484,7 @@
                 MaxLength: =DataSourceInfo([@Capabilities], DataSourceInfo.MaxLength, "neu_capabilityname")
                 Required: =true
                 Update: =dcCapEditCapabilityNameCap.Text
-                Width: =567
+                Width: =558
                 X: =0
                 Y: =1
                 ZIndex: =21
@@ -1551,7 +1551,7 @@
                 Height: =50
                 Required: =true
                 Update: =CapEditStatusReason.Selected.Value
-                Width: =189
+                Width: =186
                 X: =2
                 Y: =2
                 ZIndex: =21
@@ -1618,8 +1618,8 @@
                 Height: =50
                 Required: =true
                 Update: =dcCapEditScopeReview.Selected.Value
-                Width: =189
-                X: =200
+                Width: =186
+                X: =0
                 Y: =3
                 ZIndex: =21
 
@@ -1777,8 +1777,8 @@
             Height: =104
             Text: ="Be careful to not select a Capability that is at a third level of Capabilities as the model only supports up to three levels of Capabilities."
             Width: =316
-            X: =458
-            Y: =271
+            X: =424
+            Y: =382
             ZIndex: =19
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
