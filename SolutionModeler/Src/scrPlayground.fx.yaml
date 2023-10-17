@@ -1,4 +1,4 @@
-"'Process Detail Screen' As screen":
+scrPlayground As screen:
     Fill: =RGBA(255, 255, 255, 1)
     OnVisible: =Parent
 
