@@ -179,24 +179,24 @@
                 Y: =6
                 ZIndex: =6
 
-        "'Process Group Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        "glyProcessGroup As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =colProcessGroups
+            Items: =Sort(colProcessGroups,'Process Group Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
-                =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = 'Process Group Gallery'.Selected.'Process Group'));
-                ClearCollect(colFilteredProcesses, Filter(Processes, 'Process Group'.'Process Group' = 'Process Group Gallery'.Selected.'Process Group'))
+                =ClearCollect(colCreateWindowPGFilter, Filter('Process Groups', 'Process Group' = glyProcessGroup.Selected.'Process Group'));
+                ClearCollect(colFilteredProcesses, Filter(Processes, 'Process Group'.'Process Group' = glyProcessGroup.Selected.'Process Group'))
             TemplateFill: |-
-                =If(ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
+                =If(ThisItem.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
                      RGBA(204, 208, 225, 1),
-                    If (ThisItem.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && 
+                    If (ThisItem.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && 
                             (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail),
                             RGBA(153, 160, 196, 1),
                             RGBA(0,0,0,0)
@@ -255,8 +255,8 @@
             Height: =504
             Items: |+
                 =If(IsBlank(txtClientID.Text),
-                    Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),'Process Name'),
-                 Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),'Process Name')
+                    Sort(Filter(Processes,'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),'Process Name'),
+                 Sort(Filter(Processes,'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),'Process Name')
                  //colFilteredProcesses
                 )
                 
@@ -1933,7 +1933,7 @@
         frmEditProcessGroup As form:
             DataSource: ='Process Groups'
             Height: =421
-            Item: ='Process Group Gallery'.Selected
+            Item: =glyProcessGroup.Selected
             Visible: =If(varOpenProcessGroupEdit, true, false)
             Width: =629
             X: =58
@@ -2222,7 +2222,7 @@
                     //Update to Inactive State
                     Patch(
                         'Process Groups',
-                        'Process Group Gallery'.Selected,
+                        glyProcessGroup.Selected,
                         {
                             Capability:dcPGEditCapability.Selected,
                             'Process Group Name':dcPGEditPGName.Text,
@@ -2233,7 +2233,7 @@
                     //Update to Active State
                      Patch(
                         'Process Groups',
-                        'Process Group Gallery'.Selected,
+                        glyProcessGroup.Selected,
                         {
                             Capability:dcPGEditCapability.Selected,
                             'Process Group Name':dcPGEditPGName.Text,
@@ -2448,7 +2448,7 @@
             Height: =35
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
-                colCreateWindowCapacityFilter
+                Sort(colCreateWindowCapacityFilter,'Capability Name')
             OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability))
             OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
             Width: =432
@@ -2878,7 +2878,9 @@
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_processgroupname"]
                     IsSearchable: =false
-                    Items: =colProcessGroups
+                    Items: |-
+                        =//colProcessGroups
+                        Filter('Process Groups',Capability.'Capability' = dpCapabilityFilter.Selected.'Capability')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_processgroupname"]
                     SearchItems: =[]
@@ -3442,7 +3444,7 @@
 
     dpCapabilityFilter As dropdown:
         Items: =colCreateWindowCapacityFilter
-        OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability))
+        OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability));
         OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
         Visible: =If(varEditProcess,true,false)
         X: =728
@@ -3451,6 +3453,11 @@
 
     chkDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
+        OnCheck: =First(glyOperatingModels.AllItems)
+        OnUncheck: |+
+            =Clear(colSubCapabilities);
+            Clear(colProcessGroups);
+            
         Size: =12
         Text: ="Show Draft Models"
         Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)
