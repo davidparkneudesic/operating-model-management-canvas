@@ -367,7 +367,7 @@
                 Height: =50
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
-                Update: =ConnectionName_Edit_Input.Text
+                Update: =txtConnectionName.Text
                 Width: =798
                 X: =0
                 Y: =0
@@ -383,7 +383,7 @@
                     Y: =10
                     ZIndex: =1
 
-                ConnectionName_Edit_Input As text:
+                txtConnectionName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -413,7 +413,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =ConnectionName_Edit_Input.Y + ConnectionName_Edit_Input.Height
+                    Y: =txtConnectionName.Y + txtConnectionName.Height
                     ZIndex: =3
 
                 StarVisible9_1 As label:
@@ -567,6 +567,7 @@
                     ZIndex: =4
 
         btnUpdate_1 As button:
+            DisplayMode: =If(IsBlank(txtConnectionName.Text) || IsBlank(DevOpsURL_Edit_Input.Text) || IsBlank(PAT_Edit_Input.Text), DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -579,7 +580,7 @@
                     'Client Solution Connections',
                         galConnections.Selected,
                         {
-                            Name:ConnectionName_Edit_Input.Text,
+                            Name:txtConnectionName.Text,
                             'DevOps Organization URL':DevOpsURL_Edit_Input.Text,
                             'Personal Access Token':PAT_Edit_Input.Text
                         }
@@ -921,6 +922,7 @@
                 Height: =50
                 Required: =false
                 Update: =dcClientSolution.Selected
+                Visible: =false
                 Width: =429
                 X: =1
                 Y: =1
@@ -1117,6 +1119,7 @@
                     ZIndex: =4
 
         "'Create Conn Button_1' As button":
+            DisplayMode: =If(IsBlank(ConnectionName_Input.Text) || IsBlank(DevOpsURL_Input.Text) || IsBlank(PersonalAccessToken_Input.Text) || IsBlank(dcClientSolution),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -1127,7 +1130,6 @@
                 UpdateContext({varOpenConnectionCreate:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
-            Visible: =If(IsBlank(ConnectionName_Input.Text) || IsBlank(DevOpsURL_Input.Text) || IsBlank(PersonalAccessToken_Input.Text) || IsBlank(dcClientSolution),false,true)
             X: =376
             Y: =430
             ZIndex: =2

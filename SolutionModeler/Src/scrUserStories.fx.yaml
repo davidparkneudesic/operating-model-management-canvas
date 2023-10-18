@@ -1613,11 +1613,10 @@
     "'Create User Story Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =722
+        Height: =766
         Visible: =If(varOpenUserStoryCreate,true,false)
         Width: =1304
         X: =62
-        Y: =45
         ZIndex: =9
 
         "'Create UserStory Form' As form":
@@ -1754,6 +1753,7 @@
                     ChevronHoverBackground: =ColorFade(RGBA(26, 76, 145, 1), -30%)
                     Default: ="No"
                     Items: =Choices('Epic Level Item (User Stories)')
+                    Tooltip: ="Set to Yes if you are specifying a non-development phase of a project that is sized according to the level of development work. "
                     Width: =161
                     X: =30
                     Y: =44
@@ -2054,6 +2054,7 @@
                     Default: ="0"
                     Format: =TextFormat.Number
                     Reset: =resetControl
+                    Tooltip: ="The factor that all of the development hours (non epic user stories) that this phase should be multiplied by to come up with total hours for this phase"
                     Width: =240
                     X: =30
                     Y: =51
@@ -2122,6 +2123,7 @@
 
                 txtUserStoryNameInput As text:
                     Default: =""
+                    HintText: ="Simple description of the functionality desired."
                     OnSelect: |-
                         =UpdateContext({varUSCreated:false})
                     Reset: =resetControl
@@ -2140,6 +2142,7 @@
                 Height: =50
                 Required: =false
                 Update: =Value('Estimated Hours Input'.Text)
+                Visible: =If('EpicLevelItemDropdown For Create'.Selected.Value = 'Epic Level Item (User Stories)'.Yes , false, true)
                 Width: =319
                 X: =3
                 Y: =0
@@ -2248,6 +2251,7 @@
                 txtUSDescription As text:
                     Default: =""
                     Height: =124
+                    HintText: ="Provide enough detail about some major capabilty that the client has asked for"
                     Mode: =TextMode.MultiLine
                     Reset: =resetControl
                     Width: =1114
@@ -2256,6 +2260,7 @@
                     ZIndex: =5
 
         "'Create US Button' As button":
+            DisplayMode: =If(IsBlank(txtUSDescription)|| IsBlank(txtUserStoryNameInput),DisplayMode.Disabled, DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -2294,9 +2299,8 @@
                 UpdateContext({varUSCreated:true});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
                 Set(varOpenUserStoryCreate,false);
-                Back(ScreenTransition.CoverRight)
+                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
             Text: ="Create"
-            Visible: =If(IsBlank(txtUSDescription)|| IsBlank(txtUserStoryNameInput), false, true)
             X: =44
             Y: =670
             ZIndex: =2
@@ -2308,10 +2312,11 @@
                 =ColorValue("#00467f")
             Font: =Font.'Lato Black'
             FontWeight: =FontWeight.Bold
-            Height: =62
+            Height: =59
             Size: =20
             Text: ="Create New User Story"
             Width: ='Create User Story Container'.Width
+            Y: =3
             ZIndex: =3
 
         Icon1 As icon.Cancel:
@@ -2322,6 +2327,7 @@
                 =Set(varOpenUserStoryCreate,false);
                 UpdateContext({varUSCreated:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
+                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
             Width: =54
             X: ='Create User Story Container'.Width - 60
             Y: =3

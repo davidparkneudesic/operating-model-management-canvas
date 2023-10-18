@@ -180,6 +180,7 @@
                 UpdateContext({varModelPropStarted:false})
             Size: =14
             Text: ="Create DevOps Project"
+            Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
             X: =1095
@@ -205,6 +206,7 @@
                 //Set(ClientSolutionIdentifier, ClientSolutionGUID.Text);
             Size: =14
             Text: ="Manage ADO Connections"
+            Tooltip: ="Create Azure DevOps connections so that this data can be transmitted to a clients AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
             X: =1095
@@ -230,6 +232,7 @@
                 UpdateContext({varModelPropStarted:false})
             Size: =14
             Text: ="Client Operating Models"
+            Tooltip: ="Click this button to generate Operating Model(s) for this client solution."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
             X: =942
@@ -1034,6 +1037,7 @@
                 Set(varOpenUserStoryCreate,true);
                 UpdateContext({varModelPropStarted:false})
             Text: ="New User Story"
+            Tooltip: ="Click this button to create new User Stories for this Client Solution."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =212
             X: =835
