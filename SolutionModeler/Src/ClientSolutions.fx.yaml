@@ -226,7 +226,7 @@
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
-                =Navigate('Operating Models Screen', ScreenTransition.Cover);
+                =Navigate(scrOperatingModels, ScreenTransition.Cover);
                 Set(ClientSolutionIdentifier,dcClientSolutionID.Text);
                 ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = glyClientSolutionGallery.Selected.'Solution Name'));
                 UpdateContext({varModelPropStarted:false})

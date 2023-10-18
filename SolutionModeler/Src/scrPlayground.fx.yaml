@@ -8,7 +8,7 @@ scrPlayground As screen:
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
-            Navigate('Operating Models Screen',ScreenTransition.UnCoverRight)
+            Navigate(scrOperatingModels,ScreenTransition.UnCoverRight)
         Width: =52
         X: =15
         Y: =25

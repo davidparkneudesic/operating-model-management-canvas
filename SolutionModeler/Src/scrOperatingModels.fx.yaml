@@ -1,4 +1,4 @@
-"'Operating Models Screen' As screen":
+scrOperatingModels As screen:
     Fill: |-
         =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditOM ||varEditCap || varEditL3Cap || varEditSubCap, 
             RGBA(149, 149, 149, 1),

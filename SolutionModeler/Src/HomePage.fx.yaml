@@ -87,7 +87,7 @@ HomePage As screen:
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
-                =Navigate('Operating Models Screen', ScreenTransition.Cover);
+                =Navigate(scrOperatingModels, ScreenTransition.Cover);
             Text: ="Go to Operating Models"
             Width: =280
             X: =47
