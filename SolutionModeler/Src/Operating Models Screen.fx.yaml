@@ -256,7 +256,8 @@
             Items: |+
                 =If(IsBlank(txtClientID.Text),
                     Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),'Process Name'),
-                 colFilteredProcesses
+                 Sort(Filter(Processes,'Process Group'.'Process Group Name' = 'Process Group Gallery'.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),'Process Name')
+                 //colFilteredProcesses
                 )
                 
             Layout: =Layout.Vertical
@@ -534,19 +535,6 @@
                 X: =15
                 ZIndex: =1
 
-            "'Expand Down Icon' As icon.ChevronDown":
-                Height: =27
-                Icon: =Icon.ChevronDown
-                OnSelect: |-
-                    =Select(Parent);
-                    UpdateContext({varExpandCapGal:true})
-                Visible: =If(!varExpandCapGal,true, false)
-                Width: =40
-                X: |
-                    ='Sub Capability L2 Gallery'.Width - 60
-                Y: =7
-                ZIndex: =3
-
             Rectangle1 As rectangle:
                 Height: =41
                 OnSelect: =Select(Parent)
@@ -563,8 +551,8 @@
                     UpdateContext({varEditSubCap:true})
                 Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
                 Width: =35
-                X: =185
-                Y: =7
+                X: =221
+                Y: =6
                 ZIndex: =6
 
         "'Sub Capability L3 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
@@ -720,7 +708,7 @@
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =33
         IsSearchable: =false
-        Items: =Filter('Operating Models','Client Specific' = false && Status = 'Status (Operating Models)'.Active)
+        Items: =Filter('Operating Models','Client Specific' = false && 'Status Reason'= 'Status Reason (Operating Models)'.Active)
         OnSelect: |-
             =UpdateContext({varOpModelSelected:RelatedOperatingModel_CS_Edit_ComboBox.Selected});
             UpdateContext({varAssociateError:false})
@@ -1978,10 +1966,14 @@
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_capabilityname"]
-                    Items: =colCreateWindowCapacityFilter
+                    IsSearchable: =false
+                    Items: |+
+                        =//colCreateWindowCapacityFilter
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name')
+                        
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
-                    SearchItems: =Search(colCreateWindowCapacityFilter,dcPGEditCapability.SearchText,"neu_capabilityname")
+                    SearchItems: =[]
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60

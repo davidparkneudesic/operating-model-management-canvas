@@ -7199,66 +7199,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Expand Down Icon'.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Expand Down Icon'.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Expand Down Icon'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Expand Down Icon'.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Expand Down Icon'.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "Operating Models Screen",
-                "type": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'Expand Down Icon'"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Operating Models Screen'.OperatingModel_Gallery_Window.'Sub Capability L2 Gallery'.'L2 Sub Capability Label'.TabIndex"
                 }
               ],
@@ -9968,6 +9908,36 @@
               },
               "properties": {
                 "member": "varCapCreated",
+                "module": "Operating Models Screen",
+                "type": "'Operating Models Screen'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Operating Models Screen'.varExpandCapGal"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Operating Models Screen'.varExpandCapGal",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varExpandCapGal",
                 "module": "Operating Models Screen",
                 "type": "'Operating Models Screen'"
               }
