@@ -110,7 +110,7 @@
             Fill: |-
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Height: =212
+            Height: =137
             Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -326,7 +326,7 @@
         "'Operating Model Label' As label":
             FontWeight: =FontWeight.Bold
             Height: =44
-            Size: =18
+            Size: =16
             Text: ="Operating Model"
             Width: =270
             X: =49
@@ -336,17 +336,17 @@
         "'Capability Label' As label":
             FontWeight: =FontWeight.Bold
             Height: =44
-            Size: =18
-            Text: ="Capability"
+            Size: =16
+            Text: ="Level 1 Capability"
             Width: =270
-            X: =348
+            X: =343
             Y: =12
             ZIndex: =6
 
         "'Process Group Label' As label":
             FontWeight: =FontWeight.Bold
             Height: =44
-            Size: =18
+            Size: =16
             Text: ="Process Group"
             Width: =270
             X: =641
@@ -356,7 +356,7 @@
         "'Process Label' As label":
             FontWeight: =FontWeight.Bold
             Height: =44
-            Size: =18
+            Size: =16
             Text: ="Process"
             Width: =270
             X: =941
@@ -365,14 +365,14 @@
 
         "'Sub Capability Label' As label":
             FontWeight: =FontWeight.Bold
-            Height: =44
+            Height: =33
             Size: =16
             Text: |-
-                ="Sub Capability
+                ="Level 2 Capability
                 "
             Width: =270
-            X: =348
-            Y: =277
+            X: =341
+            Y: =193
             ZIndex: =9
 
         "'Create OM Button' As button":
@@ -496,7 +496,7 @@
             Fill: |-
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Height: =239
+            Height: =160
             Items: =Sort(colSubCapabilities, 'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -518,13 +518,15 @@
                 //RGBA(204, 208, 225, 1)
             TemplateSize: =41
             Width: =280
-            X: =341
-            Y: =321
+            X: =343
+            Y: =226
             ZIndex: =15
 
             "'L2 Sub Capability Label' As label":
                 Height: =41
-                OnSelect: =Select(Parent)
+                OnSelect: |-
+                    =Select(Parent);
+                    UpdateContext({varExpandCapGal:true})
                 Size: =10
                 Text: =ThisItem.'Capability Name'
                 Width: |
@@ -544,20 +546,6 @@
                     ='Sub Capability L2 Gallery'.Width - 60
                 Y: =7
                 ZIndex: =3
-
-            "'Expand Up Icon' As icon.ChevronUp":
-                Height: =27
-                Icon: =Icon.ChevronUp
-                OnSelect: |-
-                    =Reset('Sub Capability L2 Gallery');
-                    UpdateContext({varExpandCapGal:false});
-                    Clear(colCapabiilitiesL2)
-                Visible: =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name',varExpandCapGal)
-                Width: =40
-                X: |
-                    ='Sub Capability L2 Gallery'.Width - 60
-                Y: =7
-                ZIndex: =4
 
             Rectangle1 As rectangle:
                 Height: =41
@@ -580,8 +568,9 @@
                 ZIndex: =6
 
         "'Sub Capability L3 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+            BorderThickness: =2
             DelayItemLoading: =true
-            Height: =180
+            Height: =145
             Items: =colCapabiilitiesL2
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -603,8 +592,8 @@
                 )
             TemplatePadding: =0
             TemplateSize: =36
-            Width: ='Sub Capability L2 Gallery'.Width - 20
-            X: =353
+            Width: =272
+            X: =345
             Y: =425
             ZIndex: =16
 
@@ -655,6 +644,18 @@
                 X: =226
                 Y: =2
                 ZIndex: =6
+
+        "'Sub Capability Label_1' As label":
+            FontWeight: =FontWeight.Bold
+            Height: =44
+            Size: =16
+            Text: |-
+                ="Level 3 Capability
+                "
+            Width: =270
+            X: =341
+            Y: =386
+            ZIndex: =17
 
     "'Operating Model Screen Label' As label":
         Align: =Align.Center
