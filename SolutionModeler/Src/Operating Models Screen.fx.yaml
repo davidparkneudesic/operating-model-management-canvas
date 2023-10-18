@@ -716,7 +716,7 @@
         SearchItems: =[]
         SelectMultiple: =false
         Size: =12
-        Visible: =If(IsBlank(txtClientID.Text),false,true)
+        Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
         Width: =293
         X: =81
         Y: =572
@@ -1046,13 +1046,16 @@
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
             =If(IsBlank(RelatedOperatingModel_CS_Edit_ComboBox.Selected),UpdateContext({varAssociateError:true}),
-            CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
+                If(IsBlank(ClientSolutionIdentifier),
+                    CopyStandardModeltoDraftModel.Run(varOpModelSelected.'Operating Model Name'),
+                    CopyOperatingModeltoClientSolution.Run(varOpModelSelected.'Operating Model Name',dcClientSolutionID.Text, dcSolutionName.Text,dcClientProspectName.Text);
+            );
             UpdateContext({varModelPropStarted:true});
             Reset(RelatedOperatingModel_CS_Edit_ComboBox)
             )
         Text: ="Associate Model"
         Tooltip: ="Select a Standard Operating Model from the above drop down to copy it into this Client Solution"
-        Visible: =If(IsBlank(txtClientID.Text),false,true)
+        Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
         Width: =204
         X: =125
         Y: =617
