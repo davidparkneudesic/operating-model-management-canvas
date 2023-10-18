@@ -1124,7 +1124,7 @@
                 Height: =45
                 MaxLength: =DataSourceInfo([@'User Stories'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
-                Update: =DataCardValue4_1.Text
+                Update: =dcUserStoryName.Text
                 Width: =500
                 WidthFit: =false
                 X: =0
@@ -1141,7 +1141,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue4_1 As text:
+                dcUserStoryName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -1174,7 +1174,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue4_1.Y + DataCardValue4_1.Height
+                    Y: =dcUserStoryName.Y + dcUserStoryName.Height
                     ZIndex: =3
 
                 Star_Important_Label_1 As label:
@@ -1263,7 +1263,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =true
-                Update: =DataCardValue8_1.Text
+                Update: =dcUserStoryDescription.Text
                 Width: =1221
                 WidthFit: =true
                 X: =0
@@ -1280,7 +1280,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue8_1 As text:
+                dcUserStoryDescription As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -1311,7 +1311,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue8_1.Y + DataCardValue8_1.Height
+                    Y: =dcUserStoryDescription.Y + dcUserStoryDescription.Height
                     ZIndex: =3
 
                 Star_Important_Label_2 As label:
@@ -1340,6 +1340,7 @@
             ZIndex: =4
 
         "'Update Button' As button":
+            DisplayMode: =If(IsBlank(dcUserStoryName.Text) || IsBlank(dcUserStoryDescription.Text),DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varOpenDeleteUserStoryWindow || varOpenUserStoryCreate || varMessageUserStoryDeleted || varOpenUserStoryUpdatedWindow, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -1353,8 +1354,8 @@
                         'User Stories',
                         glyCSUserStories.Selected,
                         {
-                            Name:DataCardValue4_1.Text,
-                            Description:DataCardValue8_1.Text,
+                            Name:dcUserStoryName.Text,
+                            Description:dcUserStoryDescription.Text,
                             'Client Solution':'Client Solution US Dropdown_1'.Selected,
                             'Epic Level Item':EpicLevelItem_Dropdown_Update.Selected.Value,
                             'Operating Model':OperatingModel_ComboBox.Selected,
@@ -1368,8 +1369,8 @@
                         'User Stories',
                         glyCSUserStories.Selected,
                         {
-                            Name:DataCardValue4_1.Text,
-                            Description:DataCardValue8_1.Text,
+                            Name:dcUserStoryName.Text,
+                            Description:dcUserStoryDescription.Text,
                             'Client Solution':'Client Solution US Dropdown_1'.Selected,
                             'Epic Level Item':EpicLevelItem_Dropdown_Update.Selected.Value,
                             'Effort Percentage':Value(DataCardValue11_1.Text) / 100,
