@@ -186,7 +186,7 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(colProcessGroups,'Process Group Name')
+            Items: =Sort(Sort(colProcessGroups,'Process Group Name'),Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -1820,7 +1820,8 @@ scrOperatingModels As screen:
                         Capability:ddCapability.Selected,
                         'Scope Review':'Scope Review PG Dropdown'.Selected.Value,
                         Model:Model.'Operating Model',
-                        'Status Reason':'Status Reason (Process Groups)'.Active
+                        'Status Reason':'Status Reason (Process Groups)'.Active,
+                        Sequence:Value(txtNewProcessSequence.Text)
                     }
                 );
                 UpdateContext({varOpenProcessGroupCreate:false});
@@ -1842,8 +1843,8 @@ scrOperatingModels As screen:
             Size: =12
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =434
-            X: =89
-            Y: =215
+            X: =86
+            Y: =224
             ZIndex: =4
 
         "'New Process Group Name Label' As label":
@@ -2010,6 +2011,73 @@ scrOperatingModels As screen:
                     Y: =DataCardKey32.Y
                     ZIndex: =4
 
+            Sequence_DataCard6 As typedDataCard.numberEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_sequence"
+                Default: =ThisItem.Sequence
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Process Groups'],DataSourceInfo.DisplayName,"neu_sequence")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =Value(dcProcessGroupSequence.Text)
+                Width: =209
+                X: =2
+                Y: =1
+                ZIndex: =1
+
+                DataCardKey66 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcProcessGroupSequence As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Format: =TextFormat.Number
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey66.Y + DataCardKey66.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage63 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcProcessGroupSequence.Y + dcProcessGroupSequence.Height
+                    ZIndex: =3
+
+                StarVisible27 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey66.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey66.Y
+                    ZIndex: =4
+
             "'Process Group Name Data Card' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_processgroupname"
@@ -2077,73 +2145,6 @@ scrOperatingModels As screen:
                     Y: =DataCardKey27.Y
                     ZIndex: =4
 
-            "'Scope Review_DataCard1' As typedDataCard.comboBoxOptionSetSingleEditCard":
-                BorderStyle: =BorderStyle.Solid
-                DataField: ="neu_scopereview"
-                Default: =ThisItem.'Scope Review'
-                DisplayMode: =Parent.DisplayMode
-                DisplayName: =DataSourceInfo([@'Process Groups'],DataSourceInfo.DisplayName,"neu_scopereview")
-                Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
-                Required: =true
-                Update: =dcPGEditScopeReview.Selected.Value
-                Width: =209
-                X: =2
-                Y: =1
-                ZIndex: =18
-
-                DataCardKey30 As label:
-                    AutoHeight: =true
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =30
-                    Y: =10
-                    ZIndex: =1
-
-                dcPGEditScopeReview As combobox:
-                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    DefaultSelectedItems: =[Parent.Default]
-                    DisplayFields: =["Value"]
-                    DisplayMode: =Parent.DisplayMode
-                    IsSearchable: =false
-                    Items: =Choices('Scope Review')
-                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
-                    SearchFields: =["Value"]
-                    SearchItems: =[]
-                    SelectMultiple: =false
-                    Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =DataCardKey30.Y + DataCardKey30.Height + 5
-                    ZIndex: =2
-
-                ErrorMessage25 As label:
-                    AutoHeight: =true
-                    Height: =10
-                    Live: =Live.Assertive
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: =Parent.Error
-                    Visible: =Parent.DisplayMode=DisplayMode.Edit
-                    Width: =Parent.Width - 60
-                    X: =30
-                    Y: =dcPGEditScopeReview.Y + dcPGEditScopeReview.Height
-                    ZIndex: =3
-
-                StarVisible19 As label:
-                    Align: =Align.Center
-                    Height: =DataCardKey30.Height
-                    Text: ="*"
-                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
-                    Width: =30
-                    Wrap: =false
-                    Y: =DataCardKey30.Y
-                    ZIndex: =4
-
             "'Status Reason_DataCard1' As typedDataCard.comboBoxOptionSetSingleEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="statuscode"
@@ -2155,7 +2156,7 @@ scrOperatingModels As screen:
                 Required: =true
                 Update: =dcPGEditStatusReason.Selected.Value
                 Width: =209
-                X: =0
+                X: =1
                 Y: =2
                 ZIndex: =18
 
@@ -2211,6 +2212,73 @@ scrOperatingModels As screen:
                     Y: =DataCardKey31.Y
                     ZIndex: =4
 
+            "'Scope Review_DataCard1' As typedDataCard.comboBoxOptionSetSingleEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_scopereview"
+                Default: =ThisItem.'Scope Review'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Process Groups'],DataSourceInfo.DisplayName,"neu_scopereview")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =true
+                Update: =dcPGEditScopeReview.Selected.Value
+                Width: =209
+                X: =0
+                Y: =2
+                ZIndex: =18
+
+                DataCardKey30 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcPGEditScopeReview As combobox:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    DefaultSelectedItems: =[Parent.Default]
+                    DisplayFields: =["Value"]
+                    DisplayMode: =Parent.DisplayMode
+                    IsSearchable: =false
+                    Items: =Choices('Scope Review')
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    SearchFields: =["Value"]
+                    SearchItems: =[]
+                    SelectMultiple: =false
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey30.Y + DataCardKey30.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage25 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcPGEditScopeReview.Y + dcPGEditScopeReview.Height
+                    ZIndex: =3
+
+                StarVisible19 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey30.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey30.Y
+                    ZIndex: =4
+
         btnUpdateProcessGroup As button:
             DisplayMode: =If(IsBlank(dcPGEditPGName.Text), DisplayMode.Disabled, DisplayMode.Edit)
             Fill: |-
@@ -2238,7 +2306,8 @@ scrOperatingModels As screen:
                             Capability:dcPGEditCapability.Selected,
                             'Process Group Name':dcPGEditPGName.Text,
                             'Scope Review':dcPGEditScopeReview.Selected.Value,
-                            'Status Reason':dcPGEditStatusReason.Selected.Value
+                            'Status Reason':dcPGEditStatusReason.Selected.Value,
+                            Sequence:Value(dcProcessGroupSequence.Text)
                         }
                     )
                 );
@@ -2249,6 +2318,25 @@ scrOperatingModels As screen:
             X: =86
             Y: =406
             ZIndex: =15
+
+        txtNewProcessSequence As text:
+            Default: =""
+            Format: =TextFormat.Number
+            Width: =138
+            X: =382
+            Y: =305
+            ZIndex: =16
+
+        lblSequence As label:
+            Color: =RGBA(0,0,0,1)
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: ="Sequence"
+            Visible: =If(varOpenProcessGroupCreate,true,false)
+            Width: =307
+            X: =382
+            Y: =272
+            ZIndex: =17
 
     "'Create Process Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
