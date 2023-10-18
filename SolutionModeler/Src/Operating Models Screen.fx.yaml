@@ -604,8 +604,8 @@
             TemplatePadding: =0
             TemplateSize: =36
             Width: ='Sub Capability L2 Gallery'.Width - 20
-            X: =348
-            Y: =380
+            X: =353
+            Y: =425
             ZIndex: =16
 
             NextArrow7 As icon.ChevronRight:
@@ -1218,7 +1218,7 @@
             Height: =35
             IsSearchable: =false
             Items: |
-                =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
+                =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No),'Capability Name')
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -1399,7 +1399,7 @@
                     Items: |-
                         =//Choices([@Capabilities].neu_ParentCapability)
                         //Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name' && Capability <> GUID(dcCapabilityID.Text))
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name' && 'Capability Name' <> dcCapEditCapabilityNameCap.Text)
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name' && 'Capability Name' <> dcCapEditCapabilityNameCap.Text  && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
@@ -1770,16 +1770,8 @@
             Visible: |
                 =If(varEditCap || varEditSubCap || varEditL3Cap, true,false)
             X: =89
-            Y: =486
+            Y: =487
             ZIndex: =18
-
-        Label10 As label:
-            Height: =104
-            Text: ="Be careful to not select a Capability that is at a third level of Capabilities as the model only supports up to three levels of Capabilities."
-            Width: =316
-            X: =424
-            Y: =382
-            ZIndex: =19
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)

@@ -62,28 +62,6 @@
     }
   },
   {
-    "DisplayName": "Applies to User Story Type (Product Backlog Items)",
-    "Name": "neu_productbacklogitem_neu_appliestouserstorytyped",
-    "OptionSetInfoNameMapping": {
-      "871820000": "Business Process",
-      "871820001": "Data Migration",
-      "871820002": "Integration",
-      "871820003": "Reporting"
-    },
-    "OptionSetIsBooleanValued": false,
-    "OptionSetIsGlobal": false,
-    "OptionSetReference": {
-      "OptionSetReferenceItem0": {
-        "OptionSetReferenceColumnName": "neu_appliestouserstorytyped",
-        "OptionSetReferenceEntityName": "Product Backlog Items"
-      }
-    },
-    "OptionSetTypeKey": "PicklistType",
-    "RelatedColumnInvariantName": "neu_appliestouserstorytyped",
-    "RelatedEntityName": "Product Backlog Items",
-    "Type": "OptionSetInfo"
-  },
-  {
     "DisplayName": "Linked to Gap User Stories (Product Backlog Items)",
     "Name": "neu_productbacklogitem_neu_linkedtogapuserstory",
     "OptionSetInfoNameMapping": {

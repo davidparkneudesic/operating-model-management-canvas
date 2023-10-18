@@ -27,6 +27,7 @@
       "neu_capability_SyncErrors": "Sync Errors",
       "neu_capabilityid": "Capability",
       "neu_capabilityname": "Capability Name",
+      "neu_isl3capability": "Is L3 Capability",
       "neu_model": "Model",
       "neu_neu_capability_ParentCapability_neu_capab": "Capabilities",
       "neu_neu_processgroup_CapabilityID_neu_capabil": "Process Groups",
@@ -63,6 +64,26 @@
       "c3780eae-d100-ee11-8f6e-0022482bd981": "Level 1 Capabilities Sub Grid",
       "d313417c-c504-4492-92df-b80a93dc64b4": "Capability Lookup View"
     }
+  },
+  {
+    "DisplayName": "Is L3 Capability (Capabilities)",
+    "Name": "neu_capability_neu_isl3capability",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "neu_isl3capability",
+        "OptionSetReferenceEntityName": "Capabilities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "neu_isl3capability",
+    "RelatedEntityName": "Capabilities",
+    "Type": "OptionSetInfo"
   },
   {
     "DisplayName": "Status (Capabilities)",
