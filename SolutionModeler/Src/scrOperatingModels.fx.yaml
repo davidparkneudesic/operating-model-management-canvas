@@ -2515,8 +2515,24 @@ scrOperatingModels As screen:
                         Filter(
                             'Process Groups',
                             Capability.Capability = dcPGEditCapability.Selected.Capability && Status = 'Status (Process Groups)'.Active
-                        )
+                       )
+                    );
+                    ClearCollect(
+                    colSelectedCapability,
+                    Filter(
+                        'Capabilities',
+                        Capability = dcPGEditCapability.Selected.Capability
                     )
+                );
+                If(
+                    IsBlank(First(colSelectedCapability).'Parent Capability'.Capability),
+                    UpdateContext({varCapLevel:"Level 1"}),
+                    If(
+                        dcPGEditCapability.Selected.'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.Yes,
+                        UpdateContext({varCapLevel:"Level 3"}),
+                        UpdateContext({varCapLevel:"Level 2"})
+                        )
+                    );
             Text: ="Update"
             Visible: =If(varOpenProcessGroupEdit, true,false)
             X: =86
@@ -2746,8 +2762,8 @@ scrOperatingModels As screen:
             Items: |-
                 =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name'),'Capability Name')
                 Sort(colCreateWindowCapacityFilter,'Capability Name')
-            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability))
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
+            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active))
+            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active))
             Width: =432
             X: =63
             Y: =222
