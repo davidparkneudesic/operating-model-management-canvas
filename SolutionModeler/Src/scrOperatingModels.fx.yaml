@@ -2510,7 +2510,8 @@ scrOperatingModels As screen:
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
-                                'Client Specific':'Client Specific (Processes)'.No
+                                'Client Specific':'Client Specific (Processes)'.No,
+                                Sequence:Value(txtProcessSequence.Text)
                             }
                         ),
                         Patch(
@@ -2524,7 +2525,8 @@ scrOperatingModels As screen:
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
-                                'Client Specific':'Client Specific (Processes)'.No
+                                'Client Specific':'Client Specific (Processes)'.No,
+                                Sequence:Value(txtProcessSequence.Text)
                             }
                         )
                     ),
@@ -2539,7 +2541,8 @@ scrOperatingModels As screen:
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
-                                'Client Specific':'Client Specific (Processes)'.Yes
+                                'Client Specific':'Client Specific (Processes)'.Yes,
+                                Sequence:Value(txtProcessSequence.Text)
                             }
                         ),
                         Patch(
@@ -2553,13 +2556,14 @@ scrOperatingModels As screen:
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
-                                'Client Specific':'Client Specific (Processes)'.Yes
+                                'Client Specific':'Client Specific (Processes)'.Yes,
+                                Sequence:Value(txtProcessSequence.Text)
                             }
                         )
                     )
                 );
                 UpdateContext({varOpenProcessCreate:false});
-                Reset('New Process Name Input'); Reset( 'Description Proc Input');
+                Reset('New Process Name Input'); Reset( 'Description Proc Input');Reset(txtProcessSequence)
             Text: |-
                 ="Create
                 "
@@ -2653,9 +2657,11 @@ scrOperatingModels As screen:
             Clear: =true
             Default: =""
             Height: =311
+            HintText: ="One or two sentences describing the purpose of the process"
             Mode: =TextMode.MultiLine
             OnSelect: |-
                 =UpdateContext({varPGCreated:false})
+            Tooltip: ="One or two sentences describing the purpose of the process"
             Width: =555
             X: =549
             Y: =133
@@ -2731,6 +2737,23 @@ scrOperatingModels As screen:
             X: =63
             Y: =310
             ZIndex: =20
+
+        txtProcessSequence As text:
+            Default: =""
+            Height: =35
+            Width: =211
+            X: =297
+            Y: =409
+            ZIndex: =21
+
+        lblProcessSequence As label:
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: ="Sequence"
+            Width: =213
+            X: =296
+            Y: =366
+            ZIndex: =22
 
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold

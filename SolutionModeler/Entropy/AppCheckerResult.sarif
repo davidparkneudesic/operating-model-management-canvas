@@ -9029,6 +9029,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scrOperatingModels.'Create Process Container'.txtProcessSequence.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrOperatingModels.'Create Process Container'.txtProcessSequence.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrOperatingModels",
+                "type": "scrOperatingModels.'Create Process Container'.txtProcessSequence"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.varUpdateClientSolution"
                 }
               ],
