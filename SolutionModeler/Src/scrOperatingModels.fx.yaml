@@ -111,7 +111,7 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =137
-            Items: =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active), 'Capability Name')
+            Items: =Sort(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active),Sequence),'Capability Name')
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -498,13 +498,13 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =160
-            Items: =Sort(colSubCapabilities, 'Capability Name')
+            Items: =Sort(Sort(colSubCapabilities, 'Capability Name'),Sequence )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
-                =ClearCollect(colCapabiilitiesL2, Filter(Capabilities,'Parent Capability'.Capability = 'Sub Capability L2 Gallery'.Selected.Capability));
+                =ClearCollect(colCapabiilitiesL2, Filter(Capabilities,'Parent Capability'.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
                 ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active));
-                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = 'Sub Capability L2 Gallery'.Selected.Capability));
+                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
             TemplateFill: |-
                 =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -559,7 +559,7 @@ scrOperatingModels As screen:
             BorderThickness: =2
             DelayItemLoading: =true
             Height: =145
-            Items: =colCapabiilitiesL2
+            Items: =Sort(colCapabiilitiesL2, Sequence)
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -1117,7 +1117,8 @@ scrOperatingModels As screen:
                         'Parent Capability':'Parent Capability Combobox'.Selected,
                         'Status Reason':'Status Reason (Capabilities)'.Active,
                         'Scope Review':'Scope Review Cap Dropdown'.Selected.Value,
-                        Model:Model.'Operating Model'
+                        Model:Model.'Operating Model',
+                        Sequence:Value(txtCapSequence.Text)
                     }
                 );
                 Reset('Parent Capability Combobox');
@@ -1125,12 +1126,13 @@ scrOperatingModels As screen:
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
                 Reset('New Capability Name Input');
+                Reset(txtCapSequence)
             Text: |-
                 ="Create
                 "
             Visible: =If(varOpenCapabilityCreate,true,false)
             X: =89
-            Y: =506
+            Y: =502
             ZIndex: =3
 
         "'New Capability Name Input' As text":
@@ -1210,7 +1212,7 @@ scrOperatingModels As screen:
             Height: =35
             IsSearchable: =false
             Items: |
-                =Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No),'Capability Name')
+                =Sort(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No),'Capability Name'),Sequence)
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -1465,6 +1467,73 @@ scrOperatingModels As screen:
                     Y: =DataCardKey21.Y + DataCardKey21.Height + 5
                     ZIndex: =2
 
+            Sequence_DataCard7 As typedDataCard.numberEditCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_sequence"
+                Default: =ThisItem.Sequence
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@Capabilities],DataSourceInfo.DisplayName,"neu_sequence")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =Value(dcCapEditSequence.Text)
+                Width: =186
+                X: =2
+                Y: =3
+                ZIndex: =1
+
+                DataCardKey68 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                dcCapEditSequence As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Format: =TextFormat.Number
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey68.Y + DataCardKey68.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage64 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =dcCapEditSequence.Y + dcCapEditSequence.Height
+                    ZIndex: =3
+
+                StarVisible58 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey68.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey68.Y
+                    ZIndex: =4
+
             "'Capability Name_DataCard3' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_capabilityname"
@@ -1682,7 +1751,8 @@ scrOperatingModels As screen:
                             'Scope Review':dcCapEditScopeReview.Selected.Value,
                             'Parent Capability':dcCapEditParentCapability.Selected,
                             Status:'Status (Capabilities)'.Inactive,
-                            'Status Reason':'Status Reason (Capabilities)'.Inactive
+                            'Status Reason':'Status Reason (Capabilities)'.Inactive,
+                            Sequence:Value(dcCapEditSequence.Text)
                             }
                         ),
                             Patch(Capabilities,
@@ -1693,7 +1763,8 @@ scrOperatingModels As screen:
                             'Scope Review':dcCapEditScopeReview.Selected.Value,
                             'Parent Capability':dcCapEditParentCapability.Selected,
                             Status:'Status (Capabilities)'.Active,
-                            'Status Reason':CapEditStatusReason.Selected.Value
+                            'Status Reason':CapEditStatusReason.Selected.Value,
+                            Sequence:Value(dcCapEditSequence.Text)
                             }
                         )
                     ),
@@ -1708,7 +1779,8 @@ scrOperatingModels As screen:
                                 'Scope Review':dcCapEditScopeReview.Selected.Value,
                                 'Parent Capability':dcCapEditParentCapability.Selected,
                                 Status:'Status (Capabilities)'.Inactive,
-                                'Status Reason':'Status Reason (Capabilities)'.Inactive
+                                'Status Reason':'Status Reason (Capabilities)'.Inactive,
+                                Sequence:Value(dcCapEditSequence.Text)
                                 }
                             ),
                                 Patch(Capabilities,
@@ -1719,7 +1791,8 @@ scrOperatingModels As screen:
                                 'Scope Review':dcCapEditScopeReview.Selected.Value,
                                 'Parent Capability':dcCapEditParentCapability.Selected,
                                 Status:'Status (Capabilities)'.Active,
-                                'Status Reason':CapEditStatusReason.Selected.Value
+                                'Status Reason':CapEditStatusReason.Selected.Value,
+                                Sequence:Value(dcCapEditSequence.Text)
                                 }
                                 )
                         ),
@@ -1734,7 +1807,8 @@ scrOperatingModels As screen:
                                     'Scope Review':dcCapEditScopeReview.Selected.Value,
                                     'Parent Capability':dcCapEditParentCapability.Selected,
                                     Status:'Status (Capabilities)'.Inactive,
-                                    'Status Reason':'Status Reason (Capabilities)'.Inactive
+                                    'Status Reason':'Status Reason (Capabilities)'.Inactive,
+                                    Sequence:Value(dcCapEditSequence.Text)
                                     }
                                 ),
                                     Patch(Capabilities,
@@ -1745,7 +1819,8 @@ scrOperatingModels As screen:
                                     'Scope Review':dcCapEditScopeReview.Selected.Value,
                                     'Parent Capability':dcCapEditParentCapability.Selected,
                                     Status:'Status (Capabilities)'.Active,
-                                    'Status Reason':CapEditStatusReason.Selected.Value
+                                    'Status Reason':CapEditStatusReason.Selected.Value,
+                                    Sequence:Value(dcCapEditSequence.Text)
                                     }
                                 )
                             )
@@ -1764,6 +1839,25 @@ scrOperatingModels As screen:
             X: =89
             Y: =487
             ZIndex: =18
+
+        txtCapSequence As text:
+            Default: =""
+            Height: =37
+            Visible: =If(varOpenCapabilityCreate, true, false)
+            Width: =168
+            X: =420
+            Y: =402
+            ZIndex: =19
+
+        lblCreateCapSequence As label:
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: ="Sequence"
+            Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
+            Width: =307
+            X: =420
+            Y: =358
+            ZIndex: =20
 
     "'Create Process Group Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
