@@ -3513,15 +3513,16 @@ scrOperatingModels As screen:
         ZIndex: =12
 
     lblProcInactiveWarning As label:
+        Align: =Align.Center
         Color: =RGBA(255, 0, 0, 1)
         FontWeight: =FontWeight.Bold
         Height: =52
         Text: |-
             ="WARNING:  Setting a Process to Inactive will delete the Process."
         Visible: =If(varEditProcess && dcProcEditStatusReason.Selected.Value = 'Status Reason (Processes)'.Inactive,true,false)
-        Width: =584
-        X: =621
-        Y: =416
+        Width: =419
+        X: =670
+        Y: =312
         ZIndex: =13
 
     lblCapInactiveWarning As label:
