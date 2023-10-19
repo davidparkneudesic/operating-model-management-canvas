@@ -1288,7 +1288,7 @@
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             Default: ="Proposal"
-            Items: ='Implementation Models'
+            Items: =Filter('Implementation Models','Status Reason' = 'Status Reason (Implementation Models)'.Active)
             Width: =293
             X: =768
             Y: =273
