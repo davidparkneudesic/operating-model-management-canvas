@@ -32,14 +32,35 @@ scrOperatingModels As screen:
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =409
             Items: |-
-                =
-                If(IsBlank(ClientSolutionIdentifier),
+                =If(
+                    IsBlank(ClientSolutionIdentifier),
                     //Standard Operating Models
-                        If(chkDraftModels.Value = false || IsBlank(chkDraftModels),
-                            SortByColumns(Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' ='Status Reason (Operating Models)'.Active),"neu_operatingmodelname",SortOrder.Ascending),
-                            SortByColumns(Filter('Operating Models',IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' ='Status Reason (Operating Models)'.Draft),"neu_operatingmodelname",SortOrder.Ascending)
+                    If(
+                        chkDraftModels.Value = false || IsBlank(chkDraftModels),
+                        SortByColumns(
+                            Filter(
+                                'Operating Models',
+                                IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' = 'Status Reason (Operating Models)'.Active
+                            ),
+                            "neu_operatingmodelname",
+                            SortOrder.Ascending
                         ),
-                    SortByColumns(Filter('Operating Models','Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && Status ='Status (Operating Models)'.Active),"neu_operatingmodelname",SortOrder.Ascending
+                        SortByColumns(
+                            Filter(
+                                'Operating Models',
+                                IsBlank('Client Solution Identifier'.'Client Solution') && 'Status Reason' = 'Status Reason (Operating Models)'.Draft
+                            ),
+                            "neu_operatingmodelname",
+                            SortOrder.Ascending
+                        )
+                    ),
+                    SortByColumns(
+                        Filter(
+                            'Operating Models',
+                            'Client Solution Identifier'.'Client Solution' = GUID(txtClientID.Text) && Status = 'Status (Operating Models)'.Active
+                        ),
+                        "neu_operatingmodelname",
+                        SortOrder.Ascending
                     )
                 )
             Layout: =Layout.Vertical
@@ -111,18 +132,44 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =137
-            Items: =Sort(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && IsBlank('Parent Capability')&& Status ='Status (Capabilities)'.Active),Sequence),'Capability Name')
+            Items: |-
+                =Sort(
+                    Sort(
+                        Filter(
+                            Capabilities,
+                            'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && IsBlank('Parent Capability') && Status = 'Status (Capabilities)'.Active
+                        ),
+                        Sequence
+                    ),
+                    'Capability Name'
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: |-
-                =//ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.Capability = 'Head Capability Label'.Text));
-                //ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Head Capability Label'.Text && Status = 'Status (Process Groups)'.Active));
-                //ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, Capability = 'Head Capability Label'.Text));
+            OnSelect: |
+                =ClearCollect(
+                    colSubCapabilities,
+                    Filter(
+                        Capabilities,
+                        'Parent Capability'.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                    )
+                );
+                ClearCollect(
+                    colProcessGroups,
+                    Filter(
+                        'Process Groups',
+                        Capability.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                    )
+                );
                 
-                ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.Capability = 'Capability Level 1 Gallery'.Selected.Capability));
-                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active));
-                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = 'Capability Level 1 Gallery'.Selected.Capability));
+                ClearCollect(
+                    colCreateWindowCapacityFilter,
+                    Filter(
+                        Capabilities,
+                        Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                    )
+                );
                 Clear(colCapabiilitiesL2);
+                UpdateContext({varCapLevel:"(Level 1)"})
             ShowNavigation: =true
             TemplateFill: |-
                 =If(ThisItem.'Capability Name' = 'Capability Level 1 Gallery'.Selected.'Capability Name' && 
@@ -348,7 +395,7 @@ scrOperatingModels As screen:
             FontWeight: =FontWeight.Bold
             Height: =44
             Size: =16
-            Text: ="Process Group"
+            Text: ="Process Group " & varCapLevel
             Width: =270
             X: =641
             Y: =12
@@ -502,9 +549,28 @@ scrOperatingModels As screen:
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
-                =ClearCollect(colCapabiilitiesL2, Filter(Capabilities,'Parent Capability'.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
-                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active));
-                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
+                =ClearCollect(
+                    colCapabiilitiesL2,
+                    Filter(
+                        Capabilities,
+                        'Parent Capability'.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                    )
+                );
+                ClearCollect(
+                    colProcessGroups,
+                    Filter(
+                        'Process Groups',
+                        Capability.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                    )
+                );
+                ClearCollect(
+                    colCreateWindowCapacityFilter,
+                    Filter(
+                        Capabilities,
+                        Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                    )
+                );
+                UpdateContext({varCapLevel: "(Level 2)"})
             TemplateFill: |-
                 =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
@@ -563,8 +629,21 @@ scrOperatingModels As screen:
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
-                =ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Sub Capability L3 Gallery'.Selected.Capability&& Status = 'Status (Process Groups)'.Active));
-                ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities,Capability = 'Sub Capability L3 Gallery'.Selected.Capability));
+                =ClearCollect(
+                    colProcessGroups,
+                    Filter(
+                        'Process Groups',
+                        Capability.Capability = 'Sub Capability L3 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                    )
+                );
+                ClearCollect(
+                    colCreateWindowCapacityFilter,
+                    Filter(
+                        Capabilities,
+                        Capability = 'Sub Capability L3 Gallery'.Selected.Capability
+                    )
+                );
+                UpdateContext({varCapLevel: "(Level 3)"})
             TemplateFill: |-
                 =If(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate), 
@@ -1393,7 +1472,7 @@ scrOperatingModels As screen:
                     Items: |-
                         =//Choices([@Capabilities].neu_ParentCapability)
                         //Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Capability Level 1 Gallery'.Selected.'Operating Model'.'Operating Model Name' && Capability <> GUID(dcCapabilityID.Text))
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name' && 'Capability Name' <> dcCapEditCapabilityNameCap.Text  && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No)
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = dcCapEditOpModelName.Selected.'Operating Model Name' && 'Capability Name' <> dcCapEditCapabilityNameCap.Text  && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No && Status = 'Status (Capabilities)'.Active)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
@@ -1833,6 +1912,10 @@ scrOperatingModels As screen:
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
                 Reset('New Capability Name Input');
+                ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
+                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active));
+                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
+                Clear(colCapabiilitiesL2);
             Text: ="Update"
             Visible: |
                 =If(varEditCap || varEditSubCap || varEditL3Cap, true,false)
@@ -1863,7 +1946,7 @@ scrOperatingModels As screen:
         Fill: =RGBA(255, 255, 255, 1)
         Height: =481
         Visible: =If(varOpenProcessGroupCreate || varOpenProcessGroupEdit, true, false)
-        Width: =721
+        Width: =826
         X: =276
         Y: =214
         ZIndex: =9
@@ -1880,7 +1963,6 @@ scrOperatingModels As screen:
             Size: =20
             Text: =If(varOpenProcessGroupCreate, "Create New Process Group","Edit Process Group")
             Width: ='Create Process Group Container'.Width
-            Y: =3
             ZIndex: =1
 
         "'Exit Cap Create Icon_1' As icon.Cancel":
@@ -1910,16 +1992,39 @@ scrOperatingModels As screen:
                     'Process Groups',
                     Defaults('Process Groups'),
                     {
-                        'Process Group Name':txtProcessGroupName.Text,
-                        Capability:ddCapability.Selected,
-                        'Scope Review':'Scope Review PG Dropdown'.Selected.Value,
-                        Model:Model.'Operating Model',
-                        'Status Reason':'Status Reason (Process Groups)'.Active,
-                        Sequence:Value(txtNewProcessSequence.Text)
+                        'Process Group Name': txtProcessGroupName.Text,
+                        Capability: ddCapability.Selected,
+                        'Scope Review': 'Scope Review PG Dropdown'.Selected.Value,
+                        Model: Model.'Operating Model',
+                        'Status Reason': 'Status Reason (Process Groups)'.Active,
+                        Sequence: Value(txtNewProcessSequence.Text)
                     }
                 );
-                UpdateContext({varOpenProcessGroupCreate:false});
+                UpdateContext({varOpenProcessGroupCreate: false});
                 Reset(txtProcessGroupName);
+                ClearCollect(
+                    colProcessGroups,
+                    Filter(
+                        'Process Groups',
+                        Capability.Capability = ddCapability.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                    )
+                );
+                ClearCollect(
+                    colSelectedCapability,
+                    Filter(
+                        'Capabilities',
+                        Capability = ddCapability.Selected.Capability
+                    )
+                );
+                If(
+                    IsBlank(First(colSelectedCapability).'Parent Capability'.Capability),
+                    UpdateContext({varCapLevel:"Level 1"}),
+                    If(
+                        ddCapability.Selected.'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.Yes,
+                        UpdateContext({varCapLevel:"Level 3"}),
+                        UpdateContext({varCapLevel:"Level 2"})
+                        )
+                    );
             Text: |-
                 ="Create
                 "
@@ -2006,19 +2111,15 @@ scrOperatingModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             Height: =35
-            Items: |-
-                =//Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model PG Dropdown'.Selected.'Operating Model Name'),'Capability Name')
+            Items: |+
+                =//colCreateWindowCapacityFilter
+                Filter(Capabilities,'Operating Model'.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active)
                 
-                colCreateWindowCapacityFilter
                 
-                //If(!IsBlank(colCapabiilitiesL2),
-                //    Filter(Capabilities,'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name'),
-                //    If(!IsBlank(colSubCapabilities),
-                //        Filter(Capabilities,'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name'),
-                //        Filter(Capabilities,'Capability Name' = 'Capability Level 1 Gallery'.Selected.'Capability Name')
-                //    )
-                //)
-            OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
+                
+                
+            OnChange: =
+            OnSelect: =
             Size: =12
             Visible: =If(varOpenProcessGroupCreate,true,false)
             Width: =310
@@ -2068,8 +2169,9 @@ scrOperatingModels As screen:
                     IsSearchable: =false
                     Items: |+
                         =//colCreateWindowCapacityFilter
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name')
+                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active)
                         
+                    OnSelect: =
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_capabilityname"]
                     SearchItems: =[]
@@ -2380,34 +2482,41 @@ scrOperatingModels As screen:
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: |+
-                =If(dcPGEditStatusReason.Selected.Value = 'Status Reason (Process Groups)'.Inactive,
+            OnSelect: |-
+                =If(
+                    dcPGEditStatusReason.Selected.Value = 'Status Reason (Process Groups)'.Inactive,
                     //Update to Inactive State
                     Patch(
                         'Process Groups',
                         glyProcessGroup.Selected,
                         {
-                            Capability:dcPGEditCapability.Selected,
-                            'Process Group Name':dcPGEditPGName.Text,
-                            'Scope Review':dcPGEditScopeReview.Selected.Value,
-                            Status:'Status (Process Groups)'.Inactive
+                            Capability: dcPGEditCapability.Selected,
+                            'Process Group Name': dcPGEditPGName.Text,
+                            'Scope Review': dcPGEditScopeReview.Selected.Value,
+                            Status: 'Status (Process Groups)'.Inactive
                         }
                     ),
                     //Update to Active State
-                     Patch(
+                    Patch(
                         'Process Groups',
                         glyProcessGroup.Selected,
                         {
-                            Capability:dcPGEditCapability.Selected,
-                            'Process Group Name':dcPGEditPGName.Text,
-                            'Scope Review':dcPGEditScopeReview.Selected.Value,
-                            'Status Reason':dcPGEditStatusReason.Selected.Value,
-                            Sequence:Value(dcProcessGroupSequence.Text)
+                            Capability: dcPGEditCapability.Selected,
+                            'Process Group Name': dcPGEditPGName.Text,
+                            'Scope Review': dcPGEditScopeReview.Selected.Value,
+                            'Status Reason': dcPGEditStatusReason.Selected.Value,
+                            Sequence: Value(dcProcessGroupSequence.Text)
                         }
                     )
                 );
-                UpdateContext({varOpenProcessGroupEdit:false});
-                
+                UpdateContext({varOpenProcessGroupEdit: false});
+                    ClearCollect(
+                        colProcessGroups,
+                        Filter(
+                            'Process Groups',
+                            Capability.Capability = dcPGEditCapability.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                        )
+                    )
             Text: ="Update"
             Visible: =If(varOpenProcessGroupEdit, true,false)
             X: =86
@@ -2851,9 +2960,9 @@ scrOperatingModels As screen:
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
                     Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 120
+                    Width: =398
                     X: =16
-                    Y: =DataCardKey61.Y + DataCardKey61.Height + 5
+                    Y: =44
                     ZIndex: =2
 
                 ErrorMessage62 As label:
@@ -3508,8 +3617,8 @@ scrOperatingModels As screen:
             ="WARNING:  Setting a Process Group to Inactive will delete the Process Group and all related Processes.    If there are any User Stories linked, you will receive an error."
         Visible: =If(varOpenProcessGroupEdit && dcPGEditStatusReason.Selected.Value = 'Status Reason (Process Groups)'.Inactive,true,false)
         Width: =322
-        X: =567
-        Y: =408
+        X: =739
+        Y: =507
         ZIndex: =12
 
     lblProcInactiveWarning As label:
