@@ -60,26 +60,6 @@
     }
   },
   {
-    "DisplayName": "Linked to Gap User Stories (Product Backlog Items)",
-    "Name": "neu_productbacklogitem_neu_linkedtogapuserstory",
-    "OptionSetInfoNameMapping": {
-      "0": "No",
-      "1": "Yes"
-    },
-    "OptionSetIsBooleanValued": true,
-    "OptionSetIsGlobal": false,
-    "OptionSetReference": {
-      "OptionSetReferenceItem0": {
-        "OptionSetReferenceColumnName": "neu_linkedtogapuserstory",
-        "OptionSetReferenceEntityName": "Product Backlog Items"
-      }
-    },
-    "OptionSetTypeKey": "BooleanType",
-    "RelatedColumnInvariantName": "neu_linkedtogapuserstory",
-    "RelatedEntityName": "Product Backlog Items",
-    "Type": "OptionSetInfo"
-  },
-  {
     "DisplayName": "Status (Product Backlog Items)",
     "Name": "neu_productbacklogitem_statecode",
     "OptionSetInfoNameMapping": {
