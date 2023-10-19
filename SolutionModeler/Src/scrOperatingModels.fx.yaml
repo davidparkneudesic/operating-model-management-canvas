@@ -1212,7 +1212,7 @@ scrOperatingModels As screen:
             Height: =35
             IsSearchable: =false
             Items: |
-                =Sort(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No),'Capability Name'),Sequence)
+                =Sort(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No),Sequence),'Capability Name')
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             SelectMultiple: =false
