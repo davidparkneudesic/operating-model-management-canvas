@@ -3627,12 +3627,14 @@ scrOperatingModels As screen:
             Y: =523
             ZIndex: =27
 
-        Label13 As label:
+        lblLucidChartMessage As label:
+            Align: =Align.Center
             Height: =57
             OnSelect: |-
                 =Launch("https://lucid.app/folder/invitations/accept/inv_c662a896-59b3-43f3-919e-5312afdb3d18")
             Size: =10
-            Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here.  Click on this to go to shared folder   ."
+            Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here.  Click on this to go to shared folder."
+            Underline: =true
             Width: =777
             X: =40
             Y: =653
