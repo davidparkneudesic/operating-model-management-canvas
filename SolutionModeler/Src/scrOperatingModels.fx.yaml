@@ -1,8 +1,19 @@
 scrOperatingModels As screen:
     Fill: |-
-        =If(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditOM ||varEditCap || varEditL3Cap || varEditSubCap, 
-            RGBA(149, 149, 149, 1),
-            RGBA(237, 237, 237, 1)
+        =If(
+            varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail || varEditOM || varEditCap || varEditL3Cap || varEditSubCap,
+            RGBA(
+                149,
+                149,
+                149,
+                1
+            ),
+            RGBA(
+                237,
+                237,
+                237,
+                1
+            )
         )
     OnVisible: =
 
@@ -233,7 +244,14 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Sort(colProcessGroups,'Process Group Name'),Sequence)
+            Items: |-
+                =Sort(
+                    Sort(
+                        colProcessGroups,
+                        'Process Group Name'
+                    ),
+                    Sequence
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -300,13 +318,31 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: |+
-                =If(IsBlank(txtClientID.Text),
-                    Sort(Sort(Filter(Processes,'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No),Sequence),'Process Name'),
-                 Sort(Sort(Filter(Processes,'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes),Sequence),'Process Name')
+            Items: |-
+                =If(
+                    IsBlank(txtClientID.Text),
+                    Sort(
+                        Sort(
+                            Filter(
+                                Processes,
+                                'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No
+                            ),
+                            Sequence
+                        ),
+                        'Process Name'
+                    ),
+                    Sort(
+                        Sort(
+                            Filter(
+                                Processes,
+                                'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes
+                            ),
+                            Sequence
+                        ),
+                        'Process Name'
+                    )
                  //colFilteredProcesses
                 )
-                
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |
@@ -448,7 +484,7 @@ scrOperatingModels As screen:
             Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =26
-            Y: =580
+            Y: =573
             ZIndex: =10
 
         "'Create Cap Button' As button":
@@ -474,7 +510,7 @@ scrOperatingModels As screen:
             Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =341
-            Y: =580
+            Y: =573
             ZIndex: =11
 
         "'Create PG Button' As button":
@@ -500,7 +536,7 @@ scrOperatingModels As screen:
             Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =641
-            Y: =580
+            Y: =573
             ZIndex: =12
 
         "'Create Process Button' As button":
@@ -527,7 +563,7 @@ scrOperatingModels As screen:
             Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
             Width: =280
             X: =941
-            Y: =580
+            Y: =573
             ZIndex: =13
 
         txtClientID As text:
@@ -546,7 +582,14 @@ scrOperatingModels As screen:
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =160
-            Items: =Sort(Sort(colSubCapabilities, 'Capability Name'),Sequence )
+            Items: |-
+                =Sort(
+                    Sort(
+                        colSubCapabilities,
+                        'Capability Name'
+                    ),
+                    Sequence
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
@@ -724,6 +767,18 @@ scrOperatingModels As screen:
             X: =341
             Y: =386
             ZIndex: =17
+
+        Label10_1 As label:
+            Color: =RGBA(39, 113, 194, 1)
+            Height: =31
+            OnSelect: |-
+                =Launch("https://neudesic.sharepoint.com/:b:/s/NeudesicBusinessApplications/EXkrf6PUErZBislCGh-WarsBuaGL7wAVzsICwSAPhiBtmw?e=nISkZs")
+            Text: ="Click here for the Solution Modeler User Guide"
+            Underline: =true
+            Width: =435
+            X: =817
+            Y: =623
+            ZIndex: =18
 
     "'Operating Model Screen Label' As label":
         Align: =Align.Center
@@ -1138,7 +1193,7 @@ scrOperatingModels As screen:
         Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
         Width: =204
         X: =125
-        Y: =617
+        Y: =610
         ZIndex: =7
 
     "'Create Cap Container' As groupContainer.manualLayoutContainer":
@@ -2763,7 +2818,13 @@ scrOperatingModels As screen:
             Default: =glyProcessGroup.Selected.Capability.'Capability Name'
             Height: =35
             Items: |-
-                =Sort(Filter(Capabilities,'Operating Model'.'Operating Model Name' = 'Operating Model Proc Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active),'Capability Name')
+                =Sort(
+                    Filter(
+                        Capabilities,
+                        'Operating Model'.'Operating Model' = 'Operating Model Proc Dropdown'.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active
+                    ),
+                    'Capability Name'
+                )
                 //Sort(colCreateWindowCapacityFilter,'Capability Name')
             OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active))
             OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active))
@@ -3164,7 +3225,7 @@ scrOperatingModels As screen:
                     DelayOutput: =true
                     DisplayMode: =Parent.DisplayMode
                     Height: =37
-                    OnSelect: =Launch(dcProcEditDataFlow.Text)
+                    OnSelect: =If(varEditProcess,false,Launch(dcProcEditDataFlow.Text))
                     PaddingLeft: =5
                     RadiusBottomLeft: =0
                     RadiusBottomRight: =0
@@ -3358,7 +3419,7 @@ scrOperatingModels As screen:
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
                     Tooltip: =Parent.DisplayName
-                    Width: =805
+                    Width: =590
                     X: =25
                     Y: =DataCardKey35.Y + DataCardKey35.Height + 5
                     ZIndex: =2
@@ -3459,36 +3520,36 @@ scrOperatingModels As screen:
             DisplayMode: =If(IsBlank(dcProcEditProcessName.Text), DisplayMode.Disabled, DisplayMode.Edit)
             Fill: =RGBA(39, 67, 125, 1)
             OnSelect: |-
-                =If(dcProcEditStatusReason.Selected.Value = 'Status Reason (Processes)'.Inactive,
+                =If(
+                    dcProcEditStatusReason.Selected.Value = 'Status Reason (Processes)'.Inactive,
                     //Update to Inactive State
                     Patch(
                         Processes,
                         'Process Gallery Parent'.Selected,
                         {
-                            'Process Name':dcProcEditProcessName.Text,
-                            'Scope Review':dcProcEditScopeReview.Selected.Value,
-                            Status:'Status (Processes)'.Inactive
+                            'Process Name': dcProcEditProcessName.Text,
+                            'Scope Review': dcProcEditScopeReview.Selected.Value,
+                            Status: 'Status (Processes)'.Inactive
                         }
                     ),
                     //Update to Active State
-                     Patch(
+                    Patch(
                         Processes,
                         'Process Gallery Parent'.Selected,
                         {
-                            'Process Name':dcProcEditProcessName.Text,
-                            'Scope Review':dcProcEditScopeReview.Selected.Value,
-                            'Status Reason':dcProcEditStatusReason.Selected.Value,
-                             Description:dcProcEditDescription.Text,
-                             'Process Group':dcProcEditProcessGroup.Selected,
-                            'Data Flow URL':dcProcEditDataFlow.Text,
-                            Sequence:Value(dcProcessSequence.Text)
-                
+                            'Process Name': dcProcEditProcessName.Text,
+                            'Scope Review': dcProcEditScopeReview.Selected.Value,
+                            'Status Reason': dcProcEditStatusReason.Selected.Value,
+                            Description: dcProcEditDescription.Text,
+                            'Process Group': dcProcEditProcessGroup.Selected,
+                            'Data Flow URL': dcProcEditDataFlow.Text,
+                            Sequence: Value(dcProcessSequence.Text)
                         }
                     )
                 );
-                UpdateContext({varEditProcess:false});
-                UpdateContext({varOpenProcessDetail:false});
-                UpdateContext({varChangedCapability:false})
+                UpdateContext({varEditProcess: false});
+                UpdateContext({varOpenProcessDetail: false});
+                UpdateContext({varChangedCapability: false})
             Text: ="Save Process"
             Visible: =If(varEditProcess,true,false)
             X: =867
@@ -3550,7 +3611,7 @@ scrOperatingModels As screen:
             OnSelect: |-
                 =UpdateContext({varEditProcess:true})
             Text: ="Modify Process"
-            Visible: =If(varEditProcess,false,true)
+            Visible: =If(varEditProcess = false && chkDraftModels.Value = true,true,false)
             X: =920
             Y: =591
             ZIndex: =19
@@ -3561,7 +3622,7 @@ scrOperatingModels As screen:
             FontWeight: =FontWeight.Bold
             Text: ="Capability Filter"
             Visible: =If(varEditProcess,true,false)
-            X: =553
+            X: =647
             Y: =335
             ZIndex: =20
 
@@ -3629,15 +3690,16 @@ scrOperatingModels As screen:
 
         lblLucidChartMessage As label:
             Align: =Align.Center
+            Color: =RGBA(9, 33, 98, 1)
             Height: =57
             OnSelect: |-
                 =Launch("https://lucid.app/folder/invitations/accept/inv_c662a896-59b3-43f3-919e-5312afdb3d18")
             Size: =10
-            Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here.  Click on this to go to shared folder."
+            Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here. "
             Underline: =true
-            Width: =777
+            Width: =708
             X: =40
-            Y: =653
+            Y: =639
             ZIndex: =28
 
     lblPGInactiveWarning As label:
@@ -3709,8 +3771,8 @@ scrOperatingModels As screen:
         OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
         Visible: =If(varEditProcess,true,false)
         Width: =445
-        X: =657
-        Y: =376
+        X: =750
+        Y: =386
         ZIndex: =17
 
     chkDraftModels As checkbox:

@@ -1199,7 +1199,8 @@
                 );
                 UpdateContext({varClientSolutionCreated:true});
                 Navigate(scrClientSolutionSelection);
-                //Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
+                Set(varOpenCreateClientSolution,false);
+                Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
             Text: ="Submit"
             Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input')  ||varBadDate ,false,true)
             Width: =177
