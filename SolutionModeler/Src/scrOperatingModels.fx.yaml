@@ -3327,7 +3327,7 @@ scrOperatingModels As screen:
                 Height: =275
                 Required: =false
                 Update: =dcProcEditDescription.Text
-                Width: =519
+                Width: =860
                 X: =0
                 Y: =1
                 ZIndex: =18
@@ -3358,7 +3358,7 @@ scrOperatingModels As screen:
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
                     Tooltip: =Parent.DisplayName
-                    Width: =493
+                    Width: =805
                     X: =25
                     Y: =DataCardKey35.Y + DataCardKey35.Height + 5
                     ZIndex: =2
@@ -3580,9 +3580,9 @@ scrOperatingModels As screen:
             Fill: =RGBA(0, 0, 0, 0)
             Height: =206
             Visible: =If(varEditProcess,false,true)
-            Width: =650
+            Width: =803
             X: =40
-            Y: =202
+            Y: =203
             ZIndex: =22
 
         Rectangle10_2 As rectangle:
