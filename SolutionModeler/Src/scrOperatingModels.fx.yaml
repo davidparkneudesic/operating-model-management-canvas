@@ -2936,6 +2936,7 @@ scrOperatingModels As screen:
             Height: =601
             Item: ='Process Gallery Parent'.Selected
             NumberOfColumns: =2
+            SnapToColumns: =false
             Width: =1038
             X: =21
             Y: =67
@@ -3019,21 +3020,11 @@ scrOperatingModels As screen:
                 Height: =158
                 Required: =true
                 Update: =dcProcEditStatusReason.Selected.Value
-                Width: =519
+                Visible: =false
+                Width: =430
                 X: =1
                 Y: =1
                 ZIndex: =1
-
-                DataCardKey38 As label:
-                    AutoHeight: =true
-                    FontWeight: =FontWeight.Bold
-                    Height: =34
-                    Text: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    Wrap: =false
-                    X: =16
-                    Y: =6
-                    ZIndex: =1
 
                 dcProcEditStatusReason As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
@@ -3047,8 +3038,8 @@ scrOperatingModels As screen:
                     SearchItems: =[]
                     SelectMultiple: =false
                     Tooltip: =Parent.DisplayName
-                    Width: =Parent.Width - 60
-                    X: =16
+                    Width: =173
+                    X: =212
                     Y: =52
                     ZIndex: =2
 
@@ -3589,7 +3580,7 @@ scrOperatingModels As screen:
             Fill: =RGBA(0, 0, 0, 0)
             Height: =206
             Visible: =If(varEditProcess,false,true)
-            Width: =460
+            Width: =650
             X: =40
             Y: =202
             ZIndex: =22
@@ -3603,16 +3594,6 @@ scrOperatingModels As screen:
             X: =549
             Y: =108
             ZIndex: =23
-
-        Rectangle10_3 As rectangle:
-            BorderThickness: =1
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =48
-            Visible: =If(varEditProcess,false,true)
-            Width: =137
-            X: =549
-            Y: =202
-            ZIndex: =24
 
         Rectangle10_4 As rectangle:
             BorderThickness: =1
