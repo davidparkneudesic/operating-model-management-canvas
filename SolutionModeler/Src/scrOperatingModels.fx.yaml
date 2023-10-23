@@ -1346,8 +1346,17 @@ scrOperatingModels As screen:
             DisplayFields: =["neu_capabilityname"]
             Height: =35
             IsSearchable: =false
-            Items: |
-                =Sort(Sort(Filter(Capabilities, 'Operating Model'.'Operating Model Name' = 'Operating Model Cap Dropdown'.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No),Sequence),'Capability Name')
+            Items: |-
+                =Sort(
+                    Sort(
+                        Filter(
+                            Capabilities,
+                            'Operating Model'.'Operating Model' = 'Operating Model Cap Dropdown'.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active && 'Is L3 Capability' = 'Is L3 Capability (Capabilities)'.No
+                        ),
+                        Sequence
+                    ),
+                    'Capability Name'
+                )
             SearchFields: =["neu_capabilityname"]
             SearchItems: =[]
             SelectMultiple: =false
@@ -1364,10 +1373,17 @@ scrOperatingModels As screen:
                 =ColorFade(ColorValue("#00467f"), -30%)
             Height: =35
             Items: |-
-                =If(IsBlank(ClientSolutionIdentifier),
-                      Filter('Operating Models','Status Reason' = 'Status Reason (Operating Models)'.Draft),
-                      Filter('Operating Models', 'Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier))
-                      )
+                =If(
+                    IsBlank(ClientSolutionIdentifier),
+                    Filter(
+                        'Operating Models',
+                        'Status Reason' = 'Status Reason (Operating Models)'.Draft
+                    ),
+                    Filter(
+                        'Operating Models',
+                        'Client Solution Identifier'.'Client Solution' = GUID(ClientSolutionIdentifier)
+                    )
+                )
             OnChange: =Reset('Parent Capability Combobox')
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
@@ -2687,7 +2703,7 @@ scrOperatingModels As screen:
                             Defaults(Processes),
                             {
                                 'Process Name':'New Process Name Input'.Text,
-                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                'Process Group':ddProcessGroupSelection.Selected,
                                 Description:'Description Proc Input'.Text,
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                                 Model:Model.'Operating Model',
@@ -2701,7 +2717,7 @@ scrOperatingModels As screen:
                             Defaults(Processes),
                             {
                                 'Process Name':'New Process Name Input'.Text,
-                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                'Process Group':ddProcessGroupSelection.Selected,
                                 Description:'Description Proc Input'.Text,
                                 'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
@@ -2718,7 +2734,7 @@ scrOperatingModels As screen:
                             Defaults(Processes),
                             {
                                 'Process Name':'New Process Name Input'.Text,
-                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                'Process Group':ddProcessGroupSelection.Selected,
                                 Description:'Description Proc Input'.Text,
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
                                 Model:Model.'Operating Model',
@@ -2732,7 +2748,7 @@ scrOperatingModels As screen:
                             Defaults(Processes),
                             {
                                 'Process Name':'New Process Name Input'.Text,
-                                'Process Group':'Process Group Proc Dropdown'.Selected,
+                                'Process Group':ddProcessGroupSelection.Selected,
                                 Description:'Description Proc Input'.Text,
                                 'Data Flow URL':"<a href='" & 'Data Flow Diagram URL Input'.Text & "'>URL</a>",
                                 'Scope Review':'Scope Review Proc Dropdown'.Selected.Value,
@@ -2745,7 +2761,7 @@ scrOperatingModels As screen:
                     )
                 );
                 UpdateContext({varOpenProcessCreate:false});
-                Reset('New Process Name Input'); Reset( 'Description Proc Input');Reset(txtProcessSequence)
+                Reset('New Process Name Input'); Reset( 'Description Proc Input');Reset(txtProcessSequence);Reset(ddProcessGroupSelection)
             Text: |-
                 ="Create
                 "
@@ -2819,14 +2835,24 @@ scrOperatingModels As screen:
             Height: =35
             Items: |-
                 =Sort(
-                    Filter(
-                        Capabilities,
-                        'Operating Model'.'Operating Model' = 'Operating Model Proc Dropdown'.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active
+                    Sort(
+                        Filter(
+                            Capabilities,
+                            'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active
+                        ),
+                        Sequence
                     ),
                     'Capability Name'
                 )
                 //Sort(colCreateWindowCapacityFilter,'Capability Name')
-            OnChange: =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active))
+            OnChange: |-
+                =ClearCollect(
+                    colCreateWindowPGFilter,
+                    Filter(
+                        'Process Groups',
+                        Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                    )
+                )
             OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active))
             Width: =432
             X: =63
@@ -2915,14 +2941,22 @@ scrOperatingModels As screen:
             Y: =544
             ZIndex: =19
 
-        "'Process Group Proc Dropdown' As dropdown":
+        ddProcessGroupSelection As dropdown:
             ChevronBackground: |-
                 =ColorValue("#00467f")
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            Default: =//glyProcessGroup.Selected.'Process Group Name'
+            Default: =""
             Height: =35
-            Items: =colCreateWindowPGFilter
+            Items: =Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability)
+            OnSelect: |-
+                =ClearCollect(
+                    colCreateWindowPGFilter,
+                    Filter(
+                        'Process Groups',
+                        Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                    )
+                )
             Width: =456
             X: =63
             Y: =310

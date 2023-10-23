@@ -1,16 +1,25 @@
 scrImplementationModels As screen:
-    Fill: |-
-        =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
-            RGBA(149, 149, 149, 1),
-            RGBA(237, 237, 237, 1)
-        )
+    Fill: =If(varCreateOpenImplementationModel||varCreateOpenImplementationPhase||varCreateOpenImplementationStage||varCreateOpenProductBacklogItem||varCreateOpenTask||varOpenTaskDetailWindow||varOpenTaskDetailWindow||varEditOpenProductBacklogItem||varEditOpenImplementationStage||varEditOpenImplementationPhase||varEditOpenImplementationModel,RGBA(149,149,149,1),RGBA(237,237,237,1))
     OnVisible: =
 
     ImplmentationModels_Background As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
-            =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            =If(
+                varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel,
+                RGBA(
+                    202,
+                    202,
+                    202,
+                    1
+                ),
+                RGBA(
+                    255,
+                    255,
+                    255,
+                    1
+                )
+            )
         Height: =649
         Width: =1327
         X: =20
@@ -25,9 +34,16 @@ scrImplementationModels As screen:
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
             Items: |-
-                =If(chkImpDraftModels.Value = true,
-                Filter('Implementation Models','Status Reason' = 'Status Reason (Implementation Models)'.Draft),
-                Filter('Implementation Models','Status Reason' = 'Status Reason (Implementation Models)'.Active)
+                =If(
+                    chkImpDraftModels.Value = true,
+                    Filter(
+                        'Implementation Models',
+                        'Status Reason' = 'Status Reason (Implementation Models)'.Draft
+                    ),
+                    Filter(
+                        'Implementation Models',
+                        'Status Reason' = 'Status Reason (Implementation Models)'.Active
+                    )
                 )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
@@ -115,7 +131,14 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && Status = 'Status (Implementation Phases)'.Active), Sequence)
+            Items: |-
+                =Sort(
+                    Filter(
+                        'Implementation Phases',
+                        'Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model' && Status = 'Status (Implementation Phases)'.Active
+                    ),
+                    Sequence
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -281,7 +304,14 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter('Product Backlog Items','Implementation Stage'.'Implementation Stage Name' = glyImplementationStage.Selected.'Implementation Stage Name' && Status = 'Status (Product Backlog Items)'.Active), Sequence)
+            Items: |-
+                =Sort(
+                    Filter(
+                        'Product Backlog Items',
+                        'Implementation Stage'.'Implementation Stage' = glyImplementationStage.Selected.'Implementation Stage' && Status = 'Status (Product Backlog Items)'.Active
+                    ),
+                    Sequence
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             TemplateFill: |-
@@ -364,7 +394,14 @@ scrImplementationModels As screen:
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =504
-            Items: =Sort(Filter(Tasks,'Product Backlog'.'Product Backlog Item Name' = glyProductBacklog.Selected.'Product Backlog Item Name' && Status= 'Status (Tasks)'.Active), Sequence)
+            Items: |-
+                =Sort(
+                    Filter(
+                        Tasks,
+                        'Product Backlog'.'Product Backlog Item' = glyProductBacklog.Selected.'Product Backlog Item' && Status = 'Status (Tasks)'.Active
+                    ),
+                    Sequence
+                )
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |-
