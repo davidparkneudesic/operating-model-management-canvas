@@ -2959,7 +2959,7 @@ scrOperatingModels As screen:
                 =ColorFade(ColorValue("#00467f"), -20%)
             Default: =""
             Height: =35
-            Items: =Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability)
+            Items: =Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active)
             OnSelect: |-
                 =ClearCollect(
                     colCreateWindowPGFilter,
