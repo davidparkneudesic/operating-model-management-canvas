@@ -2990,6 +2990,20 @@ scrOperatingModels As screen:
             Y: =366
             ZIndex: =22
 
+    dpCapabilityFilter As dropdown:
+        Items: |-
+            =//colCreateWindowCapacityFilter
+            Filter(Capabilities,'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active)
+        OnChange: |
+            =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability && Status = 'Status (Process Groups)'.Active));
+            UpdateContext({varChangedCapability:true});
+        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
+        Visible: =If(varEditProcess,true,false)
+        Width: =445
+        X: =750
+        Y: =386
+        ZIndex: =11
+
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -2997,7 +3011,7 @@ scrOperatingModels As screen:
         Visible: =If(varOpenProcessDetail, true, false)
         Width: =1119
         X: =99
-        ZIndex: =11
+        ZIndex: =12
 
         "'Process Details Title' As label":
             Align: =Align.Center
@@ -3011,7 +3025,7 @@ scrOperatingModels As screen:
             Size: =20
             Text: =If(varEditProcess,"Edit Process Details","Process Details")
             Width: ='Process Detail Container'.Width
-            ZIndex: =2
+            ZIndex: =1
 
         "'Process Name Label' As label":
             FontWeight: =FontWeight.Semibold
@@ -3021,7 +3035,7 @@ scrOperatingModels As screen:
             Width: =307
             X: =56
             Y: =79
-            ZIndex: =4
+            ZIndex: =2
 
         icoExitProcess As icon.Cancel:
             Color: =RGBA(255, 255, 255, 1)
@@ -3034,7 +3048,7 @@ scrOperatingModels As screen:
             Width: =54
             X: ='Process Detail Container'.Width - 60
             Y: =3
-            ZIndex: =14
+            ZIndex: =3
 
         frmEditProcess As form:
             DataSource: =Processes
@@ -3046,7 +3060,7 @@ scrOperatingModels As screen:
             Width: =1038
             X: =21
             Y: =67
-            ZIndex: =15
+            ZIndex: =4
 
             Sequence_DataCard5 As typedDataCard.numberEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -3599,25 +3613,121 @@ scrOperatingModels As screen:
             Visible: =If(varEditProcess,true,false)
             X: =867
             Y: =591
-            ZIndex: =16
+            ZIndex: =5
 
         btnDeleteProcess As button:
             Fill: =RGBA(39, 67, 125, 1)
             OnSelect: |-
                 =UpdateContext({varDeleteProcess:true})
             Text: ="Delete Process"
-            Visible: =false
-            X: =736
-            Y: =551
-            ZIndex: =17
+            X: =871
+            Y: =656
+            ZIndex: =6
+
+        btnModifyProcess As button:
+            DisplayMode: =If(IsBlank(dcProcEditProcessName.Text), DisplayMode.Disabled, DisplayMode.Edit)
+            Fill: =RGBA(39, 67, 125, 1)
+            OnSelect: |-
+                =UpdateContext({varEditProcess:true})
+            Text: ="Modify Process"
+            Visible: =If(varEditProcess = false && chkDraftModels.Value = true,true,false)
+            X: =920
+            Y: =591
+            ZIndex: =7
+
+        lblCapability As label:
+            BorderColor: =RGBA(50, 86, 160, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            FontWeight: =FontWeight.Bold
+            Text: ="Capability Filter"
+            Visible: =If(varEditProcess,true,false)
+            X: =647
+            Y: =335
+            ZIndex: =8
+
+        Rectangle10 As rectangle:
+            BorderThickness: =1
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Visible: =If(varEditProcess,false,true)
+            Width: =460
+            X: =40
+            Y: =108
+            ZIndex: =9
+
+        Rectangle10_1 As rectangle:
+            BorderThickness: =1
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =206
+            Visible: =If(varEditProcess,false,true)
+            Width: =803
+            X: =40
+            Y: =203
+            ZIndex: =10
+
+        Rectangle10_2 As rectangle:
+            BorderThickness: =1
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Visible: =If(varEditProcess,false,true)
+            Width: =131
+            X: =549
+            Y: =108
+            ZIndex: =11
+
+        Rectangle10_4 As rectangle:
+            BorderThickness: =1
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =48
+            Visible: =If(varEditProcess,false,true)
+            Width: =199
+            X: =549
+            Y: =475
+            ZIndex: =12
+
+        Rectangle10_5 As rectangle:
+            BorderThickness: =1
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =48
+            OnSelect: =Launch(dcProcEditDataFlow.Text)
+            Visible: =If(varEditProcess,false,true)
+            Width: =803
+            X: =40
+            Y: =591
+            ZIndex: =13
+
+        Label14 As label:
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =32
+            Size: =10
+            Text: ="Verify Process Group after change of Capability"
+            Visible: =If(varChangedCapability,true,false)
+            Width: =313
+            X: =73
+            Y: =523
+            ZIndex: =14
+
+        lblLucidChartMessage As label:
+            Align: =Align.Center
+            Color: =RGBA(9, 33, 98, 1)
+            Height: =57
+            OnSelect: |-
+                =Launch("https://lucid.app/folder/invitations/accept/inv_c662a896-59b3-43f3-919e-5312afdb3d18")
+            Size: =10
+            Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here. "
+            Underline: =true
+            Width: =708
+            X: =40
+            Y: =639
+            ZIndex: =15
 
         cntDeleteProcess As groupContainer.manualLayoutContainer:
             BorderThickness: =1
             Fill: =RGBA(255, 255, 255, 1)
-            Visible: =false
+            Visible: =If(varDeleteProcess,true,false)
             X: =420
             Y: =408
-            ZIndex: =18
+            ZIndex: =16
 
             lblConfirmDelete As label:
                 Height: =51
@@ -3650,103 +3760,6 @@ scrOperatingModels As screen:
                 Y: =118
                 ZIndex: =3
 
-        btnModifyProcess As button:
-            DisplayMode: =If(IsBlank(dcProcEditProcessName.Text), DisplayMode.Disabled, DisplayMode.Edit)
-            Fill: =RGBA(39, 67, 125, 1)
-            OnSelect: |-
-                =UpdateContext({varEditProcess:true})
-            Text: ="Modify Process"
-            Visible: =If(varEditProcess = false && chkDraftModels.Value = true,true,false)
-            X: =920
-            Y: =591
-            ZIndex: =19
-
-        lblCapability As label:
-            BorderColor: =RGBA(50, 86, 160, 1)
-            Color: =RGBA(0, 18, 107, 1)
-            FontWeight: =FontWeight.Bold
-            Text: ="Capability Filter"
-            Visible: =If(varEditProcess,true,false)
-            X: =647
-            Y: =335
-            ZIndex: =20
-
-        Rectangle10 As rectangle:
-            BorderThickness: =1
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Visible: =If(varEditProcess,false,true)
-            Width: =460
-            X: =40
-            Y: =108
-            ZIndex: =21
-
-        Rectangle10_1 As rectangle:
-            BorderThickness: =1
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =206
-            Visible: =If(varEditProcess,false,true)
-            Width: =803
-            X: =40
-            Y: =203
-            ZIndex: =22
-
-        Rectangle10_2 As rectangle:
-            BorderThickness: =1
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            Visible: =If(varEditProcess,false,true)
-            Width: =131
-            X: =549
-            Y: =108
-            ZIndex: =23
-
-        Rectangle10_4 As rectangle:
-            BorderThickness: =1
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =48
-            Visible: =If(varEditProcess,false,true)
-            Width: =199
-            X: =549
-            Y: =475
-            ZIndex: =25
-
-        Rectangle10_5 As rectangle:
-            BorderThickness: =1
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =48
-            OnSelect: =Launch(dcProcEditDataFlow.Text)
-            Visible: =If(varEditProcess,false,true)
-            Width: =803
-            X: =40
-            Y: =591
-            ZIndex: =26
-
-        Label14 As label:
-            Color: =RGBA(255, 0, 0, 1)
-            Height: =32
-            Size: =10
-            Text: ="Verify Process Group after change of Capability"
-            Visible: =If(varChangedCapability,true,false)
-            Width: =313
-            X: =73
-            Y: =523
-            ZIndex: =27
-
-        lblLucidChartMessage As label:
-            Align: =Align.Center
-            Color: =RGBA(9, 33, 98, 1)
-            Height: =57
-            OnSelect: |-
-                =Launch("https://lucid.app/folder/invitations/accept/inv_c662a896-59b3-43f3-919e-5312afdb3d18")
-            Size: =10
-            Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here. "
-            Underline: =true
-            Width: =708
-            X: =40
-            Y: =639
-            ZIndex: =28
-
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
         FontWeight: =FontWeight.Bold
@@ -3757,7 +3770,7 @@ scrOperatingModels As screen:
         Width: =322
         X: =739
         Y: =507
-        ZIndex: =12
+        ZIndex: =13
 
     lblProcInactiveWarning As label:
         Align: =Align.Center
@@ -3770,7 +3783,7 @@ scrOperatingModels As screen:
         Width: =419
         X: =670
         Y: =312
-        ZIndex: =13
+        ZIndex: =14
 
     lblCapInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3782,7 +3795,7 @@ scrOperatingModels As screen:
         Width: =290
         X: =657
         Y: =489
-        ZIndex: =14
+        ZIndex: =15
 
     lblModelPropMessage As label:
         Align: =Align.Center
@@ -3793,7 +3806,7 @@ scrOperatingModels As screen:
         Width: =279
         X: =81
         Y: =393
-        ZIndex: =15
+        ZIndex: =16
 
     lblAssociateError As label:
         Align: =Align.Center
@@ -3804,20 +3817,6 @@ scrOperatingModels As screen:
         Width: =275
         X: =81
         Y: =468
-        ZIndex: =16
-
-    dpCapabilityFilter As dropdown:
-        Items: |-
-            =//colCreateWindowCapacityFilter
-            Filter(Capabilities,'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active)
-        OnChange: |
-            =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability && Status = 'Status (Process Groups)'.Active));
-            UpdateContext({varChangedCapability:true});
-        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
-        Visible: =If(varEditProcess,true,false)
-        Width: =445
-        X: =750
-        Y: =386
         ZIndex: =17
 
     chkDraftModels As checkbox:

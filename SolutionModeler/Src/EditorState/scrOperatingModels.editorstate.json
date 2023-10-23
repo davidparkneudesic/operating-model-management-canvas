@@ -1391,14 +1391,7 @@
         "Italic",
         "Underline",
         "Strikethrough",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
-          "InvariantPropertyName": "Visible",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Visible",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -1418,7 +1411,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnDeleteProcess",
-      "ParentIndex": 11,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2238,7 +2231,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnModifyProcess",
-      "ParentIndex": 14,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2516,7 +2509,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSaveProcess",
-      "ParentIndex": 13,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -39161,7 +39154,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblLucidChartMessage",
-      "ParentIndex": 15,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -49755,7 +49748,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectangle10_5",
-      "ParentIndex": 12,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
