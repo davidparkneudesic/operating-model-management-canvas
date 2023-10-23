@@ -2990,20 +2990,6 @@ scrOperatingModels As screen:
             Y: =366
             ZIndex: =22
 
-    dpCapabilityFilter As dropdown:
-        Items: |-
-            =//colCreateWindowCapacityFilter
-            Filter(Capabilities,'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active)
-        OnChange: |
-            =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability && Status = 'Status (Process Groups)'.Active));
-            UpdateContext({varChangedCapability:true});
-        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
-        Visible: =If(varEditProcess,true,false)
-        Width: =445
-        X: =750
-        Y: =386
-        ZIndex: =11
-
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -3011,7 +2997,7 @@ scrOperatingModels As screen:
         Visible: =If(varOpenProcessDetail, true, false)
         Width: =1119
         X: =99
-        ZIndex: =12
+        ZIndex: =11
 
         "'Process Details Title' As label":
             Align: =Align.Center
@@ -3759,6 +3745,20 @@ scrOperatingModels As screen:
                 X: =263
                 Y: =118
                 ZIndex: =3
+
+    dpCapabilityFilter As dropdown:
+        Items: |-
+            =//colCreateWindowCapacityFilter
+            Filter(Capabilities,'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active)
+        OnChange: |
+            =ClearCollect(colCreateWindowPGFilter,Filter('Process Groups', Capability.Capability = dpCapabilityFilter.Selected.Capability && Status = 'Status (Process Groups)'.Active));
+            UpdateContext({varChangedCapability:true});
+        OnSelect: =ClearCollect(colCreateWindowCapacityFilter,Filter(Capabilities, 'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model'))
+        Visible: =If(varEditProcess,true,false)
+        Width: =445
+        X: =750
+        Y: =386
+        ZIndex: =12
 
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
