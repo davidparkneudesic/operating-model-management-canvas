@@ -136,7 +136,7 @@ scrOperatingModels As screen:
                 Y: =7
                 ZIndex: =5
 
-        "'Capability Level 1 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        "glyCapabilityLevel1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
             DelayItemLoading: =true
             Fill: |-
@@ -161,14 +161,14 @@ scrOperatingModels As screen:
                     colSubCapabilities,
                     Filter(
                         Capabilities,
-                        'Parent Capability'.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                        'Parent Capability'.Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Capabilities)'.Active
                     )
                 );
                 ClearCollect(
                     colProcessGroups,
                     Filter(
                         'Process Groups',
-                        Capability.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                        Capability.Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Process Groups)'.Active
                     )
                 );
                 
@@ -176,17 +176,17 @@ scrOperatingModels As screen:
                     colCreateWindowCapacityFilter,
                     Filter(
                         Capabilities,
-                        Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                        Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Capabilities)'.Active
                     )
                 );
                 Clear(colCapabiilitiesL2);
                 UpdateContext({varCapLevel:"(Level 1)"})
             ShowNavigation: =true
             TemplateFill: |-
-                =If(ThisItem.'Capability Name' = 'Capability Level 1 Gallery'.Selected.'Capability Name' && 
+                =If(ThisItem.'Capability Name' = glyCapabilityLevel1.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
                     RGBA(204, 208, 225, 1),
-                    If (ThisItem.'Capability Name' = 'Capability Level 1 Gallery'.Selected.'Capability Name' && 
+                    If (ThisItem.'Capability Name' = glyCapabilityLevel1.Selected.'Capability Name' && 
                             (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail),
                             RGBA(153, 160, 196, 1),
                             RGBA(0,0,0,0)
@@ -574,7 +574,7 @@ scrOperatingModels As screen:
             X: =1055
             ZIndex: =14
 
-        "'Sub Capability L2 Gallery' As gallery.variableTemplateHeightGallery":
+        glyCapabilityLevel2 As gallery.variableTemplateHeightGallery:
             BorderThickness: =1
             Default: ={}
             DelayItemLoading: =true
@@ -597,29 +597,29 @@ scrOperatingModels As screen:
                     colCapabiilitiesL2,
                     Filter(
                         Capabilities,
-                        'Parent Capability'.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                        'Parent Capability'.Capability = glyCapabilityLevel2.Selected.Capability && Status = 'Status (Capabilities)'.Active
                     )
                 );
                 ClearCollect(
                     colProcessGroups,
                     Filter(
                         'Process Groups',
-                        Capability.Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                        Capability.Capability = glyCapabilityLevel2.Selected.Capability && Status = 'Status (Process Groups)'.Active
                     )
                 );
                 ClearCollect(
                     colCreateWindowCapacityFilter,
                     Filter(
                         Capabilities,
-                        Capability = 'Sub Capability L2 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active
+                        Capability = glyCapabilityLevel2.Selected.Capability && Status = 'Status (Capabilities)'.Active
                     )
                 );
                 UpdateContext({varCapLevel: "(Level 2)"})
             TemplateFill: |-
-                =If(ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name' && 
+                =If(ThisItem.'Capability Name' = glyCapabilityLevel2.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail), 
                     RGBA(204, 208, 225, 1),
-                    If (ThisItem.'Capability Name' = 'Sub Capability L2 Gallery'.Selected.'Capability Name' && 
+                    If (ThisItem.'Capability Name' = glyCapabilityLevel2.Selected.'Capability Name' && 
                             (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate || varOpenProcessDetail),
                             RGBA(153, 160, 196, 1),
                             RGBA(0,0,0,0)
@@ -665,7 +665,7 @@ scrOperatingModels As screen:
                 Y: =6
                 ZIndex: =6
 
-        "'Sub Capability L3 Gallery' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+        "glyCapabilityLevel3 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =2
             DelayItemLoading: =true
             Height: =145
@@ -677,25 +677,25 @@ scrOperatingModels As screen:
                     colProcessGroups,
                     Filter(
                         'Process Groups',
-                        Capability.Capability = 'Sub Capability L3 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active
+                        Capability.Capability = glyCapabilityLevel3.Selected.Capability && Status = 'Status (Process Groups)'.Active
                     )
                 );
                 ClearCollect(
                     colCreateWindowCapacityFilter,
                     Filter(
                         Capabilities,
-                        Capability = 'Sub Capability L3 Gallery'.Selected.Capability
+                        Capability = glyCapabilityLevel3.Selected.Capability
                     )
                 );
                 UpdateContext({varCapLevel: "(Level 3)"})
             TemplateFill: |-
-                =If(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
+                =If(ThisItem.'Capability Name' = glyCapabilityLevel3.Selected.'Capability Name' && 
                         !(varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate), 
                     RGBA(204, 208, 225, 1),
-                    If (ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name' && 
+                    If (ThisItem.'Capability Name' = glyCapabilityLevel3.Selected.'Capability Name' && 
                             (varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate),
                             RGBA(153, 160, 196, 1),
-                            If ((varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate) && !(ThisItem.'Capability Name' = 'Sub Capability L3 Gallery'.Selected.'Capability Name'),
+                            If ((varOpenOperatingModelCreate || varOpenCapabilityCreate || varOpenProcessGroupCreate || varOpenProcessCreate) && !(ThisItem.'Capability Name' = glyCapabilityLevel3.Selected.'Capability Name'),
                                 RGBA(202,202,202,1),
                                 RGBA(255,255,255,1)
                         )
@@ -721,7 +721,7 @@ scrOperatingModels As screen:
                 Tooltip: ="View item details"
                 Width: =32
                 X: |
-                    ='Sub Capability L3 Gallery'.Width - 44
+                    =glyCapabilityLevel3.Width - 44
                 Y: =2
                 ZIndex: =2
 
@@ -821,7 +821,7 @@ scrOperatingModels As screen:
             UpdateContext({varModelPropStarted:false});
             UpdateContext({varAssociateError:false});
             Reset('New Capability Name Input'); Reset(txtProcessGroupName); Reset('New Process Name Input'); Reset('Description Proc Input');
-            Reset(glyOperatingModels);Reset('Capability Level 1 Gallery');Clear(colSubCapabilities);Clear(colProcessGroups);Reset(chkDraftModels);
+            Reset(glyOperatingModels);Reset(glyCapabilityLevel1);Clear(colSubCapabilities);Clear(colProcessGroups);Reset(chkDraftModels);
             
             If(IsBlank(ClientSolutionIdentifier),
                 Back(ScreenTransition.UnCoverRight);
@@ -1429,9 +1429,9 @@ scrOperatingModels As screen:
             DataSource: =Capabilities
             Item: |-
                 =If(varEditSubCap,
-                    'Sub Capability L2 Gallery'.Selected,
-                        If(varEditCap, 'Capability Level 1 Gallery'.Selected,
-                        'Sub Capability L3 Gallery'.Selected
+                    glyCapabilityLevel2.Selected,
+                        If(varEditCap, glyCapabilityLevel1.Selected,
+                        glyCapabilityLevel3.Selected
                         )
                 )
             Visible: =If(varEditCap || varEditSubCap || varEditL3Cap,true,false)
@@ -1895,7 +1895,7 @@ scrOperatingModels As screen:
                     If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
                 
                         Patch(Capabilities,
-                            'Capability Level 1 Gallery'.Selected,
+                            glyCapabilityLevel1.Selected,
                             {
                             'Operating Model':dcCapEditOpModelName.Selected,
                             'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1907,7 +1907,7 @@ scrOperatingModels As screen:
                             }
                         ),
                             Patch(Capabilities,
-                            'Capability Level 1 Gallery'.Selected,
+                            glyCapabilityLevel1.Selected,
                             {
                             'Operating Model':dcCapEditOpModelName.Selected,
                             'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1923,7 +1923,7 @@ scrOperatingModels As screen:
                             If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
                 
                             Patch(Capabilities,
-                                'Sub Capability L2 Gallery'.Selected,
+                                glyCapabilityLevel2.Selected,
                                 {
                                 'Operating Model':dcCapEditOpModelName.Selected,
                                 'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1935,7 +1935,7 @@ scrOperatingModels As screen:
                                 }
                             ),
                                 Patch(Capabilities,
-                                'Sub Capability L2 Gallery'.Selected,
+                                glyCapabilityLevel2.Selected,
                                 {
                                 'Operating Model':dcCapEditOpModelName.Selected,
                                 'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1951,7 +1951,7 @@ scrOperatingModels As screen:
                             If(CapEditStatusReason.Selected.Value = 'Status Reason (Capabilities)'.Inactive,
                 
                                 Patch(Capabilities,
-                                    'Sub Capability L3 Gallery'.Selected,
+                                    glyCapabilityLevel3.Selected,
                                     {
                                     'Operating Model':dcCapEditOpModelName.Selected,
                                     'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1963,7 +1963,7 @@ scrOperatingModels As screen:
                                     }
                                 ),
                                     Patch(Capabilities,
-                                    'Sub Capability L3 Gallery'.Selected,
+                                    glyCapabilityLevel3.Selected,
                                     {
                                     'Operating Model':dcCapEditOpModelName.Selected,
                                     'Capability Name':dcCapEditCapabilityNameCap.Text,
@@ -1984,9 +1984,9 @@ scrOperatingModels As screen:
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
                 Reset('New Capability Name Input');
-                ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
-                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Process Groups)'.Active));
-                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = 'Capability Level 1 Gallery'.Selected.Capability && Status = 'Status (Capabilities)'.Active));
+                ClearCollect(colSubCapabilities, Filter(Capabilities,'Parent Capability'.Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Capabilities)'.Active));
+                ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Process Groups)'.Active));
+                ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Capabilities)'.Active));
                 Clear(colCapabiilitiesL2);
             Text: ="Update"
             Visible: |
@@ -2178,10 +2178,21 @@ scrOperatingModels As screen:
             ZIndex: =10
 
         ddCapability As dropdown:
+            AllowEmptySelection: =true
             ChevronBackground: |-
                 =ColorValue("#00467f")
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
+            Default: |-
+                =If(
+                    varCapLevel = "(Level 1)",
+                    glyCapabilityLevel1.Selected.'Capability Name',
+                    If(
+                        varCapLevel = "(Level 2)",
+                        glyCapabilityLevel2.Selected.'Capability Name',
+                        glyCapabilityLevel3.Selected.'Capability Name'
+                    )
+                )
             Height: =35
             Items: |+
                 =//colCreateWindowCapacityFilter
