@@ -138,7 +138,7 @@ scrOperatingModels As screen:
 
         "glyCapabilityLevel1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
-            Default: =First(Self.AllItems)
+            Default: =//First(Self.AllItems)
             DelayItemLoading: =true
             Fill: |-
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
