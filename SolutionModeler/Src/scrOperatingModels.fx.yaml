@@ -3747,6 +3747,7 @@ scrOperatingModels As screen:
                 ZIndex: =3
 
     dpCapabilityFilter As dropdown:
+        Default: =If(varCapLevel = "(Level 1)", glyCapabilityLevel1.Selected.'Capability Name', If(varCapLevel = "(Level 2)", glyCapabilityLevel2.Selected.'Capability Name',glyCapabilityLevel3.Selected.'Capability Name'))
         Items: |-
             =//colCreateWindowCapacityFilter
             Filter(Capabilities,'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active)

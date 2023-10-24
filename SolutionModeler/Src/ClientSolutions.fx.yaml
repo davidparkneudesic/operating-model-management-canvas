@@ -235,8 +235,8 @@
             Tooltip: ="Click this button to generate Operating Model(s) for this client solution."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =942
-            Y: =121
+            X: =947
+            Y: =127
             ZIndex: =17
 
         "'Related Operating Model Label_1' As label":
