@@ -11,7 +11,7 @@
     UserStories_Detail_Window As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
-            =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+            =If(varOpenUserStoryCreate  || varOpenDeleteUserStoryWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =650
         Width: =1304
@@ -640,7 +640,7 @@
         UserStoryFormEdit As form:
             DataSource: ='User Stories'
             Fill: |-
-                =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                =If(varOpenDeleteUserStoryWindow, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
             Height: =476
             Item: =glyCSUserStories.Selected
@@ -775,7 +775,7 @@
                         =ColorFade(ColorValue("#00467f"), -20%)
                     Default: =glyCSUserStories.Selected.'Epic Level Item'
                     Fill: |-
-                        =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                        =If(varOpenDeleteUserStoryWindow, 
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     Items: =Choices('Epic Level Item (User Stories)')
@@ -834,12 +834,14 @@
                     DefaultSelectedItems: =LookUp('User Stories', Name = glyCSUserStories.Selected.Name, 'Operating Model')
                     DisplayFields: =["neu_operatingmodelname"]
                     Fill: |-
-                        =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                        =If( varOpenDeleteUserStoryWindow, 
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
                     Items: |
-                        =Sort('Operating Models', 'Operating Model Name')
+                        =//Sort(
+                          Filter('Operating Models', 'Client Solution Identifier'.Client SOlutio
+                         //= glyCSUserStories.Selected),'Operating Model Name')
                     SearchFields: =["neu_operatingmodelname"]
                     SearchItems: =[]
                     SelectMultiple: =false
@@ -899,7 +901,7 @@
                     DefaultSelectedItems: =LookUp('User Stories', Name = glyCSUserStories.Selected.Name, Capability)
                     DisplayFields: =["neu_capabilityname"]
                     Fill: |-
-                        =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                        =If( varOpenDeleteUserStoryWindow, 
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
@@ -963,7 +965,7 @@
                     DefaultSelectedItems: =LookUp('User Stories', Name = glyCSUserStories.Selected.Name, 'Process Group')
                     DisplayFields: =["neu_processgroupname"]
                     Fill: |-
-                        =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                        =If( varOpenDeleteUserStoryWindow, 
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
@@ -1037,7 +1039,7 @@
                     DefaultSelectedItems: =LookUp('User Stories', Name = glyCSUserStories.Selected.Name, Process)
                     DisplayFields: =["neu_processname"]
                     Fill: |-
-                        =If(varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                        =If(varOpenDeleteUserStoryWindow, 
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     IsSearchable: =false
@@ -1146,7 +1148,7 @@
                     Default: =Parent.Default
                     DelayOutput: =true
                     Fill: |-
-                        =If(varOpenUserStoryCreate || varOpenUserStoryUpdatedWindow || varOpenDeleteUserStoryWindow, 
+                        =If(varOpenUserStoryCreate  || varOpenDeleteUserStoryWindow, 
                         RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
                     Height: =30
                     MaxLength: =Parent.MaxLength
@@ -1380,6 +1382,7 @@
                 );
                 
                 UpdateContext({varOpenUserStoryUpdatedWindow:true});
+                UpdateContext({varUpdateUserStory:false})
             Text: ="Update Story"
             Visible: =If(varUpdateUserStory,true,false)
             Width: =212
@@ -1495,36 +1498,6 @@
         X: =17
         Y: =12
         ZIndex: =6
-
-    UserStoryUpdatedWindow_Container As groupContainer.manualLayoutContainer:
-        DropShadow: =DropShadow.Semibold
-        Fill: =RGBA(255, 255, 255, 1)
-        Visible: =If(varOpenUserStoryUpdatedWindow,true,false)
-        X: =433
-        Y: =303
-        ZIndex: =7
-
-        Icon2 As icon.Cancel:
-            Height: =54
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenUserStoryUpdatedWindow:false});
-                UpdateContext({varUpdateUserStory:false})
-            Width: =52
-            X: =440
-            Y: =5
-            ZIndex: =1
-
-        Label8 As label:
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Height: =77
-            Size: =15
-            Text: ="User Story has been successfully Updated!"
-            Width: =448
-            X: =26
-            Y: =75
-            ZIndex: =2
 
     UserStoryDeletedWindow_Container As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold

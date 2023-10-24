@@ -834,7 +834,10 @@
             HeadingFill: |-
                 = ColorValue("#00467f")
             Height: =236
-            Items: =Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
+            Items: |-
+                =If(varCSUserStoryCollectionActive, 
+                colCSUserSTories,
+                Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'))
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =1029
             X: =34
@@ -1063,6 +1066,18 @@
             X: =645
             Y: =238
             ZIndex: =27
+
+        Icon5 As icon.Reload:
+            Height: =30
+            Icon: =Icon.Reload
+            OnSelect: |-
+                =ClearCollect(colCSUserSTories,Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
+                UpdateContext({varCSUserStoryCollectionActive:true})
+            Rotation: =90
+            Width: =37
+            X: =744
+            Y: =312
+            ZIndex: =28
 
     "'Client Solutions Page Label' As label":
         Align: =Align.Center

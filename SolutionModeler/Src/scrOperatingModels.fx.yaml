@@ -2252,7 +2252,7 @@ scrOperatingModels As screen:
                     IsSearchable: =false
                     Items: |+
                         =//colCreateWindowCapacityFilter
-                        Filter(Capabilities,'Operating Model'.'Operating Model Name' = glyOperatingModels.Selected.'Operating Model Name' && Status = 'Status (Capabilities)'.Active)
+                        Filter(Capabilities,'Operating Model'.'Operating Model' = glyOperatingModels.Selected.'Operating Model' && Status = 'Status (Capabilities)'.Active)
                         
                     OnSelect: =
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
