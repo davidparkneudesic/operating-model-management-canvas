@@ -1432,7 +1432,7 @@
             FontWeight: =FontWeight.Bold
             Height: =41
             Size: =20
-            Text: ="User Story Detail"
+            Text: =If (EpicLevelItem_Dropdown_Update.Selected.Value = true,"Epic Level User Story","User Story Detail")
             Width: =275
             X: =67
             Y: =4
