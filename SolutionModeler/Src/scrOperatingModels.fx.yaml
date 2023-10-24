@@ -138,6 +138,7 @@ scrOperatingModels As screen:
 
         "glyCapabilityLevel1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
             BorderThickness: =1
+            Default: =First(Self.AllItems)
             DelayItemLoading: =true
             Fill: |-
                 =If(varOpenOperatingModelCreate || varEditOM || varOpenCapabilityCreate ||varEditCap || varEditL3Cap || varEditSubCap || varOpenProcessGroupCreate || varOpenProcessGroupEdit || varOpenProcessCreate ||  varEditProcess, 
@@ -1242,7 +1243,7 @@ scrOperatingModels As screen:
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: |-
+            OnSelect: |
                 =Patch(
                     Capabilities,
                     Defaults(Capabilities),
@@ -1256,12 +1257,14 @@ scrOperatingModels As screen:
                         Sequence:Value(txtCapSequence.Text)
                     }
                 );
-                Reset('Parent Capability Combobox');
                 UpdateContext({varOpenCapabilityCreate:false});
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
+                UpdateContext({varCapCreated:false});
+                UpdateContext({varEditSubCap:false});
                 Reset('New Capability Name Input');
-                Reset(txtCapSequence)
+                Reset(txtCapSequence);
+                Reset('Parent Capability Combobox');
             Text: |-
                 ="Create
                 "
@@ -1988,6 +1991,7 @@ scrOperatingModels As screen:
                 ClearCollect(colProcessGroups, Filter('Process Groups', Capability.Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Process Groups)'.Active));
                 ClearCollect(colCreateWindowCapacityFilter, Filter(Capabilities, Capability = glyCapabilityLevel1.Selected.Capability && Status = 'Status (Capabilities)'.Active));
                 Clear(colCapabiilitiesL2);
+                UpdateContext({varCapLevel:"(Level 1)"})
             Text: ="Update"
             Visible: |
                 =If(varEditCap || varEditSubCap || varEditL3Cap, true,false)
