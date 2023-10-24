@@ -839,9 +839,7 @@
                     Height: =30
                     IsSearchable: =false
                     Items: |
-                        =//Sort(
-                          Filter('Operating Models', 'Client Solution Identifier'.Client SOlutio
-                         //= glyCSUserStories.Selected),'Operating Model Name')
+                        =Sort(Filter('Operating Models', 'Client Solution Identifier'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'),'Operating Model Name')
                     SearchFields: =["neu_operatingmodelname"]
                     SearchItems: =[]
                     SelectMultiple: =false
@@ -1380,9 +1378,10 @@
                         }
                     )
                 );
-                
+                ClearCollect(colCSUserSTories,Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
                 UpdateContext({varOpenUserStoryUpdatedWindow:true});
-                UpdateContext({varUpdateUserStory:false})
+                UpdateContext({varUpdateUserStory:false});
+                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
             Text: ="Update Story"
             Visible: =If(varUpdateUserStory,true,false)
             Width: =212

@@ -119,7 +119,9 @@ scrClientSolutionSelection As screen:
             Height: =Parent.Height
             IsHyperlink: =true
             LayoutHeight: =Parent.Height
-            OnSelect: =Navigate(ClientSolutions)
+            OnSelect: |-
+                =Navigate(ClientSolutions);
+                ClearCollect(colCSUserSTories,Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
             Order: =1
             Text: =ThisItem.'Solution Name'
             Width: =100

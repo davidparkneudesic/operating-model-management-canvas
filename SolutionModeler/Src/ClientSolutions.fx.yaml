@@ -835,9 +835,9 @@
                 = ColorValue("#00467f")
             Height: =236
             Items: |-
-                =If(varCSUserStoryCollectionActive, 
-                colCSUserSTories,
-                Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'))
+                =If(varCSUserStoryCollectionActive, colCSUserSTories,
+                Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
+                )
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =1029
             X: =34
@@ -1043,7 +1043,7 @@
             Tooltip: ="Click this button to create new User Stories for this Client Solution."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =212
-            X: =835
+            X: =766
             Y: =323
             ZIndex: =25
 
@@ -1070,13 +1070,14 @@
         Icon5 As icon.Reload:
             Height: =30
             Icon: =Icon.Reload
-            OnSelect: |-
+            OnSelect: |
                 =ClearCollect(colCSUserSTories,Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
-                UpdateContext({varCSUserStoryCollectionActive:true})
+                UpdateContext({varCSUserStoryCollectionActive:true});
+                UpdateContext({varEpicHoursCalcd:false})
             Rotation: =90
             Width: =37
-            X: =744
-            Y: =312
+            X: =1012
+            Y: =335
             ZIndex: =28
 
     "'Client Solutions Page Label' As label":
@@ -1629,7 +1630,7 @@
         Align: =Align.Center
         Color: =RGBA(255, 0, 0, 1)
         Height: =62
-        Text: ="Epic Hours are being updated.  You may need to exit the Client Solution and return in order to see the updates in the sub grid"
+        Text: ="Epic Hours are being updated.  After 10 seconds, click on the refresh icon to see the newly calculated hours"
         Visible: =If(varEpicHoursCalcd,true,false)
         Width: =499
         X: =832
