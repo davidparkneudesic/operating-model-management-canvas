@@ -3628,7 +3628,7 @@ scrOperatingModels As screen:
                 =UpdateContext({varDeleteProcess:true})
             Text: ="Delete Process"
             Visible: =If(chkDraftModels,true,false)
-            X: =871
+            X: =920
             Y: =656
             ZIndex: =6
 
