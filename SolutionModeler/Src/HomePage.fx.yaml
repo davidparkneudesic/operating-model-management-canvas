@@ -1,6 +1,7 @@
 HomePage As screen:
     Fill: =RGBA(237, 237, 237, 1)
-    OnVisible: =
+    OnVisible: |-
+        =Set(varSolutionGuideURL,"https://neudesic.sharepoint.com/:b:/s/NeudesicBusinessApplications/EQ0SLKxcjS5BmY1Rse-Zf_YBWCnTRd3lG71fZa5dCHsR6A?e=mmHt6b")
 
     "'Title Page Label' As label":
         Align: =Align.Center
@@ -177,8 +178,7 @@ HomePage As screen:
     Label10 As label:
         Color: =RGBA(39, 113, 194, 1)
         Height: =48
-        OnSelect: |-
-            =Launch("https://neudesic.sharepoint.com/:b:/s/NeudesicBusinessApplications/EXkrf6PUErZBislCGh-WarsBuaGL7wAVzsICwSAPhiBtmw?e=nISkZs")
+        OnSelect: =Launch(varSolutionGuideURL)
         Text: ="Click here for the Solution Modeler User Guide"
         Underline: =true
         Width: =435
