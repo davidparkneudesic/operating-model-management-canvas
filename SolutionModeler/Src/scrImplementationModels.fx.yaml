@@ -1683,6 +1683,17 @@ scrImplementationModels As screen:
             Y: =256
             ZIndex: =15
 
+        lblInactiveWarning As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =137
+            Text: ="When an Implementation Phase is set to Inactive, all related Stages, Product Backlog Items and Tasks will be deleted as well.   This action is not reversible."
+            Visible: =If(dcIPStatusReasonEdit.Selected.Value = 2,true,false)
+            Width: =312
+            X: =551
+            Y: =364
+            ZIndex: =16
+
     "'Create Implmentation Stage Container' As groupContainer.manualLayoutContainer":
         Fill: =RGBA(255, 255, 255, 1)
         Height: =620
@@ -2166,11 +2177,11 @@ scrImplementationModels As screen:
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
             Height: =158
-            Text: ="Setting an Implementation Stage to Inactive will render it and all related records inacessible."
+            Text: ="Setting an Implementation Stage to Inactive will delete all related Product Backlog Items and Tasks.  This action is not reversible."
             Visible: =If(varEditOpenImplementationStage && dcISStatusReason.Selected.Value = 'Status Reason (Implementation Stages)'.Inactive,true,false)
             Width: =224
-            X: =645
-            Y: =249
+            X: =628
+            Y: =352
             ZIndex: =17
 
     "'Create Product Backlog Item Container' As groupContainer.manualLayoutContainer":
@@ -2743,6 +2754,7 @@ scrImplementationModels As screen:
                 =UpdateContext({varCreateOpenTask:false});
                 UpdateContext({varTaskCreated:false});
                 UpdateContext({varEditOpenTask:false});
+                UpdateContext({varDeleteTask:false});
                 Reset(txtTaskName); Reset('Sequence Task Input');Reset('New Task Description Input');
             Width: =54
             X: ='Create Task Container'.Width - 60
@@ -3360,12 +3372,72 @@ scrImplementationModels As screen:
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
             Height: =68
-            Text: ="Setting a Task to Inactive will delete the Task from the model"
+            Text: ="Setting a Task to Inactive will not delete the Task from the model.  Use the Delete Task button to remove a Task."
             Visible: =If(dcTaskStatusReason.Selected.Value = 'Status Reason (Tasks)'.Inactive, true, false)
-            Width: =541
-            X: =477
+            Width: =383
+            X: =635
             Y: =510
             ZIndex: =25
+
+        "'Create Task Button_3' As button":
+            Color: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            DisplayMode: =If(IsBlank(dcTaskName.Text) || IsBlank(dcTaskSequence.Text), DisplayMode.Disabled, DisplayMode.Edit)
+            Fill: |-
+                =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow, 
+                    ColorFade(RGBA(26, 76, 145, 1), -30%),
+                    RGBA(26, 76, 145, 1)
+                )
+            Height: =44
+            HoverFill: =ColorFade(RGBA(26, 76, 145, 1), -30%)
+            OnSelect: |
+                =UpdateContext({varDeleteTask:true});
+            Size: =12
+            Text: ="Delete Task"
+            Visible: =If(varEditOpenTask && chkImpDraftModels.Value,true,false)
+            Width: =234
+            X: =323
+            Y: =539
+            ZIndex: =26
+
+        cntDeleteTask As groupContainer.manualLayoutContainer:
+            BorderThickness: =1
+            Fill: =RGBA(255, 255, 255, 1)
+            Visible: =If(varDeleteTask,true,false)
+            X: =190
+            Y: =298
+            ZIndex: =27
+
+            lblConfirmDelete_1 As label:
+                Height: =51
+                Text: ="Are you sure you want to delete this process?"
+                Width: =401
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+            btnDeleteTaskConfirmed As button:
+                Fill: =RGBA(39, 67, 125, 1)
+                OnSelect: |+
+                    =Remove(Tasks,glyTask.Selected);
+                    UpdateContext({varDeleteTask:false});
+                    UpdateContext({varCreateOpenTask:false});
+                    UpdateContext({varEditOpenTask:false})
+                    
+                Text: ="DELETE"
+                X: =68
+                Y: =118
+                ZIndex: =2
+
+            btnDeleteTaskCancelled As button:
+                Fill: =RGBA(39, 67, 125, 1)
+                OnSelect: |
+                    =UpdateContext({varDeleteTask:false});
+                Text: ="Cancel"
+                X: =263
+                Y: =118
+                ZIndex: =3
 
     frmEditImplementationModel As form:
         DataSource: ='Implementation Models'

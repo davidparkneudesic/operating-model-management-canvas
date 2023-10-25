@@ -3050,7 +3050,8 @@ scrOperatingModels As screen:
             OnSelect: |-
                 =UpdateContext({varOpenProcessDetail:false});
                 UpdateContext({varEditProcess:false});
-                UpdateContext({varChangedCapability:false})
+                UpdateContext({varChangedCapability:false});
+                UpdateContext({varDeleteProcess:false})
             Width: =54
             X: ='Process Detail Container'.Width - 60
             Y: =3
@@ -3732,8 +3733,8 @@ scrOperatingModels As screen:
             BorderThickness: =1
             Fill: =RGBA(255, 255, 255, 1)
             Visible: =If(varDeleteProcess,true,false)
-            X: =420
-            Y: =408
+            X: =580
+            Y: =456
             ZIndex: =16
 
             lblConfirmDelete As label:
