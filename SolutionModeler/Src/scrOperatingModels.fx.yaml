@@ -2994,6 +2994,23 @@ scrOperatingModels As screen:
             Y: =366
             ZIndex: =22
 
+    chkDraftModels As checkbox:
+        Color: =RGBA(255, 255, 255, 1)
+        OnCheck: |
+            =Clear(colSubCapabilities);
+            Clear(colProcessGroups);
+        OnUncheck: |+
+            =Clear(colSubCapabilities);
+            Clear(colProcessGroups);
+            
+        Size: =12
+        Text: ="Show Draft Models"
+        Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)
+        Width: =195
+        X: =81
+        Y: =15
+        ZIndex: =11
+
     "'Process Detail Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -3001,7 +3018,7 @@ scrOperatingModels As screen:
         Visible: =If(varOpenProcessDetail, true, false)
         Width: =1119
         X: =99
-        ZIndex: =11
+        ZIndex: =12
 
         "'Process Details Title' As label":
             Align: =Align.Center
@@ -3610,6 +3627,7 @@ scrOperatingModels As screen:
             OnSelect: |-
                 =UpdateContext({varDeleteProcess:true})
             Text: ="Delete Process"
+            Visible: =If(chkDraftModels,true,false)
             X: =871
             Y: =656
             ZIndex: =6
@@ -3763,7 +3781,7 @@ scrOperatingModels As screen:
         Width: =445
         X: =750
         Y: =386
-        ZIndex: =12
+        ZIndex: =13
 
     lblPGInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3775,7 +3793,7 @@ scrOperatingModels As screen:
         Width: =322
         X: =739
         Y: =507
-        ZIndex: =13
+        ZIndex: =14
 
     lblProcInactiveWarning As label:
         Align: =Align.Center
@@ -3788,7 +3806,7 @@ scrOperatingModels As screen:
         Width: =419
         X: =670
         Y: =312
-        ZIndex: =14
+        ZIndex: =15
 
     lblCapInactiveWarning As label:
         Color: =RGBA(255, 0, 0, 1)
@@ -3800,7 +3818,7 @@ scrOperatingModels As screen:
         Width: =290
         X: =657
         Y: =489
-        ZIndex: =15
+        ZIndex: =16
 
     lblModelPropMessage As label:
         Align: =Align.Center
@@ -3811,7 +3829,7 @@ scrOperatingModels As screen:
         Width: =279
         X: =81
         Y: =393
-        ZIndex: =16
+        ZIndex: =17
 
     lblAssociateError As label:
         Align: =Align.Center
@@ -3822,22 +3840,5 @@ scrOperatingModels As screen:
         Width: =275
         X: =81
         Y: =468
-        ZIndex: =17
-
-    chkDraftModels As checkbox:
-        Color: =RGBA(255, 255, 255, 1)
-        OnCheck: |
-            =Clear(colSubCapabilities);
-            Clear(colProcessGroups);
-        OnUncheck: |+
-            =Clear(colSubCapabilities);
-            Clear(colProcessGroups);
-            
-        Size: =12
-        Text: ="Show Draft Models"
-        Visible: =If(Len(ClientSolutionIdentifier)>0, false,true)
-        Width: =195
-        X: =81
-        Y: =15
         ZIndex: =18
 
