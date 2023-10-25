@@ -1,5 +1,20 @@
 scrImplementationModels As screen:
-    Fill: =If(varCreateOpenImplementationModel||varCreateOpenImplementationPhase||varCreateOpenImplementationStage||varCreateOpenProductBacklogItem||varCreateOpenTask||varOpenTaskDetailWindow||varOpenTaskDetailWindow||varEditOpenProductBacklogItem||varEditOpenImplementationStage||varEditOpenImplementationPhase||varEditOpenImplementationModel,RGBA(149,149,149,1),RGBA(237,237,237,1))
+    Fill: |-
+        =If(
+            varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel,
+            RGBA(
+                149,
+                149,
+                149,
+                1
+            ),
+            RGBA(
+                237,
+                237,
+                237,
+                1
+            )
+        )
     OnVisible: =
 
     ImplmentationModels_Background As groupContainer.manualLayoutContainer:
@@ -32,7 +47,7 @@ scrImplementationModels As screen:
             Fill: |-
                 =If(varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow || varOpenTaskDetailWindow || varEditOpenProductBacklogItem || varEditOpenImplementationStage || varEditOpenImplementationPhase || varEditOpenImplementationModel, 
                 RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
-            Height: =504
+            Height: =368
             Items: |-
                 =If(
                     chkImpDraftModels.Value = true,
@@ -733,6 +748,46 @@ scrImplementationModels As screen:
             Y: =622
             ZIndex: =16
 
+        Button5 As button:
+            Fill: |-
+                =If(
+                    varCreateOpenImplementationModel || varCreateOpenImplementationPhase || varCreateOpenImplementationStage || varCreateOpenProductBacklogItem || varCreateOpenTask || varOpenTaskDetailWindow,
+                    ColorFade(
+                        RGBA(
+                            26,
+                            76,
+                            145,
+                            1
+                        ),
+                        -30%
+                    ),
+                    RGBA(
+                        26,
+                        76,
+                        145,
+                        1
+                    )
+                )
+            Height: =52
+            OnSelect: |-
+                =CopyImplementationModel.Run(ddImplementationModel.SelectedText.'Implementation Model');
+                UpdateContext({varImpPropagationStarted:true})
+            Text: ="Associate Model"
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
+            Width: =204
+            X: =41
+            Y: =490
+            ZIndex: =17
+
+        ddImplementationModel As dropdown:
+            Height: =46
+            Items: =Filter('Implementation Models', 'Status Reason' = 'Status Reason (Implementation Models)'.Active)
+            Visible: =If(chkImpDraftModels.Value = true,true,false)
+            Width: =232
+            X: =27
+            Y: =429
+            ZIndex: =18
+
     "'Implementation Models Title' As label":
         Align: =Align.Center
         Color: |-
@@ -767,7 +822,8 @@ scrImplementationModels As screen:
             UpdateContext({varCreateOpenProductBacklogItem:false});
             UpdateContext({varCreateOpenTask:false});
             UpdateContext({varOpenTaskDetailWindow:false});
-            Reset(chkImpDraftModels)
+            Reset(chkImpDraftModels);
+            UpdateContext({varImpPropagationStarted:false})
         Width: =45
         X: =18
         Y: =15
@@ -1833,7 +1889,7 @@ scrImplementationModels As screen:
                     DisplayFields: =["neu_implementationphasename"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model Name' = glyImplementationModels.Selected.'Implementation Model Name' && Status = 'Status (Implementation Phases)'.Active)
+                    Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model' && Status = 'Status (Implementation Phases)'.Active)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_implementationphasename"]
                     SearchItems: =[]
@@ -2121,11 +2177,11 @@ scrImplementationModels As screen:
     "'Create Product Backlog Item Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
-        Height: =564
+        Height: =648
         Visible: =If(varCreateOpenProductBacklogItem || varEditOpenProductBacklogItem,true,false)
         Width: =892
         X: =237
-        Y: =160
+        Y: =76
         ZIndex: =23
 
         "'Create New PBI Title' As label":
@@ -2228,16 +2284,6 @@ scrImplementationModels As screen:
             Y: =519
             ZIndex: =7
 
-        "'Product Backlog Item created message' As label":
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Text: ="Product Backlog Item was successfully created!"
-            Visible: =If(varPBICreated,true,false)
-            Width: =451
-            X: =221
-            Y: =554
-            ZIndex: =10
-
         "'Sequence PBI Label' As label":
             FontWeight: =FontWeight.Semibold
             Text: |-
@@ -2298,7 +2344,7 @@ scrImplementationModels As screen:
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
             Height: =35
-            Items: =Filter('Implementation Stages', 'Implementation Phase'.'Implementation Phase' = glyImplementationPhase.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active)
+            Items: =Filter('Implementation Stages', 'Implementation Phase'.'Implementation Phase' = ddImplementationPhaseFilter.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active)
             Size: =12
             Visible: =If(varEditOpenProductBacklogItem,false,true)
             Width: =413
@@ -2312,9 +2358,9 @@ scrImplementationModels As screen:
             Item: =glyProductBacklog.Selected
             NumberOfColumns: =1
             Visible: =If(varEditOpenProductBacklogItem,true,false)
-            Width: =617
+            Width: =620
             X: =64
-            Y: =73
+            Y: =162
             ZIndex: =17
 
             "'Implementation Stage_DataCard1' As typedDataCard.comboBoxEditCard":
@@ -2327,7 +2373,7 @@ scrImplementationModels As screen:
                 Height: =50
                 Required: =false
                 Update: =dcImplementationStage.Selected
-                Width: =617
+                Width: =620
                 X: =0
                 Y: =0
                 ZIndex: =1
@@ -2344,11 +2390,12 @@ scrImplementationModels As screen:
 
                 dcImplementationStage As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Color: =RGBA(0, 18, 107, 1)
                     DefaultSelectedItems: =Parent.Default
                     DisplayFields: =["neu_implementationstagename"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =Filter('Implementation Stages','Implementation Phase'.'Implementation Phase'= glyImplementationPhase.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active)
+                    Items: =Filter('Implementation Stages','Implementation Phase'.'Implementation Phase'= ddImplementationPhaseFilterEdit.Selected.'Implementation Phase' && Status = 'Status (Implementation Stages)'.Active)
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["neu_implementationstagename"]
                     SearchItems: =[]
@@ -2395,7 +2442,7 @@ scrImplementationModels As screen:
                 MaxLength: =DataSourceInfo([@'Product Backlog Items'], DataSourceInfo.MaxLength, "neu_productbacklogitemname")
                 Required: =true
                 Update: =dcProductBacklogItemName.Text
-                Width: =617
+                Width: =620
                 X: =0
                 Y: =1
                 ZIndex: =18
@@ -2462,7 +2509,7 @@ scrImplementationModels As screen:
                 Height: =50
                 Required: =true
                 Update: =Value(DcEditPBISequence.Text)
-                Width: =617
+                Width: =620
                 X: =0
                 Y: =2
                 ZIndex: =18
@@ -2529,7 +2576,7 @@ scrImplementationModels As screen:
                 Height: =50
                 Required: =true
                 Update: =dcPBStatusReason.Selected.Value
-                Width: =617
+                Width: =620
                 X: =0
                 Y: =3
                 ZIndex: =18
@@ -2617,7 +2664,7 @@ scrImplementationModels As screen:
             Visible: =If(varEditOpenProductBacklogItem,true,false)
             Width: =234
             X: =88
-            Y: =490
+            Y: =585
             ZIndex: =18
 
         Label15 As label:
@@ -2630,6 +2677,42 @@ scrImplementationModels As screen:
             X: =672
             Y: =377
             ZIndex: =19
+
+        ddImplementationPhaseFilter As dropdown:
+            ChevronBackground: |-
+                =ColorValue("#00467f")
+            Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model')
+            Visible: =If(varEditOpenProductBacklogItem,false,true)
+            X: =533
+            Y: =140
+            ZIndex: =20
+
+        lblImplementationPhase As label:
+            FontWeight: =FontWeight.Semibold
+            Text: ="Implementation Phase Filter"
+            Visible: =If(varEditOpenProductBacklogItem,false,true)
+            Width: =306
+            X: =532
+            Y: =100
+            ZIndex: =21
+
+        ddImplementationPhaseFilterEdit As dropdown:
+            Items: =Filter('Implementation Phases','Implementation Model'.'Implementation Model' = glyImplementationModels.Selected.'Implementation Model')
+            Visible: =If(varEditOpenProductBacklogItem,true,false)
+            Width: =552
+            X: =95
+            Y: =122
+            ZIndex: =22
+
+        lblImplementationPhaseFilterEdit As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =53
+            Text: ="Implementation Phase Filter"
+            Visible: =If(varEditOpenProductBacklogItem,true,false)
+            Width: =507
+            X: =88
+            Y: =69
+            ZIndex: =23
 
     "'Create Task Container' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -3499,10 +3582,25 @@ scrImplementationModels As screen:
 
     chkImpDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
+        OnUncheck: |-
+            =UpdateContext({varImpPropagationStarted:false})
         Size: =11
         Text: ="Show Draft Models"
         Width: =263
         X: =87
         Y: =15
         ZIndex: =26
+
+    Label8 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 0, 0, 1)
+        Height: =111
+        OnSelect: |-
+            =UpdateContext({varImpPropagationStarted:false})
+        Text: ="The selected model is propagating.   Please allow up to 2 minutes for the process to complete."
+        Visible: =If(varImpPropagationStarted,true,false)
+        Width: =212
+        X: =52
+        Y: =396
+        ZIndex: =27
 
