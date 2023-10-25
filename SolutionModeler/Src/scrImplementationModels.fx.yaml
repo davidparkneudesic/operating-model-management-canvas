@@ -772,7 +772,7 @@ scrImplementationModels As screen:
             OnSelect: |-
                 =CopyImplementationModel.Run(ddImplementationModel.SelectedText.'Implementation Model');
                 UpdateContext({varImpPropagationStarted:true})
-            Text: ="Associate Model"
+            Text: ="Copy From Model"
             Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =204
             X: =41
@@ -781,7 +781,7 @@ scrImplementationModels As screen:
 
         ddImplementationModel As dropdown:
             Height: =46
-            Items: =Filter('Implementation Models', 'Status Reason' = 'Status Reason (Implementation Models)'.Active)
+            Items: =Filter('Implementation Models', 'Status' = 'Status (Implementation Models)'.Active)
             Visible: =If(chkImpDraftModels.Value = true,true,false)
             Width: =232
             X: =27
