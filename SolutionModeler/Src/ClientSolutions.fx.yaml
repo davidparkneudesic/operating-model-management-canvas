@@ -1075,6 +1075,7 @@
                 UpdateContext({varCSUserStoryCollectionActive:true});
                 UpdateContext({varEpicHoursCalcd:false})
             Rotation: =90
+            Visible: =If(varUpdateClientSolution,false,true)
             Width: =37
             X: =1012
             Y: =335
