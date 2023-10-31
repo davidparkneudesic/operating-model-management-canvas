@@ -36,8 +36,8 @@
             Visible: |-
                 =//If(varUpdateClientSolution,false,true)
                 true
-            Width: =476
-            X: =835
+            Width: =402
+            X: =908
             Y: =30
             ZIndex: =1
 
@@ -111,8 +111,8 @@
             Size: =14
             Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =231
-            X: =1084
+            Width: =209
+            X: =1087
             Y: =323
             ZIndex: =7
 
@@ -134,8 +134,8 @@
             Text: ="Cancel"
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187
-            X: =418
-            Y: =570
+            X: =283
+            Y: =577
             ZIndex: =8
 
         Delete_ClientSolution_Button As button:
@@ -159,8 +159,8 @@
                 "
             Visible: =If(varUpdateClientSolution,true,false)
             Width: =187
-            X: =760
-            Y: =570
+            X: =490
+            Y: =577
             ZIndex: =10
 
         "'Create DevOps Project Button' As button":
@@ -172,7 +172,7 @@
                     ColorFade(ColorValue("#00467f"), -30%),
                     ColorValue("#00467f")
                 )
-            Height: =57
+            Height: =60
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
@@ -183,8 +183,8 @@
             Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
-            X: =1095
-            Y: =494
+            X: =1084
+            Y: =498
             ZIndex: =13
 
         UpdateClientSolution_Button_1 As button:
@@ -209,7 +209,7 @@
             Tooltip: ="Create Azure DevOps connections so that this data can be transmitted to a clients AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
-            X: =1095
+            X: =1084
             Y: =423
             ZIndex: =16
 
@@ -247,17 +247,16 @@
             Size: =12
             Text: ="Client Operating Models"
             Width: =347
-            X: =836
+            X: =904
             ZIndex: =19
 
         frmClientsSolutionsForm As form:
             AcceptsFocus: =true
             DataSource: ='Client Solutions'
             DefaultMode: =If(varUpdateClientSolution, FormMode.Edit,FormMode.View)
-            Height: =475
+            Height: =314
             Item: =glyClientSolutionGallery.Selected
-            NumberOfColumns: =2
-            Width: =798
+            Width: =900
             ZIndex: =23
 
             "'Client/Prospect Name_DataCard1' As typedDataCard.textualEditCard":
@@ -267,11 +266,11 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_clientprospectname")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =82
+                Height: =74
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_clientprospectname")
                 Required: =true
                 Update: =dcClientProspectName.Text
-                Width: =399
+                Width: =300
                 X: =0
                 Y: =0
                 ZIndex: =1
@@ -340,7 +339,7 @@
                 MaxLength: =DataSourceInfo([@'Client Solutions'], DataSourceInfo.MaxLength, "neu_solutionname")
                 Required: =true
                 Update: =dcSolutionName.Text
-                Width: =399
+                Width: =300
                 WidthFit: =false
                 X: =1
                 Y: =0
@@ -408,9 +407,9 @@
                 Height: =24
                 Required: =false
                 Visible: =false
-                Width: =399
-                X: =0
-                Y: =1
+                Width: =300
+                X: =2
+                Y: =0
                 ZIndex: =1
 
                 DataCardKey21_2 As label:
@@ -443,12 +442,12 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_estimateurl")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =40
                 Required: =false
                 Update: =dcEstimateURL.Text
-                Width: =798
-                WidthFit: =true
-                X: =1
+                Width: =300
+                WidthFit: =false
+                X: =0
                 Y: =1
                 ZIndex: =1
 
@@ -511,12 +510,12 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_projectstartdate")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =40
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectStart.SelectedDate), dcProjectStart.SelectedDate, 0)
-                Width: =399
-                X: =0
-                Y: =2
+                Width: =300
+                X: =1
+                Y: =1
                 ZIndex: =1
 
                 DataCardKey7 As label:
@@ -562,8 +561,8 @@
                     Tooltip: =Parent.DisplayName
                     Visible: =false
                     Width: =dcProjectStart.Width / 2 - 10
-                    X: =dcProjectStart.X + dcProjectStart.Width + 10
-                    Y: =dcProjectStart.Y
+                    X: =208
+                    Y: =48
                     ZIndex: =3
 
                 ErrorMessage7 As label:
@@ -598,12 +597,12 @@
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_projectenddate")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =50
+                Height: =40
                 Required: =false
                 Update: =If(Not IsBlank(dcProjectEnd.SelectedDate), dcProjectEnd.SelectedDate, 0)
-                Width: =399
-                X: =1
-                Y: =2
+                Width: =300
+                X: =2
+                Y: =1
                 ZIndex: =1
 
                 DataCardKey4 As label:
@@ -688,9 +687,9 @@
                 Height: =50
                 Required: =false
                 Update: =dcImplementationModel.Selected
-                Width: =399
+                Width: =300
                 X: =0
-                Y: =3
+                Y: =2
                 ZIndex: =1
 
                 DataCardKey3 As label:
@@ -757,9 +756,9 @@
                 Height: =50
                 Required: =false
                 Update: =
-                Width: =399
+                Width: =300
                 X: =1
-                Y: =3
+                Y: =2
                 ZIndex: =1
 
                 DataCardKey9 As label:
@@ -824,6 +823,74 @@
                     Y: =DataCardKey9.Y
                     ZIndex: =4
 
+            "'Total Estimated Hours_DataCard1' As typedDataCard.numberEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_totalestimatedhours"
+                Default: =ThisItem.'Total Estimated Hours'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_totalestimatedhours")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =Value(DataCardValue2.Text)
+                Width: =300
+                X: =2
+                Y: =2
+                ZIndex: =1
+
+                DataCardKey38 As label:
+                    AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue2 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Format: =TextFormat.Number
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey38.Y + DataCardKey38.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage65 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue2.Y + DataCardValue2.Height
+                    ZIndex: =3
+
+                StarVisible59 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey38.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey38.Y
+                    ZIndex: =4
+
         glyCSUserStories As dataTable.datatable:
             BorderStyle: =BorderStyle.Solid
             BorderThickness: =1
@@ -833,15 +900,15 @@
             Fill: =RGBA(0, 0, 0, 0)
             HeadingFill: |-
                 = ColorValue("#00467f")
-            Height: =236
+            Height: =258
             Items: |-
                 =If(varCSUserStoryCollectionActive, colCSUserSTories,
                 Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
                 )
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =1029
-            X: =34
-            Y: =377
+            X: =17
+            Y: =374
             ZIndex: =24
 
             "'Epic Level Item_Column1' As dataTableColumn.complexOptionSetColumn":
@@ -1053,8 +1120,8 @@
             Text: ="Client Solution User Stories"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =384
-            X: =34
-            Y: =342
+            X: =17
+            Y: =325
             ZIndex: =26
 
         lblBadDatesOnUpdate As label:
@@ -1078,7 +1145,7 @@
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =37
             X: =1012
-            Y: =335
+            Y: =328
             ZIndex: =28
 
     "'Client Solutions Page Label' As label":
@@ -1127,7 +1194,6 @@
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
-        Height: =38
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
@@ -1136,9 +1202,9 @@
         Text: ="Update Epic Hours"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =199
-        X: =1132
-        Y: =484
+        Width: =209
+        X: =1118
+        Y: =479
         ZIndex: =4
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
@@ -1623,8 +1689,8 @@
         Text: ="Save"
         Visible: =If(varUpdateClientSolution,true,false)
         Width: =187
-        X: =89
-        Y: =674
+        X: =115
+        Y: =685
         ZIndex: =8
 
     lblEpicHoursUpdate As label:
@@ -1644,15 +1710,14 @@
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
-        Height: =38
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: =
         Text: ="Sync Models"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Visible: =If(varUpdateClientSolution,false,true)
-        Width: =199
-        X: =1132
+        Width: =209
+        X: =1118
         Y: =677
         ZIndex: =10
 
