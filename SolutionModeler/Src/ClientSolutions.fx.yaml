@@ -827,7 +827,7 @@
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_totalestimatedhours"
                 Default: =ThisItem.'Total Estimated Hours'
-                DisplayMode: =Parent.DisplayMode
+                DisplayMode: =DisplayMode.Disabled
                 DisplayName: =DataSourceInfo([@'Client Solutions'],DataSourceInfo.DisplayName,"neu_totalestimatedhours")
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
@@ -1701,12 +1701,12 @@
     lblEpicHoursUpdate As label:
         Align: =Align.Center
         Color: =RGBA(255, 0, 0, 1)
-        Height: =62
-        Text: ="Epic Hours are being updated.  After 10 seconds, click on the refresh icon to see the newly calculated hours"
+        Height: =112
+        Text: ="Epic Hours are being updated.  After 10 seconds, click on the refresh icon to see the newly calculated hours.  Total Estimated Hours will refresh if you close the record and return back"
         Visible: =If(varEpicHoursCalcd,true,false)
-        Width: =499
-        X: =832
-        Y: =336
+        Width: =353
+        X: =960
+        Y: =308
         ZIndex: =9
 
     btnSyncModels As button:
