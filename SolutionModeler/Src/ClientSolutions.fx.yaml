@@ -1238,7 +1238,7 @@
             DisplayMode: |-
                 =If(
                     IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input') || varBadDate,
-                    DisplayMode.View,
+                    DisplayMode.Disabled,
                     DisplayMode.Edit
                 )
             Fill: |-
