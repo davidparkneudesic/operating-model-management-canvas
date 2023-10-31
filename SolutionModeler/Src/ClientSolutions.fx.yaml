@@ -257,6 +257,7 @@
             Height: =314
             Item: =glyClientSolutionGallery.Selected
             Width: =900
+            Y: =30
             ZIndex: =23
 
             "'Client/Prospect Name_DataCard1' As typedDataCard.textualEditCard":
@@ -283,7 +284,6 @@
                     Width: =Parent.Width - 60
                     Wrap: =false
                     X: =30
-                    Y: =10
                     ZIndex: =1
 
                 dcClientProspectName As text:
@@ -300,7 +300,7 @@
                     Tooltip: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =42
+                    Y: =34
                     ZIndex: =2
 
                 ErrorMessage2 As label:
@@ -1130,8 +1130,8 @@
             Text: ="Please verify project dates!"
             Visible: =If(varBadDate, true,false)
             Width: =333
-            X: =645
-            Y: =238
+            X: =918
+            Y: =208
             ZIndex: =27
 
         Icon5 As icon.Reload:
@@ -1230,11 +1230,17 @@
                 =//If(ClientsSolutionsForm.Mode = FormMode.New, true, false)
                 true
             Width: =177
-            X: =421
-            Y: =447
+            X: =403
+            Y: =467
             ZIndex: =1
 
         BtnSubmit As button:
+            DisplayMode: |-
+                =If(
+                    IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input') || varBadDate,
+                    DisplayMode.View,
+                    DisplayMode.Edit
+                )
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
@@ -1285,10 +1291,9 @@
                 Set(varOpenCreateClientSolution,false);
                 Reset('New Solution Name Input'); Reset('Client/Prospect Name Input'); Reset('Estimate URL Input'); Reset('Project Start Date DatePicker'); Reset('Project End Date DatePicker');Set(varOpenCreateClientSolution,false);Set(varUpdateClientSolution,false);Navigate(scrClientSolutionSelection)
             Text: ="Submit"
-            Visible: =If(IsBlank('New Solution Name Input') || IsBlank('Client/Prospect Name Input')  ||varBadDate ,false,true)
             Width: =177
-            X: =183
-            Y: =447
+            X: =182
+            Y: =467
             ZIndex: =2
 
         "'New Solution Name Label' As label":
@@ -1464,7 +1469,7 @@
             Visible: =If(varBadDate,true,false)
             Width: =224
             X: =159
-            Y: =450
+            Y: =420
             ZIndex: =23
 
     "'Delete Client Solution Confirmation Container' As groupContainer.manualLayoutContainer":

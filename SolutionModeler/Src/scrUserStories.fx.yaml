@@ -51,6 +51,7 @@
 
                 DataCardKey20 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -95,13 +96,14 @@
                 Height: =67
                 Required: =false
                 Update: =//DataCardValueEpicLevelItem
-                Width: =324
+                Width: =250
                 X: =2
                 Y: =0
                 ZIndex: =1
 
                 DataCardKey19 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -174,6 +176,7 @@
 
                 DataCardKey16 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -203,6 +206,7 @@
                     Height: =30
                     Size: =12
                     Width: =DataCardKey16.Width
+                    X: =15
                     Y: =44
                     ZIndex: =4
 
@@ -217,14 +221,15 @@
                 Required: =If(ThisItem.'Epic Level Item' = true, false, true)
                 Update: =
                 Visible: =If (DataCardValueEpicLevelItem.Text = "Yes" , false, true)
-                Width: =324
+                Width: =450
                 WidthFit: =false
-                X: =3
+                X: =2
                 Y: =2
                 ZIndex: =1
 
                 DataCardKey15 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -253,7 +258,7 @@
                     DisplayMode: =DisplayMode.View
                     Height: =30
                     Size: =12
-                    Width: =166
+                    Width: =390
                     X: =30
                     Y: =44
                     ZIndex: =4
@@ -277,6 +282,7 @@
 
                 DataCardKey18 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -322,13 +328,14 @@
                 Update: =DataCardValue6.Selected
                 Visible: |
                     =If(DataCardValueEpicLevelItem.Text = "Yes",false,true)
-                Width: =324
+                Width: =450
                 X: =2
                 Y: =3
                 ZIndex: =1
 
                 DataCardKey17 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -452,7 +459,7 @@
                 MaxLength: =DataSourceInfo([@'User Stories'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
                 Update: =DataCardValue4.Text
-                Width: =324
+                Width: =400
                 WidthFit: =false
                 X: =0
                 Y: =0
@@ -460,12 +467,13 @@
 
                 DataCardKey6 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
                     Wrap: =false
                     X: =30
-                    Y: =10
+                    Y: =7
                     ZIndex: =1
 
                 DataCardValue4 As text:
@@ -485,9 +493,8 @@
                     RadiusTopRight: =0
                     Size: =12
                     Tooltip: =Parent.DisplayName
-                    Width: =350
                     X: =30
-                    Y: =DataCardKey6.Y + DataCardKey6.Height + 5
+                    Y: =41
                     ZIndex: =2
 
                 ErrorMessage9 As label:
@@ -515,13 +522,14 @@
                 Height: =57
                 Required: =false
                 Update: =Value(DataCardValue9.Text)
-                Width: =324
+                Width: =250
                 X: =3
                 Y: =0
                 ZIndex: =4
 
                 DataCardKey11 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -594,6 +602,7 @@
 
                 DataCardKey10 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
