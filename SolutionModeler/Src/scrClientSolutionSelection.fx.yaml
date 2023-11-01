@@ -299,7 +299,7 @@ scrClientSolutionSelection As screen:
             Height: =Parent.Height
             LayoutHeight: =Parent.Height
             Order: =12
-            Text: =ThisItem.'Created By'.User
+            Text: =ThisItem.'Created By'.'Full Name'
             Width: =100
             X: =0
             Y: =0

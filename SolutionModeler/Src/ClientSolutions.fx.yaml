@@ -8,7 +8,7 @@
     OnVisible: |-
         =If(dcProjectStart.SelectedDate > dcProjectEnd.SelectedDate,UpdateContext({varBadDate:true}),UpdateContext({varBadDate:false}))
 
-    "'Client Solution Management Container' As groupContainer.manualLayoutContainer":
+    cntClientSolutionUpdate As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
             =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
@@ -755,7 +755,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =
+                Update: =dcCSStatusReason.Selected.Value
                 Width: =300
                 X: =1
                 Y: =2
@@ -774,20 +774,11 @@
 
                 dcCSStatusReason As combobox:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                    ChevronBackground: |-
-                        =ColorValue("#00467f")
                     DefaultSelectedItems: =[Parent.Default]
                     DisplayFields: =["Value"]
                     DisplayMode: =Parent.DisplayMode
                     IsSearchable: =false
-                    Items: =["Proposal","Postponed","Won","Lost"]
-                    OnChange: |
-                        =Switch(dcCSStatusReason.Selected.Value,
-                        "Proposal", UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Proposal}),
-                        "Won", UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Won}),
-                        "Lost", UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Lost}),
-                        "Postponed",UpdateContext({varCSStatusReason:'Status Reason (Client Solutions)'.Postponed})
-                        )
+                    Items: =Choices('Status Reason (Client Solutions)')
                     PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                     SearchFields: =["Value"]
                     SearchItems: =[]
@@ -1667,26 +1658,36 @@
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
         OnSelect: |-
-            =  Patch(
+            =  If (dcCSStatusReason.Selected.Value = 'Status Reason (Client Solutions)'.Inactive,
+            
+              Patch(
                     'Client Solutions',
                     glyClientSolutionGallery.Selected,
                     {
                         'Solution Name':dcSolutionName.Text,
                         'Client/Prospect Name':dcClientProspectName.Text,
-                        'Status Reason':varCSStatusReason,
+                         Status:'Status (Client Solutions)'.Inactive,
                         'Estimate URL':dcEstimateURL.Text,
                         'Implementation Model':dcImplementationModel.Selected,
                         'Project Start Date':dcProjectStart.SelectedDate,
                         'Project End Date':dcProjectEnd.SelectedDate
                     }
-                );
-            
-            // Then Create Many-to-Many relationship with the selected values from the Related Operating Models Combo Box
-            //ForAll(
-             //   RelatedOperatingModel_CS_Edit_ComboBox.SelectedItems, 
-             //   Relate(glyClientSolutionGallery.Selected.'Operating Models (neu_ClientSolution_neu_OperatingModel_neu)', ThisRecord)
-            //);
-            
+                );  
+              ,
+              Patch(
+                    'Client Solutions',
+                    glyClientSolutionGallery.Selected,
+                    {
+                        'Solution Name':dcSolutionName.Text,
+                        'Client/Prospect Name':dcClientProspectName.Text,
+                        'Status Reason':dcCSStatusReason.Selected.Value,
+                        'Estimate URL':dcEstimateURL.Text,
+                        'Implementation Model':dcImplementationModel.Selected,
+                        'Project Start Date':dcProjectStart.SelectedDate,
+                        'Project End Date':dcProjectEnd.SelectedDate
+                    }
+                )
+              );
             UpdateContext({varUpdatedCSWindow:false});
             UpdateContext({varUpdateClientSolution:false});
             UpdateContext({varModelPropStarted:false});
@@ -1725,4 +1726,15 @@
         X: =1118
         Y: =677
         ZIndex: =10
+
+    lblCSInactiveWarning As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 0, 0, 1)
+        Height: =80
+        Text: ="Setting a Client Solution to Inactive status will result in the irreversible deletion of it, the associated User Stories and Operating Models."
+        Visible: =If(dcCSStatusReason.Selected.Value = 'Status Reason (Client Solutions)'.Inactive, true, false)
+        Width: =496
+        X: =236
+        Y: =437
+        ZIndex: =11
 
