@@ -1126,7 +1126,6 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |
                 =SubmitForm('Create Connection Form_1');
-                UpdateContext({varConnCreated:true});
                 UpdateContext({varOpenConnectionCreate:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Text: ="Create"
@@ -1166,7 +1165,6 @@
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenConnectionCreate:false});
-                UpdateContext({varConnCreated:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
             Width: =54
             X: =CreateConnectionContainer.Width - 60
@@ -1246,9 +1244,8 @@
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            OnSelect: |-
+            OnSelect: |
                 =UpdateContext({varOpenDeleteConnectionWindow:false});
-                UpdateContext({varOpenConnectionUpdate:false});
             Text: ="Cancel"
             Visible: =If(varMessageConnectionDeleted,false, true)
             X: =390

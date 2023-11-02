@@ -50,7 +50,6 @@ scrClientSolutionSelection As screen:
             =Back(ScreenTransition.UnCoverRight);
             Navigate(HomePage, ScreenTransition.UnCoverRight);
             Set(varOpenCreateClientSolution,false);
-            UpdateContext({varUpdateClientSolution:false});
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});
         Width: =45

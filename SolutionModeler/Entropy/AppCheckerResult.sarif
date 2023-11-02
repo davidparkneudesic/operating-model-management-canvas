@@ -9570,36 +9570,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrClientSolutions.varModelPropStarted"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrClientSolutions.varModelPropStarted",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varModelPropStarted",
-                "module": "scrClientSolutions",
-                "type": "scrClientSolutions"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrClientSolutions.cntClientSolutionUpdate.frmClientsSolutionsForm.Item"
                 }
               ],
@@ -9719,36 +9689,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrOperatingModels.varCapCreated"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrOperatingModels.varCapCreated",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varCapCreated",
-                "module": "scrOperatingModels",
-                "type": "scrOperatingModels"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrOperatingModels.varExpandCapGal"
                 }
               ],
@@ -9760,36 +9700,6 @@
               },
               "properties": {
                 "member": "varExpandCapGal",
-                "module": "scrOperatingModels",
-                "type": "scrOperatingModels"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrOperatingModels.varProcCreated"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrOperatingModels.varProcCreated",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varProcCreated",
                 "module": "scrOperatingModels",
                 "type": "scrOperatingModels"
               }
@@ -9893,96 +9803,6 @@
           },
           "ruleId": "app-InefficientDelayLoading",
           "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrClientSolutionSelection.varUpdateClientSolution"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrClientSolutionSelection.varUpdateClientSolution",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varUpdateClientSolution",
-                "module": "scrClientSolutionSelection",
-                "type": "scrClientSolutionSelection"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.varConnCreated"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.varConnCreated",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varConnCreated",
-                "module": "scrConnections",
-                "type": "scrConnections"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrConnections.varOpenConnectionUpdate"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrConnections.varOpenConnectionUpdate",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varOpenConnectionUpdate",
-                "module": "scrConnections",
-                "type": "scrConnections"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
         },
         {
           "locations": [

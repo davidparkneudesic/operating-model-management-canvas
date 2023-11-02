@@ -203,9 +203,8 @@ scrOperatingModels As screen:
             "'Head Capability Label' As label":
                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                 Height: =42
-                OnSelect: |-
+                OnSelect: |
                     =Select(Parent);
-                    UpdateContext({varExpandCapGal:false})
                 PaddingBottom: =0
                 PaddingLeft: =0
                 PaddingRight: =0
@@ -636,9 +635,8 @@ scrOperatingModels As screen:
 
             "'L2 Sub Capability Label' As label":
                 Height: =41
-                OnSelect: |-
+                OnSelect: |
                     =Select(Parent);
-                    UpdateContext({varExpandCapGal:true})
                 Size: =10
                 Text: =ThisItem.'Capability Name'
                 Width: |
@@ -1226,7 +1224,6 @@ scrOperatingModels As screen:
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenCapabilityCreate:false});
-                UpdateContext({varCapCreated:false});
                 UpdateContext({varEditSubCap:false});
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
@@ -1259,7 +1256,6 @@ scrOperatingModels As screen:
                 UpdateContext({varOpenCapabilityCreate:false});
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
-                UpdateContext({varCapCreated:false});
                 UpdateContext({varEditSubCap:false});
                 Reset('New Capability Name Input');
                 Reset(txtCapSequence);
@@ -1275,8 +1271,7 @@ scrOperatingModels As screen:
         "'New Capability Name Input' As text":
             Default: =""
             Height: =35
-            OnSelect: |-
-                =UpdateContext({varCapCreated:false})
+            OnSelect: =
             Reset: =
             Size: =12
             Visible: =If(varEditCap ||varEditL3Cap || varEditSubCap, false,true)
@@ -1981,7 +1976,6 @@ scrOperatingModels As screen:
                     )
                 );
                 UpdateContext({varOpenCapabilityCreate:false});
-                UpdateContext({varCapCreated:false});
                 UpdateContext({varEditSubCap:false});
                 UpdateContext({varEditCap:false});
                 UpdateContext({varEditL3Cap:false});
@@ -2675,7 +2669,6 @@ scrOperatingModels As screen:
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenProcessCreate:false});
-                UpdateContext({varProcCreated:false});
                 Reset('New Process Name Input'); Reset( 'Description Proc Input');
             Width: =54
             X: ='Create Process Container'.Width - 60
@@ -2686,8 +2679,7 @@ scrOperatingModels As screen:
             Default: =""
             Height: =35
             OnChange: =
-            OnSelect: |-
-                =UpdateContext({varProcCreated:false})
+            OnSelect: =
             Width: =434
             X: =63
             Y: =133
@@ -2909,8 +2901,7 @@ scrOperatingModels As screen:
             Default: =""
             Height: =35
             HintText: =""
-            OnSelect: |-
-                =UpdateContext({varProcCreated:false})
+            OnSelect: =
             Width: =555
             X: =549
             Y: =497
