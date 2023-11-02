@@ -2106,8 +2106,7 @@
                 txtUserStoryNameInput As text:
                     Default: =""
                     HintText: ="Simple description of the functionality desired."
-                    OnSelect: |-
-                        =UpdateContext({varUSCreated:false})
+                    OnSelect: =
                     Reset: =resetControl
                     Width: =395
                     X: =30
@@ -2278,7 +2277,6 @@
                     )
                 );
                 
-                UpdateContext({varUSCreated:true});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
                 Set(varOpenUserStoryCreate,false);
                 Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
@@ -2307,7 +2305,6 @@
             Icon: =Icon.Cancel
             OnSelect: |-
                 =Set(varOpenUserStoryCreate,false);
-                UpdateContext({varUSCreated:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
                 Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
             Width: =54

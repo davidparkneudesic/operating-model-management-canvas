@@ -2201,7 +2201,6 @@ scrImplementationModels As screen:
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varCreateOpenProductBacklogItem:false});
-                UpdateContext({varPBICreated:false});
                 UpdateContext({varEditOpenProductBacklogItem:false});
                 Reset(txtProductBacklogName); Reset(dcPBISequence);
             Width: =54
@@ -2250,7 +2249,6 @@ scrImplementationModels As screen:
                     }
                 );
                 
-                UpdateContext({varPBICreated:true});
                 UpdateContext({varCreateOpenProductBacklogItem:false});
                 Reset(txtProductBacklogName); Reset(dcPBISequence);
             Text: ="Create"
