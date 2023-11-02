@@ -1390,7 +1390,7 @@
                 ClearCollect(colCSUserSTories,Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
                 UpdateContext({varOpenUserStoryUpdatedWindow:true});
                 UpdateContext({varUpdateUserStory:false});
-                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
+                Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
             Text: ="Update Story"
             Visible: =If(varUpdateUserStory,true,false)
             Width: =212
@@ -1498,7 +1498,7 @@
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
-            Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
+            Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
             UpdateContext({varUpdateUserStory:false});
             UpdateContext({varOpenDeleteUserStoryWindow:false}); 
             UpdateContext({varOpenUserStoryUpdatedWindow:false});
@@ -2281,7 +2281,7 @@
                 UpdateContext({varUSCreated:true});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
                 Set(varOpenUserStoryCreate,false);
-                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
+                Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
             Text: ="Create"
             X: =44
             Y: =670
@@ -2309,7 +2309,7 @@
                 =Set(varOpenUserStoryCreate,false);
                 UpdateContext({varUSCreated:false});
                 UpdateContext({resetControl: !resetControl});UpdateContext({resetControl: !resetControl});
-                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
+                Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
             Width: =54
             X: ='Create User Story Container'.Width - 60
             Y: =3

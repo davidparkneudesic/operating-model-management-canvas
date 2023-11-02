@@ -763,7 +763,7 @@
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
-            Navigate(ClientSolutions,ScreenTransition.UnCoverRight);
+            Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);
             UpdateContext({varOpenConnectionCreate:false});
             UpdateContext({varUpdateConnection:false});
             UpdateContext({varOpenDeleteConnectionWindow:false});

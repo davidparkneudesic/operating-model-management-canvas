@@ -827,7 +827,7 @@ scrOperatingModels As screen:
                 Back(ScreenTransition.UnCoverRight);
                 Navigate(HomePage,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
                 ,
-                Navigate(ClientSolutions,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
+                Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
             )
         Width: =45
         X: =18

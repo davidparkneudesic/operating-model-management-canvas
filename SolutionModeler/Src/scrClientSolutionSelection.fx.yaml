@@ -31,7 +31,7 @@ scrClientSolutionSelection As screen:
         OnSelect: |-
             =//ResetForm(ClientsSolutionsForm);NewForm(ClientsSolutionsForm);Set(varGalDefault,Blank());Set(varGalDefault,{})
             //If(IsBlank(glyClientSolutionGallery.Selected),Select(glyClientSolutionGallery,1));
-            Navigate(ClientSolutions);
+            Navigate(scrClientSolutions);
             Set(varOpenCreateClientSolution,true);
         Size: =14
         Text: ="New Client Solution"
@@ -149,7 +149,7 @@ scrClientSolutionSelection As screen:
             IsHyperlink: =true
             LayoutHeight: =Parent.Height
             OnSelect: |-
-                =Navigate(ClientSolutions);
+                =Navigate(scrClientSolutions);
                 ClearCollect(colCSUserSTories,Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'));
             Order: =1
             Text: =ThisItem.'Solution Name'
