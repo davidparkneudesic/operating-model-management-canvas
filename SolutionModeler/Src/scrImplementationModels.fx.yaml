@@ -1672,17 +1672,6 @@ scrImplementationModels As screen:
             Y: =501
             ZIndex: =14
 
-        lblDeletionMesssage As label:
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Height: =158
-            Text: ="Setting an Implementation Phase to Inactive will render it and all related records inacessible."
-            Visible: =If(dcIPStatusReasonEdit.Selected.Value && varEditOpenImplementationPhase = 'Status Reason (Implementation Phases)'.Inactive,true,false)
-            Width: =224
-            X: =608
-            Y: =256
-            ZIndex: =15
-
         lblInactiveWarning As label:
             Align: =Align.Center
             Color: =RGBA(255, 0, 0, 1)
