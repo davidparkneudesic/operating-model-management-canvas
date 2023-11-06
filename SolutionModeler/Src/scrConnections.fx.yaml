@@ -666,7 +666,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |-
                 =UpdateContext({varMigrateTemplate:true})
-            Text: ="Migrate AzDO Process Template"
+            Text: ="Migrate Process Template"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =666
@@ -1420,8 +1420,8 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =CreateDevOpsProject.Run(dcAzDOTargetOrg.Text,dcTargetAzDOPAT.Text,ProjectName_Input.Text,ProjectDescription_Input.Text)
             Text: ="Create"
-            X: =552
-            Y: =413
+            X: =428
+            Y: =404
             ZIndex: =3
 
         ProjectName_Label As label:
@@ -1456,27 +1456,9 @@
             Y: =236
             ZIndex: =7
 
-        cbConnection As combobox:
-            DisplayFields: =["neu_name"]
-            IsSearchable: =false
-            Items: =Filter('Client Solution Connections','Client Solution'.'Solution Name' = dcSolutionName.Text)
-            SearchFields: =["neu_name"]
-            SearchItems: =[]
-            X: =116
-            Y: =413
-            ZIndex: =8
-
-        Label11 As label:
-            FontWeight: =FontWeight.Semibold
-            Height: =50
-            Text: ="Select Connection"
-            Width: =216
-            X: =116
-            Y: =363
-            ZIndex: =9
-
         Label16 As label:
             Align: =Align.Center
+            Color: =RGBA(233, 79, 76, 1)
             Height: =108
             Text: ="This is a one time process that can only happen once you have confirmed that the Modern Apps Delivery process template has been succesfully migrated."
             Width: =535

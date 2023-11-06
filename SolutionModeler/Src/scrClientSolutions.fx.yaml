@@ -127,8 +127,8 @@
             Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =209
-            X: =1087
-            Y: =323
+            X: =1078
+            Y: =402
             ZIndex: =7
 
         Cancel_Update_Form_Button As button:
@@ -177,7 +177,7 @@
             Y: =577
             ZIndex: =10
 
-        UpdateClientSolution_Button_1 As button:
+        btnAzDOFunctions As button:
             Color: |-
                 =If(
                     varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow,
@@ -203,19 +203,19 @@
                     ),
                     ColorValue("#00467f")
                 )
-            Height: =60
+            Height: =48
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |+
                 =Navigate(scrConnections, ScreenTransition.Cover);
                 
             Size: =14
-            Text: ="Manage ADO Connections"
+            Text: ="Manage Azure DevOps"
             Tooltip: ="Create Azure DevOps connections so that this data can be transmitted to a clients AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =209
-            X: =1087
-            Y: =489
+            Width: =204
+            X: =1078
+            Y: =248
             ZIndex: =16
 
         btnViewUserStories_1 As button:
@@ -1146,10 +1146,23 @@
     "'Client Solutions Page Label' As label":
         Align: =Align.Center
         Color: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-            RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
+            =If(
+                varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow,
+                RGBA(
+                    202,
+                    202,
+                    202,
+                    1
+                ),
+                RGBA(
+                    255,
+                    255,
+                    255,
+                    1
+                )
+            )
         Fill: |-
-            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+            =If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow, 
                 ColorFade(ColorValue("#00467f"), -30%),
                 ColorValue("#00467f")
             )
@@ -1201,8 +1214,8 @@
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =209
-        X: =1118
-        Y: =479
+        X: =1104
+        Y: =432
         ZIndex: =4
 
     "'Client Solution Create Container' As groupContainer.manualLayoutContainer":
@@ -1620,27 +1633,6 @@
         X: =960
         Y: =308
         ZIndex: =9
-
-    btnSyncModels As button:
-        Fill: |-
-            =If(
-                varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow,
-                ColorFade(
-                    ColorValue("#00467f"),
-                    -30%
-                ),
-                ColorValue("#00467f")
-            )
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: =
-        Text: ="Sync Models"
-        Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
-        Visible: =If(varUpdateClientSolution,false,true)
-        Width: =209
-        X: =1118
-        Y: =677
-        ZIndex: =10
 
     lblCSInactiveWarning As label:
         Align: =Align.Center

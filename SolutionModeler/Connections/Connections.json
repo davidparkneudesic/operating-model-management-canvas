@@ -1,4 +1,34 @@
 {
+  "2b5f6408-391b-4573-8e85-e07ab9dcdc8b": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "f42ce0bb-3048-ee11-be6d-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "1b50f99f-9e82-faf9-5dd4-e6c6bb6aebd8"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "f42ce0bb-3048-ee11-be6d-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "1b50f99f-9e82-faf9-5dd4-e6c6bb6aebd8"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "CreateDevOpsProject"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "2b5f6408-391b-4573-8e85-e07ab9dcdc8b"
+  },
   "5e0e4457-714a-4802-b7cb-b785b7f49530": {
     "connectionRef": {
       "displayName": "Azure DevOps",
@@ -203,36 +233,6 @@
     },
     "dependents": [],
     "id": "cd1a2814-05c5-4762-8ee2-9d719bc72e73"
-  },
-  "e81942b7-74cb-4b01-bbfe-2c920abfc4a9": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "workflowEntityId": {
-          "value": "f42ce0bb-3048-ee11-be6d-000d3a4e9005"
-        },
-        "workflowName": {
-          "value": "1b50f99f-9e82-faf9-5dd4-e6c6bb6aebd8"
-        }
-      },
-      "parameterHintsV2": {
-        "workflowEntityId": {
-          "value": "f42ce0bb-3048-ee11-be6d-000d3a4e9005"
-        },
-        "workflowName": {
-          "value": "1b50f99f-9e82-faf9-5dd4-e6c6bb6aebd8"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "CreateDevOpsProject"
-    ],
-    "dependencies": {},
-    "dependents": [],
-    "id": "e81942b7-74cb-4b01-bbfe-2c920abfc4a9"
   },
   "eeb3cce1-4cfb-44de-b51f-770e38e7ccd3": {
     "connectionRef": {
