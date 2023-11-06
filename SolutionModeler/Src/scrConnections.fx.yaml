@@ -19,41 +19,6 @@
         Y: =95
         ZIndex: =1
 
-        btnNew As button:
-            Fill: |-
-                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =//If(IsBlank(galConnections.Selected),Select(galConnections,1));
-                UpdateContext({varOpenConnectionCreate:true})
-            Text: ="New Connection"
-            Visible: =If(varUpdateConnection,false,true)
-            Width: =212
-            X: =43
-            Y: =460
-            ZIndex: =3
-
-        btnUpdate As button:
-            Fill: |-
-                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =UpdateContext({varUpdateConnection:true})
-            Text: ="Update Connection"
-            Visible: =If(varUpdateConnection,false,true)
-            Width: =212
-            X: =43
-            Y: =518
-            ZIndex: =4
-
         Label1_1 As label:
             Color: |-
                 =ColorValue("#00467f")
@@ -65,17 +30,17 @@
             Width: =275
             X: =67
             Y: =36
-            ZIndex: =9
+            ZIndex: =1
 
         ConnectionsViewForm As form:
             DataSource: ='Client Solution Connections'
             DefaultMode: =FormMode.View
-            Height: =392
+            Height: =339
             Item: =galConnections.Selected
             Visible: =If(varUpdateConnection,false, true)
             X: =78
-            Y: =108
-            ZIndex: =11
+            Y: =77
+            ZIndex: =2
 
             Name_DataCard2 As typedDataCard.textualEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -354,8 +319,8 @@
             Item: =galConnections.Selected
             Visible: =If(varUpdateConnection,true, false)
             X: =78
-            Y: =108
-            ZIndex: =12
+            Y: =81
+            ZIndex: =3
 
             Name_DataCard2_1 As typedDataCard.textualEditCard:
                 BorderStyle: =BorderStyle.Solid
@@ -592,7 +557,7 @@
             Width: =212
             X: =67
             Y: =577
-            ZIndex: =13
+            ZIndex: =4
 
         DeleteRecord_Button As button:
             Fill: |-
@@ -609,7 +574,7 @@
             Width: =212
             X: =376
             Y: =577
-            ZIndex: =14
+            ZIndex: =5
 
         Cancel_Update_Button As button:
             Fill: |-
@@ -628,7 +593,7 @@
             Width: =212
             X: =666
             Y: =577
-            ZIndex: =15
+            ZIndex: =6
 
         RquiredFields_ConnectionDetail As label:
             Color: =RGBA(255, 0, 0, 1)
@@ -637,7 +602,33 @@
             Visible: =If(varUpdateConnection,true,false)
             X: =105
             Y: =85
-            ZIndex: =16
+            ZIndex: =7
+
+        Rectangle11 As rectangle:
+            BorderThickness: =2
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =240
+            Width: =304
+            X: =152
+            Y: =391
+            ZIndex: =8
+
+        btnUpdate As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =UpdateContext({varUpdateConnection:true})
+            Text: ="Update Connection"
+            Visible: =If(varUpdateConnection,false,true)
+            Width: =212
+            X: =199
+            Y: =488
+            ZIndex: =9
 
         btnDeleteConnection As button:
             Fill: |-
@@ -651,9 +642,47 @@
             Text: ="Delete Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =43
-            Y: =577
-            ZIndex: =17
+            X: =198
+            Y: =543
+            ZIndex: =10
+
+        btnNew As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =//If(IsBlank(galConnections.Selected),Select(galConnections,1));
+                UpdateContext({varOpenConnectionCreate:true})
+            Text: ="New Connection"
+            Visible: =If(varUpdateConnection,false,true)
+            Width: =212
+            X: =198
+            Y: =434
+            ZIndex: =11
+
+        lblConnectionMgmt As label:
+            Color: |-
+                =ColorValue("#00467f")
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Text: ="Connection Management"
+            Width: =255
+            X: =177
+            Y: =393
+            ZIndex: =12
+
+        Rectangle11_1 As rectangle:
+            BorderThickness: =2
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =240
+            Width: =304
+            X: =528
+            Y: =391
+            ZIndex: =13
 
         btnStartProcessMigrate As button:
             Fill: |-
@@ -668,10 +697,21 @@
                 =UpdateContext({varMigrateTemplate:true})
             Text: ="Migrate Process Template"
             Visible: =If(varUpdateConnection,false,true)
-            Width: =212
-            X: =666
-            Y: =451
-            ZIndex: =18
+            Width: =215
+            X: =559
+            Y: =431
+            ZIndex: =14
+
+        lblConnectionMgmt_1 As label:
+            Color: |-
+                =ColorValue("#00467f")
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Text: ="Azure DevOps Setup"
+            Width: =255
+            X: =559
+            Y: =393
+            ZIndex: =15
 
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -758,7 +798,7 @@
         HoverFill: =
         PaddingRight: =10
         Size: =24
-        Text: ="Client Solution Connections"
+        Text: ="Azure DevOps Management"
         Width: =Parent.Width
         ZIndex: =4
 
@@ -837,6 +877,30 @@
             Y: =75
             ZIndex: =2
 
+    "'Create DevOps Project Button' As button":
+        Color: |-
+            =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
+            RGBA(202, 202, 202, 1), 
+            RGBA(255, 255, 255, 1))
+        Fill: |-
+            =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+             //   ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            //)
+        Height: =51
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |-
+            =UpdateContext({varCreateDevOpsProjectWindow:true});
+        Size: =14
+        Text: ="Create DevOps Project"
+        Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
+        Visible: =If(varUpdateClientSolution,false,true)
+        Width: =215
+        X: =904
+        Y: =598
+        ZIndex: =9
+
     CreateConnectionContainer As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Semibold
         Fill: =RGBA(255, 255, 255, 1)
@@ -845,7 +909,7 @@
         Width: =905
         X: =231
         Y: =146
-        ZIndex: =9
+        ZIndex: =10
 
         "'Create Connection Form_1' As form":
             DataSource: ='Client Solution Connections'
@@ -1207,7 +1271,7 @@
         Width: =608
         X: =379
         Y: =247
-        ZIndex: =10
+        ZIndex: =11
 
         "'Exit Before Deletion Icon_1' As icon.Cancel":
             Height: =54
@@ -1291,7 +1355,7 @@
         Width: =635
         X: =433
         Y: =174
-        ZIndex: =11
+        ZIndex: =12
 
         Label7 As label:
             Align: =Align.Center
@@ -1355,30 +1419,6 @@
             X: =28
             Y: =94
             ZIndex: =5
-
-    "'Create DevOps Project Button' As button":
-        Color: |-
-            =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
-            RGBA(202, 202, 202, 1), 
-            RGBA(255, 255, 255, 1))
-        Fill: |-
-            =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-             //   ColorFade(ColorValue("#00467f"), -30%),
-                ColorValue("#00467f")
-            //)
-        Height: =51
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: |-
-            =UpdateContext({varCreateDevOpsProjectWindow:true});
-        Size: =14
-        Text: ="Create DevOps Project"
-        Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
-        Visible: =If(varUpdateClientSolution,false,true)
-        Width: =217
-        X: =1012
-        Y: =628
-        ZIndex: =12
 
     "'Create Azure DevOps Project Window' As groupContainer.manualLayoutContainer":
         DropShadow: =DropShadow.Semibold
@@ -1465,4 +1505,26 @@
             X: =509
             Y: =100
             ZIndex: =10
+
+    "'Create DevOps Project Button_1' As button":
+        Color: |-
+            =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
+            RGBA(202, 202, 202, 1), 
+            RGBA(255, 255, 255, 1))
+        Fill: |-
+            =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+             //   ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            //)
+        Height: =51
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        Size: =14
+        Text: ="Sync Models"
+        Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
+        Visible: =If(varUpdateClientSolution,false,true)
+        Width: =215
+        X: =904
+        Y: =666
+        ZIndex: =14
 
