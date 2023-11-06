@@ -33,8 +33,8 @@
             Text: ="New Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =67
-            Y: =577
+            X: =43
+            Y: =460
             ZIndex: =3
 
         btnUpdate As button:
@@ -50,8 +50,8 @@
             Text: ="Update Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =354
-            Y: =577
+            X: =43
+            Y: =518
             ZIndex: =4
 
         Label1_1 As label:
@@ -164,7 +164,7 @@
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =99
                 Required: =true
-                Update: =DataCardValue1.Text
+                Update: =dcAzDOTargetOrg.Text
                 Width: =798
                 X: =0
                 Y: =1
@@ -180,7 +180,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue1 As text:
+                dcAzDOTargetOrg As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -209,7 +209,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue1.Y + DataCardValue1.Height
+                    Y: =dcAzDOTargetOrg.Y + dcAzDOTargetOrg.Height
                     ZIndex: =3
 
                 StarVisible5 As label:
@@ -225,8 +225,8 @@
                 Rectangle13_1 As rectangle:
                     BorderThickness: =2
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =DataCardValue1.Height
-                    Width: =DataCardValue1.Width
+                    Height: =dcAzDOTargetOrg.Height
+                    Width: =dcAzDOTargetOrg.Width
                     X: =30
                     Y: =49
                     ZIndex: =5
@@ -241,7 +241,7 @@
                 Height: =99
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_personalaccesstoken")
                 Required: =true
-                Update: =DataCardValue3.Text
+                Update: =dcTargetAzDOPAT.Text
                 Width: =798
                 X: =0
                 Y: =2
@@ -257,7 +257,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue3 As text:
+                dcTargetAzDOPAT As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -288,7 +288,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue3.Y + DataCardValue3.Height
+                    Y: =dcTargetAzDOPAT.Y + dcTargetAzDOPAT.Height
                     ZIndex: =3
 
                 StarVisible6 As label:
@@ -304,8 +304,8 @@
                 Rectangle13_2 As rectangle:
                     BorderThickness: =2
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =DataCardValue3.Height
-                    Width: =DataCardValue3.Width
+                    Height: =dcTargetAzDOPAT.Height
+                    Width: =dcTargetAzDOPAT.Width
                     X: =30
                     Y: =49
                     ZIndex: =5
@@ -651,9 +651,27 @@
             Text: ="Delete Connection"
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
-            X: =644
+            X: =43
             Y: =577
             ZIndex: =17
+
+        btnStartProcessMigrate As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            Height: =57
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                =UpdateContext({varMigrateTemplate:true})
+            Text: ="Migrate AzDO Process Template"
+            Visible: =If(varUpdateConnection,false,true)
+            Width: =212
+            X: =666
+            Y: =451
+            ZIndex: =18
 
     "galConnections As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
         BorderThickness: =1
@@ -813,7 +831,7 @@
             Color: =RGBA(255, 0, 0, 1)
             Height: =77
             Size: =15
-            Text: ="User Story has been successfully Updated!"
+            Text: ="Connection has been successfully Updated!"
             Width: =448
             X: =26
             Y: =75
@@ -1264,4 +1282,205 @@
             X: =550
             Y: =5
             ZIndex: =6
+
+    cntProcessMigrate As groupContainer.manualLayoutContainer:
+        BorderThickness: =1
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =360
+        Visible: =If(varMigrateTemplate,true,false)
+        Width: =635
+        X: =433
+        Y: =174
+        ZIndex: =11
+
+        Label7 As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            Size: =18
+            Text: ="Process Template Migrator"
+            Width: =563
+            X: =40
+            Y: =24
+            ZIndex: =1
+
+        lblMigrateAdvisory As label:
+            Align: =Align.Center
+            Color: =RGBA(13, 50, 61, 1)
+            Height: =177
+            Text: ="This will migrate the 'Modern Apps Delivery' process to the Azure DevOps organization indicated in the connection.    This is a one time process that happens before the project can be generated.    Please review the permissions that are needed on the target Azure DevOps Organization in order to perform this function.  This is outlined in the section named 'Azure DevOps Permissions' on page 24 of the Solution Modeler user guide."
+            Width: =588
+            X: =28
+            Y: =84
+            ZIndex: =2
+
+        btnMigrateAction As button:
+            Fill: |-
+                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
+                    ColorFade(ColorValue("#00467f"), -30%),
+                    ColorValue("#00467f")
+                )
+            Height: =57
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: |-
+                ='MigrateProcessTemplate'.Run (dcAzDOTargetOrg.Text,dcTargetAzDOPAT.Text);
+                UpdateContext({varMigrationStarted:true})
+            Text: ="Migrate Template"
+            Visible: =If(varUpdateConnection,false,true)
+            Width: =212
+            X: =215
+            Y: =276
+            ZIndex: =3
+
+        Icon2 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |
+                =UpdateContext({varMigrateTemplate:false});
+                UpdateContext({varMigrationStarted:false});
+            Width: =31
+            X: =603
+            Y: =1
+            ZIndex: =4
+
+        lblMigrationStarted As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =150
+            Text: ="The Migration Process has been initiated.   Please allow up to 5 minutes for the Process template to appear on the target Organization.   If it doesn't appear within that timeframe, please contact the application administrator for more details."
+            Visible: =If(varMigrationStarted,true,false)
+            Width: =588
+            X: =28
+            Y: =94
+            ZIndex: =5
+
+    "'Create DevOps Project Button' As button":
+        Color: |-
+            =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
+            RGBA(202, 202, 202, 1), 
+            RGBA(255, 255, 255, 1))
+        Fill: |-
+            =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
+             //   ColorFade(ColorValue("#00467f"), -30%),
+                ColorValue("#00467f")
+            //)
+        Height: =51
+        HoverFill: |-
+            =ColorFade(ColorValue("#00467f"), -30%)
+        OnSelect: |-
+            =UpdateContext({varCreateDevOpsProjectWindow:true});
+        Size: =14
+        Text: ="Create DevOps Project"
+        Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
+        Visible: =If(varUpdateClientSolution,false,true)
+        Width: =217
+        X: =1012
+        Y: =628
+        ZIndex: =12
+
+    "'Create Azure DevOps Project Window' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =522
+        Visible: =If(varCreateDevOpsProjectWindow,true,false)
+        Width: =1082
+        X: =220
+        Y: =144
+        ZIndex: =13
+
+        "'Create New Azure DevOps Project Title' As label":
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: |-
+                =ColorValue("#00467f")
+            Height: =60
+            Size: =20
+            Text: ="Create New Azure DevOps Project"
+            Width: |
+                ='Create Azure DevOps Project Window'.Width
+            ZIndex: =1
+
+        "'Exit Create Window Button' As icon.Cancel":
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =54
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({varCreateDevOpsProjectWindow:false})
+            Width: =54
+            X: ='Create Azure DevOps Project Window'.Width - 60
+            Y: =3
+            ZIndex: =2
+
+        Create_DevOps_Project_Button As button:
+            Fill: |-
+                =ColorValue("#00467f")
+            HoverFill: |-
+                =ColorFade(ColorValue("#00467f"), -30%)
+            OnSelect: =CreateDevOpsProject.Run(dcAzDOTargetOrg.Text,dcTargetAzDOPAT.Text,ProjectName_Input.Text,ProjectDescription_Input.Text)
+            Text: ="Create"
+            X: =552
+            Y: =413
+            ZIndex: =3
+
+        ProjectName_Label As label:
+            FontWeight: =FontWeight.Semibold
+            Text: |-
+                ="Project Name:"
+            X: =116
+            Y: =100
+            ZIndex: =4
+
+        ProjectName_Input As text:
+            Default: =""
+            Width: =350
+            X: =116
+            Y: =140
+            ZIndex: =5
+
+        ProjectDescription_Label As label:
+            FontWeight: =FontWeight.Semibold
+            Text: |-
+                ="Description:"
+            X: =116
+            Y: =196
+            ZIndex: =6
+
+        ProjectDescription_Input As text:
+            Default: =""
+            Height: =117
+            Mode: =TextMode.MultiLine
+            Width: =858
+            X: =116
+            Y: =236
+            ZIndex: =7
+
+        cbConnection As combobox:
+            DisplayFields: =["neu_name"]
+            IsSearchable: =false
+            Items: =Filter('Client Solution Connections','Client Solution'.'Solution Name' = dcSolutionName.Text)
+            SearchFields: =["neu_name"]
+            SearchItems: =[]
+            X: =116
+            Y: =413
+            ZIndex: =8
+
+        Label11 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            Text: ="Select Connection"
+            Width: =216
+            X: =116
+            Y: =363
+            ZIndex: =9
+
+        Label16 As label:
+            Align: =Align.Center
+            Height: =108
+            Text: ="This is a one time process that can only happen once you have confirmed that the Modern Apps Delivery process template has been succesfully migrated."
+            Width: =535
+            X: =509
+            Y: =100
+            ZIndex: =10
 

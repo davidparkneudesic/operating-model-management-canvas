@@ -823,7 +823,7 @@ scrOperatingModels As screen:
             
             If(IsBlank(ClientSolutionIdentifier),
                 Back(ScreenTransition.UnCoverRight);
-                Navigate(HomePage,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
+                Navigate(scrHomePage,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
                 ,
                 Navigate(scrClientSolutions,ScreenTransition.UnCoverRight);Set(ClientSolutionIdentifier,"")
             )

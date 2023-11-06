@@ -48,7 +48,7 @@ scrClientSolutionSelection As screen:
         Icon: =Icon.ChevronLeft
         OnSelect: |-
             =Back(ScreenTransition.UnCoverRight);
-            Navigate(HomePage, ScreenTransition.UnCoverRight);
+            Navigate(scrHomePage, ScreenTransition.UnCoverRight);
             Set(varOpenCreateClientSolution,false);
             UpdateContext({varDeleteClientSolutionWindow:false});
             UpdateContext({varUpdatedCSWindow:false});

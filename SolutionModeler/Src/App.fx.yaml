@@ -2,8 +2,8 @@ App As appinfo:
     BackEnabled: =false
     OnStart: =
     StartScreen: |
-        =Navigate(HomePage)
-    Theme: =PowerAppsTheme
+        =Navigate(scrHomePage)
+    Theme: =RedTheme
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false

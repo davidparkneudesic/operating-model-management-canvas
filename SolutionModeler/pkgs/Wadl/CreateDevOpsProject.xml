@@ -2,11 +2,15 @@
   <doc title="CreateDevOpsProject" />
   <grammars>
     <jsonTypes targetNamespace="https://unitedstates-002.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
-      <string name="ManualTriggerInput_ProjectName_Value_def" />
-      <string name="ManualTriggerInput_ProjectDescription_Value_def" />
+      <string name="ManualTriggerInput_text_def" />
+      <string name="ManualTriggerInput_text_1_def" />
+      <string name="ManualTriggerInput_text_2_def" />
+      <string name="ManualTriggerInput_text_3_def" />
       <object name="ManualTriggerInput">
-        <property name="ProjectName_Value" type="string" />
-        <property name="ProjectDescription_Value" type="string" />
+        <property name="text" type="string" />
+        <property name="text_1" type="string" />
+        <property name="text_2" type="string" />
+        <property name="text_3" type="string" />
       </object>
     </jsonTypes>
   </grammars>
@@ -20,8 +24,18 @@
             <doc title="The api version" />
           </param>
           <representation mediaType="application/json">
-            <param style="plain" name="ProjectName_Value" path="/ProjectName_Value" type="xs:string" required="true" />
-            <param style="plain" name="ProjectDescription_Value" path="/ProjectDescription_Value" type="xs:string" required="true" />
+            <param style="plain" name="text" path="/text" type="xs:string" required="true">
+              <doc title="TargetAzDOOrg" />
+            </param>
+            <param style="plain" name="text_1" path="/text_1" type="xs:string" required="true">
+              <doc title="TargetAzDOPAT" />
+            </param>
+            <param style="plain" name="text_2" path="/text_2" type="xs:string" required="true">
+              <doc title="ProjectName" />
+            </param>
+            <param style="plain" name="text_3" path="/text_3" type="xs:string" required="true">
+              <doc title="ProjectDescription" />
+            </param>
           </representation>
         </request>
       </method>

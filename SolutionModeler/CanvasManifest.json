@@ -35,7 +35,7 @@
       "enablechatbotfeature": false,
       "enablecomponentnamemaps": false,
       "enablecomponentscopeoldbehavior": false,
-      "enablecopilotcontrol": false,
+      "enablecopilotcontrol": true,
       "enabledataverseoffline": false,
       "enableeditcacherefreshfrequency": false,
       "enableexcelonlinebusinessv2connector": true,
@@ -57,7 +57,7 @@
       "exportimportcomponents2": true,
       "externalmessage": false,
       "fluentv9controls": false,
-      "fluentv9controlspreview": false,
+      "fluentv9controlspreview": true,
       "formuladataprefetch": true,
       "formularepair": false,
       "generatedebugpublishedapp": false,
@@ -97,7 +97,7 @@
       "zeroalltabindexes": false
     },
     "Author": "",
-    "BindingErrorCount": 1,
+    "BindingErrorCount": 3,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "DesktopOrTablet",
@@ -130,7 +130,7 @@
     "UserLocale": "en-US"
   },
   "ScreenOrder": [
-    "HomePage",
+    "scrHomePage",
     "scrClientSolutions",
     "scrUserStories",
     "scrConnections",

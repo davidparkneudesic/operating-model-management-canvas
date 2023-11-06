@@ -814,7 +814,7 @@ scrImplementationModels As screen:
         OnSelect: |-
             =//Navigate('Main Screen',ScreenTransition.UnCoverRight)
             Back(ScreenTransition.UnCoverRight);
-            Navigate(HomePage,ScreenTransition.UnCoverRight);
+            Navigate(scrHomePage,ScreenTransition.UnCoverRight);
             UpdateContext({varCreateOpenImplementationModel:false});
             UpdateContext({varCreateOpenImplementationPhase:false});
             UpdateContext({varCreateOpenImplementationStage:false});
