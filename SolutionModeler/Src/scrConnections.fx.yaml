@@ -696,6 +696,7 @@
             OnSelect: |-
                 =UpdateContext({varMigrateTemplate:true})
             Text: ="Migrate Process Template"
+            Tooltip: ="Use this button to send the Modern Apps Delivery process template to the Azure DevOps Connection that has been selected.   This is a one time operation."
             Visible: =If(varUpdateConnection,false,true)
             Width: =215
             X: =559
@@ -894,7 +895,7 @@
             =UpdateContext({varCreateDevOpsProjectWindow:true});
         Size: =14
         Text: ="Create DevOps Project"
-        Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
+        Tooltip: ="Use this button to create the Azure DevOps project in the selected Connection.  This is a one time operation."
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =215
         X: =904
@@ -1521,7 +1522,7 @@
             =ColorFade(ColorValue("#00467f"), -30%)
         Size: =14
         Text: ="Sync Models"
-        Tooltip: ="After a connection has been defined, use this button to push the Operating and Implementation Models into the client's AzDO instance."
+        Tooltip: ="Use this button to refresh the Implementation Model with the MVP tagged User Stories."
         Visible: =If(varUpdateClientSolution,false,true)
         Width: =215
         X: =904
