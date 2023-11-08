@@ -32,7 +32,7 @@
             Y: =36
             ZIndex: =1
 
-        ConnectionsViewForm As form:
+        frmConnections As form:
             DataSource: ='Client Solution Connections'
             DefaultMode: =FormMode.View
             Height: =339
@@ -52,7 +52,7 @@
                 Height: =99
                 MaxLength: =DataSourceInfo([@'Client Solution Connections'], DataSourceInfo.MaxLength, "neu_name")
                 Required: =true
-                Update: =DataCardValue10.Text
+                Update: =dcConnectionName.Text
                 Width: =798
                 X: =0
                 Y: =0
@@ -60,6 +60,7 @@
 
                 DataCardKey24 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -68,7 +69,7 @@
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue10 As text:
+                dcConnectionName As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -98,7 +99,7 @@
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue10.Y + DataCardValue10.Height
+                    Y: =dcConnectionName.Y + dcConnectionName.Height
                     ZIndex: =3
 
                 StarVisible9 As label:
@@ -114,8 +115,8 @@
                 Rectangle13 As rectangle:
                     BorderThickness: =2
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =DataCardValue10.Height
-                    Width: =DataCardValue10.Width
+                    Height: =dcConnectionName.Height
+                    Width: =dcConnectionName.Width
                     X: =30
                     Y: =49
                     ZIndex: =5
@@ -137,6 +138,7 @@
 
                 DataCardKey5 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -214,6 +216,7 @@
 
                 DataCardKey22 As label:
                     AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
                     Height: =34
                     Text: =Parent.DisplayName
                     Width: =Parent.Width - 60
@@ -608,12 +611,14 @@
             BorderThickness: =2
             Fill: =RGBA(0, 0, 0, 0)
             Height: =240
+            Visible: =If(varUpdateConnection,false,true)
             Width: =304
             X: =152
             Y: =391
             ZIndex: =8
 
         btnUpdate As button:
+            DisplayMode: =If(CountRows(galConnections.AllItems)<1,DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -631,6 +636,7 @@
             ZIndex: =9
 
         btnDeleteConnection As button:
+            DisplayMode: =If(CountRows(galConnections.AllItems)<1,DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -670,6 +676,7 @@
             FontWeight: =FontWeight.Bold
             Height: =29
             Text: ="Connection Management"
+            Visible: =If(varUpdateConnection,false,true)
             Width: =255
             X: =177
             Y: =393
@@ -679,12 +686,14 @@
             BorderThickness: =2
             Fill: =RGBA(0, 0, 0, 0)
             Height: =240
+            Visible: =If(varUpdateConnection,false,true)
             Width: =304
             X: =528
             Y: =391
             ZIndex: =13
 
         btnStartProcessMigrate As button:
+            DisplayMode: =If(CountRows(galConnections.AllItems)<1,DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
                     ColorFade(ColorValue("#00467f"), -30%),
@@ -709,6 +718,7 @@
             FontWeight: =FontWeight.Bold
             Height: =29
             Text: ="Azure DevOps Setup"
+            Visible: =If(varUpdateConnection,false,true)
             Width: =255
             X: =559
             Y: =393
@@ -883,6 +893,7 @@
             =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), 
             RGBA(255, 255, 255, 1))
+        DisplayMode: =If(CountRows(galConnections.AllItems)<1,DisplayMode.Disabled,DisplayMode.Edit)
         Fill: |-
             =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
              //   ColorFade(ColorValue("#00467f"), -30%),
@@ -896,7 +907,7 @@
         Size: =14
         Text: ="Create DevOps Project"
         Tooltip: ="Use this button to create the Azure DevOps project in the selected Connection.  This is a one time operation."
-        Visible: =If(varUpdateClientSolution,false,true)
+        Visible: =If(varUpdateConnection,false,true)
         Width: =215
         X: =904
         Y: =598
@@ -1512,6 +1523,7 @@
             =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
             RGBA(202, 202, 202, 1), 
             RGBA(255, 255, 255, 1))
+        DisplayMode: =If(CountRows(galConnections.AllItems)<1,DisplayMode.Disabled,DisplayMode.Edit)
         Fill: |-
             =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
              //   ColorFade(ColorValue("#00467f"), -30%),
@@ -1523,7 +1535,7 @@
         Size: =14
         Text: ="Sync Models"
         Tooltip: ="Use this button to refresh the Implementation Model with the MVP tagged User Stories."
-        Visible: =If(varUpdateClientSolution,false,true)
+        Visible: =If(varUpdateConnection,false,true)
         Width: =215
         X: =904
         Y: =666
