@@ -186,12 +186,3 @@ scrHomePage As screen:
         Y: =692
         ZIndex: =13
 
-    Icon6 As icon.Leave:
-        Height: =45
-        Icon: =Icon.Leave
-        OnSelect: =Exit()
-        Width: =44
-        X: =1264
-        Y: =18
-        ZIndex: =15
-
