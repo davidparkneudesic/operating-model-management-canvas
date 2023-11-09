@@ -2,6 +2,7 @@ scrHomePage As screen:
     Fill: =RGBA(237, 237, 237, 1)
     OnVisible: |-
         =Set(varSolutionGuideURL,"https://neudesic.sharepoint.com/:b:/s/NeudesicBusinessApplications/EQ0SLKxcjS5BmY1Rse-Zf_YBWCnTRd3lG71fZa5dCHsR6A?e=mmHt6b")
+    Width: =
 
     "'Title Page Label' As label":
         Align: =Align.Center
@@ -28,7 +29,7 @@ scrHomePage As screen:
         Fill: =RGBA(255, 255, 255, 1)
         Height: =450
         Width: =369
-        X: =939
+        X: =920
         Y: =200
         ZIndex: =10
 
@@ -77,7 +78,7 @@ scrHomePage As screen:
         Fill: =RGBA(255, 255, 255, 1)
         Height: =450
         Width: =369
-        X: =65
+        X: =87
         Y: =200
         ZIndex: =11
 
@@ -185,4 +186,13 @@ scrHomePage As screen:
         X: =920
         Y: =692
         ZIndex: =13
+
+    Icon6 As icon.Leave:
+        Height: =45
+        Icon: =Icon.Leave
+        OnSelect: =Exit()
+        Width: =44
+        X: =1224
+        Y: =36
+        ZIndex: =14
 
