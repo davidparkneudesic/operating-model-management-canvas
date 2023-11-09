@@ -1,8 +1,7 @@
 App As appinfo:
     BackEnabled: =false
     OnStart: =
-    StartScreen: |
-        =Navigate(scrHomePage)
+    StartScreen: =
     Theme: =RedTheme
 
     Host As hostControl.DefaultHostControlVariant:

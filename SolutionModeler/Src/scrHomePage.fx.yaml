@@ -186,3 +186,12 @@ scrHomePage As screen:
         Y: =692
         ZIndex: =13
 
+    Icon4 As icon.Cancel:
+        Height: =42
+        Icon: =Icon.Cancel
+        OnSelect: =Exit()
+        Width: =39
+        X: =1308
+        Y: =19
+        ZIndex: =14
+

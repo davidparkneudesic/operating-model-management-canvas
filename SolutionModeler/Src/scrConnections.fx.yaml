@@ -11,7 +11,7 @@
     ConnectionsDetail As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Regular
         Fill: |-
-            =If(varOpenConnectionCreate || varOpenConnectionUpdatedWindow || varOpenDeleteConnectionWindow, 
+            =If(varOpenConnectionCreate || varOpenDeleteConnectionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =650
         Width: =996
@@ -193,6 +193,7 @@
                     BorderThickness: =2
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =dcAzDOTargetOrg.Height
+                    Tooltip: ="This the the URL to the client's DevOps Organization (not to a project)"
                     Width: =dcAzDOTargetOrg.Width
                     X: =30
                     Y: =49
@@ -273,6 +274,7 @@
                     BorderThickness: =2
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =dcTargetAzDOPAT.Height
+                    Tooltip: ="This is generated in User Settings on the target DevOps organization.   Create Process and Create Project permissions are needed for this account."
                     Width: =dcTargetAzDOPAT.Width
                     X: =30
                     Y: =49
@@ -553,31 +555,13 @@
                             'Personal Access Token':PAT_Edit_Input.Text
                         }
                     );
-                
-                UpdateContext({varOpenConnectionUpdatedWindow:true})
+                UpdateContext({varUpdateConnection:false})
             Text: ="Update"
             Visible: =If(varUpdateConnection,true,false)
             Width: =212
             X: =67
             Y: =577
             ZIndex: =4
-
-        DeleteRecord_Button As button:
-            Fill: |-
-                =If(varOpenDeleteConnectionWindow || varOpenConnectionCreate || varMessageConnectionDeleted, 
-                    ColorFade(ColorValue("#00467f"), -30%),
-                    ColorValue("#00467f")
-                )
-            HoverFill: |-
-                =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: |-
-                =UpdateContext({varOpenDeleteConnectionWindow:true})
-            Text: ="Delete Record"
-            Visible: =If(varUpdateConnection,true,false)
-            Width: =212
-            X: =376
-            Y: =577
-            ZIndex: =5
 
         Cancel_Update_Button As button:
             Fill: |-
@@ -594,18 +578,9 @@
                 "
             Visible: =If(varUpdateConnection,true,false)
             Width: =212
-            X: =666
+            X: =328
             Y: =577
             ZIndex: =6
-
-        RquiredFields_ConnectionDetail As label:
-            Color: =RGBA(255, 0, 0, 1)
-            Height: =31
-            Text: ="* Required fields"
-            Visible: =If(varUpdateConnection,true,false)
-            X: =105
-            Y: =85
-            ZIndex: =7
 
         Rectangle11 As rectangle:
             BorderThickness: =2
@@ -629,6 +604,7 @@
             OnSelect: |-
                 =UpdateContext({varUpdateConnection:true})
             Text: ="Update Connection"
+            Tooltip: ="Use this button to make changes to the Connection."
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =199
@@ -646,6 +622,7 @@
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: =Remove('Client Solution Connections', LookUp('Client Solution Connections', Connection = GUID(dcConnectionID.Text)));
             Text: ="Delete Connection"
+            Tooltip: ="Use this button to delete the current connection."
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =198
@@ -664,6 +641,7 @@
                 =//If(IsBlank(galConnections.Selected),Select(galConnections,1));
                 UpdateContext({varOpenConnectionCreate:true})
             Text: ="New Connection"
+            Tooltip: ="Use this button to create a new connection to a client DevOps Organization."
             Visible: =If(varUpdateConnection,false,true)
             Width: =212
             X: =198
@@ -729,7 +707,7 @@
         Default: =//varGalDefault
         DelayItemLoading: =true
         Fill: |-
-            =If(varOpenConnectionCreate || varOpenConnectionUpdatedWindow || varOpenDeleteConnectionWindow, 
+            =If(varOpenConnectionCreate || varOpenDeleteConnectionWindow, 
             RGBA(202, 202, 202, 1), RGBA(255, 255, 255, 1))
         Height: =636
         Items: |
@@ -857,36 +835,6 @@
         Width: =313
         Y: =76
         ZIndex: =7
-
-    ConnectionUpdatedWindow_Container As groupContainer.manualLayoutContainer:
-        DropShadow: =DropShadow.Semibold
-        Fill: =RGBA(255, 255, 255, 1)
-        Visible: =If(varOpenConnectionUpdatedWindow,true,false)
-        X: =433
-        Y: =303
-        ZIndex: =8
-
-        Icon2_1 As icon.Cancel:
-            Height: =54
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =UpdateContext({varOpenConnectionUpdatedWindow:false});
-                UpdateContext({varUpdateConnection:false})
-            Width: =52
-            X: =440
-            Y: =5
-            ZIndex: =1
-
-        Label8_1 As label:
-            Align: =Align.Center
-            Color: =RGBA(255, 0, 0, 1)
-            Height: =77
-            Size: =15
-            Text: ="Connection has been successfully Updated!"
-            Width: =448
-            X: =26
-            Y: =75
-            ZIndex: =2
 
     "'Create DevOps Project Button' As button":
         Color: |-
