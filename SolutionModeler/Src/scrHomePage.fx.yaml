@@ -196,37 +196,3 @@ scrHomePage As screen:
         Y: =36
         ZIndex: =14
 
-    Copilot2 As Copilot.pcfdataset:
-        DisplayMode: =DisplayMode.Edit
-        Height: =675
-        Items: =Capabilities
-        Visible: =false
-        Width: =320
-        X: =40
-        Y: =40
-        ZIndex: =15
-
-        "'Capability Name1' As pcfDataField.textualColumn":
-            FieldDisplayName: ="Capability Name"
-            FieldName: ="neu_capabilityname"
-            FieldType: ="s"
-            FieldVariantName: ="textualColumn"
-            Order: =1
-            ZIndex: =4
-
-        "'Status Reason1' As pcfDataField.textualColumn":
-            FieldDisplayName: ="Status Reason"
-            FieldName: ="statuscode"
-            FieldType: ="l"
-            FieldVariantName: ="textualColumn"
-            Order: =2
-            ZIndex: =5
-
-        "'Scope Review1' As pcfDataField.textualColumn":
-            FieldDisplayName: ="Scope Review"
-            FieldName: ="neu_scopereview"
-            FieldType: ="l"
-            FieldVariantName: ="textualColumn"
-            Order: =3
-            ZIndex: =6
-

@@ -55,21 +55,6 @@
     "OverridableProperties": {},
     "Version": "2.4.0"
   },
-  "Copilot": {
-    "CustomGroupControlTemplateName": "",
-    "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/powercontrol/Copilot",
-    "IsComponentTemplate": false,
-    "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": true,
-    "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": false,
-    "LastModifiedTimestamp": "0",
-    "Name": "Copilot",
-    "OverridableProperties": {},
-    "TemplateDisplayName": "Copilot",
-    "Version": "0.0.206"
-  },
   "dataTable": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -238,20 +223,6 @@
     "Name": "label",
     "OverridableProperties": {},
     "Version": "2.5.1"
-  },
-  "pcfDataField": {
-    "CustomGroupControlTemplateName": "",
-    "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/pcfDataField",
-    "IsComponentTemplate": false,
-    "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": false,
-    "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": true,
-    "LastModifiedTimestamp": "0",
-    "Name": "pcfDataField",
-    "OverridableProperties": {},
-    "Version": "1.4.0"
   },
   "rectangle": {
     "CustomGroupControlTemplateName": "",
