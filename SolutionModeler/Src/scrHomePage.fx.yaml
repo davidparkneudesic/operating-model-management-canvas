@@ -196,3 +196,12 @@ scrHomePage As screen:
         Y: =36
         ZIndex: =14
 
+    ButtonCanvas2 As Button:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        OnSelect: =Navigate(scrHomePage2)
+        Width: =96
+        X: =104
+        Y: =95
+        ZIndex: =15
+
