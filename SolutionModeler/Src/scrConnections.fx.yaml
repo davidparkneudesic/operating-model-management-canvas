@@ -1407,18 +1407,22 @@
             Height: =54
             Icon: =Icon.Cancel
             OnSelect: |-
-                =UpdateContext({varCreateDevOpsProjectWindow:false})
+                =UpdateContext({varCreateDevOpsProjectWindow:false});
+                UpdateContext({varProjectCreated:false})
             Width: =54
             X: ='Create Azure DevOps Project Window'.Width - 60
             Y: =3
             ZIndex: =2
 
         Create_DevOps_Project_Button As button:
+            DisplayMode: =If(varProjectCreated,DisplayMode.Disabled,DisplayMode.Edit)
             Fill: |-
                 =ColorValue("#00467f")
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
-            OnSelect: =CreateDevOpsProject.Run(dcAzDOTargetOrg.Text,dcTargetAzDOPAT.Text,ProjectName_Input.Text,ProjectDescription_Input.Text)
+            OnSelect: |-
+                =CreateDevOpsProject.Run(dcAzDOTargetOrg.Text,dcTargetAzDOPAT.Text,ProjectName_Input.Text,ProjectDescription_Input.Text);
+                UpdateContext({varProjectCreated:true})
             Text: ="Create"
             X: =428
             Y: =404
@@ -1458,13 +1462,25 @@
 
         Label16 As label:
             Align: =Align.Center
-            Color: =RGBA(233, 79, 76, 1)
             Height: =108
             Text: ="This is a one time process that can only happen once you have confirmed that the Modern Apps Delivery process template has been succesfully migrated."
-            Width: =535
-            X: =509
-            Y: =100
+            Width: =578
+            X: =498
+            Y: =88
             ZIndex: =10
+
+        Label9 As label:
+            Align: =Align.Center
+            BorderThickness: =2
+            Color: =RGBA(255, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =152
+            Text: ="The Create Project command has been sent to the Azure DevOps Org provided in the Connection.  This process can take up to a minute to complete.   If the project does not appear in the selected org, verify the URL and Personal Access Token that you are using."
+            Visible: =If(varProjectCreated,true,false)
+            Width: =587
+            X: =255
+            Y: =216
+            ZIndex: =11
 
     "'Create DevOps Project Button_1' As button":
         Color: |-

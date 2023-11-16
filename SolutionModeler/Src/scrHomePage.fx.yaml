@@ -197,6 +197,7 @@ scrHomePage As screen:
         ZIndex: =14
 
     ButtonCanvas2 As Button:
+        BasePaletteColor: =
         DisplayMode: =DisplayMode.Edit
         Height: =32
         OnSelect: =Navigate(scrHomePage2)
