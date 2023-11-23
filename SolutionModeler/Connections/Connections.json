@@ -1,4 +1,36 @@
 {
+  "0347eac6-391c-4db9-8373-5390b875a064": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "9e25f2b4-9389-ee11-8179-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "99a0e546-2955-5c8f-0d1e-5cb120732839"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "9e25f2b4-9389-ee11-8179-000d3a4e9005"
+        },
+        "workflowName": {
+          "value": "99a0e546-2955-5c8f-0d1e-5cb120732839"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "MarksTestADOFlow"
+    ],
+    "dependencies": {
+      "shared_visualstudioteamservices": "dc5ad978-5068-4382-9e87-7ece5396f844"
+    },
+    "dependents": [],
+    "id": "0347eac6-391c-4db9-8373-5390b875a064"
+  },
   "2b5f6408-391b-4573-8e85-e07ab9dcdc8b": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -233,6 +265,20 @@
     },
     "dependents": [],
     "id": "cd1a2814-05c5-4762-8ee2-9d719bc72e73"
+  },
+  "dc5ad978-5068-4382-9e87-7ece5396f844": {
+    "connectionRef": {
+      "displayName": "Azure DevOps",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/olshyron/aadil_plugins/1.0.1667.3502/vsts/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_visualstudioteamservices"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "0347eac6-391c-4db9-8373-5390b875a064"
+    ],
+    "id": "dc5ad978-5068-4382-9e87-7ece5396f844"
   },
   "eeb3cce1-4cfb-44de-b51f-770e38e7ccd3": {
     "connectionRef": {
