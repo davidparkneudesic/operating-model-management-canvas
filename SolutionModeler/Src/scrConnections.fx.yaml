@@ -1496,7 +1496,7 @@
         Height: =51
         HoverFill: |-
             =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: =MarksTestADOFlow.Run(1,1)
+        OnSelect: =
         Size: =14
         Text: ="Sync Models"
         Tooltip: ="Use this button to refresh the Implementation Model with the MVP tagged User Stories."
