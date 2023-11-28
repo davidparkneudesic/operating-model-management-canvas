@@ -663,7 +663,7 @@
         Rectangle11_1 As rectangle:
             BorderThickness: =2
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =240
+            Height: =186
             Visible: =If(varUpdateConnection,false,true)
             Width: =304
             X: =528
@@ -1481,28 +1481,4 @@
             X: =255
             Y: =216
             ZIndex: =11
-
-    "'Create DevOps Project Button_1' As button":
-        Color: |-
-            =If(varOpenCreateClientSolution || varCreateDevOpsProjectWindow, 
-            RGBA(202, 202, 202, 1), 
-            RGBA(255, 255, 255, 1))
-        DisplayMode: =If(CountRows(galConnections.AllItems)<1,DisplayMode.Disabled,DisplayMode.Edit)
-        Fill: |-
-            =//If(varOpenCreateClientSolution || varUpdatedCSWindow || varDeleteClientSolutionWindow || varCreateDevOpsProjectWindow, 
-             //   ColorFade(ColorValue("#00467f"), -30%),
-                ColorValue("#00467f")
-            //)
-        Height: =51
-        HoverFill: |-
-            =ColorFade(ColorValue("#00467f"), -30%)
-        OnSelect: =
-        Size: =14
-        Text: ="Sync Models"
-        Tooltip: ="Use this button to refresh the Implementation Model with the MVP tagged User Stories."
-        Visible: =If(varUpdateConnection,false,true)
-        Width: =215
-        X: =904
-        Y: =666
-        ZIndex: =14
 
