@@ -325,7 +325,7 @@ scrOperatingModels As screen:
                         Sort(
                             Filter(
                                 Processes,
-                                'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No
+                                'Process Group'.'Process Group' = glyProcessGroup.Selected.'Process Group' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.No
                             ),
                             Sequence
                         ),
@@ -335,7 +335,7 @@ scrOperatingModels As screen:
                         Sort(
                             Filter(
                                 Processes,
-                                'Process Group'.'Process Group Name' = glyProcessGroup.Selected.'Process Group Name' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes
+                                'Process Group'.'Process Group' = glyProcessGroup.Selected.'Process Group' && Status = 'Status (Processes)'.Active && 'Client Specific' = 'Client Specific (Processes)'.Yes
                             ),
                             Sequence
                         ),
