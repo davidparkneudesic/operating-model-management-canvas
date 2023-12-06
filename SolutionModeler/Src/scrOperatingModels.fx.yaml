@@ -373,8 +373,8 @@ scrOperatingModels As screen:
                 Height: =42
                 OnSelect: |-
                     =Select(Parent);
-                    UpdateContext({varEditProcess:false});
-                    UpdateContext({varOpenProcessDetail:true})
+                    UpdateContext({varEditProcess:true})
+                    //UpdateContext({varOpenProcessDetail:true})
                 PaddingBottom: =0
                 PaddingLeft: =0
                 PaddingRight: =0
@@ -392,20 +392,6 @@ scrOperatingModels As screen:
                 Visible: =ThisItem.IsSelected
                 Width: =4
                 ZIndex: =4
-
-            icoEditCap_4 As icon.Edit:
-                Color: =RGBA(166, 166, 166, 1)
-                Height: =29
-                Icon: =Icon.Edit
-                OnSelect: |-
-                    =Select(Parent);
-                    UpdateContext({varEditProcess:true})
-                    //UpdateContext({varOpenProcessDetail:true})
-                Visible: =If(Len(txtClientID.Text)>0 || chkDraftModels.Value = true,true,false)
-                Width: =35
-                X: =237
-                Y: =6
-                ZIndex: =5
 
         "'Operating Model Label' As label":
             FontWeight: =FontWeight.Bold

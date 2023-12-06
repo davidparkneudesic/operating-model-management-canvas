@@ -898,8 +898,20 @@
                 = ColorValue("#00467f")
             Height: =258
             Items: |-
-                =If(varCSUserStoryCollectionActive, colCSUserSTories,
-                Filter('User Stories', 'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution')
+                =If(
+                    varCSUserStoryCollectionActive,
+                    Sort(
+                        colCSUserSTories,
+                        Capability.'Capability Name'
+                    ),
+                    Sort(
+                        Filter(
+                            'User Stories',
+                            'Client Solution'.'Client Solution' = glyClientSolutionGallery.Selected.'Client Solution'
+                        ),
+                        Capability.'Capability Name',
+                        SortOrder.Ascending
+                    )
                 )
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =1029
@@ -914,7 +926,7 @@
                 FieldVariantName: ="complexOptionSetColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =5
+                Order: =7
                 Text: =ThisItem.'Epic Level Item'
                 Width: =100
                 X: =0
@@ -933,7 +945,7 @@
                     =Navigate(scrUserStories, ScreenTransition.Cover);
                     Set(varOpenCreateClientSolution,false);
                     Set(varUpdateClientSolution,false);
-                Order: =1
+                Order: =4
                 Text: =ThisItem.Name
                 Width: =160
                 X: =0
@@ -948,7 +960,7 @@
                 FieldVariantName: ="textualColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =3
+                Order: =5
                 Text: =ThisItem.Description
                 Width: =400
                 X: =184
@@ -962,27 +974,12 @@
                 FieldVariantName: ="numberColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =4
+                Order: =6
                 Text: =ThisItem.'Estimated Hours'
                 Width: =100
                 X: =0
                 Y: =0
                 ZIndex: =28
-
-            Capability_Column1 As dataTableColumn.complexTypeColumn:
-                DisplayMode: =DisplayMode.Edit
-                FieldDisplayName: ="Capability"
-                FieldName: ="neu_CapabilityID"
-                FieldVariantName: ="complexTypeColumn"
-                Height: =Parent.Height
-                LayoutHeight: =Parent.Height
-                Order: =6
-                Text: =ThisItem.Capability.Capability
-                Visible: =false
-                Width: =100
-                X: =0
-                Y: =0
-                ZIndex: =29
 
             "'Client Solution_Column1' As dataTableColumn.complexTypeColumn":
                 DisplayMode: =DisplayMode.Edit
@@ -991,7 +988,7 @@
                 FieldVariantName: ="complexTypeColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =7
+                Order: =8
                 Text: =ThisItem.'Client Solution'.'Client Solution'
                 Visible: =false
                 Width: =100
@@ -1006,7 +1003,7 @@
                 FieldVariantName: ="numberColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =8
+                Order: =9
                 Text: =ThisItem.'Effort Percentage'
                 Visible: =false
                 Width: =100
@@ -1021,7 +1018,7 @@
                 FieldVariantName: ="complexTypeColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =9
+                Order: =10
                 Text: =ThisItem.Process.Process
                 Visible: =false
                 Width: =100
@@ -1036,7 +1033,7 @@
                 FieldVariantName: ="complexTypeColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =10
+                Order: =11
                 Text: =ThisItem.'Process Group'.'Process Group'
                 Visible: =false
                 Width: =100
@@ -1051,7 +1048,7 @@
                 FieldVariantName: ="complexOptionSetColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =11
+                Order: =12
                 Text: =ThisItem.'Status Reason'
                 Visible: =false
                 Width: =100
@@ -1066,7 +1063,7 @@
                 FieldVariantName: ="textualColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =12
+                Order: =13
                 Text: =ThisItem.'User Story'
                 Visible: =false
                 Width: =100
@@ -1081,13 +1078,27 @@
                 FieldVariantName: ="complexTypeColumn"
                 Height: =Parent.Height
                 LayoutHeight: =Parent.Height
-                Order: =13
+                Order: =14
                 Text: =ThisItem.'Operating Model'.'Operating Model'
                 Visible: =false
                 Width: =100
                 X: =0
                 Y: =0
                 ZIndex: =36
+
+            neu_CapabilityID_Column3 As dataTableColumn.textualColumn:
+                DisplayMode: =DisplayMode.Edit
+                FieldDisplayName: ="Capability"
+                FieldName: ="neu_CapabilityID"
+                FieldVariantName: ="textualColumn"
+                Height: =Parent.Height
+                LayoutHeight: =Parent.Height
+                Order: =3
+                Text: =ThisItem.Capability.'Capability Name'
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =37
 
         Create_UserStory_Button As button:
             Fill: |-
