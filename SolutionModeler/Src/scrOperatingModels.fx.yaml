@@ -2655,7 +2655,7 @@ scrOperatingModels As screen:
             Icon: =Icon.Cancel
             OnSelect: |-
                 =UpdateContext({varOpenProcessCreate:false});
-                Reset('New Process Name Input'); Reset( 'Description Proc Input');
+                Reset('New Process Name Input'); Reset( 'Description Proc Input');Reset(txt_DocumentationLink)
             Width: =54
             X: ='Create Process Container'.Width - 60
             Y: =3
@@ -2757,7 +2757,7 @@ scrOperatingModels As screen:
                     )
                 );
                 UpdateContext({varOpenProcessCreate:false});
-                Reset('New Process Name Input'); Reset( 'Description Proc Input');Reset(txtProcessSequence);Reset(ddProcessGroupSelection)
+                Reset('New Process Name Input'); Reset( 'Description Proc Input');Reset(txtProcessSequence);Reset(ddProcessGroupSelection);Reset(txt_DocumentationLink)
             Text: |-
                 ="Create
                 "
