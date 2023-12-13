@@ -2941,7 +2941,7 @@ scrOperatingModels As screen:
                 =ColorValue("#00467f")
             ChevronHoverBackground: |-
                 =ColorFade(ColorValue("#00467f"), -20%)
-            Default: =""
+            Default: =glyProcessGroup.Selected.'Process Group Name'
             Height: =35
             Items: =Filter('Process Groups', Capability.Capability = 'Capability Proc Dropdown'.Selected.Capability && Status = 'Status (Process Groups)'.Active)
             OnSelect: |-
