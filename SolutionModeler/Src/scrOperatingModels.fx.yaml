@@ -2701,7 +2701,8 @@ scrOperatingModels As screen:
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
                                 'Client Specific':'Client Specific (Processes)'.No,
-                                Sequence:Value(txtProcessSequence.Text)
+                                Sequence:Value(txtProcessSequence.Text),
+                                'Documentation Link':txt_DocumentationLink.Text
                             }
                         ),
                         Patch(
@@ -2716,7 +2717,8 @@ scrOperatingModels As screen:
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
                                 'Client Specific':'Client Specific (Processes)'.No,
-                                Sequence:Value(txtProcessSequence.Text)
+                                Sequence:Value(txtProcessSequence.Text),
+                                'Documentation Link':txt_DocumentationLink.Text
                             }
                         )
                     ),
@@ -2732,7 +2734,8 @@ scrOperatingModels As screen:
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
                                 'Client Specific':'Client Specific (Processes)'.Yes,
-                                Sequence:Value(txtProcessSequence.Text)
+                                Sequence:Value(txtProcessSequence.Text),
+                                'Documentation Link':txt_DocumentationLink.Text
                             }
                         ),
                         Patch(
@@ -2747,7 +2750,8 @@ scrOperatingModels As screen:
                                 Model:Model.'Operating Model',
                                 'Status Reason':'Status Reason (Processes)'.Active,
                                 'Client Specific':'Client Specific (Processes)'.Yes,
-                                Sequence:Value(txtProcessSequence.Text)
+                                Sequence:Value(txtProcessSequence.Text),
+                                'Documentation Link':txt_DocumentationLink.Text
                             }
                         )
                     )
@@ -2969,6 +2973,24 @@ scrOperatingModels As screen:
             X: =296
             Y: =366
             ZIndex: =22
+
+        txt_DocumentationLink As text:
+            Default: =""
+            Height: =34
+            HintText: ="URL to docs"
+            Width: =474
+            X: =61
+            Y: =497
+            ZIndex: =23
+
+        lbl_DocLink As label:
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: ="Documentation Link"
+            Width: =307
+            X: =61
+            Y: =450
+            ZIndex: =24
 
     chkDraftModels As checkbox:
         Color: =RGBA(255, 255, 255, 1)
@@ -3654,7 +3676,6 @@ scrOperatingModels As screen:
                             'Process Group': dcProcEditProcessGroup.Selected,
                             'Data Flow URL': dcProcEditDataFlow.Text,
                             Sequence: Value(dcProcessSequence.Text),
-                            'Client Specific':false,
                             'Documentation Link':dc_DocLink.Text
                         }
                     )
