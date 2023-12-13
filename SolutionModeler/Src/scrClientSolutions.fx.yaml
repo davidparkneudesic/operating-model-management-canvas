@@ -50,8 +50,8 @@
                 =//If(varUpdateClientSolution,false,true)
                 true
             Width: =402
-            X: =908
-            Y: =30
+            X: =40
+            Y: =348
             ZIndex: =1
 
             Title14 As label:
@@ -127,8 +127,8 @@
             Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =947
-            Y: =245
+            X: =40
+            Y: =577
             ZIndex: =7
 
         Cancel_Update_Form_Button As button:
@@ -203,7 +203,6 @@
                     ),
                     ColorValue("#00467f")
                 )
-            Height: =48
             HoverFill: |-
                 =ColorFade(ColorValue("#00467f"), -30%)
             OnSelect: |+
@@ -214,8 +213,8 @@
             Tooltip: ="Create Azure DevOps connections so that this data can be transmitted to a clients AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
             Width: =261
-            X: =947
-            Y: =182
+            X: =319
+            Y: =577
             ZIndex: =16
 
         btnViewUserStories_1 As button:
@@ -236,12 +235,12 @@
                 ClearCollect(colClientSolutionName, Filter('Client Solutions', 'Solution Name' = glyClientSolutionGallery.Selected.'Solution Name'));
                 
             Size: =14
-            Text: ="Client Operating Models"
+            Text: ="Manage Client Operating Models"
             Tooltip: ="Click this button to generate Operating Model(s) for this client solution."
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =261
-            X: =947
-            Y: =127
+            Width: =304
+            X: =484
+            Y: =365
             ZIndex: =17
 
         "'Related Operating Model Label_1' As label":
@@ -252,7 +251,8 @@
             Size: =12
             Text: ="Client Operating Models"
             Width: =347
-            X: =904
+            X: =36
+            Y: =318
             ZIndex: =19
 
         frmClientsSolutionsForm As form:
