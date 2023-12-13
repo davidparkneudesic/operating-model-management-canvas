@@ -126,9 +126,9 @@
             Size: =14
             Text: ="Modify Client Solution"
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =209
-            X: =1073
-            Y: =304
+            Width: =261
+            X: =947
+            Y: =245
             ZIndex: =7
 
         Cancel_Update_Form_Button As button:
@@ -213,9 +213,9 @@
             Text: ="Manage Azure DevOps"
             Tooltip: ="Create Azure DevOps connections so that this data can be transmitted to a clients AzDO instance."
             Visible: =If(varUpdateClientSolution,false,true)
-            Width: =204
-            X: =1078
-            Y: =194
+            Width: =261
+            X: =947
+            Y: =182
             ZIndex: =16
 
         btnViewUserStories_1 As button:
@@ -829,6 +829,7 @@
                 Height: =50
                 Required: =false
                 Update: =Value(DataCardValue2.Text)
+                Visible: =false
                 Width: =300
                 X: =2
                 Y: =2
@@ -913,7 +914,9 @@
                         SortOrder.Ascending
                     )
                 )
-            Visible: =If(varUpdateClientSolution,false,true)
+            Visible: |-
+                =false
+                //If(varUpdateClientSolution,false,true)
             Width: =1310
             X: =17
             Y: =374
@@ -1114,7 +1117,9 @@
                 Set(varOpenUserStoryCreate,true);
             Text: ="New User Story"
             Tooltip: ="Click this button to create new User Stories for this Client Solution."
-            Visible: =If(varUpdateClientSolution,false,true)
+            Visible: |-
+                =false
+                //If(varUpdateClientSolution,false,true)
             Width: =212
             X: =788
             Y: =324
@@ -1124,7 +1129,9 @@
             FontWeight: =FontWeight.Bold
             Height: =38
             Text: ="Client Solution User Stories"
-            Visible: =If(varUpdateClientSolution,false,true)
+            Visible: |-
+                =false
+                //If(varUpdateClientSolution,false,true)
             Width: =384
             X: =17
             Y: =325
@@ -1148,7 +1155,9 @@
                 UpdateContext({varCSUserStoryCollectionActive:true});
                 UpdateContext({varEpicHoursCalcd:false})
             Rotation: =90
-            Visible: =If(varUpdateClientSolution,false,true)
+            Visible: |-
+                =false
+                //If(varUpdateClientSolution,false,true)
             Width: =37
             X: =1012
             Y: =328
@@ -1223,7 +1232,9 @@
             UpdateContext({varEpicHoursCalcd:true})
         Text: ="Update Epic Hours"
         Tooltip: ="This fire a workflow that will update the Epic Level Items to sync up with the total effort from the Non Epic Level Items."
-        Visible: =If(varUpdateClientSolution,false,true)
+        Visible: |-
+            =false
+            //If(varUpdateClientSolution,false,true)
         Width: =209
         X: =1104
         Y: =364
