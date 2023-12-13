@@ -3355,7 +3355,7 @@ scrOperatingModels As screen:
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =50
                 Required: =false
-                Update: =DataCardValue1.Text
+                Update: =dc_DocLink.Text
                 Width: =860
                 X: =0
                 Y: =4
@@ -3372,7 +3372,7 @@ scrOperatingModels As screen:
                     Y: =10
                     ZIndex: =1
 
-                DataCardValue1 As text:
+                dc_DocLink As text:
                     BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                     Default: =Parent.Default
                     DelayOutput: =true
@@ -3400,7 +3400,7 @@ scrOperatingModels As screen:
                     Visible: =Parent.DisplayMode=DisplayMode.Edit
                     Width: =Parent.Width - 60
                     X: =30
-                    Y: =DataCardValue1.Y + DataCardValue1.Height
+                    Y: =dc_DocLink.Y + dc_DocLink.Height
                     ZIndex: =3
 
                 StarVisible62 As label:
@@ -3653,7 +3653,9 @@ scrOperatingModels As screen:
                             Description: dcProcEditDescription.Text,
                             'Process Group': dcProcEditProcessGroup.Selected,
                             'Data Flow URL': dcProcEditDataFlow.Text,
-                            Sequence: Value(dcProcessSequence.Text)
+                            Sequence: Value(dcProcessSequence.Text),
+                            'Client Specific':false,
+                            'Documentation Link':dc_DocLink.Text
                         }
                     )
                 );
