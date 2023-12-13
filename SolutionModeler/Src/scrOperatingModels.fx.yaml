@@ -3399,6 +3399,7 @@ scrOperatingModels As screen:
                     Default: =Parent.Default
                     DelayOutput: =true
                     DisplayMode: =Parent.DisplayMode
+                    OnSelect: =Launch(ThisItem.'Documentation Link')
                     PaddingLeft: =5
                     RadiusBottomLeft: =0
                     RadiusBottomRight: =0
