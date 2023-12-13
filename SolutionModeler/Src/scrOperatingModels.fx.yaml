@@ -3037,7 +3037,7 @@ scrOperatingModels As screen:
         frmEditProcess As form:
             DataSource: =Processes
             DefaultMode: =If(varEditProcess, FormMode.Edit,FormMode.View)
-            Height: =601
+            Height: =677
             Item: ='Process Gallery Parent'.Selected
             NumberOfColumns: =2
             SnapToColumns: =false
@@ -3169,10 +3169,10 @@ scrOperatingModels As screen:
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@Processes],DataSourceInfo.DisplayName,"neu_ProcessGroupID")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =99
+                Height: =83
                 Required: =false
                 Update: =dcProcEditProcessGroup.Selected
-                Width: =519
+                Width: =516
                 WidthFit: =false
                 X: =0
                 Y: =2
@@ -3241,10 +3241,10 @@ scrOperatingModels As screen:
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@Processes],DataSourceInfo.DisplayName,"neu_dataflowurl")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =102
+                Height: =96
                 Required: =false
                 Update: =dcProcEditDataFlow.Text
-                Width: =800
+                Width: =860
                 X: =0
                 Y: =3
                 ZIndex: =1
@@ -3346,6 +3346,73 @@ scrOperatingModels As screen:
                     Y: =DataCardKey13.Y + DataCardKey13.Height + 5
                     ZIndex: =2
 
+            "'Documentation Link_DataCard1' As typedDataCard.urlEditCard":
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="neu_documentationlink"
+                Default: =ThisItem.'Documentation Link'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@Processes],DataSourceInfo.DisplayName,"neu_documentationlink")
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =DataCardValue1.Text
+                Width: =860
+                X: =0
+                Y: =4
+                ZIndex: =1
+
+                DataCardKey71 As label:
+                    AutoHeight: =true
+                    FontWeight: =FontWeight.Bold
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue1 As text:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Default: =Parent.Default
+                    DelayOutput: =true
+                    DisplayMode: =Parent.DisplayMode
+                    PaddingLeft: =5
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Tooltip: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey71.Y + DataCardKey71.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage68 As label:
+                    AutoHeight: =true
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue1.Y + DataCardValue1.Height
+                    ZIndex: =3
+
+                StarVisible62 As label:
+                    Align: =Align.Center
+                    Height: =DataCardKey71.Height
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey71.Y
+                    ZIndex: =4
+
             "'Process Name_DataCard1' As typedDataCard.textualEditCard":
                 BorderStyle: =BorderStyle.Solid
                 DataField: ="neu_processname"
@@ -3428,7 +3495,7 @@ scrOperatingModels As screen:
                 DisplayMode: =Parent.DisplayMode
                 DisplayName: =DataSourceInfo([@Processes],DataSourceInfo.DisplayName,"neu_description")
                 Fill: =RGBA(0, 0, 0, 0)
-                Height: =275
+                Height: =209
                 Required: =false
                 Update: =dcProcEditDescription.Text
                 Width: =860
@@ -3454,7 +3521,7 @@ scrOperatingModels As screen:
                     DelayOutput: =true
                     DisplayMode: =Parent.DisplayMode
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =211
+                    Height: =153
                     Mode: =TextMode.MultiLine
                     PaddingLeft: =5
                     RadiusBottomLeft: =0
@@ -3627,7 +3694,7 @@ scrOperatingModels As screen:
             Text: ="Capability Filter"
             Visible: =If(varEditProcess,true,false)
             X: =647
-            Y: =335
+            Y: =217
             ZIndex: =8
 
         Rectangle10 As rectangle:
@@ -3702,8 +3769,8 @@ scrOperatingModels As screen:
             Text: ="Data Flow Diagrams are stored in a group LucidChart Folder.  If this process is missing a data flow and one should be added, click here to create it and then paste the URL back here. "
             Underline: =true
             Width: =708
-            X: =40
-            Y: =639
+            X: =205
+            Y: =486
             ZIndex: =15
 
         cntDeleteProcess As groupContainer.manualLayoutContainer:
@@ -3757,7 +3824,7 @@ scrOperatingModels As screen:
         Visible: =If(varEditProcess,true,false)
         Width: =445
         X: =750
-        Y: =386
+        Y: =266
         ZIndex: =13
 
     lblPGInactiveWarning As label:
