@@ -196,3 +196,14 @@ scrHomePage As screen:
         Y: =36
         ZIndex: =14
 
+    Label11 As label:
+        Align: =Align.Center
+        Fill: =RGBA(215, 58, 60, 1)
+        Height: =365
+        Size: =25
+        Text: ="THIS VERSION OF THE SOLUTION MODELER HAS BEEN DEPRECATED.  PLEASE USE THE LATEST VERSION OF THIS APPLICATION THAT WAS SHARED ON DECEMBER 19TH"
+        Width: =1223
+        X: =104
+        Y: =284
+        ZIndex: =15
+
